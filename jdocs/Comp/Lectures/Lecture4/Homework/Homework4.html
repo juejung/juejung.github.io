@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Homework 4</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>Homework 4</h1>
+
+<p>Submit this homework in class on Tuesday.<br/>
+I need two files:</p>
+
+<ul>
+<li>R-scripts are submitted in one file called: <code>Homework4.R</code></li>
+<li>Python-scripts are submitted in one file called: <code>Homework4.py</code></li>
+</ul>
+
+<p>I need to be able to quickly run these scripts on my computer.</p>
+
+<p>I will base your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+
+<p>For this homework you need to use the <a href="BaltimoreData.xlsx">Baltimore dataset</a> posted on the website. Do all exercises in <strong>R</strong> and <strong>Python</strong>. Keep in mind that there are numerous ways to import data into <strong>R</strong> and <strong>Python</strong>.<br/>
+The procedure I showed in class requires that you save  the data from within Excel as a .csv file. In Excel go to save as and switch the filetype from .xlsx to .cvs. This should save the Excel file as a .csv file (comma delimited values). <br/>
+Before you save it make sure that you remove all the extra formatting from the numbers in Excel, so that you don&#39;t run into problems importing them later into <strong>R</strong> or <strong>Python</strong>.<br/>
+Marking numbers and then setting them to &ldquo;general&rdquo; in the ribbon should normally do the trick and remove extra formatting symbols like commas etc. <br/>
+For instance, a number that reads 16,216 should read 16216 after reformatting etc.</p>
+
+<hr/>
+
+<h2>Exercise 1:</h2>
+
+<p>Import the data in a variable (matrix) called: myData <br/>
+Do this in <strong>R</strong> and <strong>Python</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 2:</h2>
+
+<p>Make summary statistics (e.g. mean, median, mode, and standard deviations) of all numerical variables. That is, print a table that says something like this: </p>
+
+<pre><code>Variable 1:
+==========
+mean: mean(Variable 1)
+median: median(variable 1)
+mode: mode(variable 1)
+standard deviation: stand.Dev.(Variable 1)
+
+Variable 2:
+==========
+mean: mean(Variable 2)
+median: median(variable 2)
+mode: mode(variable 2)
+etc.
+</code></pre>
+
+<p>Do this in <strong>R</strong> and <strong>Python</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 3:</h2>
+
+<p>Make a scatterplot of <code>Median Income</code> and <code>Bachelors degree</code>. The latter variable measures the percentage of the population in the county that has a bachelors degree. Do this in <strong>R</strong> and <strong>Python</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 4:</h2>
+
+<p>Run a regression model of the following form: </p>
+
+<p>\[  JuvenileArrestRate = \beta_0 +
+\beta1 Population + \beta_2 MedianIncome + \beta_3 Unemployment + \beta_4
+Eduation + \beta_5 Poverty + \epsilon  \]</p>
+
+<p>Report a table with all coefficient estimates including p-values.</p>
+
+<hr/>
+
+<h2>Exercise 5:</h2>
+
+<p>Run the model from <strong>Exercise 4</strong> again, but this time replace <code>Population</code> with a categorical variable for county size. You should make 3 categories here: small counties, middle sized counties, and large counties. A small county is defined as a county with a population smaller than \( 6,500 \). A mid size county has a population between \( 6,500 \) and \( 10,000 \) and a large size county has a population larger than \( 10,000 \) people. Make dummy variables and include those into your regression.<br/>
+Review how to make dummies etc. from your stats notes or from the brief introduction of this class.</p>
+
+</body>
+
+</html>
+

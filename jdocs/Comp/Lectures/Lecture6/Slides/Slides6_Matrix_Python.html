@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Scientific programming</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<body>
+<h1>Scientific programming</h1>
+
+<hr/>
+
+<h1>1 Vector manipulation</h1>
+
+<p>A vector of order \( n>0\) is a set of ordered numbers. <br/>
+\[ a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right], \: 
+e_{1} = \left[ \begin{array}{c} 1 \\ 0 \\ 0 \end{array} \right], \: ... \]</p>
+
+<p>These are column vectors. Row vectors are transposed column vectors, that is<br/>
+\[ a'=[4 \: 3], \: e'_{1}=[1 \: 0 \: 0], \: ...\]</p>
+
+<h2>1.1 Transposing vectors</h2>
+
+<p>In <strong>Python</strong> vectors are formed as column vectors by default. We can simply transpose vectors using the transpose function <code>t()</code> as follows:</p>
+
+<pre><code class="python">from pylab import *
+
+a = array([4,3])      # column vector
+aprime = a.transpose()   # row vector
+print &quot;a= &quot; + str(a)
+print &quot;a&#39;= &quot; + str(aprime)
+</code></pre>
+
+<pre><code>a= [4 3]
+a&#39;= [4 3]
+</code></pre>
+
+<h2>1.2 Length of vectors</h2>
+
+<p>A vector (at least a two dimensional one) has a convenient geometric representation. It is an arrow, where the two coordinates indicate the direction and length of this arrow. Vector \[ a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right]\] points to the upper right (i.e. 4 over, 3 up). The length of a vector can be calculated using the Pythagoras theorem for the triangle. The length of vector \[ a = \left[ \begin{array}{c} a_1 \\ a_2 \end{array} \right]\] where \( a_1\) and \( a_2\) are simply numbers, can be calculated as \[ \|a\| = \sqrt{a_1^2 + a_2^2}.\]<br/>
+For our example, the vector norm for \[ a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right] \text{ is } \rightarrow \|a\| = \sqrt{4^2 + 3^2} = 5.\]<br/>
+In <strong>Python</strong> we can simply define a vector and calculate its norm (or length) as</p>
+
+<pre><code class="python">from pylab import *
+a     = array([4,3])
+norma = math.sqrt(sum(a**2))
+print &quot;norm(a) = &quot; + str(norma)
+print &quot;norm(a) = &quot; + str(norm(a))  # built in norm() command
+</code></pre>
+
+<pre><code>norm(a) = 5.0
+norm(a) = 5.0
+</code></pre>
+
+<h2>1.3 Adding two vectors</h2>
+
+<p>Adding vectors is simple. We just add all numbers of two vectors &#39;element-by-element&#39;. So that  $$a + b = \left[ \begin{array}{c} a_1  + b_1 \ a_2+b_2 \end{array} \right].$$ In <strong>Python</strong> this is done with</p>
+
+<pre><code class="python">from pylab import *
+a = array([4,3])
+b = array([12,5])
+print &quot;a= &quot; + str(a)
+print &quot;b= &quot; + str(b)
+print &quot;a+b=&quot; + str(a+b)  # adding up vectors element-by-element
+</code></pre>
+
+<pre><code>a= [4 3]
+b= [12  5]
+a+b=[16  8]
+</code></pre>
+
+<h2>1.4 Multiplication of vectors</h2>
+
+<p>A vector can be multiplied by a number (we call it a scalar denoted as \( \lambda\) to distinguish it from vectors and the numbers that it contains). The scalar is multiplied with all numbers of the vector. If we multiply the vector with \( \lambda > 1\) then the arrow that the vector symbolizes is becoming longer. If we multiply the vector with \( 0 < \lambda < 1\) the arrow gets shorter. If we multiply the vector with a negative number \( \lambda < 0\) then the arrow changes direction. More formally this is \[ \lambda * a =  \left[ \begin{array}{c} \lambda *a_1 \\ \lambda *a_2 \end{array} \right].\]</p>
+
+<p>In <strong>Python</strong> it&#39;s simply</p>
+
+<pre><code class="python">from pylab import *
+a = array([4,3])
+anorm  = math.sqrt(sum(a**2)) # norm of vector a
+print &quot;a=&quot; + str(a)
+print &quot;anorm=&quot; + str(anorm)
+b = 5*a
+bnorm = math.sqrt(sum(b**2)) # norm of longer vector
+print &quot;b=&quot; + str(b)
+print &quot;bnorm=&quot; + str(bnorm)
+c = 0.5*a
+cnorm = math.sqrt(sum(c**2)) # norm of shorter vector
+print &quot;c=&quot; + str(c)
+print &quot;cnorm=&quot; + str(cnorm)
+d = -3*a       # vector changes direction
+dnorm = math.sqrt(sum(d**2))
+print &quot;d=&quot; + str(d)
+print &quot;dnorm=&quot; + str(dnorm)
+</code></pre>
+
+<pre><code>a=[4 3]
+anorm=5.0
+b=[20 15]
+bnorm=25.0
+c=[ 2.   1.5]
+cnorm=2.5
+d=[-12  -9]
+dnorm=15.0
+</code></pre>
+
+<p>When multiplying two vectors we form a so called &#39;inner product&#39; as follows:<br/>
+\[ a*b = \sum_{i=1}^{n}a_i*b_i.\] </p>
+
+<p>The following example shows this with numbers: </p>
+
+<p>\[ a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right] \text{ and }  b = \left[ \begin{array}{c} 12 \\ 5 \end{array} \right]\] </p>
+
+<p>then </p>
+
+<p>\[ ax*b = 4*12 + 3*5.\] In <strong>Python</strong> the inner product is simply:</p>
+
+<pre><code class="python">from pylab import *
+a = array([4,3])
+b = array([12,5])
+print &quot;a= &quot; + str(a)
+print &quot;b= &quot; + str(b)
+print &quot;a*b =&quot; + str(sum(a*b))  # inner product
+</code></pre>
+
+<pre><code>a= [4 3]
+b= [12  5]
+a*b =63
+</code></pre>
+
+<hr/>
+
+<h1>2 Matrix manipulation</h1>
+
+<p>Matrices are &ldquo;two dimensional&rdquo; vectors. In <strong>Python</strong> we define a matrix as</p>
+
+<pre><code class="python">from pylab import *
+A = array([[2,3],[4,5]])
+B = array([[2,6],[1,3]])
+print &quot;A=&quot; + str(A)
+print &quot;B=&quot; + str(B)
+</code></pre>
+
+<pre><code>A=[[2 3]
+ [4 5]]
+B=[[2 6]
+ [1 3]]
+</code></pre>
+
+<h2>2.1 Transposing matrices</h2>
+
+<p>Transposing matrices requires again the <code>t()</code> command. It writes each column as row of a new matrix. So that the transpose of matrix \( A\) in the above example becomes:</p>
+
+<pre><code class="python">from pylab import *
+A = array([[2,3],[4,5]])
+B = array([[2,6],[1,3]])
+Atrans = A.transpose()
+print &quot;A=&quot; + str(A)
+print &quot;A&#39;=&quot; + str(Atrans)
+</code></pre>
+
+<pre><code>A=[[2 3]
+ [4 5]]
+A&#39;=[[2 4]
+ [3 5]]
+</code></pre>
+
+<p>If we transpose the transpose of matrix A, we get the original matrix A back.</p>
+
+<h2>2.2 Adding matrices</h2>
+
+<p>When adding two matrices \( A\) and \( B\) we simply add all the elements of each matrix &#39;element-by-element&#39;. Note that the dimensions (i.e. the number of rows and columns) of the two matrices have to be identical. So if matrix \( A\) has dimension \( m \times n\), that is \( m\) rows and \( n\) columns, then matrix \( B\) needs to be of dimensions \( m \times n\) as well.</p>
+
+<pre><code class="python">from pylab import *
+A = array([[2,3],[4,5]])
+B = array([[2,6],[1,3]])
+C =  A+B
+print &quot;A=&quot; + str(A)
+print &quot;B=&quot; + str(B)
+print &quot;C=&quot; + str(C)
+</code></pre>
+
+<pre><code>A=[[2 3]
+ [4 5]]
+B=[[2 6]
+ [1 3]]
+C=[[4 9]
+ [5 8]]
+</code></pre>
+
+<h2>2.3 Multiplying matrices</h2>
+
+<p>When multiplying two matrices \( A\) and \( B\) we need to make sure that the number of columns of matrix \( A\) is equal the number of rows of matrix \( B\). So if \( A\) has dimension \( m \times n\) then \( B\) needs to have dimension \( n \times r\) since matrix multiplication implies that we form the &#39;inner product&#39; of each row of \( A\) with each column of \( B\). This results in a new matrix of dimension \( m \times r\).<br/>
+Here is an example. Given matrices <br/>
+\[  A = \left[ \begin{array}{ccc} 12 & 3 &6 \\ 9 &-1 & -4 \end{array} \right] \text{ and }
+    B = \left[ \begin{array}{cc} 7 & 8  \\ -2 &0 \\ 1 & 11 \end{array} \right] \] </p>
+
+<p>the product of \( A\) \( (2 \times 3)\) and \( B\) of dimension \( (3 \times 2)\) is a matrix \( C\) with dimension \( (2 \times 2)\):</p>
+
+<p>\[  AB = \left[ \begin{array}{cc} 12*7+3*(-2)+6*1 & 12*8+3*0+6*11 \\ 
+                                  9*7+(-1)*(-2)+(-4)*1 & 9*8+(-1)*0+(-4)*11 \end{array} \right].\]</p>
+
+<p>In <strong>Python</strong> matrix multiplication is achieved using the command <code>dot()</code>.                                   </p>
+
+<pre><code class="python">from pylab import *
+A = array([[12,3,6],[3,-1,-4]])
+B = array([[7,8],[-2,0],[1,11]])
+C = dot(A,B) # matrix multiplication
+
+print &quot;A=&quot; + str(A)
+print &quot;B=&quot; + str(B)
+print &quot;C=&quot; + str(C)
+</code></pre>
+
+<pre><code>A=[[12  3  6]
+ [ 3 -1 -4]]
+B=[[ 7  8]
+ [-2  0]
+ [ 1 11]]
+C=[[ 84 162]
+ [ 19 -20]]
+</code></pre>
+
+<h2>2.4 Multiplying a matrix with a vector</h2>
+
+<p>Vectors are simply \( n \times 1\) or \( 1 \times n\) dimensional matrices so that the same rules as above apply for multiplying a matrix with a vector.</p>
+
+<pre><code class="python">from pylab import *
+A = array([[12,3,6],[3,-1,-4]])
+b = array([7,-2,1])
+C = dot(A,b) # matrix multiplied by vector: (m x n) x (n x 1) = (m x 1) 
+print &quot;A=&quot; + str(A)
+print &quot;b=&quot; + str(b)
+print &quot;C=&quot; + str(C)
+</code></pre>
+
+<pre><code>A=[[12  3  6]
+ [ 3 -1 -4]]
+b=[ 7 -2  1]
+C=[84 19]
+</code></pre>
+
+<h2>2.5 Indexing and accessing elements of a matrix</h2>
+
+<pre><code class="python">from pylab import *
+A = array([[11,12,13,14],[21,22,23,24],[31,32,33,34]])
+print &quot;A=&quot; + str(A)
+print &quot;A[1,2]=&quot; + str(A[1,2])   # Element row 2, column 3 (remember Python starts indexing at 0!!)
+print &quot;A[0,:]=&quot; + str(A[0,:])   # First row
+print &quot;A[:,0]=&quot; + str(A[:,0])   # First column
+print &quot;A[1:,:]=&quot; + str(A[1:,])   # All, except first row
+
+print &quot;remove column 2&quot;
+print &quot;A.take([0,2,3],axis=1) =&quot; + str(A.take([0,2,3],axis=1))  # Remove column 2 (or take column 1, 3, and 4)
+A[:,0] = 99 # Fill first column with 99
+print &quot;A=&quot; + str(A)
+print &quot;(A&gt;90).choose(A,90)=&quot; +str((A&gt;90).choose(A,90)) # Replace all elements &gt; 99 with number 90
+
+</code></pre>
+
+<pre><code>A=[[11 12 13 14]
+ [21 22 23 24]
+ [31 32 33 34]]
+A[1,2]=23
+A[0,:]=[11 12 13 14]
+A[:,0]=[11 21 31]
+A[1:,:]=[[21 22 23 24]
+ [31 32 33 34]]
+remove column 2
+A.take([0,2,3],axis=1) =[[11 13 14]
+ [21 23 24]
+ [31 33 34]]
+A=[[99 12 13 14]
+ [99 22 23 24]
+ [99 32 33 34]]
+(A&gt;90).choose(A,90)=[[90 12 13 14]
+ [90 22 23 24]
+ [90 32 33 34]]
+</code></pre>
+
+</body>
+
+</html>

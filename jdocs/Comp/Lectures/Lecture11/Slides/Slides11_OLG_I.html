@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>A simple OLG model</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<body>
+<p>% Econ I Module<br/>
+% Juergen Jung<br/>
+% Towson University, 2012</p>
+
+<h1>A simple OLG model</h1>
+
+<ul>
+<li>OLG stands for overlapping generations</li>
+<li>This model allows for young and old agents</li>
+<li>We start with
+
+<ul>
+<li>Preferences</li>
+<li>Technology</li>
+<li>Government</li>
+<li>Equilibrium</li>
+</ul></li>
+</ul>
+
+<hr/>
+
+<h1>Preferences</h1>
+
+<ul>
+<li>Agents live for 2 periods: young and old</li>
+<li>There are \(  N_y\) young households and \(  N_o\) old households </li>
+<li>They value consumption when young \( c_y\) and consumption when old \( c_o\)</li>
+<li>Their preferences are given via utility functions: \( u_t(c_t)\)</li>
+<li>Agents discount time with factor \( \beta\)</li>
+<li>Their life-time utility is:</li>
+</ul>
+
+<p>\[ V(c_y, c_o) = u(c_y) + \beta \times u(c_o) \]</p>
+
+<hr/>
+
+<h1>Technology</h1>
+
+<ul>
+<li>Firms produce output \( Y\) using input capital \( K\) and labor \( L\):</li>
+</ul>
+
+<p>\[ Y= F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)} \]</p>
+
+<ul>
+<li>Firms maximize profits:</li>
+</ul>
+
+<p>\[ max_{\left\{K,L\right\}} F(K,L) - wL - qK \]</p>
+
+<ul>
+<li>\( w\) are wages and \( q\) is the factor price of capital</li>
+</ul>
+
+<hr/>
+
+<h1>Government</h1>
+
+<ul>
+<li>The government collects taxes on labor \( \tau_L\) and capital \( \tau_K\)</li>
+<li>The government pays for gov&#39;t consumption \( G\) and transfers to households 
+$T_y$ and \( T_o\)</li>
+</ul>
+
+<p>\[ G + T_y + T_o =  \tau_L \times wL + \tau_K \times RK \]</p>
+
+<hr/>
+
+<h1>Household problem</h1>
+
+<ul>
+<li>HHs maximize \( V(c_y,c_o)\) subject to their budget constraint in each period
+$$ c_y + s = (1-\tau_L) w   + t_y $$
+$$ c_o     = (1-\tau_K) Rs + t_o  $$</li>
+</ul>
+
+<hr/>
+
+<h1>Equilibrium definition</h1>
+
+<ul>
+<li>Given sequences of 
+
+<ul>
+<li>prices \( \left\{w_t, R_t \right\}\) </li>
+<li>government policies \( \left\{\tau_K, \tau_{L} \right\}\)
+and equilibrium is defined as an allocation of:</li>
+</ul></li>
+<li>sequences of \( \left\{c_{y,t},c_{o,t},s_t\right\}\) so that
+
+<ul>
+<li>the HH max problem is solved</li>
+<li>the firm maximization problem is solved, so that:
+
+<ul>
+<li>\( q = F_K\)</li>
+<li>\( w = F_L\)</li>
+<li>\( R = (1 + q - \delta)\) is the after tax interest rate</li>
+</ul></li>
+<li>the gov&#39;t budget constraint clears</li>
+<li>Markets clear:
+
+<ul>
+<li>\( K=S = N_y * s^*\)</li>
+<li>\( ARC: C + S +G = Y - (1-\delta) K\)</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<hr/>
+
+<h1>Functional forms and solutions</h1>
+
+<ul>
+<li>Preferences are given as: \( u(c_y) = log(c_y)\) and \( u(c_o)=log(c_o)\)</li>
+<li>We can either set up a Lagrangian with two constraints or simply substitute
+consumption out of the utilities using the BC. </li>
+<li>We follow the second approach, since the form of the utility functions 
+guarantees interior solutions</li>
+<li>Therefor we don&#39;t have to worry about corner solutions a la Kuhn-Tucker</li>
+</ul>
+
+<hr/>
+
+<h1>Substitute the budget set into preferences</h1>
+
+<p>\[ max_s log( (1-\tau_L)w + t_y - s)  + \beta  log( (1-\tau_K)R  s + t_o) \]</p>
+
+<ul>
+<li>This is now a function in 1 choice variable \( s\) </li>
+<li>Derive this function w.r.t. \( s\) </li>
+</ul>
+
+<p>\[ \frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
+\frac{\beta (1-\tau_K)R}{(1-\tau_K)R  s + t_o}\]</p>
+
+<hr/>
+
+<h1>Solve for optimal household savings: \( s^*\)</h1>
+
+<p>\[ s^* = \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R} \] </p>
+
+<ul>
+<li>In equilibrium household savings equals the capital stock: \( S = K\)</li>
+<li>Aggregate capital stock is therefore: \( K = S = N_y \times s^*\)</li>
+</ul>
+
+<hr/>
+
+<h1>Solution</h1>
+
+<ul>
+<li>Given parameter \( \beta\), gov&#39;t policies \( \tau_K, \tau_L, t_y, t_o\)</li>
+<li>Measures of young and old agents \( N_y, N_o\) we can now solve for a steady
+state equilibrium</li>
+<li>The solution is represented by the following equation system</li>
+<li>We will try to reduce the equation system into as few equations as possible,
+ideally into one non-linear equation that we can then solve with a <code>Newton
+Algorithm</code></li>
+</ul>
+
+<hr/>
+
+<h1>Equation system</h1>
+
+<ul>
+<li>For starters we assume that government is completely exogenous.</li>
+<li>Assume \( L=1\) we have the following unknowns: \( K,Y,R,w,q\) and the following
+equation. </li>
+<li>A solution exists if the number of unknowns is equal to the number of
+equations:</li>
+</ul>
+
+<p>\[ K=N_y s^* = N_y \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R} \] </p>
+
+<p>\[ \alpha*Y/K = q \]</p>
+
+<p>\[ (1-\alpha)*Y/L = w \]</p>
+
+<p>\[ F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)} \]</p>
+
+<p>\[ R = (1 + q - \delta) \] </p>
+
+<hr/>
+
+<h1>Method 1: Substituting everything</h1>
+
+<ul>
+<li>Note that \( L=1\)</li>
+<li>Substitute \( Y\) out and get \( q(K)\) and \( w(K)\).</li>
+<li>Use \( q(K)\) in \( R\) and get \( R(K)\)</li>
+</ul>
+
+<p>\[ w = (1-\alpha)*A \times K^{\alpha} \]</p>
+
+<p>\[ R = 1 + (\alpha* A \times K^{\alpha-1}) - \delta \]</p>
+
+<ul>
+<li><p>Plug \( w(K)\) and \( R(K)\) into \( K\)-equation</p></li>
+<li><p>We now have one equation in \( K\) only</p></li>
+</ul>
+
+<hr/>
+
+<h1>One equation in K</h1>
+
+<p>\[ K= N_y \frac{\beta (1-\tau_K)(1 + (\alpha* A \times K^{\alpha-1}) - \delta) 
+((1-\tau_L)((1-\alpha)*A \times K^{\alpha}) 
++ t_y) - t_o}{(1+\beta)(1-\tau_K)(1 + (\alpha* A \times K^{\alpha-1}) - \delta)} \] </p>
+
+<ul>
+<li>Model parameters: \( N_y=N_o=1\), \( \alpha=0.3\), \( A=1\), \( \beta = 0.9\), \( \delta=0.1\)</li>
+<li>We assumed that government was exogenous, so here are some government
+parameters: \( \tau_L=0.2\), \( \tau_K=0.15\), \( T_y=T_o=t_y=t_o=0\)</li>
+<li>Solve for \( K^*\) and then back out \( q^*(K^*),w^*(K^*),R^*(K^*), Y^*(K^*)\) which are all functions of \( K^*\)</li>
+</ul>
+
+<hr/>
+
+<h1>Aggregate resource constraint (ARC)</h1>
+
+<ul>
+<li><p>Aggregate consumption is:<br/>
+\[ C = N_y*c_y + N_o*c_o \]</p></li>
+<li><p>Aggregate government consumption is:<br/>
+\[ G  =  \tau_L \times wL + \tau_K \times RK - N_y*t_y - N_o*t_o \]</p></li>
+<li><p>The aggregate resource constraint (or goods market clearing condition) is:<br/>
+$$ C + N_y*s + G = Y + (1-\delta)K $$</p></li>
+</ul>
+
+<hr/>
+
+<h1>Python Program 1</h1>
+
+<pre><code>import math
+from pylab import *
+from scipy.optimize import fsolve
+
+# -----------------------------------------------------------------------------
+# Root finding 
+# -----------------------------------------------------------------------------
+
+close(&#39;all&#39;)  # close all open figure
+
+# Set parameter values
+N_y     = 1.0
+N_o     = 1.0
+alpha   = 0.3
+A       = 1
+beta    = 0.9
+delta   = 0.0
+tau_L   = 0.2
+tau_K   = 0.15
+t_y     = 0.0
+t_o     = 0.0
+#
+L       = 1
+
+
+# -----------------------------------------------------------------------------
+# Method 1: Root finding
+# -----------------------------------------------------------------------------
+# Define function of capital K
+
+def func(K):
+    s = - K + N_y*((beta*(1-tau_K)*(1+(alpha*A*K**(alpha-1)) - delta)* \
+    ((1-tau_L)*((1-alpha)*A*K**alpha) + t_y) - t_o)/((1+beta)*(1-tau_K)*
+    (1 + (alpha*A*K**(alpha-1)) - delta))) 
+
+    return s
+
+
+# Plot the function
+Kmin = 0.0001
+Kmax = 1.0
+Kv = arange(Kmin, Kmax, (Kmax - Kmin)/200.0)
+fK = zeros(len(Kv),float) # define column vector
+
+for i in range(len(Kv)):
+    fK[i] = func(Kv[i])
+
+#print &quot;fK=&quot; +str(fK)
+
+fig1 = figure()
+plot(Kv, fK)
+plot(Kv, zeros(len(Kv)))
+show()
+
+
+## Use built in &#39;fsolve&#39;
+print &quot; &quot;
+print &quot; -------------- Fsolve ------------&quot;
+Kstar = fsolve(func, 2) # starting from K = 2
+
+Ystar = A*Kstar**alpha*L**(1-alpha)
+qstar = alpha*A*Kstar**(alpha-1)
+Rstar = 1 + qstar - delta
+wstar = (1-alpha)*A*Kstar**alpha
+#
+# ------------------------------------
+# Back out solutions for the rest of the Economy
+
+# Household values
+sstar = Kstar/N_y
+cystar= (1-tau_L)*wstar + t_y - sstar
+costar= (1-tau_K)*Rstar*sstar + t_o
+Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar  # residual gov&#39;t consumption, thrown in the ocean
+
+# Aggregate consumption
+Cstar = N_y*cystar + N_o*costar
+
+# Check the goods market condition or Aggregate resource constraint
+ARC = Ystar - delta*Kstar - Cstar - Gstar
+
+# Print results
+print &quot; -------------------------------------&quot;
+print &quot; Root finding &quot;
+print &quot; -------------------------------------&quot;
+print &quot;K* = &quot; + str(Kstar)
+print &quot;Y* = &quot; + str(Ystar)
+print &quot;q* = &quot; + str(qstar)
+print &quot;R* = &quot; + str(Rstar)
+print &quot;w* = &quot; + str(wstar)
+print &quot; -------------------------------------&quot;
+print &quot;ARC = &quot; + str(ARC)
+
+
+</code></pre>
+
+<hr/>
+
+<h1>Method 2</h1>
+
+<ul>
+<li>Instead of substituting and solving for one equation in one unknown we can
+use the so called <strong>Gauss-Seidl</strong> method
+
+<ol>
+<li>For this method we start with a guess for capital \( K_{old}\)</li>
+<li>We then solve for prices \( w,R,q\)</li>
+<li>We then solve for optimal household savings \( s^*\)</li>
+<li>We then aggregate over all households and get the new capital stock \( K_{new}\)</li>
+<li>We then update capital \( K_{old} = \lambda * K_{new} + (1-\lambda) * K_{old}\) and repeat from point 1 (\( \lambda\) is an updating parameter)</li>
+</ol></li>
+</ul>
+
+<hr/>
+
+<h1>Python Program 2</h1>
+
+<pre><code># Guess capital stock
+glamda  = 0.5   # updating parameter
+Kold    = 0.4
+jerror  = 100
+iter    = 1
+while (iter&lt;200) or (jerror&gt;0.001):
+    #    
+    # Solve for prices using expressions for w(K) and q(K)
+    q = alpha*A*Kold**(alpha-1) 
+    w = (1-alpha)*A*Kold**alpha 
+    R = 1 + q - delta
+    Knew = N_y* (beta*(1-tau_K)*R*((1-tau_L)*w + t_y) - t_o)/((1+beta)*(1-tau_K)*R) 
+    iter = iter +1
+    # Update capital stock
+    Kold    = glamda*Knew + (1-glamda)*Kold
+    jerror  = abs(Kold-Knew)/Kold
+
+# Print results
+Kstar = Knew
+Ystar = A*Kstar**alpha*L**(1-alpha)
+
+# ------------------------------------
+# Back out solutions for the rest of the Economy
+
+# Household values
+sstar = Kstar/N_y
+cystar= (1-tau_L)*wstar + t_y - sstar
+costar= (1-tau_K)*Rstar*sstar + t_o
+Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar  # residual gov&#39;t consumption, thrown in the ocean
+
+# Aggregate consumption
+Cstar = N_y*cystar + N_o*costar
+
+# Check the goods market condition or Aggregate resource constraint
+ARC = Ystar - delta*Kstar - Cstar - Gstar
+
+print &quot; -------------------------------------&quot;
+print &quot; Gauss-Seidl &quot;
+print &quot; -------------------------------------&quot;
+print &quot;Nr. of iterations = &quot; +str(iter)
+print &quot;K* = &quot; + str(Kstar)
+print &quot;Y* = &quot; + str(Ystar)
+print &quot;q* = &quot; + str(q)
+print &quot;R* = &quot; + str(R)
+print &quot;w* = &quot; + str(w)
+print &quot; -------------------------------------&quot;
+print &quot;ARC = &quot; + str(ARC)
+</code></pre>
+
+</body>
+
+</html>

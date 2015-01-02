@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Random numbers</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Random numbers</h1>
+
+<h1>1 Uniformly distributed random numbers</h1>
+
+<pre><code>import math
+from pylab import *
+import random
+
+close(&#39;all&#39;)  # close all open figure
+seed([100])   # To always get the same random numbers on each run (makes results reproducible)
+N = 30        # number of classes (i.e. bins or bars) in histogram
+
+u   = uniform(0,1,(10000,)) # Uniform distributed random numbers
+
+fig1 = figure()
+prob, bins, patches = hist(u, bins=N, align=&#39;mid&#39; )
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of uniform random variable&#39;)
+show()
+</code></pre>
+
+<h1>2 Normally distributed random numbers</h1>
+
+<pre><code class="python">def phi(x):
+    s = exp(-x**2/2)/math.sqrt(2*math.pi)  # density function of standard normal
+    return s
+
+z   = normal(0,1,(10000,))  # draws 10,000 standard normally distributed random numbers
+
+fig2 = figure()
+prob, bins, patches = hist(z, normed=1,bins=N, align=&#39;mid&#39; )
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of normal random variable&#39;)
+# Plot the N(0,1) density function into the histogram 
+x   = arange(-5,5,0.1)
+plot(x,phi(x))
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 5, in &lt;module&gt;
+NameError: name &#39;normal&#39; is not defined
+</code></pre>
+
+<h2>2.1 Two normally distributed random variables</h2>
+
+<pre><code class="python">z1   = normal(0,1,(10000,))
+z2   = normal(0,2,(10000,))
+
+fig3 = figure()
+subplot(211)
+prob, bins, patches = hist(z1, bins=N, align=&#39;mid&#39; )
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of N(0,1) random variable&#39;)
+subplot(212)    
+prob, bins, patches = hist(z2, bins=N, align=&#39;mid&#39; )
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of N(0,2) random variable&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;normal&#39; is not defined
+</code></pre>
+
+<h1>3 T-distributed random variable</h1>
+
+<pre><code class="python">def student_tvariate(df): # df is the number of degrees of freedom 
+    if df &lt; 2 or int(df) != df: 
+        raise ValueError, &#39;student_tvariate: df must be a integer &gt; 1&#39; 
+    x = random.gauss(0, 1) 
+    y = random.gammavariate(df/2.0, 2) 
+    return x / (math.sqrt(y/df))
+
+t = zeros((10000),float)
+for i in range(10000):
+    t[i]   = student_tvariate(20)
+
+fig4 = figure()
+prob, bins, patches = hist(t, bins=N, align=&#39;mid&#39; )
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of T(dof=20) random variable&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 8, in &lt;module&gt;
+NameError: name &#39;zeros&#39; is not defined
+</code></pre>
+
+</body>
+
+</html>

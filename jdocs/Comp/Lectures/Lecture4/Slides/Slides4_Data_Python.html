@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>A Import data and standard statistics functionality in Python</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>A Import data and standard statistics functionality in Python</h1>
+
+<h1>1 Read in small data set from a comma separated (.csv) file</h1>
+
+<p>We use the <code>csv.reader()</code> command to read in the data file <strong>Lecture_4_excel_a.csv</strong>. This command is part of the library <code>csv</code>. In addition we load some of the other libraries that we have used in the past.</p>
+
+<pre><code class="python">import time                     # Imports system time module to time your script
+from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+from scipy import stats as st
+import csv                      # Imports .csv file reader
+close(&#39;all&#39;)  # close all open figures
+
+# Read in small data from .csv file
+# Filepath
+filepath = &#39;../&#39;
+# In windows you can also specify the absolute path to your data file
+# filepath = &#39;C:/Dropbox/Towson/Teaching/3_ComputationalEconomics/Lectures/Lecture4/&#39;
+
+# ------------- Load data --------------------
+data =[]  # Define empty list for data reading
+for row in csv.reader(open(filepath+&quot;Lecture_4_Excel_a.csv&quot;), delimiter=&#39;,&#39;):
+    data.append(row)    # read data row by row
+
+# Let&#39;s have a look at it, it&#39;s a nested list
+data
+
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>The data is currently saved in a  <strong>list</strong> called <code>data</code>. Before we do any math-type operations with the data we want to extract the data from a <strong>list</strong> into an numerical <strong>array</strong>.</p>
+
+<pre><code class="python">
+# Split data into header and values
+header      = data[0]        # first row contains headers of data
+print header
+groupNv     = []
+groupv      = arange(1,6,1)  # make a vector from 1,2,...,5
+freqv       = zeros((5,1),float)
+for i in range(1,6):
+    print i
+    freqv[i-1]  = data[i][1]
+    groupNv.append(data[i][0])
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>Variable header is a list that contains the <strong>label</strong> of our data. Compare the raw data file <strong>Lecture_4_excel_a.csv</strong> by opening it with a simple text editor. The data has a column of words and a column of numbers, the later are the absolute frequencies of the various groups. We read the words into a <strong>list</strong> called <code>groupNv</code> and the numbers into a <strong>vector</strong> called <code>freqv</code>.<br/>
+We use a <strong>for loop</strong> to &ldquo;loop&rdquo; over our data set. We start with the second row, so the iterator <code>i</code> will start at 1. Remember that this skips the first row in the data list, as the first row is indexed as 0.<br/>
+In order to build a vector we first define it and fill it with zeros using <code>freqv = zeros((5,1),float)</code>. We can then read through the data file (i.e. second column) and assign the values from <code>data</code> to our vector <code>freqv</code> using <code>freqv[i-1]  = data[i][1]</code>.<br/>
+In order to get the names our of the data file (i.e. the first column) we first assign an empty list <code>groupNv     = []</code> and then <strong>append</strong> one-by-one the strings from the first column in <code>data</code> to the list <code>groupNv</code> using  <code>groupNv.append(data[i][0])</code>.<br/>
+If you like to see the content of any of your lists or vectors just print them interactively by typing the following into the command line in <strong>Spyder</strong>: <code>print freqv</code> or <code>print groupNv</code>.</p>
+
+<p>We next generate a new variable called <code>X</code> that contains the relative frequencies.</p>
+
+<pre><code class="python">xv = copy(freqv/sum(freqv)) # calculate relative frequencies   
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h1>2 Making simple graphs from our data</h1>
+
+<h2>2.1 Bar chart</h2>
+
+<p>We first make a bar chart of the absolute frequencies.</p>
+
+<pre><code class="python">fig1 = figure()
+bar(groupv,freqv, align=&#39;center&#39;)
+# Annotate with text
+xticks(groupv, groupNv)
+for i, val in enumerate(freqv):
+    text(i+1, val/2, str(val), va=&#39;center&#39;, ha=&#39;center&#39;, color=&#39;white&#39;)
+ylabel(&#39;%&#39;)
+title(&#39;Relative frequency table&#39;)
+show()   
+savefig(&#39;./Graphs/fig1.pdf&#39;) 
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>This simple command plots the barchart into a window and saves it as <strong>fig1.pdf</strong> into a subfolder called <code>Graphs</code>. Don&#39;t forget to first make this subfolder, otherwise <code>Python</code> will throw an error when it can&#39;t find the folder.</p>
+
+<h2>2.2 Pie chart</h2>
+
+<p>We next make a pie chart using the relative frequencies stored in vector <code>xv</code>.</p>
+
+<pre><code class="python">fig2 = figure()
+pie(xv, labels=groupNv, shadow=True)
+# Annotate with text
+title(&#39;Relative frequency table&#39;)
+show() 
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>2.3 Histogram</h2>
+
+<p>Next we use a new data file called <strong>Lecture_4_Excel_b.csv</strong>. This data file contains data on height age and other variables. We first make a histogram of the continuous variable Height.</p>
+
+<pre><code class="python">data =[]
+for row in csv.reader(open(filepath+&quot;Lecture_4_Excel_b.csv&quot;), delimiter=&#39;,&#39;):
+    data.append(row)    # read data row by row
+#print data
+header = data[0]
+
+height = zeros((len(data)-1,1),float)   
+for i in range(1,len(height)+1):
+    #print i
+    height[i-1]  = data[i][0]
+#print height    
+
+# Initialize
+N = len(height) # number of obs.
+B = 8           # number of bins in histogram
+
+# ------------- now we make the histogram -----
+fig3 = figure()
+prob, bins, patches = hist(height, bins=B, align=&#39;mid&#39; )
+# Annotate with text
+for i, p in enumerate(prob):
+    percent = int(float(p)/N*100)
+    # only annotate non-zero values
+    if percent:
+        text(bins[i], p, str(percent)+&#39;%&#39;, rotation=45, va=&#39;bottom&#39;, ha=&#39;center&#39;)
+xlabel(&#39;Height groups&#39;)
+ylabel(&#39;Number of obs&#39;)
+title(&#39;Histogram of Height&#39;)
+xlim(min(height),max(height))
+show()
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>The actual command for the histogram is <code>hist</code>. It returns three variables <code>prob</code>, <code>bins</code>, and <code>patches</code>. We use them in the following to add information to the histogram.</p>
+
+<h2>2.4 Boxplots</h2>
+
+<p>A boxplot of height is made as follows:</p>
+
+<pre><code class="python">fig4 = figure()
+boxplot(height)
+# Annotate with text
+title(&#39;Boxplot of Height&#39;)
+show()
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<hr/>
+
+<h1>3. Summary statistics</h1>
+
+<p>We next go through some basic summary statistics.</p>
+
+<h2>3.1 Measures of central tendency</h2>
+
+<p>We first calculate the mean, median and mode. Note that <code>mode</code> is part of the <code>stats</code> package wich was imported as <code>st</code> using: <code>from scipy import stats as st</code>. Now we have to add <code>st</code> to the mode command: <code>st.mode(height)</code> in order to call it.</p>
+
+<pre><code class="python">N = len(height)   # Number of observations (sample size)
+print &quot; -----------------------------------------&quot;  
+# Mean - Median - Mode
+print &quot;Mean(height)= &quot; + str(mean(height))
+print &quot;Median(height)= &quot; + str(median(height))
+print &quot;Mode(height)= &quot; + str(st.mode(height)) # Mode (value with highest frequency)
+
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>We can also just summarize a variable using the <code>st.describe</code> command from the <code>stats</code> package.</p>
+
+<pre><code class="python"># Summary stats
+print &quot;Summary stats: &quot; + str(st.describe(height))
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>3.2 Measures of dispersion</h2>
+
+<p>We now calculate the range, variance and standard deviations. Remember that for variance and standard deviation there is a distinction between population and sample.</p>
+
+<pre><code class="python">print &quot;Range= &quot; + str(max(height)-min(height))   # returns smallest a largest element
+print &quot;Population variance = &quot; + str(sum((height-mean(height))**2)/N)    # population variance
+print &quot;Sample variance     = &quot; + str(sum((height-mean(height))**2)/(N-1))       # sample variance
+print &quot;Pop.   standard dev = &quot; + str(sqrt(sum((height-mean(height))**2)/N))
+print &quot;Sample standard dev = &quot; + str(sqrt(sum((height-mean(height))**2)/(N-1)))
+#or simply
+print &quot;Pop. standard dev = &quot; + str(std(height))
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>3.3 Measures of relative standing</h2>
+
+<p>Percentiles are calculated as follows:</p>
+
+<pre><code class="python">print &quot;1 quartile (25th percentile) = &quot; + str(st.scoreatpercentile(height, 25))
+print &quot;2 quartile (50th percentile) = &quot; + str(st.scoreatpercentile(height, 50))
+print &quot;3 quartile (75th percentile) = &quot; + str(st.scoreatpercentile(height, 75))
+# Inter quartile rante: Q3-Q1 or P_75-P_25
+print &quot;IQR = (P75-P25) = &quot; + str(st.scoreatpercentile(height, 75)-st.scoreatpercentile(height, 25))
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<hr/>
+
+<h1>4 Measures of linear relationship</h1>
+
+<h2>4.1 Covariance</h2>
+
+<p>We first load two variables <code>height</code> and <code>age</code>.</p>
+
+<pre><code class="python">data =[]
+for row in csv.reader(open(filepath+&quot;Lecture_4_Excel_b.csv&quot;), delimiter=&#39;,&#39;):
+    data.append(row)    # read data row by row
+#print data
+header = data[0]
+
+height  = zeros((len(data)-1,1),float)   
+age     = zeros((len(data)-1,1),float)   
+for i in range(1,len(height)+1):
+    #print i
+    height[i-1] = data[i][0] 
+    age[i-1]    = data[i][3] 
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>Now we calculate the covariance.</p>
+
+<pre><code class="python">n = len(age)
+x = age
+y = height
+
+print &quot;Population covariance= &quot; + str(sum((x-mean(x))*(y-mean(y)))/n)   # Population covariance
+print &quot;Sample covariance= &quot; + str(sum((x-mean(x))*(y-mean(y)))/(n-1))   # sample covariance
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>4.2 Correlation coefficient</h2>
+
+<pre><code class="python">print &quot;Correlation coefficient= &quot; + str((sum((x-mean(x))*(y-mean(y)))/n)/(std(x)*std(y)))
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>4.3 Regression line</h2>
+
+<h3>Example 1: Simple example</h3>
+
+<p>We first generate some data. A variable <code>x</code> and a variable <code>y</code>.</p>
+
+<pre><code class="python"># Define data. 2 vectors x and y
+x = arange(1,9,1)
+y = array([6,1,9,5,17,12,14,15])
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>We fist make a <strong>scatterplot</strong> with least squares trend line: \[ y = \beta_0 + \beta_1 * x + \epsilon \].</p>
+
+<pre><code class="python">p = polyfit(x,y,1)
+print &quot;p = &quot; + str(p)
+
+# --- scatterplot
+fig4 = figure()
+title(&#39;Linear regression with polyfit()&#39;)
+plot(x,y, &#39;o&#39;, label = &#39;data&#39;)
+plot(x,polyval(p,x),&#39;-&#39;, label = &#39;Linear regression&#39;)
+legend(loc=&#39;best&#39;) 
+show()
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>We then run the same regression using a more general method called <code>ols</code> which is embedded in the <code>myOLS.py</code> script which you can download from my website. Here is the <a href="./Python/myOLS.txt">myOLS.txt</a>.<br/>
+Keep in mind that before using it, you have to change the extension from .txt to .py!! Save it into the same folder where you have your script file.<br/>
+When calling the <code>ols</code> function you need to add the module name in front of it: <code>myOLS.ols()</code>.</p>
+
+<pre><code class="python">import myOLS
+mymodel = myOLS.ols(y,x,&#39;y&#39;,[&#39;x1&#39;])
+mymodel.b               # return estimated coefficients
+mymodel.p               # return coefficient p-values
+mymodel.summary()       # print results
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>Finally, we use the model to make a prediction of <code>y</code> when <code>x=8.5</code>.</p>
+
+<pre><code class="python">betas =mymodel.b   # extract slope coefficients
+print &quot;Prediction of y for x=8.5 is: &quot; + str(sum(betas * array([1,8.5])))
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<hr/>
+
+<h3>Example 2: OLS with categorical (dummy variables)</h3>
+
+<p>The next example is a bit more involved as we increase the number of explanatory variables. In addition, some explanatory variables are categorical variables. In order to use them in our OLS regression we first have to make so called <strong>dummy</strong> variables (i.e. indicator variables that are either 0 or 1).<br/>
+In <strong>Python</strong> this is more involved than in <strong>R</strong> and requires a loop and if-then commands.<br/>
+We again load the data, this time a whole bunch of variables.</p>
+
+<pre><code class="python">data =[]
+for row in csv.reader(open(filepath+&quot;Lecture_4_Excel_b.csv&quot;), delimiter=&#39;,&#39;):
+    data.append(row)    # read data row by row
+#print data
+header = data[0]
+
+y  = zeros((len(data)-1,1),float)   
+x  = zeros((len(data)-1,7),float)
+
+for i in range(1,len(height)+1):
+    #print i
+    y[i-1,0]            = data[i][2] # AverageMathSAT
+
+    x[i-1,0]    = data[i][0] # height
+    x[i-1,1]    = data[i][3] # age
+    x[i-1,2]    = data[i][4] # d_female
+    if data[i][6] == &#39;Hisp&#39;:  x[i-1,3] = 1 # d_hispanic
+    if data[i][6] == &#39;Mex&#39;:  x[i-1,4] = 1 # d_mexican
+    if data[i][6] == &#39;Oth&#39;: x[i-1,5] = 1 # d_other
+    if data[i][6] == &#39;Wht&#39;: x[i-1,6] = 1 # d_white
+
+print shape(x)
+print shape(y)
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<p>We next use <code>ols</code> again to run the regression. At the end we make a prediction based on some values for the independent variables <code>x1</code>, <code>x2</code>, etc.</p>
+
+<pre><code class="python">mymodel = myOLS.ols(y[:,0],x[:,0:7],&#39;y&#39;,[&#39;height&#39;,&#39;age&#39;,&#39;d_female&#39;,&#39;d_hisp&#39;,&#39;d_mex&#39;,&#39;d_other&#39;,&#39;d_white&#39;])
+mymodel.b               # return estimated coefficients
+mymodel.p               # return coefficient p-values
+mymodel.summary()       # print results
+
+## Prediction: size of 2.5, 22 years of age, female, race=other will produce a math score of ...
+betas = mymodel.b
+print &quot;Prediction: &quot; +str(sum(betas * array([1,2.5,22,1,0,0,1,0])))
+
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+</body>
+
+</html>
+

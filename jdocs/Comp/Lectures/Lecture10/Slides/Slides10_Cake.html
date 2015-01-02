@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>The cake eating problem</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<body>
+<p>% Econ I Module<br/>
+% Juergen Jung<br/>
+% Towson University, 2012</p>
+
+<h1>The cake eating problem</h1>
+
+<p>Once upon a time there was a little girl who got a cake. The girl decided to eat<br/>
+the cake all alone. But she was not sure when she wanted to eat the cake. First,<br/>
+she thought of eating the whole cake right away. But then, nothing would be left for <br/>
+tomorrow and the day after tomorrow.</p>
+
+<p>Well, on the one hand, eating cake today is better than eating eat it tomorrow.<br/>
+On the other hand, eating too much at the same time might not be the best.<br/>
+She imagined that the first mouthful of cake is a real treat, the second is great,<br/>
+the third is also nice. But the more you eat, the less you enjoy it. </p>
+
+<p>So, she decided to eat only a bit of the<br/>
+cake everyday. Then, she could eat everyday another first mouthful of cake.<br/>
+The girl knew that the cake would be spoiled if she kept it more than nine<br/>
+days. Therefore, she would eat the cake in the first ten days. Yet, how much<br/>
+should she eat everyday?</p>
+
+<hr/>
+
+<h1>Solution</h1>
+
+<ul>
+<li>She thought of eating everyday a piece of the same size. </li>
+<li>But if eating cake today is better than waiting for tomorrow, how can it possibly 
+be the best to do the same today as tomorrow? </li>
+<li><p>If I ate just a little bit less tomorrow and a little bit more today I would be <br/>
+better off, she concluded.</p></li>
+<li><p>And she would eat everyday a bit less than the previous day and the cake<br/>
+would last ten days long and nothing would be left in the end</p></li>
+</ul>
+
+<hr/>
+
+<h1>Formally</h1>
+
+<ul>
+<li>Assume preferences in every period \( t\) follow: \( u(c_t) = ln(c_t)\) </li>
+<li>\( c_t\) is the amount of cake consumed in period \( t\)</li>
+<li>Futureconsumption is discounted with the time-preference factor \( \beta< 1\). </li>
+<li>The present value in period 0 of the whole consumption path is: </li>
+</ul>
+
+<p>\[ V( c_1 ,c_2 ,...,c_T ) = \sum_{t=1}^{T} \beta^{t} U(c_t) \] </p>
+
+<ul>
+<li>The person tries to maximize this by choosing its consumption in period \( t=0,..,T\)</li>
+</ul>
+
+<hr/>
+
+<h1>Formally</h1>
+
+<ul>
+<li>The cake size in the next period \( t+1\) is the size today less the consumption today</li>
+</ul>
+
+<p>\[ k_{t+1} = k_{t} - c_{t} \]</p>
+
+<ul>
+<li>Therefore, the cake size must be nonnegative in any period:</li>
+</ul>
+
+<p>\[ k_t \ge 0\]</p>
+
+<hr/>
+
+<h1>Analytical solution</h1>
+
+<ul>
+<li>Substituting the contraint into the life-time consumption path we get:</li>
+</ul>
+
+<p>\[ \beta^t U(k_{t-1} - k_{t})+ \beta^{t+1}  U(k_{t} - k_{t+1}) \]</p>
+
+<ul>
+<li>Deriving this objective function w.r.t. \( k_t\) we get:</li>
+</ul>
+
+<p>\[ U'(c_{t-1}) = \beta U'(c_{t}) \]</p>
+
+<ul>
+<li>This is the so called &#39;Euler Equation&#39;</li>
+</ul>
+
+<hr/>
+
+<h1>Euler equation</h1>
+
+<p>\[ U'(c_{t}) = \beta U'(c_{t+1}) \]</p>
+
+<ul>
+<li>The Euler equation has an intuitive interpretation </li>
+<li>At a utility maximum, the consumer cannot gain from feasible shifts of consumption between periods</li>
+<li>A one-unit reduction in period \( t\) consumption lowers \( U_t\) by \( U'_t\). </li>
+<li>This unit saved can be shifted to period  \( t+1\) where it raises utility by \( U'_{t+1}\) discounted to period \( t\), that is: \( \beta U'_{t+1}\) </li>
+<li>In the optimum these two quantities must be equal </li>
+</ul>
+
+<hr/>
+
+<h1>Solving the problem</h1>
+
+<ul>
+<li>Pluging the functional for into the Euler equation we get:</li>
+</ul>
+
+<p>\[ c_{t+1} = \beta c_{t}\]</p>
+
+<ul>
+<li>In the optimum we know that: \( k_{T+1} = 0\)</li>
+<li>Recursively plugging the budget constraint into the Euler equation we get:</li>
+</ul>
+
+<p>\[ c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0 \]</p>
+
+<ul>
+<li>We can now map out the optimal consumption for any size cake: \( k_0\)</li>
+</ul>
+
+<hr/>
+
+<h1>Solving the problem: analytics</h1>
+
+<ul>
+<li>\( c_T = k_T\) in the last period, eat entire cake</li>
+<li>\( c_{T-1}\) we get by:
+
+<ol>
+<li>Substituting the Euler equation we have: \( c_{T-1}=\frac{1}{\beta} c_T=\frac{1}{\beta} k_T\)</li>
+<li>Substituting the budget constraint: \( c_{T-1}=\frac{1}{\beta} (k_{T-1} - c_{T-1})\)</li>
+<li>Which can be solved for: \( c_{T-1}=\frac{1}{1+\beta} k_{T-1}\) </li>
+</ol></li>
+<li>Continue with this and find: \( c_{T-T} = \frac{1}{1+\beta + \beta^2 +...+\beta^T} k_{T-T}\)</li>
+<li>Using: \( \sum_{t=1}^{T}\beta^t = \frac{1-\beta^{T+1}}{1-\beta}\), we get</li>
+<li>\( c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0\)</li>
+</ul>
+
+<hr/>
+
+<h1>Plotting the solution</h1>
+
+<ul>
+<li>For any size \( k+0\) and time horizon \( T\) we can now calculate the optimal consumption in each period</li>
+<li>Example: \( k_0 = 50\), \( T=10\), and \( \beta = 0.96\)</li>
+</ul>
+
+<pre><code class="r">T = 9
+beta = 0.9
+kv = seq(T + 1)
+cv = seq(T + 1)
+uv = seq(T + 1)
+kv[1] = 100  # k0
+cv[1] = (1 - beta)/(1 - beta^(T + 1)) * kv[1]  # c0
+uv[1] = log(cv[1])
+for (i in 2:(T + 1)) {
+    cv[i] = beta * cv[i - 1]
+    kv[i] = kv[i - 1] - cv[i - 1]
+    uv[i] = beta^(i - 1) * log(cv[i])  # period utility with discounting
+}
+</code></pre>
+
+<hr/>
+
+<h1>Plots of consumption and cake size</h1>
+
+<pre><code class="r">par(mfrow = c(2, 1))
+plot(cv)
+title(&quot;Consumption&quot;)
+plot(kv)
+title(&quot;Cake size&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk R2"/> </p>
+
+<hr/>
+
+<h1>Numerical solution</h1>
+
+<ul>
+<li><p>For a numerical solution we use the <code>Rsolnp</code> package</p></li>
+<li><p>The routine <code>solnp</code> minimizes constrained non-linear functions</p></li>
+<li><p>The constraints can be equality or inequality constraints</p></li>
+<li><p>Our problem has one equality constraint: </p></li>
+<li><p>We define the objective function <code>func1</code> as:</p></li>
+</ul>
+
+<p>\[ \sum_{t=0}^{T}\beta^{t} U(c_t) \]</p>
+
+<ul>
+<li>The constraint is defined as function <code>eqn1</code>: </li>
+</ul>
+
+<p>\[ c_0+c_1+...+c_T=k_0 \]</p>
+
+<hr/>
+
+<h1>Function definitions</h1>
+
+<p>The objective function: </p>
+
+<pre><code class="r">func1 = function(cv) {
+    T = length(cv)
+    uv = seq(T)
+    for (i in 1:T) {
+        beta = 0.9
+        uv[i] = beta^(i - 1) * log(cv[i])  # period utility with discounting
+    }
+    return(-sum(uv))
+}
+</code></pre>
+
+<hr/>
+
+<h1>Function definitions</h1>
+
+<p>The constraint:</p>
+
+<pre><code class="r">eqn1 = function(cv) {
+    k0 = 100
+    z1 = sum(cv) - k0
+    return(c(z1))
+}
+</code></pre>
+
+<hr/>
+
+<h1>Function definitions</h1>
+
+<p>Call the optimizer with some starting values for the consumption vector</p>
+
+<pre><code class="r">library(&quot;Rsolnp&quot;)
+T = 10
+x0 = array(1, c(1, T)) * 0.1
+cake = solnp(x0, fun = func1, eqfun = eqn1, eqB = c(0))
+</code></pre>
+
+<pre><code>## 
+## Iter: 1 fn: -15.2874  Pars:  15.33302 13.81260 12.44022 11.20158 10.08394  9.07547  8.16574  7.34511  6.60493  5.93740
+## Iter: 2 fn: -15.2874  Pars:  15.33314 13.81265 12.44021 11.20154 10.08387  9.07539  8.16568  7.34508  6.60495  5.93749
+## Iter: 3 fn: -15.2874  Pars:  15.33325 13.81270 12.44020 11.20149 10.08380  9.07532  8.16562  7.34505  6.60497  5.93759
+## solnp--&gt; Completed in 3 iterations
+</code></pre>
+
+<pre><code class="r"># Plot analytical and numerical solution
+par(mfrow = c(1, 1))
+plot(cv, type = &quot;o&quot;, pch = 1, lty = 2, col = &quot;blue&quot;)
+# Numerical soln
+lines(cake$pars, type = &quot;o&quot;, pch = 2, lty = 2, col = &quot;red&quot;)
+legend(1, 9, c(&quot;analytic&quot;, &quot;numeric&quot;), pch = c(1, 2), lty = c(1, 
+    2))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk R5"/> </p>
+
+<pre><code class="r">cat(&quot;Analytic solution cv =&quot;, cv)
+</code></pre>
+
+<pre><code>## Analytic solution cv = 15.35 13.82 12.44 11.19 10.07 9.066 8.159 7.343 6.609 5.948
+</code></pre>
+
+<pre><code class="r">cat(&quot;Numeric soluntion cv =&quot;, cake$pars)
+</code></pre>
+
+<pre><code>## Numeric soluntion cv = 15.33 13.81 12.44 11.2 10.08 9.075 8.166 7.345 6.605 5.938
+</code></pre>
+
+<hr/>
+
+<h1>Python</h1>
+
+<pre><code class="python">import math
+from pylab import *
+
+T = 9
+beta = 0.9
+kv = zeros(T+1,float)
+cv = zeros(T+1,float)
+uv = zeros(T+1,float)
+kv[0] = 100                            # k0
+cv[0] = (1.0-beta)/(1.0-beta**(T+1)) * kv[0]  # c0
+uv[0] = log(cv[0])
+
+for i in range(1,T+1):
+    #print &quot;i=&quot; + str(i)
+    cv[i] = beta * cv[i-1]
+    kv[i] = kv[i-1] - cv[i-1]
+    uv[i] = beta**(i-1)*log(cv[i])  # period utility with discounting
+
+sum(uv)  # total utility
+
+print &quot;cv= &quot; +str(cv)
+print &quot;kv= &quot; +str(kv)
+</code></pre>
+
+<pre><code>cv= [ 15.35339933  13.8180594   12.43625346  11.19262811  10.0733653
+   9.06602877   8.15942589   7.3434833    6.60913497   5.94822148]
+kv= [ 100.           84.64660067   70.82854128   58.39228782   47.19965971
+   37.12629441   28.06026564   19.90083975   12.55735645    5.94822148]
+</code></pre>
+
+<hr/>
+
+<p>Plotting is achieved via:</p>
+
+<pre><code>fig1 = figure()
+subplot(2,1,1)
+plot(cv)
+ylabel(&quot;c_t&quot;)
+xlabel(&quot;Period t&quot;)
+title(&quot;Consumption&quot;)
+#
+subplot(2,1,2)
+plot(kv)
+title(&quot;Cake size&quot;)
+ylabel(&quot;k_t&quot;)
+xlabel(&quot;Period t&quot;)
+show()
+</code></pre>
+
+<hr/>
+
+<h1>Numerical solution in Python</h1>
+
+<p>Define functions:</p>
+
+<pre><code>def func1(cv):
+    T = len(cv)
+    uv= zeros(T,float)
+    for i in range(T):
+        beta = 0.9
+        uv[i] = (beta**i) * log(cv[i])  # period utility with discounting
+    return (-sum(uv))
+</code></pre>
+
+<pre><code># The constraint
+def eqn1(cv):
+    k0 = 100
+    z1=sum(cv) - k0
+    return array([z1])
+</code></pre>
+
+<hr/>
+
+<h1>Optimizer in <code>optimize</code> toolbox</h1>
+
+<pre><code>T = 10
+x0 =ones(T,float)*0.1
+coptv= optimize.fmin_slsqp(func1, x0, f_eqcons = eqn1)  #, f_eqcons = eqn1
+</code></pre>
+
+<hr/>
+
+<pre><code># Plot analytical and numerical solution
+fig2 = figure()
+plot(arange(0,T), cv, &#39;b-&#39;, arange(0,T), coptv, &#39;r--&#39;)
+title(&quot;Optimal consumption&quot;)
+xlabel(&quot;Period t&quot;)
+ylabel(&quot;c_t&quot;)
+# Create a legend 
+legend((&#39;analytical&#39;, &#39;numerical&#39;),&#39;lower right&#39;, shadow=True) 
+print (&#39;Analytic solution cv =&#39; + str(cv))
+print (&#39;Numeric soluntion cv =&#39; + str())
+</code></pre>
+
+</body>
+
+</html>

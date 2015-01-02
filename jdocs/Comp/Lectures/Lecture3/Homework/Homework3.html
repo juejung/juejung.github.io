@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Homework 3</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>Homework 3</h1>
+
+<p>Submit this homework via Dropbox on Thursday, 11.55pm.<br/>
+I need two files:</p>
+
+<ul>
+<li>R-scripts are submitted in one file called: <code>Homework3.R</code></li>
+<li>Python-scripts are submitted in one file called: <code>Homework3.py</code></li>
+</ul>
+
+<p>I need to be able to quickly run these scripts on my computer.</p>
+
+<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+
+<hr/>
+
+<h2>Exercise 1</h2>
+
+<p>Write the following program in <strong>Python</strong> first and then translate it into <strong>R</strong>.<br/>
+Write a program that generates all odd numbers from \( 1 \) to \( n \). Set n in the beginning of the program and use a while loop to compute the numbers. (Make sure that if n is an even number, the largest generated odd number is \( n-1 \).) </p>
+
+<hr/>
+
+<h2>Exercise 2</h2>
+
+<p>You are given the following program:</p>
+
+<pre><code>a = [1, 3, 5, 7, 11]
+b = [13, 17]
+c = a + b
+print c
+b[0] = -1
+d = [e+1 for e in a]
+print d
+d.append(b[0] + 1)
+d.append(b[-1] + 1)
+print d[-2:]
+</code></pre>
+
+<p>Explain what is printed by each print statement then translate it into <strong>R</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 3</h2>
+
+<p>The following code is supposed to compute the sum \( s =
+\sum_{k=1}^{M}\frac{1}{k} \):</p>
+
+<pre><code>s = 0; k = 1; M = 100
+while k &lt; M:
+    s += 1/k
+print s
+</code></pre>
+
+<p>This program does not work correctly. What are the three errors? (If you try to run the program, nothing will happen on the screen. Type Ctrl-C, i.e., hold down the Control (Ctrl) key and then type the c key, to stop a program.) Write a correct program.<br/>
+There are two basic ways to find errors in a program: </p>
+
+<ol>
+<li>read the program carefully and think about the consequences of each statement, and </li>
+<li>print out intermediate results and compare with hand calcula-tions. </li>
+</ol>
+
+<p>First, try method (1) and find as many errors as you can. Then, try method (2) for \( M = 3 \) and compare the evolution of \( s \) with your own hand calculations.<br/>
+Translate it into <strong>R</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 4</h2>
+
+<p>Rewrite the corrected version of the program in Exercise 3 using a <code>for</code> loop over $k$ values instead of a <code>while</code> loop. Then write the same program in <strong>R</strong>.</p>
+
+<hr/>
+
+<h2>Exercise 5</h2>
+
+<p>We define the following nested list:<br/>
+<code>q = [[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;], [&#39;g&#39;, &#39;h&#39;]]</code></p>
+
+<p>Index this list to extract:</p>
+
+<ol>
+<li>the letter a; </li>
+<li>the list [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;];</li>
+<li>the last element h; </li>
+<li>the <code>d</code> element. </li>
+<li>Explain why <code>q[-1][-2]</code> has the
+value g. </li>
+</ol>
+
+<hr/>
+
+<h2>Exercise 6</h2>
+
+<p>Read chapter 3 in our <strong>R</strong> book Jones, Maillardet, and Robinson (2009) and<br/>
+then go to section 3.9 and do exercise 9b. This program implements the Lotka-Volterra model for a &ldquo;predator-prey&rdquo; system. Plot the population of the 2 species over time into a graph.<br/>
+Then implement the identical program in <strong>Python</strong> and produce a plot.</p>
+
+</body>
+
+</html>
+

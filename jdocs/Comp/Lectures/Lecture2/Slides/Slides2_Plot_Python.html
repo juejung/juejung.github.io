@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>1 Plot simple vectors</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<body>
+<h1>1 Plot simple vectors</h1>
+
+<p>In this chapter we explore some of the graphical functionality of <strong>R</strong>. We first define 3 simple vectors and try to plot them.</p>
+
+<pre><code class="python">import time                     # Imports system time module to time your script
+from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+from scipy import stats as st
+tic = time.clock()              # Start timer
+# -----------------------------------------------------------------------------
+
+close(&#39;all&#39;)  # close all open figures
+# Define 2 vectors with 5 values each
+xv     = array([1,2,3,4,5])
+cars   = array([1, 3, 6, 4, 9])
+trucks = array([2, 5, 4, 5, 12])
+suvs   = array([4, 4, 6, 6, 16])
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<h2>1.1 First plot</h2>
+
+<p>We then simply plot the first vector using the <code>plot()</code> command.</p>
+
+<pre><code class="python">fig1 = figure()
+plot(cars)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<p>We can change the way the graph looks adding plot symbols and color. In addition we add a title.</p>
+
+<pre><code class="python"># Graph cars using blue points overlayed by a line 
+fig2 = figure()
+plot(cars, &#39;-o&#39;, label=&#39;cars&#39;)
+# Create a title with a red, bold/italic font
+title(&#39;Autos&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<h2>1.2 Graph autos 2 types</h2>
+
+<pre><code class="python">fig3 = figure()
+plot(xv,cars, &#39;-o&#39;,xv,trucks,&#39;-&#39;)
+# Create a title with a red, bold/italic font
+title(&#39;Autos&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<h2>1.3 Graph autos using y axis that ranges from min to max</h2>
+
+<pre><code class="python">fig4 = figure()
+plot(xv, cars, &#39;-o&#39;, xv, trucks,&#39;-&#39;)
+title(&#39;Autos&#39;)   
+xlabel(&#39;Days&#39;)
+ylabel(&#39;Total&#39;)
+xlim(0.5,5.5)
+ylim(min(flatten(zip(cars,trucks))), max(flatten(zip(cars,trucks))))   
+# Create a legend 
+legend((&#39;cars&#39;, &#39;trucks&#39;),&#39;lower right&#39;, shadow=True)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<h2>1.4 Graph autos: 3 types</h2>
+
+<p>Finally, we graph all three into one figure.<br/>
+This time we save the graph as <code>fig1.pdf</code> into subfolder Graphs.</p>
+
+<pre><code class="python">fig5 = figure()
+plot(xv, cars, &#39;-bo&#39;, xv, trucks,&#39;r-&#39;, xv, suvs, &#39;r:&#39;)
+title(&#39;Autos&#39;)   
+xlabel(&#39;Days&#39;)
+ylabel(&#39;Total&#39;)
+xlim(0.5,5.5)
+#ylim(min(cars,trucks),max(cars,trucks))   
+# Create a legend 
+legend((&#39;cars&#39;, &#39;trucks&#39;,&#39;suvs&#39;),&#39;lower right&#39;, shadow=True)  
+# Save graphs in subfolder Graphs under name: fig1.pdf
+savefig(&#39;./Graphs/fig1.pdf&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<h1>2 Plotting functions</h1>
+
+<p>We next want to plot mathematical functions. We again first define the input vector <code>x</code> and then specify the &ldquo;output&rdquo; vector <code>y</code> as: \[ y = f(x)\] where for our first example \( f(x) = x^2\), \( f(x)=3*y/2 - 5\), and finally \( f(x)=5*y/2 - \sqrt{y}\).</p>
+
+<pre><code class="python">x = arange(1, 10, 0.1)
+y = x**2
+y1 = 3*y/2 - 5
+y2 = 5*y/2 - sqrt(y)
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;arange&#39; is not defined
+</code></pre>
+
+<p>We have now two columns of values: x and y that we can plot against each other into a coordinate system.</p>
+
+<pre><code class="python">fig6=figure()
+plot(x,y,x,y1,x,y2)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<h1>3 3DGraphing</h1>
+
+<p>Finally, we can also plot 3-D graphs in <strong>Python</strong>. In order to do this we need the library <code>Axes3D</code> from <code>mpl_toolkits.mplot3d</code>. This introduces a new command called <code>Axes3D</code>. It is used as follows.</p>
+
+<pre><code class="python">from mpl_toolkits.mplot3d import Axes3D
+
+xv = arange(1, 10, 1)
+yv = arange(1, 10, 1)
+n = len(x)
+zv = 3 * yv**2 /2 + xv - sqrt(xv*yv) /5
+
+## 3.1 Simply use x,y,z as coordinates for points in 3D space
+fig7=figure()
+ax = Axes3D(fig7)
+ax.plot(xv, yv, zv, zdir=&#39;z&#39;,label=&#39;parametric curve&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 3, in &lt;module&gt;
+NameError: name &#39;arange&#39; is not defined
+</code></pre>
+
+<hr/>
+
+<h2>3.2 Use &#39;surface&#39; command if you want to plot the graph over its entire domain</h2>
+
+<pre><code class="python">fig7b = figure()
+ax = gca(projection=&#39;3d&#39;)
+X = arange(1, 10, 1)
+Y = arange(1, 10, 1)
+X, Y = meshgrid(X, Y)
+Z = 3.0 * Y**2.0 /2.0 + X - sqrt(X*Y) /5.0
+surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.jet,
+        linewidth=0, antialiased=False)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<hr/>
+
+<h1>4 Subplots</h1>
+
+<p>If we have more than one figure it might be good to put them all into one graph. In the following example we plot 6 figures into one picture. We plot into 3 rows and 2 columns. You can obviously rearrange all this.</p>
+
+<pre><code class="python"># creates  a 3 x 2 grid of subplots
+fig8 = figure()
+subplot(321)   
+plot([1,2,3])  
+title(&#39;figure 1&#39;)
+
+subplot(322, axisbg=&#39;y&#39;) # creates 2nd subplot with yellow background
+plot(rand(12), rand(12), &#39;bo&#39;)
+title(&#39;figure 2&#39;)
+
+subplot(323)   
+plot([1,1,1])  
+title(&#39;figure 3&#39;)
+
+subplot(324, axisbg=&#39;g&#39;) 
+plot(rand(12), rand(12), &#39;rx&#39;)
+title(&#39;figure 4&#39;)
+
+subplot(325)   
+plot([1,2,1],&#39;:&#39;)  
+title(&#39;figure 5&#39;)
+
+subplot(326, axisbg=&#39;w&#39;) 
+plot(rand(12), rand(12), &#39;kx&#39;)
+title(&#39;figure 6&#39;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
+NameError: name &#39;figure&#39; is not defined
+</code></pre>
+
+<hr/>
+
+<pre><code class="python">toc = time.clock()              # Stop timer
+print &quot;Time passed: &quot; + str(toc - tic)
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;time&#39; is not defined
+</code></pre>
+
+</body>
+
+</html>

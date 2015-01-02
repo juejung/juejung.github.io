@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Basic programming techniques</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: #F9F6F4;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+   background-color: #C9A798;
+}
+
+h2 { 
+   font-size:1.8em; 
+   background-color: #BCC632; 
+}
+
+h3 { 
+   font-size:1.4em; 
+   background-color: #D4DBB2;
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<body>
+<h1>Basic programming techniques</h1>
+
+<h1>1 Branching</h1>
+
+<p>The <code>if</code> command can be used to check whether a certain condition is true. If it is true, then we can assign a certain chain of commands for this eventuality. If the condition is wrong, we can branch off our program into another direction and assign different commands. So we can basically branch our program into two (or more) seperate directions.<br/>
+Here is a simple example. We first draw some random number between 0 and 1 using the <code>random()</code> command. We then check whether the number is smaller or larger than 0.5. For each eventuality we can then assign a string of commands to be executed.</p>
+
+<p>In Python it is very important to get the &ldquo;indentation&rdquo; right. So all the commands that we want to be executed after the if statement need to &ldquo;indented&rdquo; by 4 spaces (just his the tab key once). Python does not use the curley brackets <code>{}</code> that R uses in the if-statements and for- loops.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+x = random(1)  # draw a random number between 0 and 1
+if (x &gt; 0.5):
+    print(&quot;Number x=&quot;+str(x)+&quot; is greater than 0.5&quot;)
+else:
+    print(&quot;Number x=&quot;+str(x) +&quot; is smaller than or equal to 0.5&quot;)
+</code></pre>
+
+<pre><code>Number x=[ 0.59409555] is greater than 0.5
+</code></pre>
+
+<p>We next branch the program into 3 seperate directions depending on 3 mutually exclusive conditions.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+x = random(1)
+y = random(1)
+
+if (x &gt; y):
+    print(&quot;X is greater than Y&quot;)
+elif (x==y):
+    print(&quot;X is equal to Y&quot;)
+elif (x &lt; y):
+    print(&quot;X is smaller than Y&quot;)
+</code></pre>
+
+<pre><code>X is greater than Y
+</code></pre>
+
+<h1>2 For loops</h1>
+
+<p>If we want to do repeated tasks we use loops insteady of copy/pasting the same series of commands.</p>
+
+<h2>Loop 1</h2>
+
+<p>Here is a simple first example. We first assign a vector with values 1, 3, 5, 7, and 9 as values. We then &ldquo;loop&rdquo; through all the values of this vector and print them. In addition, we add up all the values of this vector one by one. The command <code>for (x in xv)</code> assigns <code>x</code> equal to each value of <code>xv</code> one by one and we can then use <code>x</code> itself in each iteration. With this we can step through all the values of our vector and assign certain operations to each value.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+xv = arange(1, 9, 2)
+sumx = 0
+
+for x in xv:
+    sumx = sumx + x  # adds up the elements in vector xv
+    print(&quot;X =&quot; + str(x))
+    print(&quot;sum(x) = &quot; + str(sumx))
+
+# or simply
+print(&quot;sum(xv)= &quot; + str(sum(xv)))
+</code></pre>
+
+<pre><code>X =1
+sum(x) = 1
+X =3
+sum(x) = 4
+X =5
+sum(x) = 9
+X =7
+sum(x) = 16
+sum(xv)= 16
+</code></pre>
+
+<p>The same operation can be done much simpler, of course, using the <code>sum(xv)</code> command. </p>
+
+<h2>Loop 2</h2>
+
+<p>Here is another example. We write a loop that calculates the factorial of a number: \( 3!\). Remember that <br/>
+$$3! = 1 * 2 * 3$$.<br/>
+In order to make this happen we write a loop that sets i = 1, 2, and 3 and multiplies it with the product of the previous round. The variable <code>n_fac</code> stores the product from each round.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+n = 6
+n_fac = 1
+
+for i in range(n):
+    print(&quot;i = &quot;, i)
+    n_fac = n_fac * i
+
+print(&quot;The factorial of &quot; + str(n) + &quot; is: &quot; + str(n_fac))
+</code></pre>
+
+<pre><code>(&#39;i = &#39;, 0)
+(&#39;i = &#39;, 1)
+(&#39;i = &#39;, 2)
+(&#39;i = &#39;, 3)
+(&#39;i = &#39;, 4)
+(&#39;i = &#39;, 5)
+The factorial of 6 is: 0
+</code></pre>
+
+<h2>Loop 3</h2>
+
+<p>Finally, here is an example where we loop through the values of a vector again. In each round we reach the value of the vector and print it. </p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+xv = linspace(1,9, 20)
+print(&quot;xv=&quot;+str(xv))
+</code></pre>
+
+<pre><code>xv=[ 1.          1.42105263  1.84210526  2.26315789  2.68421053  3.10526316
+  3.52631579  3.94736842  4.36842105  4.78947368  5.21052632  5.63157895
+  6.05263158  6.47368421  6.89473684  7.31578947  7.73684211  8.15789474
+  8.57894737  9.        ]
+</code></pre>
+
+<p>We now start the loop and pick each value of this vector one-by-one. The command <code>length</code> tells us how many arguments are in vector <code>xv</code> and then lets the loop run from 1 to the totoal number of arguments in <code>xv</code>.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+xv = linspace(1,9, 20)
+for i in range(len(xv)):
+    print &quot;i= &quot; +str(i)
+    print &quot;xv[i]= &quot; + str(xv[i])
+</code></pre>
+
+<pre><code>i= 0
+xv[i]= 1.0
+i= 1
+xv[i]= 1.42105263158
+i= 2
+xv[i]= 1.84210526316
+i= 3
+xv[i]= 2.26315789474
+i= 4
+xv[i]= 2.68421052632
+i= 5
+xv[i]= 3.10526315789
+i= 6
+xv[i]= 3.52631578947
+i= 7
+xv[i]= 3.94736842105
+i= 8
+xv[i]= 4.36842105263
+i= 9
+xv[i]= 4.78947368421
+i= 10
+xv[i]= 5.21052631579
+i= 11
+xv[i]= 5.63157894737
+i= 12
+xv[i]= 6.05263157895
+i= 13
+xv[i]= 6.47368421053
+i= 14
+xv[i]= 6.89473684211
+i= 15
+xv[i]= 7.31578947368
+i= 16
+xv[i]= 7.73684210526
+i= 17
+xv[i]= 8.15789473684
+i= 18
+xv[i]= 8.57894736842
+i= 19
+xv[i]= 9.0
+</code></pre>
+
+<p>We next plot the 2 vectors using the <code>plot</code> command.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+#xv = linspace(1,9, 20)
+yv = sqrt(xv)
+fig1 = figure()
+
+plot(xv,yv, &quot;o&quot;, xv,xv, &quot;:&quot;)
+ylim(0,9)
+title(&quot;Simple plot of two vectors&quot;)
+show()
+</code></pre>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 3, in &lt;module&gt;
+NameError: name &#39;xv&#39; is not defined
+</code></pre>
+
+<h1>3 While loop</h1>
+
+<p>The while loop runs and keeps repeating to do something until a certain stopping condition is met.</p>
+
+<h2>While loop 1</h2>
+
+<p>In the first example we let the iterations run as long as the value of variable x is smaller than 10. In every iteration we increase x by one unit, so that in effect the loop gets repeated 9 times.</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+x = 0
+y = 0
+while (x &lt; 10):
+    y = y + x
+    print(&quot;X= &quot; +  str(x) + &quot; and Y= &quot; + str(y))
+    x = x + 1
+</code></pre>
+
+<pre><code>X= 0 and Y= 0
+X= 1 and Y= 1
+X= 2 and Y= 3
+X= 3 and Y= 6
+X= 4 and Y= 10
+X= 5 and Y= 15
+X= 6 and Y= 21
+X= 7 and Y= 28
+X= 8 and Y= 36
+X= 9 and Y= 45
+</code></pre>
+
+<p>Variable <code>y</code> calculates the cumulative sum of all numbers from 1 to 9, so that \( y = 0+1+2+...+9\).</p>
+
+<h2>While loop 2</h2>
+
+<p>In this last example we calculate how long it takes to repay a loan. The longer you wait to repay the loan, the more interest is accumulated and added to the outstanding debt. The key formula in this example is: \[ debt_{tomorrow} = debt_{today}*(1 + interest rate) - payments_{today}\]</p>
+
+<pre><code class="python">from pylab import *             # Imports numpy, scipy, and matplotlib etc.
+r           = 0.11  # annual interest rate
+period      = 1./12  # time between repayments in years (i.e. monthly repayments)
+debt_initial= 1000  # initial debt
+payments    = 12    # amount repaid each period
+
+mytime = 0
+debt = debt_initial
+while (debt&gt; 0):
+    mytime = mytime + period
+    debt = debt*(1 + r*period) - payments
+
+print(&quot;Loan will be repaid in: &quot;+ str(mytime) + &quot; years.&quot;)
+</code></pre>
+
+<pre><code>Loan will be repaid in: 13.25 years.
+</code></pre>
+
+</body>
+
+</html>

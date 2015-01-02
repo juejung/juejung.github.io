@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Homework 8: Root finding</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>Homework 8: Root finding</h1>
+
+<p>Submit this homework in class on Tuesday.<br/>
+I need two files:</p>
+
+<ul>
+<li>R-scripts are submitted in one file called: <code>Homework8.R</code></li>
+<li>Python-scripts are submitted in one file called: <code>Homework8.py</code></li>
+</ul>
+
+<p>I need to be able to quickly run these scripts on my computer.</p>
+
+<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+
+<p>Implement all exercises in <strong>R</strong> and <strong>Python</strong>!</p>
+
+<h2>Exercise 1</h2>
+
+<hr/>
+
+<p>Read chapter 10 in your <strong>R</strong> book. Then implement exercise 5, in section 10.6. This exercise asks you to use the <strong>R</strong> code below to calculate the roots of the following functions using \( x_0 \) as starting value for the root search algorithm:</p>
+
+<ol>
+<li>\( cos(x) - x \) using \( x_0 = 1, 3, 6 \)</li>
+<li>\( log(x) - exp(-x) \) using \( x_0 = 2 \)</li>
+<li>\( x^3 - x - 3 \) using \( x_0 = 0 \)</li>
+<li>\( x^3 - 7x^2 + 14x - 8 \) using \( x_0 = 1.1, 1.2, . . . , 1.9 \)</li>
+<li>\( log(x) \times exp(-x) \) using \( x_0 = 2 \)</li>
+</ol>
+
+<pre><code>newtonraphson_show &lt;- function(ftn, x0, xmin = x0-1, xmax = x0+1) {
+    # applies Newton-Raphson to find x such that ftn(x)[1] == 0
+    # x0 is the starting point
+    # subsequent iterations are plotted in the range [xmin, xmax]
+
+    # plot the function
+    x &lt;- seq(xmin, xmax, (xmax - xmin)/200)
+    fx &lt;- c()
+    for (i in 1:length(x)) {
+        fx[i] &lt;- ftn(x[i])[1]
+    }
+    plot(x, fx, type = &quot;l&quot;, xlab = &quot;x&quot;, ylab = &quot;f(x)&quot;,
+    main = &quot;zero f(x) = 0&quot;, col = &quot;blue&quot;, lwd = 2)
+    lines(c(xmin, xmax), c(0, 0), col = &quot;blue&quot;)
+    # do first iteration
+    xold &lt;- x0
+    f.xold &lt;- ftn(xold)
+    xnew &lt;- xold - f.xold[1]/f.xold[2]
+    lines(c(xold, xold, xnew), c(0, f.xold[1], 0), col = &quot;red&quot;)
+    # continue iterating while user types &quot;y&quot;
+    cat(&quot;last x value&quot;, xnew, &quot; &quot;)
+    continue &lt;- readline(&quot;continue (y or n)? &quot;) == &quot;y&quot;
+    while (continue) {
+        xold &lt;- xnew;
+        f.xold &lt;- ftn(xold)
+        xnew &lt;- xold - f.xold[1]/f.xold[2]
+        lines(c(xold, xold, xnew), c(0, f.xold[1], 0), col = &quot;red&quot;)
+        cat(&quot;last x value&quot;, xnew, &quot; &quot;)
+        continue &lt;- readline(&quot;continue (y or n)? &quot;) == &quot;y&quot;
+    }
+    return(xnew)
+}
+</code></pre>
+
+<h2>Exercise 2</h2>
+
+<hr/>
+
+<p>How do we know \( \pi = 3.1415926 \) (to 7 decimal places)? One way of finding \( \pi \) is to solve sin(x) = 0. By definition the solutions to sin(x) = 0 are \( k \times \pi \) for \( k = 0, \pm 1, \pm 2, \dots \), so the root closest to 3 should be \( \pi \).</p>
+
+<ol>
+<li>Use a root-finding algorithm, such as the Newton-Raphson algorithm, to find the root of sin(x) near 3. How close can you get to \( \pi \)? (You may use the function sin(x) provided by R.) </li>
+<li><p>The function sin(x) is transcendental, which means that it cannot be written as a rational function of x. Instead we have to write it as an infinite sum: </p>
+
+<p>\[   sin(x) = \sum_{k=0}^{\infty} {(-1) k \frac{x^{2k+1}}{(2k + 1)!}}  \]</p>
+
+<p>(This is the infinite order Taylor expansion of sin(x) about 0.) In practice, to calculate sin(x) numerically we have to truncate this sum, so any numerical calculation of sin(x) is an approximation. In particular the function <code>sin(x)</code> provided by R is only an approximation of sin(x) (though a very good one). Put </p>
+
+<p>\[  f_n(x)= \sum_{k=0}^{n}{(-1) k \frac{x^{2k+1}}{(2k + 1)!}}  \]</p>
+
+<p>Write a function in R to calculate \( f_n(x) \). Plot \( f_n(x) \) over the range [0, 7] for a number of values of n, and verify that it looks like sin(x) for large n.</p></li>
+<li><p>Choose a large value of n, then find an approximation to \( \pi \)  by solving \( f_n(x) = 0 \) near 3. Can you get an approximation that is correct up to 6 decimal places? Can you think of a better way of calculating \( \pi \)?</p></li>
+</ol>
+
+<h2>Exercise 3</h2>
+
+<hr/>
+
+<p>The bisection method can be generalised to deal with the case \( f(xl)f(xr) > 0 \), by broadening the bracket. That is, we reduce xl and/or increase xr , and try again. A reasonable choice for broadening the bracket is to double the width of the interval [xl,xr], that is (in pseudo-code):</p>
+
+<pre><code>m = (xl + xr )/2
+w = xr - xl
+xl = m - w
+xr = m + w
+</code></pre>
+
+<p>Incorporate bracket broadening into the function bisection given in the lecture. Note that broadening is not guaranteed to find xl and xr such that \( f(xl)f(xr)<= 0 \), so you should include a limit on the number of times it can be tried.  Use your modified function to find a root of </p>
+
+<p>\[ f(x) = (x - 1)^3 - 2x^2 + 10 - sin(x), \]</p>
+
+<p>starting with xl = 1 and xr = 2.  </p>
+
+</body>
+
+</html>
+
