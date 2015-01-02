@@ -1,0 +1,284 @@
+Plotting using ``matplotlib``
+=============================
+
+In this chapter we explore some of the graphical functionality of **Python**.
+We first import the required libraries for plotting.
+
+
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import math as m
+    from scipy import stats as st
+    import time            # Imports system time module to time your
+    script
+    
+    plt.close('all')  # close all open figures
+    tic = time.clock()
+    
+
+
+
+Plotting vectors and arrays
+---------------------------
+
+Plotting simple vectors
+^^^^^^^^^^^^^^^^^^^^^^^
+
+We first define 3 simple vectors and try to plot them.
+
+
+.. code-block:: python
+
+    # Define 2 vectors with 5 values each
+    xv     = np.array([1,2,3,4,5])
+    cars   = np.array([1, 3, 6, 4, 9])
+    trucks = np.array([2, 5, 4, 5, 12])
+    suvs   = np.array([4, 4, 6, 6, 16])
+    
+
+
+
+We then simply plot the first vector using the ``plot()`` command.
+
+
+.. code-block:: python
+
+    x = np.linspace(0, 10, 200)
+    y = np.sin(x)
+    plt.plot(xv, cars, 'b-', linewidth=2, label='Cars')
+    plt.show()
+    #
+    print("Time passed in seconds is = {:4.4f}".format(time.clock() -
+    tic))
+    
+
+::
+
+    Time passed in seconds is = 0.0435
+    
+    
+
+.. image:: _static/Slides02_Plot_FigAutos_1.*
+   :width: 12 cm
+
+
+
+Plotting two vectors
+^^^^^^^^^^^^^^^^^^^^^
+
+
+.. code-block:: python
+
+    x = np.linspace(0, 10, 200)
+    y = np.sin(x)
+    
+    fig, ax = plt.subplots()
+    ax.plot(x, y, 'r-', linewidth=2, label='sine function', alpha=0.6)
+    ax.set_title('Another plot')
+    ax.legend(loc='best')
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig2Vectors_1.*
+   :width: 12 cm
+
+
+
+Graph autos 2 types
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv,cars, 'k-o', xv,trucks,'b-.')
+    # Create a title with a red, bold/italic font
+    ax.set_title('Autos')
+    ax.legend(['cars','trucks'],loc='best')
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig2Autos_1.*
+   :width: 12 cm
+
+
+
+Graph 3 types
+^^^^^^^^^^^^^^^^^^^^
+
+Finally, we graph all three car types into one figure.
+This time we save the graph as ``fig1.pdf`` into subfolder Graphs.
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv, cars, 'b-o', xv, trucks,'r-^', xv, suvs, 'g:s')
+    ax.set_title('Autos')
+    ax.set_xlabel('Days')
+    ax.set_ylabel('Total')
+    ax.set_xlim([0.5,5.5])
+    #ylim(min(cars,trucks),max(cars,trucks))
+    # Create a legend
+    ax.legend(['cars', 'trucks', 'suvs'], loc = 'best')
+    # Save graphs in subfolder Graphs under name: fig1.pdf
+    plt.savefig('./Graphs/fig1.pdf')
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig3Autos_1.*
+   :width: 12 cm
+
+
+
+Plotting functions
+--------------------
+
+We next want to plot mathematical functions. We again first define the input
+vector ``x`` and then specify the "output" vector ``y`` as :math:`y = f(x)`
+where for our first example
+
+ * :math:`f(x) = x^2`,
+ * :math:`f(x) = 3*y/2 - 5`, and finally
+ * :math:`f(x) = 5*y/2 - \sqrt{y}`.
+
+
+.. code-block:: python
+
+    x = np.arange(1, 10, 0.1)
+    y = x**2
+    y1 = 3.0*y/2 - 5
+    y2 = 5.0*y/2 - np.sqrt(y)
+    
+
+
+
+We have now two columns of values: x and y that we can plot against each other into a coordinate system.
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(x,y,x,y1,x,y2)
+    ax.legend(['y', 'y1', 'y2'], loc = 'best')
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig3Plots_1.*
+   :width: 12 cm
+
+
+
+Subplots
+----------
+
+If we have more than one figure it might be good to put them all into one
+graph. In the following example we plot 6 figures into one picture. We plot
+into 3 rows and 2 columns. You can obviously rearrange all this.
+
+
+.. code-block:: python
+
+    # Creates  a 3 x 2 grid of subplots
+    num_rows = 3
+    num_cols = 2
+    title_size = 26
+    
+    fig = plt.figure(figsize=(14, 16))
+    fig.suptitle("Figure with multiple subplots", fontsize=title_size,
+    fontweight='bold')
+    
+    # [1]
+    ax = plt.subplot2grid((num_rows, num_cols), (0,0))
+    ax.plot([1,2,3])
+    ax.set_title('figure 1')
+    # [2]
+    ax = plt.subplot2grid((num_rows, num_cols), (0,1))
+    ax.plot(np.random.rand(12), np.random.rand(12), 'bo')
+    ax.set_title('figure 2')
+    # [3]
+    ax = plt.subplot2grid((num_rows, num_cols), (1,0))
+    ax.plot([1,1,1])
+    ax.set_title('figure 3')
+    # [4]
+    ax = plt.subplot2grid((num_rows, num_cols), (1,1))
+    ax.plot(np.random.rand(12), np.random.rand(12), 'rx')
+    ax.set_title('figure 4')
+    # [5]
+    ax = plt.subplot2grid((num_rows, num_cols), (2,0))
+    ax.plot([1,2,1],':')
+    ax.set_title('figure 5')
+    # [6]
+    ax = plt.subplot2grid((num_rows, num_cols), (2,1))
+    ax.plot(np.random.rand(12), np.random.rand(12), 'kx')
+    ax.set_title('figure 6')
+    
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_figure9_1.*
+   :width: 12 cm
+
+
+
+
+3DGraphing
+------------
+
+Finally, we can also plot 3-D graphs in **Python**. In order to do this we need
+the library ``Axes3D`` from ``mpl_toolkits.mplot3d``. This introduces a new
+command called ``Axes3D``. It is used as follows.
+
+
+.. code-block:: python
+
+    import numpy as np
+    from mpl_toolkits.mplot3d import Axes3D
+    import matplotlib.pyplot as plt
+    import math as m
+    
+    xv = np.arange(1, 10, 1)
+    yv = np.arange(1, 10, 1)
+    n = len(x)
+    zv = 3 * yv**2 /2 + xv - np.sqrt(xv*yv) /5
+    
+    # 3.1 Simply use x,y,z as coordinates for points in 3D space
+    fig = plt.figure(figsize=(14, 16))
+    ax = Axes3D(fig)
+    ax.plot(xv, yv, zv, zdir='z',label='parametric curve')
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig3DPlot_1.*
+   :width: 12 cm
+
+
+
+
+
+.. code-block:: python
+
+    import numpy as np
+    from mpl_toolkits.mplot3d import Axes3D
+    import matplotlib.pyplot as plt
+    import math as m
+    
+    fig = plt.figure(figsize=(14, 16))
+    ax = plt.gca(projection='3d')
+    X = np.arange(1, 10, 1)
+    Y = np.arange(1, 10, 1)
+    X, Y = np.meshgrid(X, Y)
+    Z = 3.0 * Y**2.0 /2.0 + X - np.sqrt(X*Y) /5.0
+    surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap =
+    plt.cm.jet, \
+    linewidth=0, antialiased=False)
+    plt.show()
+    
+
+.. image:: _static/Slides02_Plot_Fig_Surface_1.*
+   :width: 12 cm
+
+
+

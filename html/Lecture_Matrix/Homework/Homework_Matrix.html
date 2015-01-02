@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>## Exercise 1 &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="../../index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../../index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p># Homework 6: Vectors and matrices</p>
+<p>Submit this homework in class on Tuesday.
+I need two files:</p>
+<blockquote>
+<div><ul class="simple">
+<li>R-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework6.R</span></tt></li>
+<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework6.py</span></tt></li>
+</ul>
+</div></blockquote>
+<p>I need to be able to quickly run these scripts on my computer.</p>
+<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+<p>Implement all exercises in <strong>R</strong> and <strong>Python</strong>!</p>
+<div class="section" id="exercise-1">
+<h1>## Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
+<p>The aim is to fill two vector arrays <tt class="docutils literal"><span class="pre">xv</span></tt> and <tt class="docutils literal"><span class="pre">yv</span></tt> with <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">f(x)</span></tt> values, respectively, where</p>
+<p>$$latex f(x) = frac{1}{sigma sqrt{2 pi}}  e^{- frac{1}{2} left( frac{x- mu}{sigma} right) ^2} $$</p>
+<p>is the density of the standard normal distribution, that is a normal density with mean $mu=0$ and standard deviation $sigma = 1$. Let the <tt class="docutils literal"><span class="pre">xv</span></tt> values be uniformly spaced in $latex xv = [-4, 4]$ with a small enough grid so that the function plot is not too bumpy. A gridspace of $latex 0.01$ is probably sufficient. Write a loop to fill in the values for $latex xv$ and $latex yv=f(xv)$. Then plot(xv,yv)</p>
+</div>
+<div class="section" id="exercise-2">
+<h1>## Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h1>
+<p>Vectorize the code in Exercise 1 by creating the <tt class="docutils literal"><span class="pre">xv</span></tt> values using the linspace function and by evaluating <tt class="docutils literal"><span class="pre">yv</span> <span class="pre">=</span> <span class="pre">f(xv)</span></tt> for a vector array argument. So here you do not use a loop! Then plot(xv,yv)</p>
+</div>
+<div class="section" id="exercise-3">
+<h1>## Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h1>
+<p>In <strong>Python</strong> Create a vector array <tt class="docutils literal"><span class="pre">wv</span></tt> with values 0, 0.1, 0.2, . . ., 3. Write print statements to print w[:], w[:-2], w[::5], w[2:-2:6]. Try to understandwhich elements of the array are printed using these commands.</p>
+<p>In <strong>R</strong> define the identical vector <tt class="docutils literal"><span class="pre">wv</span></tt>. Then write print statements, using <tt class="docutils literal"><span class="pre">cat()</span></tt>, that results in similar outputs as the previous <strong>Python</strong> code.</p>
+</div>
+<div class="section" id="exercise-4">
+<h1>## Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h1>
+<p>Make a plot of the function $y(t) = v_0 t - 0.5gt^2$ for $v_0 = 10, g = 9.81$, and $t in [0, 2v_0/g]$. The label on the x axis should be &#8216;time (s)&#8217; and the label on the y axis should be &#8216;height (m)&#8217;.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">## Exercise 1</a></li>
+<li><a class="reference internal" href="#exercise-2">## Exercise 2</a></li>
+<li><a class="reference internal" href="#exercise-3">## Exercise 3</a></li>
+<li><a class="reference internal" href="#exercise-4">## Exercise 4</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../../index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Juergen Jung.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+Growth Models
+========================================
+
+* Solow Growth Model
+* We start with
+    * Preferences
+    * Technology
+    * Government
+    * Equilibrium
+
+Preferences
+--------------------------------------------------------------------------------
+
+* Agents live for 2 periods: young and old
+* They value consumption when young :math:`c_y`, leisure when young :math:`1-l` and
+consumption when old :math:`c_o`
+* Their preferences are given via utility functions: :math:`u_t(c_t)`
+* Agents discount time with factor :math:`\beta`
+* Their life-time utility is:
+
+:math:`V(c_y, l,c_o) = u(c_y,l) + \beta \times u(c_o)`
+
+Technology
+--------------------------------------------------------------------------------
+
+* Firms produce output :math:`Y` using input capital :math:`K` and labor :math:`L`:
+
+:math:`Y(K,L) = A \times K^{0.3} \times L^{0.7}`
+
+Government
+--------------------------------------------------------------------------------
+
+* The government collects lump sum taxes from households :math:`\tau_{Lump}`,
+taxes on labor :math:`\tau_L` and capital :math:`\tau_K`
+* The government pays for gov't consumption :math:`G` and transfers to households
+`T_y` and :math:`T_o`
+
+:math:`G + T_y + T_o = L \times \tau_L + K \times \tau_K + \tau_{Lump}`
+
+
+Household problem
+--------------------------------------------------------------------------------
+
+* HHs maximize :math:`V(c_y,l,c_o)` subject to their budget constraint in each period
+
+:math:`c_y + s = w  l + T_y`
+:math:`c_o     = R  s + T_o`
+
+Equilibrium definition
+--------------------------------------------------------------------------------
+
+* Given sequences of
+    * prices :math:`\left\{w_t, R_t \right\}`
+    * government policies :math:`\left\{\tau_L, \tau_K, \tau_{Lump} \right\}`
+and equilibrium is defined as an allocation of:
+* sequences of :math:`\left\{c_{y,t},l_t,c_{o,t},s_t\right\}` so that
+    * the HH max problem is solved
+    * the firm maximization problem is solve
+    * the gov't budget constraint clears
+
+
+Functional forms and solutions
+--------------------------------------------------------------------------------
+
+* Preferences are given as: :math:`u(c_y,l) = log(c_y)+log(l)` and :math:`u(c_o)=log(c_o)`
+* We can either set up a Lagrangian with two constraints or simply substitute
+consumption out of the utilities using the BC.
+* We follow the second approach, since the form of the utility functions
+guarantees interior solutions
+* Therefor we don't have to worry about corner solutions a la Kuhn-Tucker
+
+Substitute in preferences
+--------------------------------------------------------------------------------
+
+:math:`max_s log(w  l + T_y - s) + log(1-l) + \beta  log(R  s + T_o)`
+
+* This is now a function in 2 choice variables :math:`s` and labor :math:`l`
+* Derive this function w.r.t. :math:`s` and labor :math:`l`
+
+:math:`\frac{\partial V}{\partial s}: \frac{1}{w  l + T_y - s} =
+\frac{\beta R}{R  s + T_o}`
+
+:math:`\frac{\partial V}{\partial l}: \frac{w}{w  l + T_y - s} =
+\frac{1}{1-l}`
+
+Solve for optimal :math:`s^*` and :math:`l^*`
+--------------------------------------------------------------------------------
+
+Homework
+-------------------------------------------------------------------------------
+
+:doc:`./Lecture_Growth/Homework/Homework_Growth`
+
