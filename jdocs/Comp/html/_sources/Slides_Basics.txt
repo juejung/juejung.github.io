@@ -33,6 +33,40 @@ Linux/Windows/Mac and it installs everything!
 When prompted whether you want to install Python 2.7 or Python 3.4, go with
 3.4.
 
+.. index:: Git, Github
+
+Git and Github
+-------------------------------------------------------------------------------
+
+When you work on programming projects you may want to invest some time in
+learning a  `version control system
+<http://www.google.com/search?q=version+control+system>`_ like **Git**. It is
+easiest to download a client software for Git which comes with the entire Git system as well as
+a graphical user interface. I recommend the `SmartGit
+<http://www.syntevo.com/smartgit/>`_ client. It is free, easy to use and runs
+on all platforms. So please go ahead and download and install it. It's free.
+
+Second, after you have SmartGit installed you can start using Git locally on
+your computer. Please read about some of the basic functionality of Git `here
+<http://git-scm.com/doc>`_ and also familiarize yourself with SmartGit
+following the `intro tour <http://www.syntevo.com/smartgit/tour/>`_.
+
+Git becomes really powerful when you use it on the cloud so that you can collaborate
+with other programmers. One of the most trendy services concerning Git is
+offered by a web service called `Github <https://github.com/>`_. For lack of a
+better word, you can think of Github as a the Facebook for programmers (someone
+is probably killing me for this comparison - obviously Github is way cooler than
+Facebook). Please go ahead and make an account on Github. It is free.
+
+All your homeworks and your exams will be submitted to me via Github. I made a
+Github repository for our class. You will receive an invitation to it in the
+first week of class and you will then be able to download and upload your codes
+from and to this repository.
+
+If all this is confusing, here are some more introductions to Git and Github:
+
+* `Understanding Github <http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1>`_
+
 .. index:: Calculations
 
 Simple calculations
@@ -77,9 +111,15 @@ Then try the following:
 | Square root:   | ``m.sqrt(x)`` |
 +----------------+---------------+
 
-Note that the power
-function is not ``^`` but ``**``. Also in Python we need to import the Math
-module in order to use certain math functions like ``sqrt()`` etc.
+Note that the power function is not ``^`` but ``**``. Also in Python we need to
+import the Math module in order to use certain math functions like ``sqrt()``
+etc.  When importing a module, we actually import a library of functions that
+all start with the module name. By typing ``import math`` at the beginning of
+your script you can then call all the functions of the **math module** (or
+library) by typing ``math.functionName()``. So if you want to take the square
+root of number 9, you would then simply call ``math.sqrt(9)``. You can also
+abbreviate the name of the module by typing ``import math as m`` in which case
+you can now take the square root with ``m.sqrt(9)`` as in the following script.
 
 
 .. code-block:: python
@@ -109,8 +149,22 @@ module in order to use certain math functions like ``sqrt()`` etc.
 
 
 
+If you want to see a list of all the functions in the math module you can type:
+``dir(math)`` or ``dir(m)`` and you will get a list of all methods/functions
+embedded in the module.
+
+.. index:: output, print function
+
+The print function
+-------------------------------------------------------------------------------
+
 If you want to format your print output and combine text with numbers
-you need to use the ``.format`` method of the print function.
+you need to use the ``.format`` method of the print function. You will learn
+more about objects and methods in a later chapter. Just hang in there fore now.
+
+If you want to format the numbers (e.g., round etc.) that ``print`` will output
+you need to type the double brackets ``{}`` in your text string as a
+placeholder for where the number will be inserted.
 
 
 .. code-block:: python
@@ -120,7 +174,12 @@ you need to use the ``.format`` method of the print function.
     y = 3.12344
     
     print(" --- OUTPUT: --- ")
-    print("x+y")
+    # Unformatted
+    print("x+y", x+y)
+    # Still unformatted but using the .format() method
+    print("x + y  = {}".format(x+y))
+    
+    # Formatted, finally ...
     print("x + y  = {:5.2f}".format(x+y))
     print("x * y  = {:5.2f}".format(x*y))
     print("x / y  = {:5.2f}".format(x/y))
@@ -131,7 +190,8 @@ you need to use the ``.format`` method of the print function.
 ::
 
      --- OUTPUT: ---
-    x+y
+    x+y 5.578995
+    x + y  = 5.578995
     x + y  =  5.58
     x * y  =  7.67
     x / y  =  0.79
@@ -148,9 +208,6 @@ as follows:
 
 .. code-block:: python
 
-    x = 2.455555
-    y = 3.12344
-    
     print(" --- OUTPUT: --- ")
     print("""We want to use variable x = {0:4.2f} \n and divide by
     variable y = {1:4.2f},\n so that we end up with expression
@@ -179,10 +236,11 @@ Script files
 Before we go on, let's save all our commands in a so called Script file. These
 are basically text files that contain all commands in one big "laundry list"
 that we can then execute all at once.  In order to open such a script file in
-Spyder simply click on ``File`` :math:`\rightarrow` ``New``. Copy/paste the
+**Spyder** simply click on ``File`` :math:`\rightarrow` ``New``. Copy/paste the
 above commands into this script file and save it under a name of your choosing.
 Note that the file has the extension ``.py`` which indicates that it is a
 Python script file.  You can then edit this file at will and add commands etc.
+
 If you want to run or execute the script file simply click the ``Source``
 button on top of your editor window. You can also execute the script file line
 by line. Simply mark the line, right click, and choose to execute
@@ -193,201 +251,293 @@ mark the line and click on the "running man symbol" to the right of the first
 green button.
 
 For the remainder of the class I highly recommend that you always use script
-files. This will help me to quickly run your code and evaluate your results.
+files. This will help you to quickly run your code and evaluate your results.
+
+.. index:: iPython, iPython Notebook
+
+iPython Notebook
+-------------------------------------------------------------------------------
+
+A different way to write your codes is via th `iPython Notebook
+<http://ipython.org/notebook.html>`_. Read the instructions carefully, it
+should be pretty self explanatory. All you need to do is you open a terminal
+window.
+
+ * Windows: Go to the start button and type `cmd` in the search box. This will
+   open a black terminal window.
+
+ * Mac: Open a terminal by clicking on the terminal symbol in the dashboard at
+   the bottom.
+
+In this window, after the dollar prompt, you simply type ipython-notebook. This
+will start your browser and get you to the iPython-Notebook dashboard. You can
+start a new notebook from there and start typing code into the input boxes. You
+can immediately evaluate python code pressing: ``shift-enter``. There are many
+`tutorials <http://www.google.com/search?q=intro+ipython+notebook>`_
+about the iPython Notebook on the internet.
 
 .. index:: Vectors, matrices
 
-Vectors and matrices
+Lists, tuples and dictionaries
 -------------------------------------------------------------------------------
 
-A vector is a list of numbers that we can do "math" with. The numbers in the
-vector are indexed, so that we can access them.  Note that vector indexing in
-Python zero, not with 1. So Python counts the first element in a vector as
-element 0, the second as element 1, etc.  In **Python** we first need to import
-some important packages so that Python understands basic numerical procedures
-and definitions, like vectors and matrices. Also, note the difference in syntax
-and the fact that Python starts numbering the elements with 0 and not 1! So if
-you want to access the first element in a vector "x" you'd need to type:
-"x[0]":
+Lists
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Here are some examples. Vectors ``x`` ``y`` ``year`` and ``names`` are assigned
-as follows
+A list is a simple container object that can hold an arbitrary number of Python
+objects. A list can be a list of numbers, words, or a combination. Here is an
+example:
 
 
 .. code-block:: python
 
-    import numpy as np
-    
-    # You can document your script files using the ``#`` symbol.
-    # This allows you to add commentary to your codes.
-    
-    x = np.array([1,3,4,9])
-    y = np.array([9.2, 0.3, 3.2, 2.8])
-    #
-    # Note that if you like a vector: 2000,2001,2002,2003 you need to
-    # write the arange command with the upper limit+1
-    #
-    year  = np.arange(2000,2004,1)      # np.arange(from, to, stepsize)
-    somev = np.linspace(2000,2003,10)   # np.linspace(from, to, nr. of
-    steps)
-    
-    # A list of strings is simply:
-    names = ["Tom", "Dick", "Harry", "Patrick"]
-    
-    print(" --- OUTPUT: --- ")
-    print("year= {}".format(year))
-    print("x[0]= {}".format(x[0]))
-    print("x[1]= {}".format(x[1]))
-    print("x[2]= {}".format(x[2]))
-    print("names[1]= {}".format(names[1]))
-    print("names[3]= {}".format(names[3]))
+    alist = [1, "me", 3.456, "you", 50]
+    print("The list is alist = {}".format(alist))
     
 
 ::
 
-     --- OUTPUT: ---
-    year= [2000 2001 2002 2003]
-    x[0]= 1
-    x[1]= 3
-    x[2]= 4
-    names[1]= Dick
-    names[3]= Patrick
+    The list is alist = [1, 'me', 3.456, 'you', 50]
     
     
 
 
 
-Note, that in **Python** we used the ``print`` command and combined a string
-``"a= "`` together with another string ``str(a)`` (**str** translates a number
-into a string, i.e., a word) and then prints the combined "word".
+Alternatively we could translate the list into a string and then print it. You
+can tag together strings with the plus sign.
+which combines a string ``"The list is alist = "`` together with another string
+``str(alist)``. The Python funciton **str()** translates a number into a string,
+i.e., a word and then prints the combined "word".
 
-Doing math with vectors and matrices
--------------------------------------------------------------------------------
+.. code-block:: python
 
-.. index:: array, numpy array, numpy
+    print("The list is alist = " + str(alist))
+    
 
-In **Python** we need to let the interpreter know that we want to work with a
-vector and not with a list. The command **np.array** from the **numpy** package
-does just that.
+::
+
+    The list is alist = [1, 'me', 3.456, 'you', 50]
+    
+    
+
+
+We can access the elements of a list bit by bit using list indexation. Note
+that the first element in the list is at position 0.
+
+.. code-block:: python
+
+    print(alist[0])
+    print(alist[1])
+    print(alist[2])
+    print(alist[3])
+    print(alist[4])
+    
+
+::
+
+    1
+    me
+    3.456
+    you
+    50
+    
+    
+
+
+Or prettier
+
+.. code-block:: python
+
+    print("alist[0] = {}".format(alist[0]))
+    print("alist[1] = {}".format(alist[1]))
+    print("alist[2] = {}".format(alist[2]))
+    print("alist[3] = {}".format(alist[3]))
+    print("alist[4] = {}".format(alist[4]))
+    
+
+::
+
+    alist[0] = 1
+    alist[1] = me
+    alist[2] = 3.456
+    alist[3] = you
+    alist[4] = 50
+    
+    
+
+
+
+If you want to extract more than one element of a list you can use a slice
+operator. This basically involves the colon symbol ``:`` at the appropriate
+position. If you want to extract the first three elements you can simply index
+the list as ``alist[:3]``. If you want to get everything from element 2 onwards you
+can ``alist[2:]``
+
+.. code-block:: python
+
+    print(alist)
+    print("alist[0:4] = {}".format(alist[0:4]))
+    print("alist[:3] = {}".format(alist[:3]))
+    print("alist[2:] = {}".format(alist[2:]))
+    
+
+::
+
+    [1, 'me', 3.456, 'you', 50]
+    alist[0:4] = [1, 'me', 3.456, 'you']
+    alist[:3] = [1, 'me', 3.456]
+    alist[2:] = [3.456, 'you', 50]
+    
+    
+
+
+
+If you want to grab the last element of the list you can start indexing with
+negative numbers.
+
+.. code-block:: python
+
+    print(alist)
+    print("alist[-1] = {}".format(alist[-1]))
+    print("alist[-2] = {}".format(alist[-2]))
+    print("alist[-3] = {}".format(alist[-3]))
+    
+
+::
+
+    [1, 'me', 3.456, 'you', 50]
+    alist[-1] = 50
+    alist[-2] = you
+    alist[-3] = 3.456
+    
+    
+
+
+
+You can change elements of a list by reassigning them using their index. So if
+you want to replace the third element of the list with the word "Mom" you
+simply assign it as
 
 
 .. code-block:: python
 
-    import numpy as np
-    # Element-by-element operations
-    x1 = np.array([1,3,4,9])
-    x2 = np.array([2,5,6,3])
-    #
-    print(" --- OUTPUT: --- ")
-    print("x1= {}".format(x1))
-    print("x2= {}".format(x2))
-    print(" ---------------- ")
-    print("x1+x2= {}".format(x1+x2))
-    print("x1*x2= {}".format(x1*x2))
+    alist[2] = "Mom"
+    print(alist)
     
 
 ::
 
-     --- OUTPUT: ---
-    x1= [1 3 4 9]
-    x2= [2 5 6 3]
-     ----------------
-    x1+x2= [ 3  8 10 12]
-    x1*x2= [ 2 15 24 27]
+    [1, 'me', 'Mom', 'you', 50]
     
     
 
 
 
-Matrices are "two dimensional" vectors. In **Python** we write
+Tuples
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Are immutable lists, that once defined, cannot be changed anymore.
+It is a read-only list.
 
 .. code-block:: python
 
-    import numpy as np
-    a = np.array([[2,3],[4,5]])
-    b = np.array([[2,6],[1,3]])
-    #
-    print(" --- OUTPUT: --- ")
-    print("a= \n {}".format(a))
-    print("b= \n {}".format(b))
-    print(" ---------------- ")
-    print("a*b= \n {}".format(a*b))
-    print("a-b= \n {}".format(a-b))
-    print(" ---------------- ")
+    a_tuple = (1, "me", 3.456, "you", 50)
+    print(a_tuple)
     
 
 ::
 
-     --- OUTPUT: ---
-    a=
-     [[2 3]
-     [4 5]]
-    b=
-     [[2 6]
-     [1 3]]
-     ----------------
-    a*b=
-     [[ 4 18]
-     [ 4 15]]
-    a-b=
-     [[ 0 -3]
-     [ 3  2]]
-     ----------------
+    (1, 'me', 3.456, 'you', 50)
     
     
 
 
-
-If you want to generate matrices filled with either zeros or ones of a
-particular size in **Python** you can use the following:
-
+Now try to change an element of the tuple and see what happens.
 
 .. code-block:: python
 
-    import numpy as np
-    a = np.zeros((3,5),float)
-    b = np.ones((4,3),float)
-    c = np.identity(3)
-    
-    print(" --- OUTPUT: --- ")
-    print("a= \n {}".format(a))
-    print(" ---------------- ")
-    print("b= \n {}".format(b))
-    print(" ---------------- ")
-    print("c= \n {}".format(c))
+    a_tuple[2] = "Mom"
+    print(a_tuple)
     
 
 ::
 
-     --- OUTPUT: ---
-    a=
-     [[ 0.  0.  0.  0.  0.]
-     [ 0.  0.  0.  0.  0.]
-     [ 0.  0.  0.  0.  0.]]
-     ----------------
-    b=
-     [[ 1.  1.  1.]
-     [ 1.  1.  1.]
-     [ 1.  1.  1.]
-     [ 1.  1.  1.]]
-     ----------------
-    c=
-     [[ 1.  0.  0.]
-     [ 0.  1.  0.]
-     [ 0.  0.  1.]]
+    <class 'TypeError'>
+    'tuple' object does not support item assignment
+    
+
+
+
+Slice operators work exactly the same way as they work on lists.
+
+Dictionaries
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Dictionaries or short "dicts" are more general mappings and word list
+associative arrays or so called hashes. They are basically key-value pairs
+where a key can be almost any Python type. So instead of indexing a list with
+indexes (which are numbers starting from 0, 1, etc.) the indices of a dictionary
+can be words or other data types.
+
+Here is a brief example where we use names of people as keys and store various
+information together with those keys. We can then retrieve the information of
+each person with the persons name.
+
+.. code-block:: python
+
+    # Defining a dictionary as adict = {'name': income}
+    adict = {'James': 20000}
+    adict['Jim'] = 50000
+    adict['Tom'] = 80000
+    
+
+
+We can now retrive this info using the key.
+
+.. code-block:: python
+
+    print(adict)
+    print(adict['James'])
+    print(adict['Jim'])
+    print(adict['Tom'])
+    
+
+::
+
+    {'Jim': 50000, 'James': 20000, 'Tom': 80000}
+    20000
+    50000
+    80000
     
     
+
+
+You can delete an element with
+
+.. code-block:: python
+
+    del adict['James']
+    print(adict)
+    
+
+::
+
+    {'Jim': 50000, 'Tom': 80000}
+    
+    
+
+
+
 
 
 
 In class exercises
 -------------------------------------------------------------------------------
 
-1. Generate a vector with entries from 1 to 20, stepsize 0.5
-2. Divide the first 10 entries by 5
-3. Replace the last entry with the value from the first entry
-4. Sort the vector from largest to smallest element
+1. Generate a list with numbers from 1 to 10
+2. Print the first 5 elements of this list
+3. Replace the last entry of the list with 100 and print the list again
+4. Sort the list from largest to smallest element
 
 Homework
 -------------------------------------------------------------------------------

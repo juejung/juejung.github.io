@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>10. Optimization &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+    <title>11. Optimization &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
-    <link rel="next" title="11. The cake eating problem" href="Slides_Cake.html" />
-    <link rel="prev" title="9. Root finding" href="Slides_Root.html" />
+    <link rel="next" title="12. The cake eating problem" href="Slides_Cake.html" />
+    <link rel="prev" title="10. Root finding" href="Slides_Root.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -43,10 +43,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Slides_Cake.html" title="11. The cake eating problem"
+          <a href="Slides_Cake.html" title="12. The cake eating problem"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Slides_Root.html" title="9. Root finding"
+          <a href="Slides_Root.html" title="10. Root finding"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -58,11 +58,11 @@
           <div class="body">
             
   <div class="section" id="optimization">
-<h1>10. Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+<h1>11. Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="univariate-function-optimization">
-<h2>10.1. Univariate function optimization<a class="headerlink" href="#univariate-function-optimization" title="Permalink to this headline">¶</a></h2>
+<h2>11.1. Univariate function optimization<a class="headerlink" href="#univariate-function-optimization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example-function-to-be-maximized">
-<h3>10.1.1. Example function to be maximized<a class="headerlink" href="#example-function-to-be-maximized" title="Permalink to this headline">¶</a></h3>
+<h3>11.1.1. Example function to be maximized<a class="headerlink" href="#example-function-to-be-maximized" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
@@ -199,9 +199,9 @@ is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x
 </div>
 </div>
 <div class="section" id="optimization-methods">
-<h2>10.2. Optimization methods<a class="headerlink" href="#optimization-methods" title="Permalink to this headline">¶</a></h2>
+<h2>11.2. Optimization methods<a class="headerlink" href="#optimization-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="newton-s-method">
-<h3>10.2.1. Newton&#8217;s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
+<h3>11.2.1. Newton&#8217;s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
 <p>In order to implement the Newton method we basically look for the root of a
 first derivative so that <span class="math">\(f'(x) = 0\)</span>. We then use the root finding
 algorithm from the previous section to find this point, or: <span class="math">\(x(n+1) =
@@ -225,7 +225,7 @@ x(n) - \frac{f'(x(x))}{f''(x(n))}\)</span></p>
 </div>
 </div>
 <div class="section" id="golden-section-method">
-<h3>10.2.2. Golden section method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
+<h3>11.2.2. Golden section method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
 <p>The golden-section method works in one dimension only, but does not need the derivatives of the function.
 This method is very similar to the bisection method (root bracketing) from the previous section.
 The algorithm proceeds in the following way:
@@ -291,14 +291,14 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 </pre></div>
 </div>
 <div class="section" id="built-in-optimize-fmin-function">
-<h4>10.2.2.1. Built in &#8216;optimize.fmin&#8217; function<a class="headerlink" href="#built-in-optimize-fmin-function" title="Permalink to this headline">¶</a></h4>
+<h4>11.2.2.1. Built in &#8216;optimize.fmin&#8217; function<a class="headerlink" href="#built-in-optimize-fmin-function" title="Permalink to this headline">¶</a></h4>
 <p>The function &#8216;optimize.fmin&#8217; is in scipy.optimize as optimize</p>
 </div>
 </div>
 <div class="section" id="maximize-function-f1">
-<h3>10.2.3. Maximize function: f1<a class="headerlink" href="#maximize-function-f1" title="Permalink to this headline">¶</a></h3>
+<h3>11.2.3. Maximize function: f1<a class="headerlink" href="#maximize-function-f1" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="maximizing-using-the-newton-method">
-<h4>10.2.3.1. Maximizing using the Newton method<a class="headerlink" href="#maximizing-using-the-newton-method" title="Permalink to this headline">¶</a></h4>
+<h4>11.2.3.1. Maximizing using the Newton method<a class="headerlink" href="#maximizing-using-the-newton-method" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Newton results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -319,7 +319,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 </div>
 </div>
 <div class="section" id="maximizing-using-the-secant-method">
-<h4>10.2.3.2. Maximizing using the Secant method<a class="headerlink" href="#maximizing-using-the-secant-method" title="Permalink to this headline">¶</a></h4>
+<h4>11.2.3.2. Maximizing using the Secant method<a class="headerlink" href="#maximizing-using-the-secant-method" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Golden section results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -340,7 +340,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 </div>
 </div>
 <div class="section" id="maximizing-using-the-built-in-optimize-function">
-<h4>10.2.3.3. Maximizing using the built in optimize function<a class="headerlink" href="#maximizing-using-the-built-in-optimize-function" title="Permalink to this headline">¶</a></h4>
+<h4>11.2.3.3. Maximizing using the built in optimize function<a class="headerlink" href="#maximizing-using-the-built-in-optimize-function" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; optimize.fmin &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -379,12 +379,12 @@ Optimization terminated successfully.
 </div>
 </div>
 <div class="section" id="multivariate-optimization">
-<h2>10.3. Multivariate optimization<a class="headerlink" href="#multivariate-optimization" title="Permalink to this headline">¶</a></h2>
+<h2>11.3. Multivariate optimization<a class="headerlink" href="#multivariate-optimization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="define-multivariate-i-e-bivariate-example-functions">
-<h3>10.3.1. Define multivariate (i.e. bivariate) example functions<a class="headerlink" href="#define-multivariate-i-e-bivariate-example-functions" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.1. Define multivariate (i.e. bivariate) example functions<a class="headerlink" href="#define-multivariate-i-e-bivariate-example-functions" title="Permalink to this headline">¶</a></h3>
 <p>Here we want to optimize the following functions: f3, f4</p>
 <div class="section" id="function-f3">
-<h4>10.3.1.1. Function f3<a class="headerlink" href="#function-f3" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.1.1. Function f3<a class="headerlink" href="#function-f3" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -445,14 +445,14 @@ and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_Fig_Surface_1.png"><img alt="_images/Slides_Optimization_Fig_Surface_1.png" src="_images/Slides_Optimization_Fig_Surface_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="function-f4">
-<h4>10.3.1.2. Function f4<a class="headerlink" href="#function-f4" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.1.2. Function f4<a class="headerlink" href="#function-f4" title="Permalink to this headline">¶</a></h4>
 <p>This is the same function, so we won&#8217;t repeat it here.</p>
 </div>
 </div>
 <div class="section" id="multivariate-optimization-methods">
-<h3>10.3.2. Multivariate optimization methods<a class="headerlink" href="#multivariate-optimization-methods" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.2. Multivariate optimization methods<a class="headerlink" href="#multivariate-optimization-methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="newton">
-<h4>10.3.2.1. 2.2.1 Newton<a class="headerlink" href="#newton" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.2.1. 2.2.1 Newton<a class="headerlink" href="#newton" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton&#39;s method for optimisation, starting at x0</span>
     <span class="c"># f3 is a function that given x returns the list</span>
@@ -472,11 +472,11 @@ and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
 </div>
 </div>
 <div class="section" id="built-in-fmin-tnc-in-scipy-optimize-tnc">
-<h4>10.3.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc<a class="headerlink" href="#built-in-fmin-tnc-in-scipy-optimize-tnc" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc<a class="headerlink" href="#built-in-fmin-tnc-in-scipy-optimize-tnc" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 <div class="section" id="maximize-multivariate-function">
-<h3>10.3.3. Maximize multivariate function<a class="headerlink" href="#maximize-multivariate-function" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.3. Maximize multivariate function<a class="headerlink" href="#maximize-multivariate-function" title="Permalink to this headline">¶</a></h3>
 <p>We use various starting values to see whether we can find more than one optimum.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
@@ -570,7 +570,7 @@ optimize.fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [
 </div>
 </div>
 <div class="section" id="homework">
-<h2>10.4. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<h2>11.4. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="Lecture_Optimization/Homework/Homework_Optimization.html"><em>## Exercise 1</em></a></p>
 </div>
 </div>
@@ -583,50 +583,50 @@ optimize.fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">10. Optimization</a><ul>
-<li><a class="reference internal" href="#univariate-function-optimization">10.1. Univariate function optimization</a><ul>
-<li><a class="reference internal" href="#example-function-to-be-maximized">10.1.1. Example function to be maximized</a></li>
+<li><a class="reference internal" href="#">11. Optimization</a><ul>
+<li><a class="reference internal" href="#univariate-function-optimization">11.1. Univariate function optimization</a><ul>
+<li><a class="reference internal" href="#example-function-to-be-maximized">11.1.1. Example function to be maximized</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#optimization-methods">10.2. Optimization methods</a><ul>
-<li><a class="reference internal" href="#newton-s-method">10.2.1. Newton&#8217;s method</a></li>
-<li><a class="reference internal" href="#golden-section-method">10.2.2. Golden section method</a><ul>
-<li><a class="reference internal" href="#built-in-optimize-fmin-function">10.2.2.1. Built in &#8216;optimize.fmin&#8217; function</a></li>
+<li><a class="reference internal" href="#optimization-methods">11.2. Optimization methods</a><ul>
+<li><a class="reference internal" href="#newton-s-method">11.2.1. Newton&#8217;s method</a></li>
+<li><a class="reference internal" href="#golden-section-method">11.2.2. Golden section method</a><ul>
+<li><a class="reference internal" href="#built-in-optimize-fmin-function">11.2.2.1. Built in &#8216;optimize.fmin&#8217; function</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#maximize-function-f1">10.2.3. Maximize function: f1</a><ul>
-<li><a class="reference internal" href="#maximizing-using-the-newton-method">10.2.3.1. Maximizing using the Newton method</a></li>
-<li><a class="reference internal" href="#maximizing-using-the-secant-method">10.2.3.2. Maximizing using the Secant method</a></li>
-<li><a class="reference internal" href="#maximizing-using-the-built-in-optimize-function">10.2.3.3. Maximizing using the built in optimize function</a></li>
+<li><a class="reference internal" href="#maximize-function-f1">11.2.3. Maximize function: f1</a><ul>
+<li><a class="reference internal" href="#maximizing-using-the-newton-method">11.2.3.1. Maximizing using the Newton method</a></li>
+<li><a class="reference internal" href="#maximizing-using-the-secant-method">11.2.3.2. Maximizing using the Secant method</a></li>
+<li><a class="reference internal" href="#maximizing-using-the-built-in-optimize-function">11.2.3.3. Maximizing using the built in optimize function</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#multivariate-optimization">10.3. Multivariate optimization</a><ul>
-<li><a class="reference internal" href="#define-multivariate-i-e-bivariate-example-functions">10.3.1. Define multivariate (i.e. bivariate) example functions</a><ul>
-<li><a class="reference internal" href="#function-f3">10.3.1.1. Function f3</a></li>
-<li><a class="reference internal" href="#function-f4">10.3.1.2. Function f4</a></li>
+<li><a class="reference internal" href="#multivariate-optimization">11.3. Multivariate optimization</a><ul>
+<li><a class="reference internal" href="#define-multivariate-i-e-bivariate-example-functions">11.3.1. Define multivariate (i.e. bivariate) example functions</a><ul>
+<li><a class="reference internal" href="#function-f3">11.3.1.1. Function f3</a></li>
+<li><a class="reference internal" href="#function-f4">11.3.1.2. Function f4</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#multivariate-optimization-methods">10.3.2. Multivariate optimization methods</a><ul>
-<li><a class="reference internal" href="#newton">10.3.2.1. 2.2.1 Newton</a></li>
-<li><a class="reference internal" href="#built-in-fmin-tnc-in-scipy-optimize-tnc">10.3.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc</a></li>
+<li><a class="reference internal" href="#multivariate-optimization-methods">11.3.2. Multivariate optimization methods</a><ul>
+<li><a class="reference internal" href="#newton">11.3.2.1. 2.2.1 Newton</a></li>
+<li><a class="reference internal" href="#built-in-fmin-tnc-in-scipy-optimize-tnc">11.3.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#maximize-multivariate-function">10.3.3. Maximize multivariate function</a></li>
+<li><a class="reference internal" href="#maximize-multivariate-function">11.3.3. Maximize multivariate function</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#homework">10.4. Homework</a></li>
+<li><a class="reference internal" href="#homework">11.4. Homework</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="Slides_Root.html"
-                        title="previous chapter">9. Root finding</a></p>
+                        title="previous chapter">10. Root finding</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Slides_Cake.html"
-                        title="next chapter">11. The cake eating problem</a></p>
+                        title="next chapter">12. The cake eating problem</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -651,10 +651,10 @@ optimize.fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Slides_Cake.html" title="11. The cake eating problem"
+          <a href="Slides_Cake.html" title="12. The cake eating problem"
              >next</a> |</li>
         <li class="right" >
-          <a href="Slides_Root.html" title="9. Root finding"
+          <a href="Slides_Root.html" title="10. Root finding"
              >previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>

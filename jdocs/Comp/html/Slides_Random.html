@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. Random numbers &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+    <title>9. Random numbers &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
-    <link rel="next" title="9. Root finding" href="Slides_Root.html" />
-    <link rel="prev" title="7. Scientific programming" href="Slides_Matrix.html" />
+    <link rel="next" title="10. Root finding" href="Slides_Root.html" />
+    <link rel="prev" title="8. Working with data from the web" href="Slides_WebData.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -43,10 +43,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Slides_Root.html" title="9. Root finding"
+          <a href="Slides_Root.html" title="10. Root finding"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Slides_Matrix.html" title="7. Scientific programming"
+          <a href="Slides_WebData.html" title="8. Working with data from the web"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -58,9 +58,9 @@
           <div class="body">
             
   <div class="section" id="random-numbers">
-<h1>8. Random numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
+<h1>9. Random numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="uniformly-distributed-random-numbers">
-<h2>8.1. Uniformly distributed random numbers<a class="headerlink" href="#uniformly-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
+<h2>9.1. Uniformly distributed random numbers<a class="headerlink" href="#uniformly-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -91,7 +91,7 @@
 <a class="reference internal image-reference" href="_images/Slides_Random_Uniform_1.png"><img alt="_images/Slides_Random_Uniform_1.png" src="_images/Slides_Random_Uniform_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="normally-distributed-random-numbers">
-<h2>8.2. Normally distributed random numbers<a class="headerlink" href="#normally-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
+<h2>9.2. Normally distributed random numbers<a class="headerlink" href="#normally-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c"># density function of</span>
 <span class="n">standard</span> <span class="n">normal</span>
@@ -116,7 +116,7 @@
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_Random_1.png"><img alt="_images/Slides_Random_Normal_Random_1.png" src="_images/Slides_Random_Normal_Random_1.png" style="width: 12cm;" /></a>
 <div class="section" id="two-normally-distributed-random-variables">
-<h3>8.2.1. Two normally distributed random variables<a class="headerlink" href="#two-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.1. Two normally distributed random variables<a class="headerlink" href="#two-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 <span class="n">z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 </pre></div>
@@ -141,7 +141,7 @@
 </div>
 </div>
 <div class="section" id="t-distributed-random-variable">
-<h2>8.3. T-distributed random variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
+<h2>9.3. T-distributed random variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">student_tvariate</span><span class="p">(</span><span class="n">df</span><span class="p">):</span> <span class="c"># df is the number of degrees of freedom</span>
     <span class="k">if</span> <span class="n">df</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">!=</span> <span class="n">df</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;student_tvariate: df must be a integer &gt; 1&#39;</span><span class="p">)</span>
@@ -167,7 +167,7 @@
 <a class="reference internal image-reference" href="_images/Slides_Random_T_dist_1.png"><img alt="_images/Slides_Random_T_dist_1.png" src="_images/Slides_Random_T_dist_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="homework">
-<h2>8.4. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<h2>9.4. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="Lecture_Random/Homework/Homework_Random.html"><em>## Exercise 1</em></a></p>
 </div>
 </div>
@@ -180,24 +180,24 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">8. Random numbers</a><ul>
-<li><a class="reference internal" href="#uniformly-distributed-random-numbers">8.1. Uniformly distributed random numbers</a></li>
-<li><a class="reference internal" href="#normally-distributed-random-numbers">8.2. Normally distributed random numbers</a><ul>
-<li><a class="reference internal" href="#two-normally-distributed-random-variables">8.2.1. Two normally distributed random variables</a></li>
+<li><a class="reference internal" href="#">9. Random numbers</a><ul>
+<li><a class="reference internal" href="#uniformly-distributed-random-numbers">9.1. Uniformly distributed random numbers</a></li>
+<li><a class="reference internal" href="#normally-distributed-random-numbers">9.2. Normally distributed random numbers</a><ul>
+<li><a class="reference internal" href="#two-normally-distributed-random-variables">9.2.1. Two normally distributed random variables</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#t-distributed-random-variable">8.3. T-distributed random variable</a></li>
-<li><a class="reference internal" href="#homework">8.4. Homework</a></li>
+<li><a class="reference internal" href="#t-distributed-random-variable">9.3. T-distributed random variable</a></li>
+<li><a class="reference internal" href="#homework">9.4. Homework</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Slides_Matrix.html"
-                        title="previous chapter">7. Scientific programming</a></p>
+  <p class="topless"><a href="Slides_WebData.html"
+                        title="previous chapter">8. Working with data from the web</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Slides_Root.html"
-                        title="next chapter">9. Root finding</a></p>
+                        title="next chapter">10. Root finding</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -222,10 +222,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Slides_Root.html" title="9. Root finding"
+          <a href="Slides_Root.html" title="10. Root finding"
              >next</a> |</li>
         <li class="right" >
-          <a href="Slides_Matrix.html" title="7. Scientific programming"
+          <a href="Slides_WebData.html" title="8. Working with data from the web"
              >previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>

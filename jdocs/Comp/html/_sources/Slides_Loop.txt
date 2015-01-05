@@ -1,8 +1,8 @@
 Basic programming techniques
-============================
+================================================================================
 
 Branching
----------
+--------------------------------------------------------------------------------
 
 The ``if`` command can be used to check whether a certain condition is true. If
 it is true, then we can assign a certain chain of commands for this
@@ -21,14 +21,9 @@ brackets ``{}`` that R uses in the if-statements and for- loops.
 
 .. code-block:: python
 
-    import numpy as np
-    import matplotlib.pyplot as plt
     import math as m
-    from scipy import stats as st
-    import time            # Imports system time module to time your
-    script
+    import time  # Imports system time module to time your script
     
-    plt.close('all')  # close all open figures
     tic = time.time()
     
 
@@ -37,31 +32,29 @@ brackets ``{}`` that R uses in the if-statements and for- loops.
 
 .. code-block:: python
 
-    x = np.random.random(1)  # draw a random number between 0 and 1
+    x = 2
     if (x > 0.5):
-        print("Number x="+str(x)+" is greater than 0.5")
         print("Number x= {} is greater than 0.5".format(x))
     else:
-        print("Number x="+str(x) +" is smaller than or equal to 0.5")
         print("Number x= {} is smaller than or equal to 0.5".format(x))
     
 
 ::
 
-    Number x=[ 0.01472997] is smaller than or equal to 0.5
-    Number x= [ 0.01472997] is smaller than or equal to 0.5
+    Number x= 2 is greater than 0.5
     
     
 
 
 
-We next branch the program into 3 separate directions depending on 3 mutually exclusive conditions.
+We next branch the program into 3 separate directions depending on 3 mutually
+exclusive conditions.
 
 
 .. code-block:: python
 
-    x = np.random.random(1)
-    y = np.random.random(1)
+    x = 2
+    y = 4
     
     if (x > y):
         print("X is greater than Y")
@@ -73,7 +66,7 @@ We next branch the program into 3 separate directions depending on 3 mutually ex
 
 ::
 
-    X is greater than Y
+    X is smaller than Y
     
     
 
@@ -81,63 +74,64 @@ We next branch the program into 3 separate directions depending on 3 mutually ex
 
 
 For loops
----------
+--------------------------------------------------------------------------------
 
-If we want to do repeated tasks we use loops instead of copy/pasting the same series of commands.
+If we want to do repeated tasks we use loops instead of copy/pasting the same
+series of commands.
 
 
 Loop 1
-++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Here is a simple first example. We first assign a vector with values 1, 3, 5,
-7, and 9 as values. We then "loop" through all the values of this vector and
-print them. In addition, we add up all the values of this vector one by one.
-The command ``for x in xv`` assigns ``x`` equal to each value of ``xv`` one
-by one and we can then use ``x`` itself in each iteration. With this we can
-step through all the values of our vector and assign certain operations to each
-value.
+Here is a simple first example. We first assign a list with values 0,1,2,3,4,5.
+We then "loop" through all the values of this list and print them one by one.
+In addition, we add up all the values of this list.  The command
+``for x in range(6)`` assigns ``x`` equal to each value of ``0,1, ...,5`` one
+by one and we can then use ``x`` itself in each iteration.
+Note that if you want a list from 0,1,...,5 you need to define the range
+command with ``range(6)``.  Using this loop we can step through all the values of our
+list and assign certain operations to each value.
 
 
 .. code-block:: python
 
-    xv = np.arange(1, 9, 2)
+    # Summation variable starting with zero value
     sumx = 0
     
-    for x in xv:
-        sumx = sumx + x  # adds up the elements in vector xv
-        print("X =" + str(x))
-        print("sum(x) = " + str(sumx))
-    
-    # or simply
-    print("sum(xv)= " + str(sum(xv)))
+    # Start loop
+    for x in range(6):
+        sumx = sumx + x  # adds up the elements from 0 to 5
+        print("x = {}".format(x))
+        print("sum(x) = {}".format(sumx))
     
 
 ::
 
-    X =1
+    x = 0
+    sum(x) = 0
+    x = 1
     sum(x) = 1
-    X =3
-    sum(x) = 4
-    X =5
-    sum(x) = 9
-    X =7
-    sum(x) = 16
-    sum(xv)= 16
+    x = 2
+    sum(x) = 3
+    x = 3
+    sum(x) = 6
+    x = 4
+    sum(x) = 10
+    x = 5
+    sum(x) = 15
     
     
 
-
-The same operation can be done much simpler, of course, using the ``sum(xv)`` command.
 
 
 Loop 2
-++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Here is another example. We write a loop that calculates the factorial of a
-number: :math:`3!`. Remember that :math:`3! = 1 * 2 * 3`.  In order to make this
-happen we write a loop that sets :math:`i = 1, 2,` and 3 and multiplies it with the
-product of the previous round. The variable ``n_fac`` stores the product from
-each round.
+number: :math:`3!`. Remember that :math:`3! = 1 * 2 * 3`.  In order to make
+this happen we write a loop that sets :math:`i = 1, 2,` and 3 and multiplies it
+with the product of the previous round. The variable ``n_fac`` stores the
+product from each round.
 
 
 .. code-block:: python
@@ -149,7 +143,7 @@ each round.
         print("i = ", i)
         n_fac = n_fac * (i+1)
     
-    print("The factorial of " + str(n) + " is: " + str(n_fac))
+    print("The factorial of {} is: {}".format(n, n_fac))
     
 
 ::
@@ -184,40 +178,28 @@ Using a different method we can also calculate the factorial as:
 
 
 Loop 3
-++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Finally, here is an example where we loop through the values of a vector again.
+Finally, here is an example where we loop through the values of a list again.
 In each round we reach the value of the vector and print it.
 
 
 .. code-block:: python
 
-    xv = np.linspace(1,9, 20)
-    print("xv="+str(xv))
-    
-    np.set_printoptions(precision=2)
+    xv = list(range(5))
     print("xv= {}".format(xv))
     
 
 ::
 
-    xv=[ 1.          1.42105263  1.84210526  2.26315789  2.68421053
-    3.10526316
-      3.52631579  3.94736842  4.36842105  4.78947368  5.21052632
-    5.63157895
-      6.05263158  6.47368421  6.89473684  7.31578947  7.73684211
-    8.15789474
-      8.57894737  9.        ]
-    xv= [ 1.    1.42  1.84  2.26  2.68  3.11  3.53  3.95  4.37  4.79  5.21
-    5.63
-      6.05  6.47  6.89  7.32  7.74  8.16  8.58  9.  ]
+    xv= [0, 1, 2, 3, 4]
     
     
 
 
 
-We now start the loop and pick each value of this vector one-by-one.  The
-command ``length`` tells us how many arguments are in vector ``xv`` and then
+We now start the loop and pick each value of this list one-by-one.  The
+command ``length`` tells us how many arguments are in the list ``xv`` and then
 lets the loop run from 1 to the total number of arguments in ``xv``.
 Note also the difference in the two print commands, where the second one
 results in formatted output.
@@ -225,7 +207,7 @@ results in formatted output.
 
 .. code-block:: python
 
-    xv = np.linspace(1,9, 20)
+    xv = list(range(6))
     for i in range(len(xv)):
         print("i= {}".format(i))
         print("xv[i]= {:4.2f}".format(xv[i]))
@@ -234,88 +216,34 @@ results in formatted output.
 ::
 
     i= 0
-    xv[i]= 1.00
+    xv[i]= 0.00
     i= 1
-    xv[i]= 1.42
+    xv[i]= 1.00
     i= 2
-    xv[i]= 1.84
+    xv[i]= 2.00
     i= 3
-    xv[i]= 2.26
+    xv[i]= 3.00
     i= 4
-    xv[i]= 2.68
+    xv[i]= 4.00
     i= 5
-    xv[i]= 3.11
-    i= 6
-    xv[i]= 3.53
-    i= 7
-    xv[i]= 3.95
-    i= 8
-    xv[i]= 4.37
-    i= 9
-    xv[i]= 4.79
-    i= 10
-    xv[i]= 5.21
-    i= 11
-    xv[i]= 5.63
-    i= 12
-    xv[i]= 6.05
-    i= 13
-    xv[i]= 6.47
-    i= 14
-    xv[i]= 6.89
-    i= 15
-    xv[i]= 7.32
-    i= 16
-    xv[i]= 7.74
-    i= 17
-    xv[i]= 8.16
-    i= 18
-    xv[i]= 8.58
-    i= 19
-    xv[i]= 9.00
+    xv[i]= 5.00
     
     
-
-
-
-We next plot the 2 vectors using the ``plot`` command.
-
-
-.. code-block:: python
-
-    yv = np.sqrt(xv)
-    
-    fig, ax = plt.subplots()
-    ax.plot(xv,yv, 'b-o', linewidth=2)
-    ax.plot(xv,xv, 'k-s', linewidth=2)
-    ax.legend((['sqrt','x']), loc='best')
-    # Create a title with a red, bold/italic font
-    ax.set_title("Simple plot of two vectors")
-    ax.set_ylim(0,9)
-    plt.show()
-    print("Time passed:", time.time() - tic)
-    
-
-::
-
-    Time passed: 0.062400102615356445
-    
-    
-
-.. image:: _static/Slides_Loop_FigAutos_1.*
-   :width: 12 cm
 
 
 
 While loop
---------------
+--------------------------------------------------------------------------------
 
-The while loop runs and keeps repeating to do something until a certain stopping condition is met.
+The while loop runs and keeps repeating to do something until a certain
+stopping condition is met.
 
 While loop 1
-+++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-In the first example we let the iterations run as long as the value of variable x is smaller than 10. In every iteration we increase x by one unit, so that in effect the loop gets repeated 9 times.
+In the first example we let the iterations run as long as the value of variable
+x is smaller than 10. In every iteration we increase x by one unit, so that in
+effect the loop gets repeated 9 times.
 
 
 .. code-block:: python
@@ -324,7 +252,7 @@ In the first example we let the iterations run as long as the value of variable 
     y = 0
     while (x < 10):
         y = y + x
-        print("X= " +  str(x) + " and Y= " + str(y))
+        print("X= {} and Y= {}".format(x, y))
         x = x + 1
     
 
@@ -349,7 +277,7 @@ Variable ``y`` calculates the cumulative sum of all numbers from 1 to 9, so
 that :math:`y = 0+1+2+...+9`.
 
 While loop 2
-+++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 In this last example we calculate how long it takes to repay a loan. The longer
 you wait to repay the loan, the more interest is accumulated and added to the
@@ -364,18 +292,18 @@ outstanding debt. The key formula in this example is:
 .. code-block:: python
 
     r = 0.11  # Annual interest rate
-    # Time between repayments in years (i.e. monthly repayments)
+    # Time between repayments in years (i.e., monthly repayments)
     period = 1.0/12.0
     debt_initial = 1000.0  # Initial debt
     payments = 12.0  # Amount repaid each period
     
     mytime = 0
     debt = debt_initial
-    while (debt> 0):
+    while (debt > 0):
         mytime = mytime + period
         debt = debt*(1. + r*period) - payments
     
-    print("Loan will be repaid in: "+ str(mytime) + " years.")
+    print("Loan will be repaid in: {} years.".format(mytime))
     
 
 ::
@@ -383,6 +311,7 @@ outstanding debt. The key formula in this example is:
     Loan will be repaid in: 13.250000000000025 years.
     
     
+
 
 
 Homework

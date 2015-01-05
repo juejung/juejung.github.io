@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9. Root finding &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+    <title>10. Root finding &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
-    <link rel="next" title="10. Optimization" href="Slides_Optimization.html" />
-    <link rel="prev" title="8. Random numbers" href="Slides_Random.html" />
+    <link rel="next" title="11. Optimization" href="Slides_Optimization.html" />
+    <link rel="prev" title="9. Random numbers" href="Slides_Random.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -43,10 +43,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Slides_Optimization.html" title="10. Optimization"
+          <a href="Slides_Optimization.html" title="11. Optimization"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Slides_Random.html" title="8. Random numbers"
+          <a href="Slides_Random.html" title="9. Random numbers"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -58,9 +58,9 @@
           <div class="body">
             
   <div class="section" id="root-finding">
-<h1>9. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
+<h1>10. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="first-steps">
-<h2>9.1. First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
+<h2>10.1. First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
@@ -73,7 +73,7 @@
 </pre></div>
 </div>
 <div class="section" id="define-example-function">
-<h3>9.1.1. Define example function<a class="headerlink" href="#define-example-function" title="Permalink to this headline">¶</a></h3>
+<h3>10.1.1. Define example function<a class="headerlink" href="#define-example-function" title="Permalink to this headline">¶</a></h3>
 <p>Define am example function for which we calculate the root, i.e. find <span class="math">\(x\)</span>
 so that <span class="math">\(f(x) = 0\)</span>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -91,7 +91,7 @@ first derivate of the function (i.e. the gradient).</p>
 </div>
 </div>
 <div class="section" id="plot-the-function">
-<h3>9.1.2. Plot the function<a class="headerlink" href="#plot-the-function" title="Permalink to this headline">¶</a></h3>
+<h3>10.1.2. Plot the function<a class="headerlink" href="#plot-the-function" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">xmin</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">xmax</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="mf">200.0</span><span class="p">)</span>
@@ -113,9 +113,9 @@ first derivate of the function (i.e. the gradient).</p>
 </div>
 </div>
 <div class="section" id="newton-raphson">
-<h2>9.2. Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
+<h2>10.2. Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-method">
-<h3>9.2.1. The method<a class="headerlink" href="#the-method" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.1. The method<a class="headerlink" href="#the-method" title="Permalink to this headline">¶</a></h3>
 <p>We start with an initial guess <span class="math">\(x_0\)</span>. The tangent line through the
 initial guess can be defined as:</p>
 <p><span class="math">\(f'(x_0)=\frac{f(x_0)-y}{x_0-x}\)</span>
@@ -127,7 +127,7 @@ We can repeat this successively using the iterative procedure:
 <span class="math">\(\boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}\)</span></p>
 </div>
 <div class="section" id="define-the-newton-raphson-algorithm">
-<h3>9.2.2. Define the Newton-Raphson algorithm<a class="headerlink" href="#define-the-newton-raphson-algorithm" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.2. Define the Newton-Raphson algorithm<a class="headerlink" href="#define-the-newton-raphson-algorithm" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonraphson</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton_Raphson algorithm for solving ftn(x)[1] == 0</span>
     <span class="c"># we assume that ftn is a function of a single variable that</span>
@@ -164,7 +164,7 @@ We can repeat this successively using the iterative procedure:
 </div>
 </div>
 <div class="section" id="calculate-the-root-of-the-function-calling-newtonraphson">
-<h3>9.2.3. Calculate the root of the function calling &#8216;newtonraphson&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-newtonraphson" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.3. Calculate the root of the function calling &#8216;newtonraphson&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-newtonraphson" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">newtonraphson</span><span class="p">(</span><span class="n">func1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -180,9 +180,9 @@ Algorithm converged
 </div>
 </div>
 <div class="section" id="secant-method">
-<h2>9.3. Secant method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
+<h2>10.3. Secant method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="define-the-secant-method">
-<h3>9.3.1. Define the secant method<a class="headerlink" href="#define-the-secant-method" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.1. Define the secant method<a class="headerlink" href="#define-the-secant-method" title="Permalink to this headline">¶</a></h3>
 <p>In this case we start with two starting values <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and
 put a line through the functional values <span class="math">\(f(x_0)\)</span> and <span class="math">\(f(x_1)\)</span>. The
 advantage of this method is that we do not have to calculate the first
@@ -198,7 +198,7 @@ f(x_n)\frac{x_{n-1}-x_n}{f(x_{n-1})-f(x_n)}}\)</span></p>
 <span class="math">\(f'(x_n) \approx f(x_1)\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.\)</span></p>
 </div>
 <div class="section" id="the-algorithm-of-the-secant-method">
-<h3>9.3.2. The algorithm of the secant method<a class="headerlink" href="#the-algorithm-of-the-secant-method" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.2. The algorithm of the secant method<a class="headerlink" href="#the-algorithm-of-the-secant-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">secant</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Secant algorithm for solving ftn(x) == 0</span>
     <span class="c"># we assume that ftn is a function of a single variable that</span>
@@ -235,7 +235,7 @@ f(x_n)\frac{x_{n-1}-x_n}{f(x_{n-1})-f(x_n)}}\)</span></p>
 </div>
 </div>
 <div class="section" id="calculate-the-root-of-the-function-calling-secant">
-<h3>9.3.3. Calculate the root of the function calling &#8216;secant&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-secant" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.3. Calculate the root of the function calling &#8216;secant&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-secant" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">secant</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -251,9 +251,9 @@ Algorithm converged
 </div>
 </div>
 <div class="section" id="bisection">
-<h2>9.4. Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
+<h2>10.4. Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="define-the-bisection-method">
-<h3>9.4.1. Define the bisection method<a class="headerlink" href="#define-the-bisection-method" title="Permalink to this headline">¶</a></h3>
+<h3>10.4.1. Define the bisection method<a class="headerlink" href="#define-the-bisection-method" title="Permalink to this headline">¶</a></h3>
 <p>The bisection method is the most robust method, but it is slow. We start with
 two values <span class="math">\(x_l &lt; x_r\)</span> which bracket the root of the function. It
 therefore must hold that <span class="math">\(f(x_l) f(x_r) &lt; 0\)</span>. The algorithm then
@@ -269,7 +269,7 @@ repeatedly brackets around the root in the following systematic way:</p>
 </div></blockquote>
 </div>
 <div class="section" id="the-algorithm-of-the-bisection-method">
-<h3>9.4.2. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
+<h3>10.4.2. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
     <span class="c"># applies the bisection algorithm to find x such that ftn(x) == 0</span>
     <span class="c"># we assume that ftn is a function of a single variable</span>
@@ -320,7 +320,7 @@ repeatedly brackets around the root in the following systematic way:</p>
 </div>
 </div>
 <div class="section" id="calculate-the-root-of-the-function-calling-bisection">
-<h3>9.4.3. Calculate the root of the function calling &#8216;bisection&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-bisection" title="Permalink to this headline">¶</a></h3>
+<h3>10.4.3. Calculate the root of the function calling &#8216;bisection&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-bisection" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">bisection</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -377,7 +377,7 @@ at iteration 30 the root lies between 1.3097995854914188 and
 </div>
 </div>
 <div class="section" id="using-built-in-unit-root-function">
-<h2>9.5. Using built in unit-root function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
+<h2>10.5. Using built in unit-root function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -------------- Fsolve ------------&quot;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c"># starting from x = 2</span>
@@ -390,7 +390,7 @@ at iteration 30 the root lies between 1.3097995854914188 and
 </div>
 </div>
 <div class="section" id="homework">
-<h2>9.6. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<h2>10.6. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="Lecture_Root/Homework/Homework_Root.html"><em>## Exercise 1</em></a></p>
 </div>
 </div>
@@ -403,42 +403,42 @@ at iteration 30 the root lies between 1.3097995854914188 and
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">9. Root finding</a><ul>
-<li><a class="reference internal" href="#first-steps">9.1. First steps</a><ul>
-<li><a class="reference internal" href="#define-example-function">9.1.1. Define example function</a></li>
-<li><a class="reference internal" href="#plot-the-function">9.1.2. Plot the function</a></li>
+<li><a class="reference internal" href="#">10. Root finding</a><ul>
+<li><a class="reference internal" href="#first-steps">10.1. First steps</a><ul>
+<li><a class="reference internal" href="#define-example-function">10.1.1. Define example function</a></li>
+<li><a class="reference internal" href="#plot-the-function">10.1.2. Plot the function</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#newton-raphson">9.2. Newton-Raphson</a><ul>
-<li><a class="reference internal" href="#the-method">9.2.1. The method</a></li>
-<li><a class="reference internal" href="#define-the-newton-raphson-algorithm">9.2.2. Define the Newton-Raphson algorithm</a></li>
-<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-newtonraphson">9.2.3. Calculate the root of the function calling &#8216;newtonraphson&#8217;</a></li>
+<li><a class="reference internal" href="#newton-raphson">10.2. Newton-Raphson</a><ul>
+<li><a class="reference internal" href="#the-method">10.2.1. The method</a></li>
+<li><a class="reference internal" href="#define-the-newton-raphson-algorithm">10.2.2. Define the Newton-Raphson algorithm</a></li>
+<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-newtonraphson">10.2.3. Calculate the root of the function calling &#8216;newtonraphson&#8217;</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#secant-method">9.3. Secant method</a><ul>
-<li><a class="reference internal" href="#define-the-secant-method">9.3.1. Define the secant method</a></li>
-<li><a class="reference internal" href="#the-algorithm-of-the-secant-method">9.3.2. The algorithm of the secant method</a></li>
-<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-secant">9.3.3. Calculate the root of the function calling &#8216;secant&#8217;</a></li>
+<li><a class="reference internal" href="#secant-method">10.3. Secant method</a><ul>
+<li><a class="reference internal" href="#define-the-secant-method">10.3.1. Define the secant method</a></li>
+<li><a class="reference internal" href="#the-algorithm-of-the-secant-method">10.3.2. The algorithm of the secant method</a></li>
+<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-secant">10.3.3. Calculate the root of the function calling &#8216;secant&#8217;</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bisection">9.4. Bisection</a><ul>
-<li><a class="reference internal" href="#define-the-bisection-method">9.4.1. Define the bisection method</a></li>
-<li><a class="reference internal" href="#the-algorithm-of-the-bisection-method">9.4.2. The algorithm of the bisection method</a></li>
-<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-bisection">9.4.3. Calculate the root of the function calling &#8216;bisection&#8217;</a></li>
+<li><a class="reference internal" href="#bisection">10.4. Bisection</a><ul>
+<li><a class="reference internal" href="#define-the-bisection-method">10.4.1. Define the bisection method</a></li>
+<li><a class="reference internal" href="#the-algorithm-of-the-bisection-method">10.4.2. The algorithm of the bisection method</a></li>
+<li><a class="reference internal" href="#calculate-the-root-of-the-function-calling-bisection">10.4.3. Calculate the root of the function calling &#8216;bisection&#8217;</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-built-in-unit-root-function">9.5. Using built in unit-root function</a></li>
-<li><a class="reference internal" href="#homework">9.6. Homework</a></li>
+<li><a class="reference internal" href="#using-built-in-unit-root-function">10.5. Using built in unit-root function</a></li>
+<li><a class="reference internal" href="#homework">10.6. Homework</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="Slides_Random.html"
-                        title="previous chapter">8. Random numbers</a></p>
+                        title="previous chapter">9. Random numbers</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Slides_Optimization.html"
-                        title="next chapter">10. Optimization</a></p>
+                        title="next chapter">11. Optimization</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -463,10 +463,10 @@ at iteration 30 the root lies between 1.3097995854914188 and
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Slides_Optimization.html" title="10. Optimization"
+          <a href="Slides_Optimization.html" title="11. Optimization"
              >next</a> |</li>
         <li class="right" >
-          <a href="Slides_Random.html" title="8. Random numbers"
+          <a href="Slides_Random.html" title="9. Random numbers"
              >previous</a> |</li>
         <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
       </ul>

@@ -1,32 +1,454 @@
 Object Oriented Programming
 ===========================
 
-Use simple user defined functions
--------------------------------------
+Introduction
+------------
 
-In Python we can write the following to define a simple function. We start with
-two simple function definitions and save them in a file called ``myFunctions.py``
+Objects are like lists or arrays combined with functions that can be called on
+these lists or arrays. In essence an object is a container holding data and
+methods that can be applied to these data.
 
 
 .. code-block:: python
 
-    import numpy as np
-    import matplotlib.pyplot as plt
     import math as m
-    from scipy import stats as st
-    import time            # Imports system time module to time your
-    script
-    
-    plt.close('all')  # close all open figures
+    import time # Imports system time module to time your script
     
 
 
 
-In class exercises
-----------------------
+Before using an object, we need to define the blueprint for it. We use the
+``class`` method to do this and define the blueprint for an animal-object. We
+then defined more blueprints for sub-classes within animals that inherit some
+of the features of animals.
 
-A simple function again. We next program a function that calculates the
-standard deviation of the elements of an input vector.
+When defining object we make the rough distinction between data that the object
+carries - these are usually variables with the prefix ``.self`` and functions
+that can be called on these data and that are defined within the object. These
+functions are called **methods** in object-oriented parlance. In python they
+are defined very similarly to functions from the previous chapter.
+
+
+.. code-block:: python
+
+    import math as m
+    
+    class Animal(object):
+        """This is the animal class. It's the top class."""
+    
+        def __init__(self, name = 'Animal Doe', weight = 0.0):
+            """Initialize the dog-object with a name variable"""
+            self.name = name
+            self.weight = weight
+    
+        def showMyself(self):
+            """Method: showMyself()
+            prints out all the variables."""
+            print("\n")
+            print("Hello, let me introduce myself.")
+            print("-------------------------------")
+            print("My name is {}".format(self.name))
+            print("My weight is {} pounds".format(self.weight))
+            print("-------------------------------\n")
+    
+        def eatFood(self, foodAmount = 0.0):
+            """Method: eatFood(foodAmount=0)
+            translates food input 'foodAmount'
+            into additional weight according to the
+            following formula:
+            new_weight = old_weight + sqrt(foodAmount)"""
+            self.weight += m.sqrt(foodAmount)
+    
+
+
+You can look at the class blueprint of the animal object using the help() function
+
+.. code-block:: python
+
+    help(Animal)
+    
+
+::
+
+    Help on class Animal in module builtins:
+    
+    class Animal(object)
+     |  This is the animal class. It's the top class.
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, name='Animal Doe', weight=0.0)
+     |      Initialize the dog-object with a name variable
+     |
+     |  eatFood(self, foodAmount=0.0)
+     |      Method: eatFood(foodAmount=0)
+     |      translates food input 'foodAmount'
+     |      into additional weight according to the
+     |      following formula:
+     |      new_weight = old_weight + sqrt(foodAmount)
+     |
+     |  showMyself(self)
+     |      Method: showMyself()
+     |      prints out all the variables.
+     |
+     |
+    ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    
+    
+
+
+We next generate an animal object. Here we create the first animal.
+Its name is Birdy and Birdy weighs 5 gramms.
+
+.. code-block:: python
+
+    animal1 = Animal(name = 'Birdy', weight = 5.0)
+    
+
+
+You can access the variables (or embedded data) of the
+animal using the animal object and the 'dot' notation.
+
+.. code-block:: python
+
+    print("The name of the first animal is {}".format(animal1.name))
+    print("The weight of the first animal is {}".format(animal1.weight))
+    
+
+::
+
+    The name of the first animal is Birdy
+    The weight of the first animal is 5.0
+    
+    
+
+
+Or you can simply call the showMyself() method that was defined within the
+class or blueprint of the animal object.
+
+.. code-block:: python
+
+    animal1.showMyself()
+    
+
+::
+
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is Birdy
+    My weight is 5.0 pounds
+    -------------------------------
+    
+    
+    
+
+
+Now we let the animal eat, by calling the method ``eatFood()`` on the bird object
+
+.. code-block:: python
+
+    animal1.eatFood(9)
+    print("The animal's new weight is = {}".format(animal1.weight))
+    
+
+::
+
+    The animal's new weight is = 8.0
+    
+    
+
+
+
+Inheritance and subclasses
+--------------------------------------------------------------------------------
+
+We next generate a new class that inherits features of the animal class
+but is more specific. We call it the bird class. A bird is an animal
+but it has certain bird specific features that other animals do not share.
+Here is the blueprint. Note that it is derived from the Animal class
+so that the Bird class inherits all the methods and variable definitions of the
+superclass of Animals. However, it adds a couple more variables and methods.
+Plus it overrides the old method ``showMyself()`` with a more comprehensive
+output.
+
+
+.. code-block:: python
+
+    class Bird(Animal):
+        """This is the bird class, derived from the
+        animal class."""
+    
+        def __init__(self, name='Bird Doe', weight=0, color='na',
+    speed=0):
+            """Initialize the bird-object calling the animal init method
+            but also adding additional variables"""
+            Animal.__init__(self, name, weight)
+            self.color = color
+            self.speed = speed
+    
+        def showMyself(self):
+            """Method: showMyself()
+            prints out all the variables."""
+            print("\n")
+            print("Hello, let me introduce myself.")
+            print("-------------------------------")
+            print("My name is {}".format(self.name))
+            print("My weight is {} grams".format(self.weight))
+            print("My color is {}".format(self.color))
+            print("My speed is {}".format(self.speed))
+            print("-------------------------------\n")
+    
+        def flyTraining(self, workout_length=0):
+            """Method: flyTraining(workout_length)
+            Augments the flight speed of the bird as a function
+            of the bird objects workout_length:
+            new_speed = old_speed + log(workout_length)"""
+            self.speed += m.log(workout_length)
+    
+
+
+
+Here we redefined the ``showMyself()`` method from the animal class. When we
+call it on the bird object, it will use this new definition of the method.
+
+Now let's look at the bird's class blueprint
+
+.. code-block:: python
+
+    help(Bird)
+    
+
+::
+
+    Help on class Bird in module builtins:
+    
+    class Bird(Animal)
+     |  This is the bird class, derived from the
+     |  animal class.
+     |
+     |  Method resolution order:
+     |      Bird
+     |      Animal
+     |      object
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, name='Bird Doe', weight=0, color='na', speed=0)
+     |      Initialize the bird-object calling the animal init method
+     |      but also adding additional variables
+     |
+     |  flyTraining(self, workout_length=0)
+     |      Method: flyTraining(workout_length)
+     |      Augments the flight speed of the bird as a function
+     |      of the bird objects workout_length:
+     |      new_speed = old_speed + log(workout_length)
+     |
+     |  showMyself(self)
+     |      Method: showMyself()
+     |      prints out all the variables.
+     |
+     |
+    ----------------------------------------------------------------------
+     |  Methods inherited from Animal:
+     |
+     |  eatFood(self, foodAmount=0.0)
+     |      Method: eatFood(foodAmount=0)
+     |      translates food input 'foodAmount'
+     |      into additional weight according to the
+     |      following formula:
+     |      new_weight = old_weight + sqrt(foodAmount)
+     |
+     |
+    ----------------------------------------------------------------------
+     |  Data descriptors inherited from Animal:
+     |
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    
+    
+
+
+
+We next generate our first bird object.
+
+.. code-block:: python
+
+    bird1 = Bird('Herman', 12, 'blue', 40)
+    bird1.showMyself()
+    
+
+::
+
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is Herman
+    My weight is 12 grams
+    My color is blue
+    My speed is 40
+    -------------------------------
+    
+    
+    
+
+
+
+We let the bird eat and then we train him a bit.
+
+.. code-block:: python
+
+    bird1.eatFood(foodAmount=9)
+    bird1.flyTraining(workout_length=10)
+    bird1.showMyself()
+    
+
+::
+
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is Herman
+    My weight is 15.0 grams
+    My color is blue
+    My speed is 42.30258509299404
+    -------------------------------
+    
+    
+    
+
+
+
+We next generate another bird, but this time we leave out some of the features
+when we generate it. Python will then simply assign the default values that
+we defined in the class blueprint above.
+
+.. code-block:: python
+
+    bird2 = Bird('Tweets', speed=12)
+    bird2.showMyself()
+    
+
+::
+
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is Tweets
+    My weight is 0 grams
+    My color is na
+    My speed is 12
+    -------------------------------
+    
+    
+    
+
+
+
+Generating multiple objects
+--------------------------------------------------------------------------------
+
+Generating a list full of bird objects from two lists
+with names and weights of animals, but no colors or speeds
+
+.. code-block:: python
+
+    birdObjectList = []
+    name_list = ['Birdy', 'Chip', 'Tweets', 'Feather', 'Gull']
+    weight_list = [4.3, 2.3, 5.6, 5.0, 15.3]
+    
+    for i, (name, weight) in enumerate(zip(name_list, weight_list)):
+        print("Nr. {}: name = {}, weight = {}".format(i, name, weight))
+        # Here we create the bird objects and store them in
+        # the birdObjectList
+        birdObjectList.append(Bird(name=name, weight=weight))
+    
+    # Here we print what we have so far
+    print(birdObjectList)
+    
+
+::
+
+    Nr. 0: name = Birdy, weight = 4.3
+    Nr. 1: name = Chip, weight = 2.3
+    Nr. 2: name = Tweets, weight = 5.6
+    Nr. 3: name = Feather, weight = 5.0
+    Nr. 4: name = Gull, weight = 15.3
+    [<Bird object at 0x00000000047DFEB8>, <Bird object at
+    0x00000000047DFEF0>, <Bird object at 0x00000000047D7048>, <Bird object
+    at 0x00000000047D7080>, <Bird object at 0x00000000047D70B8>]
+    
+    
+
+
+
+We can access the bird objects created in this list by list indexation and
+calling on methods defined on the bird class.
+
+Let's graph the 3rd bird in the list and remember that indexing starts at 0.
+
+.. code-block:: python
+
+    print('birdObjectList[2] =', birdObjectList[2])
+    print('birdObjectList[2].name =', birdObjectList[2].name)
+    print('birdObjectList[2].weight =', birdObjectList[2].weight)
+    print('birdObjectList[2].color =', birdObjectList[2].color)
+    print('birdObjectList[2].speed =', birdObjectList[2].speed)
+    
+
+::
+
+    birdObjectList[2] = <Bird object at 0x00000000047D7048>
+    birdObjectList[2].name = Tweets
+    birdObjectList[2].weight = 5.6
+    birdObjectList[2].color = na
+    birdObjectList[2].speed = 0
+    
+    
+
+
+
+Or we could have also done:
+
+.. code-block:: python
+
+    birdObjectList[2].showMyself()
+    
+
+::
+
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is Tweets
+    My weight is 5.6 grams
+    My color is na
+    My speed is 0
+    -------------------------------
+    
+    
+    
+
+
+
+
 
 Homework
 -------------------------------------------------------------------------------
