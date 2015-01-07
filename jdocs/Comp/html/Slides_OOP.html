@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
     <link rel="next" title="7. Working with data" href="Slides_Data.html" />
     <link rel="prev" title="5. Functions" href="Slides_Functions.html" />
@@ -64,7 +64,7 @@
 <p>Objects are like lists or arrays combined with functions that can be called on
 these lists or arrays. In essence an object is a container holding data and
 methods that can be applied to these data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">import</span> <span class="nn">time</span> <span class="c"># Imports system time module to time your script</span>
 </pre></div>
 </div>
@@ -77,7 +77,7 @@ carries - these are usually variables with the prefix <tt class="docutils litera
 that can be called on these data and that are defined within the object. These
 functions are called <strong>methods</strong> in object-oriented parlance. In python they
 are defined very similarly to functions from the previous chapter.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 
 <span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the animal class. It&#39;s the top class.&quot;&quot;&quot;</span>
@@ -107,10 +107,10 @@ are defined very similarly to functions from the previous chapter.</p>
 </pre></div>
 </div>
 <p>You can look at the class blueprint of the animal object using the help() function</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">Animal</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">Animal</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Help on class Animal in module builtins:
+<div class="code highlight-python"><div class="highlight"><pre>Help on class Animal in module builtins:
 
 class Animal(object)
  |  This is the animal class. It&#39;s the top class.
@@ -144,25 +144,25 @@ class Animal(object)
 </div>
 <p>We next generate an animal object. Here we create the first animal.
 Its name is Birdy and Birdy weighs 5 gramms.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">animal1</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Birdy&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">animal1</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Birdy&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can access the variables (or embedded data) of the
 animal using the animal object and the &#8216;dot&#8217; notation.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The name of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The name of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The weight of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>The name of the first animal is Birdy
+<div class="code highlight-python"><div class="highlight"><pre>The name of the first animal is Birdy
 The weight of the first animal is 5.0
 </pre></div>
 </div>
 <p>Or you can simply call the showMyself() method that was defined within the
 class or blueprint of the animal object.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
+<div class="code highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
 -------------------------------
 My name is Birdy
 My weight is 5.0 pounds
@@ -170,11 +170,11 @@ My weight is 5.0 pounds
 </pre></div>
 </div>
 <p>Now we let the animal eat, by calling the method <tt class="docutils literal"><span class="pre">eatFood()</span></tt> on the bird object</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">animal1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">animal1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The animal&#39;s new weight is = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>The animal&#39;s new weight is = 8.0
+<div class="code highlight-python"><div class="highlight"><pre>The animal&#39;s new weight is = 8.0
 </pre></div>
 </div>
 </div>
@@ -188,7 +188,7 @@ so that the Bird class inherits all the methods and variable definitions of the
 superclass of Animals. However, it adds a couple more variables and methods.
 Plus it overrides the old method <tt class="docutils literal"><span class="pre">showMyself()</span></tt> with a more comprehensive
 output.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the bird class, derived from the</span>
 <span class="sd">    animal class.&quot;&quot;&quot;</span>
 
@@ -223,10 +223,10 @@ output.</p>
 <p>Here we redefined the <tt class="docutils literal"><span class="pre">showMyself()</span></tt> method from the animal class. When we
 call it on the bird object, it will use this new definition of the method.</p>
 <p>Now let&#8217;s look at the bird&#8217;s class blueprint</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">Bird</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">Bird</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Help on class Bird in module builtins:
+<div class="code highlight-python"><div class="highlight"><pre>Help on class Bird in module builtins:
 
 class Bird(Animal)
  |  This is the bird class, derived from the
@@ -276,11 +276,11 @@ class Bird(Animal)
 </pre></div>
 </div>
 <p>We next generate our first bird object.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">bird1</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s">&#39;Herman&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">bird1</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s">&#39;Herman&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
+<div class="code highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
 -------------------------------
 My name is Herman
 My weight is 12 grams
@@ -290,12 +290,12 @@ My speed is 40
 </pre></div>
 </div>
 <p>We let the bird eat and then we train him a bit.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">bird1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">bird1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">flyTraining</span><span class="p">(</span><span class="n">workout_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
+<div class="code highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
 -------------------------------
 My name is Herman
 My weight is 15.0 grams
@@ -307,11 +307,11 @@ My speed is 42.30258509299404
 <p>We next generate another bird, but this time we leave out some of the features
 when we generate it. Python will then simply assign the default values that
 we defined in the class blueprint above.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">bird2</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s">&#39;Tweets&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">bird2</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s">&#39;Tweets&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">bird2</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
+<div class="code highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
 -------------------------------
 My name is Tweets
 My weight is 0 grams
@@ -325,7 +325,7 @@ My speed is 12
 <h2>6.3. Generating multiple objects<a class="headerlink" href="#generating-multiple-objects" title="Permalink to this headline">¶</a></h2>
 <p>Generating a list full of bird objects from two lists
 with names and weights of animals, but no colors or speeds</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">birdObjectList</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">birdObjectList</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Birdy&#39;</span><span class="p">,</span> <span class="s">&#39;Chip&#39;</span><span class="p">,</span> <span class="s">&#39;Tweets&#39;</span><span class="p">,</span> <span class="s">&#39;Feather&#39;</span><span class="p">,</span> <span class="s">&#39;Gull&#39;</span><span class="p">]</span>
 <span class="n">weight_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">]</span>
 
@@ -339,27 +339,27 @@ with names and weights of animals, but no colors or speeds</p>
 <span class="k">print</span><span class="p">(</span><span class="n">birdObjectList</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Nr. 0: name = Birdy, weight = 4.3
+<div class="code highlight-python"><div class="highlight"><pre>Nr. 0: name = Birdy, weight = 4.3
 Nr. 1: name = Chip, weight = 2.3
 Nr. 2: name = Tweets, weight = 5.6
 Nr. 3: name = Feather, weight = 5.0
 Nr. 4: name = Gull, weight = 15.3
-[&lt;Bird object at 0x000000000484EF28&gt;, &lt;Bird object at
-0x000000000484A048&gt;, &lt;Bird object at 0x000000000484A080&gt;, &lt;Bird object
-at 0x000000000484A0B8&gt;, &lt;Bird object at 0x000000000484A0F0&gt;]
+[&lt;Bird object at 0x000000000B026198&gt;, &lt;Bird object at
+0x000000000B026D30&gt;, &lt;Bird object at 0x000000000B026E80&gt;, &lt;Bird object
+at 0x000000000B026E10&gt;, &lt;Bird object at 0x000000000B026780&gt;]
 </pre></div>
 </div>
 <p>We can access the bird objects created in this list by list indexation and
 calling on methods defined on the bird class.</p>
 <p>Let&#8217;s graph the 3rd bird in the list and remember that indexing starts at 0.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2] =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2] =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2].name =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2].weight =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2].color =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;birdObjectList[2].speed =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>birdObjectList[2] = &lt;Bird object at 0x000000000484A080&gt;
+<div class="code highlight-python"><div class="highlight"><pre>birdObjectList[2] = &lt;Bird object at 0x000000000B026E80&gt;
 birdObjectList[2].name = Tweets
 birdObjectList[2].weight = 5.6
 birdObjectList[2].color = na
@@ -367,10 +367,10 @@ birdObjectList[2].speed = 0
 </pre></div>
 </div>
 <p>Or we could have also done:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
+<div class="code highlight-python"><div class="highlight"><pre>Hello, let me introduce myself.
 -------------------------------
 My name is Tweets
 My weight is 5.6 grams

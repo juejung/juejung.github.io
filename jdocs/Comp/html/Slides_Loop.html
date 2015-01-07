@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
     <link rel="next" title="3. Vectors and matrices" href="Slides_Arrays.html" />
     <link rel="prev" title="1. A brief introduction to Python" href="Slides_Basics.html" />
@@ -73,24 +73,24 @@ eventuality we can then assign a string of commands to be executed.</p>
 commands that we want to be executed after the if statement need to &#8220;indented&#8221;
 by 4 spaces (just his the tab key once). Python does not use the curly
 brackets <tt class="docutils literal"><span class="pre">{}</span></tt> that R uses in the if-statements and for- loops.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">import</span> <span class="nn">time</span>  <span class="c"># Imports system time module to time your script</span>
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Number x= {} is greater than 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Number x= {} is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Number x= 2 is greater than 0.5
+<div class="code highlight-python"><div class="highlight"><pre>Number x= 2 is greater than 0.5
 </pre></div>
 </div>
 <p>We next branch the program into 3 separate directions depending on 3 mutually
 exclusive conditions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">):</span>
@@ -101,7 +101,7 @@ exclusive conditions.</p>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;X is smaller than Y&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>X is smaller than Y
+<div class="code highlight-python"><div class="highlight"><pre>X is smaller than Y
 </pre></div>
 </div>
 </div>
@@ -119,7 +119,7 @@ by one and we can then use <tt class="docutils literal"><span class="pre">x</spa
 Note that if you want a list from 0,1,...,5 you need to define the range
 command with <tt class="docutils literal"><span class="pre">range(6)</span></tt>.  Using this loop we can step through all the values of our
 list and assign certain operations to each value.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Summation variable starting with zero value</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Summation variable starting with zero value</span>
 <span class="n">sumx</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c"># Start loop</span>
@@ -129,7 +129,7 @@ list and assign certain operations to each value.</p>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;sum(x) = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sumx</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
@@ -151,7 +151,7 @@ number: <span class="math">\(3!\)</span>. Remember that <span class="math">\(3! 
 this happen we write a loop that sets <span class="math">\(i = 1, 2,\)</span> and 3 and multiplies it
 with the product of the previous round. The variable <tt class="docutils literal"><span class="pre">n_fac</span></tt> stores the
 product from each round.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">n_fac</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -161,7 +161,7 @@ product from each round.</p>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of {} is: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_fac</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>i =  0
+<div class="code highlight-python"><div class="highlight"><pre>i =  0
 i =  1
 i =  2
 i =  3
@@ -171,10 +171,10 @@ The factorial of 6 is: 720
 </pre></div>
 </div>
 <p>Using a different method we can also calculate the factorial as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>The factorial of 6 is 720
+<div class="code highlight-python"><div class="highlight"><pre>The factorial of 6 is 720
 </pre></div>
 </div>
 </div>
@@ -182,11 +182,11 @@ The factorial of 6 is: 720
 <h3>2.2.3. Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
 <p>Finally, here is an example where we loop through the values of a list again.
 In each round we reach the value of the vector and print it.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;xv= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">xv</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We now start the loop and pick each value of this list one-by-one.  The
@@ -194,13 +194,13 @@ command <tt class="docutils literal"><span class="pre">length</span></tt> tells 
 lets the loop run from 1 to the total number of arguments in <tt class="docutils literal"><span class="pre">xv</span></tt>.
 Note also the difference in the two print commands, where the second one
 results in formatted output.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">)):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;i= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;xv[i]= {:4.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span><span class="o">=</span> <span class="mi">0</span>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">i</span><span class="o">=</span> <span class="mi">0</span>
 <span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">0.00</span>
 <span class="n">i</span><span class="o">=</span> <span class="mi">1</span>
 <span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">1.00</span>
@@ -225,7 +225,7 @@ stopping condition is met.</p>
 <p>In the first example we let the iterations run as long as the value of variable
 x is smaller than 10. In every iteration we increase x by one unit, so that in
 effect the loop gets repeated 9 times.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span>
@@ -233,7 +233,7 @@ effect the loop gets repeated 9 times.</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">0</span>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">0</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">1</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">3</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">6</span>
@@ -256,7 +256,7 @@ outstanding debt. The key formula in this example is:</p>
 <div class="math">
 \[\text{debt}_\text{tomorrow} = \text{debt}_\text{today}*(1 + \text{interest rate}) -
 \text{payments}_\text{today}\]</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="mf">0.11</span>  <span class="c"># Annual interest rate</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="mf">0.11</span>  <span class="c"># Annual interest rate</span>
 <span class="c"># Time between repayments in years (i.e., monthly repayments)</span>
 <span class="n">period</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">12.0</span>
 <span class="n">debt_initial</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c"># Initial debt</span>
@@ -271,7 +271,7 @@ outstanding debt. The key formula in this example is:</p>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Loan will be repaid in: {} years.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mytime</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Loan will be repaid in: 13.250000000000025 years.
+<div class="code highlight-python"><div class="highlight"><pre>Loan will be repaid in: 13.250000000000025 years.
 </pre></div>
 </div>
 </div>

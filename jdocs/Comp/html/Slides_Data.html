@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
     <link rel="next" title="8. Working with data from the web" href="Slides_WebData.html" />
     <link rel="prev" title="6. Object Oriented Programming" href="Slides_OOP.html" />
@@ -74,13 +74,10 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 <span class="kn">from</span> <span class="nn">ggplot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">time</span>  <span class="c"># Imports system time module to time your script</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">)</span>  <span class="c"># close all open figures</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ImportError&#39;&gt;
-No module named &#39;ggplot&#39;
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Read in small data from .csv file</span>
@@ -229,14 +226,15 @@ which is a translation of <strong>R&#8217;s</strong> <tt class="docutils literal
 follows a completely different graphing philosophy based on the <strong>grammar of
 grapics</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Using ggplot package</span>
-<span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;Height&#39;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
-<span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;Height&#39;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
+<span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;ggplot&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (10340591)&gt;
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="_images/Slides_Data_Boxplot_1.png"><img alt="_images/Slides_Data_Boxplot_1.png" src="_images/Slides_Data_Boxplot_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="boxplots">
 <h3>7.2.4. Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">¶</a></h3>
@@ -295,8 +293,10 @@ commands are part of the <tt class="docutils literal"><span class="pre">numpy</s
 <span class="n">highest</span> <span class="n">frequency</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre> -----------------------------------------
+Mean(height)= 6.81666666667
+Median(height)= 6.85
+Mode(height)= (array([ 1.1]), array([ 1.]))
 </pre></div>
 </div>
 <p>We can also just summarize a variable using the <tt class="docutils literal"><span class="pre">st.describe</span></tt> command from
@@ -305,8 +305,9 @@ the <tt class="docutils literal"><span class="pre">stats</span></tt> package.</p
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Summary stats: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>Summary stats: (60, (1.1000000000000001, 12.699999999999999),
+6.8166666666666655, 12.757344632768362, 0.01909961978127301,
+-1.1611486008105545)
 </pre></div>
 </div>
 </div>
@@ -357,8 +358,11 @@ Pop. standard dev = 3.54185293628
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>1 quartile (25th percentile) = 3.95
+2 quartile (50th percentile) = 6.85
+3 quartile (75th percentile) = 9.65
+IQR = (P75-P25) = 5.7
+ -----------------------------------------
 </pre></div>
 </div>
 </div>

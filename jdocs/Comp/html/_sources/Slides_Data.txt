@@ -22,15 +22,10 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     from ggplot import *
     from scipy import stats as st
     import math as m
+    import seaborn as sns
     import time  # Imports system time module to time your script
     
     plt.close('all')  # close all open figures
-    
-
-::
-
-    <class 'ImportError'>
-    No module named 'ggplot'
     
 
 
@@ -243,15 +238,19 @@ grapics**
 .. code-block:: python
 
     # Using ggplot package
-    ggplot(aes(x='Height'), data = df) + geom_histogram() +
-    ggtitle("Histogram of Height using ggplot") + labs("Height", "Freq")
+    print( ggplot(aes(x='Height'), data = df) + geom_histogram() +
+    ggtitle("Histogram of Height using ggplot") + labs("Height", "Freq"))
+    plt.show(1)
     
 
 ::
 
-    <class 'NameError'>
-    name 'ggplot' is not defined
+    <ggplot: (10340591)>
     
+    
+
+.. image:: _static/Slides_Data_Boxplot_1.*
+   :width: 12 cm
 
 
 
@@ -337,8 +336,11 @@ commands are part of the ``numpy`` package so they have the prefix ``np.``
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+     -----------------------------------------
+    Mean(height)= 6.81666666667
+    Median(height)= 6.85
+    Mode(height)= (array([ 1.1]), array([ 1.]))
+    
     
 
 
@@ -355,8 +357,10 @@ the ``stats`` package.
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+    Summary stats: (60, (1.1000000000000001, 12.699999999999999),
+    6.8166666666666655, 12.757344632768362, 0.01909961978127301,
+    -1.1611486008105545)
+    
     
 
 
@@ -424,8 +428,12 @@ Percentiles are calculated as follows:
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+    1 quartile (25th percentile) = 3.95
+    2 quartile (50th percentile) = 6.85
+    3 quartile (75th percentile) = 9.65
+    IQR = (P75-P25) = 5.7
+     -----------------------------------------
+    
     
 
 
