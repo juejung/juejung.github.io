@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
     <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
     <link rel="prev" title="14. An OLG model with labor-leisure choice" href="Slides_OLG_II.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -72,92 +72,9 @@
 </ul>
 <div class="section" id="preferences">
 <h2>15.1. Preferences<a class="headerlink" href="#preferences" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Agents live for 2 periods: young and old</li>
-<li>They value consumption when young <span class="math">\(c_y\)</span>, leisure when young <span class="math">\(1-l\)</span> and</li>
-</ul>
-<p>consumption when old <span class="math">\(c_o\)</span>
-* Their preferences are given via utility functions: <span class="math">\(u_t(c_t)\)</span>
-* Agents discount time with factor <span class="math">\(\beta\)</span>
-* Their life-time utility is:</p>
-<p><span class="math">\(V(c_y, l,c_o) = u(c_y,l) + \beta \times u(c_o)\)</span></p>
-</div>
-<div class="section" id="technology">
-<h2>15.2. Technology<a class="headerlink" href="#technology" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Firms produce output <span class="math">\(Y\)</span> using input capital <span class="math">\(K\)</span> and labor <span class="math">\(L\)</span>:</li>
-</ul>
-<p><span class="math">\(Y(K,L) = A \times K^{0.3} \times L^{0.7}\)</span></p>
-</div>
-<div class="section" id="government">
-<h2>15.3. Government<a class="headerlink" href="#government" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>The government collects lump sum taxes from households <span class="math">\(\tau_{Lump}\)</span>,</li>
-</ul>
-<p>taxes on labor <span class="math">\(\tau_L\)</span> and capital <span class="math">\(\tau_K\)</span>
-* The government pays for gov&#8217;t consumption <span class="math">\(G\)</span> and transfers to households
-<cite>T_y</cite> and <span class="math">\(T_o\)</span></p>
-<p><span class="math">\(G + T_y + T_o = L \times \tau_L + K \times \tau_K + \tau_{Lump}\)</span></p>
-</div>
-<div class="section" id="household-problem">
-<h2>15.4. Household problem<a class="headerlink" href="#household-problem" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>HHs maximize <span class="math">\(V(c_y,l,c_o)\)</span> subject to their budget constraint in each period</li>
-</ul>
-<p><span class="math">\(c_y + s = w  l + T_y\)</span>
-<span class="math">\(c_o     = R  s + T_o\)</span></p>
-</div>
-<div class="section" id="equilibrium-definition">
-<h2>15.5. Equilibrium definition<a class="headerlink" href="#equilibrium-definition" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><dl class="first docutils">
-<dt>Given sequences of</dt>
-<dd><ul class="first last simple">
-<li>prices <span class="math">\(\left\{w_t, R_t \right\}\)</span></li>
-<li>government policies <span class="math">\(\left\{\tau_L, \tau_K, \tau_{Lump} \right\}\)</span></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-<p>and equilibrium is defined as an allocation of:
-* sequences of <span class="math">\(\left\{c_{y,t},l_t,c_{o,t},s_t\right\}\)</span> so that</p>
-<blockquote>
-<div><ul class="simple">
-<li>the HH max problem is solved</li>
-<li>the firm maximization problem is solve</li>
-<li>the gov&#8217;t budget constraint clears</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="functional-forms-and-solutions">
-<h2>15.6. Functional forms and solutions<a class="headerlink" href="#functional-forms-and-solutions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Preferences are given as: <span class="math">\(u(c_y,l) = log(c_y)+log(l)\)</span> and <span class="math">\(u(c_o)=log(c_o)\)</span></li>
-<li>We can either set up a Lagrangian with two constraints or simply substitute</li>
-</ul>
-<p>consumption out of the utilities using the BC.
-* We follow the second approach, since the form of the utility functions
-guarantees interior solutions
-* Therefor we don&#8217;t have to worry about corner solutions a la Kuhn-Tucker</p>
-</div>
-<div class="section" id="substitute-in-preferences">
-<h2>15.7. Substitute in preferences<a class="headerlink" href="#substitute-in-preferences" title="Permalink to this headline">¶</a></h2>
-<p><span class="math">\(max_s log(w  l + T_y - s) + log(1-l) + \beta  log(R  s + T_o)\)</span></p>
-<ul class="simple">
-<li>This is now a function in 2 choice variables <span class="math">\(s\)</span> and labor <span class="math">\(l\)</span></li>
-<li>Derive this function w.r.t. <span class="math">\(s\)</span> and labor <span class="math">\(l\)</span></li>
-</ul>
-<p><span class="math">\(\frac{\partial V}{\partial s}: \frac{1}{w  l + T_y - s} =
-\frac{\beta R}{R  s + T_o}\)</span></p>
-<p><span class="math">\(\frac{\partial V}{\partial l}: \frac{w}{w  l + T_y - s} =
-\frac{1}{1-l}\)</span></p>
-</div>
-<div class="section" id="solve-for-optimal-and">
-<h2>15.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span><a class="headerlink" href="#solve-for-optimal-and" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="homework">
-<h2>15.9. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<h2>15.2. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p><tt class="xref doc docutils literal"><span class="pre">./Lecture_Growth/Homework/Homework_Growth</span></tt></p>
 </div>
 </div>
@@ -172,14 +89,7 @@ guarantees interior solutions
   <ul>
 <li><a class="reference internal" href="#">15. Growth Models</a><ul>
 <li><a class="reference internal" href="#preferences">15.1. Preferences</a></li>
-<li><a class="reference internal" href="#technology">15.2. Technology</a></li>
-<li><a class="reference internal" href="#government">15.3. Government</a></li>
-<li><a class="reference internal" href="#household-problem">15.4. Household problem</a></li>
-<li><a class="reference internal" href="#equilibrium-definition">15.5. Equilibrium definition</a></li>
-<li><a class="reference internal" href="#functional-forms-and-solutions">15.6. Functional forms and solutions</a></li>
-<li><a class="reference internal" href="#substitute-in-preferences">15.7. Substitute in preferences</a></li>
-<li><a class="reference internal" href="#solve-for-optimal-and">15.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-<li><a class="reference internal" href="#homework">15.9. Homework</a></li>
+<li><a class="reference internal" href="#homework">15.2. Homework</a></li>
 </ul>
 </li>
 </ul>
