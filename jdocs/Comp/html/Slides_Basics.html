@@ -1,61 +1,243 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. A brief introduction to Python &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
     
-    <title>1. A brief introduction to Python &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html"/>
+        <link rel="next" title="2. Basic programming techniques" href="Slides_Loop.html"/>
+        <link rel="prev" title="Welcome to Computational Economics!" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
-    <link rel="next" title="2. Basic programming techniques" href="Slides_Loop.html" />
-    <link rel="prev" title="Welcome to Computational Economics!" href="index.html" />
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> ComputationalEconomicsLectures</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
 
-  </head>
-  <body>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">1. A brief introduction to Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-python">1.1. Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-calculations">1.3. Simple calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-print-function">1.4. The print function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#script-files">1.5. Script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ipython-notebook">1.6. iPython Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-and-dictionaries">1.7. Lists, tuples and dictionaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">1.8. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">1.9. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">2. Basic programming techniques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#branching">2.1. Branching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#for-loops">2.2. For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#while-loop">2.3. While loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#homework">2.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">3. Vectors and matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#definitions-of-vectors-and-matrices">3.1. Definitions of vectors and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#simple-calculations-with-vectors-and-matrices">3.2. Simple calculations with vectors and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#vector-manipulation">3.3. Vector manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#matrix-manipulation">3.4. Matrix manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">3.5. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#homework">3.6. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">4. Plotting using <tt class="docutils literal"><span class="pre">matplotlib</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">4.1. Plotting vectors and arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">4.2. Plotting functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">4.3. Subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#dgraphing">4.4. 3DGraphing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#homework">4.5. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">5. Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#use-simple-user-defined-functions">5.1. Use simple user defined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#advanced-graphing-using-loops-and-functions">5.2. Advanced Graphing using loops and functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#in-class-exercises">5.3. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#homework">5.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">6. Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#inheritance-and-subclasses">6.2. Inheritance and subclasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#generating-multiple-objects">6.3. Generating multiple objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#homework">6.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data.html">7. Working with data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#read-in-small-data-set-from-a-comma-separated-csv-file">7.1. Read in small data set from a comma separated (.csv) file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#making-simple-graphs-from-our-data">7.2. Making simple graphs from our data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#summary-statistics">7.3. Summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#measures-of-linear-relationship">7.4. Measures of linear relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#homework">7.5. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">8. Working with data from the web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#more-tutorials">8.1. More tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#homework">8.2. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">9. Random numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#uniformly-distributed-random-numbers">9.1. Uniformly distributed random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#normally-distributed-random-numbers">9.2. Normally distributed random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#t-distributed-random-variable">9.3. T-distributed random variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#homework">9.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">10. Root finding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#first-steps">10.1. First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#newton-raphson">10.2. Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#secant-method">10.3. Secant method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#bisection">10.4. Bisection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#using-built-in-unit-root-function">10.5. Using built in unit-root function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#homework">10.6. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">11. Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#univariate-function-optimization">11.1. Univariate function optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#optimization-methods">11.2. Optimization methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#multivariate-optimization">11.3. Multivariate optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#homework">11.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">12. The cake eating problem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solution">12.1. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#formally">12.2. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#id1">12.3. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#analytical-solution">12.4. Analytical solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#euler-equation">12.5. Euler equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem">12.6. Solving the problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem-analytics">12.7. Solving the problem: analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-the-solution">12.8. Plotting the solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution">12.9. Numerical solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#function-definitions">12.10. Function definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-is-achieved-via">12.11. Plotting is achieved via:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution-in-python">12.12. Numerical solution in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#optimizer-in-optimize-toolbox">12.13. Optimizer in <tt class="docutils literal"><span class="pre">optimize</span></tt> toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#homework">12.14. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">13. A simple OLG model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#preferences">13.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#technology">13.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#government">13.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#household-problem">13.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equilibrium-definition">13.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#functional-forms-and-solutions">13.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#substitute-the-budget-set-into-preferences">13.7. Substitute the budget set into preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#solve-for-optimal-household-savings">13.8. Solve for optimal household savings: <span class="math">\(s^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#solution">13.9. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equation-system">13.10. Equation system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-1-substituting-everything">13.11. Method 1: Substituting everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#one-equation-in-k">13.12. One equation in K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#aggregate-resource-constraint-arc">13.13. Aggregate resource constraint (ARC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#python-program-1">13.14. Python Program 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-2">13.15. Method 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#python-program-2">13.16. Python Program 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#homework">13.17. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">14. An OLG model with labor-leisure choice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#preferences">14.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#technology">14.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#government">14.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#household-problem">14.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#equilibrium-definition">14.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">14.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">14.7. Substitute in preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">14.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#homework">14.9. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">15. Growth Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#preferences">15.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#technology">15.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">15.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">15.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">15.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#functional-forms-and-solutions">15.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#substitute-in-preferences">15.7. Substitute in preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#solve-for-optimal-and">15.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#homework">15.9. Homework</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="Slides_Loop.html" title="2. Basic programming techniques"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to Computational Economics!"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+        
+      </div>
+      &nbsp;
+    </nav>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ComputationalEconomicsLectures</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>1. A brief introduction to Python</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/Slides_Basics.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <div class="section" id="a-brief-introduction-to-python">
 <h1>1. A brief introduction to Python<a class="headerlink" href="#a-brief-introduction-to-python" title="Permalink to this headline">¶</a></h1>
@@ -93,14 +275,23 @@ When prompted whether you want to install Python 2.7 or Python 3.4, go with
 <p>When you work on programming projects you may want to invest some time in
 learning a  <a class="reference external" href="http://www.google.com/search?q=version+control+system">version control system</a> like <strong>Git</strong>. It is
 easiest to download a client software for Git which comes with the entire Git system as well as
-a graphical user interface. I recommend the <a class="reference external" href="http://www.syntevo.com/smartgit/">SmartGit</a> client. It is free, easy to use and runs
-on all platforms. So please go ahead and download and install it. It&#8217;s free.</p>
-<p>Second, after you have SmartGit installed you can start using Git locally on
+a graphical user interface.
+I recommend either the Git client from <strong>Github</strong> or <strong>SmartGit</strong>. Both clients
+are platform independent and will install the client and the underlying Git
+architecture.</p>
+<p>You can download the clients here: <a class="reference external" href="https://windows.github.com/">GitHub Windows</a>
+or <cite>GitHub Mac &lt;https://mac.github.com/&gt;_</cite>.
+The other option is the <a class="reference external" href="http://www.syntevo.com/smartgit/">SmartGit</a> client.  This client is
+platform independent, so you can download a windows/mac/linux version.</p>
+<p>Both clients are free and easy to use. So please go ahead and download and
+install one.</p>
+<p>Second, after you have one of the two clients installed you can start using Git locally on
 your computer. Please read about some of the basic functionality of Git <a class="reference external" href="http://git-scm.com/doc">here</a> and also familiarize yourself with SmartGit
 following the <a class="reference external" href="http://www.syntevo.com/smartgit/tour/">intro tour</a>.</p>
 <p>Git becomes really powerful when you use it on the cloud so that you can collaborate
 with other programmers. One of the most trendy services concerning Git is
-offered by a web service called <a class="reference external" href="https://github.com/">Github</a>. For lack of a
+offered by a web service called <a class="reference external" href="https://github.com/">Github</a>. (The first
+recommended Git client is produced by Github). For lack of a
 better word, you can think of Github as a the Facebook for programmers (someone
 is probably killing me for this comparison - obviously Github is way cooler than
 Facebook). Please go ahead and make an account on Github. It is free.</p>
@@ -117,7 +308,7 @@ from and to this repository.</p>
 <span id="index-1"></span><h2>1.3. Simple calculations<a class="headerlink" href="#simple-calculations" title="Permalink to this headline">¶</a></h2>
 <p id="index-2">After installation, open <strong>Spyder</strong> and try some of the following in the
 command line:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.4</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">5.4</span>
@@ -167,7 +358,7 @@ library) by typing <tt class="docutils literal"><span class="pre">math.functionN
 root of number 9, you would then simply call <tt class="docutils literal"><span class="pre">math.sqrt(9)</span></tt>. You can also
 abbreviate the name of the module by typing <tt class="docutils literal"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">m</span></tt> in which case
 you can now take the square root with <tt class="docutils literal"><span class="pre">m.sqrt(9)</span></tt> as in the following script.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
@@ -179,7 +370,7 @@ you can now take the square root with <tt class="docutils literal"><span class="
 <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
+<div class="highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
 5.578995
 7.6697787092
 0.7861700560920011
@@ -199,7 +390,7 @@ more about objects and methods in a later chapter. Just hang in there fore now.<
 <p>If you want to format the numbers (e.g., round etc.) that <tt class="docutils literal"><span class="pre">print</span></tt> will output
 you need to type the double brackets <tt class="docutils literal"><span class="pre">{}</span></tt> in your text string as a
 placeholder for where the number will be inserted.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
@@ -217,7 +408,7 @@ placeholder for where the number will be inserted.</p>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;sqrt(x)= {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
+<div class="highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
 x+y 5.578995
 x + y  = 5.578995
 x + y  =  5.58
@@ -229,13 +420,13 @@ sqrt(x)=  1.57
 </div>
 <p>You can write more complex output with more than one number embedded in a text
 as follows:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;We want to use variable x = {0:4.2f} </span><span class="se">\n</span><span class="s"> and divide by</span>
 <span class="s">variable y = {1:4.2f},</span><span class="se">\n</span><span class="s"> so that we end up with expression</span>
 <span class="s">x/y = {2:4.2f}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
+<div class="highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
 We want to use variable x = 2.46
  and divide by
 variable y = 3.12,
@@ -291,11 +482,11 @@ about the iPython Notebook on the internet.</p>
 <p>A list is a simple container object that can hold an arbitrary number of Python
 objects. A list can be a list of numbers, words, or a combination. Here is an
 example:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The list is alist = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
+<div class="highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
 </pre></div>
 </div>
 <p>Alternatively we could translate the list into a string and then print it. You
@@ -303,22 +494,22 @@ can tag together strings with the plus sign.
 which combines a string <tt class="docutils literal"><span class="pre">&quot;The</span> <span class="pre">list</span> <span class="pre">is</span> <span class="pre">alist</span> <span class="pre">=</span> <span class="pre">&quot;</span></tt> together with another string
 <tt class="docutils literal"><span class="pre">str(alist)</span></tt>. The Python funciton <strong>str()</strong> translates a number into a string,
 i.e., a word and then prints the combined &#8220;word&#8221;.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
+<div class="highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
 </pre></div>
 </div>
 <p>We can access the elements of a list bit by bit using list indexation. Note
 that the first element in the list is at position 0.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">1</span>
 <span class="n">me</span>
 <span class="mf">3.456</span>
 <span class="n">you</span>
@@ -326,14 +517,14 @@ that the first element in the list is at position 0.</p>
 </pre></div>
 </div>
 <p>Or prettier</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[0] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[0] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">me</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.456</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">you</span>
@@ -345,13 +536,13 @@ operator. This basically involves the colon symbol <tt class="docutils literal">
 position. If you want to extract the first three elements you can simply index
 the list as <tt class="docutils literal"><span class="pre">alist[:3]</span></tt>. If you want to get everything from element 2 onwards you
 can <tt class="docutils literal"><span class="pre">alist[2:]</span></tt></p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[0:4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[:3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[2:] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
@@ -359,13 +550,13 @@ can <tt class="docutils literal"><span class="pre">alist[2:]</span></tt></p>
 </div>
 <p>If you want to grab the last element of the list you can start indexing with
 negative numbers.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">you</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.456</span>
@@ -374,11 +565,11 @@ negative numbers.</p>
 <p>You can change elements of a list by reassigning them using their index. So if
 you want to replace the third element of the list with the word &#8220;Mom&#8221; you
 simply assign it as</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="s">&#39;Mom&#39;</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="s">&#39;Mom&#39;</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -386,19 +577,19 @@ simply assign it as</p>
 <h3>1.7.2. Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
 <p>Are immutable lists, that once defined, cannot be changed anymore.
 It is a read-only list.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now try to change an element of the tuple and see what happens.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>&lt;class &#39;TypeError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;TypeError&#39;&gt;
 &#39;tuple&#39; object does not support item assignment
 </pre></div>
 </div>
@@ -414,31 +605,31 @@ can be words or other data types.</p>
 <p>Here is a brief example where we use names of people as keys and store various
 information together with those keys. We can then retrieve the information of
 each person with the persons name.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Defining a dictionary as adict = {&#39;name&#39;: income}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Defining a dictionary as adict = {&#39;name&#39;: income}</span>
 <span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
 <span class="n">adict</span><span class="p">[</span><span class="s">&#39;Jim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50000</span>
 <span class="n">adict</span><span class="p">[</span><span class="s">&#39;Tom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80000</span>
 </pre></div>
 </div>
 <p>We can now retrive this info using the key.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;James&#39;</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;Jim&#39;</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;Tom&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span> <span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span> <span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
 <span class="mi">20000</span>
 <span class="mi">50000</span>
 <span class="mi">80000</span>
 </pre></div>
 </div>
 <p>You can delete an element with</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">del</span> <span class="n">adict</span><span class="p">[</span><span class="s">&#39;James&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">del</span> <span class="n">adict</span><span class="p">[</span><span class="s">&#39;James&#39;</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -460,72 +651,68 @@ each person with the persons name.</p>
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">1. A brief introduction to Python</a><ul>
-<li><a class="reference internal" href="#installing-python">1.1. Installing Python</a></li>
-<li><a class="reference internal" href="#git-and-github">1.2. Git and Github</a></li>
-<li><a class="reference internal" href="#simple-calculations">1.3. Simple calculations</a></li>
-<li><a class="reference internal" href="#the-print-function">1.4. The print function</a></li>
-<li><a class="reference internal" href="#script-files">1.5. Script files</a></li>
-<li><a class="reference internal" href="#ipython-notebook">1.6. iPython Notebook</a></li>
-<li><a class="reference internal" href="#lists-tuples-and-dictionaries">1.7. Lists, tuples and dictionaries</a><ul>
-<li><a class="reference internal" href="#lists">1.7.1. Lists</a></li>
-<li><a class="reference internal" href="#tuples">1.7.2. Tuples</a></li>
-<li><a class="reference internal" href="#dictionaries">1.7.3. Dictionaries</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#in-class-exercises">1.8. In class exercises</a></li>
-<li><a class="reference internal" href="#homework">1.9. Homework</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="2. Basic programming techniques"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Computational Economics!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to Computational Economics!</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Slides_Loop.html"
-                        title="next chapter">2. Basic programming techniques</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Juergen Jung.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="Slides_Loop.html" title="2. Basic programming techniques"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to Computational Economics!"
-             >previous</a> |</li>
-        <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Juergen Jung.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

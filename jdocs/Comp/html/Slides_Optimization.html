@@ -1,61 +1,243 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. Optimization &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
     
-    <title>11. Optimization &mdash; ComputationalEconomicsLectures 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html"/>
+        <link rel="next" title="12. The cake eating problem" href="Slides_Cake.html"/>
+        <link rel="prev" title="10. Root finding" href="Slides_Root.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="ComputationalEconomicsLectures 1.0 documentation" href="index.html" />
-    <link rel="next" title="12. The cake eating problem" href="Slides_Cake.html" />
-    <link rel="prev" title="10. Root finding" href="Slides_Root.html" />
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> ComputationalEconomicsLectures</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
 
-  </head>
-  <body>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">1. A brief introduction to Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#installing-python">1.1. Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#simple-calculations">1.3. Simple calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#the-print-function">1.4. The print function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#script-files">1.5. Script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#ipython-notebook">1.6. iPython Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#lists-tuples-and-dictionaries">1.7. Lists, tuples and dictionaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#in-class-exercises">1.8. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#homework">1.9. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">2. Basic programming techniques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#branching">2.1. Branching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#for-loops">2.2. For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#while-loop">2.3. While loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#homework">2.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">3. Vectors and matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#definitions-of-vectors-and-matrices">3.1. Definitions of vectors and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#simple-calculations-with-vectors-and-matrices">3.2. Simple calculations with vectors and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#vector-manipulation">3.3. Vector manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#matrix-manipulation">3.4. Matrix manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">3.5. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#homework">3.6. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">4. Plotting using <tt class="docutils literal"><span class="pre">matplotlib</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">4.1. Plotting vectors and arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">4.2. Plotting functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">4.3. Subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#dgraphing">4.4. 3DGraphing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#homework">4.5. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">5. Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#use-simple-user-defined-functions">5.1. Use simple user defined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#advanced-graphing-using-loops-and-functions">5.2. Advanced Graphing using loops and functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#in-class-exercises">5.3. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#homework">5.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">6. Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#inheritance-and-subclasses">6.2. Inheritance and subclasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#generating-multiple-objects">6.3. Generating multiple objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#homework">6.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data.html">7. Working with data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#read-in-small-data-set-from-a-comma-separated-csv-file">7.1. Read in small data set from a comma separated (.csv) file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#making-simple-graphs-from-our-data">7.2. Making simple graphs from our data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#summary-statistics">7.3. Summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#measures-of-linear-relationship">7.4. Measures of linear relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#homework">7.5. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">8. Working with data from the web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#more-tutorials">8.1. More tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#homework">8.2. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">9. Random numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#uniformly-distributed-random-numbers">9.1. Uniformly distributed random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#normally-distributed-random-numbers">9.2. Normally distributed random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#t-distributed-random-variable">9.3. T-distributed random variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#homework">9.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">10. Root finding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#first-steps">10.1. First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#newton-raphson">10.2. Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#secant-method">10.3. Secant method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#bisection">10.4. Bisection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#using-built-in-unit-root-function">10.5. Using built in unit-root function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#homework">10.6. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">11. Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#univariate-function-optimization">11.1. Univariate function optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimization-methods">11.2. Optimization methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multivariate-optimization">11.3. Multivariate optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">11.4. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">12. The cake eating problem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solution">12.1. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#formally">12.2. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#id1">12.3. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#analytical-solution">12.4. Analytical solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#euler-equation">12.5. Euler equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem">12.6. Solving the problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem-analytics">12.7. Solving the problem: analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-the-solution">12.8. Plotting the solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution">12.9. Numerical solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#function-definitions">12.10. Function definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-is-achieved-via">12.11. Plotting is achieved via:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution-in-python">12.12. Numerical solution in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#optimizer-in-optimize-toolbox">12.13. Optimizer in <tt class="docutils literal"><span class="pre">optimize</span></tt> toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#homework">12.14. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">13. A simple OLG model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#preferences">13.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#technology">13.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#government">13.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#household-problem">13.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equilibrium-definition">13.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#functional-forms-and-solutions">13.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#substitute-the-budget-set-into-preferences">13.7. Substitute the budget set into preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#solve-for-optimal-household-savings">13.8. Solve for optimal household savings: <span class="math">\(s^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#solution">13.9. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equation-system">13.10. Equation system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-1-substituting-everything">13.11. Method 1: Substituting everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#one-equation-in-k">13.12. One equation in K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#aggregate-resource-constraint-arc">13.13. Aggregate resource constraint (ARC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#python-program-1">13.14. Python Program 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-2">13.15. Method 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#python-program-2">13.16. Python Program 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#homework">13.17. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">14. An OLG model with labor-leisure choice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#preferences">14.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#technology">14.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#government">14.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#household-problem">14.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#equilibrium-definition">14.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">14.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">14.7. Substitute in preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">14.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#homework">14.9. Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">15. Growth Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#preferences">15.1. Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#technology">15.2. Technology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">15.3. Government</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">15.4. Household problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">15.5. Equilibrium definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#functional-forms-and-solutions">15.6. Functional forms and solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#substitute-in-preferences">15.7. Substitute in preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#solve-for-optimal-and">15.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#homework">15.9. Homework</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="Slides_Cake.html" title="12. The cake eating problem"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="Slides_Root.html" title="10. Root finding"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+        
+      </div>
+      &nbsp;
+    </nav>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ComputationalEconomicsLectures</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>11. Optimization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/Slides_Optimization.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <div class="section" id="optimization">
 <h1>11. Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
@@ -540,91 +722,68 @@ optimize.fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [ 2.03
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">11. Optimization</a><ul>
-<li><a class="reference internal" href="#univariate-function-optimization">11.1. Univariate function optimization</a><ul>
-<li><a class="reference internal" href="#example-function-to-be-maximized">11.1.1. Example function to be maximized</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#optimization-methods">11.2. Optimization methods</a><ul>
-<li><a class="reference internal" href="#newton-s-method">11.2.1. Newton&#8217;s method</a></li>
-<li><a class="reference internal" href="#golden-section-method">11.2.2. Golden section method</a><ul>
-<li><a class="reference internal" href="#built-in-optimize-fmin-function">11.2.2.1. Built in &#8216;optimize.fmin&#8217; function</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#maximize-function-f1">11.2.3. Maximize function: f1</a><ul>
-<li><a class="reference internal" href="#maximizing-using-the-newton-method">11.2.3.1. Maximizing using the Newton method</a></li>
-<li><a class="reference internal" href="#maximizing-using-the-secant-method">11.2.3.2. Maximizing using the Secant method</a></li>
-<li><a class="reference internal" href="#maximizing-using-the-built-in-optimize-function">11.2.3.3. Maximizing using the built in optimize function</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#multivariate-optimization">11.3. Multivariate optimization</a><ul>
-<li><a class="reference internal" href="#define-multivariate-i-e-bivariate-example-functions">11.3.1. Define multivariate (i.e. bivariate) example functions</a><ul>
-<li><a class="reference internal" href="#function-f3">11.3.1.1. Function f3</a></li>
-<li><a class="reference internal" href="#function-f4">11.3.1.2. Function f4</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#multivariate-optimization-methods">11.3.2. Multivariate optimization methods</a><ul>
-<li><a class="reference internal" href="#newton">11.3.2.1. 2.2.1 Newton</a></li>
-<li><a class="reference internal" href="#built-in-fmin-tnc-in-scipy-optimize-tnc">11.3.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#maximize-multivariate-function">11.3.3. Maximize multivariate function</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">11.4. Homework</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Slides_Cake.html" class="btn btn-neutral float-right" title="12. The cake eating problem"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Slides_Root.html" class="btn btn-neutral" title="10. Root finding"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="Slides_Root.html"
-                        title="previous chapter">10. Root finding</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Slides_Cake.html"
-                        title="next chapter">12. The cake eating problem</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Juergen Jung.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="Slides_Cake.html" title="12. The cake eating problem"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="Slides_Root.html" title="10. Root finding"
-             >previous</a> |</li>
-        <li><a href="index.html">ComputationalEconomicsLectures 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Juergen Jung.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
