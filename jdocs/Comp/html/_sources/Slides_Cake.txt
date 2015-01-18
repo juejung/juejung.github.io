@@ -132,7 +132,7 @@ Numerical solution
 Function definitions
 -------------------------------------------------------------------------------
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -151,7 +151,7 @@ Call the optimizer with some starting values for the consumption vector
 
 
 
-.. code:: python
+.. code-block:: python
 
     T = 9
     beta = 0.9
@@ -175,13 +175,14 @@ Call the optimizer with some starting values for the consumption vector
     print("kv= " + str(kv))
     
 
-.. code::
+::
 
-    cv= [ 15.35  13.82  12.44  11.19  10.07   9.07   8.16   7.34   6.61
-    5.95]
-    kv= [ 100.     84.65   70.83   58.39   47.2    37.13   28.06   19.9
-    12.56
-        5.95]
+    cv= [ 15.35339933  13.8180594   12.43625346  11.19262811  10.0733653
+       9.06602877   8.15942589   7.3434833    6.60913497   5.94822148]
+    kv= [ 100.           84.64660067   70.82854128   58.39228782
+    47.19965971
+       37.12629441   28.06026564   19.90083975   12.55735645
+    5.94822148]
     
     
 
@@ -190,7 +191,7 @@ Call the optimizer with some starting values for the consumption vector
 Plotting is achieved via:
 -------------------------------------------------------------------------------
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots(2,1)
     #
@@ -207,7 +208,7 @@ Plotting is achieved via:
     plt.show()
     
 
-.. image:: figures/Slides_Cake_Cake_1.png
+.. image:: _static/Slides_Cake_Cake_1.*
    :width: 12 cm
 
 
@@ -218,7 +219,7 @@ Numerical solution in Python
 Define functions:
 
 
-.. code:: python
+.. code-block:: python
 
     def func1(cv):
         T = len(cv)
@@ -233,7 +234,7 @@ Define functions:
 
 
 
-.. code:: python
+.. code-block:: python
 
     # The constraint
     def eqn1(cv):
@@ -248,7 +249,7 @@ Optimizer in ``optimize`` toolbox
 -------------------------------------------------------------------------------
 
 
-.. code:: python
+.. code-block:: python
 
     T = 10
     x0 = np.ones(T,float)*0.1
@@ -256,7 +257,7 @@ Optimizer in ``optimize`` toolbox
     eqn1
     
 
-.. code::
+::
 
     Optimization terminated successfully.    (Exit mode 0)
                 Current function value: -15.2873553609
@@ -271,7 +272,7 @@ Optimizer in ``optimize`` toolbox
 And finally we plot the optimal consumption.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     # Plot analytical and numerical solution
@@ -285,15 +286,16 @@ And finally we plot the optimal consumption.
     print('Numeric soluntion cv =' + str())
     
 
-.. code::
+::
 
-    Analytic solution cv =[ 15.35  13.82  12.44  11.19  10.07   9.07
-    8.16   7.34   6.61   5.95]
+    Analytic solution cv =[ 15.35339933  13.8180594   12.43625346
+    11.19262811  10.0733653
+       9.06602877   8.15942589   7.3434833    6.60913497   5.94822148]
     Numeric soluntion cv =
     
     
 
-.. image:: figures/Slides_Cake_Optimal_Consumption_1.png
+.. image:: _static/Slides_Cake_Optimal_Consumption_1.*
    :width: 12 cm
 
 

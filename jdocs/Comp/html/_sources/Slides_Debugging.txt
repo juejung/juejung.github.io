@@ -1,0 +1,92 @@
+Debugging
+===========
+
+Usually people make mistakes. This is not any different when you write Python
+code. Finding and fixing mistakes or coding errors is called **debugging** or
+finding **bugs**.
+
+Using print statements to spot mistakes
+-------------------------------------------------------------------------------
+
+The easiest method to find errors or computer-bugs is to put a lot of
+``print()`` statements into your code, so you can see how specific variable
+values change.
+
+
+.. code-block:: python
+
+    for i in range(4):
+        x = 2 - i
+        y = 100 / x
+    
+
+::
+
+    <class 'ZeroDivisionError'>
+    division by zero
+    
+
+
+
+Here our program throws an error message because at some point in our loop we
+attempt to divide by zero, which is not defined. This is pretty obvious in this
+example but let's assume that we have trouble spotting the mistake. What you
+can do now is you can add ``print()`` statements into the loop so you can see
+how the values of the variables change::
+
+    for i in range(4):
+        x = 2 - i
+        print('x = ', x)
+        y = 100 / x
+        print('y = ', y)
+
+We now get::
+
+    x =  2
+    y =  50.0
+    x =  1
+    y =  100.0
+    x =  0
+    Traceback (most recent call last):
+
+    File "<ipython-input-1-1f94d41198f5>", line 4, in <module>
+        y = 100 / x
+
+    ZeroDivisionError: division by zero
+
+You can now see how the variables change as the loop progresses and how the
+division by zero error happens eventually.
+
+Using the debugger
+-------------------------------------------------------------------------------
+
+We next import the debugger::
+
+    for i in range(4):
+        import pdb; pdb.set_trace()  # XXX BREAKPOINT
+        x = 2 - i
+        y = 100 / x
+
+This will stop the code in the line where you set the ``Breakpoint``. So the
+code will enter the loop with value ``i=0`` and then stop the execution. You can
+now inspect variable values from the command line. Type ``?`` and hit enter and
+you will see all the commands that you can now run.
+If you type ``n`` it
+will simply execute the next line of code. You can step through the code line
+by line and observe exactly what changes in each step.
+If you type ``cont`` for
+continue it will run the code until it hits the ``Breakpoint`` again in the
+second iteration of the loop. It will then pause again at ``i=1`` so that you
+can inspect all the variables again from command line.
+
+In class exercises
+----------------------
+
+A simple function again. We next program a function that calculates the
+standard deviation of the elements of an input vector.
+
+Homework
+-------------------------------------------------------------------------------
+
+:doc:`./Lecture_Debugging/Homework/Homework_Debugging`
+

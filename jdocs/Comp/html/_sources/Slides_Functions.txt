@@ -8,7 +8,7 @@ In Python we can write the following to define a simple function. We start with
 two simple function definitions and save them in a file called ``myFunctions.py``
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ two simple function definitions and save them in a file called ``myFunctions.py`
 We next define our own functions and save them as ``myFunctions.py``
 
 
-.. code:: python
+.. code-block:: python
 
     # File 1: myFunctions.py
     def hw1(r1, r2):
@@ -45,7 +45,7 @@ functions with the ``import`` command. We save this new Python script as
 ``Lecture_Functions\myFunctions.py``
 
 
-.. code:: python
+.. code-block:: python
 
     # File 2: Lecture_Functions\myFunctions.py
     import myFunctions as mfunc
@@ -55,7 +55,7 @@ functions with the ``import`` command. We save this new Python script as
     mfunc.hw2(2.5,5.6)
     
 
-.. code::
+::
 
     0.31154136351337786
     Hello, World! sin(2.50+5.60) = 0.97
@@ -71,7 +71,7 @@ Graphing functions with two input arguments z = f(x,y)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code:: python
+.. code-block:: python
 
     from mpl_toolkits.mplot3d import Axes3D
     
@@ -93,7 +93,7 @@ Graphing functions with two input arguments z = f(x,y)
 
 
 
-.. code:: python
+.. code-block:: python
 
     fig = plt.figure(figsize=(14,16))
     ax = Axes3D(fig)
@@ -101,7 +101,7 @@ Graphing functions with two input arguments z = f(x,y)
     plt.show()
     
 
-.. image:: figures/Slides_Functions_Fig3DPlot_1.png
+.. image:: _static/Slides_Functions_Fig3DPlot_1.*
    :width: 12 cm
 
 
@@ -120,7 +120,7 @@ then evaluated at every point (x,y) over the grid. The
 ``ax.plot_wireframe`` command produces the picture.
 
 
-.. code:: python
+.. code-block:: python
 
     def g(x, y):
         res=(1 + y * 2) ** (-x / y) * (1 + y * 1) ** (x / y)
@@ -141,7 +141,7 @@ then evaluated at every point (x,y) over the grid. The
 
 
 
-.. code:: python
+.. code-block:: python
 
     fig = plt.figure(figsize=(14,16))
     ax = Axes3D(fig)
@@ -149,8 +149,169 @@ then evaluated at every point (x,y) over the grid. The
     plt.show()
     
 
-.. image:: figures/Slides_Functions_Fig3DPlot_1.png
+.. image:: _static/Slides_Functions_Fig3DPlot_1.*
    :width: 12 cm
+
+
+
+Scope of variables in functions
+-------------------------------------------------------------------------------
+
+When we use functions we need to distinguish between variables that are local
+to functions and that can therefore be readily accessed and manipulated
+by the functions and
+variables that are defined outside of a function. These variables usually
+cannot be manipulated directly from within a function.
+
+
+.. code-block:: python
+
+    def myFun(x):
+        x += 1
+        print('x in myFun = ', x)
+    
+    # Call function
+    x = 10
+    myFun(5)
+    print('x = ', x)
+    
+
+::
+
+    x in myFun =  6
+    x =  10
+    
+    
+
+
+
+Now let's try to access a variable that is defined outside of the function in
+what is called the global name space as opposed to the local name space inside of
+the function.
+
+
+.. code-block:: python
+
+    def myFun2(x):
+        x += 1
+        print('x inside myFun2 = ', x)
+        print('y inside myFun2 = ', y)
+    
+    # Call function
+    y = 10
+    myFun2(5)
+    
+
+::
+
+    x inside myFun2 =  6
+    y inside myFun2 =  10
+    
+    
+
+
+
+Here we see that it is still possible to access variable ``y`` despite the fact
+that it is not handed in explicitly. This is bad programming style and should
+be avoided. Always try to be as explicit as possible. If you want to use input
+argument ``y`` in your function, then define is explicitly as input argument.
+Let us now try to change the value of variable ``y`` inside of the function.
+
+
+.. code-block:: python
+
+    def myFun3(x):
+        x += 1
+        print('x inside myFun3 = ', x)
+        y = 5
+        print('y inside myFun3 = ', y)
+    
+    # Call function
+    y = 10
+    myFun3(5)
+    print('y =', y)
+    
+
+::
+
+    x inside myFun3 =  6
+    y inside myFun3 =  5
+    y = 10
+    
+    
+
+
+
+Here we ``y`` again and define it as a local variable inside the function.
+However, this change is only
+valid inside the local name space of the function. Once we are outside the
+function the value of ``y`` is 10 again. So ``y`` has now two instances, once
+in the local name space inside the function and another one in the global
+name space outside of the function.
+Let's next try to manipulate a variable that is not explicitly handed into the
+function.
+
+
+.. code-block:: python
+
+    def myFun4(x):
+        x += 1
+        print('x inside myFun4 = ', x)
+        print('y inside myFun4 = ', y)
+        y = 1
+        print('y inside myFun4 = ', y)
+    
+    # Call function
+    y = 10
+    myFun4(5)
+    print('y =', y)
+    
+
+::
+
+    <class 'UnboundLocalError'>
+    local variable 'y' referenced before assignment
+    
+
+
+
+Here we get an error because the interpreter defines ``y`` as local variable
+and the first print statement happens before the local variable ``y`` is
+defined.
+
+We could finally use variable ``y`` as a global variable in which case we can
+change it outside **and** inside the function. Again, this is considered bad
+programming style as it can very quickly lead to errors that will be difficult
+to spot.
+
+
+.. code-block:: python
+
+    def myFun5(x):
+        global y
+        x += 1
+        print('x inside myFun5 = ', x)
+        print('y inside myFun5 = ', y)
+        y += 1
+        print('y inside myFun5 = ', y)
+    
+    # Call function
+    y = 10
+    print('y =', y)
+    myFun5(5)
+    print('y =', y)
+    
+
+::
+
+    y = 10
+    x inside myFun5 =  6
+    y inside myFun5 =  10
+    y inside myFun5 =  11
+    y = 11
+    
+    
+
 
 
 
