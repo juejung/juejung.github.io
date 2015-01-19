@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Working with data from the web &mdash; Computational Economics 1.0 documentation</title>
+  <title>1. Course Administration &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
 
   
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="11. Random numbers" href="Slides_Random.html"/>
-        <link rel="prev" title="9. Working with data" href="Slides_Data.html"/> 
+        <link rel="next" title="2. First steps in Python" href="Slides_Basics.html"/>
+        <link rel="prev" title="Welcome to Computational Economics!" href="index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -58,9 +58,9 @@
         
         
             <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. A brief introduction to Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">1. Course Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-python">1.1. Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-and-github">1.2. Git and Github</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -127,9 +127,9 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Data.html#homework">9.5. Homework</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">10. Working with data from the web</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">10.1. More tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">10.2. Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">10. Working with data from the web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#more-tutorials">10.1. More tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#homework">10.2. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">11. Random numbers</a><ul>
@@ -240,10 +240,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>10. Working with data from the web</li>
+    <li>1. Course Administration</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/Slides_WebData.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/Slides_CourseAdministration.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -251,185 +251,150 @@
 </div>
           <div role="main">
             
-  <div class="section" id="working-with-data-from-the-web">
-<h1>10. Working with data from the web<a class="headerlink" href="#working-with-data-from-the-web" title="Permalink to this headline">¶</a></h1>
-<p>When you try to scrape or harvest data from the internet it is useful to know
-the basics of <a class="reference external" href="http://www.google.com/search?q=what+is+html">html</a> which is
-the markup language that is used to create websites. You can look at the source
-code of a website in your browser. Simply right click (if on Windows) and click
-on view frame source. When we download information from the web, we usually
-download this source code and then run
-a <a class="reference external" href="http://www.google.com/search?q=what+is+a_parser">parser</a>
-over the html source code to extract information.</p>
-<p>The Python library <tt class="docutils literal"><span class="pre">BeautifulSoup</span></tt> helps us parsing out the information from
-the html-data that we get after downloading the web page. The additional
-library <tt class="docutils literal"><span class="pre">request</span></tt> allows us to download source codes from websites. We
-therefore first need to import these two libraries.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">re</span>
+  <div class="section" id="course-administration">
+<h1>1. Course Administration<a class="headerlink" href="#course-administration" title="Permalink to this headline">¶</a></h1>
+<p>We use <strong>Python</strong> for a number of reasons:</p>
+<ul class="simple">
+<li>It is  open source and therefore free</li>
+<li>It is platform independent, that is, this software runs on Windows or
+Linux PC&#8217;s as well as Apple computers</li>
+<li>Python has a large user base and is still growing in
+popularity. You will therefore be able to find a lot of material online in
+case you run into trouble and need expert help and/or good sources</li>
+</ul>
+<div class="section" id="installing-python">
+<h2>1.1. Installing Python<a class="headerlink" href="#installing-python" title="Permalink to this headline">¶</a></h2>
+<p>Next you have to download Python. If you are running Linux or Apple, some
+version of Python is already installed. However, these basic Python versions
+miss some of the important scientific packages that you will still have to
+install. The most important ones are <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt>, and
+<tt class="docutils literal"><span class="pre">matplotlib</span></tt>. If you
+&#8220;google&#8221; these packages you should be able to find them on the internet. They
+need to be installed.</p>
+<p id="index-0">I also recommend that you install an IDE for Python. One that is very amenable
+for scientific computation is called <strong>Spyder</strong>. Spyder is part of most Linux
+repositories and can easily be installed from there.</p>
+<p>The easiest way to install Python and Spyder and all
+sorts of other useful packages for scientific computing is to install Python
+via the Anaconda distribution from: <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">https://store.continuum.io/cshop/anaconda/</a>
+This is a simple one click installation process which works for
+Linux/Windows/Mac and it installs everything!
+When prompted whether you want to install Python 2.7 or Python 3.4, go with
+3.4.</p>
+</div>
+<div class="section" id="git-and-github">
+<span id="index-1"></span><h2>1.2. Git and Github<a class="headerlink" href="#git-and-github" title="Permalink to this headline">¶</a></h2>
+<p>When you work on programming projects you may want to invest some time in
+learning a  <a class="reference external" href="http://www.google.com/search?q=version+control+system">version control system</a> like <strong>Git</strong>.</p>
+<div class="section" id="creating-a-free-github-account">
+<h3>1.2.1. Creating a free Github account<a class="headerlink" href="#creating-a-free-github-account" title="Permalink to this headline">¶</a></h3>
+<p>Git becomes really powerful when you use it on the cloud so that you can collaborate
+with other programmers. One of the most trendy services concerning Git is
+offered by a web service called <a class="reference external" href="https://github.com/">Github</a>.</p>
+<p>For lack of a better word, you can think of Github as a the Facebook for
+programmers (someone is probably killing me for this comparison - obviously
+Github is way cooler than Facebook). Github is free to use. Please go ahead and
+make an account on Github using the following name convention, all lowercase
+letters and NO middle names.  This is very important so please follow the name
+convention carefully:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">econ</span><span class="o">-</span><span class="n">firstname</span><span class="o">-</span><span class="n">lastname</span>
 </pre></div>
 </div>
-<p>The first package allows us to open web pages and the second, <tt class="docutils literal"><span class="pre">BeautifulSoup</span></tt>
-parses the html code and stores it in an easily accessible database format, or
-object. This object has methods that are tailor made to extract information
-from the html code of the website that we scrape from.
-The other two packages are Pandas and
-<a class="reference external" href="http://www.google.com/search?q=what+are+regular+expressions">Regular Expressions</a>.
-The latter is useful for pattern matching as you will see below.</p>
-<p>In this exercise we will download all video links from the
-<a class="reference external" href="https://www.youtube.com/">YouTube</a> starting page. We will extract the title
-for each video, its number of views, likes and dislikes. We then store
-everything in a Pandas dataframe for further statistical analysis.</p>
-<p>We first define the YouTube URL and assign it to a variable.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define url to Youtube</span>
-<span class="n">jurl</span> <span class="o">=</span> <span class="s">&#39;https://www.youtube.com/&#39;</span>
+<p>An example would be:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">econ</span><span class="o">-</span><span class="n">john</span><span class="o">-</span><span class="n">doe</span>
 </pre></div>
 </div>
-<p>We next open the Youtube site and read the page&#8217;s html code and assign it to
-the variable html.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</pre></div>
+<p>Choose a password and opt for the free-account version!</p>
+<p>All your homeworks and your exams will be submitted to me via Github. I made a
+Github repository for our class. You will receive an invitation to it in the
+first week of class and you will then be able to download and upload your codes
+from and to this repository.</p>
 </div>
-<p>We then assign the html code to the BeautifulSoup data format which allows us
-to sort through the html code more systematically.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>We next run a loop and extract all featured video links. First check
-the source code of the YouTube page and convince yourself that
-the links to the videos are all part of the
-<a class="reference external" href="http://www.google.com/search?q=what+is+a+CSS+class">CSS class</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;div class=&quot;yt-lockup-content&quot;&gt;
-</pre></div>
-</div>
-<p>Also not that the actual links to the video all start with the html tag:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;a href=&quot;/watch
-</pre></div>
-</div>
-<p>We next define an empty list so we can store all the links to the videos and
-then run a loop through the html source code and extract all links that start
-with <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></tt>. We append all these links to the <tt class="docutils literal"><span class="pre">link_list</span></tt> list.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&#39;div.yt-lockup-content a[href^=/watch]&#39;</span><span class="p">):</span>
-    <span class="c"># Store all links in a list</span>
-    <span class="n">newLink</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;href&#39;</span><span class="p">)</span>
-    <span class="n">link_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newLink</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Let&#8217;s print the first 5 entries of the list</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">newLink</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>/watch
-</pre></div>
-</div>
-<p>We then create an empty data frame that has the same number of rows as our
-list. In addition we add empty columns so that we can store the title, view,
-like and dislike information later on.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">))</span>
-<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">,</span> <span class="s">&#39;Title&#39;</span><span class="p">,</span> <span class="s">&#39;Views&#39;</span><span class="p">,</span> <span class="s">&#39;Likes&#39;</span><span class="p">,</span> <span class="s">&#39;Dislikes&#39;</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We next assign the <tt class="docutils literal"><span class="pre">link_list</span></tt> with all the video links to the dataframe.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
-<span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jurl</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>We then start the loop that runs through our list of video links and opens each
-one separately in a webpage. We than grab the title, number of views, number of
-likes and number of dislikes and store these data in the current row of our
-dataframe.
-We use <strong>regular expressions</strong> to find the numbers of views, likes and dislikes
-in the text string that is generated by the <tt class="docutils literal"><span class="pre">soup.select()</span></tt> and
-<tt class="docutils literal"><span class="pre">soup.find_all()</span></tt> functions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&#39;{} out of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
-
-    <span class="c"># Open first youtube video link</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-    <span class="c"># Assign it to Soup object</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
-
-    <span class="c"># Extract info and store in dataframe</span>
-    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Title&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Views&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> \
-      <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
-
-    <span class="c"># Extracting number of likes</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">,</span> \
-      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="c"># Extracting number of dislikes</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">,</span> \
-      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;I dislike this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>0 out of 204
-1 out of 204
-2 out of 204
-3 out of 204
-4 out of 204
-200 out of 204
-201 out of 204
-202 out of 204
-203 out of 204
-</pre></div>
-</div>
-<p>We finally sort the data according to number of views, starting with the most
-viewed video and print the first couple of entries:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&#39;Views&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>                                            Links  \
-26   https://www.youtube.com//watch?v=nfWlot6h_JM
-186  https://www.youtube.com//watch?v=nfWlot6h_JM
-181  https://www.youtube.com//watch?v=e-ORhEE9VVg
-45   https://www.youtube.com//watch?v=p1JPKLa-Ofc
-49   https://www.youtube.com//watch?v=VBmMU_iwe6U
-
-                                                 Title      Views
-Likes  \
-26               Taylor Swift - Shake It Off - YouTube  443341262
-2192969
-186              Taylor Swift - Shake It Off - YouTube  443341262
-2192975
-181               Taylor Swift - Blank Space - YouTube  298494329
-1975711
-45   Beyoncé - Drunk in Love (Explicit) ft. JAY Z -...  244913910
-969099
-49           Beyoncé - Run the World (Girls) - YouTube  243250692
-705776
-
-    Dislikes
-26    269992
-186   269993
-181   121129
-45     99443
-49    128237
-</pre></div>
-</div>
-<div class="section" id="more-tutorials">
-<h2>10.1. More tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
-<p>Here are additional web tutorials about Python web scraping that you can check
-out:</p>
+<div class="section" id="installing-and-using-a-git-client-locally-on-your-computer">
+<h3>1.2.2. Installing and using a Git client locally on your computer<a class="headerlink" href="#installing-and-using-a-git-client-locally-on-your-computer" title="Permalink to this headline">¶</a></h3>
+<p>After making the account on Github you need to &#8220;prepare&#8221; your computer for
+using the version control system. It is easiest to download a client software
+for Git which comes with the entire Git system as well as a graphical user
+interface.  I recommend <strong>SmartGit</strong>. It is free, easy to use,  platform independent and will
+install the client and the underlying Git architecture.</p>
+<p>You can download the client here: <a class="reference external" href="http://www.syntevo.com/smartgit/">SmartGit</a>.
+So please go ahead and download and install it.</p>
+<p>After you have the client installed you can start using Git locally on
+your computer. Please read about some of the basic functionality of Git <a class="reference external" href="http://git-scm.com/doc">here</a> and also familiarize yourself with SmartGit
+following the <a class="reference external" href="http://www.syntevo.com/smartgit/tour/">intro tour</a>.</p>
+<p>If all this is confusing, here are some more introductions to Git and Github:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Scraping URLs from the Pycon 2014 Conference by
-<a class="reference external" href="http://blog.miguelgrinberg.com/post/easy-web-scraping-with-python">Miguel Grinberg</a>.</li>
-<li>A <a class="reference external" href="https://www.youtube.com/watch?v=3xQTJi2tqgk">youtube tutorial</a> for web scraping with Python.</li>
+<li><a class="reference external" href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">Understanding Github</a></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="homework">
-<h2>10.2. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="Lecture_WebData/Homework/Homework_WebData.html"><em>Homework</em></a></p>
+<div class="section" id="submitting-homework-midterm-and-the-final-via-git-and-github">
+<h3>1.2.3. Submitting homework, midterm and the final via Git and GitHub<a class="headerlink" href="#submitting-homework-midterm-and-the-final-via-git-and-github" title="Permalink to this headline">¶</a></h3>
+<p>A homework will be due every week. You need to submit the homework and all
+other assignments via GitHub. There is a little bit of setup involved but it is
+not very complicated. Here are the steps.</p>
+<blockquote>
+<div><p>1. After you created a free GitHub account you will receive an invitation
+email from me with a link to a private GitHub repository that has your name.
+Wait for this email.</p>
+<p>2. Create a new folder on your computer. Inside this folder open a terminal
+window. (In windows you can open a terminal window by clicking the start
+button and type cmd followed by enter - I showed that in class.)</p>
+<p>3. You first need to &#8220;clone&#8221; this GitHub repository into the folder you just
+created. You do this by simply typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname
+</pre></div>
+</div>
+<p><strong>You only do this part once</strong></p>
+<ol class="arabic" start="4">
+<li><p class="first">Next you copy the entire repository from GitHub locally into your folder:</p>
+<p>git pull</p>
+</li>
+</ol>
+<p>You should now have a homework, midterm and final folder inside of the folder
+you created above. Have a look.</p>
+<p>5. Inside of the homework folder you will find a file called <tt class="docutils literal"><span class="pre">homework1.py</span></tt>.
+Open it up with <strong>Spyder</strong> and start coding according to the homework 1
+instructions shown in the course slides.</p>
+<p>6. After you are done programming, checked that the code runs through without
+any errors you need to &#8220;upload&#8221; the repository back on to GitHub.</p>
+<ol class="arabic" start="7">
+<li><p class="first">You first type:</p>
+<p>git status</p>
+</li>
+</ol>
+<p>This will show you the changed files.</p>
+<ol class="arabic" start="8">
+<li><p class="first">Next you need to &#8220;stage&#8221; your changes:</p>
+<p>git add -u</p>
+</li>
+</ol>
+<blockquote>
+<div>This will stage all the changes you have made.</div></blockquote>
+<ol class="arabic" start="9">
+<li><p class="first">Next you need to commit your changes:</p>
+<p>git commit -m &#8220;your personal commit message&#8221;</p>
+</li>
+<li><p class="first">Finally you upload all your changes to GitHub:</p>
+</li>
+</ol>
+<blockquote>
+<div><blockquote>
+<div>git push</div></blockquote>
+<p>This step will ask for your GitHub username and password.</p>
+</div></blockquote>
+</div></blockquote>
+<p>Here is a quick summary again for homework 2:</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull
+# make your changes to homework2.py and save them
+git add -u
+git merge -m &quot;my personal message for hw 2&quot;
+git push
+</pre></div>
+</div>
+<p>So it&#8217;s not that difficult after all.</p>
+</div>
 </div>
 </div>
 
@@ -439,10 +404,10 @@ out:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Random.html" class="btn btn-neutral float-right" title="11. Random numbers"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Basics.html" class="btn btn-neutral float-right" title="2. First steps in Python"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Data.html" class="btn btn-neutral" title="9. Working with data"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Computational Economics!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,161 @@
+Course Administration
+===============================================================================
+
+We use **Python** for a number of reasons:
+
+* It is  open source and therefore free
+* It is platform independent, that is, this software runs on Windows or
+  Linux PC's as well as Apple computers
+* Python has a large user base and is still growing in
+  popularity. You will therefore be able to find a lot of material online in
+  case you run into trouble and need expert help and/or good sources
+
+Installing Python
+-------------------------------------------------------------------------------
+
+Next you have to download Python. If you are running Linux or Apple, some
+version of Python is already installed. However, these basic Python versions
+miss some of the important scientific packages that you will still have to
+install. The most important ones are ``numpy``, ``scipy``, and
+``matplotlib``. If you
+"google" these packages you should be able to find them on the internet. They
+need to be installed.
+
+.. index:: Spyder
+
+I also recommend that you install an IDE for Python. One that is very amenable
+for scientific computation is called **Spyder**. Spyder is part of most Linux
+repositories and can easily be installed from there.
+
+The easiest way to install Python and Spyder and all
+sorts of other useful packages for scientific computing is to install Python
+via the Anaconda distribution from: https://store.continuum.io/cshop/anaconda/
+This is a simple one click installation process which works for
+Linux/Windows/Mac and it installs everything!
+When prompted whether you want to install Python 2.7 or Python 3.4, go with
+3.4.
+
+.. index:: Git, Github
+
+Git and Github
+-------------------------------------------------------------------------------
+
+When you work on programming projects you may want to invest some time in
+learning a  `version control system
+<http://www.google.com/search?q=version+control+system>`_ like **Git**.
+
+Creating a free Github account
+++++++++++++++++++++++++++++++
+
+Git becomes really powerful when you use it on the cloud so that you can collaborate
+with other programmers. One of the most trendy services concerning Git is
+offered by a web service called `Github <https://github.com/>`_.
+
+For lack of a better word, you can think of Github as a the Facebook for
+programmers (someone is probably killing me for this comparison - obviously
+Github is way cooler than Facebook). Github is free to use. Please go ahead and
+make an account on Github using the following name convention, all lowercase
+letters and NO middle names.  This is very important so please follow the name
+convention carefully::
+
+    econ-firstname-lastname
+
+An example would be::
+
+    econ-john-doe
+
+Choose a password and opt for the free-account version!
+
+All your homeworks and your exams will be submitted to me via Github. I made a
+Github repository for our class. You will receive an invitation to it in the
+first week of class and you will then be able to download and upload your codes
+from and to this repository.
+
+Installing and using a Git client locally on your computer
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+After making the account on Github you need to "prepare" your computer for
+using the version control system. It is easiest to download a client software
+for Git which comes with the entire Git system as well as a graphical user
+interface.  I recommend **SmartGit**. It is free, easy to use,  platform independent and will
+install the client and the underlying Git architecture.
+
+You can download the client here: `SmartGit <http://www.syntevo.com/smartgit/>`_.
+So please go ahead and download and install it.
+
+After you have the client installed you can start using Git locally on
+your computer. Please read about some of the basic functionality of Git `here
+<http://git-scm.com/doc>`_ and also familiarize yourself with SmartGit
+following the `intro tour <http://www.syntevo.com/smartgit/tour/>`_.
+
+If all this is confusing, here are some more introductions to Git and Github:
+
+  * `Understanding Github <http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1>`_
+
+Submitting homework, midterm and the final via Git and GitHub
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A homework will be due every week. You need to submit the homework and all
+other assignments via GitHub. There is a little bit of setup involved but it is
+not very complicated. Here are the steps.
+
+ 1. After you created a free GitHub account you will receive an invitation
+ email from me with a link to a private GitHub repository that has your name.
+ Wait for this email.
+
+ 2. Create a new folder on your computer. Inside this folder open a terminal
+ window. (In windows you can open a terminal window by clicking the start
+ button and type cmd followed by enter - I showed that in class.)
+
+ 3. You first need to "clone" this GitHub repository into the folder you just
+ created. You do this by simply typing::
+
+    git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname
+
+ **You only do this part once**
+
+ 4. Next you copy the entire repository from GitHub locally into your folder::
+
+    git pull
+
+ You should now have a homework, midterm and final folder inside of the folder
+ you created above. Have a look.
+
+ 5. Inside of the homework folder you will find a file called ``homework1.py``.
+ Open it up with **Spyder** and start coding according to the homework 1
+ instructions shown in the course slides.
+
+ 6. After you are done programming, checked that the code runs through without
+ any errors you need to "upload" the repository back on to GitHub.
+
+ 7. You first type::
+
+    git status
+
+ This will show you the changed files.
+
+ 8. Next you need to "stage" your changes::
+
+    git add -u
+
+  This will stage all the changes you have made.
+
+ 9. Next you need to commit your changes::
+
+    git commit -m "your personal commit message"
+
+ 10. Finally you upload all your changes to GitHub::
+
+    git push
+
+  This step will ask for your GitHub username and password.
+
+Here is a quick summary again for homework 2::
+
+    git pull
+    # make your changes to homework2.py and save them
+    git add -u
+    git merge -m "my personal message for hw 2"
+    git push
+
+So it's not that difficult after all.
