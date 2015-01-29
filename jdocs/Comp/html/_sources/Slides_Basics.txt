@@ -12,7 +12,7 @@ After installation, open **Spyder** and try some of the following in the
 command line:
 
 
-.. code-block:: python
+.. code:: python
 
     >>> x = 2.4
     >>> y = 3.0
@@ -56,7 +56,7 @@ abbreviate the name of the module by typing ``import math as m`` in which case
 you can now take the square root with ``m.sqrt(9)`` as in the following script.
 
 
-.. code-block:: python
+.. code:: python
 
     import math as m
     x = 2.455555
@@ -70,7 +70,7 @@ you can now take the square root with ``m.sqrt(9)`` as in the following script.
     print(m.sqrt(x))
     
 
-::
+.. code::
 
      --- OUTPUT: ---
     5.578995
@@ -101,7 +101,7 @@ you need to type the double brackets ``{}`` in your text string as a
 placeholder for where the number will be inserted.
 
 
-.. code-block:: python
+.. code:: python
 
     import math as m
     x = 2.455555
@@ -121,7 +121,7 @@ placeholder for where the number will be inserted.
     print("sqrt(x)= {:5.2f}".format(m.sqrt(x)))
     
 
-::
+.. code::
 
      --- OUTPUT: ---
     x+y 5.578995
@@ -140,7 +140,7 @@ You can write more complex output with more than one number embedded in a text
 as follows:
 
 
-.. code-block:: python
+.. code:: python
 
     print(" --- OUTPUT: --- ")
     print("""We want to use variable x = {0:4.2f} \n and divide by
@@ -148,7 +148,7 @@ as follows:
     x/y = {2:4.2f}""".format(x, y, x/y))
     
 
-::
+.. code::
 
      --- OUTPUT: ---
     We want to use variable x = 2.46
@@ -223,13 +223,13 @@ objects. A list can be a list of numbers, words, or a combination. Here is an
 example:
 
 
-.. code-block:: python
+.. code:: python
 
     alist = [1, "me", 3.456, "you", 50]
     print("The list is alist = {}".format(alist))
     
 
-::
+.. code::
 
     The list is alist = [1, 'me', 3.456, 'you', 50]
     
@@ -243,12 +243,12 @@ which combines a string ``"The list is alist = "`` together with another string
 ``str(alist)``. The Python funciton **str()** translates a number into a string,
 i.e., a word and then prints the combined "word".
 
-.. code-block:: python
+.. code:: python
 
     print("The list is alist = " + str(alist))
     
 
-::
+.. code::
 
     The list is alist = [1, 'me', 3.456, 'you', 50]
     
@@ -258,7 +258,7 @@ i.e., a word and then prints the combined "word".
 We can access the elements of a list bit by bit using list indexation. Note
 that the first element in the list is at position 0.
 
-.. code-block:: python
+.. code:: python
 
     print(alist[0])
     print(alist[1])
@@ -267,7 +267,7 @@ that the first element in the list is at position 0.
     print(alist[4])
     
 
-::
+.. code::
 
     1
     me
@@ -280,7 +280,7 @@ that the first element in the list is at position 0.
 
 Or prettier
 
-.. code-block:: python
+.. code:: python
 
     print("alist[0] = {}".format(alist[0]))
     print("alist[1] = {}".format(alist[1]))
@@ -289,7 +289,7 @@ Or prettier
     print("alist[4] = {}".format(alist[4]))
     
 
-::
+.. code::
 
     alist[0] = 1
     alist[1] = me
@@ -307,7 +307,7 @@ position. If you want to extract the first three elements you can simply index
 the list as ``alist[:3]``. If you want to get everything from element 2 onwards you
 can ``alist[2:]``
 
-.. code-block:: python
+.. code:: python
 
     print(alist)
     print("alist[0:4] = {}".format(alist[0:4]))
@@ -315,7 +315,7 @@ can ``alist[2:]``
     print("alist[2:] = {}".format(alist[2:]))
     
 
-::
+.. code::
 
     [1, 'me', 3.456, 'you', 50]
     alist[0:4] = [1, 'me', 3.456, 'you']
@@ -329,7 +329,7 @@ can ``alist[2:]``
 If you want to grab the last element of the list you can start indexing with
 negative numbers.
 
-.. code-block:: python
+.. code:: python
 
     print(alist)
     print("alist[-1] = {}".format(alist[-1]))
@@ -337,7 +337,7 @@ negative numbers.
     print("alist[-3] = {}".format(alist[-3]))
     
 
-::
+.. code::
 
     [1, 'me', 3.456, 'you', 50]
     alist[-1] = 50
@@ -353,13 +353,13 @@ you want to replace the third element of the list with the word "Mom" you
 simply assign it as
 
 
-.. code-block:: python
+.. code:: python
 
     alist[2] = "Mom"
     print(alist)
     
 
-::
+.. code::
 
     [1, 'me', 'Mom', 'you', 50]
     
@@ -373,13 +373,13 @@ Tuples
 Are immutable lists, that once defined, cannot be changed anymore.
 It is a read-only list.
 
-.. code-block:: python
+.. code:: python
 
     a_tuple = (1, "me", 3.456, "you", 50)
     print(a_tuple)
     
 
-::
+.. code::
 
     (1, 'me', 3.456, 'you', 50)
     
@@ -388,13 +388,13 @@ It is a read-only list.
 
 Now try to change an element of the tuple and see what happens.
 
-.. code-block:: python
+.. code:: python
 
     a_tuple[2] = "Mom"
     print(a_tuple)
     
 
-::
+.. code::
 
     <class 'TypeError'>
     'tuple' object does not support item assignment
@@ -417,7 +417,7 @@ Here is a brief example where we use names of people as keys and store various
 information together with those keys. We can then retrieve the information of
 each person with the persons name.
 
-.. code-block:: python
+.. code:: python
 
     # Defining a dictionary as adict = {'name': income}
     adict = {'James': 20000}
@@ -428,7 +428,7 @@ each person with the persons name.
 
 We can now retrive this info using the key.
 
-.. code-block:: python
+.. code:: python
 
     print(adict)
     print(adict['James'])
@@ -436,9 +436,9 @@ We can now retrive this info using the key.
     print(adict['Tom'])
     
 
-::
+.. code::
 
-    {'James': 20000, 'Tom': 80000, 'Jim': 50000}
+    {'Tom': 80000, 'James': 20000, 'Jim': 50000}
     20000
     50000
     80000
@@ -448,13 +448,13 @@ We can now retrive this info using the key.
 
 You can delete an element with
 
-.. code-block:: python
+.. code:: python
 
     del adict['James']
     print(adict)
     
 
-::
+.. code::
 
     {'Tom': 80000, 'Jim': 50000}
     

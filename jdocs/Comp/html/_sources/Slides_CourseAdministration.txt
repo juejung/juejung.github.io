@@ -45,7 +45,7 @@ learning a  `version control system
 <http://www.google.com/search?q=version+control+system>`_ like **Git**.
 
 Creating a free Github account
-++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Git becomes really powerful when you use it on the cloud so that you can collaborate
 with other programmers. One of the most trendy services concerning Git is
@@ -72,7 +72,7 @@ first week of class and you will then be able to download and upload your codes
 from and to this repository.
 
 Installing and using a Git client locally on your computer
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 After making the account on Github you need to "prepare" your computer for
 using the version control system. It is easiest to download a client software
@@ -92,61 +92,126 @@ If all this is confusing, here are some more introductions to Git and Github:
 
   * `Understanding Github <http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1>`_
 
-Submitting homework, midterm and the final via Git and GitHub
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Submitting homework, midterm and the final via GitHub
+-------------------------------------------------------------------------------
 
 A homework will be due every week. You need to submit the homework and all
 other assignments via GitHub. There is a little bit of setup involved but it is
-not very complicated. Here are the steps.
+not very complicated.  After you create a free GitHub account you will receive
+an invitation email from me with a link to a private GitHub repository that has
+your name.  Wait for this email and accept the invitation. Next you create a new folder on your computer where you plan to have all your
+codes saved. Let's call this folder ``myCompEconRepository`` or something
+similar.
 
- 1. After you created a free GitHub account you will receive an invitation
- email from me with a link to a private GitHub repository that has your name.
- Wait for this email.
+Then execute the following steps:
 
- 2. Create a new folder on your computer. Inside this folder open a terminal
- window. (In windows you can open a terminal window by clicking the start
- button and type cmd followed by enter - I showed that in class.)
+  1. You first need to "clone" this GitHub repository into the folder you just
+     created. Log into GitHub, click on the Towson symbol under organizations
+     and click on your private repository that has your name. On the right hand
+     side, towards the bottom there's a field ``HTTPS clone URL`` containing
+     the URL of your repository. Just copy this address with ``ctrl-c`` or
+     click the copy button right next to it.
 
- 3. You first need to "clone" this GitHub repository into the folder you just
- created. You do this by simply typing::
+  2. Open your **SmartGit** client and under ``Repository`` in the menu bar on
+     top click ``clone``. This will open a window that will ask for the ``Remote
+     Git or SVN repository``. Into this field you copy the URL address from step 1.
 
-    git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname
+  3. Hit ``next``. It will ask for a master password - just enter your Git
+     password here.
 
- **You only do this part once**
+  4. It now asks for a local folder where you want your repository to be saved.
+     Here you simply choose the ``myCompEconRepository`` folder that you created
+     above. Then click ``finish``.
 
- 4. Next you copy the entire repository from GitHub locally into your folder::
+**You only do this part once!** We actually do this in class together.
+You now have your private GitHub repository cloned/copied into a local folder
+called ``myCompEconRepository`` on your computer. You can open this folder with your file
+browser and start working with it. You can add Python script files, changes
+files that are already in there, etc.
 
-    git pull
+
+Submitting homework via SmartGit
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Whenever you work on a homework assignment follow these simple steps.
+
+ 1. Open **SmartGit** and within Smartgit open your repository - the one that
+    you have just cloned above. Usually it will already be open and you'll see
+    it in the left sidebar.
+
+ 2. Hit the ``Pull`` button. This will pull down all the changes and new files
+    from your GitHub account and syncronize your local folders with the cloud.
+
+ 3. Use **Spyder** or any text editor to work on your codes i.e., start
+    editing your scriptfiles.  They are usually called ``homework1.py``,
+    ``homework2.py``, etc.
+
+ 4. When you are done coding in Spyder go back to **SmartGit**. You will see
+    all the changed files in red now. This just indicates that you have made
+    changes to these files. Hit the ``Commit`` button and under the options that
+    appear choose ``commit and push``. It may ask for your Github username and
+    password again.
+
+ You have now uploaded all your local changes back to your online Github account.
+ You can actually check with your browser by going to your Github account. You
+ will see your new and changed files are now updated. Click on
+ the homework.py files and you'll see that your changes are all there.
+
+ So it's really just these 4 easy steps from now on, i.e., two buttons. Before
+ you start working ``Pull`` when you are done working ``Commit``.
+
+Submitting homework via command line
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+This is for advanced users - you can ignore this if you are content using
+**SmartGit** as described above. If you want to interact with **Git** via
+command line, here are the instructions.
+
+
+ 1. Inside your repository folder open a terminal
+    window. In windows you can open a terminal window by right clicking on the
+    mouse while holding the shift key. In the context menu choose ``open console
+    window here``.
+
+    You can clone the repository with ::
+
+        git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname.git
+
+ 2. Next  update your entire repository from GitHub locally into your folder by
+    typing::
+
+        git pull
 
  You should now have a homework, midterm and final folder inside of the folder
  you created above. Have a look.
 
- 5. Inside of the homework folder you will find a file called ``homework1.py``.
+ 3. Inside of the homework folder you will find a file called ``homework1.py``.
  Open it up with **Spyder** and start coding according to the homework 1
  instructions shown in the course slides.
 
- 6. After you are done programming, checked that the code runs through without
- any errors you need to "upload" the repository back on to GitHub.
+ 4. After you are done programming please check that the code runs through without
+ any errors. Then you need to "upload" the repository back on to GitHub - this
+ part is called **pushing** the codes back up on the cloud.
 
- 7. You first type::
+ 5. You first type::
 
-    git status
+        git status
 
  This will show you the changed files.
 
- 8. Next you need to "stage" your changes::
+ 6. Next you need to "stage" your changes::
 
-    git add -u
+        git add -u
 
   This will stage all the changes you have made.
 
- 9. Next you need to commit your changes::
+ 7. Next you need to commit your changes::
 
-    git commit -m "your personal commit message"
+        git commit -m "your personal commit message"
 
- 10. Finally you upload all your changes to GitHub::
+ 8. Finally you upload all your changes to GitHub ::
 
-    git push
+        git push
 
   This step will ask for your GitHub username and password.
 

@@ -58,9 +58,10 @@
         
         
             <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. A brief introduction to Python</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-github">1.3. Submitting homework, midterm and the final via GitHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -262,7 +263,7 @@ We will then import the <tt class="docutils literal"><span class="pre">Pandas</s
 <p>The first dataset that we are working with is a comma separated file, called
 <a class="reference download internal" href="_downloads/Lecture_Data_Excel_a.csv"><tt class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></tt></a>.
 We first import this file using the <tt class="docutils literal"><span class="pre">pd.read_csv</span></tt> command from the <tt class="docutils literal"><span class="pre">Pandas</span></tt> library.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">ggplot</span> <span class="kn">import</span> <span class="o">*</span>
@@ -274,7 +275,7 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">)</span>  <span class="c"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Read in small data from .csv file</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Read in small data from .csv file</span>
 <span class="c"># Filepath</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s">&#39;Lecture_Data/&#39;</span>
 <span class="c"># In windows you can also specify the absolute path to your data file</span>
@@ -292,7 +293,7 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  Unnamed: 2  Unnamed: 3
+<div class="code highlight-python"><div class="highlight"><pre>                 Area  Frequency  Unnamed: 2  Unnamed: 3
 0          Accounting         73         NaN         NaN
 1             Finance         52         NaN         NaN
 2  General management         36         NaN         NaN
@@ -301,13 +302,13 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 </pre></div>
 </div>
 <p>Drop column 3 and 4 and let&#8217;s have a look at the data again.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency
+<div class="code highlight-python"><div class="highlight"><pre>                 Area  Frequency
 0          Accounting         73
 1             Finance         52
 2  General management         36
@@ -317,13 +318,13 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 </div>
 <p>We next generate a new variable called <tt class="docutils literal"><span class="pre">relFrequency</span></tt> that contains the relative
 frequencies.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Make new column with relative frequency</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Make new column with relative frequency</span>
 <span class="n">df</span><span class="p">[</span><span class="s">&#39;relFrequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="c"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  relFrequency
+<div class="code highlight-python"><div class="highlight"><pre>                 Area  Frequency  relFrequency
 0          Accounting         73      0.288538
 1             Finance         52      0.205534
 2  General management         36      0.142292
@@ -332,7 +333,7 @@ frequencies.</p>
 </pre></div>
 </div>
 <p>Now we grab the relative frequencies out of the DataFrame into a numpy array.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;relFrequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;relFrequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -341,7 +342,7 @@ frequencies.</p>
 <div class="section" id="bar-chart">
 <h3>9.2.1. Bar chart<a class="headerlink" href="#bar-chart" title="Permalink to this headline">¶</a></h3>
 <p>We first make a bar chart of the absolute frequencies.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="c">#</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">)),</span> <span class="n">xv</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
 <span class="c"># Annotate with text</span>
@@ -365,7 +366,7 @@ folder.</p>
 <div class="section" id="pie-chart">
 <h3>9.2.2. Pie chart<a class="headerlink" href="#pie-chart" title="Permalink to this headline">¶</a></h3>
 <p>We next make a pie chart using the relative frequencies stored in vector <tt class="docutils literal"><span class="pre">xv</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="c"># Annotate with text</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Relative Frequency Pie Chart&#39;</span><span class="p">)</span>
@@ -382,7 +383,7 @@ the continuous variable Height.
 The actual command for the histogram is <tt class="docutils literal"><span class="pre">hist</span></tt>. It returns three variables
 <tt class="docutils literal"><span class="pre">prob</span></tt>, <tt class="docutils literal"><span class="pre">bins</span></tt>, and <tt class="docutils literal"><span class="pre">patches</span></tt>. We use them in the following to add
 information to the histogram.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
 
 <span class="n">heightv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
@@ -419,13 +420,13 @@ information to the histogram.</p>
 which is a translation of <strong>R&#8217;s</strong> <tt class="docutils literal"><span class="pre">ggplot2</span></tt> package into <strong>Python</strong>. It
 follows a completely different graphing philosophy based on the <strong>grammar of
 grapics</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Using ggplot package</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Using ggplot package</span>
 <span class="k">print</span><span class="p">(</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;Height&#39;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
 <span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (10340591)&gt;
+<div class="code highlight-python"><div class="highlight"><pre>&lt;ggplot: (-9223372036842802046)&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Boxplot_1.png"><img alt="_images/Slides_Data_Boxplot_1.png" src="_images/Slides_Data_Boxplot_1.png" style="width: 12cm;" /></a>
@@ -433,7 +434,7 @@ grapics</strong></p>
 <div class="section" id="boxplots">
 <h3>9.2.4. Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">¶</a></h3>
 <p>A boxplot of height is made as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span>
 <span class="c"># Annotate with text</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Boxplot of Height&#39;</span><span class="p">)</span>
@@ -450,10 +451,10 @@ grapics</strong></p>
 <h3>9.3.1. Measures of central tendency<a class="headerlink" href="#measures-of-central-tendency" title="Permalink to this headline">¶</a></h3>
 <p>A quick way to produce summary statistics of our data set is to use <tt class="docutils literal"><span class="pre">panda's</span></tt>
 command <tt class="docutils literal"><span class="pre">describe</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>          Height   Response  AverageMathSAT        Age     Female
+<div class="code highlight-python"><div class="highlight"><pre>          Height   Response  AverageMathSAT        Age     Female
 Education
 count  60.000000  60.000000       60.000000  60.000000  60.000000
 60.000000
@@ -478,16 +479,16 @@ median and mode. Note that <tt class="docutils literal"><span class="pre">mode</
 imported as <tt class="docutils literal"><span class="pre">st</span></tt> using: <tt class="docutils literal"><span class="pre">from</span> <span class="pre">scipy</span> <span class="pre">import</span> <span class="pre">stats</span> <span class="pre">as</span> <span class="pre">st</span></tt>. Now we have to add
 <tt class="docutils literal"><span class="pre">st</span></tt> to the mode command: <tt class="docutils literal"><span class="pre">st.mode(heightv)</span></tt> in order to call it. The other
 commands are part of the <tt class="docutils literal"><span class="pre">numpy</span></tt> package so they have the prefix <tt class="docutils literal"><span class="pre">np.</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span>   <span class="c"># Number of observations (sample size)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
-<span class="c"># Mean - Median - Mode</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mean(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Median(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mode(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span> <span class="c"># Mode (value with</span>
-<span class="n">highest</span> <span class="n">frequency</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre>N = len(heightv)   # Number of observations (sample size)
+print(&quot; -----------------------------------------&quot;)
+# Mean - Median - Mode
+print(&quot;Mean(height)= &quot; + str(np.mean(heightv)))
+print(&quot;Median(height)= &quot; + str(np.median(heightv)))
+print(&quot;Mode(height)= &quot; + str(st.mode(heightv))) # Mode (value with
+highest frequency)
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -----------------------------------------
+<div class="code highlight-python"><div class="highlight"><pre> -----------------------------------------
 Mean(height)= 6.81666666667
 Median(height)= 6.85
 Mode(height)= (array([ 1.1]), array([ 1.]))
@@ -495,11 +496,11 @@ Mode(height)= (array([ 1.1]), array([ 1.]))
 </div>
 <p>We can also just summarize a variable using the <tt class="docutils literal"><span class="pre">st.describe</span></tt> command from
 the <tt class="docutils literal"><span class="pre">stats</span></tt> package.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Summary stats</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Summary stats</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Summary stats: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Summary stats: (60, (1.1000000000000001, 12.699999999999999),
+<div class="code highlight-python"><div class="highlight"><pre>Summary stats: (60, (1.1000000000000001, 12.699999999999999),
 6.8166666666666655, 12.757344632768362, 0.01909961978127301,
 -1.1611486008105545)
 </pre></div>
@@ -510,23 +511,23 @@ the <tt class="docutils literal"><span class="pre">stats</span></tt> package.</p
 <p>We now calculate the range, variance and standard deviations. Remember that for
 variance and standard deviation there is a distinction between population and
 sample.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Range= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>   <span class="c"># returns smallest</span>
-<span class="n">a</span> <span class="n">largest</span> <span class="n">element</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Population variance = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">))</span>    <span class="c"># population variance</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample variance     = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>      <span class="c"># sample variance</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop.   standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))))</span>
-<span class="c">#or simply</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop. standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre>print(&quot; -----------------------------------------&quot;)
+print(&quot;Range= &quot; + str(max(heightv)-min(heightv)))   # returns smallest
+a largest element
+print(&quot;Population variance = &quot; + str(np.sum((heightv-
+np.mean(heightv))**2)/N))    # population variance
+print(&quot;Sample variance     = &quot; + str(np.sum((heightv-
+np.mean(heightv))**2)/(N-1)))      # sample variance
+print(&quot;Pop.   standard dev = &quot; + str(np.sqrt(np.sum((heightv-
+np.mean(heightv))**2)/N)))
+print(&quot;Sample standard dev = &quot; + str(np.sqrt(np.sum((heightv-
+np.mean(heightv))**2)/(N-1))))
+#or simply
+print(&quot;Pop. standard dev = &quot; + str(np.std(heightv)))
+print(&quot; -----------------------------------------&quot;)
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -----------------------------------------
+<div class="code highlight-python"><div class="highlight"><pre> -----------------------------------------
 Range= 11.6
 Population variance = 12.5447222222
 Sample variance     = 12.7573446328
@@ -540,7 +541,7 @@ Pop. standard dev = 3.54185293628
 <div class="section" id="measures-of-relative-standing">
 <h3>9.3.3. Measures of relative standing<a class="headerlink" href="#measures-of-relative-standing" title="Permalink to this headline">¶</a></h3>
 <p>Percentiles are calculated as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;1 quartile (25th percentile) = &quot;</span> <span class="o">+</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;1 quartile (25th percentile) = &quot;</span> <span class="o">+</span>
 <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;2 quartile (50th percentile) = &quot;</span> <span class="o">+</span>
 <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">50</span><span class="p">)))</span>
@@ -552,7 +553,7 @@ Pop. standard dev = 3.54185293628
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>1 quartile (25th percentile) = 3.95
+<div class="code highlight-python"><div class="highlight"><pre>1 quartile (25th percentile) = 3.95
 2 quartile (50th percentile) = 6.85
 3 quartile (75th percentile) = 9.65
 IQR = (P75-P25) = 5.7
@@ -567,13 +568,13 @@ IQR = (P75-P25) = 5.7
 <h3>9.4.1. Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h3>
 <p>We first grab two variables <tt class="docutils literal"><span class="pre">heightv</span></tt> and <tt class="docutils literal"><span class="pre">agev</span></tt> from the dataframe and
 define them as <tt class="docutils literal"><span class="pre">numpy</span></tt> arrays.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We then go ahead and calculate the covariance.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Population covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Population covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>          <span class="c"># Population covariance</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>       <span class="c"># sample covariance</span>
@@ -581,7 +582,7 @@ define them as <tt class="docutils literal"><span class="pre">numpy</span></tt> 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Population covariance= -0.158888888889
+<div class="code highlight-python"><div class="highlight"><pre>Population covariance= -0.158888888889
 Sample covariance= -0.161581920904
 Sample covariance= -0.161581920904
 </pre></div>
@@ -591,13 +592,13 @@ Sample covariance= -0.161581920904
 <h3>9.4.2. Correlation coefficient<a class="headerlink" href="#correlation-coefficient" title="Permalink to this headline">¶</a></h3>
 <p>We can calculate the correlation coefficient by hand or using the <tt class="docutils literal"><span class="pre">pandas</span></tt>
 toolbox command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient= &quot;</span> <span class="o">+</span> \
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient= &quot;</span> <span class="o">+</span> \
         <span class="nb">str</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">yv</span><span class="p">))))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Correlation coefficient= -0.0384360741963
+<div class="code highlight-python"><div class="highlight"><pre>Correlation coefficient= -0.0384360741963
 Correlation coefficient= -0.0384360741963
 </pre></div>
 </div>
@@ -607,19 +608,19 @@ Correlation coefficient= -0.0384360741963
 <div class="section" id="example-1-simple-example">
 <h4>9.4.3.1. Example 1: Simple example<a class="headerlink" href="#example-1-simple-example" title="Permalink to this headline">¶</a></h4>
 <p>We first generate some data. A variable <tt class="docutils literal"><span class="pre">x</span></tt> and a variable <tt class="docutils literal"><span class="pre">y</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define data. 2 vectors xv and yv</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define data. 2 vectors xv and yv</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>We then &#8220;cast&#8221; these into a <tt class="docutils literal"><span class="pre">pandas</span></tt> DataFrame.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define data frame</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define data frame</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>We fist make a <strong>scatterplot</strong> with least squares trend line: <cite>y = beta_0 +
 beta_1 * x + epsilon</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;p = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 
 <span class="c"># scatterplot</span>
@@ -631,7 +632,7 @@ beta_1 * x + epsilon</cite>.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>p = [ 1.77380952  1.89285714]
+<div class="code highlight-python"><div class="highlight"><pre>p = [ 1.77  1.89]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Scatter1_1.png"><img alt="_images/Slides_Data_Scatter1_1.png" src="_images/Slides_Data_Scatter1_1.png" style="width: 12cm;" /></a>
@@ -640,14 +641,14 @@ which is part of <tt class="docutils literal"><span class="pre">pandas</span></t
 you need to add the module name (<tt class="docutils literal"><span class="pre">pandas</span></tt> was imported as <tt class="docutils literal"><span class="pre">pd</span></tt>)
 in front of it: <tt class="docutils literal"><span class="pre">pd.ols()</span></tt>. You then define the independent variable <tt class="docutils literal"><span class="pre">y</span></tt>
 and the dependent variables <tt class="docutils literal"><span class="pre">x's</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Run OLS regression</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Run OLS regression</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">])</span>
 <span class="c"># Show coefficient estimates</span>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;Parameters = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">beta</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
+<div class="code highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
 Analysis-------------------------
 
 Formula: Y ~ &lt;x&gt; + &lt;intercept&gt;
@@ -682,18 +683,18 @@ dtype: float64
 </pre></div>
 </div>
 <p>Finally, we use the model to make a prediction of <tt class="docutils literal"><span class="pre">y</span></tt> when <tt class="docutils literal"><span class="pre">x=8.5</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Make prediction for x = 8.5</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Make prediction for x = 8.5</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">beta</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Prediction of y for x=8.5 is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Prediction of y for x=8.5 is: 17.8630952381
+<div class="code highlight-python"><div class="highlight"><pre>Prediction of y for x=8.5 is: 17.8630952381
 </pre></div>
 </div>
 <p>We can also use the results from the <tt class="docutils literal"><span class="pre">ols</span></tt> command to make a scatterplot with
 the trendline through it.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Linear Regression with Fitted Values&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;data&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">y_predict</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Linear regression&#39;</span><span class="p">)</span>
@@ -709,14 +710,14 @@ the trendline through it.</p>
 explanatory variables. In addition, some explanatory variables are categorical
 variables. In order to use them in our OLS regression we first have to make so
 called <strong>dummy</strong> variables (i.e. indicator variables that are either 0 or 1).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
 
 <span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Race&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;d&#39;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dummies</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>   Height  Response  AverageMathSAT  Age  Female  Education  Race
+<div class="code highlight-python"><div class="highlight"><pre>   Height  Response  AverageMathSAT  Age  Female  Education  Race
 d_Blk  \
 0     1.1         3             370   20       0          2  Hisp
 0
@@ -740,7 +741,7 @@ d_Blk  \
 <p>We next use <tt class="docutils literal"><span class="pre">ols</span></tt> again to run the regression. At the end we make a
 prediction based on some values for the independent variables <tt class="docutils literal"><span class="pre">x1</span></tt>, <tt class="docutils literal"><span class="pre">x2</span></tt>,
 etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s">&#39;Age&#39;</span><span class="p">,</span><span class="s">&#39;Education&#39;</span><span class="p">,</span><span class="s">&#39;Female&#39;</span><span class="p">,</span> \
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s">&#39;Age&#39;</span><span class="p">,</span><span class="s">&#39;Education&#39;</span><span class="p">,</span><span class="s">&#39;Female&#39;</span><span class="p">,</span> \
     <span class="s">&#39;d_Blk&#39;</span><span class="p">,</span><span class="s">&#39;d_Hisp&#39;</span><span class="p">,</span><span class="s">&#39;d_Mex&#39;</span><span class="p">,</span><span class="s">&#39;d_Wht&#39;</span><span class="p">]])</span>
 
 <span class="c"># Show coefficient estimates</span>
@@ -753,7 +754,7 @@ etc.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
+<div class="code highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
 Analysis-------------------------
 
 Formula: Y ~ &lt;Age&gt; + &lt;Education&gt; + &lt;Female&gt; + &lt;d_Blk&gt; + &lt;d_Hisp&gt; +

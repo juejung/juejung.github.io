@@ -5,7 +5,7 @@ Uniformly distributed random numbers
 ----------------------------------------
 
 
-.. code-block:: python
+.. code:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -21,7 +21,7 @@ Uniformly distributed random numbers
 
 
 
-.. code-block:: python
+.. code:: python
 
     # To always get the same random numbers on each run
     # (makes results reproducible)
@@ -35,7 +35,7 @@ Uniformly distributed random numbers
 
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     prob, bins, patches = ax.hist(u, bins=N, align='mid' )
@@ -44,7 +44,7 @@ Uniformly distributed random numbers
     plt.show()
     
 
-.. image:: _static/Slides_Random_Uniform_1.*
+.. image:: figures/Slides_Random_Uniform_1.png
    :width: 12 cm
 
 
@@ -53,7 +53,7 @@ Normally distributed random numbers
 ---------------------------------------
 
 
-.. code-block:: python
+.. code:: python
 
     def phi(x):
         s = np.exp(-x**2/2)/np.sqrt(2*np.pi)  # density function of
@@ -69,7 +69,7 @@ Normally distributed random numbers
 Then plot it.
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     prob, bins, patches = ax.hist(z, bins=N, align='mid' )
@@ -83,7 +83,7 @@ Then plot it.
     plt.show()
     
 
-.. image:: _static/Slides_Random_Normal_Random_1.*
+.. image:: figures/Slides_Random_Normal_Random_1.png
    :width: 12 cm
 
 
@@ -92,7 +92,7 @@ Two normally distributed random variables
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     z1 = np.random.normal(0,1,(10000,))
     z2 = np.random.normal(0,2,(10000,))
@@ -103,7 +103,7 @@ Two normally distributed random variables
 Now plot it.
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots(2,1)
     #
@@ -120,7 +120,7 @@ Now plot it.
     plt.show()
     
 
-.. image:: _static/Slides_Random_Normal_2_1.*
+.. image:: figures/Slides_Random_Normal_2_1.png
    :width: 12 cm
 
 
@@ -129,7 +129,7 @@ T-distributed random variable
 ---------------------------------
 
 
-.. code-block:: python
+.. code:: python
 
     def student_tvariate(df): # df is the number of degrees of freedom
         if df < 2 or int(df) != df:
@@ -148,7 +148,7 @@ T-distributed random variable
 And the plotting routine is:
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     #
@@ -159,7 +159,7 @@ And the plotting routine is:
     plt.show()
     
 
-.. image:: _static/Slides_Random_T_dist_1.*
+.. image:: figures/Slides_Random_T_dist_1.png
    :width: 12 cm
 
 

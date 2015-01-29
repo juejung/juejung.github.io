@@ -4,7 +4,7 @@ Root finding
 First steps
 ---------------
 
-.. code-block:: python
+.. code:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ Define am example function for which we calculate the root, i.e. find :math:`x`
 so that :math:`f(x) = 0`.
 
 
-.. code-block:: python
+.. code:: python
 
     def func(x):
         s = np.log(x) - np.exp(-x)  # function: f(x)
@@ -39,7 +39,7 @@ Define the same function  but this time we return the functional value and the
 first derivate of the function (i.e. the gradient).
 
 
-.. code-block:: python
+.. code:: python
 
     def func1(x):
         s = np.log(x) - np.exp(-x)  # function: f(x)
@@ -53,7 +53,7 @@ Plot the function
 ++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     xmin = 1
     xmax = 6
@@ -68,7 +68,7 @@ Plot the function
 
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     ax.plot(x, fx)
@@ -77,7 +77,7 @@ Plot the function
     plt.show()
     
 
-.. image:: _static/Slides_Root_FigAutos_1.*
+.. image:: figures/Slides_Root_FigAutos_1.png
    :width: 12 cm
 
 
@@ -104,7 +104,7 @@ Define the Newton-Raphson algorithm
 ++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     def newtonraphson(ftn, x0, tol = 1e-9, maxiter = 100):
         # Newton_Raphson algorithm for solving ftn(x)[1] == 0
@@ -147,12 +147,12 @@ Calculate the root of the function calling 'newtonraphson'
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     newtonraphson(func1, 2)
     
 
-::
+.. code::
 
     At iteration 1 value of x is: 1.12201964531
     At iteration 2 value of x is: 1.29499697044
@@ -194,7 +194,7 @@ The algorithm of the secant method
 +++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     def secant(ftn, x0, x1, tol = 1e-9, maxiter = 100):
         # Secant algorithm for solving ftn(x) == 0
@@ -236,12 +236,12 @@ Calculate the root of the function calling 'secant'
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     secant(func, 1,2)
     
 
-::
+.. code::
 
     At iteration 1 value of x is: 1.39741048217
     At iteration 2 value of x is: 1.28547612015
@@ -277,7 +277,7 @@ The algorithm of the bisection method
 ++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     def bisection(ftn, xl, xr, tol = 1e-9):
         # applies the bisection algorithm to find x such that ftn(x) == 0
@@ -333,12 +333,12 @@ Calculate the root of the function calling 'bisection'
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     bisection(func, 1,2)
     
 
-::
+.. code::
 
     at iteration 1 the root lies between 1 and 1.5
     at iteration 2 the root lies between 1.25 and 1.5
@@ -405,7 +405,7 @@ The first root finding algorithm is called
 `root <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html#scipy.optimize.root>`_
 
 
-.. code-block:: python
+.. code:: python
 
     from scipy.optimize import root
     guess = 2
@@ -416,11 +416,11 @@ The first root finding algorithm is called
     print("The root of func is at {}".format(myroot))
     
 
-::
+.. code::
 
     
      -------------- Root ------------
-    The root of func is at [ 1.30979959]
+    The root of func is at [ 1.31]
     
     
 
@@ -431,7 +431,7 @@ The second root finding algorithm is called
 `fsolve <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html#scipy.optimize.fsolve>`_
 
 
-.. code-block:: python
+.. code:: python
 
     from scipy.optimize import fsolve
     
@@ -443,11 +443,11 @@ The second root finding algorithm is called
     print("The root is at {}".format(result))
     
 
-::
+.. code::
 
     
      -------------- Fsolve ------------
-    The root is at [ 1.30979959]
+    The root is at [ 1.31]
     
     
 

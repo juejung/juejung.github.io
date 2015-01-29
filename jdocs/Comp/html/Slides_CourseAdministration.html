@@ -61,6 +61,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">1. Course Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installing-python">1.1. Installing Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submitting-homework-midterm-and-the-final-via-github">1.3. Submitting homework, midterm and the final via GitHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -329,61 +330,129 @@ following the <a class="reference external" href="http://www.syntevo.com/smartgi
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="submitting-homework-midterm-and-the-final-via-git-and-github">
-<h3>1.2.3. Submitting homework, midterm and the final via Git and GitHub<a class="headerlink" href="#submitting-homework-midterm-and-the-final-via-git-and-github" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="submitting-homework-midterm-and-the-final-via-github">
+<h2>1.3. Submitting homework, midterm and the final via GitHub<a class="headerlink" href="#submitting-homework-midterm-and-the-final-via-github" title="Permalink to this headline">¶</a></h2>
 <p>A homework will be due every week. You need to submit the homework and all
 other assignments via GitHub. There is a little bit of setup involved but it is
-not very complicated. Here are the steps.</p>
+not very complicated.  After you create a free GitHub account you will receive
+an invitation email from me with a link to a private GitHub repository that has
+your name.  Wait for this email and accept the invitation. Next you create a new folder on your computer where you plan to have all your
+codes saved. Let&#8217;s call this folder <tt class="docutils literal"><span class="pre">myCompEconRepository</span></tt> or something
+similar.</p>
+<p>Then execute the following steps:</p>
 <blockquote>
-<div><p>1. After you created a free GitHub account you will receive an invitation
-email from me with a link to a private GitHub repository that has your name.
-Wait for this email.</p>
-<p>2. Create a new folder on your computer. Inside this folder open a terminal
-window. (In windows you can open a terminal window by clicking the start
-button and type cmd followed by enter - I showed that in class.)</p>
-<p>3. You first need to &#8220;clone&#8221; this GitHub repository into the folder you just
-created. You do this by simply typing:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname
+<div><ol class="arabic simple">
+<li>You first need to &#8220;clone&#8221; this GitHub repository into the folder you just
+created. Log into GitHub, click on the Towson symbol under organizations
+and click on your private repository that has your name. On the right hand
+side, towards the bottom there&#8217;s a field <tt class="docutils literal"><span class="pre">HTTPS</span> <span class="pre">clone</span> <span class="pre">URL</span></tt> containing
+the URL of your repository. Just copy this address with <tt class="docutils literal"><span class="pre">ctrl-c</span></tt> or
+click the copy button right next to it.</li>
+<li>Open your <strong>SmartGit</strong> client and under <tt class="docutils literal"><span class="pre">Repository</span></tt> in the menu bar on
+top click <tt class="docutils literal"><span class="pre">clone</span></tt>. This will open a window that will ask for the <tt class="docutils literal"><span class="pre">Remote</span>
+<span class="pre">Git</span> <span class="pre">or</span> <span class="pre">SVN</span> <span class="pre">repository</span></tt>. Into this field you copy the URL address from step 1.</li>
+<li>Hit <tt class="docutils literal"><span class="pre">next</span></tt>. It will ask for a master password - just enter your Git
+password here.</li>
+<li>It now asks for a local folder where you want your repository to be saved.
+Here you simply choose the <tt class="docutils literal"><span class="pre">myCompEconRepository</span></tt> folder that you created
+above. Then click <tt class="docutils literal"><span class="pre">finish</span></tt>.</li>
+</ol>
+</div></blockquote>
+<p><strong>You only do this part once!</strong> We actually do this in class together.
+You now have your private GitHub repository cloned/copied into a local folder
+called <tt class="docutils literal"><span class="pre">myCompEconRepository</span></tt> on your computer. You can open this folder with your file
+browser and start working with it. You can add Python script files, changes
+files that are already in there, etc.</p>
+<div class="section" id="submitting-homework-via-smartgit">
+<h3>1.3.1. Submitting homework via SmartGit<a class="headerlink" href="#submitting-homework-via-smartgit" title="Permalink to this headline">¶</a></h3>
+<p>Whenever you work on a homework assignment follow these simple steps.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Open <strong>SmartGit</strong> and within Smartgit open your repository - the one that
+you have just cloned above. Usually it will already be open and you&#8217;ll see
+it in the left sidebar.</li>
+<li>Hit the <tt class="docutils literal"><span class="pre">Pull</span></tt> button. This will pull down all the changes and new files
+from your GitHub account and syncronize your local folders with the cloud.</li>
+<li>Use <strong>Spyder</strong> or any text editor to work on your codes i.e., start
+editing your scriptfiles.  They are usually called <tt class="docutils literal"><span class="pre">homework1.py</span></tt>,
+<tt class="docutils literal"><span class="pre">homework2.py</span></tt>, etc.</li>
+<li>When you are done coding in Spyder go back to <strong>SmartGit</strong>. You will see
+all the changed files in red now. This just indicates that you have made
+changes to these files. Hit the <tt class="docutils literal"><span class="pre">Commit</span></tt> button and under the options that
+appear choose <tt class="docutils literal"><span class="pre">commit</span> <span class="pre">and</span> <span class="pre">push</span></tt>. It may ask for your Github username and
+password again.</li>
+</ol>
+<p>You have now uploaded all your local changes back to your online Github account.
+You can actually check with your browser by going to your Github account. You
+will see your new and changed files are now updated. Click on
+the homework.py files and you&#8217;ll see that your changes are all there.</p>
+<p>So it&#8217;s really just these 4 easy steps from now on, i.e., two buttons. Before
+you start working <tt class="docutils literal"><span class="pre">Pull</span></tt> when you are done working <tt class="docutils literal"><span class="pre">Commit</span></tt>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="submitting-homework-via-command-line">
+<h3>1.3.2. Submitting homework via command line<a class="headerlink" href="#submitting-homework-via-command-line" title="Permalink to this headline">¶</a></h3>
+<p>This is for advanced users - you can ignore this if you are content using
+<strong>SmartGit</strong> as described above. If you want to interact with <strong>Git</strong> via
+command line, here are the instructions.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Inside your repository folder open a terminal
+window. In windows you can open a terminal window by right clicking on the
+mouse while holding the shift key. In the context menu choose <tt class="docutils literal"><span class="pre">open</span> <span class="pre">console</span>
+<span class="pre">window</span> <span class="pre">here</span></tt>.</p>
+<p>You can clone the repository with</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/Towson-Econ470-CompEcon/firstname-lastname.git
 </pre></div>
 </div>
-<p><strong>You only do this part once</strong></p>
-<ol class="arabic" start="4">
-<li><p class="first">Next you copy the entire repository from GitHub locally into your folder:</p>
-<p>git pull</p>
+</li>
+<li><p class="first">Next  update your entire repository from GitHub locally into your folder by
+typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull
+</pre></div>
+</div>
 </li>
 </ol>
 <p>You should now have a homework, midterm and final folder inside of the folder
 you created above. Have a look.</p>
-<p>5. Inside of the homework folder you will find a file called <tt class="docutils literal"><span class="pre">homework1.py</span></tt>.
+<p>3. Inside of the homework folder you will find a file called <tt class="docutils literal"><span class="pre">homework1.py</span></tt>.
 Open it up with <strong>Spyder</strong> and start coding according to the homework 1
 instructions shown in the course slides.</p>
-<p>6. After you are done programming, checked that the code runs through without
-any errors you need to &#8220;upload&#8221; the repository back on to GitHub.</p>
-<ol class="arabic" start="7">
+<p>4. After you are done programming please check that the code runs through without
+any errors. Then you need to &#8220;upload&#8221; the repository back on to GitHub - this
+part is called <strong>pushing</strong> the codes back up on the cloud.</p>
+<ol class="arabic" start="5">
 <li><p class="first">You first type:</p>
-<p>git status</p>
+<div class="highlight-python"><div class="highlight"><pre>git status
+</pre></div>
+</div>
 </li>
 </ol>
 <p>This will show you the changed files.</p>
-<ol class="arabic" start="8">
+<ol class="arabic" start="6">
 <li><p class="first">Next you need to &#8220;stage&#8221; your changes:</p>
-<p>git add -u</p>
+<div class="highlight-python"><div class="highlight"><pre>git add -u
+</pre></div>
+</div>
 </li>
 </ol>
 <blockquote>
 <div>This will stage all the changes you have made.</div></blockquote>
-<ol class="arabic" start="9">
+<ol class="arabic" start="7">
 <li><p class="first">Next you need to commit your changes:</p>
-<p>git commit -m &#8220;your personal commit message&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre>git commit -m &quot;your personal commit message&quot;
+</pre></div>
+</div>
 </li>
-<li><p class="first">Finally you upload all your changes to GitHub:</p>
+<li><p class="first">Finally you upload all your changes to GitHub</p>
+<div class="highlight-python"><div class="highlight"><pre>git push
+</pre></div>
+</div>
 </li>
 </ol>
 <blockquote>
-<div><blockquote>
-<div>git push</div></blockquote>
-<p>This step will ask for your GitHub username and password.</p>
-</div></blockquote>
+<div>This step will ask for your GitHub username and password.</div></blockquote>
 </div></blockquote>
 <p>Here is a quick summary again for homework 2:</p>
 <div class="highlight-python"><div class="highlight"><pre>git pull

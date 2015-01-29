@@ -58,9 +58,10 @@
         
         
             <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. A brief introduction to Python</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#git-and-github">1.2. Git and Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-github">1.3. Submitting homework, midterm and the final via GitHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -257,7 +258,7 @@
 <h2>13.1. Univariate function optimization<a class="headerlink" href="#univariate-function-optimization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example-function-to-be-maximized">
 <h3>13.1.1. Example function to be maximized<a class="headerlink" href="#example-function-to-be-maximized" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
@@ -268,7 +269,7 @@
 </pre></div>
 </div>
 <p>Here we want to optimize a univariate function: <tt class="docutils literal"><span class="pre">f1</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -280,7 +281,7 @@
 </div>
 <p>Next we define the same function but return <span class="math">\(f(x)\)</span>, <span class="math">\(f'(x)\)</span>, and
 <span class="math">\(f''(x)\)</span>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -295,7 +296,7 @@
 want to maximize our function we have to define it as a negate function, that
 is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x))\)</span> is the same as
 <span class="math">\(max(f(x))\)</span>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -306,7 +307,7 @@ is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x
 </pre></div>
 </div>
 <p>Plotting the function is always a good idea!</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">xmax</span> <span class="o">=</span> <span class="mf">6.0</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="mf">200.0</span><span class="p">)</span>
 <span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span> <span class="c"># define column vector</span>
@@ -321,9 +322,8 @@ is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>fx[0:10]=  [ 0.          0.00339035  0.01277165  0.02706275
-0.04530976  0.06667364
-  0.09041885  0.11590306  0.14256769  0.16992939]
+<div class="code highlight-python"><div class="highlight"><pre>fx[0:10]=  [ 0.    0.    0.01  0.03  0.05  0.07  0.09  0.12  0.14
+0.17]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_figure5_1.png"><img alt="_images/Slides_Optimization_figure5_1.png" src="_images/Slides_Optimization_figure5_1.png" style="width: 15cm;" /></a>
@@ -337,7 +337,7 @@ is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x
 first derivative so that <span class="math">\(f'(x) = 0\)</span>. We then use the root finding
 algorithm from the previous section to find this point, or: <span class="math">\(x(n+1) =
 x(n) - \frac{f'(x(x))}{f''(x(n))}\)</span></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton&#39;s method for optimization, starting at x0</span>
     <span class="c"># f3 is a function that given x returns the vector</span>
     <span class="c"># (f(x), f&#39;(x), f&#39;&#39;(x)), for some f</span>
@@ -380,45 +380,45 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 <ol class="arabic simple" start="3">
 <li>go back to step 1</li>
 </ol>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gsection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">xm</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
-    <span class="c"># applies the golden-section algorithm to maximise ftn</span>
-    <span class="c"># we assume that ftn is a function of a single variable</span>
-    <span class="c"># and that x.l &lt; x.m &lt; x.r and ftn(x.l), ftn(x.r) &lt;= ftn(x.m)</span>
-    <span class="c">#</span>
-    <span class="c"># the algorithm iteratively refines x.l, x.r, and x.m and</span>
-<span class="n">terminates</span>
-    <span class="c"># when x.r - x.l &lt;= tol, then returns x.m</span>
-    <span class="c"># golden ratio plus one</span>
-    <span class="n">gr1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
-    <span class="c">#</span>
-    <span class="c"># successively refine x.l, x.r, and x.m</span>
-    <span class="n">fl</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">xl</span><span class="p">)</span>
-    <span class="n">fr</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span>
-    <span class="n">fm</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">xm</span><span class="p">)</span>
-    <span class="k">while</span> <span class="p">((</span><span class="n">xr</span> <span class="o">-</span> <span class="n">xl</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">((</span><span class="n">xr</span> <span class="o">-</span> <span class="n">xm</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">xm</span> <span class="o">-</span> <span class="n">xl</span><span class="p">)):</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">xm</span> <span class="o">+</span> <span class="p">(</span><span class="n">xr</span> <span class="o">-</span> <span class="n">xm</span><span class="p">)</span><span class="o">/</span><span class="n">gr1</span>
-            <span class="n">fy</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">fy</span> <span class="o">&gt;=</span> <span class="n">fm</span><span class="p">):</span>
-                <span class="n">xl</span> <span class="o">=</span> <span class="n">xm</span>
-                <span class="n">fl</span> <span class="o">=</span> <span class="n">fm</span>
-                <span class="n">xm</span> <span class="o">=</span> <span class="n">y</span>
-                <span class="n">fm</span> <span class="o">=</span> <span class="n">fy</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">xr</span> <span class="o">=</span> <span class="n">y</span>
-                <span class="n">fr</span> <span class="o">=</span> <span class="n">fy</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">xm</span> <span class="o">-</span> <span class="p">(</span><span class="n">xm</span> <span class="o">-</span> <span class="n">xl</span><span class="p">)</span><span class="o">/</span><span class="n">gr1</span>
-            <span class="n">fy</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">fy</span> <span class="o">&gt;=</span> <span class="n">fm</span><span class="p">):</span>
-                <span class="n">xr</span> <span class="o">=</span> <span class="n">xm</span>
-                <span class="n">fr</span> <span class="o">=</span> <span class="n">fm</span>
-                <span class="n">xm</span> <span class="o">=</span> <span class="n">y</span>
-                <span class="n">fm</span> <span class="o">=</span> <span class="n">fy</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">xl</span> <span class="o">=</span> <span class="n">y</span>
-                <span class="n">fl</span> <span class="o">=</span> <span class="n">fy</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">xm</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre>def gsection(ftn, xl, xr, xm, tol = 1e-9):
+    # applies the golden-section algorithm to maximise ftn
+    # we assume that ftn is a function of a single variable
+    # and that x.l &lt; x.m &lt; x.r and ftn(x.l), ftn(x.r) &lt;= ftn(x.m)
+    #
+    # the algorithm iteratively refines x.l, x.r, and x.m and
+terminates
+    # when x.r - x.l &lt;= tol, then returns x.m
+    # golden ratio plus one
+    gr1 = 1 + (1 + np.sqrt(5))/2
+    #
+    # successively refine x.l, x.r, and x.m
+    fl = ftn(xl)
+    fr = ftn(xr)
+    fm = ftn(xm)
+    while ((xr - xl) &gt; tol):
+        if ((xr - xm) &gt; (xm - xl)):
+            y = xm + (xr - xm)/gr1
+            fy = ftn(y)
+            if (fy &gt;= fm):
+                xl = xm
+                fl = fm
+                xm = y
+                fm = fy
+            else:
+                xr = y
+                fr = fy
+        else:
+            y = xm - (xm - xl)/gr1
+            fy = ftn(y)
+            if (fy &gt;= fm):
+                xr = xm
+                fr = fm
+                xm = y
+                fm = fy
+            else:
+                xl = y
+                fl = fy
+    return(xm)
 </pre></div>
 </div>
 <div class="section" id="built-in-fmin-function">
@@ -430,7 +430,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 <h3>13.2.3. Maximize function: f1<a class="headerlink" href="#maximize-function-f1" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="maximizing-using-the-newton-method">
 <h4>13.2.3.1. Maximizing using the Newton method<a class="headerlink" href="#maximizing-using-the-newton-method" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Newton results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
@@ -439,7 +439,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 <span class="k">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -----------------------------------
+<div class="code highlight-python"><div class="highlight"><pre> -----------------------------------
  Newton results
  -----------------------------------
 1.97865578347e-12
@@ -451,7 +451,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 </div>
 <div class="section" id="maximizing-using-the-secant-method">
 <h4>13.2.3.2. Maximizing using the Secant method<a class="headerlink" href="#maximizing-using-the-secant-method" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Golden section results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">gsection</span><span class="p">(</span><span class="n">f1simple</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">))</span>
@@ -460,7 +460,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 <span class="k">print</span><span class="p">(</span><span class="n">gsection</span><span class="p">(</span><span class="n">f1simple</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -----------------------------------
+<div class="code highlight-python"><div class="highlight"><pre> -----------------------------------
  Golden section results
  -----------------------------------
 0.99999999879
@@ -472,7 +472,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 </div>
 <div class="section" id="maximizing-using-the-built-in-optimize-library">
 <h4>13.2.3.3. Maximizing using the built in optimize library<a class="headerlink" href="#maximizing-using-the-built-in-optimize-library" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; fmin &quot;</span><span class="p">)</span>
@@ -483,7 +483,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that <span class
 <span class="k">print</span><span class="p">(</span><span class="n">fmin</span><span class="p">(</span><span class="n">f1simpleNeg</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -----------------------------------
+<div class="code highlight-python"><div class="highlight"><pre> -----------------------------------
  fmin
  -----------------------------------
 Optimization terminated successfully.
@@ -500,12 +500,12 @@ Optimization terminated successfully.
          Current function value: -0.541341
          Iterations: 14
          Function evaluations: 28
-[ 0.99997559]
+[ 1.]
 Optimization terminated successfully.
          Current function value: -0.541341
          Iterations: 16
          Function evaluations: 32
-[ 1.00001221]
+[ 1.]
 </pre></div>
 </div>
 </div>
@@ -517,7 +517,7 @@ Optimization terminated successfully.
 <h3>13.3.1. Define multivariate (i.e. bivariate) example functions<a class="headerlink" href="#define-multivariate-i-e-bivariate-example-functions" title="Permalink to this headline">¶</a></h3>
 <p>Here we want to optimize the following functions: f3, f4</p>
 <p><strong>Function f3</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -525,7 +525,7 @@ Optimization terminated successfully.
 </pre></div>
 </div>
 <p>Its negative version:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -534,27 +534,27 @@ Optimization terminated successfully.
 </div>
 <p>And the version that returns <span class="math">\(f(x)\)</span>, <span class="math">\(f'(x)\)</span> (i.e. the gradient),
 and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
-    <span class="n">f2</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span>
-<span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">f11</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> \
-        <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">f12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
-        <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">f22</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
-        <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> \
-        <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="c"># Function f3 returns: f(x), f&#39;(x), and f&#39;&#39;(x)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">f11</span><span class="p">,</span> <span class="n">f12</span><span class="p">],</span> <span class="p">[</span><span class="n">f12</span><span class="p">,</span> <span class="n">f22</span><span class="p">]]))</span>
+<div class="code python highlight-python"><div class="highlight"><pre>def f3(x):
+    a = x[0]**2/2.0 - x[1]**2/4.0
+    b = 2*x[0] - np.exp(x[1])
+    f = np.sin(a)*np.cos(b)
+    f1 = np.cos(a)*np.cos(b)*x[0] - np.sin(a)*np.sin(b)*2
+    f2 = -np.cos(a)*np.cos(b)*x[1]/2 +
+np.sin(a)*np.sin(b)*np.exp(x[1])
+    f11 = -np.sin(a)*np.cos(b)*(4 + x[0]**2) + np.cos(a)*np.cos(b) \
+        - np.cos(a)*np.sin(b)*4*x[0]
+    f12 = np.sin(a)*np.cos(b)*(x[0]*x[1]/2.0 + 2*np.exp(x[1])) \
+        + np.cos(a)*np.sin(b)*(x[0]*np.exp(x[1]) + x[1])
+    f22 = -np.sin(a)*np.cos(b)*(x[1]**2/4.0 + np.exp(2*x[1])) \
+        - np.cos(a)*np.cos(b)/2.0 -
+np.cos(a)*np.sin(b)*x[1]*np.exp(x[1]) \
+        + np.sin(a)*np.sin(b)*np.exp(x[1])
+    # Function f3 returns: f(x), f&#39;(x), and f&#39;&#39;(x)
+    return (f, np.array([f1, f2]), np.array([[f11, f12], [f12, f22]]))
 </pre></div>
 </div>
 <p>Plot function f3:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">&#39;3d&#39;</span><span class="p">)</span>
@@ -582,7 +582,7 @@ and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
 <h3>13.3.2. Multivariate optimization methods<a class="headerlink" href="#multivariate-optimization-methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="newton">
 <h4>13.3.2.1. Newton<a class="headerlink" href="#newton" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton&#39;s method for optimisation, starting at x0</span>
     <span class="c"># f3 is a function that given x returns the list</span>
     <span class="c"># {f(x), grad f(x), Hessian f(x)}, for some f</span>
@@ -607,7 +607,7 @@ and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
 <div class="section" id="maximize-multivariate-function">
 <h3>13.3.3. Maximize multivariate function<a class="headerlink" href="#maximize-multivariate-function" title="Permalink to this headline">¶</a></h3>
 <p>We use various starting values to see whether we can find more than one optimum.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
 
 <span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
@@ -620,77 +620,72 @@ and <span class="math">\(f''(x)\)</span> (i.e. the Hessian):</p>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot; ----------------------------------------- &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Newton: f3  [1.3999999999999999, 0.40000000000000002] --&gt; [ 0.04074437
--2.50729047]
+<div class="code highlight-python"><div class="highlight"><pre>Newton: f3  [1.3999999999999999, 0.40000000000000002] --&gt; [ 0.04
+-2.51]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 47
          Function evaluations: 89
-fmin: f3 [1.3999999999999999, 0.40000000000000002] --&gt; [ 2.0307334
-1.40155445]
+fmin: f3 [1.3999999999999999, 0.40000000000000002] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.3999999999999999, 0.5] --&gt; [ 0.11797341  3.34466147]
+Newton: f3  [1.3999999999999999, 0.5] --&gt; [ 0.12  3.34]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 50
          Function evaluations: 93
-fmin: f3 [1.3999999999999999, 0.5] --&gt; [ 2.03072555  1.40154756]
+fmin: f3 [1.3999999999999999, 0.5] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.3999999999999999, 0.59999999999999998] --&gt; [-1.5531627
-6.0200129]
+Newton: f3  [1.3999999999999999, 0.59999999999999998] --&gt; [-1.55
+6.02]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 43
          Function evaluations: 82
-fmin: f3 [1.3999999999999999, 0.59999999999999998] --&gt; [ 2.03068816
-1.40151998]
+fmin: f3 [1.3999999999999999, 0.59999999999999998] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.5, 0.40000000000000002] --&gt; [ 2.83714224  5.35398196]
+Newton: f3  [1.5, 0.40000000000000002] --&gt; [ 2.84  5.35]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 48
          Function evaluations: 90
-fmin: f3 [1.5, 0.40000000000000002] --&gt; [ 2.03067611  1.40149298]
+fmin: f3 [1.5, 0.40000000000000002] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.5, 0.5] --&gt; [ 0.04074437 -2.50729047]
+Newton: f3  [1.5, 0.5] --&gt; [ 0.04 -2.51]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 42
          Function evaluations: 82
-fmin: f3 [1.5, 0.5] --&gt; [ 2.03071509  1.40155165]
+fmin: f3 [1.5, 0.5] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.5, 0.59999999999999998] --&gt; [  9.89908350e-10
-1.36639196e-09]
+Newton: f3  [1.5, 0.59999999999999998] --&gt; [  9.90e-10   1.37e-09]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 43
          Function evaluations: 82
-fmin: f3 [1.5, 0.59999999999999998] --&gt; [ 2.0307244   1.40153761]
+fmin: f3 [1.5, 0.59999999999999998] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.6000000000000001, 0.40000000000000002] --&gt; [-0.55841026
--0.78971136]
+Newton: f3  [1.6000000000000001, 0.40000000000000002] --&gt; [-0.56
+-0.79]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 47
          Function evaluations: 88
-fmin: f3 [1.6000000000000001, 0.40000000000000002] --&gt; [ 2.0307159
-1.40150964]
+fmin: f3 [1.6000000000000001, 0.40000000000000002] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.6000000000000001, 0.5] --&gt; [-0.29022131 -0.23047994]
+Newton: f3  [1.6000000000000001, 0.5] --&gt; [-0.29 -0.23]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 44
          Function evaluations: 80
-fmin: f3 [1.6000000000000001, 0.5] --&gt; [ 2.03074135  1.40151521]
+fmin: f3 [1.6000000000000001, 0.5] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
-Newton: f3  [1.6000000000000001, 0.59999999999999998] --&gt; [-1.55294692
--3.33263763]
+Newton: f3  [1.6000000000000001, 0.59999999999999998] --&gt; [-1.55
+-3.33]
 Optimization terminated successfully.
          Current function value: -1.000000
          Iterations: 42
          Function evaluations: 80
-fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [ 2.03069759
-1.40155333]
+fmin: f3 [1.6000000000000001, 0.59999999999999998] --&gt; [ 2.03  1.4 ]
  -----------------------------------------
 </pre></div>
 </div>
@@ -704,13 +699,13 @@ like the built in <strong>fsolve</strong> or <strong>root</strong> functions fro
 library.  Here&#8217;s the example from the Root finding chapter again:</p>
 <p>The example function for which we calculate the root, i.e., find <span class="math">\(x\)</span>
 so that <span class="math">\(f(x) = 0\)</span> is defined as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>  <span class="c"># function: f(x)</span>
     <span class="k">return</span> <span class="n">s</span>
 </pre></div>
 </div>
 <p>We can solve for the zero (root) position with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
 <span class="n">guess</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">guess</span><span class="p">)</span> <span class="c"># starting from x = 2</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
@@ -719,8 +714,8 @@ so that <span class="math">\(f(x) = 0\)</span> is defined as:</p>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The root of func is at {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myroot</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -------------- Root ------------
-The root of func is at [ 1.30979959]
+<div class="code highlight-python"><div class="highlight"><pre> -------------- Root ------------
+The root of func is at [ 1.31]
 </pre></div>
 </div>
 <p>In this section we set up the root finding problem as an optimization problem.
@@ -728,13 +723,13 @@ In order to do this we change the return value of the function slightly to
 <span class="math">\(residual-error = (f(x) - 0)^2\)</span>. So we are trying to find the value of
 <tt class="docutils literal"><span class="pre">x</span></tt> so that the residual error between <span class="math">\(f(x)\)</span> and its target value of
 <span class="math">\(0\)</span> is as small as possible. The new function is defined as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func_root_min</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func_root_min</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>  <span class="c"># function: f(x)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We now invoke a minimizing algorithm to find this value of <span class="math">\(x\)</span></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 <span class="n">guess</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># starting guess x = 2</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">func_root_min</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;Nelder-Mead&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
@@ -743,8 +738,8 @@ In order to do this we change the return value of the function slightly to
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;The root of func is at {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myroot</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>-------------- Root ------------
-The root of func is at [ 1.30976562]
+<div class="code highlight-python"><div class="highlight"><pre>-------------- Root ------------
+The root of func is at [ 1.31]
 </pre></div>
 </div>
 </div>

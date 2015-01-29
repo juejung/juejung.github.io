@@ -8,7 +8,7 @@ In Python we can write the following to define a simple function. We start with
 two simple function definitions and save them in a file called ``myFunctions.py``
 
 
-.. code-block:: python
+.. code:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ two simple function definitions and save them in a file called ``myFunctions.py`
 We next define our own functions and save them as ``myFunctions.py``
 
 
-.. code-block:: python
+.. code:: python
 
     # File 1: myFunctions.py
     def hw1(r1, r2):
@@ -45,7 +45,7 @@ functions with the ``import`` command. We save this new Python script as
 ``Lecture_Functions\myFunctions.py``
 
 
-.. code-block:: python
+.. code:: python
 
     # File 2: Lecture_Functions\myFunctions.py
     import myFunctions as mfunc
@@ -55,7 +55,7 @@ functions with the ``import`` command. We save this new Python script as
     mfunc.hw2(2.5,5.6)
     
 
-::
+.. code::
 
     0.31154136351337786
     Hello, World! sin(2.50+5.60) = 0.97
@@ -71,7 +71,7 @@ Graphing functions with two input arguments z = f(x,y)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code-block:: python
+.. code:: python
 
     from mpl_toolkits.mplot3d import Axes3D
     
@@ -93,7 +93,7 @@ Graphing functions with two input arguments z = f(x,y)
 
 
 
-.. code-block:: python
+.. code:: python
 
     fig = plt.figure(figsize=(14,16))
     ax = Axes3D(fig)
@@ -101,7 +101,7 @@ Graphing functions with two input arguments z = f(x,y)
     plt.show()
     
 
-.. image:: _static/Slides_Functions_Fig3DPlot_1.*
+.. image:: figures/Slides_Functions_Fig3DPlot_1.png
    :width: 12 cm
 
 
@@ -120,7 +120,7 @@ then evaluated at every point (x,y) over the grid. The
 ``ax.plot_wireframe`` command produces the picture.
 
 
-.. code-block:: python
+.. code:: python
 
     def g(x, y):
         res=(1 + y * 2) ** (-x / y) * (1 + y * 1) ** (x / y)
@@ -141,7 +141,7 @@ then evaluated at every point (x,y) over the grid. The
 
 
 
-.. code-block:: python
+.. code:: python
 
     fig = plt.figure(figsize=(14,16))
     ax = Axes3D(fig)
@@ -149,7 +149,7 @@ then evaluated at every point (x,y) over the grid. The
     plt.show()
     
 
-.. image:: _static/Slides_Functions_Fig3DPlot_1.*
+.. image:: figures/Slides_Functions_Fig3DPlot_1.png
    :width: 12 cm
 
 
@@ -164,7 +164,7 @@ variables that are defined outside of a function. These variables usually
 cannot be manipulated directly from within a function.
 
 
-.. code-block:: python
+.. code:: python
 
     def myFun(x):
         x += 1
@@ -176,7 +176,7 @@ cannot be manipulated directly from within a function.
     print('x = ', x)
     
 
-::
+.. code::
 
     x in myFun =  6
     x =  10
@@ -190,7 +190,7 @@ what is called the global name space as opposed to the local name space inside o
 the function.
 
 
-.. code-block:: python
+.. code:: python
 
     def myFun2(x):
         x += 1
@@ -202,7 +202,7 @@ the function.
     myFun2(5)
     
 
-::
+.. code::
 
     x inside myFun2 =  6
     y inside myFun2 =  10
@@ -218,7 +218,7 @@ argument ``y`` in your function, then define is explicitly as input argument.
 Let us now try to change the value of variable ``y`` inside of the function.
 
 
-.. code-block:: python
+.. code:: python
 
     def myFun3(x):
         x += 1
@@ -232,7 +232,7 @@ Let us now try to change the value of variable ``y`` inside of the function.
     print('y =', y)
     
 
-::
+.. code::
 
     x inside myFun3 =  6
     y inside myFun3 =  5
@@ -252,7 +252,7 @@ Let's next try to manipulate a variable that is not explicitly handed into the
 function.
 
 
-.. code-block:: python
+.. code:: python
 
     def myFun4(x):
         x += 1
@@ -267,7 +267,7 @@ function.
     print('y =', y)
     
 
-::
+.. code::
 
     <class 'UnboundLocalError'>
     local variable 'y' referenced before assignment
@@ -285,7 +285,7 @@ programming style as it can very quickly lead to errors that will be difficult
 to spot.
 
 
-.. code-block:: python
+.. code:: python
 
     def myFun5(x):
         global y
@@ -302,7 +302,7 @@ to spot.
     print('y =', y)
     
 
-::
+.. code::
 
     y = 10
     x inside myFun5 =  6
