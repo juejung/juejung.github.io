@@ -18,7 +18,7 @@ Here are some examples. Vectors ``x`` ``y`` ``year`` and ``names`` are assigned
 as follows:
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     
@@ -34,7 +34,7 @@ as follows:
     print("xv[2]= {}".format(xv[2]))
     
 
-.. code::
+::
 
     xv= [ 1.      3.3333  4.8976  9.    ]
     yv= [ 9.233    0.3453   3.29999  2.8    ]
@@ -54,14 +54,14 @@ If you would like to print the vector formatted, you need to set the format
 option of the ``numpy`` object as:
 
 
-.. code:: python
+.. code-block:: python
 
     np.set_printoptions(precision=2)
     print("xv= {}".format(xv))
     print("yv= {}".format(yv))
     
 
-.. code::
+::
 
     xv= [ 1.    3.33  4.9   9.  ]
     yv= [ 9.23  0.35  3.3   2.8 ]
@@ -74,13 +74,13 @@ Note that if you like a vector: 2000,2001,2002,2003 you need to
 write the arange command with the upper limit+1.
 
 
-.. code:: python
+.. code-block:: python
 
     year  = np.arange(2000,2004,1)   # np.arange(from, to, stepsize)
     print("year= {}".format(year))
     
 
-.. code::
+::
 
     year= [2000 2001 2002 2003]
     
@@ -92,13 +92,13 @@ If you would like to generate a certain number of elements between two boundary
 points you can use ``np.linspace()``.
 
 
-.. code:: python
+.. code-block:: python
 
     somev = np.linspace(2000,2003,5) # np.linspace(from, to, nr. of steps)
     print("somev= {}".format(somev))
     
 
-.. code::
+::
 
     somev= [ 2000.    2000.75  2001.5   2002.25  2003.  ]
     
@@ -109,7 +109,7 @@ points you can use ``np.linspace()``.
 Remember from the previous chapter how it is very similar to lists and tuples.
 
 
-.. code:: python
+.. code-block:: python
 
     # A list of strings is simply:
     names_list = ["Tom", "Dick", "Harry", "Patrick"]
@@ -124,7 +124,7 @@ Remember from the previous chapter how it is very similar to lists and tuples.
     print("names_list[3]= {}".format(names_list[3]))
     
 
-.. code::
+::
 
     names_list= ['Tom', 'Dick', 'Harry', 'Patrick']
     names_tuple= ('Tom', 'Dick', 'Harry', 'Patrick')
@@ -140,7 +140,7 @@ Simple calculations with vectors and matrices
 -------------------------------------------------------------------------------
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     # Element-by-element operations
@@ -155,7 +155,7 @@ Simple calculations with vectors and matrices
     print("x1*x2= {}".format(x1*x2))
     
 
-.. code::
+::
 
      --- OUTPUT: ---
     x1= [1 3 4 9]
@@ -171,7 +171,7 @@ Simple calculations with vectors and matrices
 Matrices are "two dimensional" vectors. In **Python** we write
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     a = np.array([[2,3],[4,5]])
@@ -186,7 +186,7 @@ Matrices are "two dimensional" vectors. In **Python** we write
     print(" ---------------- ")
     
 
-.. code::
+::
 
      --- OUTPUT: ---
     a=
@@ -212,7 +212,7 @@ If you want to generate matrices filled with either zeros or ones of a
 particular size in **Python** you can use the following:
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     a = np.zeros((3,5),float)
@@ -227,7 +227,7 @@ particular size in **Python** you can use the following:
     print("c= \n {}".format(c))
     
 
-.. code::
+::
 
      --- OUTPUT: ---
     a=
@@ -267,7 +267,7 @@ In **Python** vectors are formed as column vectors by default. We can simply
 transpose vectors using the transpose function ``t()`` as follows:
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -281,7 +281,7 @@ transpose vectors using the transpose function ``t()`` as follows:
 
 
 
-.. code:: python
+.. code-block:: python
 
     a = np.array([4,3])      # column vector
     aprime = a.transpose()   # row vector
@@ -289,7 +289,7 @@ transpose vectors using the transpose function ``t()`` as follows:
     print("a'= {}".format(aprime))
     
 
-.. code::
+::
 
     a= [4 3]
     a'= [4 3]
@@ -314,7 +314,7 @@ vector norm for :math:`a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right]
 simply define a vector and calculate its norm (or length) as
 
 
-.. code:: python
+.. code-block:: python
 
     a = np.array([4,3])
     norma = np.sqrt(np.sum(a**2))
@@ -322,7 +322,7 @@ simply define a vector and calculate its norm (or length) as
     print("norm(a) = ", np.linalg.norm(a))   # built in norm() command
     
 
-.. code::
+::
 
     norm(a) =  5.0
     norm(a) =  5.0
@@ -339,7 +339,7 @@ Adding vectors is simple. We just add all numbers of two vectors
 a_2+b_2 \end{array} \right].` In **Python** this is done with
 
 
-.. code:: python
+.. code-block:: python
 
     a = np.array([4,3])
     b = np.array([12,5])
@@ -348,7 +348,7 @@ a_2+b_2 \end{array} \right].` In **Python** this is done with
     print("a+b=", a+b)   # adding up vectors element-by-element
     
 
-.. code::
+::
 
     a=  [4 3]
     b=  [12  5]
@@ -373,7 +373,7 @@ then the arrow changes direction. More formally this is :math:`\lambda * a =
 In **Python** it's simply
 
 
-.. code:: python
+.. code-block:: python
 
     a = np.array([4,3])
     anorm  = np.sqrt(np.sum(a**2)) # norm of vector a
@@ -393,7 +393,7 @@ In **Python** it's simply
     print("dnorm=", dnorm)
     
 
-.. code::
+::
 
     a= [4 3]
     anorm= 5.0
@@ -421,7 +421,7 @@ then
 :math:`ax*b = 4*12 + 3*5.` In **Python** the inner product is simply:
 
 
-.. code:: python
+.. code-block:: python
 
     a = np.array([4,3])
     b = np.array([12,5])
@@ -430,7 +430,7 @@ then
     print("a*b =", np.sum(a*b))   # inner product
     
 
-.. code::
+::
 
     a=  [4 3]
     b=  [12  5]
@@ -446,7 +446,7 @@ Matrix manipulation
 Matrices are "two dimensional" vectors. In **Python** we define a matrix as
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[2,3],[4,5]])
     B = np.array([[2,6],[1,3]])
@@ -454,7 +454,7 @@ Matrices are "two dimensional" vectors. In **Python** we define a matrix as
     print("B=", B)
     
 
-.. code::
+::
 
     A= [[2 3]
      [4 5]]
@@ -471,7 +471,7 @@ Transposing matrices
 Transposing matrices requires again the ``t()`` command. It writes each column as row of a new matrix. So that the transpose of matrix :math:`A` in the above example becomes:
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[2,3],[4,5]])
     B = np.array([[2,6],[1,3]])
@@ -480,7 +480,7 @@ Transposing matrices requires again the ``t()`` command. It writes each column a
     print("A'=", Atrans)
     
 
-.. code::
+::
 
     A= [[2 3]
      [4 5]]
@@ -504,7 +504,7 @@ of rows and columns) of the two matrices have to be identical. So if matrix
 \times n` as well.
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[2,3],[4,5]])
     B = np.array([[2,6],[1,3]])
@@ -514,7 +514,7 @@ of rows and columns) of the two matrices have to be identical. So if matrix
     print("C=", C)
     
 
-.. code::
+::
 
     A= [[2 3]
      [4 5]]
@@ -549,7 +549,7 @@ the product of :math:`A` :math:`(2 \times 3)` and :math:`B` of dimension
 In **Python** matrix multiplication is achieved using the command ``dot()``.
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[12,3,6],[3,-1,-4]])
     B = np.array([[7,8],[-2,0],[1,11]])
@@ -560,7 +560,7 @@ In **Python** matrix multiplication is achieved using the command ``dot()``.
     print("C=", C)
     
 
-.. code::
+::
 
     A= [[12  3  6]
      [ 3 -1 -4]]
@@ -582,7 +582,7 @@ matrices so that the same rules as above apply for multiplying a matrix with a
 vector.
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[12,3,6],[3,-1,-4]])
     b = np.array([7,-2,1])
@@ -593,7 +593,7 @@ vector.
     print("C=", C)
     
 
-.. code::
+::
 
     A= [[12  3  6]
      [ 3 -1 -4]]
@@ -608,7 +608,7 @@ Indexing and accessing elements of a matrix
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code:: python
+.. code-block:: python
 
     A = np.array([[11,12,13,14],[21,22,23,24],[31,32,33,34]])
     
@@ -631,7 +631,7 @@ Indexing and accessing elements of a matrix
     print("(A>90).choose(A,90)=", (A>90).choose(A,90))
     
 
-.. code::
+::
 
     A= [[11 12 13 14]
      [21 22 23 24]
@@ -663,9 +663,4 @@ In class exercises
 2. Divide the first 10 entries by 5
 3. Replace the last entry with the value from the first entry
 4. Sort the vector from largest to smallest element
-
-Homework
--------------------------------------------------------------------------------
-
-:doc:`./Lecture_Arrays/Homework/Homework_Arrays`
 
