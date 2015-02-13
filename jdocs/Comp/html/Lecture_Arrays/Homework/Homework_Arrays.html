@@ -250,9 +250,9 @@
   <div class="section" id="homework-vectors-and-matrices">
 <h1>Homework: Vectors and matrices<a class="headerlink" href="#homework-vectors-and-matrices" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
-<dt>Submit this homework via GitHub by Monday, February 9 at 11:55 pm.</dt>
+<dt>Submit this homework via GitHub by Wednesday, February 18 at 11:55 pm.</dt>
 <dd><ul class="first last simple">
-<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">homework2.py</span></tt></li>
+<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">homework3.py</span></tt></li>
 <li>Push your repository on Github using <strong>SmartGit</strong> as discussed in class.</li>
 </ul>
 </dd>
@@ -261,51 +261,86 @@
 So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Matrix</li>
-</ol>
+<p>Define the following matrices as <tt class="docutils literal"><span class="pre">A</span></tt> and <tt class="docutils literal"><span class="pre">B</span></tt></p>
 <div class="math">
 \[\begin{split}\left( \begin{array}{ccc}
 0 &amp; 1 &amp; 1 \\
 1 &amp; 0 &amp; 1 \\
 1 &amp; 1 &amp; 0 \end{array} \right)\end{split}\]</div>
-<ol class="arabic simple" start="2">
-<li>Matrix</li>
-</ol>
 <div class="math">
 \[\begin{split}\left( \begin{array}{ccc}
  0 &amp; 2 &amp; 3 \\
  0 &amp; 5 &amp; 0 \\
  7 &amp; 0 &amp; 0 \end{array} \right)\end{split}\]</div>
+<ol class="arabic simple">
+<li>Multiply A and B element by element.</li>
+<li>Add A and B element by element.</li>
+<li>Transpose matrix A to A&#8217;.</li>
+<li>Extract the second row of matrix A, that is <tt class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">1</span></tt> and print it.</li>
+<li>Define vector <tt class="docutils literal"><span class="pre">a</span></tt> as the last column of matrix A and vector <tt class="docutils literal"><span class="pre">b</span></tt> as the
+last row of matrix B. Then add up <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> and print the result.</li>
+</ol>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p>The aim is to fill two vector arrays <tt class="docutils literal"><span class="pre">xv</span></tt> and <tt class="docutils literal"><span class="pre">yv</span></tt> with <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">f(x)</span></tt> values, respectively, where</p>
+<p>The aim is to fill two vector arrays <tt class="docutils literal"><span class="pre">xv</span></tt> and <tt class="docutils literal"><span class="pre">yv</span></tt> with <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">f(x)</span></tt>
+values, respectively, where</p>
 <p><span class="math">\(f(x) = \frac{1}{\sigma \sqrt{2 \pi}}  e^{- \frac{1}{2} \left( \frac{x- \mu}{\sigma} \right) ^2}\)</span></p>
 <p>is the density of the standard normal distribution, that is a normal density
 with mean <span class="math">\(\mu=0\)</span> and standard deviation <span class="math">\(\sigma = 1\)</span>. Let the <tt class="docutils literal"><span class="pre">xv</span></tt> values be
-uniformly spaced in <span class="math">\(xv = [-4, 4]\)</span> with a small enough grid so that the
-function plot is not too bumpy. A gridspace of $latex 0.01$ is probably
-sufficient. Write a loop to fill in the values for <span class="math">\(xv\)</span> and <span class="math">\(yv=f(xv)\)</span>.
-Then plot(xv,yv)</p>
+uniformly spaced in <tt class="docutils literal"><span class="pre">xv</span> <span class="pre">=</span> <span class="pre">[-4,</span> <span class="pre">4]</span></tt> with 100 grid points.
+Write a loop to fill in the values for <span class="math">\(xv\)</span> and <span class="math">\(yv=f(xv)\)</span>.
+So at the end you should have a vector <tt class="docutils literal"><span class="pre">xv</span></tt> with the X-values and a vector
+<tt class="docutils literal"><span class="pre">yv</span></tt> with the function values <span class="math">\(f(x)\)</span>.
+Bonus points: Plot <tt class="docutils literal"><span class="pre">yv</span></tt> against <tt class="docutils literal"><span class="pre">xv</span></tt> using the <tt class="docutils literal"><span class="pre">plot</span></tt> command.</p>
 </div>
 <div class="section" id="exercise-3">
 <h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
-<p>Vectorize the code in Exercise 1 by creating the <tt class="docutils literal"><span class="pre">xv</span></tt> values using the
-linspace function and by evaluating <tt class="docutils literal"><span class="pre">yv</span> <span class="pre">=</span> <span class="pre">f(xv)</span></tt> for a vector array argument.
-So here you do not use a loop! Then plot(xv,yv)</p>
+<p>Create a vector array <tt class="docutils literal"><span class="pre">wv</span></tt> with values 0, 0.1, 0.2, . . ., 3 without using a
+loop.
+Write print statements to print <tt class="docutils literal"><span class="pre">w[:]</span></tt>, <tt class="docutils literal"><span class="pre">w[:-2]</span></tt>, <tt class="docutils literal"><span class="pre">w[::5]</span></tt>, <tt class="docutils literal"><span class="pre">w[2:-2:6]</span></tt>.
+Try to understand which elements of the array are printed using these commands.</p>
 </div>
 <div class="section" id="exercise-4">
 <h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
-<p>Create a vector array <tt class="docutils literal"><span class="pre">wv</span></tt> with values 0, 0.1, 0.2, . . ., 3.
-Write print statements to print w[:], w[:-2], w[::5], w[2:-2:6]. Try to
-understand which elements of the array are printed using these commands.</p>
+<p>Create a <span class="math">\(3 \times 3\)</span> matrix with the value <span class="math">\(1\)</span> in the main
+diagonal and call it <tt class="docutils literal"><span class="pre">A</span></tt>. Then create a <span class="math">\(5 \times 3\)</span> matrix filled with the value
+<span class="math">\(1\)</span> and call it <tt class="docutils literal"><span class="pre">B</span></tt>. Then create a third matrix <tt class="docutils literal"><span class="pre">C</span></tt> that <strong>stacks</strong> the two earlier matrices
+on top of each other so that the result looks like this:</p>
+<div class="math">
+\[\begin{split}  C =
+\left( \begin{array}{ccc}
+ 1 &amp; 0 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 \\
+ 0 &amp; 0 &amp; 1 \\
+ 1 &amp; 1 &amp; 1 \\
+ 1 &amp; 1 &amp; 1 \\
+ 1 &amp; 1 &amp; 1 \\
+ 1 &amp; 1 &amp; 1 \\
+ 1 &amp; 1 &amp; 1 \end{array} \right)\end{split}\]</div>
 </div>
 <div class="section" id="exercise-5">
 <h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
-<p>Make a plot of the function <span class="math">\(y(t) = v_0 t - 0.5gt^2\)</span> for <span class="math">\(v_0 = 10, g = 9.81\)</span>,
-and <span class="math">\(t \in [0, 2v_0/g]\)</span>. The label on the x axis should be <tt class="docutils literal"><span class="pre">time</span> <span class="pre">(s)</span></tt> and the
-label on the y axis should be <tt class="docutils literal"><span class="pre">height</span> <span class="pre">(m)</span></tt>.</p>
+<ol class="arabic simple">
+<li>Use the matrix from Exercise 4 and run a loop that extracts all the elements
+from the second column and prints them one by one.</li>
+<li>Use the matrix from Exercise 4 and run a loop that extracts all the elements
+from the third row and prints them one by one.</li>
+</ol>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Create the following matrix <tt class="docutils literal"><span class="pre">A</span></tt> by hand.</p>
+<div class="math">
+\[\begin{split}\left( \begin{array}{ccc}
+ 2 &amp; 0 &amp; 0 \\
+ 0 &amp; 3 &amp; 0 \\
+ 0 &amp; 0 &amp; 4 \\
+ 6 &amp; 0 &amp; 0 \\
+ 0 &amp; 7 &amp; 0 \\
+ 0 &amp; 0 &amp; 8 \end{array} \right)\end{split}\]</div>
+<p>Write a loop (or a nested loop) that extracts the diagonal elements
+2,3,4,6,7,8 and prints them one by one.</p>
 </div>
 </div>
 

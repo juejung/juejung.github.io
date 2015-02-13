@@ -308,7 +308,10 @@ We then &#8220;loop&#8221; through all the values of this list and print them on
 In addition, we add up all the values of this list.  The command
 <tt class="docutils literal"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">range(6)</span></tt> assigns <tt class="docutils literal"><span class="pre">x</span></tt> equal to each value of <tt class="docutils literal"><span class="pre">0,1,</span> <span class="pre">...,5</span></tt> one
 by one and we can then use <tt class="docutils literal"><span class="pre">x</span></tt> itself in each iteration.
-Note that if you want a list from 0,1,...,5 you need to define the range
+Variable <tt class="docutils literal"><span class="pre">x</span></tt> is called the iterator or counter as it changes its value in
+every iteration of the loop and in a why counts in which round you currently
+are.</p>
+<p>Note that if you want a list from 0,1,...,5 you need to define the range
 command with <tt class="docutils literal"><span class="pre">range(6)</span></tt>.  Using this loop we can step through all the values of our
 list and assign certain operations to each value.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Summation variable starting with zero value</span>
@@ -335,6 +338,13 @@ list and assign certain operations to each value.</p>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">15</span>
 </pre></div>
 </div>
+<p>In the above code snipped the <tt class="docutils literal"><span class="pre">x</span></tt> variable is the <strong>counter</strong> and the <tt class="docutils literal"><span class="pre">sumx</span></tt>
+variable is the <strong>accumulator</strong>. The accumulator sums up the iterator in each
+round and adds it to the already accumulated sum of previous iterations.</p>
+<p>It is bad programming style if you re-assign the iterator variable
+<tt class="docutils literal"><span class="pre">x</span></tt> within the code block that gets repeated and you should avoid it. Some
+programming languages will not even allow you to assign a value to an iterator
+within a loop statement.</p>
 </div>
 <div class="section" id="loop-2">
 <h3>3.2.2. Loop 2<a class="headerlink" href="#loop-2" title="Permalink to this headline">¶</a></h3>
@@ -362,7 +372,9 @@ i =  5
 The factorial of 6 is: 720
 </pre></div>
 </div>
-<p>Using a different method we can also calculate the factorial as:</p>
+<p>Using a different method we can also calculate the factorial as:
+Here the accumulator variable <tt class="docutils literal"><span class="pre">n_fac</span></tt> is not accumulating a sum of numbers
+but a product.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -415,14 +427,19 @@ stopping condition is met.</p>
 <div class="section" id="while-loop-1">
 <h3>3.3.1. While loop 1<a class="headerlink" href="#while-loop-1" title="Permalink to this headline">¶</a></h3>
 <p>In the first example we let the iterations run as long as the value of variable
-x is smaller than 10. In every iteration we increase x by one unit, so that in
+<tt class="docutils literal"><span class="pre">x</span></tt> is smaller than 10. In every iteration we increase x by one unit, so that in
 effect the loop gets repeated 9 times.</p>
+<p>In a <tt class="docutils literal"><span class="pre">while</span></tt> loop the iterator variable is not automatically incremented as
+in the <tt class="docutils literal"><span class="pre">for</span></tt> loop, where we explicitly state the starting and stopping values
+for the iterator variable. We therefore have to make sure that we increment the
+iterator/counter variable <tt class="docutils literal"><span class="pre">x</span></tt> within the repeatable codeblock using <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span>
+<span class="pre">+1</span></tt> or shorter and more efficiently <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></tt>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;X= {} and Y= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># i.e., x = x + 1</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">0</span>
@@ -437,8 +454,11 @@ effect the loop gets repeated 9 times.</p>
 <span class="n">X</span><span class="o">=</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">45</span>
 </pre></div>
 </div>
-<p>Variable <tt class="docutils literal"><span class="pre">y</span></tt> calculates the cumulative sum of all numbers from 1 to 9, so
-that <span class="math">\(y = 0+1+2+...+9\)</span>.</p>
+<p>The accumulator variable <tt class="docutils literal"><span class="pre">y</span></tt> calculates the cumulative sum of all numbers
+from 1 to 9, so that <span class="math">\(y = 0+1+2+...+9\)</span>. If you forget the statement that
+increments the counter at the end of the repeatable code block within the loop,
+then the loop will run infinitely long and you have to break the code with
+pressing <tt class="docutils literal"><span class="pre">ctrl</span></tt> + <tt class="docutils literal"><span class="pre">c</span></tt> which will stop the execution of the Python script.</p>
 </div>
 <div class="section" id="while-loop-2">
 <h3>3.3.2. While loop 2<a class="headerlink" href="#while-loop-2" title="Permalink to this headline">¶</a></h3>

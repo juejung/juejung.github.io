@@ -87,6 +87,10 @@ We then "loop" through all the values of this list and print them one by one.
 In addition, we add up all the values of this list.  The command
 ``for x in range(6)`` assigns ``x`` equal to each value of ``0,1, ...,5`` one
 by one and we can then use ``x`` itself in each iteration.
+Variable ``x`` is called the iterator or counter as it changes its value in
+every iteration of the loop and in a why counts in which round you currently
+are.
+
 Note that if you want a list from 0,1,...,5 you need to define the range
 command with ``range(6)``.  Using this loop we can step through all the values of our
 list and assign certain operations to each value.
@@ -122,6 +126,15 @@ list and assign certain operations to each value.
     
 
 
+
+In the above code snipped the ``x`` variable is the **counter** and the ``sumx``
+variable is the **accumulator**. The accumulator sums up the iterator in each
+round and adds it to the already accumulated sum of previous iterations.
+
+It is bad programming style if you re-assign the iterator variable
+``x`` within the code block that gets repeated and you should avoid it. Some
+programming languages will not even allow you to assign a value to an iterator
+within a loop statement.
 
 Loop 2
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -160,6 +173,8 @@ product from each round.
 
 
 Using a different method we can also calculate the factorial as:
+Here the accumulator variable ``n_fac`` is not accumulating a sum of numbers
+but a product.
 
 
 .. code-block:: python
@@ -241,8 +256,14 @@ While loop 1
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 In the first example we let the iterations run as long as the value of variable
-x is smaller than 10. In every iteration we increase x by one unit, so that in
+``x`` is smaller than 10. In every iteration we increase x by one unit, so that in
 effect the loop gets repeated 9 times.
+
+In a ``while`` loop the iterator variable is not automatically incremented as
+in the ``for`` loop, where we explicitly state the starting and stopping values
+for the iterator variable. We therefore have to make sure that we increment the
+iterator/counter variable ``x`` within the repeatable codeblock using ``x = x
++1`` or shorter and more efficiently ``x += 1``.
 
 
 .. code-block:: python
@@ -252,7 +273,7 @@ effect the loop gets repeated 9 times.
     while (x < 10):
         y = y + x
         print("X= {} and Y= {}".format(x, y))
-        x = x + 1
+        x += 1  # i.e., x = x + 1
     
 
 ::
@@ -272,8 +293,11 @@ effect the loop gets repeated 9 times.
 
 
 
-Variable ``y`` calculates the cumulative sum of all numbers from 1 to 9, so
-that :math:`y = 0+1+2+...+9`.
+The accumulator variable ``y`` calculates the cumulative sum of all numbers
+from 1 to 9, so that :math:`y = 0+1+2+...+9`. If you forget the statement that
+increments the counter at the end of the repeatable code block within the loop,
+then the loop will run infinitely long and you have to break the code with
+pressing ``ctrl`` + ``c`` which will stop the execution of the Python script.
 
 While loop 2
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

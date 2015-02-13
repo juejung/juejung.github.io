@@ -1,8 +1,8 @@
 Homework: Vectors and matrices
 ==============================
 
-Submit this homework via GitHub by Monday, February 9 at 11:55 pm.
- * Python-scripts are submitted in one file called: ``homework2.py``
+Submit this homework via GitHub by Wednesday, February 18 at 11:55 pm.
+ * Python-scripts are submitted in one file called: ``homework3.py``
  * Push your repository on Github using **SmartGit** as discussed in class.
 
 I will base your homework grade on my grading of 2 randomly selected homework exercises.
@@ -11,7 +11,7 @@ So please make sure that you complete every homework 100% as you might otherwise
 Exercise 1
 -------------------------------------------------------------------------------
 
-1. Matrix
+Define the following matrices as ``A`` and ``B``
 
 .. math::
 
@@ -20,8 +20,6 @@ Exercise 1
  1 & 0 & 1 \\
  1 & 1 & 0 \end{array} \right)
 
-2. Matrix
-
 .. math::
 
   \left( \begin{array}{ccc}
@@ -29,41 +27,85 @@ Exercise 1
    0 & 5 & 0 \\
    7 & 0 & 0 \end{array} \right)
 
+1. Multiply A and B element by element.
+2. Add A and B element by element.
+3. Transpose matrix A to A'.
+4. Extract the second row of matrix A, that is ``1 0 1`` and print it.
+5. Define vector ``a`` as the last column of matrix A and vector ``b`` as the
+   last row of matrix B. Then add up ``a`` and ``b`` and print the result.
+
+
 Exercise 2
 -------------------------------------------------------------------------------
 
-The aim is to fill two vector arrays ``xv`` and ``yv`` with ``x`` and ``f(x)`` values, respectively, where
+The aim is to fill two vector arrays ``xv`` and ``yv`` with ``x`` and ``f(x)``
+values, respectively, where
 
 :math:`f(x) = \frac{1}{\sigma \sqrt{2 \pi}}  e^{- \frac{1}{2} \left( \frac{x- \mu}{\sigma} \right) ^2}`
 
 is the density of the standard normal distribution, that is a normal density
 with mean :math:`\mu=0` and standard deviation :math:`\sigma = 1`. Let the ``xv`` values be
-uniformly spaced in :math:`xv = [-4, 4]` with a small enough grid so that the
-function plot is not too bumpy. A gridspace of $latex 0.01$ is probably
-sufficient. Write a loop to fill in the values for :math:`xv` and :math:`yv=f(xv)`.
-Then plot(xv,yv)
-
+uniformly spaced in ``xv = [-4, 4]`` with 100 grid points.
+Write a loop to fill in the values for :math:`xv` and :math:`yv=f(xv)`.
+So at the end you should have a vector ``xv`` with the X-values and a vector
+``yv`` with the function values :math:`f(x)`.
+Bonus points: Plot ``yv`` against ``xv`` using the ``plot`` command.
 
 Exercise 3
 -------------------------------------------------------------------------------
 
-Vectorize the code in Exercise 1 by creating the ``xv`` values using the
-linspace function and by evaluating ``yv = f(xv)`` for a vector array argument.
-So here you do not use a loop! Then plot(xv,yv)
-
+Create a vector array ``wv`` with values 0, 0.1, 0.2, . . ., 3 without using a
+loop.
+Write print statements to print ``w[:]``, ``w[:-2]``, ``w[::5]``, ``w[2:-2:6]``.
+Try to understand which elements of the array are printed using these commands.
 
 Exercise 4
 -------------------------------------------------------------------------------
 
-Create a vector array ``wv`` with values 0, 0.1, 0.2, . . ., 3.
-Write print statements to print w[:], w[:-2], w[::5], w[2:-2:6]. Try to
-understand which elements of the array are printed using these commands.
+Create a :math:`3 \times 3` matrix with the value :math:`1` in the main
+diagonal and call it ``A``. Then create a :math:`5 \times 3` matrix filled with the value
+:math:`1` and call it ``B``. Then create a third matrix ``C`` that **stacks** the two earlier matrices
+on top of each other so that the result looks like this:
+
+.. math::
+
+    C =
+  \left( \begin{array}{ccc}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+   1 & 1 & 1 \\
+   1 & 1 & 1 \\
+   1 & 1 & 1 \\
+   1 & 1 & 1 \\
+   1 & 1 & 1 \end{array} \right)
 
 Exercise 5
 -------------------------------------------------------------------------------
 
-Make a plot of the function :math:`y(t) = v_0 t - 0.5gt^2` for :math:`v_0 = 10, g = 9.81`,
-and :math:`t \in [0, 2v_0/g]`. The label on the x axis should be ``time (s)`` and the
-label on the y axis should be ``height (m)``.
+1. Use the matrix from Exercise 4 and run a loop that extracts all the elements
+   from the second column and prints them one by one.
+
+2. Use the matrix from Exercise 4 and run a loop that extracts all the elements
+   from the third row and prints them one by one.
+
+Exercise 6
+-------------------------------------------------------------------------------
+
+Create the following matrix ``A`` by hand.
+
+.. math::
+
+  \left( \begin{array}{ccc}
+   2 & 0 & 0 \\
+   0 & 3 & 0 \\
+   0 & 0 & 4 \\
+   6 & 0 & 0 \\
+   0 & 7 & 0 \\
+   0 & 0 & 8 \end{array} \right)
+
+Write a loop (or a nested loop) that extracts the diagonal elements
+2,3,4,6,7,8 and prints them one by one.
+
 
 
