@@ -14,7 +14,7 @@ The first dataset that we are working with is a comma separated file, called
 We first import this file using the ``pd.read_csv`` command from the ``Pandas`` library.
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -28,10 +28,16 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     plt.close('all')  # close all open figures
     
 
+::
+
+    <class 'ImportError'>
+    cannot import name 'calc_lwork'
+    
 
 
 
-.. code:: python
+
+.. code-block:: python
 
     # Read in small data from .csv file
     # Filepath
@@ -51,7 +57,7 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     print(df)
     
 
-.. code::
+::
 
                      Area  Frequency  Unnamed: 2  Unnamed: 3
     0          Accounting         73         NaN         NaN
@@ -67,7 +73,7 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
 Drop column 3 and 4 and let's have a look at the data again.
 
 
-.. code:: python
+.. code-block:: python
 
     df = df.drop('Unnamed: 2', 1)
     df = df.drop('Unnamed: 3', 1)
@@ -75,7 +81,7 @@ Drop column 3 and 4 and let's have a look at the data again.
     print(df)
     
 
-.. code::
+::
 
                      Area  Frequency
     0          Accounting         73
@@ -92,7 +98,7 @@ We next generate a new variable called ``relFrequency`` that contains the relati
 frequencies.
 
 
-.. code:: python
+.. code-block:: python
 
     # Make new column with relative frequency
     df['relFrequency'] = df['Frequency']/df['Frequency'].sum()
@@ -100,7 +106,7 @@ frequencies.
     print(df)
     
 
-.. code::
+::
 
                      Area  Frequency  relFrequency
     0          Accounting         73      0.288538
@@ -116,9 +122,17 @@ frequencies.
 Now we grab the relative frequencies out of the DataFrame into a numpy array.
 
 
-.. code:: python
+.. code-block:: python
 
     xv = df['relFrequency'].values
+    print('Array xv is:', xv)
+    
+
+::
+
+    Array xv is: [ 0.28853755  0.2055336   0.14229249  0.25296443
+    0.11067194]
+    
     
 
 
@@ -132,7 +146,7 @@ Bar chart
 We first make a bar chart of the absolute frequencies.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     #
@@ -149,7 +163,7 @@ We first make a bar chart of the absolute frequencies.
     #savefig('./Graphs/fig1.pdf')
     
 
-.. image:: figures/Slides_Data_Barchart_1.png
+.. image:: _static/Slides_Data_Barchart_1.*
    :width: 12 cm
 
 
@@ -165,7 +179,7 @@ Pie chart
 We next make a pie chart using the relative frequencies stored in vector ``xv``.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     ax.pie(xv, labels = np.round(xv, 2)*100, shadow=True)
@@ -174,7 +188,7 @@ We next make a pie chart using the relative frequencies stored in vector ``xv``.
     plt.show()
     
 
-.. image:: figures/Slides_Data_Piechart_1.png
+.. image:: _static/Slides_Data_Piechart_1.*
    :width: 12 cm
 
 
@@ -190,7 +204,7 @@ The actual command for the histogram is ``hist``. It returns three variables
 information to the histogram.
 
 
-.. code:: python
+.. code-block:: python
 
     df = pd.read_csv(filepath + 'Lecture_Data_Excel_b.csv')
     
@@ -224,7 +238,7 @@ information to the histogram.
     plt.show()
     
 
-.. image:: figures/Slides_Data_Histogram_1.png
+.. image:: _static/Slides_Data_Histogram_1.*
    :width: 12 cm
 
 
@@ -235,7 +249,7 @@ follows a completely different graphing philosophy based on the **grammar of
 grapics**
 
 
-.. code:: python
+.. code-block:: python
 
     # Using ggplot package
     print( ggplot(aes(x='Height'), data = df) + geom_histogram() +
@@ -243,14 +257,11 @@ grapics**
     plt.show(1)
     
 
-.. code::
+::
 
-    <ggplot: (-9223372036842802046)>
+    <class 'NameError'>
+    name 'ggplot' is not defined
     
-    
-
-.. image:: figures/Slides_Data_Boxplot_1.png
-   :width: 12 cm
 
 
 
@@ -260,7 +271,7 @@ Boxplots
 A boxplot of height is made as follows:
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     ax.boxplot(heightv)
@@ -269,7 +280,7 @@ A boxplot of height is made as follows:
     plt.show()
     
 
-.. image:: figures/Slides_Data_Boxplot_1.png
+.. image:: _static/Slides_Data_Boxplot_1.*
    :width: 12 cm
 
 
@@ -286,12 +297,12 @@ A quick way to produce summary statistics of our data set is to use ``panda's``
 command ``describe``.
 
 
-.. code:: python
+.. code-block:: python
 
     print(df.describe())
     
 
-.. code::
+::
 
               Height   Response  AverageMathSAT        Age     Female
     Education
@@ -323,7 +334,7 @@ imported as ``st`` using: ``from scipy import stats as st``. Now we have to add
 commands are part of the ``numpy`` package so they have the prefix ``np.``
 
 
-.. code:: python
+.. code-block:: python
 
     N = len(heightv)   # Number of observations (sample size)
     print(" -----------------------------------------")
@@ -334,13 +345,10 @@ commands are part of the ``numpy`` package so they have the prefix ``np.``
     highest frequency)
     
 
-.. code::
+::
 
-     -----------------------------------------
-    Mean(height)= 6.81666666667
-    Median(height)= 6.85
-    Mode(height)= (array([ 1.1]), array([ 1.]))
-    
+    <class 'NameError'>
+    name 'st' is not defined
     
 
 
@@ -349,18 +357,16 @@ We can also just summarize a variable using the ``st.describe`` command from
 the ``stats`` package.
 
 
-.. code:: python
+.. code-block:: python
 
     # Summary stats
     print("Summary stats: " + str(st.describe(heightv)))
     
 
-.. code::
+::
 
-    Summary stats: (60, (1.1000000000000001, 12.699999999999999),
-    6.8166666666666655, 12.757344632768362, 0.01909961978127301,
-    -1.1611486008105545)
-    
+    <class 'NameError'>
+    name 'st' is not defined
     
 
 
@@ -373,7 +379,7 @@ variance and standard deviation there is a distinction between population and
 sample.
 
 
-.. code:: python
+.. code-block:: python
 
     print(" -----------------------------------------")
     print("Range= " + str(max(heightv)-min(heightv)))   # returns smallest
@@ -391,7 +397,7 @@ sample.
     print(" -----------------------------------------")
     
 
-.. code::
+::
 
      -----------------------------------------
     Range= 11.6
@@ -412,7 +418,7 @@ Measures of relative standing
 Percentiles are calculated as follows:
 
 
-.. code:: python
+.. code-block:: python
 
     print("1 quartile (25th percentile) = " +
     str(st.scoreatpercentile(heightv, 25)))
@@ -426,14 +432,10 @@ Percentiles are calculated as follows:
     print(" -----------------------------------------")
     
 
-.. code::
+::
 
-    1 quartile (25th percentile) = 3.95
-    2 quartile (50th percentile) = 6.85
-    3 quartile (75th percentile) = 9.65
-    IQR = (P75-P25) = 5.7
-     -----------------------------------------
-    
+    <class 'NameError'>
+    name 'st' is not defined
     
 
 
@@ -449,7 +451,7 @@ We first grab two variables ``heightv`` and ``agev`` from the dataframe and
 define them as ``numpy`` arrays.
 
 
-.. code:: python
+.. code-block:: python
 
     xv = df['Age'].values
     yv = df['Height'].values
@@ -461,7 +463,7 @@ define them as ``numpy`` arrays.
 We then go ahead and calculate the covariance.
 
 
-.. code:: python
+.. code-block:: python
 
     print("Population covariance= " + str(np.sum((xv-np.mean(xv))*(yv-
     np.mean(yv)))/n))          # Population covariance
@@ -471,7 +473,7 @@ We then go ahead and calculate the covariance.
     print("Sample covariance= " + str(df.Age.cov(df.Height)))
     
 
-.. code::
+::
 
     Population covariance= -0.158888888889
     Sample covariance= -0.161581920904
@@ -488,7 +490,7 @@ We can calculate the correlation coefficient by hand or using the ``pandas``
 toolbox command.
 
 
-.. code:: python
+.. code-block:: python
 
     print("Correlation coefficient= " + \
             str((np.sum((xv-np.mean(xv))*(yv-
@@ -496,7 +498,7 @@ toolbox command.
     print("Correlation coefficient= " + str(df.Age.corr(df.Height)))
     
 
-.. code::
+::
 
     Correlation coefficient= -0.0384360741963
     Correlation coefficient= -0.0384360741963
@@ -514,7 +516,7 @@ Example 1: Simple example
 We first generate some data. A variable ``x`` and a variable ``y``.
 
 
-.. code:: python
+.. code-block:: python
 
     # Define data. 2 vectors xv and yv
     xv = np.arange(1,9,1)
@@ -526,7 +528,7 @@ We first generate some data. A variable ``x`` and a variable ``y``.
 We then "cast" these into a ``pandas`` DataFrame.
 
 
-.. code:: python
+.. code-block:: python
 
     # Define data frame
     df = pd.DataFrame(np.array([xv, yv]).T, columns = ['x', 'y'])
@@ -538,7 +540,7 @@ We fist make a **scatterplot** with least squares trend line: `y = \beta_0 +
 \beta_1 * x + \epsilon`.
 
 
-.. code:: python
+.. code-block:: python
 
     p = np.polyfit(xv, yv, 1)
     print("p = " + str(p))
@@ -552,13 +554,13 @@ We fist make a **scatterplot** with least squares trend line: `y = \beta_0 +
     plt.show()
     
 
-.. code::
+::
 
-    p = [ 1.77  1.89]
+    p = [ 1.77380952  1.89285714]
     
     
 
-.. image:: figures/Slides_Data_Scatter1_1.png
+.. image:: _static/Slides_Data_Scatter1_1.*
    :width: 12 cm
 
 
@@ -570,7 +572,7 @@ in front of it: ``pd.ols()``. You then define the independent variable ``y``
 and the dependent variables ``x's``.
 
 
-.. code:: python
+.. code-block:: python
 
     # Run OLS regression
     res = pd.ols(y=df['y'], x=df['x'])
@@ -579,42 +581,10 @@ and the dependent variables ``x's``.
     print('Parameters = ' + str(res.beta))
     
 
-.. code::
+::
 
-    
-    -------------------------Summary of Regression
-    Analysis-------------------------
-    
-    Formula: Y ~ <x> + <intercept>
-    
-    Number of Observations:         8
-    Number of Degrees of Freedom:   2
-    
-    R-squared:         0.6093
-    Adj R-squared:     0.5442
-    
-    Rmse:              3.7578
-    
-    F-stat (1, 6):     9.3583, p-value:     0.0222
-    
-    Degrees of Freedom: model 1, resid 6
-    
-    -----------------------Summary of Estimated
-    Coefficients------------------------
-          Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
-    CI 97.5%
-    --------------------------------------------------------------------------------
-                 x     1.7738     0.5798       3.06     0.0222     0.6373
-    2.9103
-         intercept     1.8929     2.9281       0.65     0.5419    -3.8461
-    7.6318
-    ---------------------------------End of
-    Summary---------------------------------
-    
-    Parameters = x            1.773810
-    intercept    1.892857
-    dtype: float64
-    
+    <class 'ImportError'>
+    No module named 'scikits'
     
 
 
@@ -622,7 +592,7 @@ and the dependent variables ``x's``.
 Finally, we use the model to make a prediction of ``y`` when ``x=8.5``.
 
 
-.. code:: python
+.. code-block:: python
 
     # Make prediction for x = 8.5
     betas = res.beta
@@ -630,10 +600,10 @@ Finally, we use the model to make a prediction of ``y`` when ``x=8.5``.
     np.array([1,8.5]))))
     
 
-.. code::
+::
 
-    Prediction of y for x=8.5 is: 17.8630952381
-    
+    <class 'NameError'>
+    name 'res' is not defined
     
 
 
@@ -642,7 +612,7 @@ We can also use the results from the ``ols`` command to make a scatterplot with
 the trendline through it.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     ax.set_title('Linear Regression with Fitted Values')
@@ -652,7 +622,13 @@ the trendline through it.
     plt.show()
     
 
-.. image:: figures/Slides_Data_Scatter2_1.png
+::
+
+    <class 'NameError'>
+    name 'res' is not defined
+    
+
+.. image:: _static/Slides_Data_Scatter2_1.*
    :width: 12 cm
 
 
@@ -666,7 +642,7 @@ variables. In order to use them in our OLS regression we first have to make so
 called **dummy** variables (i.e. indicator variables that are either 0 or 1).
 
 
-.. code:: python
+.. code-block:: python
 
     df = pd.read_csv(filepath + 'Lecture_Data_Excel_b.csv')
     
@@ -675,7 +651,7 @@ called **dummy** variables (i.e. indicator variables that are either 0 or 1).
     print(df.head())
     
 
-.. code::
+::
 
        Height  Response  AverageMathSAT  Age  Female  Education  Race
     d_Blk  \
@@ -706,7 +682,7 @@ prediction based on some values for the independent variables ``x1``, ``x2``,
 etc.
 
 
-.. code:: python
+.. code-block:: python
 
     res = pd.ols(y=df['Height'], x=df[['Age','Education','Female', \
         'd_Blk','d_Hisp','d_Mex','d_Wht']])
@@ -721,65 +697,10 @@ etc.
     np.array([1,2.5,22,1,0,0,1,0]))))
     
 
-.. code::
+::
 
-    
-    -------------------------Summary of Regression
-    Analysis-------------------------
-    
-    Formula: Y ~ <Age> + <Education> + <Female> + <d_Blk> + <d_Hisp> +
-    <d_Mex>
-                 + <d_Wht> + <intercept>
-    
-    Number of Observations:         60
-    Number of Degrees of Freedom:   8
-    
-    R-squared:         0.9437
-    Adj R-squared:     0.9361
-    
-    Rmse:              0.9030
-    
-    F-stat (7, 52):   124.4348, p-value:     0.0000
-    
-    Degrees of Freedom: model 7, resid 52
-    
-    -----------------------Summary of Estimated
-    Coefficients------------------------
-          Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
-    CI 97.5%
-    --------------------------------------------------------------------------------
-               Age     1.8944     0.1241      15.27     0.0000     1.6512
-    2.1375
-         Education    -0.0514     0.1265      -0.41     0.6864    -0.2994
-    0.1967
-            Female     8.7359     0.3077      28.39     0.0000     8.1327
-    9.3391
-             d_Blk    -0.3784     0.6855      -0.55     0.5834    -1.7220
-    0.9653
-            d_Hisp    -1.0267     0.7901      -1.30     0.1995    -2.5753
-    0.5218
-    --------------------------------------------------------------------------------
-             d_Mex    -0.5749     0.6863      -0.84     0.4060    -1.9200
-    0.7701
-             d_Wht     0.0816     0.6808       0.12     0.9050    -1.2528
-    1.4161
-         intercept   -35.2714     2.7510     -12.82     0.0000   -40.6634
-    -29.8794
-    ---------------------------------End of
-    Summary---------------------------------
-    
-    Parameters = Age           1.894377
-    Education    -0.051375
-    Female        8.735906
-    d_Blk        -0.378358
-    d_Hisp       -1.026743
-    d_Mex        -0.574949
-    d_Wht         0.081628
-    intercept   -35.271435
-    dtype: float64
-    
-    Prediction: 193.659146277
-    
+    <class 'ImportError'>
+    No module named 'scikits'
     
 
 

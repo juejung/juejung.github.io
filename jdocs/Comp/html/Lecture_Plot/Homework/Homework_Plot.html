@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Homework 2 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework: Plotting vectors and functions &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -236,7 +236,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Homework 2</li>
+    <li>Homework: Plotting vectors and functions</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/Lecture_Plot/Homework/Homework_Plot.txt" rel="nofollow"> View page source</a>
@@ -247,57 +247,69 @@
 </div>
           <div role="main">
             
-  <div class="section" id="homework-2">
-<h1>Homework 2<a class="headerlink" href="#homework-2" title="Permalink to this headline">¶</a></h1>
-<p>Submit this homework in class on Tuesday.
-I need two files:</p>
-<blockquote>
-<div><ul class="simple">
-<li>R-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework2.R</span></tt></li>
-<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework2.py</span></tt></li>
+  <div class="section" id="homework-plotting-vectors-and-functions">
+<h1>Homework: Plotting vectors and functions<a class="headerlink" href="#homework-plotting-vectors-and-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Submit this homework via GitHub by Wednesday, February 25 at 11:55 pm.</dt>
+<dd><ul class="first last simple">
+<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">homework4.py</span></tt></li>
+<li>Push your repository on Github using <strong>SmartGit</strong> as discussed in class.</li>
 </ul>
-</div></blockquote>
-<p>I need to be able to quickly run these scripts on my computer.</p>
-<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+</dd>
+</dl>
+<p>I will base your homework grade on my grading of 2 randomly selected homework exercises.
+So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1:<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<p>Plot the following function in <strong>R</strong> and <strong>Python</strong>.</p>
-<p>:math:&#8217;f(K,L) = A times K ^ alpha L ^ {(1-alpha)}&#8217;</p>
-<p>In order to plot this function set: $latex A = 10, alpha= 0.33$ and $latex L=20$. Plot this function against values of $latex K = 0,1,2,...$</p>
+<p>Plot the following function:</p>
+<p><span class="math">\(f(K,L) = A \times K ^ \alpha L ^ {(1-\alpha)}\)</span></p>
+<p>In order to plot this function set: <span class="math">\(A = 10, \alpha= 0.33\)</span> and
+<span class="math">\(L=20\)</span>. Plot this function against values of <span class="math">\(K = 0,1,2,...\)</span></p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2:<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p>Plot the above function again into the same picture, but this time change the total factor productivity $latex A$ to $latex 20$.</p>
+<p>Plot the above function again into the same picture, but this time change the
+total factor productivity <span class="math">\(A\)</span> to <span class="math">\(20\)</span>.</p>
 </div>
 <div class="section" id="exercise-3">
 <h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
-<p>Suppose that <tt class="docutils literal"><span class="pre">queue</span> <span class="pre">&lt;-</span> <span class="pre">c(&quot;Steve&quot;,</span> <span class="pre">&quot;Russell&quot;,</span> <span class="pre">&quot;Alison&quot;,</span> <span class="pre">&quot;Liam&quot;)</span></tt> and that queue represents a supermarket queue with Steve first in line. Update the supermarket queue as successively:</p>
+<p>Suppose that <tt class="docutils literal"><span class="pre">queue</span> <span class="pre">=</span> <span class="pre">[&quot;Steve&quot;,</span> <span class="pre">&quot;Russell&quot;,</span> <span class="pre">&quot;Alison&quot;,</span> <span class="pre">&quot;Liam&quot;]</span></tt> and that this
+queue represents a supermarket queue with Steve first in line. Update the
+supermarket queue successively as follows - printing the entire queue in each
+round:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Barry arrives</li>
 <li>Steve is served</li>
-<li>Pam talks her way to the front with one item</li>
+<li>Pam talks her way to the front  because she only buys one item</li>
 <li>Barry gets impatient and leaves</li>
 <li>Alison gets impatient and leaves</li>
 </ol>
 </div></blockquote>
-<p>For the last case you should not assume that you know where in the queue Alison is standing. Finally, using the function <tt class="docutils literal"><span class="pre">which(x)</span></tt>, find the position of Russell in the queue. Note that when assigning a text string to a variable, it needs to be in quotes.
-We formally introduce text in Section 4.1 in the <strong>R</strong> book.</p>
+<p>For the last case you should not assume that you know where in the queue Alison
+is standing.</p>
 </div>
 <div class="section" id="exercise-4">
 <h2>Exercise 4:<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
 <p>The bell-shaped Gaussian function,</p>
-<p>:math:&#8217;f(x) = frac{1}{sigma sqrt{2 pi}}  e^{- frac{1}{2} left( frac{x- mu}{sigma} right) ^2}&#8217;</p>
-<p>is one of the most widely used functions in science and technology . The parameters $latex mu$ and $latex sigma$ are real numbers, where $latex sigma$ is the standard deviation which must be greater than zero. Make a program for evaluating this function when $latex mu = 0, sigma = 2$, and $x = 1$. Verify the program&#8217;s result by comparing with hand calculations on a calculator.</p>
+<p><span class="math">\(f(x) = \frac{1}{\sigma \sqrt{2 \pi}}  e^{- \frac{1}{2} \left( \frac{x- \mu}{\sigma} \right) ^2}\)</span></p>
+<p>is one of the most widely used functions in science and technology . The
+parameters <span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span> are real numbers, where
+<span class="math">\(\sigma\)</span> is the standard deviation which must be greater than zero. Make
+a program for evaluating this function when <span class="math">\(\mu = 0, \sigma = 2\)</span>, and
+<span class="math">\(x = 1\)</span>. Verify the program&#8217;s result by comparing with hand calculations on a
+calculator.</p>
 </div>
 <div class="section" id="exercise-5">
 <h2>Exercise 5:<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Plot the function from exercise 4 using Python.</li>
-<li>Plot the function from exercise 4 using R.</li>
-</ol>
-</div></blockquote>
+<p>Plot the function from exercise 4 using Python.</p>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Make a plot of the function <span class="math">\(y(t) = v_0 \times t - 0.5 \times g \times t^2\)</span> for
+<span class="math">\(v_0 = 10, g = 9.81\)</span>, and <span class="math">\(t \in [0, 2v_0/g]\)</span>. The label on the
+x-axis should be <tt class="docutils literal"><span class="pre">time</span> <span class="pre">t</span></tt> and the label on the y-axis should be <tt class="docutils literal"><span class="pre">height</span>
+<span class="pre">m</span></tt>.</p>
 </div>
 </div>
 

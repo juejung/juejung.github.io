@@ -419,6 +419,92 @@ results in formatted output.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="looping-through-the-content-of-a-list">
+<h3>3.2.4. Looping through the content of a list<a class="headerlink" href="#looping-through-the-content-of-a-list" title="Permalink to this headline">¶</a></h3>
+<p>If you already have a list predefined and you want to loop through the content
+of that list you can use a <tt class="docutils literal"><span class="pre">for</span></tt> loop in the following way.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;car&#39;</span><span class="p">,</span> <span class="s">&#39;bike&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">myList</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;indexing variable x is: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>indexing variable x is:  jim
+indexing variable x is:  james
+indexing variable x is:  23
+indexing variable x is:  12
+indexing variable x is:  car
+indexing variable x is:  bike
+</pre></div>
+</div>
+<p>If you need to keep track of the position of the various items in the list you
+can use the <tt class="docutils literal"><span class="pre">enumerate</span></tt> command which internally generates a &#8220;zipped list&#8221;
+that pairs up each element in the list with its index inside of the list. Here
+is an example using the previous list:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;car&#39;</span><span class="p">,</span> <span class="s">&#39;bike&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">myList</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;variable i is: {} and x is: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>variable i is: 0 and x is: jim
+variable i is: 1 and x is: james
+variable i is: 2 and x is: 23
+variable i is: 3 and x is: 12
+variable i is: 4 and x is: car
+variable i is: 5 and x is: bike
+</pre></div>
+</div>
+</div>
+<div class="section" id="combining-lists-and-looping-through-them">
+<h3>3.2.5. Combining lists and looping through them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
+<p>If you have two or more lists that you want to loop through simultaneously
+pulling the first elements from both lists (in tandem), followed by the second
+elements from both lists, etc. you can use the <tt class="docutils literal"><span class="pre">zip</span></tt> command. The <tt class="docutils literal"><span class="pre">zip</span></tt>
+function &#8220;glues&#8221; or &#8220;zips&#8221; the lists together and then allows you to run (or
+loop) through them in this pairwise fashion. The next example illustrates this.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
+<span class="n">myListA</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;jason&#39;</span><span class="p">]</span>
+<span class="n">myListB</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;emma&#39;</span><span class="p">,</span> <span class="s">&#39;clara&#39;</span><span class="p">,</span> <span class="s">&#39;susan&#39;</span><span class="p">,</span> <span class="s">&#39;jill&#39;</span><span class="p">,</span> <span class="s">&#39;lisa&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">myListA</span><span class="p">,</span> <span class="n">myListB</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The hubby is: {} and the wife is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>The hubby is: jim and the wife is emma
+The hubby is: james and the wife is clara
+The hubby is: jack and the wife is susan
+The hubby is: john and the wife is jill
+The hubby is: jason and the wife is lisa
+</pre></div>
+</div>
+<p>If you want to combine this with the index of the names inside the lists you
+can use <tt class="docutils literal"><span class="pre">enumerate</span></tt> again. Be careful in how you use the parenthesis around
+the variables <tt class="docutils literal"><span class="pre">husband</span></tt> and <tt class="docutils literal"><span class="pre">wife</span></tt> in the <tt class="docutils literal"><span class="pre">for</span></tt> loop construct.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
+<span class="n">myListA</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;jason&#39;</span><span class="p">]</span>
+<span class="n">myListB</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;emma&#39;</span><span class="p">,</span> <span class="s">&#39;clara&#39;</span><span class="p">,</span> <span class="s">&#39;susan&#39;</span><span class="p">,</span> <span class="s">&#39;jill&#39;</span><span class="p">,</span> <span class="s">&#39;lisa&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">myListA</span><span class="p">,</span> <span class="n">myListB</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;At index: {} the hubby is: {}</span>
+<span class="s">    and the wife is {}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>At index: 0 the hubby is: jim
+    and the wife is emma
+At index: 1 the hubby is: james
+    and the wife is clara
+At index: 2 the hubby is: jack
+    and the wife is susan
+At index: 3 the hubby is: john
+    and the wife is jill
+At index: 4 the hubby is: jason
+    and the wife is lisa
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="while-loop">
 <h2>3.3. While loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h2>

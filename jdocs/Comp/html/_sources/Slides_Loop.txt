@@ -190,7 +190,6 @@ but a product.
 
 
 
-
 Loop 3
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -241,6 +240,129 @@ results in formatted output.
     xv[i]= 4.00
     i= 5
     xv[i]= 5.00
+    
+    
+
+
+
+Looping through the content of a list
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If you already have a list predefined and you want to loop through the content
+of that list you can use a ``for`` loop in the following way.
+
+
+.. code-block:: python
+
+    # Define the list
+    myList = ['jim', 'james', 23, 12, 'car', 'bike']
+    
+    for x in myList:
+        print('indexing variable x is: ', x)
+    
+
+::
+
+    indexing variable x is:  jim
+    indexing variable x is:  james
+    indexing variable x is:  23
+    indexing variable x is:  12
+    indexing variable x is:  car
+    indexing variable x is:  bike
+    
+    
+
+
+
+If you need to keep track of the position of the various items in the list you
+can use the ``enumerate`` command which internally generates a "zipped list"
+that pairs up each element in the list with its index inside of the list. Here
+is an example using the previous list:
+
+
+.. code-block:: python
+
+    # Define the list
+    myList = ['jim', 'james', 23, 12, 'car', 'bike']
+    
+    for i, x in enumerate(myList):
+        print('variable i is: {} and x is: {}'.format(i, x))
+    
+
+::
+
+    variable i is: 0 and x is: jim
+    variable i is: 1 and x is: james
+    variable i is: 2 and x is: 23
+    variable i is: 3 and x is: 12
+    variable i is: 4 and x is: car
+    variable i is: 5 and x is: bike
+    
+    
+
+
+
+
+Combining lists and looping through them
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If you have two or more lists that you want to loop through simultaneously
+pulling the first elements from both lists (in tandem), followed by the second
+elements from both lists, etc. you can use the ``zip`` command. The ``zip``
+function "glues" or "zips" the lists together and then allows you to run (or
+loop) through them in this pairwise fashion. The next example illustrates this.
+
+
+.. code-block:: python
+
+    # Define the list of spouses
+    myListA = ['jim', 'james', 'jack', 'john', 'jason']
+    myListB = ['emma', 'clara', 'susan', 'jill', 'lisa']
+    
+    for husband, wife in zip(myListA, myListB):
+        print('The hubby is: {} and the wife is {}'.format(husband, wife))
+    
+
+::
+
+    The hubby is: jim and the wife is emma
+    The hubby is: james and the wife is clara
+    The hubby is: jack and the wife is susan
+    The hubby is: john and the wife is jill
+    The hubby is: jason and the wife is lisa
+    
+    
+
+
+
+If you want to combine this with the index of the names inside the lists you
+can use ``enumerate`` again. Be careful in how you use the parenthesis around
+the variables ``husband`` and ``wife`` in the ``for`` loop construct.
+
+
+.. code-block:: python
+
+    # Define the list of spouses
+    myListA = ['jim', 'james', 'jack', 'john', 'jason']
+    myListB = ['emma', 'clara', 'susan', 'jill', 'lisa']
+    
+    for i, (husband, wife) in enumerate(zip(myListA, myListB)):
+        print("""At index: {} the hubby is: {}
+        and the wife is {}""".format(i, husband, wife))
+    
+
+::
+
+    At index: 0 the hubby is: jim
+        and the wife is emma
+    At index: 1 the hubby is: james
+        and the wife is clara
+    At index: 2 the hubby is: jack
+        and the wife is susan
+    At index: 3 the hubby is: john
+        and the wife is jill
+    At index: 4 the hubby is: jason
+        and the wife is lisa
     
     
 
@@ -334,6 +456,7 @@ outstanding debt. The key formula in this example is:
     Loan will be repaid in: 13.250000000000025 years.
     
     
+
 
 
 
