@@ -13,16 +13,23 @@ Exercise 1:
 
 Plot the following function:
 
-:math:`f(K,L) = A \times K ^ \alpha L ^ {(1-\alpha)}`
+:math:`F(K,L) = A \times K ^ \alpha L ^ {(1-\alpha)}`
 
 In order to plot this function set: :math:`A = 10, \alpha= 0.33` and
-:math:`L=20`. Plot this function against values of :math:`K = 0,1,2,...`
+:math:`L=20`. Plot this function against values of :math:`K \in [0,10]`
 
 Exercise 2:
 -------------------------------------------------------------------------------
 
-Plot the above function again into the same picture, but this time change the
-total factor productivity :math:`A` to :math:`20`.
+Plot the above function again into a new figure. Then change the
+total factor productivity :math:`A` to :math:`20` and plot the function again
+into the same graph. Repeat this for
+
+:math:`A = 21`, :math:`A = 22`, :math:`A = 23`, and :math:`A = 24`.
+
+Add a legend and labels for the axes as well as a title. You should have 6!
+functions plotted inside your figure. And you should now see how total factor
+productivity increases output.
 
 Exercise 3:
 -------------------------------------------------------------------------------
@@ -44,29 +51,40 @@ is standing.
 Exercise 4:
 -------------------------------------------------------------------------------
 
-The bell-shaped Gaussian function,
-
-:math:`f(x) = \frac{1}{\sigma \sqrt{2 \pi}}  e^{- \frac{1}{2} \left( \frac{x- \mu}{\sigma} \right) ^2}`
-
-is one of the most widely used functions in science and technology . The
-parameters :math:`\mu` and :math:`\sigma` are real numbers, where
-:math:`\sigma` is the standard deviation which must be greater than zero. Make
-a program for evaluating this function when :math:`\mu = 0, \sigma = 2`, and
-:math:`x = 1`. Verify the program's result by comparing with hand calculations on a
-calculator.
-
-Exercise 5:
--------------------------------------------------------------------------------
-
-Plot the function from exercise 4 using Python.
-
-Exercise 6
--------------------------------------------------------------------------------
-
 Make a plot of the function :math:`y(t) = v_0 \times t - 0.5 \times g \times t^2` for
 :math:`v_0 = 10, g = 9.81`, and :math:`t \in [0, 2v_0/g]`. The label on the
 x-axis should be ``time t`` and the label on the y-axis should be ``height
 m``.
 
+Exercise 5:
+-------------------------------------------------------------------------------
 
+Plot the following functions into a single graph BUT use a subplot for each
+function. So your figure has 3 subplots inside.  Add super title to the graph.
+Then for each subgraph add axes labels and a title.
+
+ * :math:`f(x) = ln(x)` for :math:`x>0`,
+
+ * The derivative of :math:`f(x)` that you can call :math:`g(x) = f'(x)`  for
+   :math:`x>0` and
+
+ * :math:`h(x) = |x|` for :math:`x\in[-4, 4]`.
+
+Exercise 6:
+-------------------------------------------------------------------------------
+
+Plot the following composite function. You probably want to use ``if``
+statements and a loop to "build" it. Plot the function in the interval from
+:math:`[-3, 5]`.
+
+.. math::
+   :nowrap:
+
+    f(x) =
+    \begin{cases}
+        |x| & x < 0 \\
+        -1 & 0 \leq x < 1 \\
+        +1 & 1 \leq x < 2 \\
+        ln(x) & 2 \leq x
+    \end{cases}
 
