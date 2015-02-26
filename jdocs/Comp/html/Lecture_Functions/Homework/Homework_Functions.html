@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Homework 5 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework 5: Functions &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -105,7 +105,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#in-class-exercises">7.5. In class exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#homework">7.6. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_OOP.html">8. Object Oriented Programming</a><ul>
@@ -237,7 +236,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Homework 5</li>
+    <li>Homework 5: Functions</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/Lecture_Functions/Homework/Homework_Functions.txt" rel="nofollow"> View page source</a>
@@ -248,8 +247,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="homework-5">
-<h1>Homework 5<a class="headerlink" href="#homework-5" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="homework-5-functions">
+<h1>Homework 5: Functions<a class="headerlink" href="#homework-5-functions" title="Permalink to this headline">¶</a></h1>
 <p>Submit this homework in class on Tuesday.</p>
 <blockquote>
 <div><ul class="simple">
@@ -262,40 +261,30 @@ exercises. So please make sure that you complete every homework 100% as you
 might otherwise end up with zero points.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<p>This exercise refers to Langtangen (2011) Chapter 3.  The formula for
+<p>The formula for
 converting Fahrenheit degrees to Celsius reads: <span class="math">\(C = \frac{5}{9}(F - 32)\)</span></p>
-<p>Write a function C(F) that implements this formula. To verify the
-implementation of C(F), you can convert a Celsius temperature to Fahrenheit
-and then back to Celsius again using the F(C) function from Chapter 3.1.1 and
-the C(F) function implementing (3.7). That is, you can check that the boolean
-expression <span class="math">\(c == C(F(c))\)</span> is True for any temperature c (you should,
-however, be careful with comparing real numbers with ==, see Exercise 2.28).</p>
+<p>Write a function C(F) that implements this formula. And convert the following
+temperatures from F to C: <span class="math">\({60, 70, 75, 80, 85, 90, 95, 100, 105}\)</span>
+Use a loop to accomplish this and pretty print the results i.e. something
+like:</p>
+<div class="highlight-python"><div class="highlight"><pre>60  Fahrenheit equal .. Celsius
+70  Fahrenheit equal .. Celsius
+...
+105 Fahrenheit equal .. Celsius
+</pre></div>
+</div>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p>Some object is moving along a path in the plane. At n points of time we have
-recorded the corresponding (x, y) positions of the object:
-<span class="math">\((x_0 , y_0), (x_1, y_2), ..., (x_{n-1}, y_{n-1})\)</span>.
-The total length L of the path from <span class="math">\((x_0, y_0)\)</span> to
-<span class="math">\((x_{n-1}, y_{n-1})\)</span> is the sum of all the individual line segments
-<span class="math">\((x_{i-1}, y_{i-1})\)</span> to <span class="math">\($(x_i, y_i)\)</span>, for <span class="math">\(i = 1,..., n-1)\)</span>:</p>
-<p><span class="math">\(L = \sum_{i=1}^{n-1} \sqrt{(x_i - x_{i-1})^2 + (y_i - y_{i-1})^2}\)</span></p>
-<p>Make a function <tt class="docutils literal"><span class="pre">pathlength(x,y)</span></tt> for computing L according to the formula.
-The arguments x and y hold all the <span class="math">\(x_0,...,x_{n-1}\)</span> and <span class="math">\(y_0,...,y_{n-1}\)</span>
-coordinates, respectively. Test the function on a triangular path with the four
-points (1,1), (2,1), (1,2), and (1,1).</p>
-</div>
-<div class="section" id="exercise-3">
-<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
-<p>The factorial of n, written as <span class="math">\(n!\)</span>, is defined as
-<span class="math">\(n! = n \times (n - 1)(n - 2) ... \times 1\)</span> with the special cases
-<span class="math">\(1! = 1\)</span>, <span class="math">\(0! = 1\)</span>. For example,
-<span class="math">\(4! = 4 \times 3  \times 2 \times  1 = 24\)</span>, and <span class="math">\(2! = 2 \times 1 =
-2\)</span>. Write a function <tt class="docutils literal"><span class="pre">fact(n)</span></tt> that returns
-<span class="math">\(n!\)</span>. Return 1 immediately if x is 1 or 0, otherwise use a loop to compute
-<span class="math">\(n!\)</span>.</p>
-<p>Remark. In order to check your own program you can compare it to the built in
-ready-made factorial function by</p>
+<p>The factorial of <span class="math">\(n\)</span>, written as <span class="math">\(n!\)</span>, is defined as <span class="math">\(n! = n
+\times (n - 1)(n - 2) ... \times 1\)</span> with the special cases <span class="math">\(1! = 1\)</span>,
+<span class="math">\(0! = 1\)</span>.</p>
+<p>For example, <span class="math">\(4! = 4 \times 3  \times 2 \times  1 = 24\)</span>, and <span class="math">\(2! =
+2 \times 1 = 2\)</span>. Write a function <tt class="docutils literal"><span class="pre">myfact(n)</span></tt> that returns <span class="math">\(n!\)</span>. Return
+1 immediately if x is 1 or 0, otherwise use a loop to compute <span class="math">\(n!\)</span>.</p>
+<p>You are not allowed to use the built in <tt class="docutils literal"><span class="pre">np.fact()</span></tt> function - but you can
+use this built in function to check the correctness of your &#8220;hand written&#8221;
+function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
@@ -304,20 +293,41 @@ ready-made factorial function by</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="exercise-4">
-<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
-<p>The (Euclidean) length of a vector <span class="math">\(v = (a_0,a_1,\dots, a_k)\)</span> is the square
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>The (Euclidean) length of a vector <span class="math">\(v = (a_0, a_1,\dots, a_k)\)</span> is the square
 root of the sum of squares of its coordinates <span class="math">\(\sqrt{a_0^2+a_1^2,\dots}\)</span>. Write
 a function that returns the length of a vector. Then test your function and
-calculate the length of vector: <span class="math">\(a = [3,5,23,45,12]\)</span>.</p>
+calculate the length of vector: <span class="math">\(a = [3, 5, 23, 45, 12]\)</span>.</p>
 </div>
-<div class="section" id="exercise-5">
-<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
-<p>In Exercise 3.9.2 in our <strong>R</strong> book (Jones, Maillardet, and Robinson (2009))
-you wrote a program to calculate h(x, n), the sum of a finite geometric series.
-Turn this program into a function that takes two arguments, <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">n</span></tt>,
-and returns <tt class="docutils literal"><span class="pre">h(x,</span> <span class="pre">n)</span></tt>.  Make sure you deal with the case <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></tt>.  Test
-your function for <tt class="docutils literal"><span class="pre">x=0.70</span></tt> and <tt class="docutils literal"><span class="pre">n=8</span></tt>.</p>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>This should look familiar.  Plot the following composite function.
+First define a function f(x) as below and then evaluate that function on a grid
+of x values from <span class="math">\([-3, 5]\)</span>. Then plot that function.</p>
+<div class="math">
+\[ f(x) =
+ \begin{cases}
+     x^2 & x < -1 \\
+     |x| & -1 \leq x < 0 \\
+     -1 & 0 \leq x < 0.5 \\
+     x^2 & 0.5 \leq x < 2 \\
+     \sqrt{x} & 2 \leq x
+ \end{cases}\]</div></div>
+<div class="section" id="exercise-5-bonus-question">
+<h2>Exercise 5: Bonus Question<a class="headerlink" href="#exercise-5-bonus-question" title="Permalink to this headline">¶</a></h2>
+<p>Some object is moving along a path in the plane. At n points of time we have
+recorded the corresponding (x, y) positions of the object:
+<span class="math">\((x_0 , y_0), (x_1, y_2), ..., (x_{n-1}, y_{n-1})\)</span>.
+The total length L of the path from <span class="math">\((x_0, y_0)\)</span> to
+<span class="math">\((x_{n-1}, y_{n-1})\)</span> is the sum of all the individual line segments
+<span class="math">\((x_{i-1}, y_{i-1})\)</span> to <span class="math">\($(x_i, y_i)\)</span>, for <span class="math">\(i = 1,..., n-1)\)</span>:</p>
+<p><span class="math">\(L = \sum_{i=1}^{n-1} \sqrt{(x_i - x_{i-1})^2 + (y_i - y_{i-1})^2}\)</span></p>
+<p>Make a function <tt class="docutils literal"><span class="pre">pathlength(x,y)</span></tt> for computing this length
+L according to the formula above.
+The arguments x and y hold all the <span class="math">\(x_0,...,x_{n-1}\)</span> and <span class="math">\(y_0,...,y_{n-1}\)</span>
+coordinates, respectively. Test the function on a triangular path with the four
+points (1,1), (2,1), (1,2), and (1,1).</p>
 </div>
 </div>
 
