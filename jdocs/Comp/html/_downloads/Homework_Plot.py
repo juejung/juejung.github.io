@@ -33,11 +33,11 @@ fig, ax = plt.subplots()
 for A in Av:
     Yv = A*(Kv**alpha)*(L**(1-alpha))
     ax.plot(Kv, Yv)
-    
+
 ax.set_title('Production function with varying TFP')
 ax.set_xlabel('Capital: K')
 ax.set_ylabel('Output: Y')
-plt.show()  
+plt.show()
 print("-------------------------------------------------------------------")
 
 #------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ tv = np.linspace(0, 2*v0/g, 100)
 yv = v0 * tv -.5 * g * (tv**2)
 
 fig, ax = plt.subplots()
-ax.plot(t, yv, 'b-')
+ax.plot(tv, yv, 'b-')
 ax.set_ylabel('Height m')
 ax.set_xlabel('Time t')
 plt.show()
