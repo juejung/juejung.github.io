@@ -348,9 +348,127 @@ to spot.
 
 
 
+Functions with default arguments
+-------------------------------------------------------------------------------
+
+A default argument is an argument that assumes a default value if a value is
+not provided in the function call for that argument.
+The following example illustrates default arguments in a simple function with
+two inputs, a name and a number, that the function then prints in the terminal
+window.
+
+
+.. code-block:: python
+
+    def f_printInfo(name, age = 35):
+        "This prints the passed variable values"
+        print('-----------------')
+        print("Name: {}".format(name))
+        print("Age: {}".format(age))
+        print('-----------------')
+        return
+    
+
+
+
+We next call the function by differently assigning the name and age
+variables.
+
+
+.. code-block:: python
+
+    f_printInfo(age=50, name="miki")
+    
+
+::
+
+    -----------------
+    Name: miki
+    Age: 50
+    -----------------
+    
+    
+
+
+
+.. code-block:: python
+
+    f_printInfo(name="miki")
+    
+
+::
+
+    -----------------
+    Name: miki
+    Age: 35
+    -----------------
+    
+    
+
+
+
+This next function call is problematic as it reverses the variable order!
+
+
+.. code-block:: python
+
+    f_printInfo(50, "john")
+    
+
+::
+
+    -----------------
+    Name: 50
+    Age: john
+    -----------------
+    
+    
+
+
+
+If you want to reverse the order you need to provide the keyword argument
+
+so that the function can assign the values correctly.
+
+.. code-block:: python
+
+    f_printInfo(name="miki", age=50)
+    
+
+::
+
+    -----------------
+    Name: miki
+    Age: 50
+    -----------------
+    
+    
+
+
+
+And this one throws a syntax error since we are inconsistent with out function
+call by providing a keyword argument for one of the input variables but not for
+the other **and** we reverse the order at the same time. Here the interpreter
+will not be able to figure out the correct correspondence between inputs and
+variable assignments and therefore it throws an error.
+
+
+.. code-block:: python
+
+    f_printInfo(name="miki", 50)
+    
+
+::
+
+    <class 'SyntaxError'>
+    non-keyword arg after keyword arg (chunk, line 2)
+    
+
+
+
 
 In class exercises
-----------------------
+-------------------------------------------------------------------------------
 
 A simple function again. We next program a function that calculates the
 standard deviation of the elements of an input vector.

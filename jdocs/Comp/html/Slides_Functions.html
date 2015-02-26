@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">6.1. Plotting vectors and arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">6.2. Plotting functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">6.3. Subplots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#dgraphing">6.4. 3DGraphing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#d-graphs">6.4. 3D-Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#homework">6.5. Homework</a></li>
 </ul>
 </li>
@@ -105,8 +105,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#use-simple-user-defined-functions">7.1. Use simple user defined functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-graphing-using-loops-and-functions">7.2. Advanced Graphing using loops and functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">7.4. In class exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">7.5. Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">7.5. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">7.6. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a><ul>
@@ -494,13 +495,83 @@ y = 11
 </pre></div>
 </div>
 </div>
+<div class="section" id="functions-with-default-arguments">
+<h2>7.4. Functions with default arguments<a class="headerlink" href="#functions-with-default-arguments" title="Permalink to this headline">¶</a></h2>
+<p>A default argument is an argument that assumes a default value if a value is
+not provided in the function call for that argument.
+The following example illustrates default arguments in a simple function with
+two inputs, a name and a number, that the function then prints in the terminal
+window.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">35</span><span class="p">):</span>
+    <span class="s">&quot;This prints the passed variable values&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;-----------------&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Name: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Age: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;-----------------&#39;</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+<p>We next call the function by differently assigning the name and age
+variables.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;miki&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>-----------------
+Name: miki
+Age: 50
+-----------------
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;miki&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>-----------------
+Name: miki
+Age: 35
+-----------------
+</pre></div>
+</div>
+<p>This next function call is problematic as it reverses the variable order!</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s">&quot;john&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>-----------------
+Name: 50
+Age: john
+-----------------
+</pre></div>
+</div>
+<p>If you want to reverse the order you need to provide the keyword argument</p>
+<p>so that the function can assign the values correctly.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;miki&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>-----------------
+Name: miki
+Age: 50
+-----------------
+</pre></div>
+</div>
+<p>And this one throws a syntax error since we are inconsistent with out function
+call by providing a keyword argument for one of the input variables but not for
+the other <strong>and</strong> we reverse the order at the same time. Here the interpreter
+will not be able to figure out the correct correspondence between inputs and
+variable assignments and therefore it throws an error.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;miki&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;SyntaxError&#39;&gt;
+non-keyword arg after keyword arg (chunk, line 2)
+</pre></div>
+</div>
+</div>
 <div class="section" id="in-class-exercises">
-<h2>7.4. In class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
+<h2>7.5. In class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
 <p>A simple function again. We next program a function that calculates the
 standard deviation of the elements of an input vector.</p>
 </div>
 <div class="section" id="homework">
-<h2>7.5. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<h2>7.6. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="Lecture_Functions/Homework/Homework_Functions.html"><em>Homework 5</em></a></p>
 </div>
 </div>
