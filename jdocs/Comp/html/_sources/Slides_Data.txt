@@ -28,12 +28,6 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     plt.close('all')  # close all open figures
     
 
-::
-
-    <class 'ImportError'>
-    cannot import name 'calc_lwork'
-    
-
 
 
 
@@ -137,6 +131,31 @@ Now we grab the relative frequencies out of the DataFrame into a numpy array.
 
 
 
+
+.. code-block:: python
+
+    # Let us make additional columns
+    df['names'] = df['Frequency']/df['Frequency'].sum()
+    # Let's have a look at it, it's a nested list
+    print(df)
+    
+
+::
+
+                     Area  Frequency  relFrequency     names
+    0          Accounting         73      0.288538  0.288538
+    1             Finance         52      0.205534  0.205534
+    2  General management         36      0.142292  0.142292
+    3     Marketing sales         64      0.252964  0.252964
+    4               other         28      0.110672  0.110672
+    
+    
+
+
+
+
+
+
 Making simple graphs from our data
 --------------------------------------
 
@@ -215,6 +234,8 @@ information to the histogram.
     B = 8           # number of bins in histogram
     
     fig, ax = plt.subplots(2,2)
+    plt.subplots_adjust(wspace = 0.8, hspace = 0.8)
+    
     prob, bins, patches = ax[0,0].hist(heightv, bins=B, align='mid' )
     # Annotate with text
     for i, p in enumerate(prob):
@@ -223,18 +244,22 @@ information to the histogram.
         if percent:
             ax[0,0].text(bins[i]*1.5, p/2.0, str(percent)+'%',
     rotation=45, va='bottom', ha='center')
+    
     ax[0,0].set_xlabel('Height groups')
     ax[0,0].set_ylabel('Number of obs')
     ax[0,0].set_title('Histogram of Height')
     ax[0,0].set_xlim(min(heightv),max(heightv))
-    #
+    
+    # Using Panda's built in histogram method
     df['Height'].hist(bins = B, ax = ax[0,1], color = 'k', alpha = 0.3)
+    ax[0,1].set_title('Histogram of Height')
+    ax[0,1].set_xlabel('Height groups')
+    ax[0,1].set_ylabel('Number of obs')
     #
     df['AverageMathSAT'].hist(bins = B, ax = ax[1,0], color = 'g', alpha =
     0.3)
-    ax[1,0].set_title('Math SAT')
+    ax[1,0].set_title('Histogram of Math SAT Scores')
     #
-    plt.subplots_adjust(wspace = 0.3, hspace = 0.5)
     plt.show()
     
 
@@ -244,24 +269,31 @@ information to the histogram.
 
 
 Another way to graph a histogram is by using the powerful ``ggplot`` package
-which is a translation of **R's** ``ggplot2`` package into **Python**. It
+which is a translation of **R's** `ggplot2 <http://ggplot2.org/>`_ package into **Python**. It
 follows a completely different graphing philosophy based on the **grammar of
-grapics**
+grapics** by:
+
+  Hadley Wickham. A layered grammar of graphics.
+  Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28, 2010.
+
+Or using the ggplot package
 
 
 .. code-block:: python
 
-    # Using ggplot package
     print( ggplot(aes(x='Height'), data = df) + geom_histogram() +
     ggtitle("Histogram of Height using ggplot") + labs("Height", "Freq"))
-    plt.show(1)
     
 
 ::
 
-    <class 'NameError'>
-    name 'ggplot' is not defined
+    <ggplot: (-9223372036844868555)>
     
+    
+
+.. image:: _static/Slides_Data_Boxplot_1.*
+   :width: 12 cm
+
 
 
 
@@ -282,6 +314,8 @@ A boxplot of height is made as follows:
 
 .. image:: _static/Slides_Data_Boxplot_1.*
    :width: 12 cm
+
+
 
 
 
@@ -336,19 +370,25 @@ commands are part of the ``numpy`` package so they have the prefix ``np.``
 
 .. code-block:: python
 
-    N = len(heightv)   # Number of observations (sample size)
-    print(" -----------------------------------------")
+    # Number of observations (sample size)
+    N = len(heightv)
+    print(" -------------------------------------")
+    
     # Mean - Median - Mode
-    print("Mean(height)= " + str(np.mean(heightv)))
-    print("Median(height)= " + str(np.median(heightv)))
-    print("Mode(height)= " + str(st.mode(heightv))) # Mode (value with
-    highest frequency)
+    print("Mean(height)=  {:.3f}".format(np.mean(heightv)))
+    print("Median(height)=  {:.3f}".format(np.median(heightv)))
+    
+    # Mode (value with highest frequency)
+    print("Mode(height)=  {}".format(st.mode(heightv)))
     
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+     -------------------------------------
+    Mean(height)=  6.817
+    Median(height)=  6.850
+    Mode(height)=  (array([ 1.1]), array([ 1.]))
+    
     
 
 
@@ -360,13 +400,16 @@ the ``stats`` package.
 .. code-block:: python
 
     # Summary stats
-    print("Summary stats: " + str(st.describe(heightv)))
+    print("Summary stats: {}".format(st.describe(heightv)))
     
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+    Summary stats: DescribeResult(nobs=60, minmax=(1.1000000000000001,
+    12.699999999999999), mean=6.8166666666666655,
+    variance=12.757344632768362, skewness=0.01909961978127301,
+    kurtosis=-1.1611486008105545)
+    
     
 
 
@@ -382,30 +425,37 @@ sample.
 .. code-block:: python
 
     print(" -----------------------------------------")
-    print("Range= " + str(max(heightv)-min(heightv)))   # returns smallest
-    a largest element
-    print("Population variance = " + str(np.sum((heightv-
-    np.mean(heightv))**2)/N))    # population variance
-    print("Sample variance     = " + str(np.sum((heightv-
-    np.mean(heightv))**2)/(N-1)))      # sample variance
-    print("Pop.   standard dev = " + str(np.sqrt(np.sum((heightv-
-    np.mean(heightv))**2)/N)))
-    print("Sample standard dev = " + str(np.sqrt(np.sum((heightv-
-    np.mean(heightv))**2)/(N-1))))
-    #or simply
-    print("Pop. standard dev = " + str(np.std(heightv)))
+    # returns smallest a largest element
+    print("Range= {:.3f}".format(max(heightv)-min(heightv)))
+    print("Population variance = {:.3f}".\
+    
+    # population variance
+      format(np.sum((heightv-np.mean(heightv))**2)/N))
+    
+    # sample variance
+    print("Sample variance     = {:.3f}".\
+      format(np.sum((heightv-np.mean(heightv))**2)/(N-1)))
+    
+    print("Pop.   standard dev = {:.3f}".\
+      format(np.sqrt(np.sum((heightv-np.mean(heightv))**2)/N)))
+    
+    print("Sample standard dev = {:.3f}". \
+      format(np.sqrt(np.sum((heightv-np.mean(heightv))**2)/(N-1))))
+    
+    #Or simply
+    print("Pop. standard dev = {:.3f}".format(np.std(heightv)))
     print(" -----------------------------------------")
     
 
 ::
 
      -----------------------------------------
-    Range= 11.6
-    Population variance = 12.5447222222
-    Sample variance     = 12.7573446328
-    Pop.   standard dev = 3.54185293628
-    Sample standard dev = 3.5717425205
-    Pop. standard dev = 3.54185293628
+    Range= 11.600
+    Population variance = 12.545
+    Sample variance     = 12.757
+    Pop.   standard dev = 3.542
+    Sample standard dev = 3.572
+    Pop. standard dev = 3.542
      -----------------------------------------
     
     
@@ -420,22 +470,27 @@ Percentiles are calculated as follows:
 
 .. code-block:: python
 
-    print("1 quartile (25th percentile) = " +
-    str(st.scoreatpercentile(heightv, 25)))
-    print("2 quartile (50th percentile) = " +
-    str(st.scoreatpercentile(heightv, 50)))
-    print("3 quartile (75th percentile) = " +
-    str(st.scoreatpercentile(heightv, 75)))
+    print("1 quartile (25th percentile) = {:.3f}".\
+      format(st.scoreatpercentile(heightv, 25)))
+    print("2 quartile (50th percentile) = {:.3f}".\
+      format(st.scoreatpercentile(heightv, 50)))
+    print("3 quartile (75th percentile) = {:.3f}".\
+      format(st.scoreatpercentile(heightv, 75)))
     # Inter quartile rante: Q3-Q1 or P_75-P_25
-    print("IQR = (P75-P25) = " + str(st.scoreatpercentile(heightv,
-    75)-st.scoreatpercentile(heightv, 25)))
+    print("IQR = (P75-P25) = {:.3f}".\
+      format(st.scoreatpercentile(heightv, 75)\
+      -st.scoreatpercentile(heightv, 25)))
     print(" -----------------------------------------")
     
 
 ::
 
-    <class 'NameError'>
-    name 'st' is not defined
+    1 quartile (25th percentile) = 3.950
+    2 quartile (50th percentile) = 6.850
+    3 quartile (75th percentile) = 9.650
+    IQR = (P75-P25) = 5.700
+     -----------------------------------------
+    
     
 
 
@@ -465,19 +520,23 @@ We then go ahead and calculate the covariance.
 
 .. code-block:: python
 
-    print("Population covariance= " + str(np.sum((xv-np.mean(xv))*(yv-
-    np.mean(yv)))/n))          # Population covariance
-    print("Sample covariance= " + str(np.sum((xv-np.mean(xv))*(yv-
-    np.mean(yv)))/(n-1)))       # sample covariance
+    # Population covariance
+    print("Population covariance= {:.3f}".\
+      format(np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/n))
+    
+    # Sample covariance
+    print("Sample covariance= {:.3f}".\
+      format(np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/(n-1)))
+    
     # or simply
-    print("Sample covariance= " + str(df.Age.cov(df.Height)))
+    print("Sample covariance= {:.3f}".format(df.Age.cov(df.Height)))
     
 
 ::
 
-    Population covariance= -0.158888888889
-    Sample covariance= -0.161581920904
-    Sample covariance= -0.161581920904
+    Population covariance= -0.159
+    Sample covariance= -0.162
+    Sample covariance= -0.162
     
     
 
@@ -492,16 +551,17 @@ toolbox command.
 
 .. code-block:: python
 
-    print("Correlation coefficient= " + \
-            str((np.sum((xv-np.mean(xv))*(yv-
-    np.mean(yv)))/n)/(np.std(xv)*np.std(yv))))
-    print("Correlation coefficient= " + str(df.Age.corr(df.Height)))
+    print("Correlation coefficient=  {:.3f}".\
+      format((np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/n)\
+      /(np.std(xv)*np.std(yv))))
+    print("Correlation coefficient=
+    {:.3f}".format(df.Age.corr(df.Height)))
     
 
 ::
 
-    Correlation coefficient= -0.0384360741963
-    Correlation coefficient= -0.0384360741963
+    Correlation coefficient=  -0.038
+    Correlation coefficient= -0.038
     
     
 
@@ -543,9 +603,9 @@ We fist make a **scatterplot** with least squares trend line: `y = \beta_0 +
 .. code-block:: python
 
     p = np.polyfit(xv, yv, 1)
-    print("p = " + str(p))
+    print("p = {}".format(p))
     
-    # scatterplot
+    # Scatterplot
     fig, ax = plt.subplots()
     ax.set_title('Linear regression with polyfit()')
     ax.plot(xv, yv, 'o', label = 'data')
@@ -578,13 +638,43 @@ and the dependent variables ``x's``.
     res = pd.ols(y=df['y'], x=df['x'])
     # Show coefficient estimates
     print(res)
-    print('Parameters = ' + str(res.beta))
+    print('Parameters = '.format(res.beta))
     
 
 ::
 
-    <class 'ImportError'>
-    No module named 'scikits'
+    
+    -------------------------Summary of Regression
+    Analysis-------------------------
+    
+    Formula: Y ~ <x> + <intercept>
+    
+    Number of Observations:         8
+    Number of Degrees of Freedom:   2
+    
+    R-squared:         0.6093
+    Adj R-squared:     0.5442
+    
+    Rmse:              3.7578
+    
+    F-stat (1, 6):     9.3583, p-value:     0.0222
+    
+    Degrees of Freedom: model 1, resid 6
+    
+    -----------------------Summary of Estimated
+    Coefficients------------------------
+          Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
+    CI 97.5%
+    --------------------------------------------------------------------------------
+                 x     1.7738     0.5798       3.06     0.0222     0.6373
+    2.9103
+         intercept     1.8929     2.9281       0.65     0.5419    -3.8461
+    7.6318
+    ---------------------------------End of
+    Summary---------------------------------
+    
+    Parameters =
+    
     
 
 
@@ -596,14 +686,14 @@ Finally, we use the model to make a prediction of ``y`` when ``x=8.5``.
 
     # Make prediction for x = 8.5
     betas = res.beta
-    print("Prediction of y for x=8.5 is: " + str(np.sum(betas *
-    np.array([1,8.5]))))
+    print("Prediction of y for x=8.5 is: {:.3f}".\
+      format(np.sum(betas * np.array([1,8.5]))))
     
 
 ::
 
-    <class 'NameError'>
-    name 'res' is not defined
+    Prediction of y for x=8.5 is: 17.863
+    
     
 
 
@@ -620,12 +710,6 @@ the trendline through it.
     ax.plot(xv, res.y_predict,'k-', label = 'Linear regression')
     ax.legend(['Data', 'OLS'], loc='best')
     plt.show()
-    
-
-::
-
-    <class 'NameError'>
-    name 'res' is not defined
     
 
 .. image:: _static/Slides_Data_Scatter2_1.*
@@ -689,7 +773,7 @@ etc.
     
     # Show coefficient estimates
     print(res)
-    print('Parameters = ' + str(res.beta))
+    print('Parameters = '.format(res.beta))
     
     # Prediction: size of 8.5 will produce a math score of ...
     betas = res.beta
@@ -699,14 +783,56 @@ etc.
 
 ::
 
-    <class 'ImportError'>
-    No module named 'scikits'
+    
+    -------------------------Summary of Regression
+    Analysis-------------------------
+    
+    Formula: Y ~ <Age> + <Education> + <Female> + <d_Blk> + <d_Hisp> +
+    <d_Mex>
+                 + <d_Wht> + <intercept>
+    
+    Number of Observations:         60
+    Number of Degrees of Freedom:   8
+    
+    R-squared:         0.9437
+    Adj R-squared:     0.9361
+    
+    Rmse:              0.9030
+    
+    F-stat (7, 52):   124.4348, p-value:     0.0000
+    
+    Degrees of Freedom: model 7, resid 52
+    
+    -----------------------Summary of Estimated
+    Coefficients------------------------
+          Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
+    CI 97.5%
+    --------------------------------------------------------------------------------
+               Age     1.8944     0.1241      15.27     0.0000     1.6512
+    2.1375
+         Education    -0.0514     0.1265      -0.41     0.6864    -0.2994
+    0.1967
+            Female     8.7359     0.3077      28.39     0.0000     8.1327
+    9.3391
+             d_Blk    -0.3784     0.6855      -0.55     0.5834    -1.7220
+    0.9653
+            d_Hisp    -1.0267     0.7901      -1.30     0.1995    -2.5753
+    0.5218
+    --------------------------------------------------------------------------------
+             d_Mex    -0.5749     0.6863      -0.84     0.4060    -1.9200
+    0.7701
+             d_Wht     0.0816     0.6808       0.12     0.9050    -1.2528
+    1.4161
+         intercept   -35.2714     2.7510     -12.82     0.0000   -40.6634
+    -29.8794
+    ---------------------------------End of
+    Summary---------------------------------
+    
+    Parameters =
+    
+    Prediction: 193.659146277
+    
     
 
 
-
-Homework
--------------------------------------------------------------------------------
-
-:doc:`./Lecture_Data/Homework/Homework_Data`
 

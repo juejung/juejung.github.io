@@ -107,7 +107,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#in-class-exercises">7.5. In class exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#homework">7.6. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a><ul>
@@ -122,7 +121,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#making-simple-graphs-from-our-data">9.2. Making simple graphs from our data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary-statistics">9.3. Summary statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#measures-of-linear-relationship">9.4. Measures of linear relationship</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">9.5. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">10. Working with data from the web</a><ul>
@@ -273,10 +271,6 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">)</span>  <span class="c"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ImportError&#39;&gt;
-cannot import name &#39;calc_lwork&#39;
-</pre></div>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Read in small data from .csv file</span>
 <span class="c"># Filepath</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s">&#39;Lecture_Data/&#39;</span>
@@ -343,6 +337,20 @@ frequencies.</p>
 0.11067194]
 </pre></div>
 </div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Let us make additional columns</span>
+<span class="n">df</span><span class="p">[</span><span class="s">&#39;names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c"># Let&#39;s have a look at it, it&#39;s a nested list</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  relFrequency     names
+0          Accounting         73      0.288538  0.288538
+1             Finance         52      0.205534  0.205534
+2  General management         36      0.142292  0.142292
+3     Marketing sales         64      0.252964  0.252964
+4               other         28      0.110672  0.110672
+</pre></div>
+</div>
 </div>
 <div class="section" id="making-simple-graphs-from-our-data">
 <h2>9.2. Making simple graphs from our data<a class="headerlink" href="#making-simple-graphs-from-our-data" title="Permalink to this headline">¶</a></h2>
@@ -399,6 +407,8 @@ information to the histogram.</p>
 <span class="n">B</span> <span class="o">=</span> <span class="mi">8</span>           <span class="c"># number of bins in histogram</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">hspace</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+
 <span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s">&#39;mid&#39;</span> <span class="p">)</span>
 <span class="c"># Annotate with text</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
@@ -407,36 +417,42 @@ information to the histogram.</p>
     <span class="k">if</span> <span class="n">percent</span><span class="p">:</span>
         <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">p</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;%&#39;</span><span class="p">,</span>
 <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Height groups&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Histogram of Height&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">heightv</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span>
-<span class="c">#</span>
+
+<span class="c"># Using Panda&#39;s built in histogram method</span>
 <span class="n">df</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="n">B</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Histogram of Height&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Height groups&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="c">#</span>
 <span class="n">df</span><span class="p">[</span><span class="s">&#39;AverageMathSAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="n">B</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span>
 <span class="mf">0.3</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Math SAT&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Histogram of Math SAT Scores&#39;</span><span class="p">)</span>
 <span class="c">#</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Histogram_1.png"><img alt="_images/Slides_Data_Histogram_1.png" src="_images/Slides_Data_Histogram_1.png" style="width: 12cm;" /></a>
 <p>Another way to graph a histogram is by using the powerful <tt class="docutils literal"><span class="pre">ggplot</span></tt> package
-which is a translation of <strong>R&#8217;s</strong> <tt class="docutils literal"><span class="pre">ggplot2</span></tt> package into <strong>Python</strong>. It
+which is a translation of <strong>R&#8217;s</strong> <a class="reference external" href="http://ggplot2.org/">ggplot2</a> package into <strong>Python</strong>. It
 follows a completely different graphing philosophy based on the <strong>grammar of
-grapics</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Using ggplot package</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;Height&#39;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
+grapics</strong> by:</p>
+<blockquote>
+<div>Hadley Wickham. A layered grammar of graphics.
+Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28, 2010.</div></blockquote>
+<p>Or using the ggplot package</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;Height&#39;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
 <span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;ggplot&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (-9223372036844868555)&gt;
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="_images/Slides_Data_Boxplot_1.png"><img alt="_images/Slides_Data_Boxplot_1.png" src="_images/Slides_Data_Boxplot_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="boxplots">
 <h3>9.2.4. Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">¶</a></h3>
@@ -486,27 +502,34 @@ median and mode. Note that <tt class="docutils literal"><span class="pre">mode</
 imported as <tt class="docutils literal"><span class="pre">st</span></tt> using: <tt class="docutils literal"><span class="pre">from</span> <span class="pre">scipy</span> <span class="pre">import</span> <span class="pre">stats</span> <span class="pre">as</span> <span class="pre">st</span></tt>. Now we have to add
 <tt class="docutils literal"><span class="pre">st</span></tt> to the mode command: <tt class="docutils literal"><span class="pre">st.mode(heightv)</span></tt> in order to call it. The other
 commands are part of the <tt class="docutils literal"><span class="pre">numpy</span></tt> package so they have the prefix <tt class="docutils literal"><span class="pre">np.</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span>   <span class="c"># Number of observations (sample size)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Number of observations (sample size)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+
 <span class="c"># Mean - Median - Mode</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mean(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Median(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mode(height)= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span> <span class="c"># Mode (value with</span>
-<span class="n">highest</span> <span class="n">frequency</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mean(height)=  {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Median(height)=  {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
+
+<span class="c"># Mode (value with highest frequency)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Mode(height)=  {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre> -------------------------------------
+Mean(height)=  6.817
+Median(height)=  6.850
+Mode(height)=  (array([ 1.1]), array([ 1.]))
 </pre></div>
 </div>
 <p>We can also just summarize a variable using the <tt class="docutils literal"><span class="pre">st.describe</span></tt> command from
 the <tt class="docutils literal"><span class="pre">stats</span></tt> package.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Summary stats</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Summary stats: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Summary stats: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>Summary stats: DescribeResult(nobs=60, minmax=(1.1000000000000001,
+12.699999999999999), mean=6.8166666666666655,
+variance=12.757344632768362, skewness=0.01909961978127301,
+kurtosis=-1.1611486008105545)
 </pre></div>
 </div>
 </div>
@@ -516,28 +539,35 @@ name &#39;st&#39; is not defined
 variance and standard deviation there is a distinction between population and
 sample.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Range= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>   <span class="c"># returns smallest</span>
-<span class="n">a</span> <span class="n">largest</span> <span class="n">element</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Population variance = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">))</span>    <span class="c"># population variance</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample variance     = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>      <span class="c"># sample variance</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop.   standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))))</span>
-<span class="c">#or simply</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop. standard dev = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
+<span class="c"># returns smallest a largest element</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Range= {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">heightv</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Population variance = {:.3f}&quot;</span><span class="o">.</span>\
+
+<span class="c"># population variance</span>
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">))</span>
+
+<span class="c"># sample variance</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample variance     = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop.   standard dev = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">)))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample standard dev = {:.3f}&quot;</span><span class="o">.</span> \
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">heightv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heightv</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))))</span>
+
+<span class="c">#Or simply</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pop. standard dev = {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">heightv</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre> -----------------------------------------
-Range= 11.6
-Population variance = 12.5447222222
-Sample variance     = 12.7573446328
-Pop.   standard dev = 3.54185293628
-Sample standard dev = 3.5717425205
-Pop. standard dev = 3.54185293628
+Range= 11.600
+Population variance = 12.545
+Sample variance     = 12.757
+Pop.   standard dev = 3.542
+Sample standard dev = 3.572
+Pop. standard dev = 3.542
  -----------------------------------------
 </pre></div>
 </div>
@@ -545,20 +575,24 @@ Pop. standard dev = 3.54185293628
 <div class="section" id="measures-of-relative-standing">
 <h3>9.3.3. Measures of relative standing<a class="headerlink" href="#measures-of-relative-standing" title="Permalink to this headline">¶</a></h3>
 <p>Percentiles are calculated as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;1 quartile (25th percentile) = &quot;</span> <span class="o">+</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;2 quartile (50th percentile) = &quot;</span> <span class="o">+</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">50</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;3 quartile (75th percentile) = &quot;</span> <span class="o">+</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">75</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;1 quartile (25th percentile) = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;2 quartile (50th percentile) = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">50</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;3 quartile (75th percentile) = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">75</span><span class="p">)))</span>
 <span class="c"># Inter quartile rante: Q3-Q1 or P_75-P_25</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;IQR = (P75-P25) = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span>
-<span class="mi">75</span><span class="p">)</span><span class="o">-</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;IQR = (P75-P25) = {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>\
+  <span class="o">-</span><span class="n">st</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">heightv</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------------&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;st&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>1 quartile (25th percentile) = 3.950
+2 quartile (50th percentile) = 6.850
+3 quartile (75th percentile) = 9.650
+IQR = (P75-P25) = 5.700
+ -----------------------------------------
 </pre></div>
 </div>
 </div>
@@ -575,17 +609,21 @@ define them as <tt class="docutils literal"><span class="pre">numpy</span></tt> 
 </pre></div>
 </div>
 <p>We then go ahead and calculate the covariance.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Population covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>          <span class="c"># Population covariance</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>       <span class="c"># sample covariance</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Population covariance</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Population covariance= {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>
+
+<span class="c"># Sample covariance</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+
 <span class="c"># or simply</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sample covariance= {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Population covariance= -0.158888888889
-Sample covariance= -0.161581920904
-Sample covariance= -0.161581920904
+<div class="highlight-python"><div class="highlight"><pre>Population covariance= -0.159
+Sample covariance= -0.162
+Sample covariance= -0.162
 </pre></div>
 </div>
 </div>
@@ -593,14 +631,15 @@ Sample covariance= -0.161581920904
 <h3>9.4.2. Correlation coefficient<a class="headerlink" href="#correlation-coefficient" title="Permalink to this headline">¶</a></h3>
 <p>We can calculate the correlation coefficient by hand or using the <tt class="docutils literal"><span class="pre">pandas</span></tt>
 toolbox command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient= &quot;</span> <span class="o">+</span> \
-        <span class="nb">str</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">yv</span><span class="p">))))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient=  {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>\
+  <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">yv</span><span class="p">))))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Correlation coefficient=</span>
+<span class="p">{:</span><span class="o">.</span><span class="mi">3</span><span class="n">f</span><span class="p">}</span><span class="s">&quot;.format(df.Age.corr(df.Height)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Correlation coefficient= -0.0384360741963
-Correlation coefficient= -0.0384360741963
+<div class="highlight-python"><div class="highlight"><pre>Correlation coefficient=  -0.038
+Correlation coefficient= -0.038
 </pre></div>
 </div>
 </div>
@@ -622,9 +661,9 @@ Correlation coefficient= -0.0384360741963
 <p>We fist make a <strong>scatterplot</strong> with least squares trend line: <cite>y = beta_0 +
 beta_1 * x + epsilon</cite>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;p = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;p = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 
-<span class="c"># scatterplot</span>
+<span class="c"># Scatterplot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Linear regression with polyfit()&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;data&#39;</span><span class="p">)</span>
@@ -646,22 +685,49 @@ and the dependent variables <tt class="docutils literal"><span class="pre">x's</
 <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">])</span>
 <span class="c"># Show coefficient estimates</span>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Parameters = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">beta</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Parameters = &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">beta</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ImportError&#39;&gt;
-No module named &#39;scikits&#39;
+<div class="highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
+Analysis-------------------------
+
+Formula: Y ~ &lt;x&gt; + &lt;intercept&gt;
+
+Number of Observations:         8
+Number of Degrees of Freedom:   2
+
+R-squared:         0.6093
+Adj R-squared:     0.5442
+
+Rmse:              3.7578
+
+F-stat (1, 6):     9.3583, p-value:     0.0222
+
+Degrees of Freedom: model 1, resid 6
+
+-----------------------Summary of Estimated
+Coefficients------------------------
+      Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
+CI 97.5%
+--------------------------------------------------------------------------------
+             x     1.7738     0.5798       3.06     0.0222     0.6373
+2.9103
+     intercept     1.8929     2.9281       0.65     0.5419    -3.8461
+7.6318
+---------------------------------End of
+Summary---------------------------------
+
+Parameters =
 </pre></div>
 </div>
 <p>Finally, we use the model to make a prediction of <tt class="docutils literal"><span class="pre">y</span></tt> when <tt class="docutils literal"><span class="pre">x=8.5</span></tt>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Make prediction for x = 8.5</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">beta</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Prediction of y for x=8.5 is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span>
-<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">]))))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Prediction of y for x=8.5 is: {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;res&#39; is not defined
+<div class="highlight-python"><div class="highlight"><pre>Prediction of y for x=8.5 is: 17.863
 </pre></div>
 </div>
 <p>We can also use the results from the <tt class="docutils literal"><span class="pre">ols</span></tt> command to make a scatterplot with
@@ -672,10 +738,6 @@ the trendline through it.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">y_predict</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Linear regression&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;Data&#39;</span><span class="p">,</span> <span class="s">&#39;OLS&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
-name &#39;res&#39; is not defined
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Scatter2_1.png"><img alt="_images/Slides_Data_Scatter2_1.png" src="_images/Slides_Data_Scatter2_1.png" style="width: 12cm;" /></a>
@@ -722,7 +784,7 @@ etc.</p>
 
 <span class="c"># Show coefficient estimates</span>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Parameters = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">beta</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Parameters = &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">beta</span><span class="p">))</span>
 
 <span class="c"># Prediction: size of 8.5 will produce a math score of ...</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">beta</span>
@@ -730,16 +792,57 @@ etc.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ImportError&#39;&gt;
-No module named &#39;scikits&#39;
+<div class="highlight-python"><div class="highlight"><pre>-------------------------Summary of Regression
+Analysis-------------------------
+
+Formula: Y ~ &lt;Age&gt; + &lt;Education&gt; + &lt;Female&gt; + &lt;d_Blk&gt; + &lt;d_Hisp&gt; +
+&lt;d_Mex&gt;
+             + &lt;d_Wht&gt; + &lt;intercept&gt;
+
+Number of Observations:         60
+Number of Degrees of Freedom:   8
+
+R-squared:         0.9437
+Adj R-squared:     0.9361
+
+Rmse:              0.9030
+
+F-stat (7, 52):   124.4348, p-value:     0.0000
+
+Degrees of Freedom: model 7, resid 52
+
+-----------------------Summary of Estimated
+Coefficients------------------------
+      Variable       Coef    Std Err     t-stat    p-value    CI 2.5%
+CI 97.5%
+--------------------------------------------------------------------------------
+           Age     1.8944     0.1241      15.27     0.0000     1.6512
+2.1375
+     Education    -0.0514     0.1265      -0.41     0.6864    -0.2994
+0.1967
+        Female     8.7359     0.3077      28.39     0.0000     8.1327
+9.3391
+         d_Blk    -0.3784     0.6855      -0.55     0.5834    -1.7220
+0.9653
+        d_Hisp    -1.0267     0.7901      -1.30     0.1995    -2.5753
+0.5218
+--------------------------------------------------------------------------------
+         d_Mex    -0.5749     0.6863      -0.84     0.4060    -1.9200
+0.7701
+         d_Wht     0.0816     0.6808       0.12     0.9050    -1.2528
+1.4161
+     intercept   -35.2714     2.7510     -12.82     0.0000   -40.6634
+-29.8794
+---------------------------------End of
+Summary---------------------------------
+
+Parameters =
+
+Prediction: 193.659146277
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="homework">
-<h2>9.5. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="Lecture_Data/Homework/Homework_Data.html"><em>Homework 4</em></a></p>
 </div>
 </div>
 
