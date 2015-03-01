@@ -135,14 +135,14 @@ Now we grab the relative frequencies out of the DataFrame into a numpy array.
 .. code-block:: python
 
     # Let us make additional columns
-    df['names'] = df['Frequency']/df['Frequency'].sum()
+    df['random'] = df['Frequency']/df['Frequency'].sum()
     # Let's have a look at it, it's a nested list
     print(df)
     
 
 ::
 
-                     Area  Frequency  relFrequency     names
+                     Area  Frequency  relFrequency    random
     0          Accounting         73      0.288538  0.288538
     1             Finance         52      0.205534  0.205534
     2  General management         36      0.142292  0.142292
@@ -150,6 +150,416 @@ Now we grab the relative frequencies out of the DataFrame into a numpy array.
     4               other         28      0.110672  0.110672
     
     
+
+
+
+Some Pandas tricks
+-------------------------------------------------------------------------------
+
+Renaming variables
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For renaming column names we use a dictionary as follows.
+
+
+.. code-block:: python
+
+    df = df.rename(columns={'Area': 'area',
+        'Frequency': 'absFrequency'})
+    
+    print(df.head(3))
+    
+
+::
+
+                     area  absFrequency  relFrequency    random
+    0          Accounting            73      0.288538  0.288538
+    1             Finance            52      0.205534  0.205534
+    2  General management            36      0.142292  0.142292
+    
+    
+
+
+
+
+Adding a new column
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: python
+
+    # Drop a column first so everything fits
+    df = df.drop('random', 1)
+    
+    # Create a new column with some missing values
+    df['team'] = pd.Series([2,4, np.NaN,6,10], index=df.index)
+    
+    # or insert new column at specific location
+    df.insert(loc=2, column='position', value=[np.NaN,1, np.NaN,1,3])
+    
+    print(df)
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    0          Accounting            73       NaN      0.288538     2
+    1             Finance            52         1      0.205534     4
+    2  General management            36       NaN      0.142292   NaN
+    3     Marketing sales            64         1      0.252964     6
+    4               other            28         3      0.110672    10
+    
+    
+
+
+
+Missing values of NaN's
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Count NaNs**
+
+Count the number of rows with missing values.
+
+
+.. code-block:: python
+
+    nans = df.shape[0] - df.dropna().shape[0]
+    print('%d rows have missing values' % nans)
+    
+
+::
+
+    2 rows have missing values
+    
+    
+
+
+
+**Select rows with NaNs or overwrite NaNs**
+
+If you want to select the rows with missing values you can index them with the
+``isnull()`` method.
+
+
+.. code-block:: python
+
+    print(df[df.isnull().any(axis=1)])
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    0          Accounting            73       NaN      0.288538     2
+    2  General management            36       NaN      0.142292   NaN
+    
+    
+
+
+
+Or if you want to search specific columns for missing values you can do
+
+
+.. code-block:: python
+
+    print(df[df['team'].isnull()])
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    2  General management            36       NaN      0.142292   NaN
+    
+    
+
+
+
+Or if you want to grab all the rows without missing observations you can index
+the dataframe with the ``notnull()`` method.
+
+
+.. code-block:: python
+
+    print(df[df['team'].notnull()])
+    
+
+::
+
+                  area  absFrequency  position  relFrequency  team
+    0       Accounting            73       NaN      0.288538     2
+    1          Finance            52         1      0.205534     4
+    3  Marketing sales            64         1      0.252964     6
+    4            other            28         3      0.110672    10
+    
+    
+
+
+
+**Delete rows with NaNs**
+
+
+.. code-block:: python
+
+    print(df.dropna())
+    
+
+::
+
+                  area  absFrequency  position  relFrequency  team
+    1          Finance            52         1      0.205534     4
+    3  Marketing sales            64         1      0.252964     6
+    4            other            28         3      0.110672    10
+    
+    
+
+
+
+You can also reassign it to the orignal DataFrame or assign
+a new one.
+
+
+.. code-block:: python
+
+    df2 = df.dropna()
+    print(df2)
+    
+
+::
+
+                  area  absFrequency  position  relFrequency  team
+    1          Finance            52         1      0.205534     4
+    3  Marketing sales            64         1      0.252964     6
+    4            other            28         3      0.110672    10
+    
+    
+
+
+
+**Overwriting NaN with specific values**
+If we want to overwrite the ``NaN`` entries with values we can use the
+``fillna()`` method. In this example we replace all missing values with zeros.
+
+
+.. code-block:: python
+
+    df.fillna(value=0, inplace=True)
+    print(df)
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    0          Accounting            73         0      0.288538     2
+    1             Finance            52         1      0.205534     4
+    2  General management            36         0      0.142292     0
+    3     Marketing sales            64         1      0.252964     6
+    4               other            28         3      0.110672    10
+    
+    
+
+
+
+Add rows to the DataFrame
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+We can use the ``append()`` method to add rows to the DataFrame.
+
+
+.. code-block:: python
+
+    df = df.append(pd.Series(
+                    [np.nan]*len(df.columns), # Fill cells with NaNs
+                    index=df.columns),
+                    ignore_index=True)
+    
+    print(df.tail(3))
+    
+
+::
+
+                  area  absFrequency  position  relFrequency  team
+    3  Marketing sales            64         1      0.252964     6
+    4            other            28         3      0.110672    10
+    5              NaN           NaN       NaN           NaN   NaN
+    
+    
+
+
+
+We can then fill this empty row with data.
+
+
+.. code-block:: python
+
+    df.loc[df.index[-1], 'area'] = 'Economics'
+    df.loc[df.index[-1], 'absFrequency'] = 25
+    print(df)
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    0          Accounting            73         0      0.288538     2
+    1             Finance            52         1      0.205534     4
+    2  General management            36         0      0.142292     0
+    3     Marketing sales            64         1      0.252964     6
+    4               other            28         3      0.110672    10
+    5           Economics            25       NaN           NaN   NaN
+    
+    
+
+
+
+Sorting and reindexing DataFrames
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+We next sort the DataFrame by a certain column (from highest to lowest).
+
+
+.. code-block:: python
+
+    df.sort('absFrequency', ascending=False, inplace=True)
+    print(df.head())
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    0          Accounting            73         0      0.288538     2
+    3     Marketing sales            64         1      0.252964     6
+    1             Finance            52         1      0.205534     4
+    2  General management            36         0      0.142292     0
+    4               other            28         3      0.110672    10
+    
+    
+
+
+
+If we want we could then reindex the DataFrame according to the new sort order.
+
+
+.. code-block:: python
+
+    df.index = range(1,len(df.index)+1)
+    print(df.head())
+    
+
+::
+
+                     area  absFrequency  position  relFrequency  team
+    1          Accounting            73         0      0.288538     2
+    2     Marketing sales            64         1      0.252964     6
+    3             Finance            52         1      0.205534     4
+    4  General management            36         0      0.142292     0
+    5               other            28         3      0.110672    10
+    
+    
+
+
+
+
+Converting Column Types
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When converting text into a DataFrame to conduct statistical analysis it is
+sometimes necessary to convert a numbers column that is still a string, into
+floats, so that we can do math. Let's drop some columns first so the DataFrame
+fits nicely in the output window.
+
+
+.. code-block:: python
+
+    df = df.drop('absFrequency', 1)
+    df = df.drop('area', 1)
+    # Let's have a look at it, it's a nested list
+    print(df)
+    
+
+::
+
+       position  relFrequency  team
+    1         0      0.288538     2
+    2         1      0.252964     6
+    3         1      0.205534     4
+    4         0      0.142292     0
+    5         3      0.110672    10
+    6       NaN           NaN   NaN
+    
+    
+
+
+
+We now generate a column of "words" or "strings" that happen do be numbers.
+Since they are defined as words, we cannot run statistical analysis on these
+numbers yet.
+
+
+.. code-block:: python
+
+    df['string'] = pd.Series(['2','40','34','6','10','200'],
+    index=df.index)
+    
+    # Print DataFrame
+    print(df)
+    
+    # Print summary statistics
+    print(df.describe())
+    
+
+::
+
+       position  relFrequency  team string
+    1         0      0.288538     2      2
+    2         1      0.252964     6     40
+    3         1      0.205534     4     34
+    4         0      0.142292     0      6
+    5         3      0.110672    10     10
+    6       NaN           NaN   NaN    200
+           position  relFrequency       team
+    count  5.000000      5.000000   5.000000
+    mean   1.000000      0.200000   4.400000
+    std    1.224745      0.074136   3.847077
+    min    0.000000      0.110672   0.000000
+    25%    0.000000      0.142292   2.000000
+    50%    1.000000      0.205534   4.000000
+    75%    1.000000      0.252964   6.000000
+    max    3.000000      0.288538  10.000000
+    
+    
+
+
+
+We first need to reassign the data type of the ``string`` column. We then
+rename the column and print summary statistics.
+
+
+.. code-block:: python
+
+    # Transform strings into floats, i.e., words into numbers
+    df['string'] = df['string'].astype(float)
+    
+    # Rename the column
+    df = df.rename(columns={'string': 'salary'})
+    
+    # Print summary statistics
+    print(df.describe())
+    
+
+::
+
+           position  relFrequency       team      salary
+    count  5.000000      5.000000   5.000000    6.000000
+    mean   1.000000      0.200000   4.400000   48.666667
+    std    1.224745      0.074136   3.847077   75.743427
+    min    0.000000      0.110672   0.000000    2.000000
+    25%    0.000000      0.142292   2.000000    7.000000
+    50%    1.000000      0.205534   4.000000   22.000000
+    75%    1.000000      0.252964   6.000000   38.500000
+    max    3.000000      0.288538  10.000000  200.000000
+    
+    
+
+
+
 
 
 
@@ -226,7 +636,28 @@ information to the histogram.
 .. code-block:: python
 
     df = pd.read_csv(filepath + 'Lecture_Data_Excel_b.csv')
+    df = df.drop('Response' ,1)
+    print(df.head())
     
+
+::
+
+       Height  AverageMathSAT  Age  Female  Education  Race
+    0     1.1             370   20       0          2  Hisp
+    1     1.2             393   20       0          4   Wht
+    2     1.3             413   20       0          4   Blk
+    3     1.4             430   20       0          4   Wht
+    4     1.5             440   20       0          2   Mex
+    
+    
+
+
+
+We next plot a series of histograms.
+
+
+.. code-block:: python
+
     heightv = df['Height'].values
     
     # Initialize
@@ -287,7 +718,7 @@ Or using the ggplot package
 
 ::
 
-    <ggplot: (-9223372036844868555)>
+    <ggplot: (9743252)>
     
     
 
@@ -338,24 +769,15 @@ command ``describe``.
 
 ::
 
-              Height   Response  AverageMathSAT        Age     Female
-    Education
-    count  60.000000  60.000000       60.000000  60.000000  60.000000
-    60.000000
-    mean    6.816667   3.966667      493.666667  20.933333   0.333333
-    3.016667
-    std     3.571743   0.662984       34.018274   1.176992   0.475383
-    1.096863
-    min     1.100000   3.000000      370.000000  20.000000   0.000000
-    1.000000
-    25%     3.950000   4.000000      478.500000  20.000000   0.000000
-    2.000000
-    50%     6.850000   4.000000      507.000000  20.000000   0.000000
-    3.000000
-    75%     9.650000   4.000000      509.250000  22.000000   1.000000
-    4.000000
-    max    12.700000   5.000000      542.000000  23.000000   1.000000
-    5.000000
+              Height  AverageMathSAT        Age     Female  Education
+    count  60.000000       60.000000  60.000000  60.000000  60.000000
+    mean    6.816667      493.666667  20.933333   0.333333   3.016667
+    std     3.571743       34.018274   1.176992   0.475383   1.096863
+    min     1.100000      370.000000  20.000000   0.000000   1.000000
+    25%     3.950000      478.500000  20.000000   0.000000   2.000000
+    50%     6.850000      507.000000  20.000000   0.000000   3.000000
+    75%     9.650000      509.250000  22.000000   1.000000   4.000000
+    max    12.700000      542.000000  23.000000   1.000000   5.000000
     
     
 
@@ -372,7 +794,6 @@ commands are part of the ``numpy`` package so they have the prefix ``np.``
 
     # Number of observations (sample size)
     N = len(heightv)
-    print(" -------------------------------------")
     
     # Mean - Median - Mode
     print("Mean(height)=  {:.3f}".format(np.mean(heightv)))
@@ -384,7 +805,6 @@ commands are part of the ``numpy`` package so they have the prefix ``np.``
 
 ::
 
-     -------------------------------------
     Mean(height)=  6.817
     Median(height)=  6.850
     Mode(height)=  (array([ 1.1]), array([ 1.]))
@@ -400,12 +820,16 @@ the ``stats`` package.
 .. code-block:: python
 
     # Summary stats
-    print("Summary stats: {}".format(st.describe(heightv)))
+    print("Summary Stats")
+    print("-------------")
+    print(st.describe(heightv))
     
 
 ::
 
-    Summary stats: DescribeResult(nobs=60, minmax=(1.1000000000000001,
+    Summary Stats
+    -------------
+    DescribeResult(nobs=60, minmax=(1.1000000000000001,
     12.699999999999999), mean=6.8166666666666655,
     variance=12.757344632768362, skewness=0.01909961978127301,
     kurtosis=-1.1611486008105545)
@@ -424,9 +848,8 @@ sample.
 
 .. code-block:: python
 
-    print(" -----------------------------------------")
     # returns smallest a largest element
-    print("Range= {:.3f}".format(max(heightv)-min(heightv)))
+    print("Range = {:.3f}".format(max(heightv)-min(heightv)))
     print("Population variance = {:.3f}".\
     
     # population variance
@@ -443,20 +866,17 @@ sample.
       format(np.sqrt(np.sum((heightv-np.mean(heightv))**2)/(N-1))))
     
     #Or simply
-    print("Pop. standard dev = {:.3f}".format(np.std(heightv)))
-    print(" -----------------------------------------")
+    print("Pop.   standard dev = {:.3f}".format(np.std(heightv)))
     
 
 ::
 
-     -----------------------------------------
-    Range= 11.600
+    Range = 11.600
     Population variance = 12.545
     Sample variance     = 12.757
     Pop.   standard dev = 3.542
     Sample standard dev = 3.572
-    Pop. standard dev = 3.542
-     -----------------------------------------
+    Pop.   standard dev = 3.542
     
     
 
@@ -476,11 +896,11 @@ Percentiles are calculated as follows:
       format(st.scoreatpercentile(heightv, 50)))
     print("3 quartile (75th percentile) = {:.3f}".\
       format(st.scoreatpercentile(heightv, 75)))
+    
     # Inter quartile rante: Q3-Q1 or P_75-P_25
-    print("IQR = (P75-P25) = {:.3f}".\
+    print("IQR = P75 - P25              = {:.3f}".\
       format(st.scoreatpercentile(heightv, 75)\
       -st.scoreatpercentile(heightv, 25)))
-    print(" -----------------------------------------")
     
 
 ::
@@ -488,8 +908,7 @@ Percentiles are calculated as follows:
     1 quartile (25th percentile) = 3.950
     2 quartile (50th percentile) = 6.850
     3 quartile (75th percentile) = 9.650
-    IQR = (P75-P25) = 5.700
-     -----------------------------------------
+    IQR = P75 - P25              = 5.700
     
     
 
@@ -521,22 +940,22 @@ We then go ahead and calculate the covariance.
 .. code-block:: python
 
     # Population covariance
-    print("Population covariance= {:.3f}".\
+    print("Population covariance = {:.3f}".\
       format(np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/n))
     
     # Sample covariance
-    print("Sample covariance= {:.3f}".\
+    print("Sample covariance     = {:.3f}".\
       format(np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/(n-1)))
     
     # or simply
-    print("Sample covariance= {:.3f}".format(df.Age.cov(df.Height)))
+    print("Sample covariance     = {:.3f}".format(df.Age.cov(df.Height)))
     
 
 ::
 
-    Population covariance= -0.159
-    Sample covariance= -0.162
-    Sample covariance= -0.162
+    Population covariance = -0.159
+    Sample covariance     = -0.162
+    Sample covariance     = -0.162
     
     
 
@@ -551,17 +970,18 @@ toolbox command.
 
 .. code-block:: python
 
-    print("Correlation coefficient=  {:.3f}".\
+    print("Correlation coefficient =  {:.3f}".\
       format((np.sum((xv-np.mean(xv))*(yv-np.mean(yv)))/n)\
       /(np.std(xv)*np.std(yv))))
-    print("Correlation coefficient=
+    
+    print("Correlation coefficient =
     {:.3f}".format(df.Age.corr(df.Height)))
     
 
 ::
 
-    Correlation coefficient=  -0.038
-    Correlation coefficient= -0.038
+    Correlation coefficient =  -0.038
+    Correlation coefficient = -0.038
     
     
 
@@ -570,8 +990,7 @@ toolbox command.
 Regression line
 ++++++++++++++++++++++
 
-Example 1: Simple example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Example 1: Simple example**
 
 We first generate some data. A variable ``x`` and a variable ``y``.
 
@@ -636,9 +1055,11 @@ and the dependent variables ``x's``.
 
     # Run OLS regression
     res = pd.ols(y=df['y'], x=df['x'])
+    
     # Show coefficient estimates
     print(res)
-    print('Parameters = '.format(res.beta))
+    print('Parameters:')
+    print(res.beta)
     
 
 ::
@@ -673,26 +1094,29 @@ and the dependent variables ``x's``.
     ---------------------------------End of
     Summary---------------------------------
     
-    Parameters =
+    Parameters:
+    x            1.773810
+    intercept    1.892857
+    dtype: float64
     
     
 
 
 
-Finally, we use the model to make a prediction of ``y`` when ``x=8.5``.
+Finally, we use the model to make a prediction of ``y`` when ``x = 8.5``.
 
 
 .. code-block:: python
 
     # Make prediction for x = 8.5
     betas = res.beta
-    print("Prediction of y for x=8.5 is: {:.3f}".\
+    print("Prediction of y for x = 8.5 is: {:.3f}".\
       format(np.sum(betas * np.array([1,8.5]))))
     
 
 ::
 
-    Prediction of y for x=8.5 is: 17.863
+    Prediction of y for x = 8.5 is: 17.863
     
     
 
@@ -717,8 +1141,8 @@ the trendline through it.
 
 
 
-Example 2: OLS with categorical (dummy variables)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Example 2: OLS with categorical (dummy variables)**
+
 
 The next example is a bit more involved as we increase the number of
 explanatory variables. In addition, some explanatory variables are categorical
@@ -773,12 +1197,10 @@ etc.
     
     # Show coefficient estimates
     print(res)
-    print('Parameters = '.format(res.beta))
     
-    # Prediction: size of 8.5 will produce a math score of ...
-    betas = res.beta
-    print("\nPrediction: " +str(np.sum(betas *
-    np.array([1,2.5,22,1,0,0,1,0]))))
+    print()
+    print('Parameters:')
+    print(res.beta)
     
 
 ::
@@ -828,9 +1250,36 @@ etc.
     ---------------------------------End of
     Summary---------------------------------
     
-    Parameters =
     
-    Prediction: 193.659146277
+    Parameters:
+    Age           1.894377
+    Education    -0.051375
+    Female        8.735906
+    d_Blk        -0.378358
+    d_Hisp       -1.026743
+    d_Mex        -0.574949
+    d_Wht         0.081628
+    intercept   -35.271435
+    dtype: float64
+    
+    
+
+
+
+
+Prediction: size of 8.5 will produce a math score of ...
+
+
+.. code-block:: python
+
+    betas = res.beta
+    print("Prediction: {}".\
+      format(np.sum(betas * np.array([1,2.5,22,1,0,0,1,0]))))
+    
+
+::
+
+    Prediction: 193.65914627657307
     
     
 

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Homework 4 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework: Data &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -105,7 +105,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#in-class-exercises">7.5. In class exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Functions.html#homework">7.6. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_OOP.html">8. Object Oriented Programming</a><ul>
@@ -117,10 +116,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Data.html">9. Working with data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#read-in-small-data-set-from-a-comma-separated-csv-file">9.1. Read in small data set from a comma separated (.csv) file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#making-simple-graphs-from-our-data">9.2. Making simple graphs from our data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#summary-statistics">9.3. Summary statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#measures-of-linear-relationship">9.4. Measures of linear relationship</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#homework">9.5. Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#some-pandas-tricks">9.2. Some Pandas tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#making-simple-graphs-from-our-data">9.3. Making simple graphs from our data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#summary-statistics">9.4. Summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Data.html#measures-of-linear-relationship">9.5. Measures of linear relationship</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_WebData.html">10. Working with data from the web</a><ul>
@@ -237,7 +236,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Homework 4</li>
+    <li>Homework: Data</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/Lecture_Data/Homework/Homework_Data.txt" rel="nofollow"> View page source</a>
@@ -248,12 +247,12 @@
 </div>
           <div role="main">
             
-  <div class="section" id="homework-4">
-<h1>Homework 4<a class="headerlink" href="#homework-4" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="homework-data">
+<h1>Homework: Data<a class="headerlink" href="#homework-data" title="Permalink to this headline">¶</a></h1>
 <p>Submit this homework in class on Tuesday.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework4.py</span></tt></li>
+<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework6.py</span></tt></li>
 </ul>
 </div></blockquote>
 <p>I need to be able to quickly run these scripts on my computer.</p>
@@ -272,11 +271,11 @@ remove extra formatting symbols like commas etc.  For instance, a number that
 reads 16,216 should read 16216 after reformatting etc.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1:<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<p>Import the data in a variable (matrix) called: myData</p>
+<p>Import the data into a DataFrame called: myData</p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2:<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p>Make summary statistics (e.g. mean, median, mode, and standard deviations) of
+<p>Make summary statistics (e.g., mean, median, mode, and standard deviations) of
 all numerical variables. That is, print a table that says something like this:</p>
 <div class="highlight-python"><div class="highlight"><pre>Variable 1:
 ==========
@@ -313,12 +312,13 @@ bachelors degree.</p>
 <h2>Exercise 5:<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
 <p>Run the model from <strong>Exercise 4</strong> again, but this time replace <tt class="docutils literal"><span class="pre">Population</span></tt>
 with a categorical variable for county size. You should make 3 categories here:
-small counties, middle sized counties, and large counties. A small county is
-defined as a county with a population smaller than $6,500$. A mid size county
-has a population between $6,500$ and $10,000$ and a large size county has a
-population larger than $10,000$ people. Make dummy variables and include those
-into your regression.  Review how to make dummies etc. from your stats notes or
-from the brief introduction of this class.</p>
+<tt class="docutils literal"><span class="pre">small_counties</span></tt>, <tt class="docutils literal"><span class="pre">middle_counties</span></tt>, and <tt class="docutils literal"><span class="pre">large_counties</span></tt>.</p>
+<p>A small county is defined as a county with a population smaller than
+<span class="math">\(6,500\)</span>. A mid size county has a population between <span class="math">\(6,500\)</span> and
+<span class="math">\(10,000\)</span> and a large size county has a population larger than
+<span class="math">\(10,000\)</span> people. Make dummy variables and include those into your
+regression.  Review how to make dummies etc. from your stats notes or from the
+brief introduction in the lecture.</p>
 </div>
 </div>
 
