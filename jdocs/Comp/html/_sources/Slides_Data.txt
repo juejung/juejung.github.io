@@ -659,15 +659,20 @@ fits nicely in the output window.
 .. code-block:: python
 
     df = df.drop('absFrequency', 1)
-    df = df.drop('area', 1)
     # Let's have a look at it, it's a nested list
     print(df)
     
 
 ::
 
-    <class 'ValueError'>
-    labels ['area'] not contained in axis
+       position  relFrequency  team
+    1         0      0.288538     2
+    2         1      0.252964     6
+    3         1      0.205534     4
+    4         0      0.142292     0
+    5         3      0.110672    10
+    6       NaN           NaN   NaN
+    
     
 
 
@@ -902,7 +907,7 @@ Or using the ggplot package
 
 ::
 
-    <ggplot: (9981199)>
+    <ggplot: (9594225)>
     
     
 
