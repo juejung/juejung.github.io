@@ -52,9 +52,6 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     df = pd.read_csv(filepath + 'Lecture_Data_Excel_a.csv',
     dtype={'Frequency': float})
     
-    # Alternatively we could have used:
-    # df = pd.read_table(filepath + 'Lecture_Data_Excel_a.csv'), sep=',')
-    
     # Let's have a look at it, it's a nested list
     print(df)
     
@@ -71,6 +68,23 @@ We first import this file using the ``pd.read_csv`` command from the ``Pandas`` 
     
 
 
+
+
+Alternatively we could have use the following command::
+
+    df = pd.read_table(filepath + 'Lecture_Data_Excel_a.csv'), sep=',')
+
+``Pandas`` also has a built in Excel file reader that you can call as follows::
+
+    # Read entire excel spreadsheet
+    xl = pd.ExcelFile("Lecture_Data_Excel_a.xlsx")
+
+    # Check how many sheets we have inside the excel file
+    xl.sheet_names
+    [u'Sheet1', u'Sheet2', u'Sheet3']
+
+    # Pick one sheet and define it as your DataFrame by parsing a sheet
+    df = xl.parse("Sheet1")
 
 The **DataFrame** has an index for each row and a column header. We can query a
 **DataFrame** as follows:
@@ -134,6 +148,23 @@ Drop column 3 and 4 and let's have a look at the data again.
     
     
 
+
+
+Sometimes column headers have white spaces in them. It is probably a good idea
+to remove all white spaces from header names. You can use the ``.strip()``
+command to accomplish this:
+
+
+.. code-block:: python
+
+    df = df.rename(columns=lambda x: x.strip())
+    
+
+
+
+Here we use the ``lambda`` command which is an inline function. Basically it is
+a shortcut so that we don't have to write a separate function using the ``def``
+keyword etc. It's a shortcut for functions that you want to define 'on the fly.'
 
 
 We next generate a new variable called ``relFrequency`` that contains the relative
@@ -652,7 +683,7 @@ Converting Column Types
 
 When converting text into a DataFrame to conduct statistical analysis it is
 sometimes necessary to convert a numbers column that is still a string, into
-floats, so that we can do math. Let's drop some columns first so the DataFrame
+floats, so that we can do math. Let's drop some more columns first so the DataFrame
 fits nicely in the output window.
 
 
@@ -907,7 +938,7 @@ Or using the ggplot package
 
 ::
 
-    <ggplot: (9594225)>
+    <ggplot: (-9223372036845449612)>
     
     
 

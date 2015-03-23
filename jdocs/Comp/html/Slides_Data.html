@@ -297,9 +297,6 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span>
 <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
 
-<span class="c"># Alternatively we could have used:</span>
-<span class="c"># df = pd.read_table(filepath + &#39;Lecture_Data_Excel_a.csv&#39;), sep=&#39;,&#39;)</span>
-
 <span class="c"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -310,6 +307,22 @@ We first import this file using the <tt class="docutils literal"><span class="pr
 2  General management         36         NaN         NaN
 3     Marketing sales         64         NaN         NaN
 4               other         28         NaN         NaN
+</pre></div>
+</div>
+<p>Alternatively we could have use the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>df = pd.read_table(filepath + &#39;Lecture_Data_Excel_a.csv&#39;), sep=&#39;,&#39;)
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">Pandas</span></tt> also has a built in Excel file reader that you can call as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Read entire excel spreadsheet</span>
+<span class="n">xl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s">&quot;Lecture_Data_Excel_a.xlsx&quot;</span><span class="p">)</span>
+
+<span class="c"># Check how many sheets we have inside the excel file</span>
+<span class="n">xl</span><span class="o">.</span><span class="n">sheet_names</span>
+<span class="p">[</span><span class="s">u&#39;Sheet1&#39;</span><span class="p">,</span> <span class="s">u&#39;Sheet2&#39;</span><span class="p">,</span> <span class="s">u&#39;Sheet3&#39;</span><span class="p">]</span>
+
+<span class="c"># Pick one sheet and define it as your DataFrame by parsing a sheet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;Sheet1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <strong>DataFrame</strong> has an index for each row and a column header. We can query a
@@ -358,6 +371,15 @@ Index Int64Index([0, 1, 2, 3, 4], dtype=&#39;int64&#39;)
 4               other         28
 </pre></div>
 </div>
+<p>Sometimes column headers have white spaces in them. It is probably a good idea
+to remove all white spaces from header names. You can use the <tt class="docutils literal"><span class="pre">.strip()</span></tt>
+command to accomplish this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Here we use the <tt class="docutils literal"><span class="pre">lambda</span></tt> command which is an inline function. Basically it is
+a shortcut so that we don&#8217;t have to write a separate function using the <tt class="docutils literal"><span class="pre">def</span></tt>
+keyword etc. It&#8217;s a shortcut for functions that you want to define &#8216;on the fly.&#8217;</p>
 <p>We next generate a new variable called <tt class="docutils literal"><span class="pre">relFrequency</span></tt> that contains the relative
 frequencies.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Make new column with relative frequency</span>
@@ -678,7 +700,7 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 <h3>9.2.7. Converting Column Types<a class="headerlink" href="#converting-column-types" title="Permalink to this headline">¶</a></h3>
 <p>When converting text into a DataFrame to conduct statistical analysis it is
 sometimes necessary to convert a numbers column that is still a string, into
-floats, so that we can do math. Let&#8217;s drop some columns first so the DataFrame
+floats, so that we can do math. Let&#8217;s drop some more columns first so the DataFrame
 fits nicely in the output window.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c"># Let&#39;s have a look at it, it&#39;s a nested list</span>
@@ -859,7 +881,7 @@ Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28, 2
 <span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (9594225)&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (-9223372036845449612)&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Boxplot_1.png"><img alt="_images/Slides_Data_Boxplot_1.png" src="_images/Slides_Data_Boxplot_1.png" style="width: 12cm;" /></a>
