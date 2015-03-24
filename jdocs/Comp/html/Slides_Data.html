@@ -255,6 +255,9 @@
             
   <div class="section" id="working-with-data">
 <h1>9. Working with data<a class="headerlink" href="#working-with-data" title="Permalink to this headline">¶</a></h1>
+<p>We will be working with two data sets.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a.csv"><tt class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></tt></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b.csv"><tt class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></tt></a>.</p>
 <div class="section" id="read-in-small-data-set-from-a-comma-separated-csv-file">
 <h2>9.1. Read in small data set from a comma separated (.csv) file<a class="headerlink" href="#read-in-small-data-set-from-a-comma-separated-csv-file" title="Permalink to this headline">¶</a></h2>
 <p>We use the <tt class="docutils literal"><span class="pre">Pandas</span></tt> package for data work.  We can import the <tt class="docutils literal"><span class="pre">Pandas</span></tt>
@@ -579,7 +582,8 @@ If we want to overwrite the <tt class="docutils literal"><span class="pre">NaN</
 </div>
 <div class="section" id="sorting-and-reindexing-dataframes">
 <h3>9.2.5. Sorting and reindexing DataFrames<a class="headerlink" href="#sorting-and-reindexing-dataframes" title="Permalink to this headline">¶</a></h3>
-<p>We next sort the DataFrame by a certain column (from highest to lowest).</p>
+<p>We next sort the DataFrame by a certain column (from highest to lowest) using
+the <tt class="docutils literal"><span class="pre">sort()</span></tt> DataFrame method.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
@@ -592,6 +596,16 @@ If we want to overwrite the <tt class="docutils literal"><span class="pre">NaN</
 4               other            28         3      0.110672    10
 </pre></div>
 </div>
+<p>The <tt class="docutils literal"><span class="pre">inplace=True</span></tt> option will immediately overwrite the DataFrame <tt class="docutils literal"><span class="pre">df</span></tt>
+with the new, sorted, one. If you set <tt class="docutils literal"><span class="pre">inplace=False</span></tt> you would have to
+assign a new DataFrame in order to see the changes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Where <tt class="docutils literal"><span class="pre">df1</span></tt> would now be the sorted DataFrame and the original <tt class="docutils literal"><span class="pre">df</span></tt>
+DataFrame would still be unsorted. However, we now have two objects with
+identical data in it which could become a memory problem if the DataFrames are
+very large. Setting <tt class="docutils literal"><span class="pre">inplace=True</span></tt> is probably a good default setting.</p>
 <p>If we want we could then reindex the DataFrame according to the new sort order.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -812,8 +826,9 @@ folder.</p>
 </div>
 <div class="section" id="histogram">
 <h3>9.3.3. Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h3>
-<p>Next we use a new data file called <strong>Lecture_Data_Excel_b.csv</strong>. This data file
-contains data on height age and other variables. We first make a histogram of
+<p>Next we use a new data file called
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b.csv"><tt class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></tt></a>.
+This data file contains data on height age and other variables. We first make a histogram of
 the continuous variable Height.
 The actual command for the histogram is <tt class="docutils literal"><span class="pre">hist</span></tt>. It returns three variables
 <tt class="docutils literal"><span class="pre">prob</span></tt>, <tt class="docutils literal"><span class="pre">bins</span></tt>, and <tt class="docutils literal"><span class="pre">patches</span></tt>. We use them in the following to add
@@ -881,7 +896,7 @@ Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28, 2
 <span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="s">&quot;Freq&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (-9223372036845449612)&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (-9223372036844478369)&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_Boxplot_1.png"><img alt="_images/Slides_Data_Boxplot_1.png" src="_images/Slides_Data_Boxplot_1.png" style="width: 12cm;" /></a>

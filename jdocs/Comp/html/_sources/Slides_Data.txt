@@ -1,6 +1,10 @@
 Working with data
 ===============================================================
 
+We will be working with two data sets.
+:download:`Lecture_Data_Excel_a.csv <Lecture_Data/Lecture_Data_Excel_a.csv>`.
+:download:`Lecture_Data_Excel_b.csv <Lecture_Data/Lecture_Data_Excel_b.csv>`.
+
 Read in small data set from a comma separated (.csv) file
 -------------------------------------------------------------
 
@@ -495,7 +499,8 @@ We can then fill this empty row with data.
 Sorting and reindexing DataFrames
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-We next sort the DataFrame by a certain column (from highest to lowest).
+We next sort the DataFrame by a certain column (from highest to lowest) using
+the ``sort()`` DataFrame method.
 
 
 .. code-block:: python
@@ -516,6 +521,17 @@ We next sort the DataFrame by a certain column (from highest to lowest).
     
 
 
+
+The ``inplace=True`` option will immediately overwrite the DataFrame ``df``
+with the new, sorted, one. If you set ``inplace=False`` you would have to
+assign a new DataFrame in order to see the changes::
+
+    df1 = df.sort('absFrequency', ascending=False, inplace=True)
+
+Where ``df1`` would now be the sorted DataFrame and the original ``df``
+DataFrame would still be unsorted. However, we now have two objects with
+identical data in it which could become a memory problem if the DataFrames are
+very large. Setting ``inplace=True`` is probably a good default setting.
 
 If we want we could then reindex the DataFrame according to the new sort order.
 
@@ -845,8 +861,9 @@ We next make a pie chart using the relative frequencies stored in vector ``xv``.
 Histogram
 ++++++++++++++++
 
-Next we use a new data file called **Lecture_Data_Excel_b.csv**. This data file
-contains data on height age and other variables. We first make a histogram of
+Next we use a new data file called
+:download:`Lecture_Data_Excel_b.csv <Lecture_Data/Lecture_Data_Excel_b.csv>`.
+This data file contains data on height age and other variables. We first make a histogram of
 the continuous variable Height.
 The actual command for the histogram is ``hist``. It returns three variables
 ``prob``, ``bins``, and ``patches``. We use them in the following to add
@@ -938,7 +955,7 @@ Or using the ggplot package
 
 ::
 
-    <ggplot: (-9223372036845449612)>
+    <ggplot: (-9223372036844478369)>
     
     
 
