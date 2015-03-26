@@ -9,7 +9,7 @@ these lists or arrays. In essence an object is a container holding data and
 methods that can be applied to these data.
 
 
-.. code-block:: python
+.. code:: python
 
     import math as m
     import time # Imports system time module to time your script
@@ -29,7 +29,7 @@ functions are called **methods** in object-oriented parlance. In python they
 are defined very similarly to functions from the previous chapter.
 
 
-.. code-block:: python
+.. code:: python
 
     import math as m
     
@@ -63,12 +63,12 @@ are defined very similarly to functions from the previous chapter.
 
 You can look at the class blueprint of the animal object using the help() function
 
-.. code-block:: python
+.. code:: python
 
     help(Animal)
     
 
-::
+.. code::
 
     Help on class Animal in module builtins:
     
@@ -108,7 +108,7 @@ You can look at the class blueprint of the animal object using the help() functi
 We next generate an animal object. Here we create the first animal.
 Its name is Birdy and Birdy weighs 5 gramms.
 
-.. code-block:: python
+.. code:: python
 
     animal1 = Animal(name = 'Birdy', weight = 5.0)
     
@@ -117,13 +117,13 @@ Its name is Birdy and Birdy weighs 5 gramms.
 You can access the variables (or embedded data) of the
 animal using the animal object and the 'dot' notation.
 
-.. code-block:: python
+.. code:: python
 
     print("The name of the first animal is {}".format(animal1.name))
     print("The weight of the first animal is {}".format(animal1.weight))
     
 
-::
+.. code::
 
     The name of the first animal is Birdy
     The weight of the first animal is 5.0
@@ -134,12 +134,12 @@ animal using the animal object and the 'dot' notation.
 Or you can simply call the showMyself() method that was defined within the
 class or blueprint of the animal object.
 
-.. code-block:: python
+.. code:: python
 
     animal1.showMyself()
     
 
-::
+.. code::
 
     
     
@@ -155,13 +155,13 @@ class or blueprint of the animal object.
 
 Now we let the animal eat, by calling the method ``eatFood()`` on the bird object
 
-.. code-block:: python
+.. code:: python
 
     animal1.eatFood(9)
     print("The animal's new weight is = {}".format(animal1.weight))
     
 
-::
+.. code::
 
     The animal's new weight is = 8.0
     
@@ -173,12 +173,12 @@ Another way to see the change is to call the same
 ``showMyself()`` method that we called earlier so you see that the
 animal1 object is actually storing the change in weight permanently.
 
-.. code-block:: python
+.. code:: python
 
     animal1.showMyself()
     
 
-::
+.. code::
 
     
     
@@ -208,7 +208,7 @@ Plus it **overrides** the old method ``showMyself()`` with a more comprehensive
 output.
 
 
-.. code-block:: python
+.. code:: python
 
     class Bird(Animal):
         """This is the bird class, derived from the
@@ -249,12 +249,12 @@ call it on the bird object, it will use this new definition of the method.
 
 Now let's look at the bird's class blueprint
 
-.. code-block:: python
+.. code:: python
 
     help(Bird)
     
 
-::
+.. code::
 
     Help on class Bird in module builtins:
     
@@ -311,13 +311,13 @@ Now let's look at the bird's class blueprint
 
 We next generate our first bird object.
 
-.. code-block:: python
+.. code:: python
 
     bird1 = Bird('Herman', 12, 'blue', 40)
     bird1.showMyself()
     
 
-::
+.. code::
 
     
     
@@ -336,14 +336,14 @@ We next generate our first bird object.
 
 We let the bird eat and then we train him a bit.
 
-.. code-block:: python
+.. code:: python
 
     bird1.eatFood(foodAmount=9)
     bird1.flyTraining(workoutLength=10)
     bird1.showMyself()
     
 
-::
+.. code::
 
     
     
@@ -364,13 +364,13 @@ We next generate another bird, but this time we leave out some of the features
 when we generate it. Python will then simply assign the default values that
 we defined in the class blueprint above.
 
-.. code-block:: python
+.. code:: python
 
     bird2 = Bird('Tweets', speed=12)
     bird2.showMyself()
     
 
-::
+.. code::
 
     
     
@@ -393,7 +393,7 @@ Generating multiple objects
 Generating a list full of bird objects from two lists
 with names and weights of animals, but no colors or speeds
 
-.. code-block:: python
+.. code:: python
 
     birdObjectList = []
     name_list = ['Birdy', 'Chip', 'Tweets', 'Feather', 'Gull']
@@ -409,16 +409,16 @@ with names and weights of animals, but no colors or speeds
     print(birdObjectList)
     
 
-::
+.. code::
 
     Nr. 0: name = Birdy, weight = 4.3
     Nr. 1: name = Chip, weight = 2.3
     Nr. 2: name = Tweets, weight = 5.6
     Nr. 3: name = Feather, weight = 5.0
     Nr. 4: name = Gull, weight = 15.3
-    [<Bird object at 0x0000000004918630>, <Bird object at
-    0x00000000049184A8>, <Bird object at 0x00000000049183C8>, <Bird object
-    at 0x00000000049184E0>, <Bird object at 0x0000000004918668>]
+    [<Bird object at 0x000000000B0455C0>, <Bird object at
+    0x000000000B045A90>, <Bird object at 0x000000000B0453C8>, <Bird object
+    at 0x000000000B045080>, <Bird object at 0x000000000AF9A320>]
     
     
 
@@ -429,7 +429,7 @@ calling on methods defined on the bird class.
 
 Let's graph the 3rd bird in the list and remember that indexing starts at 0.
 
-.. code-block:: python
+.. code:: python
 
     print('birdObjectList[2] =', birdObjectList[2])
     print('birdObjectList[2].name =', birdObjectList[2].name)
@@ -438,9 +438,9 @@ Let's graph the 3rd bird in the list and remember that indexing starts at 0.
     print('birdObjectList[2].speed =', birdObjectList[2].speed)
     
 
-::
+.. code::
 
-    birdObjectList[2] = <Bird object at 0x00000000049183C8>
+    birdObjectList[2] = <Bird object at 0x000000000B0453C8>
     birdObjectList[2].name = Tweets
     birdObjectList[2].weight = 5.6
     birdObjectList[2].color = na
@@ -452,12 +452,12 @@ Let's graph the 3rd bird in the list and remember that indexing starts at 0.
 
 Or we could have also done:
 
-.. code-block:: python
+.. code:: python
 
     birdObjectList[2].showMyself()
     
 
-::
+.. code::
 
     
     

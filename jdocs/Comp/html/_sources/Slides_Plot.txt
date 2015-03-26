@@ -5,7 +5,7 @@ In this chapter we explore some of the graphical functionality of **Python**.
 We first import the required libraries for plotting.
 
 
-.. code-block:: python
+.. code:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -30,7 +30,7 @@ We first define a grid vector ``xv``.
 We then plot the first vector using the ``plot()`` command.
 
 
-.. code-block:: python
+.. code:: python
 
     xv = np.array([1, 2, 3, 4, 5])
     carsv = np.array([1, 3, 6, 4, 9])
@@ -42,13 +42,13 @@ We then plot the first vector using the ``plot()`` command.
     tic))
     
 
-::
+.. code::
 
-    Time passed in seconds is = 0.0586
+    Time passed in seconds is = 0.1050
     
     
 
-.. image:: _static/Slides_Plot_FigAutos_1.*
+.. image:: figures/Slides_Plot_FigAutos_1.png
    :width: 12 cm
 
 
@@ -61,7 +61,7 @@ Plotting two vectors
 We first define a couple vectors.
 
 
-.. code-block:: python
+.. code:: python
 
     # Define vectors with 5 values each
     xv     = np.array([1, 2, 3, 4, 5])
@@ -75,7 +75,7 @@ We first define a couple vectors.
 We then plot the ``carsv`` and the ``trucksv`` vector into one graph.
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     ax.plot(xv,carsv, 'k-o', xv,trucksv,'b-.')
@@ -85,7 +85,7 @@ We then plot the ``carsv`` and the ``trucksv`` vector into one graph.
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig2Autos_1.*
+.. image:: figures/Slides_Plot_Fig2Autos_1.png
    :width: 12 cm
 
 
@@ -97,7 +97,7 @@ Finally, we graph all three car types into one figure.
 This time we save the graph as ``fig1.pdf`` into subfolder Graphs.
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     ax.plot(xv, carsv, 'b-o', xv, trucksv,'r-^', xv, suvsv, 'g:s')
@@ -113,7 +113,7 @@ This time we save the graph as ``fig1.pdf`` into subfolder Graphs.
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig3Autos_1.*
+.. image:: figures/Slides_Plot_Fig3Autos_1.png
    :width: 12 cm
 
 
@@ -128,7 +128,7 @@ grid-points and record them in a ``yv`` vector. We then plot the ``xv``
 "against" the ``yv`` vector.
 
 
-.. code-block:: python
+.. code:: python
 
     xv = np.linspace(0, 10, 200)
     yv = np.sin(xv)
@@ -140,7 +140,7 @@ grid-points and record them in a ``yv`` vector. We then plot the ``xv``
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig2Vectors_1.*
+.. image:: figures/Slides_Plot_Fig2Vectors_1.png
    :width: 12 cm
 
 
@@ -156,7 +156,7 @@ following examples:
  * :math:`f(x) = 5*(x^2)/2 - \sqrt{x}`.
 
 
-.. code-block:: python
+.. code:: python
 
     xv = np.arange(1, 10, 0.1)
     y1v = 50*np.sin(xv)
@@ -170,7 +170,7 @@ following examples:
 We have now two columns of values: x and y that we can plot against each other into a coordinate system.
 
 
-.. code-block:: python
+.. code:: python
 
     fig, ax = plt.subplots()
     ax.plot(xv, y1v, \
@@ -181,7 +181,7 @@ We have now two columns of values: x and y that we can plot against each other i
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig3Plots_1.*
+.. image:: figures/Slides_Plot_Fig3Plots_1.png
    :width: 12 cm
 
 
@@ -194,7 +194,7 @@ graph. In the following example we plot 6 figures into one picture. We plot
 into 3 rows and 2 columns. You can obviously rearrange all this.
 
 
-.. code-block:: python
+.. code:: python
 
     # Creates  a 3 x 2 grid of subplots
     num_rows = 3
@@ -234,7 +234,7 @@ into 3 rows and 2 columns. You can obviously rearrange all this.
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig4Subplots_1.*
+.. image:: figures/Slides_Plot_Fig4Subplots_1.png
    :width: 12 cm
 
 
@@ -257,7 +257,7 @@ We start by defining an x-grid and a y-grid vector. We then evaluate the
 function at these values.
 
 
-.. code-block:: python
+.. code:: python
 
     from mpl_toolkits.mplot3d import Axes3D
     
@@ -280,7 +280,7 @@ function at these values.
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig3DPlot_1.*
+.. image:: figures/Slides_Plot_Fig3DPlot_1.png
    :width: 12 cm
 
 
@@ -296,7 +296,7 @@ evaluate the function :math:`f(x,y)` for each point on this "meshgrid" which
 results in a surface plot of the function.
 
 
-.. code-block:: python
+.. code:: python
 
     from mpl_toolkits.mplot3d import Axes3D
     
@@ -324,7 +324,7 @@ results in a surface plot of the function.
     plt.show()
     
 
-.. image:: _static/Slides_Plot_Fig_Surface_1.*
+.. image:: figures/Slides_Plot_Fig_Surface_1.png
    :width: 12 cm
 
 

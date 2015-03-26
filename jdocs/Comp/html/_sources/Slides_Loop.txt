@@ -19,7 +19,7 @@ by 4 spaces (just his the tab key once). Python does not use the curly
 brackets ``{}`` that R uses in the if-statements and for- loops.
 
 
-.. code-block:: python
+.. code:: python
 
     import math as m
     import time  # Imports system time module to time your script
@@ -29,7 +29,7 @@ brackets ``{}`` that R uses in the if-statements and for- loops.
 
 
 
-.. code-block:: python
+.. code:: python
 
     x = 2
     if (x > 0.5):
@@ -38,7 +38,7 @@ brackets ``{}`` that R uses in the if-statements and for- loops.
         print("Number x= {} is smaller than or equal to 0.5".format(x))
     
 
-::
+.. code::
 
     Number x= 2 is greater than 0.5
     
@@ -50,7 +50,7 @@ We next branch the program into 3 separate directions depending on 3 mutually
 exclusive conditions.
 
 
-.. code-block:: python
+.. code:: python
 
     x = 2
     y = 4
@@ -63,7 +63,7 @@ exclusive conditions.
         print("X is smaller than Y")
     
 
-::
+.. code::
 
     X is smaller than Y
     
@@ -96,7 +96,7 @@ command with ``range(6)``.  Using this loop we can step through all the values o
 list and assign certain operations to each value.
 
 
-.. code-block:: python
+.. code:: python
 
     # Summation variable starting with zero value
     sumx = 0
@@ -108,7 +108,7 @@ list and assign certain operations to each value.
         print("sum(x) = {}".format(sumx))
     
 
-::
+.. code::
 
     x = 0
     sum(x) = 0
@@ -146,7 +146,7 @@ with the product of the previous round. The variable ``n_fac`` stores the
 product from each round.
 
 
-.. code-block:: python
+.. code:: python
 
     n = 6
     n_fac = 1
@@ -158,7 +158,7 @@ product from each round.
     print("The factorial of {} is: {}".format(n, n_fac))
     
 
-::
+.. code::
 
     i =  0
     i =  1
@@ -177,12 +177,12 @@ Here the accumulator variable ``n_fac`` is not accumulating a sum of numbers
 but a product.
 
 
-.. code-block:: python
+.. code:: python
 
     print("The factorial of 6 is {}".format(m.factorial(6)))
     
 
-::
+.. code::
 
     The factorial of 6 is 720
     
@@ -197,13 +197,13 @@ Finally, here is an example where we loop through the values of a list again.
 In each round we reach the value of the vector and print it.
 
 
-.. code-block:: python
+.. code:: python
 
     xv = list(range(5))
     print("xv= {}".format(xv))
     
 
-::
+.. code::
 
     xv= [0, 1, 2, 3, 4]
     
@@ -218,7 +218,7 @@ Note also the difference in the two print commands, where the second one
 results in formatted output.
 
 
-.. code-block:: python
+.. code:: python
 
     xv = list(range(6))
     for i in range(len(xv)):
@@ -226,7 +226,7 @@ results in formatted output.
         print("xv[i]= {:4.2f}".format(xv[i]))
     
 
-::
+.. code::
 
     i= 0
     xv[i]= 0.00
@@ -252,7 +252,7 @@ If you already have a list predefined and you want to loop through the content
 of that list you can use a ``for`` loop in the following way.
 
 
-.. code-block:: python
+.. code:: python
 
     # Define the list
     myList = ['jim', 'james', 23, 12, 'car', 'bike']
@@ -261,7 +261,7 @@ of that list you can use a ``for`` loop in the following way.
         print('indexing variable x is: ', x)
     
 
-::
+.. code::
 
     indexing variable x is:  jim
     indexing variable x is:  james
@@ -280,7 +280,7 @@ that pairs up each element in the list with its index inside of the list. Here
 is an example using the previous list:
 
 
-.. code-block:: python
+.. code:: python
 
     # Define the list
     myList = ['jim', 'james', 23, 12, 'car', 'bike']
@@ -289,7 +289,7 @@ is an example using the previous list:
         print('variable i is: {} and x is: {}'.format(i, x))
     
 
-::
+.. code::
 
     variable i is: 0 and x is: jim
     variable i is: 1 and x is: james
@@ -313,7 +313,7 @@ function "glues" or "zips" the lists together and then allows you to run (or
 loop) through them in this pairwise fashion. The next example illustrates this.
 
 
-.. code-block:: python
+.. code:: python
 
     # Define the list of spouses
     myListA = ['jim', 'james', 'jack', 'john', 'jason']
@@ -323,7 +323,7 @@ loop) through them in this pairwise fashion. The next example illustrates this.
         print('The hubby is: {} and the wife is {}'.format(husband, wife))
     
 
-::
+.. code::
 
     The hubby is: jim and the wife is emma
     The hubby is: james and the wife is clara
@@ -340,7 +340,7 @@ can use ``enumerate`` again. Be careful in how you use the parenthesis around
 the variables ``husband`` and ``wife`` in the ``for`` loop construct.
 
 
-.. code-block:: python
+.. code:: python
 
     # Define the list of spouses
     myListA = ['jim', 'james', 'jack', 'john', 'jason']
@@ -351,7 +351,7 @@ the variables ``husband`` and ``wife`` in the ``for`` loop construct.
         and the wife is {}""".format(i, husband, wife))
     
 
-::
+.. code::
 
     At index: 0 the hubby is: jim
         and the wife is emma
@@ -388,7 +388,7 @@ iterator/counter variable ``x`` within the repeatable codeblock using ``x = x
 +1`` or shorter and more efficiently ``x += 1``.
 
 
-.. code-block:: python
+.. code:: python
 
     x = 0
     y = 0
@@ -398,7 +398,7 @@ iterator/counter variable ``x`` within the repeatable codeblock using ``x = x
         x += 1  # i.e., x = x + 1
     
 
-::
+.. code::
 
     X= 0 and Y= 0
     X= 1 and Y= 1
@@ -434,7 +434,7 @@ outstanding debt. The key formula in this example is:
 
 
 
-.. code-block:: python
+.. code:: python
 
     r = 0.11  # Annual interest rate
     # Time between repayments in years (i.e., monthly repayments)
@@ -451,7 +451,7 @@ outstanding debt. The key formula in this example is:
     print("Loan will be repaid in: {} years.".format(mytime))
     
 
-::
+.. code::
 
     Loan will be repaid in: 13.250000000000025 years.
     
