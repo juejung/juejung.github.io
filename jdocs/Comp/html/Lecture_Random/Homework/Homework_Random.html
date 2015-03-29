@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>## Exercise 1 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework: Data &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -135,7 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#uniformly-distributed-random-numbers">12.1. Uniformly distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#homework">12.4. Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Root.html">13. Root finding</a><ul>
@@ -244,7 +244,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>## Exercise 1</li>
+    <li>Homework: Data</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/Lecture_Random/Homework/Homework_Random.txt" rel="nofollow"> View page source</a>
@@ -255,40 +255,55 @@
 </div>
           <div role="main">
             
-  <p># Homework 7: Random numbers</p>
-<p>Submit this homework in class on Tuesday.
-I need two files:</p>
+  <div class="section" id="homework-data">
+<h1>Homework: Data<a class="headerlink" href="#homework-data" title="Permalink to this headline">¶</a></h1>
+<p>Submit this homework in class on Tuesday.</p>
 <blockquote>
 <div><ul class="simple">
-<li>R-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework7.R</span></tt></li>
 <li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework7.py</span></tt></li>
 </ul>
 </div></blockquote>
 <p>I need to be able to quickly run these scripts on my computer.</p>
-<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
-<p>Implement all exercises in <strong>R</strong> and <strong>Python</strong>!</p>
+<p>I will base your homework grade on my grading of 2 randomly selected homework
+exercises. So please make sure that you complete every homework 100% as you
+might otherwise end up with zero points.</p>
 <div class="section" id="exercise-1">
-<h1>## Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
-<p>Flip a coin N times.  Make a program that simulates flipping a coin N times. Print out &#8220;tail&#8221; or &#8220;head&#8221; for each flip and let the program count the number of heads.
-Hint: In <strong>Python</strong> use r = random.random() and define <tt class="docutils literal"><span class="pre">head</span></tt> as r &lt;= 0.5 or draw an integer among {1, 2} with r = random.randint(1,2) and define head when r is 1.
-Hint: In <strong>R</strong> use r = runif(1) which draws a random number from the [0,1] interval and define <tt class="docutils literal"><span class="pre">head</span></tt> as r&lt;=0.5.</p>
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Flip a coin N times.  Make a program that simulates flipping a coin N times.
+Print out &#8220;tail&#8221; or &#8220;head&#8221; for each flip and let the program count the number
+of heads.  Hint: Use r = np.random.rand() and define <tt class="docutils literal"><span class="pre">head</span></tt> as r &lt;= 0.5 or
+draw an integer between {1, 2} and define head
+when r is 1.</p>
 </div>
 <div class="section" id="exercise-2">
-<h1>## Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h1>
-<p>Compute a probability.  What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval [0, 1]?</p>
-<p>To answer this question empirically, let a program draw N such random numbers using Python&#8217;s standard random module. Count how many of them, M , fall in the interval (0.5, 0.6), and compute the probability as M/N .</p>
-<p>Hint: Run the program four times with N = 100.  The tricky part is to count how many of the 100 random numbers fall in the intervall (0.5, 0.6).
-Run the program again for N = 1000 and see whether the relative frequency changes a lot. Finally run the program with N = 10,000.</p>
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Compute a probability.  What is the probability of getting a number between 0.5
+and 0.6 when drawing uniformly distributed random numbers from the interval [0,
+1]?</p>
+<p>To answer this question empirically, let a program draw N such random numbers
+using Python&#8217;s standard random module. Count how many of them, M , fall in the
+interval (0.5, 0.6), and compute the probability as M/N .</p>
+<p>Hint: Run the program four times with N = 100.  The tricky part is to count how
+many of the 100 random numbers fall in the interval (0.5, 0.6).  Run the
+program again for N = 1000 and see whether the relative frequency changes a
+lot. Finally run the program with N = 10,000.</p>
 </div>
 <div class="section" id="exercise-3">
-<h1>## Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h1>
-<p>Probabilities of rolling dice. You throw a die a thousand times. How many times does the number 6 come up?</p>
-<p>Hint: In <strong>R</strong> use sample(1:6, size=1000, replace=TRUE) to draw integer random numbers between 1 and 6. In <strong>Python</strong> use  r = random.randint(1,6) to generate the random numbers.</p>
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Probabilities of rolling dice. You throw a die a thousand times. How many times
+does the number 6 come up?</p>
 </div>
 <div class="section" id="exercise-4-harder-question">
-<h1>## Exercise 4: Harder question<a class="headerlink" href="#exercise-4-harder-question" title="Permalink to this headline">¶</a></h1>
-<p>Decide if a dice game is fair.
-Somebody suggests the following game. You pay 1 unit of money and are allowed to throw four dice. If the sum of the eyes on the dice is less than 9, you win 10 units of money, otherwise you lose your investment.  Should you play this game? Answer the question by making a program that simulates the game 1000 times. Count how many times, out of the 1000, you would win this game in which case you&#8217;d win 10 bucks. Compare these winnings to your investment of 1000 dollars. Do you come out ahead?</p>
+<h2>Exercise 4: Harder question<a class="headerlink" href="#exercise-4-harder-question" title="Permalink to this headline">¶</a></h2>
+<p>Decide if a dice game is fair.  Somebody suggests the following game. You pay 1
+unit of money and are allowed to throw four dice. If the sum of the eyes on the
+dice is less than 9, you win 10 units of money, otherwise you lose your
+investment.  Should you play this game?</p>
+<p>Answer the question by making a program
+that simulates the game 1000 times. Count how many times, out of the 1000, you
+would win this game in which case you&#8217;d win 10 bucks. Compare these winnings to
+your investment of 1000 dollars. Do you come out ahead?</p>
+</div>
 </div>
 
 

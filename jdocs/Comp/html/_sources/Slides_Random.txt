@@ -5,7 +5,7 @@ Uniformly distributed random numbers
 ----------------------------------------
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -21,7 +21,7 @@ Uniformly distributed random numbers
 
 
 
-.. code:: python
+.. code-block:: python
 
     # To always get the same random numbers on each run
     # (makes results reproducible)
@@ -35,7 +35,7 @@ Uniformly distributed random numbers
 
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     prob, bins, patches = ax.hist(u, bins=N, align='mid' )
@@ -44,7 +44,7 @@ Uniformly distributed random numbers
     plt.show()
     
 
-.. image:: figures/Slides_Random_Uniform_1.png
+.. image:: _static/Slides_Random_Uniform_1.*
    :width: 12 cm
 
 
@@ -53,7 +53,7 @@ Normally distributed random numbers
 ---------------------------------------
 
 
-.. code:: python
+.. code-block:: python
 
     def phi(x):
         s = np.exp(-x**2/2)/np.sqrt(2*np.pi)  # density function of
@@ -69,7 +69,7 @@ Normally distributed random numbers
 Then plot it.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     prob, bins, patches = ax.hist(z, bins=N, align='mid' )
@@ -83,7 +83,7 @@ Then plot it.
     plt.show()
     
 
-.. image:: figures/Slides_Random_Normal_Random_1.png
+.. image:: _static/Slides_Random_Normal_Random_1.*
    :width: 12 cm
 
 
@@ -92,7 +92,7 @@ Two normally distributed random variables
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. code:: python
+.. code-block:: python
 
     z1 = np.random.normal(0,1,(10000,))
     z2 = np.random.normal(0,2,(10000,))
@@ -103,7 +103,7 @@ Two normally distributed random variables
 Now plot it.
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots(2,1)
     #
@@ -120,7 +120,7 @@ Now plot it.
     plt.show()
     
 
-.. image:: figures/Slides_Random_Normal_2_1.png
+.. image:: _static/Slides_Random_Normal_2_1.*
    :width: 12 cm
 
 
@@ -129,7 +129,7 @@ T-distributed random variable
 ---------------------------------
 
 
-.. code:: python
+.. code-block:: python
 
     def student_tvariate(df): # df is the number of degrees of freedom
         if df < 2 or int(df) != df:
@@ -148,7 +148,7 @@ T-distributed random variable
 And the plotting routine is:
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     #
@@ -159,13 +159,47 @@ And the plotting routine is:
     plt.show()
     
 
-.. image:: figures/Slides_Random_T_dist_1.png
+.. image:: _static/Slides_Random_T_dist_1.*
    :width: 12 cm
 
 
 
-Homework
--------------------------------------------------------------------------------
+Drawing random integer values
+---------------------------------
 
-:doc:`./Lecture_Random/Homework/Homework_Random`
+If you want to draw integer numbers at random you can use the
+``np.random.randint()`` method. If we would like to draw random integer numbers
+between {1,2,3,4} we need to specify:
+
+
+.. code-block:: python
+
+    integerList = np.random.randint(1, 5, 10)
+    print(integerList)
+    
+
+::
+
+    [1 4 1 3 1 2 4 1 1 2]
+    
+    
+
+
+
+Similarly, if you would like to draw five random integer numbers between 7 and
+10 you would specify:
+
+
+.. code-block:: python
+
+    integerList = np.random.randint(7, 11, 5)
+    print(integerList)
+    
+
+::
+
+    [ 8  8 10  8  9]
+    
+    
+
 
