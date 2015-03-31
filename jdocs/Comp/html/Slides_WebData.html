@@ -130,14 +130,13 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">11. Working with data from the web</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#more-tutorials">11.1. More tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">11.2. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#uniformly-distributed-random-numbers">12.1. Uniformly distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#homework">12.4. Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a><ul>
@@ -271,7 +270,7 @@ over the html source code to extract information.</p>
 the html-data that we get after downloading the web page. The additional
 library <tt class="docutils literal"><span class="pre">request</span></tt> allows us to download source codes from websites. We
 therefore first need to import these two libraries.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -289,18 +288,18 @@ The latter is useful for pattern matching as you will see below.</p>
 for each video, its number of views, likes and dislikes. We then store
 everything in a Pandas dataframe for further statistical analysis.</p>
 <p>We first define the YouTube URL and assign it to a variable.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define url to Youtube</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define url to Youtube</span>
 <span class="n">jurl</span> <span class="o">=</span> <span class="s">&#39;https://www.youtube.com/&#39;</span>
 </pre></div>
 </div>
 <p>We next open the Youtube site and read the page&#8217;s html code and assign it to
 the variable html.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>We then assign the html code to the BeautifulSoup data format which allows us
 to sort through the html code more systematically.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>We next run a loop and extract all featured video links. First check
@@ -317,7 +316,7 @@ the links to the videos are all part of the
 <p>We next define an empty list so we can store all the links to the videos and
 then run a loop through the html source code and extract all links that start
 with <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></tt>. We append all these links to the <tt class="docutils literal"><span class="pre">link_list</span></tt> list.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&#39;div.yt-lockup-content a[href^=/watch]&#39;</span><span class="p">):</span>
     <span class="c"># Store all links in a list</span>
     <span class="n">newLink</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;href&#39;</span><span class="p">)</span>
@@ -325,22 +324,24 @@ with <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pr
 </pre></div>
 </div>
 <p>Let&#8217;s print the first 5 entries of the list</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">newLink</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>/watch
+<div class="highlight-python"><div class="highlight"><pre>[&#39;/watch?v=unWdvWPmiPk&#39;, &#39;/watch?v=cYYGdcLbFkw&#39;, &#39;/watch?v=xau8s_g-
+lQk&#39;, &#39;/watch?v=wK5S-IuzIt8&#39;, &#39;/watch?v=0NrVidsYOko&#39;, &#39;/watch?v
+=UDbBXS-XlUI&#39;]
 </pre></div>
 </div>
 <p>We then create an empty data frame that has the same number of rows as our
 list. In addition we add empty columns so that we can store the title, view,
 like and dislike information later on.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">))</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">,</span> <span class="s">&#39;Title&#39;</span><span class="p">,</span> <span class="s">&#39;Views&#39;</span><span class="p">,</span> <span class="s">&#39;Likes&#39;</span><span class="p">,</span> <span class="s">&#39;Dislikes&#39;</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We next assign the <tt class="docutils literal"><span class="pre">link_list</span></tt> with all the video links to the dataframe.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
 <span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jurl</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -351,7 +352,7 @@ dataframe.
 We use <strong>regular expressions</strong> to find the numbers of views, likes and dislikes
 in the text string that is generated by the <tt class="docutils literal"><span class="pre">soup.select()</span></tt> and
 <tt class="docutils literal"><span class="pre">soup.find_all()</span></tt> functions.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&#39;{} out of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
 
@@ -377,48 +378,48 @@ in the text string that is generated by the <tt class="docutils literal"><span c
     <span class="n">df</span><span class="p">[</span><span class="s">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>0 out of 63
-1 out of 63
-2 out of 63
-3 out of 63
-4 out of 63
-59 out of 63
-60 out of 63
-61 out of 63
-62 out of 63
+<div class="highlight-python"><div class="highlight"><pre>0 out of 56
+1 out of 56
+2 out of 56
+3 out of 56
+4 out of 56
+52 out of 56
+53 out of 56
+54 out of 56
+55 out of 56
 </pre></div>
 </div>
 <p>We finally sort the data according to number of views, starting with the most
 viewed video and print the first couple of entries:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&#39;Views&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&#39;Views&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>                                           Links  \
+<div class="highlight-python"><div class="highlight"><pre>                                           Links  \
 32  https://www.youtube.com//watch?v=e-ORhEE9VVg
-25  https://www.youtube.com//watch?v=4JipHEz53sU
-28  https://www.youtube.com//watch?v=OPf0YbXqDm0
-15  https://www.youtube.com//watch?v=4m1EFMoRFvY
-35  https://www.youtube.com//watch?v=lp-EO5I60KA
+17  https://www.youtube.com//watch?v=e-ORhEE9VVg
+30  https://www.youtube.com//watch?v=nfWlot6h_JM
+12  https://www.youtube.com//watch?v=OPf0YbXqDm0
+33  https://www.youtube.com//watch?v=VuNIsY6JdUw
 
                                                 Title      Views
 Likes  \
-32               Taylor Swift - Blank Space - YouTube  686522234
-3175015
-25                 Nicki Minaj - Super Bass - YouTube  475662891
-1244394
-28  Mark Ronson - Uptown Funk ft. Bruno Mars - You...  412749182
-2431358
-15  Beyoncé - Single Ladies (Put a Ring on It) - Y...  369296666
-678777
-35  Ed Sheeran - Thinking Out Loud [Official Video...  357199235
-2034369
+32               Taylor Swift - Blank Space - YouTube  704184651
+3222238
+17               Taylor Swift - Blank Space - YouTube  704184651
+3222238
+30              Taylor Swift - Shake It Off - YouTube  697430609
+2866499
+12  Mark Ronson - Uptown Funk ft. Bruno Mars - You...  437580436
+2532542
+33        Taylor Swift - You Belong With Me - YouTube  407714415
+1244329
 
    Dislikes
-32   214170
-25   215690
-28    89876
-15    40957
-35    49306
+32   217852
+17   217853
+30   333493
+12    94928
+33    50877
 </pre></div>
 </div>
 <div class="section" id="more-tutorials">
@@ -432,10 +433,6 @@ out:</p>
 <li>A <a class="reference external" href="https://www.youtube.com/watch?v=3xQTJi2tqgk">youtube tutorial</a> for web scraping with Python.</li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="homework">
-<h2>11.2. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="Lecture_WebData/Homework/Homework_WebData.html"><em>Homework</em></a></p>
 </div>
 </div>
 
