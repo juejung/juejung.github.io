@@ -137,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">12.5. Drawing objects with random values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a><ul>
@@ -402,6 +403,285 @@ between {1,2,3,4} we need to specify:</p>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>[10  9  9  7  8]
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawing-objects-with-random-values">
+<h2>12.5. Drawing objects with random values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
+<p>In this section we demonstrate how we can combine the concepts from the prior
+chapter on object oriented programing with generating random numbers. We will
+generate a number of objects whose attributes (or <tt class="docutils literal"><span class="pre">self.</span></tt> variables) will be
+drawn randomly from certain distributions.
+In addition we define methods, that will call on random number generators to do
+something <cite>randomly</cite> to our objects.</p>
+<p>We start by defining our class and the methods that we can subsequently call on
+these type of objects. We call it the <tt class="docutils literal"><span class="pre">RandomMan</span></tt> class. Objects generated
+according to this blueprint are then <cite>instantiations</cite> of this class which we
+call <tt class="docutils literal"><span class="pre">RandomMan</span></tt> objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Set random seed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">RandomMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is a random man object.</span>
+<span class="sd">    RandomMan has a name, numer of children and income.</span>
+<span class="sd">    RandomMan can showMan(), earnIncome(),</span>
+<span class="sd">    buyInsurance() and experience and incomeShock()&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;John Doe&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the man-object with a</span>
+<span class="sd">        random nr. of children between 0 and 10 and</span>
+<span class="sd">        with random income drawn from a normal distribution</span>
+<span class="sd">        and an insurance state of 0.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">16000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># 0 no insurance, 1 has insurance</span>
+
+    <span class="k">def</span> <span class="nf">showMan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method: showMan() prints out</span>
+<span class="sd">        the variables stored in the man</span>
+<span class="sd">        object.&quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Hello, let me introduce myself.&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;-------------------------------&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;My name is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c"># Get grammar right child/children</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;I have {:1.0f} child&quot;</span> \
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asscalar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;I have {:1.0f} children&quot;</span> \
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asscalar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)))</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;My income is ${:6.0f}&quot;</span>\
+          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asscalar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">income</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;I have NO insurance&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;I have insurance&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">earnIncome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workTime</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make man richer by working.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">workTime</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">buyInsurance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Buy insurance if the man is lucky.</span>
+<span class="sd">        Lucky is define as a [0, 1] random number</span>
+<span class="sd">        to be smaller than 0.4. So the guy has</span>
+<span class="sd">        a 40% chance of being lucky. If she is lucky</span>
+<span class="sd">        she will buy insurance.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">0.4</span><span class="p">:</span>
+            <span class="c"># Insurance state flips to 1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c"># Insurance costs $100, so the premium is subtracted</span>
+            <span class="c"># from her income</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">100</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Insurance state flips to 0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">shockIncome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shocks income randomly with a negative</span>
+<span class="sd">        value between -5000 and 0.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c"># If she has no insurance, her income</span>
+            <span class="c"># is randomly reduced</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We next generate 10 randomMan objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">randomManList</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39; --- Create men --- &#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c"># Here we create the randomMan objects and store them in</span>
+    <span class="c"># the list</span>
+    <span class="n">randomManList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RandomMan</span><span class="p">())</span>
+    <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">showMan</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre> --- Create men ---
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 8 children
+My income is $ 39252
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 4 children
+My income is $ 56594
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 3 children
+My income is $ 68516
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 2 children
+My income is $ 72015
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 4 children
+My income is $ 61636
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 1 child
+My income is $ 59085
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 3 children
+My income is $ 32336
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 5 children
+My income is $ 41497
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 9 children
+My income is $ 57822
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 0 children
+My income is $ 70415
+I have NO insurance
+</pre></div>
+</div>
+<p>Finally we let them live for one <cite>round</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&#39;----------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39; --- Let man live --- &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;----------------------&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">randomManList</span><span class="p">)):</span>
+    <span class="c"># Earn income by working randomly between</span>
+    <span class="c"># 0 and 40 hours</span>
+    <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">earnIncome</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="c"># Buy insurance, if luck</span>
+    <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">buyInsurance</span><span class="p">()</span>
+    <span class="c"># Experience random income shock if NOT insured</span>
+    <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">shockIncome</span><span class="p">()</span>
+    <span class="c"># Show yourself</span>
+    <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">showMan</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>----------------------
+ --- Let man live ---
+----------------------
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 8 children
+My income is $ 39157
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 4 children
+My income is $ 56499
+I have insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 3 children
+My income is $ 64186
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 2 children
+My income is $ 68437
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 4 children
+My income is $ 61542
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 1 child
+My income is $ 58991
+I have insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 3 children
+My income is $ 31077
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 5 children
+My income is $ 41403
+I have insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 9 children
+My income is $ 53006
+I have NO insurance
+
+
+Hello, let me introduce myself.
+-------------------------------
+My name is John Doe
+I have 0 children
+My income is $ 70320
+I have insurance
 </pre></div>
 </div>
 </div>
