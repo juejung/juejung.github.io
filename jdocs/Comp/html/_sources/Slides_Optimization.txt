@@ -8,13 +8,11 @@ Example function to be maximized
 ++++++++++++++++++++++++++++++++++++++++
 
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
     import math as m
-    from scipy import stats as st
-    #
     import time  # Imports system time module to time your script
     
     plt.close('all')  # close all open figures
@@ -25,7 +23,7 @@ Example function to be maximized
 Here we want to optimize a univariate function: ``f1``
 
 
-.. code:: python
+.. code-block:: python
 
     def f1simple(x):
         # gamma(2,3) density
@@ -43,7 +41,7 @@ Next we define the same function but return :math:`f(x)`, :math:`f'(x)`, and
 :math:`f''(x)`.
 
 
-.. code:: python
+.. code-block:: python
 
     def f1(x):
         # gamma(2,3) density
@@ -64,7 +62,7 @@ is: :math:`g(x) = -f(x)` then :math:`min(g(x))` is the same as
 :math:`max(f(x))`.
 
 
-.. code:: python
+.. code-block:: python
 
     def f1simpleNeg(x):
         # gamma(2,3) density
@@ -81,7 +79,7 @@ is: :math:`g(x) = -f(x)` then :math:`min(g(x))` is the same as
 Plotting the function is always a good idea!
 
 
-.. code:: python
+.. code-block:: python
 
     xmin = 0.0
     xmax = 6.0
@@ -98,14 +96,15 @@ Plotting the function is always a good idea!
     plt.show()
     
 
-.. code::
+::
 
-    fx[0:10]=  [ 0.    0.    0.01  0.03  0.05  0.07  0.09  0.12  0.14
-    0.17]
+    fx[0:10]=  [ 0.          0.00339035  0.01277165  0.02706275
+    0.04530976  0.06667364
+      0.09041885  0.11590306  0.14256769  0.16992939]
     
     
 
-.. image:: figures/Slides_Optimization_figure5_1.png
+.. image:: _static/Slides_Optimization_figure5_1.*
    :width: 15 cm
 
 
@@ -118,11 +117,13 @@ Newton's method
 
 In order to implement the Newton method we basically look for the root of a
 first derivative so that :math:`f'(x) = 0`. We then use the root finding
-algorithm from the previous section to find this point, or: :math:`x(n+1) =
-x(n) - \frac{f'(x(x))}{f''(x(n))}`
+algorithm from the previous section to find this point, or:
+
+ .. math::
+   x(n+1) = x(n) - \frac{f'(x(x))}{f''(x(n))}
 
 
-.. code:: python
+.. code-block:: python
 
     def newton(f3, x0, tol = 1e-9, nmax = 100):
         # Newton's method for optimization, starting at x0
@@ -149,7 +150,24 @@ Golden section method
 The golden-section method works in one dimension only, but does not need the derivatives of the function.
 This method is very similar to the bisection method (root bracketing) from the previous section.
 The algorithm proceeds in the following way:
-Start with :math:`x_l<x_m<x_r` such that :math:`f(x_l) \le (x_m)` and :math:`f(x_r) \le f(x_m)` and :math:`\rho = \frac{1+\sqrt{5}}{2}`.
+Start with :math:`x_l<x_m<x_r` such that
+
+ .. math::
+
+   f(x_l) \le (x_m)
+
+and
+
+ .. math::
+
+   f(x_r) \le f(x_m)
+
+and
+
+ .. math::
+   \rho = \frac{1+\sqrt{5}}{2}.
+
+Then check the following:
 
 1. if :math:`x_r - x_l \le \epsilon` then stop
 2. if :math:`x_r-x_m > x_m-x_l` then do :math:`(a)` otherwise do :math:`(b)`
@@ -160,7 +178,7 @@ Start with :math:`x_l<x_m<x_r` such that :math:`f(x_l) \le (x_m)` and :math:`f(x
 3. go back to step 1
 
 
-.. code:: python
+.. code-block:: python
 
     def gsection(ftn, xl, xr, xm, tol = 1e-9):
         # applies the golden-section algorithm to maximise ftn
@@ -168,8 +186,7 @@ Start with :math:`x_l<x_m<x_r` such that :math:`f(x_l) \le (x_m)` and :math:`f(x
         # and that x.l < x.m < x.r and ftn(x.l), ftn(x.r) <= ftn(x.m)
         #
         # the algorithm iteratively refines x.l, x.r, and x.m and
-    terminates
-        # when x.r - x.l <= tol, then returns x.m
+        # terminates when x.r - x.l <= tol, then returns x.m
         # golden ratio plus one
         gr1 = 1 + (1 + np.sqrt(5))/2
         #
@@ -205,11 +222,6 @@ Start with :math:`x_l<x_m<x_r` such that :math:`f(x_l) \le (x_m)` and :math:`f(x
 
 
 
-Built in 'fmin' function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The function 'fmin' is in the scipy.optimize library.
-
 Maximize function: f1
 ++++++++++++++++++++++++++++
 
@@ -217,7 +229,7 @@ Maximizing using the Newton method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. code:: python
+.. code-block:: python
 
     print(" -----------------------------------")
     print(" Newton results ")
@@ -228,7 +240,7 @@ Maximizing using the Newton method
     print(newton(f1, 1.75))
     
 
-.. code::
+::
 
      -----------------------------------
      Newton results
@@ -246,7 +258,7 @@ Maximizing using the Secant method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. code:: python
+.. code-block:: python
 
     print(" -----------------------------------")
     print(" Golden section results ")
@@ -257,7 +269,7 @@ Maximizing using the Secant method
     print(gsection(f1simple, 0.0, 2.75, 5.0))
     
 
-.. code::
+::
 
      -----------------------------------
      Golden section results
@@ -274,7 +286,10 @@ Maximizing using the Secant method
 Maximizing using the built in optimize library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
+The function ``fmin`` is in the ``scipy.optimize`` library.
+
+
+.. code-block:: python
 
     from scipy.optimize import fmin
     
@@ -287,7 +302,7 @@ Maximizing using the built in optimize library
     print(fmin(f1simpleNeg, 1.75))
     
 
-.. code::
+::
 
      -----------------------------------
      fmin
@@ -306,12 +321,12 @@ Maximizing using the built in optimize library
              Current function value: -0.541341
              Iterations: 14
              Function evaluations: 28
-    [ 1.]
+    [ 0.99997559]
     Optimization terminated successfully.
              Current function value: -0.541341
              Iterations: 16
              Function evaluations: 32
-    [ 1.]
+    [ 1.00001221]
     
     
 
@@ -328,7 +343,7 @@ Here we want to optimize the following functions: f3, f4
 **Function f3**
 
 
-.. code:: python
+.. code-block:: python
 
     def f3simple(x):
         a = x[0]**2/2.0 - x[1]**2/4.0
@@ -342,7 +357,7 @@ Here we want to optimize the following functions: f3, f4
 Its negative version:
 
 
-.. code:: python
+.. code-block:: python
 
     def f3simpleNeg(x):
         a = x[0]**2/2.0 - x[1]**2/4.0
@@ -353,11 +368,11 @@ Its negative version:
 
 
 
-And the version that returns :math:`f(x)`, :math:`f'(x)` (i.e. the gradient),
-and :math:`f''(x)` (i.e. the Hessian):
+And the version that returns :math:`f(x)`, :math:`f'(x)` (i.e., the gradient),
+and :math:`f''(x)` (i.e., the Hessian):
 
 
-.. code:: python
+.. code-block:: python
 
     def f3(x):
         a = x[0]**2/2.0 - x[1]**2/4.0
@@ -383,7 +398,7 @@ and :math:`f''(x)` (i.e. the Hessian):
 Plot function f3:
 
 
-.. code:: python
+.. code-block:: python
 
     from mpl_toolkits.mplot3d import Axes3D
     
@@ -399,13 +414,12 @@ Plot function f3:
         for j in range(len(Y)):
             Z[i][j] = f3simple([X[i][j],Y[i][j]])
     
-    surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=plt.cm.jet,
-    \
-           linewidth=0, antialiased=False)
+    surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, \
+        cmap=plt.cm.jet, linewidth=0, antialiased=False)
     plt.show()
     
 
-.. image:: figures/Slides_Optimization_Fig_Surface_1.png
+.. image:: _static/Slides_Optimization_Fig_Surface_1.*
    :width: 12 cm
 
 
@@ -422,7 +436,7 @@ Newton
 ~~~~~~~
 
 
-.. code:: python
+.. code-block:: python
 
     def newtonMult(f3, x0, tol = 1e-9, nmax = 100):
         # Newton's method for optimisation, starting at x0
@@ -452,7 +466,7 @@ Maximize multivariate function
 We use various starting values to see whether we can find more than one optimum.
 
 
-.. code:: python
+.. code-block:: python
 
     from scipy.optimize import fmin
     
@@ -467,74 +481,79 @@ We use various starting values to see whether we can find more than one optimum.
             print(" ----------------------------------------- ")
     
 
-.. code::
+::
 
-    Newton: f3  [1.3999999999999999, 0.40000000000000002] --> [ 0.04
-    -2.51]
+    Newton: f3  [1.3999999999999999, 0.40000000000000002] --> [ 0.04074437
+    -2.50729047]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 47
              Function evaluations: 89
-    fmin: f3 [1.3999999999999999, 0.40000000000000002] --> [ 2.03  1.4 ]
+    fmin: f3 [1.3999999999999999, 0.40000000000000002] --> [ 2.0307334
+    1.40155445]
      -----------------------------------------
-    Newton: f3  [1.3999999999999999, 0.5] --> [ 0.12  3.34]
+    Newton: f3  [1.3999999999999999, 0.5] --> [ 0.11797341  3.34466147]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 50
              Function evaluations: 93
-    fmin: f3 [1.3999999999999999, 0.5] --> [ 2.03  1.4 ]
+    fmin: f3 [1.3999999999999999, 0.5] --> [ 2.03072555  1.40154756]
      -----------------------------------------
-    Newton: f3  [1.3999999999999999, 0.59999999999999998] --> [-1.55
-    6.02]
+    Newton: f3  [1.3999999999999999, 0.59999999999999998] --> [-1.5531627
+    6.0200129]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 43
              Function evaluations: 82
-    fmin: f3 [1.3999999999999999, 0.59999999999999998] --> [ 2.03  1.4 ]
+    fmin: f3 [1.3999999999999999, 0.59999999999999998] --> [ 2.03068816
+    1.40151998]
      -----------------------------------------
-    Newton: f3  [1.5, 0.40000000000000002] --> [ 2.84  5.35]
+    Newton: f3  [1.5, 0.40000000000000002] --> [ 2.83714224  5.35398196]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 48
              Function evaluations: 90
-    fmin: f3 [1.5, 0.40000000000000002] --> [ 2.03  1.4 ]
+    fmin: f3 [1.5, 0.40000000000000002] --> [ 2.03067611  1.40149298]
      -----------------------------------------
-    Newton: f3  [1.5, 0.5] --> [ 0.04 -2.51]
+    Newton: f3  [1.5, 0.5] --> [ 0.04074437 -2.50729047]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 42
              Function evaluations: 82
-    fmin: f3 [1.5, 0.5] --> [ 2.03  1.4 ]
+    fmin: f3 [1.5, 0.5] --> [ 2.03071509  1.40155165]
      -----------------------------------------
-    Newton: f3  [1.5, 0.59999999999999998] --> [  9.90e-10   1.37e-09]
+    Newton: f3  [1.5, 0.59999999999999998] --> [  9.89908350e-10
+    1.36639196e-09]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 43
              Function evaluations: 82
-    fmin: f3 [1.5, 0.59999999999999998] --> [ 2.03  1.4 ]
+    fmin: f3 [1.5, 0.59999999999999998] --> [ 2.0307244   1.40153761]
      -----------------------------------------
-    Newton: f3  [1.6000000000000001, 0.40000000000000002] --> [-0.56
-    -0.79]
+    Newton: f3  [1.6000000000000001, 0.40000000000000002] --> [-0.55841026
+    -0.78971136]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 47
              Function evaluations: 88
-    fmin: f3 [1.6000000000000001, 0.40000000000000002] --> [ 2.03  1.4 ]
+    fmin: f3 [1.6000000000000001, 0.40000000000000002] --> [ 2.0307159
+    1.40150964]
      -----------------------------------------
-    Newton: f3  [1.6000000000000001, 0.5] --> [-0.29 -0.23]
+    Newton: f3  [1.6000000000000001, 0.5] --> [-0.29022131 -0.23047994]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 44
              Function evaluations: 80
-    fmin: f3 [1.6000000000000001, 0.5] --> [ 2.03  1.4 ]
+    fmin: f3 [1.6000000000000001, 0.5] --> [ 2.03074135  1.40151521]
      -----------------------------------------
-    Newton: f3  [1.6000000000000001, 0.59999999999999998] --> [-1.55
-    -3.33]
+    Newton: f3  [1.6000000000000001, 0.59999999999999998] --> [-1.55294692
+    -3.33263763]
     Optimization terminated successfully.
              Current function value: -1.000000
              Iterations: 42
              Function evaluations: 80
-    fmin: f3 [1.6000000000000001, 0.59999999999999998] --> [ 2.03  1.4 ]
+    fmin: f3 [1.6000000000000001, 0.59999999999999998] --> [ 2.03069759
+    1.40155333]
      -----------------------------------------
     
     
@@ -554,7 +573,7 @@ The example function for which we calculate the root, i.e., find :math:`x`
 so that :math:`f(x) = 0` is defined as:
 
 
-.. code:: python
+.. code-block:: python
 
     def func(x):
         s = np.log(x) - np.exp(-x)  # function: f(x)
@@ -566,7 +585,7 @@ so that :math:`f(x) = 0` is defined as:
 We can solve for the zero (root) position with:
 
 
-.. code:: python
+.. code-block:: python
 
     from scipy.optimize import root
     guess = 2
@@ -577,11 +596,11 @@ We can solve for the zero (root) position with:
     print("The root of func is at {}".format(myroot))
     
 
-.. code::
+::
 
     
      -------------- Root ------------
-    The root of func is at [ 1.31]
+    The root of func is at [ 1.30979959]
     
     
 
@@ -589,12 +608,16 @@ We can solve for the zero (root) position with:
 
 In this section we set up the root finding problem as an optimization problem.
 In order to do this we change the return value of the function slightly to
-:math:`residual-error = (f(x) - 0)^2`. So we are trying to find the value of
+
+ .. math::
+   \text{residual-error} = (f(x) - 0)^2.
+
+So we are trying to find the value of
 ``x`` so that the residual error between :math:`f(x)` and its target value of
 :math:`0` is as small as possible. The new function is defined as:
 
 
-.. code:: python
+.. code-block:: python
 
     def func_root_min(x):
         s = np.log(x) - np.exp(-x)  # function: f(x)
@@ -606,7 +629,7 @@ In order to do this we change the return value of the function slightly to
 We now invoke a minimizing algorithm to find this value of :math:`x`
 
 
-.. code:: python
+.. code-block:: python
 
     from scipy.optimize import minimize
     guess = 2 # starting guess x = 2
@@ -617,19 +640,12 @@ We now invoke a minimizing algorithm to find this value of :math:`x`
     print("The root of func is at {}".format(myroot))
     
 
-.. code::
+::
 
     
     -------------- Root ------------
-    The root of func is at [ 1.31]
+    The root of func is at [ 1.30976562]
     
     
 
-
-
-
-Homework
--------------------------------------------------------------------------------
-
-:doc:`./Lecture_Optimization/Homework/Homework_Optimization`
 
