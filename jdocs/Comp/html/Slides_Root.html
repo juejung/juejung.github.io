@@ -153,7 +153,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#optimization-methods">14.2. Optimization methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#multivariate-optimization">14.3. Multivariate optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#finding-the-root-of-a-function-using-minimization">14.4. Finding the root of a function using minimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#homework">14.5. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. The cake eating problem</a><ul>
@@ -313,12 +312,11 @@ first derivate of the function (i.e., the gradient).</p>
 </div>
 <div class="section" id="newton-raphson">
 <h2>13.2. Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-method">
-<h3>13.2.1. The method<a class="headerlink" href="#the-method" title="Permalink to this headline">¶</a></h3>
 <p>We start with an initial guess <span class="math">\(x_0\)</span>. The tangent line through the
 initial guess can be defined as:</p>
-<p><span class="math">\(f'(x_0)=\frac{f(x_0)-y}{x_0-x}\)</span>
-This line crosses the x-axis at point <span class="math">\(x_1\)</span> so that:</p>
+<div class="math">
+\[f'(x_0)=\frac{f(x_0)-y}{x_0-x}.\]</div>
+<p>This line crosses the x-axis at point <span class="math">\(x_1\)</span> so that:</p>
 <blockquote>
 <div><div class="math">
 \[f'(x_0)=\frac{f(x_0)-0}{x_0-x_1},\]</div>
@@ -334,9 +332,9 @@ This line crosses the x-axis at point <span class="math">\(x_1\)</span> so that:
 \[\boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}\]</div>
 </dd>
 </dl>
-</div>
-<div class="section" id="define-the-newton-raphson-algorithm">
-<h3>13.2.2. Define the Newton-Raphson algorithm<a class="headerlink" href="#define-the-newton-raphson-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>In order for this function to work well we need to be able to calculate the
+derivative of the function around the root point and preferably over the
+entire domain of the function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonraphson</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton_Raphson algorithm for solving ftn(x)[1] == 0</span>
     <span class="c"># we assume that ftn is a function of a single</span>
@@ -346,7 +344,7 @@ This line crosses the x-axis at point <span class="math">\(x_1\)</span> so that:
     <span class="c"># x0 is the initial guess at the root</span>
     <span class="c"># the algorithm terminates when the function</span>
     <span class="c"># value is within distance tol of 0, or the</span>
-    <span class="c"># number of iterations exceeds max.iter</span>
+    <span class="c"># number of iterations exceeds maxiter</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="n">fx</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -370,9 +368,8 @@ This line crosses the x-axis at point <span class="math">\(x_1\)</span> so that:
         <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="calculate-the-root-of-the-function-calling-newtonraphson">
-<h3>13.2.3. Calculate the root of the function calling &#8216;newtonraphson&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-newtonraphson" title="Permalink to this headline">¶</a></h3>
+<p>We next calculate the root of the function <tt class="docutils literal"><span class="pre">func1</span></tt> calling the
+<tt class="docutils literal"><span class="pre">newtonraphson</span></tt> algorithm.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">newtonraphson</span><span class="p">(</span><span class="n">func1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -386,12 +383,15 @@ Algorithm converged
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="secant-method">
 <h2>13.3. Secant method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="define-the-secant-method">
-<h3>13.3.1. Define the secant method<a class="headerlink" href="#define-the-secant-method" title="Permalink to this headline">¶</a></h3>
-<p>In this case we start with two starting values <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and
+<p>As pointed out above, in order to use the <strong>Newton-Raphson</strong> method we need to
+be able to calculate the derivative <span class="math">\(f'(x)\)</span> of the function. If this is
+computationally expensive or maybe even impossible, we can use the <strong>secant</strong>
+method which only requires that the function is continuous. That is, it does
+not have to be differentiable over its domain.</p>
+<p>In this case we start with two starting values or initial guesses,
+<span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and
 put a line through the functional values <span class="math">\(f(x_0)\)</span> and <span class="math">\(f(x_1)\)</span>. The
 advantage of this method is that we do not have to calculate the first
 derivative of the function. The line through <span class="math">\(f(x_0)\)</span> and <span class="math">\(f(x_1)\)</span>
@@ -420,9 +420,6 @@ is expressed as:</p>
 <div><div class="math">
 \[f'(x_n) \approx f(x_1)\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.\]</div>
 </div></blockquote>
-</div>
-<div class="section" id="the-algorithm-of-the-secant-method">
-<h3>13.3.2. The algorithm of the secant method<a class="headerlink" href="#the-algorithm-of-the-secant-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">secant</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Secant algorithm for solving ftn(x) == 0</span>
     <span class="c"># we assume that ftn is a function of a</span>
@@ -457,9 +454,7 @@ is expressed as:</p>
        <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="calculate-the-root-of-the-function-calling-secant">
-<h3>13.3.3. Calculate the root of the function calling &#8216;secant&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-secant" title="Permalink to this headline">¶</a></h3>
+<p>We next calculate the root point using the secant method:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">secant</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -473,12 +468,10 @@ Algorithm converged
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="bisection">
 <h2>13.4. Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="define-the-bisection-method">
-<h3>13.4.1. Define the bisection method<a class="headerlink" href="#define-the-bisection-method" title="Permalink to this headline">¶</a></h3>
-<p>The bisection method is the most robust method, but it is slow. We start with
+<p>The <strong>Newton-Raphson</strong> as well as the <strong>Secant</strong> method are not guaranteed to
+work. The bisection method is the most robust method, but it is slow. We start with
 two values <span class="math">\(x_l &lt; x_r\)</span> which bracket the root of the function. It
 therefore must hold that <span class="math">\(f(x_l) f(x_r) &lt; 0\)</span>. The algorithm then
 repeatedly brackets around the root in the following systematic way:</p>
@@ -491,9 +484,8 @@ repeatedly brackets around the root in the following systematic way:</p>
 <li>go back to step 1</li>
 </ol>
 </div></blockquote>
-</div>
 <div class="section" id="the-algorithm-of-the-bisection-method">
-<h3>13.4.2. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
+<h3>13.4.1. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
     <span class="c"># applies the bisection algorithm to find x</span>
     <span class="c"># such that ftn(x) == 0</span>
@@ -515,9 +507,9 @@ repeatedly brackets around the root in the following systematic way:</p>
     <span class="n">fr</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">fl</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">xl</span><span class="p">)</span>
     <span class="k">elif</span> <span class="p">(</span><span class="n">fr</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span>
     <span class="k">elif</span> <span class="p">(</span><span class="n">fl</span> <span class="o">*</span> <span class="n">fr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;error: ftn(xl) * ftn(xr) &gt; 0&quot;</span><span class="p">)</span>
         <span class="k">return</span><span class="p">(</span><span class="n">NULL</span><span class="p">)</span>
@@ -543,9 +535,7 @@ repeatedly brackets around the root in the following systematic way:</p>
     <span class="k">return</span> <span class="p">((</span><span class="n">xl</span> <span class="o">+</span> <span class="n">xr</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="calculate-the-root-of-the-function-calling-bisection">
-<h3>13.4.3. Calculate the root of the function calling &#8216;bisection&#8217;<a class="headerlink" href="#calculate-the-root-of-the-function-calling-bisection" title="Permalink to this headline">¶</a></h3>
+<p>We next calculate the root of the function calling &#8216;bisection&#8217; method:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">bisection</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -599,6 +589,11 @@ at iteration: 30 the root lies between 1.3097995854914188 and
 1.3097995864227414
 </pre></div>
 </div>
+<p>The bisection method will not work if the function just touches the horizontal
+axis. The <strong>Newton-Raphson</strong> method, however, will still work in that case. More
+comprehensive root finding algorithms will first use some sort of bracketing
+algorithm to get into a neighborhood of the root point and then switch over to
+a Newton-Raphson type method to then quickly converge to this root point.</p>
 </div>
 </div>
 <div class="section" id="using-built-in-unit-root-function">

@@ -1,5 +1,5 @@
 Root finding
-==============
+===============================================================================
 
 First steps
 ---------------
@@ -86,14 +86,13 @@ Plot the function
 Newton-Raphson
 -------------------------------------------------------------------------------
 
-The method
-+++++++++++++++++
-
-
 We start with an initial guess :math:`x_0`. The tangent line through the
 initial guess can be defined as:
 
-:math:`f'(x_0)=\frac{f(x_0)-y}{x_0-x}`
+.. math::
+
+  f'(x_0)=\frac{f(x_0)-y}{x_0-x}.
+
 This line crosses the x-axis at point :math:`x_1` so that:
 
  .. math::
@@ -111,9 +110,9 @@ We can repeat this successively using the iterative procedure:
 
    \boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}
 
-
-Define the Newton-Raphson algorithm
-++++++++++++++++++++++++++++++++++++++++++
+In order for this function to work well we need to be able to calculate the
+derivative of the function around the root point and preferably over the
+entire domain of the function.
 
 
 .. code-block:: python
@@ -127,7 +126,7 @@ Define the Newton-Raphson algorithm
         # x0 is the initial guess at the root
         # the algorithm terminates when the function
         # value is within distance tol of 0, or the
-        # number of iterations exceeds max.iter
+        # number of iterations exceeds maxiter
     
         x = x0
         fx = ftn(x)
@@ -154,8 +153,8 @@ Define the Newton-Raphson algorithm
 
 
 
-Calculate the root of the function calling 'newtonraphson'
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We next calculate the root of the function ``func1`` calling the
+``newtonraphson`` algorithm.
 
 
 .. code-block:: python
@@ -180,10 +179,14 @@ Calculate the root of the function calling 'newtonraphson'
 Secant method
 -------------------------------------------------------------------------------
 
-Define the secant method
-+++++++++++++++++++++++++++++++
+As pointed out above, in order to use the **Newton-Raphson** method we need to
+be able to calculate the derivative :math:`f'(x)` of the function. If this is
+computationally expensive or maybe even impossible, we can use the **secant**
+method which only requires that the function is continuous. That is, it does
+not have to be differentiable over its domain.
 
-In this case we start with two starting values :math:`x_0` and :math:`x_1` and
+In this case we start with two starting values or initial guesses,
+:math:`x_0` and :math:`x_1` and
 put a line through the functional values :math:`f(x_0)` and :math:`f(x_1)`. The
 advantage of this method is that we do not have to calculate the first
 derivative of the function. The line through :math:`f(x_0)` and :math:`f(x_1)`
@@ -212,9 +215,6 @@ Note that if :math:`x_0` and :math:`x_1` are close together then:
  .. math::
    f'(x_n) \approx f(x_1)\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.
 
-
-The algorithm of the secant method
-+++++++++++++++++++++++++++++++++++++++++
 
 
 .. code-block:: python
@@ -255,8 +255,7 @@ The algorithm of the secant method
 
 
 
-Calculate the root of the function calling 'secant'
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We next calculate the root point using the secant method:
 
 
 .. code-block:: python
@@ -281,10 +280,8 @@ Calculate the root of the function calling 'secant'
 Bisection
 -------------------------------------------------------------------------------
 
-Define the bisection method
-++++++++++++++++++++++++++++++++++
-
-The bisection method is the most robust method, but it is slow. We start with
+The **Newton-Raphson** as well as the **Secant** method are not guaranteed to
+work. The bisection method is the most robust method, but it is slow. We start with
 two values :math:`x_l < x_r` which bracket the root of the function. It
 therefore must hold that :math:`f(x_l) f(x_r) < 0`. The algorithm then
 repeatedly brackets around the root in the following systematic way:
@@ -327,9 +324,9 @@ The algorithm of the bisection method
         fr = ftn(xr)
     
         if (fl == 0):
-            return(x.l)
+            return(xl)
         elif (fr == 0):
-            return(x.r)
+            return(xr)
         elif (fl * fr > 0):
             print("error: ftn(xl) * ftn(xr) > 0")
             return(NULL)
@@ -357,8 +354,7 @@ The algorithm of the bisection method
 
 
 
-Calculate the root of the function calling 'bisection'
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We next calculate the root of the function calling 'bisection' method:
 
 
 .. code-block:: python
@@ -419,6 +415,13 @@ Calculate the root of the function calling 'bisection'
     
     
 
+
+
+The bisection method will not work if the function just touches the horizontal
+axis. The **Newton-Raphson** method, however, will still work in that case. More
+comprehensive root finding algorithms will first use some sort of bracketing
+algorithm to get into a neighborhood of the root point and then switch over to
+a Newton-Raphson type method to then quickly converge to this root point.
 
 
 Using built in unit-root function
