@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>## Exercise 1 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework: Root finding &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -135,6 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Slides_Random.html#drawing-objects-with-random-values">12.5. Drawing objects with random values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Root.html">13. Root finding</a><ul>
@@ -143,7 +144,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Root.html#secant-method">13.3. Secant method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Root.html#bisection">13.4. Bisection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Root.html#using-built-in-unit-root-function">13.5. Using built in unit-root function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Root.html#homework">13.6. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Optimization.html">14. Optimization</a><ul>
@@ -151,7 +151,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Optimization.html#optimization-methods">14.2. Optimization methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Optimization.html#multivariate-optimization">14.3. Multivariate optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Slides_Optimization.html#finding-the-root-of-a-function-using-minimization">14.4. Finding the root of a function using minimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Slides_Optimization.html#homework">14.5. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Cake.html">15. The cake eating problem</a><ul>
@@ -243,7 +242,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>## Exercise 1</li>
+    <li>Homework: Root finding</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/Lecture_Root/Homework/Homework_Root.txt" rel="nofollow"> View page source</a>
@@ -254,102 +253,77 @@
 </div>
           <div role="main">
             
-  <p># Homework 8: Root finding</p>
-<p>Submit this homework in class on Tuesday.
-I need two files:</p>
-<blockquote>
-<div><ul class="simple">
-<li>R-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework8.R</span></tt></li>
-<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">Homework8.py</span></tt></li>
-</ul>
-</div></blockquote>
-<p>I need to be able to quickly run these scripts on my computer.</p>
-<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
-<p>Implement all exercises in <strong>R</strong> and <strong>Python</strong>!</p>
-<div class="section" id="exercise-1">
-<h1>## Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="homework-root-finding">
+<h1>Homework: Root finding<a class="headerlink" href="#homework-root-finding" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
-<dt>Read chapter 10 in your <strong>R</strong> book. Then implement exercise 5, in section 10.6. This exercise asks you to use the <strong>R</strong> code below to calculate the roots of the following functions using $x_0$ as starting value for the root search algorithm:</dt>
-<dd><ol class="first last arabic simple">
-<li>$cos(x) - x$ using $x_0 = 1, 3, 6$</li>
-<li>$log(x) - exp(-x)$ using $x_0 = 2$</li>
-<li>$x^3 - x - 3$ using $x_0 = 0$</li>
-<li>$x^3 - 7x^2 + 14x - 8$ using $x_0 = 1.1, 1.2, . . . , 1.9$</li>
-<li>$log(x) times exp(-x)$ using $x_0 = 2$</li>
-</ol>
+<dt>Submit this homework via GitHub by Wednesday, April 15 at 11:55 pm.</dt>
+<dd><ul class="first last simple">
+<li>Python-scripts are submitted in one file called: <tt class="docutils literal"><span class="pre">homework8.py</span></tt></li>
+<li>Push your repository on Github using <strong>SmartGit</strong> as discussed in class.</li>
+</ul>
 </dd>
 </dl>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
-newtonraphson_show &lt;- function(ftn, x0, xmin = x0-1, xmax = x0+1) {</p>
+<p>I will base your homework grade on my grading of 2 randomly selected homework exercises.
+So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Use the <strong>Newton-Raphson</strong> method from the lecture and calculate the roots of
+the following functions.</p>
+<p>Then check your answers using the <strong>bisection</strong> method.</p>
 <blockquote>
-<div><p># applies Newton-Raphson to find x such that ftn(x)[1] == 0
-# x0 is the starting point
-# subsequent iterations are plotted in the range [xmin, xmax]</p>
-<p># plot the function
-x &lt;- seq(xmin, xmax, (xmax - xmin)/200)
-fx &lt;- c()
-for (i in 1:length(x)) {</p>
-<blockquote>
-<div>fx[i] &lt;- ftn(x[i])[1]</div></blockquote>
-<p>}
-plot(x, fx, type = &#8220;l&#8221;, xlab = &#8220;x&#8221;, ylab = &#8220;f(x)&#8221;,
-main = &#8220;zero f(x) = 0&#8221;, col = &#8220;blue&#8221;, lwd = 2)
-lines(c(xmin, xmax), c(0, 0), col = &#8220;blue&#8221;)
-# do first iteration
-xold &lt;- x0
-f.xold &lt;- ftn(xold)
-xnew &lt;- xold - f.xold[1]/f.xold[2]
-lines(c(xold, xold, xnew), c(0, f.xold[1], 0), col = &#8220;red&#8221;)
-# continue iterating while user types &#8220;y&#8221;
-cat(&#8220;last x value&#8221;, xnew, &#8221; &#8221;)
-continue &lt;- readline(&#8220;continue (y or n)? &#8221;) == &#8220;y&#8221;
-while (continue) {</p>
-<blockquote>
-<div>xold &lt;- xnew;
-f.xold &lt;- ftn(xold)
-xnew &lt;- xold - f.xold[1]/f.xold[2]
-lines(c(xold, xold, xnew), c(0, f.xold[1], 0), col = &#8220;red&#8221;)
-cat(&#8220;last x value&#8221;, xnew, &#8221; &#8221;)
-continue &lt;- readline(&#8220;continue (y or n)? &#8221;) == &#8220;y&#8221;</div></blockquote>
-<p>}
-return(xnew)</p>
+<div><ol class="arabic simple">
+<li><span class="math">\(log(x) - exp(-x)\)</span> using <span class="math">\(x_0 = 2\)</span></li>
+<li><span class="math">\(x^3 - x - 3\)</span> using <span class="math">\(x_0 = 0\)</span></li>
+<li><span class="math">\(x^3 - 7x^2 + 14x - 8\)</span> using <span class="math">\(x_0 = 1.1, 1.2, . . . , 1.9\)</span></li>
+<li><span class="math">\(log(x) \times exp(-x)\)</span> using <span class="math">\(x_0 = 2\)</span></li>
+</ol>
 </div></blockquote>
-<div class="section" id="id3">
-<h2>}<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-</div>
 </div>
 <div class="section" id="exercise-2">
-<h1>## Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt>How do we know $pi = 3.1415926$ (to 7 decimal places)? One way of finding $pi$ is to solve sin(x) = 0. By definition the solutions to sin(x) = 0 are $k times pi$ for $k = 0, pm 1, pm 2, dots$, so the root closest to 3 should be $pi$.</dt>
-<dd><blockquote class="first">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>How do we know <cite>pi = 3.1415926</cite> (to 7 decimal places)? One way of finding
+<cite>pi</cite> is to solve <cite>sin(x) = 0</cite>. By definition the solutions to <cite>sin(x) = 0</cite> are
+<cite>k times pi</cite> for <cite>k = 0, pm 1, pm 2, dots</cite>, so the root closest to 3
+should be <cite>pi</cite>.</p>
+<blockquote>
 <div><ol class="arabic simple">
-<li>Use a root-finding algorithm, such as the Newton-Raphson algorithm, to find the root of sin(x) near 3. How close can you get to $pi$? (You may use the function sin(x) provided by R.)</li>
-<li>The function sin(x) is transcendental, which means that it cannot be written as a rational function of x. Instead we have to write it as an infinite sum:</li>
+<li>Use a root-finding algorithm, such as the Newton-Raphson
+algorithm, to find the root of sin(x) near</li>
+<li>How close can you get to <cite>pi</cite>?
+(You may use the function sin(x) provided by R.)</li>
+<li>The function <cite>sin(x)</cite> is transcendental, which means that it cannot be
+written as a rational function of x. Instead we have to write it as an infinite sum:</li>
 </ol>
+<div class="math">
+\[sin(x) = \sum_{k=0}^{\infty} {(-1) k \frac{x^{2k+1}}{(2k + 1)!}}\]</div>
 </div></blockquote>
-<p>$$  sin(x) = sum_{k=0}^{infty} {(-1) k frac{x^{2k+1}}{(2k + 1)!}} $$</p>
-<p>(This is the infinite order Taylor expansion of sin(x) about 0.) In practice, to calculate sin(x) numerically we have to truncate this sum, so any numerical calculation of sin(x) is an approximation. In particular the function <tt class="docutils literal"><span class="pre">sin(x)</span></tt> provided by R is only an approximation of sin(x) (though a very good one). Put</p>
-<blockquote class="last">
-<div><p>$$ f_n(x)= sum_{k=0}^{n}{(-1) k frac{x^{2k+1}}{(2k + 1)!}} $$</p>
-<p>Write a function in R to calculate $f_n(x)$. Plot $f_n(x)$ over the range [0, 7] for a number of values of n, and verify that it looks like sin(x) for large n.
-3. Choose a large value of n, then find an approximation to $pi$  by solving $f_n(x) = 0$ near 3. Can you get an approximation that is correct up to 6 decimal places? Can you think of a better way of calculating $pi$?</p>
+<p>(This is the infinite order Taylor expansion of sin(x) about 0.)
+In practice, to calculate sin(x) numerically we have to truncate this sum, so any numerical calculation of sin(x) is an approximation. In particular the function <tt class="docutils literal"><span class="pre">sin(x)</span></tt> provided by R is only an approximation of sin(x) (though a very good one). Put</p>
+<blockquote>
+<div><div class="math">
+\[f_n(x)= \sum_{k=0}^{n}{(-1) k \frac{x^{2k+1}}{(2k + 1)!}}\]</div>
 </div></blockquote>
-</dd>
-</dl>
+<p>Write a function in R to calculate $f_n(x)$. Plot $f_n(x)$ over the range [0,
+7] for a number of values of n, and verify that it looks like sin(x) for large
+n.  3. Choose a large value of n, then find an approximation to $pi$  by
+solving $f_n(x) = 0$ near 3. Can you get an approximation that is correct up to
+6 decimal places? Can you think of a better way of calculating $pi$?</p>
 </div>
 <div class="section" id="exercise-3">
-<h1>## Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h1>
-<p>The bisection method can be generalised to deal with the case $f(xl)f(xr) &gt; 0$, by broadening the bracket. That is, we reduce xl and/or increase xr , and try again. A reasonable choice for broadening the bracket is to double the width of the interval [xl,xr], that is (in pseudo-code):
-<tt class="docutils literal"><span class="pre">`</span>
-<span class="pre">m</span> <span class="pre">=</span> <span class="pre">(xl</span> <span class="pre">+</span> <span class="pre">xr</span> <span class="pre">)/2</span>
-<span class="pre">w</span> <span class="pre">=</span> <span class="pre">xr</span> <span class="pre">-</span> <span class="pre">xl</span>
-<span class="pre">xl</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">-</span> <span class="pre">w</span>
-<span class="pre">xr</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">+</span> <span class="pre">w</span>
-<span class="pre">`</span></tt>
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>The bisection method can be generalised to deal with the case $f(xl)f(xr) &gt; 0$,
+by broadening the bracket. That is, we reduce xl and/or increase xr , and try
+again. A reasonable choice for broadening the bracket is to double the width of
+the interval [xl,xr], that is (in pseudo-code): <a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a></p>
+<p>m = (xl + xr )/2
+w = xr - xl
+xl = m - w
+xr = m + w
+<a href="#id5"><span class="problematic" id="id6">``</span></a>`
 Incorporate bracket broadening into the function bisection given in the lecture. Note that broadening is not guaranteed to find xl and xr such that $f(xl)f(xr)&lt;= 0$, so you should include a limit on the number of times it can be tried.  Use your modified function to find a root of</p>
 <p>$$f(x) = (x - 1)^3 - 2x^2 + 10 - sin(x),$$</p>
 <p>starting with xl = 1 and xr = 2.</p>
+</div>
 </div>
 
 
