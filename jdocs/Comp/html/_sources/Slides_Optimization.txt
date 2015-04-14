@@ -20,7 +20,13 @@ Example function to be maximized
 
 
 
-Here we want to optimize a univariate function: ``f1``
+Here we want to optimize a univariate function:
+
+.. math::
+
+ f(x) = 4x^2e^{-2x}
+
+We first define the function:
 
 
 .. code-block:: python
@@ -40,6 +46,12 @@ Here we want to optimize a univariate function: ``f1``
 Next we define the same function but return :math:`f(x)`, :math:`f'(x)`, and
 :math:`f''(x)`.
 
+.. math::
+
+ f'(x) = 4(2 \times xe^{-2x} +(-2)x^2e^{-2x}) = 8x(1-x)e^{-2x}
+
+ f''(x) = 8e^{-2x}(1-4x+2x^2)
+
 
 .. code-block:: python
 
@@ -50,16 +62,29 @@ Next we define the same function but return :math:`f(x)`, :math:`f'(x)`, and
         if (x == 0):
             return np.array([0, 0, np.nan])
         y = np.exp(-2.0*x)
-        return np.array([4.0 * x**2.0 * y, 8.0 * x*(1.0-x)*y, 8.0*(1.0 -
-    2.0 * x**2.0)*y])
+        return np.array([4.0 * x**2.0 * y, \
+          8.0 * x*(1.0-x)*y, \
+          8.0*(1 - 4*x + 2 * x**2)*y])
     
 
 
 
 Some algorithms that we'll encounter later will minimize a function. So if we
-want to maximize our function we have to define it as a negate function, that
-is: :math:`g(x) = -f(x)` then :math:`min(g(x))` is the same as
-:math:`max(f(x))`.
+want to maximize our function we have to define it as a negated function, that
+is:
+
+.. math::
+  g(x) = -f(x)
+
+then
+
+.. math::
+    min \ g(x)
+
+is the same as
+
+.. math::
+  max \ f(x).
 
 
 .. code-block:: python
@@ -148,6 +173,11 @@ Golden section method
 +++++++++++++++++++++++++++++++
 
 The golden-section method works in one dimension only, but does not need the derivatives of the function.
+However, the function still needs to be continuous.
+In order to determine whether there is a local maximum we need three points:
+if :math:`a<c<b` and :math:`f(a) \leq f(c)` and :math:`f(b) \leq f(c)` then there
+must be a local maximum in the interval between :math:`[a,b].`
+
 This method is very similar to the bisection method (root bracketing) from the previous section.
 The algorithm proceeds in the following way:
 Start with :math:`x_l<x_m<x_r` such that
@@ -245,16 +275,16 @@ Maximizing using the Newton method
      -----------------------------------
      Newton results
      -----------------------------------
-    1.97865578347e-12
-    0.0
-    1.00000000001
+    -1.25
     1.0
+    0.999999999998
+    14.4236788158
     
     
 
 
 
-Maximizing using the Secant method
+Maximizing using the Golden section method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

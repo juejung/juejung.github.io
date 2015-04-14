@@ -269,7 +269,10 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">)</span>  <span class="c"># close all open figures</span>
 </pre></div>
 </div>
-<p>Here we want to optimize a univariate function: <tt class="docutils literal"><span class="pre">f1</span></tt></p>
+<p>Here we want to optimize a univariate function:</p>
+<div class="math">
+\[f(x) = 4x^2e^{-2x}\]</div>
+<p>We first define the function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
@@ -282,6 +285,8 @@
 </div>
 <p>Next we define the same function but return <span class="math">\(f(x)\)</span>, <span class="math">\(f'(x)\)</span>, and
 <span class="math">\(f''(x)\)</span>.</p>
+<div class="math">
+\[f'(x) = 4(2 \times xe^{-2x} +(-2)x^2e^{-2x}) = 8x(1-x)e^{-2x}\]\[f''(x) = 8e^{-2x}(1-4x+2x^2)\]</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
@@ -289,14 +294,22 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="mf">8.0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span>
-<span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> \
+      <span class="mf">8.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> \
+      <span class="mf">8.0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Some algorithms that we&#8217;ll encounter later will minimize a function. So if we
-want to maximize our function we have to define it as a negate function, that
-is: <span class="math">\(g(x) = -f(x)\)</span> then <span class="math">\(min(g(x))\)</span> is the same as
-<span class="math">\(max(f(x))\)</span>.</p>
+want to maximize our function we have to define it as a negated function, that
+is:</p>
+<div class="math">
+\[g(x) = -f(x)\]</div>
+<p>then</p>
+<div class="math">
+\[min \ g(x)\]</div>
+<p>is the same as</p>
+<div class="math">
+\[max \ f(x).\]</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c"># gamma(2,3) density</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
@@ -363,7 +376,11 @@ algorithm from the previous section to find this point, or:</p>
 <div class="section" id="golden-section-method">
 <h3>14.2.2. Golden section method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
 <p>The golden-section method works in one dimension only, but does not need the derivatives of the function.
-This method is very similar to the bisection method (root bracketing) from the previous section.
+However, the function still needs to be continuous.
+In order to determine whether there is a local maximum we need three points:
+if <span class="math">\(a&lt;c&lt;b\)</span> and <span class="math">\(f(a) \leq f(c)\)</span> and <span class="math">\(f(b) \leq f(c)\)</span> then there
+must be a local maximum in the interval between <span class="math">\([a,b].\)</span></p>
+<p>This method is very similar to the bisection method (root bracketing) from the previous section.
 The algorithm proceeds in the following way:
 Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 <blockquote>
@@ -457,15 +474,15 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 <div class="highlight-python"><div class="highlight"><pre> -----------------------------------
  Newton results
  -----------------------------------
-1.97865578347e-12
-0.0
-1.00000000001
+-1.25
 1.0
+0.999999999998
+14.4236788158
 </pre></div>
 </div>
 </div>
-<div class="section" id="maximizing-using-the-secant-method">
-<h4>14.2.3.2. Maximizing using the Secant method<a class="headerlink" href="#maximizing-using-the-secant-method" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="maximizing-using-the-golden-section-method">
+<h4>14.2.3.2. Maximizing using the Golden section method<a class="headerlink" href="#maximizing-using-the-golden-section-method" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Golden section results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
