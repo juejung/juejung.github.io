@@ -362,6 +362,97 @@ The function ``fmin`` is in the ``scipy.optimize`` library.
 
 
 
+
+Finding the root of a function using minimization
+-------------------------------------------------------------------------------
+
+In a previous chapter on root searching of a function we used various methods
+like the built in **fsolve** or **root** functions from the
+`scipy.optimize <http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize>`_
+library.  Here's the example from the Root finding chapter again:
+
+The example function for which we calculate the root, i.e., find :math:`x`
+so that :math:`f(x) = 0` is defined as:
+
+
+.. code-block:: python
+
+    def func(x):
+        s = np.log(x) - np.exp(-x)  # function: f(x)
+        return s
+    
+
+
+
+We can solve for the zero (root) position with:
+
+
+.. code-block:: python
+
+    from scipy.optimize import root
+    guess = 2
+    result = root(func, guess) # starting from x = 2
+    print(" ")
+    print(" -------------- Root ------------")
+    myroot = result.x  # Grab number from result dictionary
+    print("The root of func is at {}".format(myroot))
+    
+
+::
+
+    
+     -------------- Root ------------
+    The root of func is at [ 1.30979959]
+    
+    
+
+
+
+In this section we set up the root finding problem as an optimization problem.
+In order to do this we change the return value of the function slightly to
+
+ .. math::
+   \text{residual-error} = (f(x) - 0)^2.
+
+So we are trying to find the value of
+``x`` so that the residual error between :math:`f(x)` and its target value of
+:math:`0` is as small as possible. The new function is defined as:
+
+
+.. code-block:: python
+
+    def func_root_min(x):
+        s = np.log(x) - np.exp(-x)  # function: f(x)
+        return (s**2)
+    
+
+
+
+We now invoke a minimizing algorithm to find this value of :math:`x`
+
+
+.. code-block:: python
+
+    from scipy.optimize import minimize
+    guess = 2 # starting guess x = 2
+    result = minimize(func_root_min, guess, method='Nelder-Mead')
+    print(" ")
+    print("-------------- Root ------------")
+    myroot = result.x  # Grab number from result dictionary
+    print("The root of func is at {}".format(myroot))
+    
+
+::
+
+    
+    -------------- Root ------------
+    The root of func is at [ 1.30976562]
+    
+    
+
+
+
+
 Multivariate optimization
 -------------------------------------------------------------------------------
 
@@ -590,92 +681,5 @@ We use various starting values to see whether we can find more than one optimum.
 
 
 
-
-Finding the root of a function using minimization
--------------------------------------------------------------------------------
-
-In a previous chapter on root searching of a function we used various methods
-like the built in **fsolve** or **root** functions from the
-`scipy.optimize <http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize>`_
-library.  Here's the example from the Root finding chapter again:
-
-The example function for which we calculate the root, i.e., find :math:`x`
-so that :math:`f(x) = 0` is defined as:
-
-
-.. code-block:: python
-
-    def func(x):
-        s = np.log(x) - np.exp(-x)  # function: f(x)
-        return s
-    
-
-
-
-We can solve for the zero (root) position with:
-
-
-.. code-block:: python
-
-    from scipy.optimize import root
-    guess = 2
-    result = root(func, guess) # starting from x = 2
-    print(" ")
-    print(" -------------- Root ------------")
-    myroot = result.x  # Grab number from result dictionary
-    print("The root of func is at {}".format(myroot))
-    
-
-::
-
-    
-     -------------- Root ------------
-    The root of func is at [ 1.30979959]
-    
-    
-
-
-
-In this section we set up the root finding problem as an optimization problem.
-In order to do this we change the return value of the function slightly to
-
- .. math::
-   \text{residual-error} = (f(x) - 0)^2.
-
-So we are trying to find the value of
-``x`` so that the residual error between :math:`f(x)` and its target value of
-:math:`0` is as small as possible. The new function is defined as:
-
-
-.. code-block:: python
-
-    def func_root_min(x):
-        s = np.log(x) - np.exp(-x)  # function: f(x)
-        return (s**2)
-    
-
-
-
-We now invoke a minimizing algorithm to find this value of :math:`x`
-
-
-.. code-block:: python
-
-    from scipy.optimize import minimize
-    guess = 2 # starting guess x = 2
-    result = minimize(func_root_min, guess, method='Nelder-Mead')
-    print(" ")
-    print("-------------- Root ------------")
-    myroot = result.x  # Grab number from result dictionary
-    print("The root of func is at {}".format(myroot))
-    
-
-::
-
-    
-    -------------- Root ------------
-    The root of func is at [ 1.30976562]
-    
-    
 
 
