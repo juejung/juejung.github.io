@@ -252,11 +252,8 @@ Then check the following:
 
 
 
-Maximize function: f1
+Maximize function: f
 ++++++++++++++++++++++++++++
-
-Maximizing using the Newton method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. code-block:: python
@@ -284,9 +281,6 @@ Maximizing using the Newton method
 
 
 
-Maximizing using the Golden section method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 .. code-block:: python
 
@@ -313,9 +307,6 @@ Maximizing using the Golden section method
 
 
 
-Maximizing using the built in optimize library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The function ``fmin`` is in the ``scipy.optimize`` library.
 
 
@@ -324,7 +315,7 @@ The function ``fmin`` is in the ``scipy.optimize`` library.
     from scipy.optimize import fmin
     
     print(" -----------------------------------")
-    print(" fmin ")
+    print(" fmin results ")
     print(" -----------------------------------")
     print(fmin(f1simpleNeg, 0.25))
     print(fmin(f1simpleNeg, 0.5))
@@ -335,7 +326,7 @@ The function ``fmin`` is in the ``scipy.optimize`` library.
 ::
 
      -----------------------------------
-     fmin
+     fmin results
      -----------------------------------
     Optimization terminated successfully.
              Current function value: -0.541341
@@ -456,12 +447,7 @@ We now invoke a minimizing algorithm to find this value of :math:`x`
 Multivariate optimization
 -------------------------------------------------------------------------------
 
-Define multivariate (i.e. bivariate) example functions
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Here we want to optimize the following functions: f3, f4
-
-**Function f3**
+Here we want to optimize the following function **f3**
 
 
 .. code-block:: python
@@ -490,7 +476,7 @@ Its negative version:
 
 
 And the version that returns :math:`f(x)`, :math:`f'(x)` (i.e., the gradient),
-and :math:`f''(x)` (i.e., the Hessian):
+and :math:`f''(x)` (i.e., the Hessian matrix):
 
 
 .. code-block:: python
@@ -516,7 +502,7 @@ and :math:`f''(x)` (i.e., the Hessian):
 
 
 
-Plot function f3:
+We next plot the function:
 
 
 .. code-block:: python
@@ -546,15 +532,8 @@ Plot function f3:
 
 
 
-**Function f4**
-
-This is the same function, so we won't repeat it here.
-
-Multivariate optimization methods
+Multivariate Newton method
 ++++++++++++++++++++++++++++++++++++++++
-
-Newton
-~~~~~~~
 
 
 .. code-block:: python
@@ -578,13 +557,9 @@ Newton
 
 
 
-Built in 'fmin_tnc' in scipy.optimize.tnc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Maximize multivariate function
-+++++++++++++++++++++++++++++++++++++
-
-We use various starting values to see whether we can find more than one optimum.
+Compare the Newton method with the built in ``fmin`` method in
+``scipy.optimize``.  We use various starting values to see whether we can find
+more than one optimum.
 
 
 .. code-block:: python
@@ -597,8 +572,10 @@ We use various starting values to see whether we can find more than one optimum.
             print("Newton: f3  " + str([x0,y0]) + ' --> ' +
     str(newtonMult(f3, \
                 np. array([x0,y0]))))
+    
             print("fmin: f3 " + str([x0,y0]) + ' --> ' \
                 + str(fmin(f3simpleNeg, np.array([x0,y0]))))
+    
             print(" ----------------------------------------- ")
     
 
@@ -678,8 +655,5 @@ We use various starting values to see whether we can find more than one optimum.
      -----------------------------------------
     
     
-
-
-
 
 

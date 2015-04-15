@@ -6,13 +6,16 @@ A simple OLG model
 * OLG stands for overlapping generations
 * This model allows for young and old agents
 * We start with
+
     * Preferences
     * Technology
     * Government
     * Equilibrium
 
-Preferences
+Formal Definition of the Model
 --------------------------------------------------------------------------------
+
+**Preferences**
 
 * Agents live for 2 periods: young and old
 * There are :math:`N_y` young households and :math:`N_o` old households
@@ -21,37 +24,40 @@ Preferences
 * Agents discount time with factor :math:`\beta`
 * Their life-time utility is:
 
-:math:`V(c_y, c_o) = u(c_y) + \beta \times u(c_o)`
+.. math::
+  V(c_y, c_o) = u(c_y) + \beta \times u(c_o)
 
-Technology
---------------------------------------------------------------------------------
+**Technology**
 
 * Firms produce output :math:`Y` using input capital :math:`K` and labor :math:`L`:
 
-  :math:`Y= F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)}`
+.. math::
+
+    Y = F(K,L) = A K^{\alpha} L^{(1-\alpha)}
 
 * Firms maximize profits:
 
-  :math:`max_{\left\{K,L\right\}} F(K,L) - wL - qK`
+  .. math::
+    max_{\left\{K,L\right\}} F(K,L) - wL - qK
 
 * :math:`w` are wages and :math:`q` is the factor price of capital
 
 
-Government
---------------------------------------------------------------------------------
+**Government**
 
 * The government collects taxes on labor :math:`\tau_L` and capital :math:`\tau_K`
 * The government pays for gov't consumption :math:`G` and transfers to households :math:`T_y` and :math:`T_o`
 
-  :math:`G + T_y + T_o =  \tau_L \times wL + \tau_K \times RK`
+  .. math::
+    G + T_y + T_o =  \tau_L \times wL + \tau_K \times RK
 
-Household problem
---------------------------------------------------------------------------------
+**Household problem**
 
 * HHs maximize :math:`V(c_y,c_o)` subject to their budget constraint in each period
 
-  :math:`c_y + s = (1-\tau_L) w + t_y`
-  :math:`c_o = (1-\tau_K) Rs + t_o`
+  .. math::
+    c_y + s = (1-\tau_L) w + t_y
+    c_o = (1-\tau_K) Rs + t_o
 
 Equilibrium definition
 --------------------------------------------------------------------------------
@@ -78,28 +84,25 @@ Functional forms and solutions
 * We follow the second approach, since the form of the utility functions guarantees interior solutions
 * Therefor we don't have to worry about corner solutions a la Kuhn-Tucker
 
-Substitute the budget set into preferences
---------------------------------------------------------------------------------
+**Substitute the budget set into preferences**
 
-:math:`max_s log( (1-\tau_L)w + t_y - s)  + \beta  log( (1-\tau_K)R  s + t_o)`
+.. math::
+  max_s log( (1-\tau_L)w + t_y - s)  + \beta  log( (1-\tau_K)R  s + t_o)
 
 * This is now a function in 1 choice variable :math:`s`
 * Derive this function w.r.t. :math:`s`
 
-:math:`\frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
-\frac{\beta (1-\tau_K)R}{(1-\tau_K)R  s + t_o}`
+.. math::
+  \frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
+    \frac{\beta (1-\tau_K)R}{(1-\tau_K)R  s + t_o}
 
-Solve for optimal household savings: :math:`s^*`
---------------------------------------------------------------------------------
+**Solve for optimal household savings: :math:`s^*`**
 
-:math:`s^* = \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}`
+.. math::
+  s^* = \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}
 
 * In equilibrium household savings equals the capital stock: :math:`S = K`
 * Aggregate capital stock is therefore: :math:`K = S = N_y \times s^*`
-
-Solution
---------------------------------------------------------------------------------
-
 * Given parameter :math:`\beta`, gov't policies :math:`\tau_K, \tau_L, t_y, t_o`
 * Measures of young and old agents :math:`N_y, N_o` we can now solve for a steady
   state equilibrium
@@ -108,8 +111,7 @@ Solution
   ideally into one non-linear equation that we can then solve with a ``Newton
   Algorithm``
 
-Equation system
---------------------------------------------------------------------------------
+**Equation system**
 
 * For starters we assume that government is completely exogenous.
 * Assume :math:`L=1` we have the following unknowns: :math:`K,Y,R,w,q` and the following
@@ -117,15 +119,20 @@ Equation system
 * A solution exists if the number of unknowns is equal to the number of
   equations:
 
-  :math:`K=N_y s^* = N_y \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}`
+  .. math::
+    K=N_y s^* = N_y \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}
 
-  :math:`\alpha*Y/K = q`
+  .. math::
+    \alpha*Y/K = q
 
-  :math:`(1-\alpha)*Y/L = w`
+  .. math::
+    (1-\alpha)*Y/L = w
 
-  :math:`F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)}`
+  .. math::
+    F(K,L) = A K^{\alpha} L^{(1-\alpha)}
 
-  :math:`R = (1 + q - \delta)`
+  .. math::
+    R = (1 + q - \delta)
 
 Method 1: Substituting everything
 --------------------------------------------------------------------------------
@@ -134,43 +141,50 @@ Method 1: Substituting everything
 * Substitute :math:`Y` out and get :math:`q(K)` and :math:`w(K)`.
 * Use :math:`q(K)` in :math:`R` and get :math:`R(K)`
 
-  :math:`w = (1-\alpha)*A \times K^{\alpha}`
-
-  :math:`R = 1 + (\alpha* A \times K^{\alpha-1}) - \delta`
+  .. math::
+    w = (1-\alpha)*A K^{\alpha}
+    R = 1 + (\alpha* A K^{\alpha-1}) - \delta
 
 * Plug :math:`w(K)` and :math:`R(K)` into :math:`K`-equation
 
 * We now have one equation in :math:`K` only
 
-One equation in K
---------------------------------------------------------------------------------
+**One equation in K**
 
-* We have :math:`K= N_y \frac{\beta (1-\tau_K)(1 + (\alpha* A \times K^{\alpha-1}) - \delta) ((1-\tau_L)((1-\alpha)*A \times K^{\alpha}) + t_y) - t_o} {(1+\beta)(1-\tau_K)(1 + (\alpha* A \times K^{\alpha-1}) - \delta)}`
+We have
+
+.. math::
+  K= N_y \frac{\beta (1-\tau_K)(1 + (\alpha* A K^{\alpha-1}) - \delta)
+  ((1-\tau_L)((1-\alpha)*A K^{\alpha}) + t_y) - t_o}
+  {(1+\beta)(1-\tau_K)(1 + (\alpha A K^{\alpha-1}) - \delta)}
+
 * Model parameters: :math:`N_y=N_o=1`, :math:`\alpha=0.3`, :math:`A=1`, :math:`\beta = 0.9`, :math:`\delta=0.1`
 * We assumed that government was exogenous, so here are some government
   parameters: :math:`\tau_L=0.2`, :math:`\tau_K=0.15`, :math:`T_y=T_o=t_y=t_o=0`
 * Solve for :math:`K^*` and then back out :math:`q^*(K^*),w^*(K^*),R^*(K^*), Y^*(K^*)` which are all functions of :math:`K^*`
 
-Aggregate resource constraint (ARC)
---------------------------------------------------------------------------------
+**Aggregate resource constraint (ARC)**
 
 * Aggregate consumption is:
 
-  :math:`C = N_y*c_y + N_o*c_o`
+  .. math::
+    C = N_y*c_y + N_o*c_o
 
 * Aggregate government consumption is:
 
-  :math:`G  =  \tau_L \times wL + \tau_K \times RK - N_y*t_y - N_o*t_o`
+  .. math::
+    G = \tau_L \times wL + \tau_K \times RK - N_y*t_y - N_o*t_o
 
 * The aggregate resource constraint (or goods market clearing condition) is:
 
-  :math:`C + N_y*s + G = Y + (1-\delta)K`
+  .. math::
+    C + N_y*s + G = Y + (1-\delta)K
 
 
-Python Program 1
---------------------------------------------------------------------------------
+**Python Program 1**
 
-.. code:: python
+
+.. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -186,7 +200,7 @@ Python Program 1
 
 
 
-.. code:: python
+.. code-block:: python
 
     # -----------------------------------------------
     # Root finding
@@ -235,7 +249,7 @@ Python Program 1
 
 
 
-.. code:: python
+.. code-block:: python
 
     fig, ax = plt.subplots()
     ax.plot(Kv, fK)
@@ -244,13 +258,13 @@ Python Program 1
     plt.show()
     
 
-.. image:: figures/Slides_OLG_I_Capital_1.png
+.. image:: _static/Slides_OLG_I_Capital_1.*
    :width: 12 cm
 
 
 
 
-.. code:: python
+.. code-block:: python
 
     ## Use built in 'fsolve'
     print(" ")
@@ -291,26 +305,26 @@ Python Program 1
     print("ARC = ", ARC)
     
 
-.. code::
+::
 
     
      -------------- Fsolve ------------
      -------------------------------------
      Root finding
      -------------------------------------
-    K* =  [ 0.15]
-    Y* =  [ 0.57]
-    q* =  [ 1.13]
-    R* =  [ 2.13]
-    w* =  [ 0.4]
+    K* =  [ 0.15020394]
+    Y* =  [ 0.56624503]
+    q* =  [ 1.13095238]
+    R* =  [ 2.13095238]
+    w* =  [ 0.39637152]
      -------------------------------------
-    ARC =  [  5.55e-17]
+    ARC =  [  5.55111512e-17]
     
     
 
 
 
-Method 2
+Method 2: Gauss-Seidl Algorithm
 --------------------------------------------------------------------------------
 
 .. index:: Gauss-Seidl algorithm
@@ -323,11 +337,10 @@ Method 2
   4. We then aggregate over all households and get the new capital stock :math:`K_{new}`
   5. We then update capital :math:`K_{old} = \lambda * K_{new} + (1-\lambda) * K_{old}` and repeat from point 1 (:math:`\lambda` is an updating parameter)
 
-Python Program 2
---------------------------------------------------------------------------------
+**Python Program 2**
 
 
-.. code:: python
+.. code-block:: python
 
     # Guess capital stock
     glamda  = 0.5   # updating parameter
@@ -357,8 +370,9 @@ Python Program 2
     sstar = Kstar/N_y
     cystar= (1-tau_L)*wstar + t_y - sstar
     costar= (1-tau_K)*Rstar*sstar + t_o
-    Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar  # residual gov't
-    consumption, thrown in the ocean
+    
+    # Residual gov't consumption, thrown in the ocean
+    Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar
     
     # Aggregate consumption
     Cstar = N_y*cystar + N_o*costar
@@ -379,7 +393,7 @@ Python Program 2
     print("ARC = ", ARC)
     
 
-.. code::
+::
 
      -------------------------------------
      Gauss-Seidl
@@ -391,14 +405,8 @@ Python Program 2
     R* =  2.1309523809523805
     w* =  0.3963715189393206
      -------------------------------------
-    ARC =  [  5.55e-17]
+    ARC =  [  5.55111512e-17]
     
     
 
-
-
-Homework
--------------------------------------------------------------------------------
-
-:doc:`./Lecture_OLG_I/Homework/Homework_OLG_I`
 

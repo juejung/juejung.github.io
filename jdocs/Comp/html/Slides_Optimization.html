@@ -458,10 +458,8 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="maximize-function-f1">
-<h3>14.2.3. Maximize function: f1<a class="headerlink" href="#maximize-function-f1" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="maximizing-using-the-newton-method">
-<h4>14.2.3.1. Maximizing using the Newton method<a class="headerlink" href="#maximizing-using-the-newton-method" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="maximize-function-f">
+<h3>14.2.3. Maximize function: f<a class="headerlink" href="#maximize-function-f" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Newton results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -480,9 +478,6 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 14.4236788158
 </pre></div>
 </div>
-</div>
-<div class="section" id="maximizing-using-the-golden-section-method">
-<h4>14.2.3.2. Maximizing using the Golden section method<a class="headerlink" href="#maximizing-using-the-golden-section-method" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; Golden section results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -501,14 +496,11 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 1.00000000522
 </pre></div>
 </div>
-</div>
-<div class="section" id="maximizing-using-the-built-in-optimize-library">
-<h4>14.2.3.3. Maximizing using the built in optimize library<a class="headerlink" href="#maximizing-using-the-built-in-optimize-library" title="Permalink to this headline">¶</a></h4>
 <p>The function <tt class="docutils literal"><span class="pre">fmin</span></tt> is in the <tt class="docutils literal"><span class="pre">scipy.optimize</span></tt> library.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; fmin &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot; fmin results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">fmin</span><span class="p">(</span><span class="n">f1simpleNeg</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">fmin</span><span class="p">(</span><span class="n">f1simpleNeg</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
@@ -517,7 +509,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre> -----------------------------------
- fmin
+ fmin results
  -----------------------------------
 Optimization terminated successfully.
          Current function value: -0.541341
@@ -540,7 +532,6 @@ Optimization terminated successfully.
          Function evaluations: 32
 [ 1.00001221]
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -602,10 +593,7 @@ The root of func is at [ 1.30976562]
 </div>
 <div class="section" id="multivariate-optimization">
 <h2>14.4. Multivariate optimization<a class="headerlink" href="#multivariate-optimization" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="define-multivariate-i-e-bivariate-example-functions">
-<h3>14.4.1. Define multivariate (i.e. bivariate) example functions<a class="headerlink" href="#define-multivariate-i-e-bivariate-example-functions" title="Permalink to this headline">¶</a></h3>
-<p>Here we want to optimize the following functions: f3, f4</p>
-<p><strong>Function f3</strong></p>
+<p>Here we want to optimize the following function <strong>f3</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -622,7 +610,7 @@ The root of func is at [ 1.30976562]
 </pre></div>
 </div>
 <p>And the version that returns <span class="math">\(f(x)\)</span>, <span class="math">\(f'(x)\)</span> (i.e., the gradient),
-and <span class="math">\(f''(x)\)</span> (i.e., the Hessian):</p>
+and <span class="math">\(f''(x)\)</span> (i.e., the Hessian matrix):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -642,7 +630,7 @@ and <span class="math">\(f''(x)\)</span> (i.e., the Hessian):</p>
     <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">f11</span><span class="p">,</span> <span class="n">f12</span><span class="p">],</span> <span class="p">[</span><span class="n">f12</span><span class="p">,</span> <span class="n">f22</span><span class="p">]]))</span>
 </pre></div>
 </div>
-<p>Plot function f3:</p>
+<p>We next plot the function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
@@ -663,13 +651,8 @@ and <span class="math">\(f''(x)\)</span> (i.e., the Hessian):</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_Fig_Surface_1.png"><img alt="_images/Slides_Optimization_Fig_Surface_1.png" src="_images/Slides_Optimization_Fig_Surface_1.png" style="width: 12cm;" /></a>
-<p><strong>Function f4</strong></p>
-<p>This is the same function, so we won&#8217;t repeat it here.</p>
-</div>
-<div class="section" id="multivariate-optimization-methods">
-<h3>14.4.2. Multivariate optimization methods<a class="headerlink" href="#multivariate-optimization-methods" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="newton">
-<h4>14.4.2.1. Newton<a class="headerlink" href="#newton" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="multivariate-newton-method">
+<h3>14.4.1. Multivariate Newton method<a class="headerlink" href="#multivariate-newton-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c"># Newton&#39;s method for optimisation, starting at x0</span>
     <span class="c"># f3 is a function that given x returns the list</span>
@@ -687,14 +670,9 @@ and <span class="math">\(f''(x)\)</span> (i.e., the Hessian):</p>
         <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="built-in-fmin-tnc-in-scipy-optimize-tnc">
-<h4>14.4.2.2. Built in &#8216;fmin_tnc&#8217; in scipy.optimize.tnc<a class="headerlink" href="#built-in-fmin-tnc-in-scipy-optimize-tnc" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="maximize-multivariate-function">
-<h3>14.4.3. Maximize multivariate function<a class="headerlink" href="#maximize-multivariate-function" title="Permalink to this headline">¶</a></h3>
-<p>We use various starting values to see whether we can find more than one optimum.</p>
+<p>Compare the Newton method with the built in <tt class="docutils literal"><span class="pre">fmin</span></tt> method in
+<tt class="docutils literal"><span class="pre">scipy.optimize</span></tt>.  We use various starting values to see whether we can find
+more than one optimum.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
 
 <span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
@@ -703,8 +681,10 @@ and <span class="math">\(f''(x)\)</span> (i.e., the Hessian):</p>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;Newton: f3  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; --&gt; &#39;</span> <span class="o">+</span>
 <span class="nb">str</span><span class="p">(</span><span class="n">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> \
             <span class="n">np</span><span class="o">.</span> <span class="n">array</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">]))))</span>
+
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;fmin: f3 &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; --&gt; &#39;</span> \
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fmin</span><span class="p">(</span><span class="n">f3simpleNeg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">]))))</span>
+
         <span class="k">print</span><span class="p">(</span><span class="s">&quot; ----------------------------------------- &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
