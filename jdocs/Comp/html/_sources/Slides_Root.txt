@@ -143,11 +143,11 @@ entire domain of the function.
         # Output depends on success of algorithm
         if (abs(fx[0]) > tol):
             print("Algorithm failed to converge")
-            return(NULL)
+            return None
         else:
             print("fx = ", fx[0])
             print("Algorithm converged")
-            return(x)
+            return x
     
 
 
@@ -247,10 +247,10 @@ Note that if :math:`x_0` and :math:`x_1` are close together then:
         # output depends on success of algorithm
         if (abs(fx1) > tol):
             print("Algorithm failed to converge")
-            return(NULL)
+            return None
         else:
            print("Algorithm converged")
-           return(x)
+           return x
     
 
 
@@ -318,18 +318,18 @@ The algorithm of the bisection method
         # check inputs
         if (xl >= xr):
             print("error: xl >= xr")
-            return(NULL)
+            return None
     
         fl = ftn(xl)
         fr = ftn(xr)
     
         if (fl == 0):
-            return(xl)
+            return xl
         elif (fr == 0):
-            return(xr)
+            return xr
         elif (fl * fr > 0):
             print("error: ftn(xl) * ftn(xr) > 0")
-            return(NULL)
+            return None
     
         # successively refine x.l and x.r
         n = 0
@@ -337,7 +337,7 @@ The algorithm of the bisection method
             xm = (xl + xr)/2.0
             fm = ftn(xm)
             if (fm == 0):
-                return(fm)
+                return fm
             elif (fl * fm < 0):
                 xr = xm
                 fr = fm
@@ -347,9 +347,8 @@ The algorithm of the bisection method
             n = n + 1
             print("at iteration: {} the root lies between {} and {}" \
                 .format(n, xl, xr))
-    
         # return (approximate) root
-        return ((xl + xr)/2.0)
+        return (xl + xr)/2.0
     
 
 

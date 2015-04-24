@@ -34,31 +34,33 @@ should be :math:`\pi`.
 
  1. Use a root-finding algorithm, such as the Newton-Raphson
     algorithm, to find the root of sin(x) near
+
  2. How close can you get to :math:`\pi`?
     (You may use the function :math:`sin(x)` provided by Python.)
+
  3. The function `sin(x)` is transcendental, which means that it cannot be
     written as a rational function of x. Instead we have to write it as an infinite sum:
 
- .. math::
-   sin(x) = \sum_{k=0}^{\infty} {(-1) k \frac{x^{2k+1}}{(2k + 1)!}}
+    .. math::
+        sin(x) = \sum_{k=0}^{\infty} {(-1)^k \frac{x^{2k+1}}{(2k + 1)!}}
 
-This is the infinite order Taylor expansion of sin(x) about 0. In practice,
-to calculate :math:`sin(x)` numerically we have to truncate this sum, so any numerical
-calculation of :math:`sin(x)` is an approximation. In particular the function
-``sin(x)`` provided by Python is only an approximation of sin(x) (though a very good
-one). Put
+    This is the infinite order Taylor expansion of sin(x) about 0. In practice,
+    to calculate :math:`sin(x)` numerically we have to truncate this sum, so
+    any numerical calculation of :math:`sin(x)` is an approximation. In
+    particular the function ``sin(x)`` provided by Python is only an
+    approximation of sin(x) (though a very good one). Put
 
- .. math::
-  f_n(x)= \sum_{k=0}^{n}{(-1) k \frac{x^{2k+1}}{(2k + 1)!}}
+    .. math::
+        f_n(x)= \sum_{k=0}^{n}{(-1)^k \frac{x^{2k+1}}{(2k + 1)!}}
 
-Write a function to calculate :math:`f_n(x)`. Plot :math:`f_n(x)` over the range
-:math:`[0, 7]` for a number of values of :math:`n`, and verify that it looks
-like :math:`sin(x)` for large :math:`n`.
+    Write a function to calculate :math:`f_n(x)`. Plot :math:`f_n(x)` over the range
+    :math:`[0, 7]` for a number of values of :math:`n`, and verify that it looks
+    like :math:`sin(x)` for large :math:`n`.
 
-3. Choose a large value of n, then find an approximation to
-:math:`\pi`  by solving :math:`f_n(x) = 0` near 3. Can you get an approximation
-that is correct up to 6 decimal places? Can you think of a better way of
-calculating :math:`\pi`?
+ 4. Choose a large value of n, then find an approximation to
+    :math:`\pi`  by solving :math:`f_n(x) = 0` near 3. Can you get an approximation
+    that is correct up to 6 decimal places? Can you think of a better way of
+    calculating :math:`\pi`?
 
 
 Exercise 3
