@@ -49,7 +49,7 @@ Formal Definition of the Model
 * The government pays for gov't consumption :math:`G` and transfers to households :math:`T_y` and :math:`T_o`
 
   .. math::
-    G + T_y + T_o =  \tau_L \times wL + \tau_K \times RK
+    G + T_y + T_o =  \tau_L \times wL + \tau_K \times rK
 
 **Household problem**
 
@@ -57,7 +57,9 @@ Formal Definition of the Model
 
   .. math::
     c_y + s = (1-\tau_L) w + t_y
-    c_o = (1-\tau_K) Rs + t_o
+    c_o = Rs + t_o
+
+where :math:`R = (1 +(1-\tau_K)r)` is the after tax gross interest rate.
 
 Equilibrium definition
 --------------------------------------------------------------------------------
@@ -70,7 +72,8 @@ Equilibrium definition
     * the firm maximization problem is solved, so that:
         * :math:`q = F_K`
         * :math:`w = F_L`
-        * :math:`R = (1 + q - \delta)` is the after tax interest rate
+        * :math:`r = q - \delta` is the interest rate
+        * :math:`R = (1 +(1-\tau_K)(q - \delta))` is the after tax gross interest rate
     * the gov't budget constraint clears
     * Markets clear:
         * :math:`K=S = N_y * s^*`
@@ -87,19 +90,19 @@ Functional forms and solutions
 **Substitute the budget set into preferences**
 
 .. math::
-  max_s log( (1-\tau_L)w + t_y - s)  + \beta  log( (1-\tau_K)R  s + t_o)
+  max_s log( (1-\tau_L)w + t_y - s)  + \beta  log(R s + t_o)
 
 * This is now a function in 1 choice variable :math:`s`
 * Derive this function w.r.t. :math:`s`
 
 .. math::
   \frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
-    \frac{\beta (1-\tau_K)R}{(1-\tau_K)R  s + t_o}
+    \frac{\beta R}{R  s + t_o}
 
 **Solve for optimal household savings: :math:`s^*`**
 
 .. math::
-  s^* = \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}
+  s^* = \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}
 
 * In equilibrium household savings equals the capital stock: :math:`S = K`
 * Aggregate capital stock is therefore: :math:`K = S = N_y \times s^*`
@@ -120,7 +123,7 @@ Functional forms and solutions
   equations:
 
   .. math::
-    K=N_y s^* = N_y \frac{\beta (1-\tau_K)R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)(1-\tau_K)R}
+    K=N_y s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}
 
   .. math::
     \alpha*Y/K = q
@@ -132,7 +135,7 @@ Functional forms and solutions
     F(K,L) = A K^{\alpha} L^{(1-\alpha)}
 
   .. math::
-    R = (1 + q - \delta)
+    R = (1 + (1-\tau_K)q - \delta)
 
 Method 1: Substituting everything
 --------------------------------------------------------------------------------
@@ -143,7 +146,7 @@ Method 1: Substituting everything
 
   .. math::
     w = (1-\alpha)*A K^{\alpha}
-    R = 1 + (\alpha* A K^{\alpha-1}) - \delta
+    R = 1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta)
 
 * Plug :math:`w(K)` and :math:`R(K)` into :math:`K`-equation
 
@@ -154,9 +157,9 @@ Method 1: Substituting everything
 We have
 
 .. math::
-  K= N_y \frac{\beta (1-\tau_K)(1 + (\alpha* A K^{\alpha-1}) - \delta)
+  K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta))
   ((1-\tau_L)((1-\alpha)*A K^{\alpha}) + t_y) - t_o}
-  {(1+\beta)(1-\tau_K)(1 + (\alpha A K^{\alpha-1}) - \delta)}
+  {(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}
 
 * Model parameters: :math:`N_y=N_o=1`, :math:`\alpha=0.3`, :math:`A=1`, :math:`\beta = 0.9`, :math:`\delta=0.1`
 * We assumed that government was exogenous, so here are some government
@@ -173,7 +176,7 @@ We have
 * Aggregate government consumption is:
 
   .. math::
-    G = \tau_L \times wL + \tau_K \times RK - N_y*t_y - N_o*t_o
+    G = \tau_L \times wL + \tau_K \times rK - N_y*t_y - N_o*t_o
 
 * The aggregate resource constraint (or goods market clearing condition) is:
 
@@ -226,22 +229,23 @@ We have
     # Define function of capital K
     
     def func(K):
-        s = - K + N_y*((beta*(1-tau_K)*(1+(alpha*A*K**(alpha-1)) - delta)*
-    \
-        ((1-tau_L)*((1-alpha)*A*K**alpha) + t_y) -
-    t_o)/((1+beta)*(1-tau_K)*
-        (1. + (alpha*A*K**(alpha-1)) - delta)))
+        s = - K + N_y\
+        *((beta*(1+(1-tau_K)*(alpha*A*K**(alpha-1) - delta))* \
+        ((1-tau_L)*((1-alpha)*A*K**alpha) + t_y) - t_o) \
+        /((1+beta)*(1. + (1-tau_K)*(alpha*A*K**(alpha-1) - delta))))
     
         return s
     
     # Plot the function
     Kmin = 0.0001
-    Kmax = 1.0
+    Kmax = 0.3
+    # Span grid with gridpoints between Kmin and Kmax
     Kv = np.arange(Kmin, Kmax, (Kmax - Kmin)/200.0)
-    fK = np.zeros(len(Kv),float) # define column vector
+    # Output vector prefilled with zeros
+    fKv = np.zeros(len(Kv),float) # define column vector
     
-    for i in range(len(Kv)):
-        fK[i] = func(Kv[i])
+    for i,K in enumerate(Kv):
+        fKv[i] = func(K)
     
     #print("fK=", fK)
     
@@ -252,8 +256,9 @@ We have
 .. code-block:: python
 
     fig, ax = plt.subplots()
-    ax.plot(Kv, fK)
-    ax.plot(Kv, np.zeros(len(Kv)))
+    ax.plot(Kv, fKv)
+    # Plot horizontal line at zero in red
+    ax.plot(Kv, np.zeros(len(Kv)), 'r')
     ax.set_title('Capital')
     plt.show()
     
@@ -266,25 +271,32 @@ We have
 
 .. code-block:: python
 
-    ## Use built in 'fsolve'
+    # Use built in 'fsolve'
     print(" ")
     print(" -------------- Fsolve ------------")
-    Kstar = fsolve(func, 2) # starting from K = 2
+    solutionK = fsolve(func, 2) # starting from K = 2
+    
+    # Kstar is a numpy array which does not print well
+    # We therefore change it into a 'pure' number
+    # so we can use the print format to create a nice
+    # looking output
+    Kstar = solutionK[0]
     
     Ystar = A*Kstar**alpha*L**(1-alpha)
     qstar = alpha*A*Kstar**(alpha-1)
-    Rstar = 1. + qstar - delta
+    rstar = qstar - delta
+    Rstar = 1. + (1-tau_K)*(qstar - delta)
     wstar = (1.-alpha)*A*Kstar**alpha
     
-    # ------------------------------------
     # Back out solutions for the rest of the Economy
-    
+    # ----------------------------------------------
     # Household values
     sstar = Kstar/N_y
     cystar= (1.-tau_L)*wstar + t_y - sstar
-    costar= (1.-tau_K)*Rstar*sstar + t_o
-    Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar  # residual gov't
-    consumption, thrown in the ocean
+    costar= Rstar*sstar + t_o
+    
+    # Residual gov't consumption, thrown in the ocean
+    Gstar = N_y*tau_L*wstar + N_o*tau_K*rstar*sstar
     
     # Aggregate consumption
     Cstar = N_y*cystar + N_o*costar
@@ -296,13 +308,14 @@ We have
     print(" -------------------------------------")
     print(" Root finding ")
     print(" -------------------------------------")
-    print("K* = ", Kstar)
-    print("Y* = ", Ystar)
-    print("q* = ", qstar)
-    print("R* = ", Rstar)
-    print("w* = ", wstar)
+    print("K* = {:6.4f}".format(Kstar))
+    print("Y* = {:6.4f}".format(Ystar))
+    print("q* = {:6.4f}".format(qstar))
+    print("r* = {:6.4f}".format(rstar))
+    print("R* = {:6.4f}".format(Rstar))
+    print("w* = {:6.4f}".format(wstar))
     print(" -------------------------------------")
-    print("ARC = ", ARC)
+    print("ARC = {:6.4f}".format(ARC))
     
 
 ::
@@ -312,13 +325,14 @@ We have
      -------------------------------------
      Root finding
      -------------------------------------
-    K* =  [ 0.15020394]
-    Y* =  [ 0.56624503]
-    q* =  [ 1.13095238]
-    R* =  [ 2.13095238]
-    w* =  [ 0.39637152]
+    K* = 0.1502
+    Y* = 0.5662
+    q* = 1.1310
+    r* = 1.1310
+    R* = 1.9613
+    w* = 0.3964
      -------------------------------------
-    ARC =  [  5.55111512e-17]
+    ARC = 0.0000
     
     
 
@@ -329,13 +343,18 @@ Method 2: Gauss-Seidl Algorithm
 
 .. index:: Gauss-Seidl algorithm
 
-* Instead of substituting and solving for one equation in one unknown we can
-  use the so called **Gauss-Seidl** method
-  1. For this method we start with a guess for capital :math:`K_{old}`
-  2. We then solve for prices :math:`w,R,q`
-  3. We then solve for optimal household savings :math:`s^*`
-  4. We then aggregate over all households and get the new capital stock :math:`K_{new}`
-  5. We then update capital :math:`K_{old} = \lambda * K_{new} + (1-\lambda) * K_{old}` and repeat from point 1 (:math:`\lambda` is an updating parameter)
+Instead of substituting and solving for one equation in one unknown we can use
+the so called **Gauss-Seidl** method
+
+ 1. For this method we start with a guess for capital :math:`K_{old}`
+
+ 2. We then solve for prices :math:`w,R,q`
+
+ 3. We then solve for optimal household savings :math:`s^*`
+
+ 4. We then aggregate over all households and get the new capital stock :math:`K_{new}`
+
+ 5. We then update capital :math:`K_{old} = \lambda * K_{new} + (1-\lambda) * K_{old}` and repeat from point 1 (:math:`\lambda` is an updating parameter)
 
 **Python Program 2**
 
@@ -351,17 +370,21 @@ Method 2: Gauss-Seidl Algorithm
         # Solve for prices using expressions for w(K) and q(K)
         q = alpha*A*Kold**(alpha-1)
         w = (1-alpha)*A*Kold**alpha
-        R = 1 + q - delta
-        Knew = N_y* (beta*(1-tau_K)*R*((1-tau_L)*w + t_y) -
-    t_o)/((1+beta)*(1-tau_K)*R)
-        iter = iter +1
+        R = 1 + (1-tau_K)*(q - delta)
+        Knew = N_y* (beta*R*((1-tau_L)*w + t_y) - t_o)/((1+beta)*R)
+        # Calculate discrepancy between old and new capital stock
+        jerror = abs(Kold-Knew)/Kold
         # Update capital stock
         Kold    = glamda*Knew + (1-glamda)*Kold
-        jerror  = abs(Kold-Knew)/Kold
+        iter = iter +1
     
     # Print results
     Kstar = Knew
     Ystar = A*Kstar**alpha*L**(1-alpha)
+    wstar = w
+    qstar = q
+    Rstar = R
+    rstar = qstar - delta
     
     # ------------------------------------
     # Back out solutions for the rest of the Economy
@@ -369,10 +392,10 @@ Method 2: Gauss-Seidl Algorithm
     # Household values
     sstar = Kstar/N_y
     cystar= (1-tau_L)*wstar + t_y - sstar
-    costar= (1-tau_K)*Rstar*sstar + t_o
+    costar= Rstar*sstar + t_o
     
     # Residual gov't consumption, thrown in the ocean
-    Gstar = N_y*tau_L*wstar + N_o*tau_K*Rstar*sstar
+    Gstar = N_y*tau_L*wstar + N_o*tau_K*rstar*sstar
     
     # Aggregate consumption
     Cstar = N_y*cystar + N_o*costar
@@ -384,13 +407,14 @@ Method 2: Gauss-Seidl Algorithm
     print(" Gauss-Seidl ")
     print(" -------------------------------------")
     print("Nr. of iterations = " +str(iter))
-    print("K* = ", Kstar)
-    print("Y* = ", Ystar)
-    print("q* = ", q)
-    print("R* = ", R)
-    print("w* = ", w)
+    print("K* = {:6.4f}".format(Kstar))
+    print("Y* = {:6.4f}".format(Ystar))
+    print("q* = {:6.4f}".format(qstar))
+    print("r* = {:6.4f}".format(rstar))
+    print("R* = {:6.4f}".format(Rstar))
+    print("w* = {:6.4f}".format(wstar))
     print(" -------------------------------------")
-    print("ARC = ", ARC)
+    print("ARC = {:6.4f}".format(ARC))
     
 
 ::
@@ -399,13 +423,14 @@ Method 2: Gauss-Seidl Algorithm
      Gauss-Seidl
      -------------------------------------
     Nr. of iterations = 200
-    K* =  0.15020394401911097
-    Y* =  0.5662450270561723
-    q* =  1.1309523809523807
-    R* =  2.1309523809523805
-    w* =  0.3963715189393206
+    K* = 0.1502
+    Y* = 0.5662
+    q* = 1.1310
+    r* = 1.1310
+    R* = 1.9613
+    w* = 0.3964
      -------------------------------------
-    ARC =  [  5.55111512e-17]
+    ARC = 0.0000
     
     
 
