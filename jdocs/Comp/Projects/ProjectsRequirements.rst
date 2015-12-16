@@ -1,5 +1,5 @@
 ===============================================================================
-Project Requirements for Econ 470
+CompEcon: Project Requirements 
 ===============================================================================
 
  *  The due date for your projects is **Thursday, May 7** in class.

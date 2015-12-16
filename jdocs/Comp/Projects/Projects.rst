@@ -1,5 +1,5 @@
 ===============================================================================
-Suggested Projects 
+CompEcon: Some Project Ideas 
 ===============================================================================
 
 You are encouraged to come up with your own project ideas. If you have

@@ -1,5 +1,5 @@
 ===============================================================================
-Projects for Econ 470
+CompEcon: Project Instructions
 ===============================================================================
 
 Your suggested projects fall into three categories
