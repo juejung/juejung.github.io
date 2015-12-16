@@ -1,5 +1,5 @@
 ===============================================================================
-Suggested Projects for Econ 470
+Suggested Projects 
 ===============================================================================
 
 You are encouraged to come up with your own project ideas. If you have
