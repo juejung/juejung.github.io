@@ -66,8 +66,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#git-and-github">1.2. Git and Github</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-github">1.3. Submitting homework, midterm and the final via GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-dropbox">1.2. Submitting homework, midterm and the final via Dropbox</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -99,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">5.5. In class exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <tt class="docutils literal"><span class="pre">matplotlib</span></tt></a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">6.1. Plotting vectors and arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">6.2. Plotting functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">6.3. Subplots</a></li>
@@ -188,7 +187,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">17.6. Functional forms and solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">17.7. Substitute in preferences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">17.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#homework">17.9. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a><ul>
@@ -197,10 +195,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">18.3. Government</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">18.4. Household problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">18.5. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#functional-forms-and-solutions">18.6. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#substitute-in-preferences">18.7. Substitute in preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#solve-for-optimal-and">18.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#homework">18.9. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a><ul>
@@ -247,18 +241,18 @@
 <h1>3. Basic programming techniques<a class="headerlink" href="#basic-programming-techniques" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="branching">
 <h2>3.1. Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">if</span></tt> command can be used to check whether a certain condition is true. If
+<p>The <code class="docutils literal"><span class="pre">if</span></code> command can be used to check whether a certain condition is true. If
 it is true, then we can assign a certain chain of commands for this
 eventuality. If the condition is wrong, we can branch off our program into
 another direction and assign different commands. So we can basically branch our
 program into two (or more) separate directions.  Here is a simple example. We
-first draw some random number between 0 and 1 using the <tt class="docutils literal"><span class="pre">random()</span></tt> command.
+first draw some random number between 0 and 1 using the <code class="docutils literal"><span class="pre">random()</span></code> command.
 We then check whether the number is smaller or larger than 0.5. For each
 eventuality we can then assign a string of commands to be executed.</p>
 <p>In Python it is very important to get the &#8220;indentation&#8221; right. So all the
 commands that we want to be executed after the if statement need to &#8220;indented&#8221;
 by 4 spaces (just his the tab key once). Python does not use the curly
-brackets <tt class="docutils literal"><span class="pre">{}</span></tt> that R uses in the if-statements and for- loops.</p>
+brackets <code class="docutils literal"><span class="pre">{}</span></code> that R uses in the if-statements and for- loops.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">import</span> <span class="nn">time</span>  <span class="c"># Imports system time module to time your script</span>
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -300,13 +294,13 @@ series of commands.</p>
 <p>Here is a simple first example. We first assign a list with values 0,1,2,3,4,5.
 We then &#8220;loop&#8221; through all the values of this list and print them one by one.
 In addition, we add up all the values of this list.  The command
-<tt class="docutils literal"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">range(6)</span></tt> assigns <tt class="docutils literal"><span class="pre">x</span></tt> equal to each value of <tt class="docutils literal"><span class="pre">0,1,</span> <span class="pre">...,5</span></tt> one
-by one and we can then use <tt class="docutils literal"><span class="pre">x</span></tt> itself in each iteration.
-Variable <tt class="docutils literal"><span class="pre">x</span></tt> is called the iterator or counter as it changes its value in
+<code class="docutils literal"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">range(6)</span></code> assigns <code class="docutils literal"><span class="pre">x</span></code> equal to each value of <code class="docutils literal"><span class="pre">0,1,</span> <span class="pre">...,5</span></code> one
+by one and we can then use <code class="docutils literal"><span class="pre">x</span></code> itself in each iteration.
+Variable <code class="docutils literal"><span class="pre">x</span></code> is called the iterator or counter as it changes its value in
 every iteration of the loop and in a why counts in which round you currently
 are.</p>
 <p>Note that if you want a list from 0,1,...,5 you need to define the range
-command with <tt class="docutils literal"><span class="pre">range(6)</span></tt>.  Using this loop we can step through all the values of our
+command with <code class="docutils literal"><span class="pre">range(6)</span></code>.  Using this loop we can step through all the values of our
 list and assign certain operations to each value.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Summation variable starting with zero value</span>
 <span class="n">sumx</span> <span class="o">=</span> <span class="mi">0</span>
@@ -332,11 +326,11 @@ list and assign certain operations to each value.</p>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">15</span>
 </pre></div>
 </div>
-<p>In the above code snipped the <tt class="docutils literal"><span class="pre">x</span></tt> variable is the <strong>counter</strong> and the <tt class="docutils literal"><span class="pre">sumx</span></tt>
+<p>In the above code snipped the <code class="docutils literal"><span class="pre">x</span></code> variable is the <strong>counter</strong> and the <code class="docutils literal"><span class="pre">sumx</span></code>
 variable is the <strong>accumulator</strong>. The accumulator sums up the iterator in each
 round and adds it to the already accumulated sum of previous iterations.</p>
 <p>It is bad programming style if you re-assign the iterator variable
-<tt class="docutils literal"><span class="pre">x</span></tt> within the code block that gets repeated and you should avoid it. Some
+<code class="docutils literal"><span class="pre">x</span></code> within the code block that gets repeated and you should avoid it. Some
 programming languages will not even allow you to assign a value to an iterator
 within a loop statement.</p>
 </div>
@@ -345,7 +339,7 @@ within a loop statement.</p>
 <p>Here is another example. We write a loop that calculates the factorial of a
 number: <span class="math">\(3!\)</span>. Remember that <span class="math">\(3! = 1 * 2 * 3\)</span>.  In order to make
 this happen we write a loop that sets <span class="math">\(i = 1, 2,\)</span> and 3 and multiplies it
-with the product of the previous round. The variable <tt class="docutils literal"><span class="pre">n_fac</span></tt> stores the
+with the product of the previous round. The variable <code class="docutils literal"><span class="pre">n_fac</span></code> stores the
 product from each round.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">n_fac</span> <span class="o">=</span> <span class="mi">1</span>
@@ -367,7 +361,7 @@ The factorial of 6 is: 720
 </pre></div>
 </div>
 <p>Using a different method we can also calculate the factorial as:
-Here the accumulator variable <tt class="docutils literal"><span class="pre">n_fac</span></tt> is not accumulating a sum of numbers
+Here the accumulator variable <code class="docutils literal"><span class="pre">n_fac</span></code> is not accumulating a sum of numbers
 but a product.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 </pre></div>
@@ -388,8 +382,8 @@ In each round we reach the value of the vector and print it.</p>
 </pre></div>
 </div>
 <p>We now start the loop and pick each value of this list one-by-one.  The
-command <tt class="docutils literal"><span class="pre">length</span></tt> tells us how many arguments are in the list <tt class="docutils literal"><span class="pre">xv</span></tt> and then
-lets the loop run from 1 to the total number of arguments in <tt class="docutils literal"><span class="pre">xv</span></tt>.
+command <code class="docutils literal"><span class="pre">length</span></code> tells us how many arguments are in the list <code class="docutils literal"><span class="pre">xv</span></code> and then
+lets the loop run from 1 to the total number of arguments in <code class="docutils literal"><span class="pre">xv</span></code>.
 Note also the difference in the two print commands, where the second one
 results in formatted output.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
@@ -416,7 +410,7 @@ results in formatted output.</p>
 <div class="section" id="looping-through-the-content-of-a-list">
 <h3>3.2.4. Looping through the content of a list<a class="headerlink" href="#looping-through-the-content-of-a-list" title="Permalink to this headline">¶</a></h3>
 <p>If you already have a list predefined and you want to loop through the content
-of that list you can use a <tt class="docutils literal"><span class="pre">for</span></tt> loop in the following way.</p>
+of that list you can use a <code class="docutils literal"><span class="pre">for</span></code> loop in the following way.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
 <span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;car&#39;</span><span class="p">,</span> <span class="s">&#39;bike&#39;</span><span class="p">]</span>
 
@@ -433,7 +427,7 @@ indexing variable x is:  bike
 </pre></div>
 </div>
 <p>If you need to keep track of the position of the various items in the list you
-can use the <tt class="docutils literal"><span class="pre">enumerate</span></tt> command which internally generates a &#8220;zipped list&#8221;
+can use the <code class="docutils literal"><span class="pre">enumerate</span></code> command which internally generates a &#8220;zipped list&#8221;
 that pairs up each element in the list with its index inside of the list. Here
 is an example using the previous list:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
@@ -456,7 +450,7 @@ variable i is: 5 and x is: bike
 <h3>3.2.5. Combining lists and looping through them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
 <p>If you have two or more lists that you want to loop through simultaneously
 pulling the first elements from both lists (in tandem), followed by the second
-elements from both lists, etc. you can use the <tt class="docutils literal"><span class="pre">zip</span></tt> command. The <tt class="docutils literal"><span class="pre">zip</span></tt>
+elements from both lists, etc. you can use the <code class="docutils literal"><span class="pre">zip</span></code> command. The <code class="docutils literal"><span class="pre">zip</span></code>
 function &#8220;glues&#8221; or &#8220;zips&#8221; the lists together and then allows you to run (or
 loop) through them in this pairwise fashion. The next example illustrates this.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
@@ -475,8 +469,8 @@ The hubby is: jason and the wife is lisa
 </pre></div>
 </div>
 <p>If you want to combine this with the index of the names inside the lists you
-can use <tt class="docutils literal"><span class="pre">enumerate</span></tt> again. Be careful in how you use the parenthesis around
-the variables <tt class="docutils literal"><span class="pre">husband</span></tt> and <tt class="docutils literal"><span class="pre">wife</span></tt> in the <tt class="docutils literal"><span class="pre">for</span></tt> loop construct.</p>
+can use <code class="docutils literal"><span class="pre">enumerate</span></code> again. Be careful in how you use the parenthesis around
+the variables <code class="docutils literal"><span class="pre">husband</span></code> and <code class="docutils literal"><span class="pre">wife</span></code> in the <code class="docutils literal"><span class="pre">for</span></code> loop construct.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
 <span class="n">myListA</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;jason&#39;</span><span class="p">]</span>
 <span class="n">myListB</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;emma&#39;</span><span class="p">,</span> <span class="s">&#39;clara&#39;</span><span class="p">,</span> <span class="s">&#39;susan&#39;</span><span class="p">,</span> <span class="s">&#39;jill&#39;</span><span class="p">,</span> <span class="s">&#39;lisa&#39;</span><span class="p">]</span>
@@ -507,13 +501,13 @@ stopping condition is met.</p>
 <div class="section" id="while-loop-1">
 <h3>3.3.1. While loop 1<a class="headerlink" href="#while-loop-1" title="Permalink to this headline">¶</a></h3>
 <p>In the first example we let the iterations run as long as the value of variable
-<tt class="docutils literal"><span class="pre">x</span></tt> is smaller than 10. In every iteration we increase x by one unit, so that in
+<code class="docutils literal"><span class="pre">x</span></code> is smaller than 10. In every iteration we increase x by one unit, so that in
 effect the loop gets repeated 9 times.</p>
-<p>In a <tt class="docutils literal"><span class="pre">while</span></tt> loop the iterator variable is not automatically incremented as
-in the <tt class="docutils literal"><span class="pre">for</span></tt> loop, where we explicitly state the starting and stopping values
+<p>In a <code class="docutils literal"><span class="pre">while</span></code> loop the iterator variable is not automatically incremented as
+in the <code class="docutils literal"><span class="pre">for</span></code> loop, where we explicitly state the starting and stopping values
 for the iterator variable. We therefore have to make sure that we increment the
-iterator/counter variable <tt class="docutils literal"><span class="pre">x</span></tt> within the repeatable codeblock using <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span>
-<span class="pre">+1</span></tt> or shorter and more efficiently <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></tt>.</p>
+iterator/counter variable <code class="docutils literal"><span class="pre">x</span></code> within the repeatable codeblock using <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span>
+<span class="pre">+1</span></code> or shorter and more efficiently <code class="docutils literal"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code>.</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
@@ -534,11 +528,11 @@ iterator/counter variable <tt class="docutils literal"><span class="pre">x</span
 <span class="n">X</span><span class="o">=</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">45</span>
 </pre></div>
 </div>
-<p>The accumulator variable <tt class="docutils literal"><span class="pre">y</span></tt> calculates the cumulative sum of all numbers
+<p>The accumulator variable <code class="docutils literal"><span class="pre">y</span></code> calculates the cumulative sum of all numbers
 from 1 to 9, so that <span class="math">\(y = 0+1+2+...+9\)</span>. If you forget the statement that
 increments the counter at the end of the repeatable code block within the loop,
 then the loop will run infinitely long and you have to break the code with
-pressing <tt class="docutils literal"><span class="pre">ctrl</span></tt> + <tt class="docutils literal"><span class="pre">c</span></tt> which will stop the execution of the Python script.</p>
+pressing <code class="docutils literal"><span class="pre">ctrl</span></code> + <code class="docutils literal"><span class="pre">c</span></code> which will stop the execution of the Python script.</p>
 </div>
 <div class="section" id="while-loop-2">
 <h3>3.3.2. While loop 2<a class="headerlink" href="#while-loop-2" title="Permalink to this headline">¶</a></h3>

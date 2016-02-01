@@ -66,8 +66,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#git-and-github">1.2. Git and Github</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-github">1.3. Submitting homework, midterm and the final via GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-dropbox">1.2. Submitting homework, midterm and the final via Dropbox</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
@@ -99,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">5.5. In class exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <tt class="docutils literal"><span class="pre">matplotlib</span></tt></a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">6.1. Plotting vectors and arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">6.2. Plotting functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">6.3. Subplots</a></li>
@@ -188,7 +187,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">17.6. Functional forms and solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">17.7. Substitute in preferences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">17.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#homework">17.9. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a><ul>
@@ -197,10 +195,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">18.3. Government</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">18.4. Household problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">18.5. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#functional-forms-and-solutions">18.6. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#substitute-in-preferences">18.7. Substitute in preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#solve-for-optimal-and">18.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#homework">18.9. Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a><ul>
@@ -253,9 +247,9 @@ on view frame source. When we download information from the web, we usually
 download this source code and then run
 a <a class="reference external" href="http://www.google.com/search?q=what+is+a_parser">parser</a>
 over the html source code to extract information.</p>
-<p>The Python library <tt class="docutils literal"><span class="pre">BeautifulSoup</span></tt> helps us parsing out the information from
+<p>The Python library <code class="docutils literal"><span class="pre">BeautifulSoup</span></code> helps us parsing out the information from
 the html-data that we get after downloading the web page. The additional
-library <tt class="docutils literal"><span class="pre">request</span></tt> allows us to download source codes from websites. We
+library <code class="docutils literal"><span class="pre">request</span></code> allows us to download source codes from websites. We
 therefore first need to import these two libraries.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -263,7 +257,7 @@ therefore first need to import these two libraries.</p>
 <span class="kn">import</span> <span class="nn">re</span>
 </pre></div>
 </div>
-<p>The first package allows us to open web pages and the second, <tt class="docutils literal"><span class="pre">BeautifulSoup</span></tt>
+<p>The first package allows us to open web pages and the second, <code class="docutils literal"><span class="pre">BeautifulSoup</span></code>
 parses the html code and stores it in an easily accessible database format, or
 object. This object has methods that are tailor made to extract information
 from the html code of the website that we scrape from.
@@ -302,7 +296,7 @@ the links to the videos are all part of the
 </div>
 <p>We next define an empty list so we can store all the links to the videos and
 then run a loop through the html source code and extract all links that start
-with <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></tt>. We append all these links to the <tt class="docutils literal"><span class="pre">link_list</span></tt> list.</p>
+with <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></code>. We append all these links to the <code class="docutils literal"><span class="pre">link_list</span></code> list.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&#39;div.yt-lockup-content a[href^=/watch]&#39;</span><span class="p">):</span>
     <span class="c"># Store all links in a list</span>
@@ -327,7 +321,7 @@ like and dislike information later on.</p>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We next assign the <tt class="docutils literal"><span class="pre">link_list</span></tt> with all the video links to the dataframe.</p>
+<p>We next assign the <code class="docutils literal"><span class="pre">link_list</span></code> with all the video links to the dataframe.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
 <span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jurl</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Links&#39;</span><span class="p">]</span>
 </pre></div>
@@ -337,8 +331,8 @@ one separately in a webpage. We than grab the title, number of views, number of
 likes and number of dislikes and store these data in the current row of our
 dataframe.
 We use <strong>regular expressions</strong> to find the numbers of views, likes and dislikes
-in the text string that is generated by the <tt class="docutils literal"><span class="pre">soup.select()</span></tt> and
-<tt class="docutils literal"><span class="pre">soup.find_all()</span></tt> functions.</p>
+in the text string that is generated by the <code class="docutils literal"><span class="pre">soup.select()</span></code> and
+<code class="docutils literal"><span class="pre">soup.find_all()</span></code> functions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&#39;{} out of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
