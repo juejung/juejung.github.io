@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>3. Basic programming techniques &mdash; Computational Economics 1.0 documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -35,7 +35,7 @@
         <link rel="prev" title="2. First steps in Python" href="Slides_Basics.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -45,11 +45,27 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="index.html" class="fa fa-home"> Computational Economics</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Computational Economics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -57,157 +73,57 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-dropbox">1.2. Submitting homework, midterm and the final via Dropbox</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#simple-calculations">2.1. Simple calculations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#the-print-function">2.2. The print function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#script-files">2.3. Script files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#ipython-notebook">2.4. iPython Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#lists-tuples-and-dictionaries">2.5. Lists, tuples and dictionaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Basics.html#in-class-exercises">2.6. In class exercises</a></li>
-</ul>
-</li>
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">3. Basic programming techniques</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#branching">3.1. Branching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-loops">3.2. For loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#while-loop">3.3. While loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops">3.2. For loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loop-1">3.2.1. Loop 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-2">3.2.2. Loop 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-3">3.2.3. Loop 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-4">3.2.4. Loop 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looping-through-the-content-of-a-list">3.2.5. Looping through the content of a list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-lists-and-looping-through-them">3.2.6. Combining lists and looping through them</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#using-print-statements-to-spot-mistakes">4.1. Using print statements to spot mistakes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#using-the-debugger">4.2. Using the debugger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#in-class-exercises">4.3. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while-loop">3.3. While loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#while-loop-1">3.3.1. While loop 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while-loop-2">3.3.2. While loop 2</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and matrices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#definitions-of-vectors-and-matrices">5.1. Definitions of vectors and matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#simple-calculations-with-vectors-and-matrices">5.2. Simple calculations with vectors and matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#vector-manipulation">5.3. Vector manipulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#matrix-manipulation">5.4. Matrix manipulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">5.5. In class exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">6.1. Plotting vectors and arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">6.2. Plotting functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">6.3. Subplots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#d-graphs">6.4. 3D-Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#homework">6.5. Homework</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#use-simple-user-defined-functions">7.1. Use simple user defined functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#advanced-graphing-using-loops-and-functions">7.2. Advanced Graphing using loops and functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#in-class-exercises">7.5. In class exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#introduction">8.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#inheritance-and-subclasses">8.2. Inheritance and subclasses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#generating-multiple-objects">8.3. Generating multiple objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#homework">8.4. Homework</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_1.html#read-in-small-data-set-from-a-comma-separated-csv-file">9.1. Read in small data set from a comma separated (.csv) file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_1.html#some-pandas-tricks">9.2. Some Pandas tricks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#importing-data">10.1. Importing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#making-simple-graphs-from-our-data">10.2. Making simple graphs from our data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#summary-statistics">10.3. Summary statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#measures-of-linear-relationship">10.4. Measures of linear relationship</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#more-tutorials">11.1. More tutorials</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#uniformly-distributed-random-numbers">12.1. Uniformly distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#drawing-objects-with-random-values">12.5. Drawing objects with random values</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#first-steps">13.1. First steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#newton-raphson">13.2. Newton-Raphson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#secant-method">13.3. Secant method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#bisection">13.4. Bisection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#using-built-in-unit-root-function">13.5. Using built in unit-root function</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#univariate-function-optimization">14.1. Univariate function optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#optimization-methods">14.2. Optimization methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#finding-the-root-of-a-function-using-minimization">14.3. Finding the root of a function using minimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#multivariate-optimization">14.4. Multivariate optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solution">15.1. Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#formally">15.2. Formally</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#analytical-solution">15.3. Analytical Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem">15.4. Solving the problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-the-solution">15.5. Plotting the Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#function-definitions-and-plotting">15.6. Function definitions and plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution-in-python">15.7. Numerical Solution in Python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#formal-definition-of-the-model">16.1. Formal Definition of the Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equilibrium-definition">16.2. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#functional-forms-and-solutions">16.3. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-1-substituting-everything">16.4. Method 1: Substituting everything</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-2-gauss-seidl-algorithm">16.5. Method 2: Gauss-Seidl Algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#preferences">17.1. Preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#technology">17.2. Technology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#government">17.3. Government</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#household-problem">17.4. Household problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#equilibrium-definition">17.5. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">17.6. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">17.7. Substitute in preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">17.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#preferences">18.1. Preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#technology">18.2. Technology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">18.3. Government</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">18.4. Household problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">18.5. Equilibrium definition</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Assignments.html#midterm">19.1. Midterm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Assignments.html#homework">19.2. Homework</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -222,20 +138,29 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
     <li>3. Basic programming techniques</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/Slides_Loop.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/Slides_Loop.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="basic-programming-techniques">
 <h1>3. Basic programming techniques<a class="headerlink" href="#basic-programming-techniques" title="Permalink to this headline">¶</a></h1>
@@ -253,35 +178,35 @@ eventuality we can then assign a string of commands to be executed.</p>
 commands that we want to be executed after the if statement need to &#8220;indented&#8221;
 by 4 spaces (just his the tab key once). Python does not use the curly
 brackets <code class="docutils literal"><span class="pre">{}</span></code> that R uses in the if-statements and for- loops.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
-<span class="kn">import</span> <span class="nn">time</span>  <span class="c"># Imports system time module to time your script</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">time</span>  <span class="c1"># Imports system time module to time your script</span>
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Number x= {} is greater than 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number x= {} is greater than 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Number x= {} is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number x= {} is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>Number x= 2 is greater than 0.5
+<div class="highlight-python"><div class="highlight"><pre>Number x= 2 is greater than 0.5
 </pre></div>
 </div>
 <p>We next branch the program into 3 separate directions depending on 3 mutually
 exclusive conditions.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;X is greater than Y&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;X is greater than Y&quot;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;X is equal to Y&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;X is equal to Y&quot;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;X is smaller than Y&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;X is smaller than Y&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>X is smaller than Y
+<div class="highlight-python"><div class="highlight"><pre>X is smaller than Y
 </pre></div>
 </div>
 </div>
@@ -291,6 +216,134 @@ exclusive conditions.</p>
 series of commands.</p>
 <div class="section" id="loop-1">
 <h3>3.2.1. Loop 1<a class="headerlink" href="#loop-1" title="Permalink to this headline">¶</a></h3>
+<p>Assume you have the following assignment. Please print the following on a
+screen:</p>
+<div class="highlight-python"><div class="highlight"><pre>i = 0
+i = 1
+i = 2
+i = 3
+
+etc.
+
+i = 9
+</pre></div>
+</div>
+<p>We could first of course just write simple print statements as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">9</span>
+</pre></div>
+</div>
+<p>Not wrong, but pretty slow to produce and boring. Whenever a task is repetitive
+and boring there is probably a quicker and more exciting way of accomplishing
+it.</p>
+<p>Let&#8217;s think about a loop implementation. Try this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">9</span>
+</pre></div>
+</div>
+<p>Note that we again need to increment the print statement <strong>inside</strong> of the loop
+with 4! white-spaces.
+The <code class="docutils literal"><span class="pre">range()</span></code> command will generate a list from <code class="docutils literal"><span class="pre">0,1,...9</span></code> and then
+instruct the computer to assign the list elements to variable <code class="docutils literal"><span class="pre">i</span></code> in each
+round. You can then decide what to do with the specific value of
+variable <code class="docutils literal"><span class="pre">i</span></code> in each round by incrementing your codes. Here&#8217;s a more
+elaborate example</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Round: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;------------------------&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;i = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x = i/2 = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;------------------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Round: 0
+------------------------
+i = 0
+x = i/2 = 0.0
+------------------------
+Round: 1
+------------------------
+i = 1
+x = i/2 = 0.5
+------------------------
+Round: 2
+------------------------
+i = 2
+x = i/2 = 1.0
+------------------------
+Round: 3
+------------------------
+i = 3
+x = i/2 = 1.5
+------------------------
+Round: 4
+------------------------
+i = 4
+x = i/2 = 2.0
+------------------------
+Round: 5
+------------------------
+i = 5
+x = i/2 = 2.5
+------------------------
+Round: 6
+------------------------
+i = 6
+x = i/2 = 3.0
+------------------------
+Round: 7
+------------------------
+i = 7
+x = i/2 = 3.5
+------------------------
+Round: 8
+------------------------
+i = 8
+x = i/2 = 4.0
+------------------------
+Round: 9
+------------------------
+i = 9
+x = i/2 = 4.5
+------------------------
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-2">
+<h3>3.2.2. Loop 2<a class="headerlink" href="#loop-2" title="Permalink to this headline">¶</a></h3>
 <p>Here is a simple first example. We first assign a list with values 0,1,2,3,4,5.
 We then &#8220;loop&#8221; through all the values of this list and print them one by one.
 In addition, we add up all the values of this list.  The command
@@ -302,17 +355,17 @@ are.</p>
 <p>Note that if you want a list from 0,1,...,5 you need to define the range
 command with <code class="docutils literal"><span class="pre">range(6)</span></code>.  Using this loop we can step through all the values of our
 list and assign certain operations to each value.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Summation variable starting with zero value</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Summation variable starting with zero value</span>
 <span class="n">sumx</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="c"># Start loop</span>
+<span class="c1"># Start loop</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-    <span class="n">sumx</span> <span class="o">=</span> <span class="n">sumx</span> <span class="o">+</span> <span class="n">x</span>  <span class="c"># adds up the elements from 0 to 5</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;x = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;sum(x) = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sumx</span><span class="p">))</span>
+    <span class="n">sumx</span> <span class="o">=</span> <span class="n">sumx</span> <span class="o">+</span> <span class="n">x</span>  <span class="c1"># adds up the elements from 0 to 5</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;x = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;sum(x) = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sumx</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
@@ -334,24 +387,24 @@ round and adds it to the already accumulated sum of previous iterations.</p>
 programming languages will not even allow you to assign a value to an iterator
 within a loop statement.</p>
 </div>
-<div class="section" id="loop-2">
-<h3>3.2.2. Loop 2<a class="headerlink" href="#loop-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-3">
+<h3>3.2.3. Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
 <p>Here is another example. We write a loop that calculates the factorial of a
 number: <span class="math">\(3!\)</span>. Remember that <span class="math">\(3! = 1 * 2 * 3\)</span>.  In order to make
 this happen we write a loop that sets <span class="math">\(i = 1, 2,\)</span> and 3 and multiplies it
 with the product of the previous round. The variable <code class="docutils literal"><span class="pre">n_fac</span></code> stores the
 product from each round.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">n_fac</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;i = &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i = &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">n_fac</span> <span class="o">=</span> <span class="n">n_fac</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of {} is: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_fac</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The factorial of {} is: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_fac</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>i =  0
+<div class="highlight-python"><div class="highlight"><pre>i =  0
 i =  1
 i =  2
 i =  3
@@ -363,22 +416,22 @@ The factorial of 6 is: 720
 <p>Using a different method we can also calculate the factorial as:
 Here the accumulator variable <code class="docutils literal"><span class="pre">n_fac</span></code> is not accumulating a sum of numbers
 but a product.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The factorial of 6 is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>The factorial of 6 is 720
+<div class="highlight-python"><div class="highlight"><pre>The factorial of 6 is 720
 </pre></div>
 </div>
 </div>
-<div class="section" id="loop-3">
-<h3>3.2.3. Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-4">
+<h3>3.2.4. Loop 4<a class="headerlink" href="#loop-4" title="Permalink to this headline">¶</a></h3>
 <p>Finally, here is an example where we loop through the values of a list again.
 In each round we reach the value of the vector and print it.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;xv= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">xv</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We now start the loop and pick each value of this list one-by-one.  The
@@ -386,13 +439,13 @@ command <code class="docutils literal"><span class="pre">length</span></code> te
 lets the loop run from 1 to the total number of arguments in <code class="docutils literal"><span class="pre">xv</span></code>.
 Note also the difference in the two print commands, where the second one
 results in formatted output.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">)):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;i= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;xv[i]= {:4.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv[i]= {:4.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">i</span><span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span><span class="o">=</span> <span class="mi">0</span>
 <span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">0.00</span>
 <span class="n">i</span><span class="o">=</span> <span class="mi">1</span>
 <span class="n">xv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">1.00</span>
@@ -408,17 +461,17 @@ results in formatted output.</p>
 </div>
 </div>
 <div class="section" id="looping-through-the-content-of-a-list">
-<h3>3.2.4. Looping through the content of a list<a class="headerlink" href="#looping-through-the-content-of-a-list" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.5. Looping through the content of a list<a class="headerlink" href="#looping-through-the-content-of-a-list" title="Permalink to this headline">¶</a></h3>
 <p>If you already have a list predefined and you want to loop through the content
 of that list you can use a <code class="docutils literal"><span class="pre">for</span></code> loop in the following way.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
-<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;car&#39;</span><span class="p">,</span> <span class="s">&#39;bike&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define the list</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jim&#39;</span><span class="p">,</span> <span class="s1">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;bike&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">myList</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;indexing variable x is: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;indexing variable x is: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>indexing variable x is:  jim
+<div class="highlight-python"><div class="highlight"><pre>indexing variable x is:  jim
 indexing variable x is:  james
 indexing variable x is:  23
 indexing variable x is:  12
@@ -430,14 +483,14 @@ indexing variable x is:  bike
 can use the <code class="docutils literal"><span class="pre">enumerate</span></code> command which internally generates a &#8220;zipped list&#8221;
 that pairs up each element in the list with its index inside of the list. Here
 is an example using the previous list:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list</span>
-<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;car&#39;</span><span class="p">,</span> <span class="s">&#39;bike&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define the list</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jim&#39;</span><span class="p">,</span> <span class="s1">&#39;james&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;bike&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">myList</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;variable i is: {} and x is: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;variable i is: {} and x is: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>variable i is: 0 and x is: jim
+<div class="highlight-python"><div class="highlight"><pre>variable i is: 0 and x is: jim
 variable i is: 1 and x is: james
 variable i is: 2 and x is: 23
 variable i is: 3 and x is: 12
@@ -447,21 +500,21 @@ variable i is: 5 and x is: bike
 </div>
 </div>
 <div class="section" id="combining-lists-and-looping-through-them">
-<h3>3.2.5. Combining lists and looping through them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.6. Combining lists and looping through them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
 <p>If you have two or more lists that you want to loop through simultaneously
 pulling the first elements from both lists (in tandem), followed by the second
 elements from both lists, etc. you can use the <code class="docutils literal"><span class="pre">zip</span></code> command. The <code class="docutils literal"><span class="pre">zip</span></code>
 function &#8220;glues&#8221; or &#8220;zips&#8221; the lists together and then allows you to run (or
 loop) through them in this pairwise fashion. The next example illustrates this.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
-<span class="n">myListA</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;jason&#39;</span><span class="p">]</span>
-<span class="n">myListB</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;emma&#39;</span><span class="p">,</span> <span class="s">&#39;clara&#39;</span><span class="p">,</span> <span class="s">&#39;susan&#39;</span><span class="p">,</span> <span class="s">&#39;jill&#39;</span><span class="p">,</span> <span class="s">&#39;lisa&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define the list of spouses</span>
+<span class="n">myMaleList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jim&#39;</span><span class="p">,</span> <span class="s1">&#39;james&#39;</span><span class="p">,</span> <span class="s1">&#39;jack&#39;</span><span class="p">,</span> <span class="s1">&#39;john&#39;</span><span class="p">,</span> <span class="s1">&#39;jason&#39;</span><span class="p">]</span>
+<span class="n">myFemaleList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;emma&#39;</span><span class="p">,</span> <span class="s1">&#39;clara&#39;</span><span class="p">,</span> <span class="s1">&#39;susan&#39;</span><span class="p">,</span> <span class="s1">&#39;jill&#39;</span><span class="p">,</span> <span class="s1">&#39;lisa&#39;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">myListA</span><span class="p">,</span> <span class="n">myListB</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The hubby is: {} and the wife is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">myMaleList</span><span class="p">,</span> <span class="n">myFemaleList</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The hubby is: {} and the wife is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>The hubby is: jim and the wife is emma
+<div class="highlight-python"><div class="highlight"><pre>The hubby is: jim and the wife is emma
 The hubby is: james and the wife is clara
 The hubby is: jack and the wife is susan
 The hubby is: john and the wife is jill
@@ -471,16 +524,16 @@ The hubby is: jason and the wife is lisa
 <p>If you want to combine this with the index of the names inside the lists you
 can use <code class="docutils literal"><span class="pre">enumerate</span></code> again. Be careful in how you use the parenthesis around
 the variables <code class="docutils literal"><span class="pre">husband</span></code> and <code class="docutils literal"><span class="pre">wife</span></code> in the <code class="docutils literal"><span class="pre">for</span></code> loop construct.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Define the list of spouses</span>
-<span class="n">myListA</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jim&#39;</span><span class="p">,</span> <span class="s">&#39;james&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;jason&#39;</span><span class="p">]</span>
-<span class="n">myListB</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;emma&#39;</span><span class="p">,</span> <span class="s">&#39;clara&#39;</span><span class="p">,</span> <span class="s">&#39;susan&#39;</span><span class="p">,</span> <span class="s">&#39;jill&#39;</span><span class="p">,</span> <span class="s">&#39;lisa&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define the list of spouses</span>
+<span class="n">myMaleList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jim&#39;</span><span class="p">,</span> <span class="s1">&#39;james&#39;</span><span class="p">,</span> <span class="s1">&#39;jack&#39;</span><span class="p">,</span> <span class="s1">&#39;john&#39;</span><span class="p">,</span> <span class="s1">&#39;jason&#39;</span><span class="p">]</span>
+<span class="n">myFemaleList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;emma&#39;</span><span class="p">,</span> <span class="s1">&#39;clara&#39;</span><span class="p">,</span> <span class="s1">&#39;susan&#39;</span><span class="p">,</span> <span class="s1">&#39;jill&#39;</span><span class="p">,</span> <span class="s1">&#39;lisa&#39;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">myListA</span><span class="p">,</span> <span class="n">myListB</span><span class="p">)):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;At index: {} the hubby is: {}</span>
-<span class="s">    and the wife is {}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">myMaleList</span><span class="p">,</span> <span class="n">myFemaleList</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;At index: {} the hubby is: {}</span>
+<span class="s2">    and the wife is {}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">husband</span><span class="p">,</span> <span class="n">wife</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>At index: 0 the hubby is: jim
+<div class="highlight-python"><div class="highlight"><pre>At index: 0 the hubby is: jim
     and the wife is emma
 At index: 1 the hubby is: james
     and the wife is clara
@@ -508,15 +561,15 @@ in the <code class="docutils literal"><span class="pre">for</span></code> loop, 
 for the iterator variable. We therefore have to make sure that we increment the
 iterator/counter variable <code class="docutils literal"><span class="pre">x</span></code> within the repeatable codeblock using <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span>
 <span class="pre">+1</span></code> or shorter and more efficiently <code class="docutils literal"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code>.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;X= {} and Y= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># i.e., x = x + 1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;X= {} and Y= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># i.e., x = x + 1</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">0</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">1</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">3</span>
 <span class="n">X</span><span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">Y</span><span class="o">=</span> <span class="mi">6</span>
@@ -542,11 +595,11 @@ outstanding debt. The key formula in this example is:</p>
 <div class="math">
 \[\text{debt}_\text{tomorrow} = \text{debt}_\text{today}*(1 + \text{interest rate}) -
 \text{payments}_\text{today}\]</div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="mf">0.11</span>  <span class="c"># Annual interest rate</span>
-<span class="c"># Time between repayments in years (i.e., monthly repayments)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="mf">0.11</span>  <span class="c1"># Annual interest rate</span>
+<span class="c1"># Time between repayments in years (i.e., monthly repayments)</span>
 <span class="n">period</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">12.0</span>
-<span class="n">debt_initial</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c"># Initial debt</span>
-<span class="n">payments</span> <span class="o">=</span> <span class="mf">12.0</span>  <span class="c"># Amount repaid each period</span>
+<span class="n">debt_initial</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c1"># Initial debt</span>
+<span class="n">payments</span> <span class="o">=</span> <span class="mf">12.0</span>  <span class="c1"># Amount repaid each period</span>
 
 <span class="n">mytime</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">debt</span> <span class="o">=</span> <span class="n">debt_initial</span>
@@ -554,10 +607,10 @@ outstanding debt. The key formula in this example is:</p>
     <span class="n">mytime</span> <span class="o">=</span> <span class="n">mytime</span> <span class="o">+</span> <span class="n">period</span>
     <span class="n">debt</span> <span class="o">=</span> <span class="n">debt</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">period</span><span class="p">)</span> <span class="o">-</span> <span class="n">payments</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Loan will be repaid in: {} years.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mytime</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Loan will be repaid in: {} years.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mytime</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>Loan will be repaid in: 13.250000000000025 years.
+<div class="highlight-python"><div class="highlight"><pre>Loan will be repaid in: 13.250000000000025 years.
 </pre></div>
 </div>
 </div>
@@ -565,15 +618,16 @@ outstanding debt. The key formula in this example is:</p>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Debugging.html" class="btn btn-neutral float-right" title="4. Debugging">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Debugging.html" class="btn btn-neutral float-right" title="4. Debugging" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Basics.html" class="btn btn-neutral" title="2. First steps in Python"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Basics.html" class="btn btn-neutral" title="2. First steps in Python" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -583,12 +637,13 @@ outstanding debt. The key formula in this example is:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, Juergen Jung.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
