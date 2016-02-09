@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>2. First steps in Python &mdash; Computational Economics 1.0 documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -35,7 +35,7 @@
         <link rel="prev" title="1. Course Administration" href="Slides_CourseAdministration.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -45,11 +45,27 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="index.html" class="fa fa-home"> Computational Economics</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Computational Economics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -57,157 +73,54 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#installing-python">1.1. Installing Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_CourseAdministration.html#submitting-homework-midterm-and-the-final-via-dropbox">1.2. Submitting homework, midterm and the final via Dropbox</a></li>
-</ul>
-</li>
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">2. First steps in Python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple-calculations">2.1. Simple calculations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-print-function">2.2. The print function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#script-files">2.3. Script files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ipython-notebook">2.4. iPython Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-and-dictionaries">2.5. Lists, tuples and dictionaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-and-dictionaries">2.5. Lists, tuples and dictionaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lists">2.5.1. Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuples">2.5.2. Tuples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dictionaries">2.5.3. Dictionaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pitfalls">2.5.4. Pitfalls</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">2.6. In class exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#branching">3.1. Branching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#for-loops">3.2. For loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Loop.html#while-loop">3.3. While loop</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#using-print-statements-to-spot-mistakes">4.1. Using print statements to spot mistakes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#using-the-debugger">4.2. Using the debugger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Debugging.html#in-class-exercises">4.3. In class exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and matrices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#definitions-of-vectors-and-matrices">5.1. Definitions of vectors and matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#simple-calculations-with-vectors-and-matrices">5.2. Simple calculations with vectors and matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#vector-manipulation">5.3. Vector manipulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#matrix-manipulation">5.4. Matrix manipulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Arrays.html#in-class-exercises">5.5. In class exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-vectors-and-arrays">6.1. Plotting vectors and arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#plotting-functions">6.2. Plotting functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#subplots">6.3. Subplots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#d-graphs">6.4. 3D-Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Plot.html#homework">6.5. Homework</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#use-simple-user-defined-functions">7.1. Use simple user defined functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#advanced-graphing-using-loops-and-functions">7.2. Advanced Graphing using loops and functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Functions.html#in-class-exercises">7.5. In class exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#introduction">8.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#inheritance-and-subclasses">8.2. Inheritance and subclasses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#generating-multiple-objects">8.3. Generating multiple objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OOP.html#homework">8.4. Homework</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_1.html#read-in-small-data-set-from-a-comma-separated-csv-file">9.1. Read in small data set from a comma separated (.csv) file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_1.html#some-pandas-tricks">9.2. Some Pandas tricks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#importing-data">10.1. Importing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#making-simple-graphs-from-our-data">10.2. Making simple graphs from our data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#summary-statistics">10.3. Summary statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Data_2.html#measures-of-linear-relationship">10.4. Measures of linear relationship</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_WebData.html#more-tutorials">11.1. More tutorials</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#uniformly-distributed-random-numbers">12.1. Uniformly distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#normally-distributed-random-numbers">12.2. Normally distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#t-distributed-random-variable">12.3. T-distributed random variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#drawing-random-integer-values">12.4. Drawing random integer values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Random.html#drawing-objects-with-random-values">12.5. Drawing objects with random values</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#first-steps">13.1. First steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#newton-raphson">13.2. Newton-Raphson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#secant-method">13.3. Secant method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#bisection">13.4. Bisection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Root.html#using-built-in-unit-root-function">13.5. Using built in unit-root function</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#univariate-function-optimization">14.1. Univariate function optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#optimization-methods">14.2. Optimization methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#finding-the-root-of-a-function-using-minimization">14.3. Finding the root of a function using minimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Optimization.html#multivariate-optimization">14.4. Multivariate optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solution">15.1. Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#formally">15.2. Formally</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#analytical-solution">15.3. Analytical Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#solving-the-problem">15.4. Solving the problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#plotting-the-solution">15.5. Plotting the Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#function-definitions-and-plotting">15.6. Function definitions and plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Cake.html#numerical-solution-in-python">15.7. Numerical Solution in Python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#formal-definition-of-the-model">16.1. Formal Definition of the Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#equilibrium-definition">16.2. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#functional-forms-and-solutions">16.3. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-1-substituting-everything">16.4. Method 1: Substituting everything</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_I.html#method-2-gauss-seidl-algorithm">16.5. Method 2: Gauss-Seidl Algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#preferences">17.1. Preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#technology">17.2. Technology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#government">17.3. Government</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#household-problem">17.4. Household problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#equilibrium-definition">17.5. Equilibrium definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#functional-forms-and-solutions">17.6. Functional forms and solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#substitute-in-preferences">17.7. Substitute in preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_OLG_II.html#solve-for-optimal-and">17.8. Solve for optimal <span class="math">\(s^*\)</span> and <span class="math">\(l^*\)</span></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#preferences">18.1. Preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#technology">18.2. Technology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#government">18.3. Government</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#household-problem">18.4. Household problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Growth.html#equilibrium-definition">18.5. Equilibrium definition</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Assignments.html#midterm">19.1. Midterm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slides_Assignments.html#homework">19.2. Homework</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -222,20 +135,29 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
     <li>2. First steps in Python</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/Slides_Basics.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/Slides_Basics.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="first-steps-in-python">
 <h1>2. First steps in Python<a class="headerlink" href="#first-steps-in-python" title="Permalink to this headline">¶</a></h1>
@@ -247,11 +169,11 @@ command line:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">5.4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;x= &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">x=  2.4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;y= &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;y= &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">y=  3.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;x + y = &quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y = &quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">x + y =  5.4</span>
 </pre></div>
 </div>
@@ -297,7 +219,7 @@ you can now take the square root with <code class="docutils literal"><span class
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
@@ -329,18 +251,18 @@ placeholder for where the number will be inserted.</p>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="c"># Unformatted</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x+y&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
-<span class="c"># Still unformatted but using the .format() method</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x + y  = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="c1"># Unformatted</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x+y&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># Still unformatted but using the .format() method</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y  = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
 
-<span class="c"># Formatted, finally ...</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x + y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x * y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x / y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;x ** y = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;sqrt(x)= {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="c1"># Formatted, finally ...</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x * y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x / y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x ** y = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;sqrt(x)= {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
@@ -355,10 +277,10 @@ sqrt(x)=  1.57
 </div>
 <p>You can write more complex output with more than one number embedded in a text
 as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;We want to use variable x = {0:4.2f} </span><span class="se">\n</span><span class="s"> and divide by</span>
-<span class="s">variable y = {1:4.2f},</span><span class="se">\n</span><span class="s"> so that we end up with expression</span>
-<span class="s">x/y = {2:4.2f}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We want to use variable x = {0:4.2f} </span><span class="se">\n</span><span class="s2"> and divide by</span>
+<span class="s2">variable y = {1:4.2f},</span><span class="se">\n</span><span class="s2"> so that we end up with expression</span>
+<span class="s2">x/y = {2:4.2f}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre> --- OUTPUT: ---
@@ -417,8 +339,8 @@ about the iPython Notebook on the internet.</p>
 <p>A list is a simple container object that can hold an arbitrary number of Python
 objects. A list can be a list of numbers, words, or a combination. Here is an
 example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;The list is alist = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s2">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The list is alist = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
@@ -429,7 +351,7 @@ can tag together strings with the plus sign.
 which combines a string <code class="docutils literal"><span class="pre">&quot;The</span> <span class="pre">list</span> <span class="pre">is</span> <span class="pre">alist</span> <span class="pre">=</span> <span class="pre">&quot;</span></code> together with another string
 <code class="docutils literal"><span class="pre">str(alist)</span></code>. The Python funciton <strong>str()</strong> translates a number into a string,
 i.e., a word and then prints the combined &#8220;word&#8221;.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
@@ -452,11 +374,11 @@ that the first element in the list is at position 0.</p>
 </pre></div>
 </div>
 <p>Or prettier</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[0] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[0] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -472,26 +394,26 @@ position. If you want to extract the first three elements you can simply index
 the list as <code class="docutils literal"><span class="pre">alist[:3]</span></code>. If you want to get everything from element 2 onwards you
 can <code class="docutils literal"><span class="pre">alist[2:]</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[0:4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[:3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[2:] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[0:4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[:3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[2:] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
-<span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">]</span>
-<span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">]</span>
-<span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">]</span>
+<span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">]</span>
+<span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>If you want to grab the last element of the list you can start indexing with
 negative numbers.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;alist[-3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[-1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[-2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[-3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">you</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.456</span>
@@ -500,11 +422,11 @@ negative numbers.</p>
 <p>You can change elements of a list by reassigning them using their index. So if
 you want to replace the third element of the list with the word &#8220;Mom&#8221; you
 simply assign it as</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="s">&#39;Mom&#39;</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -512,15 +434,15 @@ simply assign it as</p>
 <h3>2.5.2. Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
 <p>Are immutable lists, that once defined, cannot be changed anymore.
 It is a read-only list.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;me&quot;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s2">&quot;you&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now try to change an element of the tuple and see what happens.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -540,31 +462,31 @@ can be words or other data types.</p>
 <p>Here is a brief example where we use names of people as keys and store various
 information together with those keys. We can then retrieve the information of
 each person with the persons name.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Defining a dictionary as adict = {&#39;name&#39;: income}</span>
-<span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
-<span class="n">adict</span><span class="p">[</span><span class="s">&#39;Jim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">adict</span><span class="p">[</span><span class="s">&#39;Tom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80000</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Defining a dictionary as adict = {&#39;name&#39;: income}</span>
+<span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
+<span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Jim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80000</span>
 </pre></div>
 </div>
 <p>We can now retrive this info using the key.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;James&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;Jim&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">&#39;Tom&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;James&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Jim&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
 <span class="mi">20000</span>
 <span class="mi">50000</span>
 <span class="mi">80000</span>
 </pre></div>
 </div>
 <p>You can delete an element with</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">del</span> <span class="n">adict</span><span class="p">[</span><span class="s">&#39;James&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">del</span> <span class="n">adict</span><span class="p">[</span><span class="s1">&#39;James&#39;</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -610,7 +532,7 @@ If you really just want to copy the list and give that separate copy the name
 </ol>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>  <span class="c"># You cannot do: print(list1.sort())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>  <span class="c1"># You cannot do: print(list1.sort())</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -652,15 +574,16 @@ Here is one way to fix this, use the <code class="docutils literal"><span class=
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="3. Basic programming techniques">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="3. Basic programming techniques" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_CourseAdministration.html" class="btn btn-neutral" title="1. Course Administration"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_CourseAdministration.html" class="btn btn-neutral" title="1. Course Administration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -670,12 +593,13 @@ Here is one way to fix this, use the <code class="docutils literal"><span class=
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, Juergen Jung.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
