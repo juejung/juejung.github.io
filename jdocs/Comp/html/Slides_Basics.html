@@ -429,6 +429,72 @@ simply assign it as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>What about more complicated lists, where the elements inside the list are lists
+themselves. In this case we are dealing with nested lists. Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">myNestedList</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kids&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kids&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s see what happens if we index this list. Try the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>[&#39;Mom&#39;, 42]
+---------------
+[&#39;Dad&#39;, 41]
+---------------
+</pre></div>
+</div>
+<p>Then try</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Mom
+---------------
+Dad
+---------------
+41
+---------------
+</pre></div>
+</div>
+<p>Now let&#8217;s go one step deeper into the list:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>D
+---------------
+a
+---------------
+d
+---------------
+</pre></div>
+</div>
+<p>This example shows how you can extract content from a list inside of a list by
+simply adding brackets with indexing positions to the list name. If you go
+outside the range of the inside list, the interpreter will throw an error:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;IndexError&#39;&gt;
+string index out of range
+</pre></div>
+</div>
 </div>
 <div class="section" id="tuples">
 <h3>2.5.2. Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
@@ -475,7 +541,7 @@ each person with the persons name.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">}</span>
 <span class="mi">20000</span>
 <span class="mi">50000</span>
 <span class="mi">80000</span>
@@ -486,7 +552,7 @@ each person with the persons name.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
