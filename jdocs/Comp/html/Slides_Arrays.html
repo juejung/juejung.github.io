@@ -214,7 +214,7 @@ yv= [ 9.23  0.35  3.3   2.8 ]
 </pre></div>
 </div>
 <p>Note that if you like a vector: 2000,2001,2002,2003 you need to
-write the arange command with the upper limit+1.</p>
+write the <code class="docutils literal"><span class="pre">arange</span></code> command with the upper limit+1.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">year</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># np.arange(from, to, stepsize)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;year= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
 </pre></div>
@@ -546,14 +546,18 @@ is an example. Given matrices <span class="math">\(A = \left[ \begin{array}{ccc}
 <span class="math">\((3 \times 2)\)</span> is a matrix <span class="math">\(C\)</span> with dimension <span class="math">\((2 \times 2)\)</span>:</p>
 <p><span class="math">\(AB = \left[ \begin{array}{cc} 12*7+3*(-2)+6*1 &amp; 12*8+3*0+6*11 \\
 9*7+(-1)*(-2)+(-4)*1 &amp; 9*8+(-1)*0+(-4)*11 \end{array} \right].\)</span></p>
-<p>In <strong>Python</strong> matrix multiplication is achieved using the command <code class="docutils literal"><span class="pre">dot()</span></code>.</p>
+<p>In <strong>Python</strong> matrix multiplication is achieved using the command <code class="docutils literal"><span class="pre">dot()</span></code> or
+the <code class="docutils literal"><span class="pre">&#64;</span></code> operator. This last operator is new and will only work with <strong>Python
+3.5</strong> and newer.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span> <span class="c1"># matrix multiplication</span>
+<span class="c1">#D = A @ B # new matrix multiplication operator</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="c1">#print(&quot;D=&quot;, D)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>A= [[12  3  6]
