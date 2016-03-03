@@ -1,0 +1,484 @@
+Root finding
+===============================================================================
+
+First steps
+---------------
+
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    #
+    import time  # Imports system time module to time your script
+    #
+    plt.close('all')  # close all open figures
+    
+
+
+
+
+Define example function
+++++++++++++++++++++++++++++++
+
+Define am example function for which we calculate the root, i.e. find :math:`x`
+so that :math:`f(x) = 0`.
+
+
+.. code-block:: python
+
+    def func(x):
+        # Function: f(x)
+        fx = np.log(x) - np.exp(-x)
+        return fx
+    
+
+
+
+Define the same function  but this time we return the functional value and the
+first derivate of the function (i.e., the gradient).
+
+
+.. code-block:: python
+
+    def func1(x):
+        # Function: f(x)
+        fx = np.log(x) - np.exp(-x)
+    
+        # Derivative of function: f'(x)
+        d_fx = 1.0/x + np.exp(-x)
+    
+        return np.array([fx, d_fx])
+    
+
+
+
+Plot the function
+++++++++++++++++++++++++
+
+
+.. code-block:: python
+
+    xmin = 1
+    xmax = 6
+    xv  = np.arange(xmin, xmax, (xmax - xmin)/200.0)
+    fxv = np.zeros(len(xv),float) # define column vector
+    for i in range(len(xv)):
+        fxv[i] = func(xv[i])
+    
+
+
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv, fxv)
+    ax.plot(xv, np.zeros(len(xv)))
+    # Create a title with a red, bold/italic font
+    plt.show()
+    
+
+.. image:: _static/Slides_Root_FigAutos_1.*
+   :width: 12 cm
+
+
+
+Newton-Raphson
+-------------------------------------------------------------------------------
+
+We start with an initial guess :math:`x_0`. The tangent line through the
+initial guess can be defined as:
+
+.. math::
+
+  f'(x_0)=\frac{f(x_0)-y}{x_0-x}.
+
+This line crosses the x-axis at point :math:`x_1` so that:
+
+ .. math::
+
+    f'(x_0)=\frac{f(x_0)-0}{x_0-x_1},
+
+which we can solve for :math:`x_1` as:
+
+ .. math::
+
+    x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}.
+
+We can repeat this successively using the iterative procedure:
+ .. math::
+
+   \boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}
+
+In order for this function to work well we need to be able to calculate the
+derivative of the function around the root point and preferably over the
+entire domain of the function.
+
+
+.. code-block:: python
+
+    def newtonraphson(ftn, x0, tol = 1e-9, maxiter = 100):
+        # Newton_Raphson algorithm for solving ftn(x)[1] == 0
+        # we assume that ftn is a function of a single
+        # variable that returns the function value and
+        # the first derivative as a vector of length 2
+        #
+        # x0 is the initial guess at the root
+        # the algorithm terminates when the function
+        # value is within distance tol of 0, or the
+        # number of iterations exceeds maxiter
+    
+        x = x0
+        fx = ftn(x)
+        jiter =  0
+    
+        # continue iterating until stopping conditions are met
+        while ((abs(fx[0]) > tol) and (jiter < maxiter)):
+            x = x - fx[0]/fx[1]
+            fx = ftn(x)
+            jiter =  jiter + 1
+            print("At iteration: {} the value of x is {}:" \
+              .format(jiter, x))
+    
+        # Output depends on success of algorithm
+        if (abs(fx[0]) > tol):
+            print("Algorithm failed to converge")
+            return None
+        else:
+            print("fx = ", fx[0])
+            print("Algorithm converged")
+            return x
+    
+
+
+
+
+We next calculate the root of the function ``func1`` calling the
+``newtonraphson`` algorithm.
+
+
+.. code-block:: python
+
+    newtonraphson(func1, 2)
+    
+
+::
+
+    At iteration: 1 the value of x is 1.122019645309717:
+    At iteration: 2 the value of x is 1.2949969704390394:
+    At iteration: 3 the value of x is 1.3097090626648604:
+    At iteration: 4 the value of x is 1.309799582422906:
+    At iteration: 5 the value of x is 1.3097995858041505:
+    fx =  -5.55111512313e-17
+    Algorithm converged
+    
+    
+
+
+
+Secant method
+-------------------------------------------------------------------------------
+
+As pointed out above, in order to use the **Newton-Raphson** method we need to
+be able to calculate the derivative :math:`f'(x)` of the function. If this is
+computationally expensive or maybe even impossible, we can use the **secant**
+method which only requires that the function is continuous. That is, it does
+not have to be differentiable over its domain.
+
+In this case we start with two starting values or initial guesses,
+:math:`x_0` and :math:`x_1` and
+put a line through the functional values :math:`f(x_0)` and :math:`f(x_1)`. The
+advantage of this method is that we do not have to calculate the first
+derivative of the function. The line through :math:`f(x_0)` and :math:`f(x_1)`
+is expressed as:
+
+ .. math::
+  \frac{y-f(x_1)}{x-x_1} = \frac{f(x_0)-f(x_1)}{x_0-x_1}.
+
+The point :math:`x_2` where this line crosses the x-axis can be found using:
+
+ .. math::
+   \frac{0-f(x_1)}{x_2-x_1} = \frac{f(x_0)-f(x_1)}{x_0-x_1},
+
+which results in
+
+ .. math::
+   x_2 = x_1 - f(x_1)\frac{x_0-x_1}{f(x_0)-f(x_1)}.
+
+The iterative procedure can be written as:
+
+ .. math::
+   \boxed{x_{n+1} = x_n - f(x_n)\frac{x_{n-1}-x_n}{f(x_{n-1})-f(x_n)}}
+
+Note that if :math:`x_0` and :math:`x_1` are close together then:
+
+ .. math::
+   f'(x_n) \approx f(x_1)\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.
+
+
+
+.. code-block:: python
+
+    def secant(ftn, x0, x1, tol = 1e-9, maxiter = 100):
+        # Secant algorithm for solving ftn(x) == 0
+        # we assume that ftn is a function of a
+        # single variable that returns the function value
+        #
+        # x0 and x1 are the initial guesses around the root
+        # the algorithm terminates when the function
+        # value is within distance
+        # tol of 0, or the number of iterations exceeds max.iter
+    
+        fx0 = ftn(x0)
+        fx1 = ftn(x1)
+        jiter =  0
+    
+        # continue iterating until stopping conditions are met
+        while ((abs(fx1) > tol) and (jiter < maxiter)):
+            x  = x1 - fx1 * (x1-x0)/(fx1 - fx0)
+            fx0 = ftn(x1)
+            fx1 = ftn(x)
+            x0  = x1
+            x1  = x
+            jiter =  jiter + 1
+            print("At iteration: {} the value of x is: {}" \
+              .format(jiter, x))
+    
+        # output depends on success of algorithm
+        if (abs(fx1) > tol):
+            print("Algorithm failed to converge")
+            return None
+        else:
+           print("Algorithm converged")
+           return x
+    
+
+
+
+We next calculate the root point using the secant method:
+
+
+.. code-block:: python
+
+    secant(func, 1,2)
+    
+
+::
+
+    At iteration: 1 the value of x is: 1.3974104821696125
+    At iteration: 2 the value of x is: 1.2854761201506528
+    At iteration: 3 the value of x is: 1.310676758082541
+    At iteration: 4 the value of x is: 1.3098083980193003
+    At iteration: 5 the value of x is: 1.3097995826147546
+    At iteration: 6 the value of x is: 1.309799585804162
+    Algorithm converged
+    
+    
+
+
+
+Bisection
+-------------------------------------------------------------------------------
+
+The **Newton-Raphson** as well as the **Secant** method are not guaranteed to
+work. The bisection method is the most robust method, but it is slow. We start with
+two values :math:`x_l < x_r` which bracket the root of the function. It
+therefore must hold that :math:`f(x_l) f(x_r) < 0`. The algorithm then
+repeatedly brackets around the root in the following systematic way:
+
+ 1. if :math:`x_r - x_l \le \epsilon` then stop
+
+ 2. calculate midpoint: :math:`x_m = (x_l+x_r)/2`
+
+ 3. if :math:`f(x_m)==0` stop
+
+ 4. if :math:`f(x_l) f(x_m) < 0` then set :math:`x_r = x_m` otherwise :math:`x_l=x_m`
+
+ 5. go back to step 1
+
+
+The algorithm of the bisection method
+++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: python
+
+    def bisection(ftn, xl, xr, tol = 1e-9):
+        # applies the bisection algorithm to find x
+        # such that ftn(x) == 0
+        # we assume that ftn is a function of a single variable
+        #
+        # x.l and x.r must bracket the fixed point, that is
+        # x.l < x.r and ftn(x.l) * ftn(x.r) < 0
+        #
+        # the algorithm iteratively refines
+        # x.l and x.r and terminates when
+        # x.r - x.l <= tol
+    
+        # check inputs
+        if (xl >= xr):
+            print("error: xl >= xr")
+            return None
+    
+        fl = ftn(xl)
+        fr = ftn(xr)
+    
+        if (fl == 0):
+            return xl
+        elif (fr == 0):
+            return xr
+        elif (fl * fr > 0):
+            print("error: ftn(xl) * ftn(xr) > 0")
+            return None
+    
+        # successively refine x.l and x.r
+        n = 0
+        while ((xr - xl) > tol):
+            xm = (xl + xr)/2.0
+            fm = ftn(xm)
+            if (fm == 0):
+                return fm
+            elif (fl * fm < 0):
+                xr = xm
+                fr = fm
+            else:
+                xl = xm
+                fl = fm
+            n = n + 1
+            print("at iteration: {} the root lies between {} and {}" \
+                .format(n, xl, xr))
+        # return (approximate) root
+        return (xl + xr)/2.0
+    
+
+
+
+We next calculate the root of the function calling 'bisection' method:
+
+
+.. code-block:: python
+
+    bisection(func, 1,2)
+    
+
+::
+
+    at iteration: 1 the root lies between 1 and 1.5
+    at iteration: 2 the root lies between 1.25 and 1.5
+    at iteration: 3 the root lies between 1.25 and 1.375
+    at iteration: 4 the root lies between 1.25 and 1.3125
+    at iteration: 5 the root lies between 1.28125 and 1.3125
+    at iteration: 6 the root lies between 1.296875 and 1.3125
+    at iteration: 7 the root lies between 1.3046875 and 1.3125
+    at iteration: 8 the root lies between 1.30859375 and 1.3125
+    at iteration: 9 the root lies between 1.30859375 and 1.310546875
+    at iteration: 10 the root lies between 1.3095703125 and 1.310546875
+    at iteration: 11 the root lies between 1.3095703125 and 1.31005859375
+    at iteration: 12 the root lies between 1.3095703125 and 1.309814453125
+    at iteration: 13 the root lies between 1.3096923828125 and
+    1.309814453125
+    at iteration: 14 the root lies between 1.30975341796875 and
+    1.309814453125
+    at iteration: 15 the root lies between 1.309783935546875 and
+    1.309814453125
+    at iteration: 16 the root lies between 1.3097991943359375 and
+    1.309814453125
+    at iteration: 17 the root lies between 1.3097991943359375 and
+    1.3098068237304688
+    at iteration: 18 the root lies between 1.3097991943359375 and
+    1.3098030090332031
+    at iteration: 19 the root lies between 1.3097991943359375 and
+    1.3098011016845703
+    at iteration: 20 the root lies between 1.3097991943359375 and
+    1.309800148010254
+    at iteration: 21 the root lies between 1.3097991943359375 and
+    1.3097996711730957
+    at iteration: 22 the root lies between 1.3097994327545166 and
+    1.3097996711730957
+    at iteration: 23 the root lies between 1.3097995519638062 and
+    1.3097996711730957
+    at iteration: 24 the root lies between 1.3097995519638062 and
+    1.309799611568451
+    at iteration: 25 the root lies between 1.3097995817661285 and
+    1.309799611568451
+    at iteration: 26 the root lies between 1.3097995817661285 and
+    1.3097995966672897
+    at iteration: 27 the root lies between 1.3097995817661285 and
+    1.3097995892167091
+    at iteration: 28 the root lies between 1.3097995854914188 and
+    1.3097995892167091
+    at iteration: 29 the root lies between 1.3097995854914188 and
+    1.309799587354064
+    at iteration: 30 the root lies between 1.3097995854914188 and
+    1.3097995864227414
+    
+    
+
+
+
+The bisection method will not work if the function just touches the horizontal
+axis. The **Newton-Raphson** method, however, will still work in that case. More
+comprehensive root finding algorithms will first use some sort of bracketing
+algorithm to get into a neighborhood of the root point and then switch over to
+a Newton-Raphson type method to then quickly converge to this root point.
+
+
+Using built in unit-root function
+-------------------------------------------------------------------------------
+
+The built in functions are part of the
+`scipy.optimize <http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize>`_ library.
+The functions work very similar to the ones that we just wrote ourselves. It
+usually requires that we first define our function. We then hand it to the
+solver algorithm with a starting guess of the root position.
+The first root finding algorithm is called
+`root <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html#scipy.optimize.root>`_
+
+
+.. code-block:: python
+
+    from scipy.optimize import root
+    guess = 2
+    print(" ")
+    print(" -------------- Root ------------")
+    result = root(func, guess) # starting from x = 2
+    myroot = result.x  # Grab number from result dictionary
+    print("The root of func is at {}".format(myroot))
+    
+
+::
+
+    
+     -------------- Root ------------
+    The root of func is at [ 1.30979959]
+    
+    
+
+
+
+
+The second root finding algorithm is called
+`fsolve <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html#scipy.optimize.fsolve>`_
+
+
+.. code-block:: python
+
+    from scipy.optimize import fsolve
+    
+    guess = 2
+    print(" ")
+    print(" -------------- Fsolve ------------")
+    result = fsolve(func, guess) # starting from x = 2
+    myroot = result[0] # Grab number from result dictionary
+    print("The root is at {}".format(result))
+    
+
+::
+
+    
+     -------------- Fsolve ------------
+    The root is at [ 1.30979959]
+    
+    
+
+

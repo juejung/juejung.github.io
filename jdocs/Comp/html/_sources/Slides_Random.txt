@@ -1,0 +1,548 @@
+Random numbers
+================
+
+Uniformly distributed random numbers
+----------------------------------------
+
+
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import math
+    from scipy import stats as st
+    import time  # Imports system time module to time your script
+    
+    plt.close('all')  # close all open figures
+    tic = time.time()
+    
+
+
+
+
+.. code-block:: python
+
+    # To always get the same random numbers on each run
+    # (makes results reproducible)
+    np.random.seed(123456789)
+    N = 30  # number of classes (i.e. bins or bars) in histogram
+    
+    # Uniform distributed random numbers
+    u = np.random.uniform(0,1,(10000,))
+    
+
+
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    prob, bins, patches = ax.hist(u, bins=N, align='mid' )
+    ax.set_ylabel('Number of obs')
+    ax.set_title('Histogram of uniform random variable')
+    plt.show()
+    
+
+.. image:: _static/Slides_Random_Uniform_1.*
+   :width: 12 cm
+
+
+
+Normally distributed random numbers
+---------------------------------------
+
+
+.. code-block:: python
+
+    def phi(x):
+        # density function of standard normal
+        s = np.exp(-x**2/2)/np.sqrt(2*np.pi)
+        return s
+    
+    # Draws 10,000 standard normally distributed random numbers
+    z = np.random.normal(0,1,(10000,))
+    
+
+
+
+Then plot it.
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    prob, bins, patches = ax.hist(z, bins=N, align='mid' )
+    ax.set_ylabel('Number of obs')
+    ax.set_title('Histogram of normal random variable')
+    # Plot the N(0,1) density function into the histogram
+    x = np.arange(-5,5,0.1)
+    ax.plot(x, phi(x))
+    #ax.legend(['Histogram','Normal Density'], loc='best')
+    #
+    plt.show()
+    
+
+.. image:: _static/Slides_Random_Normal_Random_1.*
+   :width: 12 cm
+
+
+
+Two normally distributed random variables
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: python
+
+    z1 = np.random.normal(0,1,(10000,))
+    z2 = np.random.normal(0,2,(10000,))
+    
+
+
+
+Now plot it.
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots(2,1)
+    #
+    prob, bins, patches = ax[0].hist(z1, bins=N, align='mid' )
+    ax[0].set_ylabel('Number of obs')
+    ax[0].set_title('Histogram of N(0,1) random variable')
+    ax[0].set_xlim([-10, 10])
+    #
+    prob, bins, patches = ax[1].hist(z2, bins=N, align='mid' )
+    ax[1].set_ylabel('Number of obs')
+    ax[1].set_title('Histogram of N(0,2) random variable')
+    ax[1].set_xlim([-10, 10])
+    #
+    plt.show()
+    
+
+.. image:: _static/Slides_Random_Normal_2_1.*
+   :width: 12 cm
+
+
+
+T-distributed random variable
+---------------------------------
+
+
+.. code-block:: python
+
+    dof = 29
+    xv = np.random.standard_t(dof, 5)
+    print(xv)
+    
+
+::
+
+    [ 1.39223765 -0.52924457 -0.82809716 -0.39349782 -1.98709951]
+    
+    
+
+
+
+
+We can also code the t-distribution as a combination of a normal and
+:math:`\chi^2` distribution.
+
+.. math::
+
+  X \sim N(0,1)
+
+  Y \sim \chi^2_v
+
+  T = \frac{X}{\sqrt(Y/v)}
+
+where :math:`v` are the degrees of freedom. The :math:`\chi^2` distribution
+itself can be expressed as a gamma distribution
+
+ .. math::
+
+  \chi^2_v = \Gamma(1/2, v/2),
+
+with :math:`v` degrees of freedom.
+
+
+.. code-block:: python
+
+    def student_tvariate(df): # df is the number of degrees of freedom
+        if df < 2 or int(df) != df:
+            raise ValueError('student_tvariate: df must be a integer > 1')
+        x = np.random.normal(0, 1)
+        y = np.random.gamma(df/2.0, 2)
+        return x / (np.sqrt(y/df))
+    
+    t = np.zeros((10000),float)
+    for i in range(10000):
+        t[i] = student_tvariate(20)
+    
+
+
+
+And the plotting routine is:
+
+
+.. code-block:: python
+
+    fig, ax = plt.subplots()
+    #
+    prob, bins, patches = ax.hist(t, bins=N, align='mid' )
+    ax.set_ylabel('Number of obs')
+    ax.set_title('Histogram of T(dof=20) random variable')
+    #
+    plt.show()
+    
+
+.. image:: _static/Slides_Random_T_dist_1.*
+   :width: 12 cm
+
+
+
+Drawing random integer values
+---------------------------------
+
+If you want to draw integer numbers at random you can use the
+``np.random.randint()`` method. If we would like to draw random integer numbers
+between {1,2,3,4} we need to specify:
+
+
+.. code-block:: python
+
+    integerList = np.random.randint(1, 5, 10)
+    print(integerList)
+    
+
+::
+
+    [2 2 3 3 4 4 2 3 1 2]
+    
+    
+
+
+
+Similarly, if you would like to draw five random integer numbers between 7 and
+10 you would specify:
+
+
+.. code-block:: python
+
+    integerList = np.random.randint(7, 11, 5)
+    print(integerList)
+    
+
+::
+
+    [10  9  9  7  8]
+    
+    
+
+
+
+Drawing objects with random values
+----------------------------------
+
+In this section we demonstrate how we can combine the concepts from the prior
+chapter on object oriented programing with generating random numbers. We will
+generate a number of objects whose attributes (or ``self.`` variables) will be
+drawn randomly from certain distributions.
+In addition we define methods, that will call on random number generators to do
+something `randomly` to our objects.
+
+We start by defining our class and the methods that we can subsequently call on
+these type of objects. We call it the ``RandomMan`` class. Objects generated
+according to this blueprint are then `instantiations` of this class which we
+call ``RandomMan`` objects.
+
+
+
+.. code-block:: python
+
+    # Set random seed
+    np.random.seed(123456789)
+    
+    class RandomMan(object):
+        """This is a random man object.
+        RandomMan has a name, numer of children and income.
+        RandomMan can showMan(), earnIncome(),
+        buyInsurance() and experience and incomeShock()"""
+    
+        def __init__(self, name = 'John Doe'):
+            """Initialize the man-object with a
+            random nr. of children between 0 and 10 and
+            with random income drawn from a normal distribution
+            and an insurance state of 0."""
+            self.name = name
+            self.children = np.random.randint(0, 10, 1)
+            self.income = np.random.normal(50000, 16000, 1)
+            self.insurance = 0  # 0 no insurance, 1 has insurance
+    
+        def showMan(self):
+            """Method: showMan() prints out
+            the variables stored in the man
+            object."""
+            print("\n")
+            print("Hello, let me introduce myself.")
+            print("-------------------------------")
+            print("My name is {}".format(self.name))
+            if self.children == 1:
+                # Get grammar right child/children
+                print("I have {:1.0f} child" \
+                    .format(np.asscalar(self.children)))
+            else:
+                print("I have {:1.0f} children" \
+                    .format(np.asscalar(self.children)))
+    
+            print("My income is ${:6.0f}"\
+              .format(np.asscalar(self.income)))
+            if self.insurance == 0:
+                print("I have NO insurance")
+            else:
+                print("I have insurance")
+    
+        def earnIncome(self, workTime = 0.0):
+            """Make man richer by working."""
+            self.income += np.sqrt(1 + workTime)
+    
+        def buyInsurance(self):
+            """Buy insurance if the man is lucky.
+            Lucky is define as a [0, 1] random number
+            to be smaller than 0.4. So the guy has
+            a 40% chance of being lucky. If she is lucky
+            she will buy insurance."""
+            if np.random.rand()<0.4:
+                # Insurance state flips to 1
+                self.insurance = 1
+                # Insurance costs $100, so the premium is subtracted
+                # from her income
+                self.income += -100
+            else:
+                # Insurance state flips to 0
+                self.insurance = 0
+    
+        def shockIncome(self):
+            """Shocks income randomly with a negative
+            value between -5000 and 0."""
+            if self.insurance == 0:
+                # If she has no insurance, her income
+                # is randomly reduced
+                self.income += np.random.uniform(-5000, 0, 1)
+    
+
+
+
+We next generate 10 randomMan objects.
+
+
+.. code-block:: python
+
+    randomManList = []
+    
+    print(' --- Create men --- ')
+    for i in range(10):
+        # Here we create the randomMan objects and store them in
+        # the list
+        randomManList.append(RandomMan())
+        randomManList[i].showMan()
+    
+
+::
+
+     --- Create men ---
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 8 children
+    My income is $ 39252
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 4 children
+    My income is $ 56594
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 3 children
+    My income is $ 68516
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 2 children
+    My income is $ 72015
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 4 children
+    My income is $ 61636
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 1 child
+    My income is $ 59085
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 3 children
+    My income is $ 32336
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 5 children
+    My income is $ 41497
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 9 children
+    My income is $ 57822
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 0 children
+    My income is $ 70415
+    I have NO insurance
+    
+    
+
+
+
+Finally we let them live for one `round`.
+
+
+.. code-block:: python
+
+    print('----------------------')
+    print(' --- Let man live --- ')
+    print('----------------------')
+    for i in range(len(randomManList)):
+        # Earn income by working randomly between
+        # 0 and 40 hours
+        randomManList[i].earnIncome(np.random.uniform(0, 40, 1))
+        # Buy insurance, if luck
+        randomManList[i].buyInsurance()
+        # Experience random income shock if NOT insured
+        randomManList[i].shockIncome()
+        # Show yourself
+        randomManList[i].showMan()
+    
+
+::
+
+    ----------------------
+     --- Let man live ---
+    ----------------------
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 8 children
+    My income is $ 39157
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 4 children
+    My income is $ 56499
+    I have insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 3 children
+    My income is $ 64186
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 2 children
+    My income is $ 68437
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 4 children
+    My income is $ 61542
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 1 child
+    My income is $ 58991
+    I have insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 3 children
+    My income is $ 31077
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 5 children
+    My income is $ 41403
+    I have insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 9 children
+    My income is $ 53006
+    I have NO insurance
+    
+    
+    Hello, let me introduce myself.
+    -------------------------------
+    My name is John Doe
+    I have 0 children
+    My income is $ 70320
+    I have insurance
+    
+    
+
+
+
+

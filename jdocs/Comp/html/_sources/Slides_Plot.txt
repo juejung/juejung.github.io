@@ -1,0 +1,336 @@
+Plotting using ``matplotlib``
+=============================
+
+In this chapter we explore some of the graphical functionality of **Python**.
+We first import the required libraries for plotting.
+
+
+.. code:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    # The seaborn package makes your plots look nicer
+    import seaborn as sns
+    # Imports system time module to time your script
+    import time
+    
+    plt.close('all')  # close all open figures
+    tic = time.clock()
+    
+
+
+
+Plotting vectors and arrays
+---------------------------
+
+Plotting simple vectors
+^^^^^^^^^^^^^^^^^^^^^^^
+
+We first define a grid vector ``xv``.
+We then plot the first vector using the ``plot()`` command.
+
+
+.. code:: python
+
+    xv = np.array([1, 2, 3, 4, 5])
+    carsv = np.array([1, 3, 6, 4, 9])
+    
+    plt.plot(xv, carsv, 'b-', linewidth=2, label='Cars')
+    plt.show()
+    #
+    print("Time passed in seconds is = {:4.4f}".format(time.clock() -
+    tic))
+    
+
+.. code::
+
+    Time passed in seconds is = 0.1050
+    
+    
+
+.. image:: figures/Slides_Plot_FigAutos_1.png
+   :width: 12 cm
+
+
+
+
+
+Plotting two vectors
+^^^^^^^^^^^^^^^^^^^^^
+
+We first define a couple vectors.
+
+
+.. code:: python
+
+    # Define vectors with 5 values each
+    xv     = np.array([1, 2, 3, 4, 5])
+    carsv   = np.array([1, 3, 6, 4, 9])
+    trucksv = np.array([2, 5, 4, 5, 12])
+    suvsv   = np.array([4, 4, 6, 6, 16])
+    
+
+
+
+We then plot the ``carsv`` and the ``trucksv`` vector into one graph.
+
+
+.. code:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv,carsv, 'k-o', xv,trucksv,'b-.')
+    # Create a title with a red, bold/italic font
+    ax.set_title('Autos')
+    ax.legend(['cars','trucks'],loc='best')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig2Autos_1.png
+   :width: 12 cm
+
+
+
+Graph 3 types
+^^^^^^^^^^^^^^^^^^^^
+
+Finally, we graph all three car types into one figure.
+This time we save the graph as ``fig1.pdf`` into subfolder Graphs.
+
+
+.. code:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv, carsv, 'b-o', xv, trucksv,'r-^', xv, suvsv, 'g:s')
+    ax.set_title('Autos')
+    ax.set_xlabel('Days')
+    ax.set_ylabel('Total')
+    ax.set_xlim([0.5,5.5])
+    #ylim(min(cars,trucks),max(cars,trucks))
+    # Create a legend
+    ax.legend(['cars', 'trucks', 'suvs'], loc = 'best')
+    # Save graphs in subfolder Graphs under name: fig1.pdf
+    plt.savefig('./Graphs/fig1.pdf')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig3Autos_1.png
+   :width: 12 cm
+
+
+
+Plotting functions
+--------------------
+
+If we want to plot a more general function like the :math:`y = sin(x)` we first
+need to define a grid of `x` values using the ``linspace`` function from the
+**numpy** library. We then calculate the ``sin(x)`` at each one of the `x`
+grid-points and record them in a ``yv`` vector. We then plot the ``xv``
+"against" the ``yv`` vector.
+
+
+.. code:: python
+
+    xv = np.linspace(0, 10, 200)
+    yv = np.sin(xv)
+    
+    fig, ax = plt.subplots()
+    ax.plot(xv, yv, 'r-', linewidth=2, label='sine function', alpha=0.6)
+    ax.set_title('Plotting the sin() function')
+    ax.legend(loc='best')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig2Vectors_1.png
+   :width: 12 cm
+
+
+
+Here is another example with some more functions.  We again first define the
+input vector ``xv`` with the values we want to evaluate the function at and
+then specify the "output" vector ``yv`` as :math:`y = f(x)`. We use the
+following examples:
+
+ * :math:`f(x) = 50*sin(x)`,
+ * :math:`f(x) = x^2`,
+ * :math:`f(x) = 3*(x^2)/2 - 5`, and finally
+ * :math:`f(x) = 5*(x^2)/2 - \sqrt{x}`.
+
+
+.. code:: python
+
+    xv = np.arange(1, 10, 0.1)
+    y1v = 50*np.sin(xv)
+    y2v = xv**2
+    y3v = 3.0*(xv**2)/2 - 5
+    y4v = 5.0*(xv**2)/2 - np.sqrt(xv)
+    
+
+
+
+We have now two columns of values: x and y that we can plot against each other into a coordinate system.
+
+
+.. code:: python
+
+    fig, ax = plt.subplots()
+    ax.plot(xv, y1v, \
+            xv, y2v, \
+            xv, y3v, \
+            xv, y4v)
+    ax.legend(['sin(x)', r'$x^2$', 'y3', 'y4'], loc = 'best')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig3Plots_1.png
+   :width: 12 cm
+
+
+
+Subplots
+----------
+
+If we have more than one figure it might be good to put them all into one
+graph. In the following example we plot 6 figures into one picture. We plot
+into 3 rows and 2 columns. You can obviously rearrange all this.
+
+
+.. code:: python
+
+    # Creates  a 3 x 2 grid of subplots
+    num_rows = 3
+    num_cols = 2
+    title_size = 26
+    
+    fig = plt.figure(figsize=(14, 16))
+    fig.suptitle("Figure with multiple subplots", \
+        fontsize=title_size, fontweight='bold')
+    plt.subplots_adjust(wspace=0.2, hspace=0.3)
+    
+    # [1]
+    ax = plt.subplot2grid((num_rows, num_cols), (0,0))
+    ax.plot([1,2,3])
+    ax.set_title('figure 1')
+    # [2]
+    ax = plt.subplot2grid((num_rows, num_cols), (0,1))
+    ax.plot(np.random.rand(12), np.random.rand(12), 'bo')
+    ax.set_title('figure 2')
+    # [3]
+    ax = plt.subplot2grid((num_rows, num_cols), (1,0))
+    ax.plot(np.array([1,2,3]), np.array([1,1,1]))
+    ax.set_title('figure 3')
+    # [4]
+    ax = plt.subplot2grid((num_rows, num_cols), (1,1))
+    ax.plot(np.linspace(1,12,12), np.random.rand(12), 'r^')
+    ax.set_title('figure 4')
+    # [5]
+    ax = plt.subplot2grid((num_rows, num_cols), (2,0))
+    ax.plot([1,2,1],':')
+    ax.set_title('figure 5')
+    # [6]
+    ax = plt.subplot2grid((num_rows, num_cols), (2,1))
+    ax.plot(np.linspace(1,12,12), np.random.rand(12), 'k-x')
+    ax.set_title('figure 6')
+    
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig4Subplots_1.png
+   :width: 12 cm
+
+
+
+
+3D-Graphs
+------------
+
+Finally, we can also plot 3-D graphs in **Python**.
+The function we would like to plot is
+
+.. math::
+
+    f(x,y) = 3.0 \frac{y^2}{2.0} + x - \frac{\sqrt{x \times y}}{5.0}.
+
+In order to do this we need the library ``Axes3D`` from
+``mpl_toolkits.mplot3d``. This introduces a new command called ``Axes3D``. It
+is used as follows.
+We start by defining an x-grid and a y-grid vector. We then evaluate the
+function at these values.
+
+
+.. code:: python
+
+    from mpl_toolkits.mplot3d import Axes3D
+    
+    # Define x and y grid vectors
+    xv = np.arange(1, 10, 1)
+    yv = np.arange(1, 10, 1)
+    n = len(xv)
+    
+    # Evaluation function at grid values
+    zv = 3 * yv**2 /2 + xv - np.sqrt(xv*yv) /5
+    
+    # Use x,y,z as coordinates for points in 3D space
+    fig = plt.figure(figsize=(14, 16))
+    ax = Axes3D(fig)
+    ax.plot(xv, yv, zv, zdir='z', label='parametric curve')
+    ax.set_title('Function in 2 variables')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('f(x,y)')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig3DPlot_1.png
+   :width: 12 cm
+
+
+
+The problem with this approach is that the function gets only evaluated at the
+45-degree line, that is at points ``(x=1, y=1)``, ``(x=2, y=2)``, ..., ``(x=10,
+y=10)``. This is not really what we had in mind.
+
+In order to plot the entire "surface" of the function :math:`f(x,y)` we need to
+specify value pairs of `x` and `y` over the entire gridspace of the `x/y`
+plane. We use the command ``meshgrid`` in order to accomplish this. We then
+evaluate the function :math:`f(x,y)` for each point on this "meshgrid" which
+results in a surface plot of the function.
+
+
+.. code:: python
+
+    from mpl_toolkits.mplot3d import Axes3D
+    
+    fig = plt.figure(figsize=(14, 16))
+    ax = plt.gca(projection='3d')
+    
+    # Define grids in x and y dimension
+    xv = np.arange(1, 10, 1)
+    yv = np.arange(1, 10, 1)
+    
+    # Span meshgrid over entire x/y plane
+    X, Y = np.meshgrid(xv, yv)
+    
+    # Evaluate function at each point in the x/y plane
+    Z = 3.0 * Y**2.0 /2.0 + X - np.sqrt(X*Y) /5.0
+    
+    # Plot the result
+    surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap =
+    plt.cm.jet, \
+    linewidth=0, antialiased=False)
+    ax.set_title('Function in 2 variables')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('f(x,y)')
+    plt.show()
+    
+
+.. image:: figures/Slides_Plot_Fig_Surface_1.png
+   :width: 12 cm
+
+
+
+Homework
+-------------------------------------------------------------------------------
+
+:doc:`./Lecture_Plot/Homework/Homework_Plot`
+

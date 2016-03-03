@@ -1,0 +1,617 @@
+Basic programming techniques
+================================================================================
+
+Branching
+--------------------------------------------------------------------------------
+
+The ``if`` command can be used to check whether a certain condition is true. If
+it is true, then we can assign a certain chain of commands for this
+eventuality. If the condition is wrong, we can branch off our program into
+another direction and assign different commands. So we can basically branch our
+program into two (or more) separate directions.  Here is a simple example. We
+first draw some random number between 0 and 1 using the ``random()`` command.
+We then check whether the number is smaller or larger than 0.5. For each
+eventuality we can then assign a string of commands to be executed.
+
+In Python it is very important to get the "indentation" right. So all the
+commands that we want to be executed after the if statement need to "indented"
+by 4 spaces (just his the tab key once). Python does not use the curly
+brackets ``{}`` that R uses in the if-statements and for- loops.
+
+
+.. code-block:: python
+
+    import math as m
+    import time  # Imports system time module to time your script
+    tic = time.time()
+    
+
+
+
+
+.. code-block:: python
+
+    x = 2
+    if (x > 0.5):
+        print("Number x= {} is greater than 0.5".format(x))
+    else:
+        print("Number x= {} is smaller than or equal to 0.5".format(x))
+    
+
+::
+
+    Number x= 2 is greater than 0.5
+    
+    
+
+
+
+We next branch the program into 3 separate directions depending on 3 mutually
+exclusive conditions.
+
+
+.. code-block:: python
+
+    x = 2
+    y = 4
+    
+    if (x > y):
+        print("X is greater than Y")
+    elif (x==y):
+        print("X is equal to Y")
+    elif (x < y):
+        print("X is smaller than Y")
+    
+
+::
+
+    X is smaller than Y
+    
+    
+
+
+
+
+For loops
+--------------------------------------------------------------------------------
+
+If we want to do repeated tasks we use loops instead of copy/pasting the same
+series of commands.
+
+Loop 1
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Assume you have the following assignment. Please print the following on a
+screen::
+
+    i = 0
+    i = 1
+    i = 2
+    i = 3
+
+    etc.
+
+    i = 9
+
+We could first of course just write simple print statements as follows:
+
+
+.. code-block:: python
+
+    print('i = {}'.format(0))
+    print('i = {}'.format(1))
+    print('i = {}'.format(2))
+    print('i = {}'.format(3))
+    print('i = {}'.format(4))
+    print('i = {}'.format(5))
+    print('i = {}'.format(6))
+    print('i = {}'.format(7))
+    print('i = {}'.format(8))
+    print('i = {}'.format(9))
+    
+
+::
+
+    i = 0
+    i = 1
+    i = 2
+    i = 3
+    i = 4
+    i = 5
+    i = 6
+    i = 7
+    i = 8
+    i = 9
+    
+    
+
+
+
+Not wrong, but pretty slow to produce and boring. Whenever a task is repetitive
+and boring there is probably a quicker and more exciting way of accomplishing
+it.
+
+Let's think about a loop implementation. Try this:
+
+.. code-block:: python
+
+    for i in range(10):
+        print('i = {}'.format(i))
+    
+
+::
+
+    i = 0
+    i = 1
+    i = 2
+    i = 3
+    i = 4
+    i = 5
+    i = 6
+    i = 7
+    i = 8
+    i = 9
+    
+    
+
+
+
+Note that we again need to increment the print statement **inside** of the loop
+with 4! white-spaces.
+The ``range()`` command will generate a list from ``0,1,...9`` and then
+instruct the computer to assign the list elements to variable ``i`` in each
+round. You can then decide what to do with the specific value of
+variable ``i`` in each round by incrementing your codes. Here's a more
+elaborate example
+
+
+.. code-block:: python
+
+    for i in range(10):
+        x = i/2
+        print('Round: {}'.format(i))
+        print('------------------------')
+        print('i = {}'.format(i))
+        print('x = i/2 = {}'.format(x))
+        print('------------------------')
+    
+
+::
+
+    Round: 0
+    ------------------------
+    i = 0
+    x = i/2 = 0.0
+    ------------------------
+    Round: 1
+    ------------------------
+    i = 1
+    x = i/2 = 0.5
+    ------------------------
+    Round: 2
+    ------------------------
+    i = 2
+    x = i/2 = 1.0
+    ------------------------
+    Round: 3
+    ------------------------
+    i = 3
+    x = i/2 = 1.5
+    ------------------------
+    Round: 4
+    ------------------------
+    i = 4
+    x = i/2 = 2.0
+    ------------------------
+    Round: 5
+    ------------------------
+    i = 5
+    x = i/2 = 2.5
+    ------------------------
+    Round: 6
+    ------------------------
+    i = 6
+    x = i/2 = 3.0
+    ------------------------
+    Round: 7
+    ------------------------
+    i = 7
+    x = i/2 = 3.5
+    ------------------------
+    Round: 8
+    ------------------------
+    i = 8
+    x = i/2 = 4.0
+    ------------------------
+    Round: 9
+    ------------------------
+    i = 9
+    x = i/2 = 4.5
+    ------------------------
+    
+    
+
+
+
+
+Loop 2
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Here is a simple first example. We first assign a list with values 0,1,2,3,4,5.
+We then "loop" through all the values of this list and print them one by one.
+In addition, we add up all the values of this list.  The command
+``for x in range(6)`` assigns ``x`` equal to each value of ``0,1, ...,5`` one
+by one and we can then use ``x`` itself in each iteration.
+Variable ``x`` is called the iterator or counter as it changes its value in
+every iteration of the loop and in a why counts in which round you currently
+are.
+
+Note that if you want a list from 0,1,...,5 you need to define the range
+command with ``range(6)``.  Using this loop we can step through all the values of our
+list and assign certain operations to each value.
+
+
+.. code-block:: python
+
+    # Summation variable starting with zero value
+    sumx = 0
+    
+    # Start loop
+    for x in range(6):
+        sumx = sumx + x  # adds up the elements from 0 to 5
+        print("x = {}".format(x))
+        print("sum(x) = {}".format(sumx))
+    
+
+::
+
+    x = 0
+    sum(x) = 0
+    x = 1
+    sum(x) = 1
+    x = 2
+    sum(x) = 3
+    x = 3
+    sum(x) = 6
+    x = 4
+    sum(x) = 10
+    x = 5
+    sum(x) = 15
+    
+    
+
+
+
+In the above code snipped the ``x`` variable is the **counter** and the ``sumx``
+variable is the **accumulator**. The accumulator sums up the iterator in each
+round and adds it to the already accumulated sum of previous iterations.
+
+It is bad programming style if you re-assign the iterator variable
+``x`` within the code block that gets repeated and you should avoid it. Some
+programming languages will not even allow you to assign a value to an iterator
+within a loop statement.
+
+Loop 3
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Here is another example. We write a loop that calculates the factorial of a
+number: :math:`3!`. Remember that :math:`3! = 1 * 2 * 3`.  In order to make
+this happen we write a loop that sets :math:`i = 1, 2,` and 3 and multiplies it
+with the product of the previous round. The variable ``n_fac`` stores the
+product from each round.
+
+
+.. code-block:: python
+
+    n = 6
+    n_fac = 1
+    
+    for i in range(n):
+        print("i = ", i)
+        n_fac = n_fac * (i+1)
+    
+    print("The factorial of {} is: {}".format(n, n_fac))
+    
+
+::
+
+    i =  0
+    i =  1
+    i =  2
+    i =  3
+    i =  4
+    i =  5
+    The factorial of 6 is: 720
+    
+    
+
+
+
+Using a different method we can also calculate the factorial as:
+Here the accumulator variable ``n_fac`` is not accumulating a sum of numbers
+but a product.
+
+
+.. code-block:: python
+
+    print("The factorial of 6 is {}".format(m.factorial(6)))
+    
+
+::
+
+    The factorial of 6 is 720
+    
+    
+
+
+
+Loop 4
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Finally, here is an example where we loop through the values of a list again.
+In each round we reach the value of the vector and print it.
+
+
+.. code-block:: python
+
+    xv = list(range(5))
+    print("xv= {}".format(xv))
+    
+
+::
+
+    xv= [0, 1, 2, 3, 4]
+    
+    
+
+
+
+We now start the loop and pick each value of this list one-by-one.  The
+command ``length`` tells us how many arguments are in the list ``xv`` and then
+lets the loop run from 1 to the total number of arguments in ``xv``.
+Note also the difference in the two print commands, where the second one
+results in formatted output.
+
+
+.. code-block:: python
+
+    xv = list(range(6))
+    for i in range(len(xv)):
+        print("i= {}".format(i))
+        print("xv[i]= {:4.2f}".format(xv[i]))
+    
+
+::
+
+    i= 0
+    xv[i]= 0.00
+    i= 1
+    xv[i]= 1.00
+    i= 2
+    xv[i]= 2.00
+    i= 3
+    xv[i]= 3.00
+    i= 4
+    xv[i]= 4.00
+    i= 5
+    xv[i]= 5.00
+    
+    
+
+
+
+Looping through the content of a list
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If you already have a list predefined and you want to loop through the content
+of that list you can use a ``for`` loop in the following way.
+
+
+.. code-block:: python
+
+    # Define the list
+    myList = ['jim', 'james', 23, 12, 'car', 'bike']
+    
+    for x in myList:
+        print('indexing variable x is: ', x)
+    
+
+::
+
+    indexing variable x is:  jim
+    indexing variable x is:  james
+    indexing variable x is:  23
+    indexing variable x is:  12
+    indexing variable x is:  car
+    indexing variable x is:  bike
+    
+    
+
+
+
+If you need to keep track of the position of the various items in the list you
+can use the ``enumerate`` command which internally generates a "zipped list"
+that pairs up each element in the list with its index inside of the list. Here
+is an example using the previous list:
+
+
+.. code-block:: python
+
+    # Define the list
+    myList = ['jim', 'james', 23, 12, 'car', 'bike']
+    
+    for i, x in enumerate(myList):
+        print('variable i is: {} and x is: {}'.format(i, x))
+    
+
+::
+
+    variable i is: 0 and x is: jim
+    variable i is: 1 and x is: james
+    variable i is: 2 and x is: 23
+    variable i is: 3 and x is: 12
+    variable i is: 4 and x is: car
+    variable i is: 5 and x is: bike
+    
+    
+
+
+
+
+Combining lists and looping through them
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If you have two or more lists that you want to loop through simultaneously
+pulling the first elements from both lists (in tandem), followed by the second
+elements from both lists, etc. you can use the ``zip`` command. The ``zip``
+function "glues" or "zips" the lists together and then allows you to run (or
+loop) through them in this pairwise fashion. The next example illustrates this.
+
+
+.. code-block:: python
+
+    # Define the list of spouses
+    myMaleList = ['jim', 'james', 'jack', 'john', 'jason']
+    myFemaleList = ['emma', 'clara', 'susan', 'jill', 'lisa']
+    
+    for husband, wife in zip(myMaleList, myFemaleList):
+        print('The hubby is: {} and the wife is {}'.format(husband, wife))
+    
+
+::
+
+    The hubby is: jim and the wife is emma
+    The hubby is: james and the wife is clara
+    The hubby is: jack and the wife is susan
+    The hubby is: john and the wife is jill
+    The hubby is: jason and the wife is lisa
+    
+    
+
+
+
+If you want to combine this with the index of the names inside the lists you
+can use ``enumerate`` again. Be careful in how you use the parenthesis around
+the variables ``husband`` and ``wife`` in the ``for`` loop construct.
+
+
+.. code-block:: python
+
+    # Define the list of spouses
+    myMaleList = ['jim', 'james', 'jack', 'john', 'jason']
+    myFemaleList = ['emma', 'clara', 'susan', 'jill', 'lisa']
+    
+    for i, (husband, wife) in enumerate(zip(myMaleList, myFemaleList)):
+        print("""At index: {} the hubby is: {}
+        and the wife is {}""".format(i, husband, wife))
+    
+
+::
+
+    At index: 0 the hubby is: jim
+        and the wife is emma
+    At index: 1 the hubby is: james
+        and the wife is clara
+    At index: 2 the hubby is: jack
+        and the wife is susan
+    At index: 3 the hubby is: john
+        and the wife is jill
+    At index: 4 the hubby is: jason
+        and the wife is lisa
+    
+    
+
+
+
+While loop
+--------------------------------------------------------------------------------
+
+The while loop runs and keeps repeating to do something until a certain
+stopping condition is met.
+
+While loop 1
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In the first example we let the iterations run as long as the value of variable
+``x`` is smaller than 10. In every iteration we increase x by one unit, so that in
+effect the loop gets repeated 9 times.
+
+In a ``while`` loop the iterator variable is not automatically incremented as
+in the ``for`` loop, where we explicitly state the starting and stopping values
+for the iterator variable. We therefore have to make sure that we increment the
+iterator/counter variable ``x`` within the repeatable codeblock using ``x = x
++1`` or shorter and more efficiently ``x += 1``.
+
+
+.. code-block:: python
+
+    x = 0
+    y = 0
+    while (x < 10):
+        y = y + x
+        print("X= {} and Y= {}".format(x, y))
+        x += 1  # i.e., x = x + 1
+    
+
+::
+
+    X= 0 and Y= 0
+    X= 1 and Y= 1
+    X= 2 and Y= 3
+    X= 3 and Y= 6
+    X= 4 and Y= 10
+    X= 5 and Y= 15
+    X= 6 and Y= 21
+    X= 7 and Y= 28
+    X= 8 and Y= 36
+    X= 9 and Y= 45
+    
+    
+
+
+
+The accumulator variable ``y`` calculates the cumulative sum of all numbers
+from 1 to 9, so that :math:`y = 0+1+2+...+9`. If you forget the statement that
+increments the counter at the end of the repeatable code block within the loop,
+then the loop will run infinitely long and you have to break the code with
+pressing ``ctrl`` + ``c`` which will stop the execution of the Python script.
+
+While loop 2
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In this last example we calculate how long it takes to repay a loan. The longer
+you wait to repay the loan, the more interest is accumulated and added to the
+outstanding debt. The key formula in this example is:
+
+.. math::
+  \text{debt}_\text{tomorrow} = \text{debt}_\text{today}*(1 + \text{interest rate}) -
+  \text{payments}_\text{today}
+
+
+
+.. code-block:: python
+
+    r = 0.11  # Annual interest rate
+    # Time between repayments in years (i.e., monthly repayments)
+    period = 1.0/12.0
+    debt_initial = 1000.0  # Initial debt
+    payments = 12.0  # Amount repaid each period
+    
+    mytime = 0
+    debt = debt_initial
+    while (debt > 0):
+        mytime = mytime + period
+        debt = debt*(1. + r*period) - payments
+    
+    print("Loan will be repaid in: {} years.".format(mytime))
+    
+
+::
+
+    Loan will be repaid in: 13.250000000000025 years.
+    
+    
+
+
+
+
