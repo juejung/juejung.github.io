@@ -145,25 +145,23 @@
             
   <div class="section" id="homework-5-functions">
 <h1>Homework 5: Functions<a class="headerlink" href="#homework-5-functions" title="Permalink to this headline">¶</a></h1>
-<p>Submit this homework via GitHub on Wednesday, March 4 at 11:55pm.</p>
-<blockquote>
-<div><ul class="simple">
-<li>Python-scripts are submitted in one file called: <code class="docutils literal"><span class="pre">Homework5.py</span></code></li>
+<dl class="docutils">
+<dt>Submit this homework via Dropbox by Monday, March 21 at 11:55 pm.</dt>
+<dd><ul class="first last simple">
+<li>Python-scripts are submitted in one file called: <code class="docutils literal"><span class="pre">homework5.py</span></code></li>
 </ul>
-</div></blockquote>
-<p>I need to be able to quickly run these scripts on my computer.</p>
-<p>I will based your homework grade on my grading of 2 randomly selected homework
-exercises. So please make sure that you complete every homework 100% as you
-might otherwise end up with zero points.</p>
+</dd>
+</dl>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <p>The formula for
 converting Fahrenheit degrees to Celsius reads: <span class="math">\(C = \frac{5}{9}(F - 32)\)</span></p>
 <p>Write a function C(F) that implements this formula. And convert the following
 temperatures from F to C: <span class="math">\({60, 70, 75, 80, 85, 90, 95, 100, 105}\)</span>
-Use a loop to accomplish this and pretty print the results i.e. something
-like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>60  Fahrenheit equal .. Celsius
+Use a loop to accomplish this. Inside of the loop you simply call the function
+that you need to define up front. Then pretty print the results i.e. something
+like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>60  Fahrenheit equal .. Celsius
 70  Fahrenheit equal .. Celsius
 ...
 105 Fahrenheit equal .. Celsius
@@ -177,15 +175,19 @@ like:</p>
 <span class="math">\(0! = 1\)</span>.</p>
 <p>For example, <span class="math">\(4! = 4 \times 3  \times 2 \times  1 = 24\)</span>, and <span class="math">\(2! =
 2 \times 1 = 2\)</span>. Write a function <code class="docutils literal"><span class="pre">myfact(n)</span></code> that returns <span class="math">\(n!\)</span>. Return
-1 immediately if x is 1 or 0, otherwise use a loop to compute <span class="math">\(n!\)</span>.</p>
+1 immediately if x is 1 or 0, otherwise use a loop (inside the function
+definition) to compute <span class="math">\(n!\)</span>.</p>
 <p>You are not allowed to use the built in <code class="docutils literal"><span class="pre">np.fact()</span></code> function - but you can
 use this built in function to check the correctness of your &#8220;hand written&#8221;
 function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fact</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">24</span>
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;AttributeError&#39;&gt;
+module &#39;numpy&#39; has no attribute &#39;fact&#39;
 </pre></div>
 </div>
 </div>
@@ -210,8 +212,8 @@ of x values from <span class="math">\([-3, 5]\)</span>. Then plot that function.
      x^2 & 0.5 \leq x < 2 \\
      \sqrt{x} & 2 \leq x
  \end{cases}\]</div></div>
-<div class="section" id="exercise-5-bonus-question">
-<h2>Exercise 5: Bonus Question<a class="headerlink" href="#exercise-5-bonus-question" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-5-more-difficult">
+<h2>Exercise 5 (more difficult)<a class="headerlink" href="#exercise-5-more-difficult" title="Permalink to this headline">¶</a></h2>
 <p>Some object is moving along a path in the plane. At n points of time we have
 recorded the corresponding (x, y) positions of the object:
 <span class="math">\((x_0 , y_0), (x_1, y_2), ..., (x_{n-1}, y_{n-1})\)</span>.
@@ -224,6 +226,32 @@ L according to the formula above.
 The arguments x and y hold all the <span class="math">\(x_0,...,x_{n-1}\)</span> and <span class="math">\(y_0,...,y_{n-1}\)</span>
 coordinates, respectively. Test the function on a triangular path with the four
 points (1,1), (2,1), (1,2), and (1,1).</p>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Define a student class. A student has the following attributes: <code class="docutils literal"><span class="pre">firstname</span></code>,
+<code class="docutils literal"><span class="pre">lastname</span></code>, <code class="docutils literal"><span class="pre">gender</span></code> which can be male or female, <code class="docutils literal"><span class="pre">status</span></code> which can be
+equal to <cite>freshman</cite>, <cite>sophomore</cite>, <cite>junior</cite>, and <cite>senior</cite> and <code class="docutils literal"><span class="pre">gpa</span></code>.</p>
+<p>Then define the following methods for the student class.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">show_myself</span></code>
+method will simply print all the attribute variables when called upon the
+object. This method has no input arguments.</li>
+<li>The <code class="docutils literal"><span class="pre">study_time</span></code>
+method will increment the <code class="docutils literal"><span class="pre">gpa</span></code> of the student according to the following
+formula: <code class="docutils literal"><span class="pre">`</span> <span class="pre">gpa</span> <span class="pre">=</span> <span class="pre">gpa</span> <span class="pre">+</span> <span class="pre">log(study_time)`</span></code>. The only input argument of this
+method is the variable <code class="docutils literal"><span class="pre">study_time</span></code>. In addition make sure that the
+<code class="docutils literal"><span class="pre">gpa</span></code> variable never exceeds 4.0 even if the student studies for a very
+long time.</li>
+</ul>
+</div></blockquote>
+<p>Now define 5 student objects and call the <code class="docutils literal"><span class="pre">show_myself</span></code> method on all of
+them. I suggest you use a loop.</p>
+<p>Finally, let each one of the 5 students study for <code class="docutils literal"><span class="pre">60,</span> <span class="pre">100,</span> <span class="pre">40,</span> <span class="pre">300,</span> <span class="pre">1000</span></code>
+minutes, respectively. So the first student studies 60 minutes, the second
+studies 100 minutes, etc. After that call the <code class="docutils literal"><span class="pre">show_myself</span></code> methods on all 5
+again and check whether their new <code class="docutils literal"><span class="pre">gpa</span></code> reflects how much they studied.</p>
 </div>
 </div>
 
