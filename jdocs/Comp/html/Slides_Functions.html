@@ -96,8 +96,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#scope-of-variables-in-functions">7.3. Scope of variables in functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#functions-with-default-arguments">7.4. Functions with default arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">7.5. In class exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scope-of-lists-and-arrays-in-functions">7.4. Scope of lists and arrays in functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-with-default-arguments">7.5. Functions with default arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">7.6. In class exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
@@ -407,8 +408,106 @@ y outside function = 11
 </pre></div>
 </div>
 </div>
+<div class="section" id="scope-of-lists-and-arrays-in-functions">
+<h2>7.4. Scope of lists and arrays in functions<a class="headerlink" href="#scope-of-lists-and-arrays-in-functions" title="Permalink to this headline">¶</a></h2>
+<p>The scoping is a little tricky with lists. Check out the following code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myList</span><span class="p">(</span><span class="n">inList</span><span class="p">):</span>
+    <span class="c1"># This creates a local name that points to the same list.</span>
+    <span class="c1"># If you change this local name list you actually also</span>
+    <span class="c1"># change the original list</span>
+    <span class="n">localList</span> <span class="o">=</span> <span class="n">inList</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localList</span><span class="p">)</span>
+    <span class="n">localList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bruno&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localList</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">localList</span>
+</pre></div>
+</div>
+<p>Calling this function you may expect that the local list should be different
+from the list that is handed in from the global namespace. However, the
+following will happen when you call the function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">myList</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
+outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
+</pre></div>
+</div>
+<p>We see that the local operation on the list has now affected the global list as
+well. Why is that? It has to do with how <strong>Python</strong> treats list assignments.
+When you assign a list to a new name, you do not create a new list object. The
+new name simply points to the same location in the computer&#8217;s memory where the
+original list is saved. This preserves space.
+If you now start manipulating the list under its new
+name, it will translate into changes when calling the same list under its old
+name (in the global namespace) as well.</p>
+<p>In the previous example with numbers we
+did not have to worry about this. When we assigned a new scalar to a variable
+name, it immediately generates a new object. Local changes to this separate instance
+would therefore not affect the variable in the global namespace.</p>
+<p>If you want the same behavior when working with lists, you need to <code class="docutils literal"><span class="pre">deepcopy</span></code>
+the list. This will effectively create a new list object inside the function
+scope. Changes in this new object will not trigger changes in the old list
+object that resides in the global namespace.</p>
+<p>Try this definition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="k">def</span> <span class="nf">myList2</span><span class="p">(</span><span class="n">inList</span><span class="p">):</span>
+    <span class="c1"># This creates a new local list object</span>
+    <span class="n">localList</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inList</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localList</span><span class="p">)</span>
+    <span class="n">localList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bruno&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localList</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">localList</span>
+</pre></div>
+</div>
+<p>If you call this, we now have a separate list in the global and local
+namespace.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue2</span><span class="p">)</span>
+<span class="n">myList2</span><span class="p">(</span><span class="n">queue2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
+outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+</pre></div>
+</div>
+<p>If you deal with <code class="docutils literal"><span class="pre">numpy</span></code> arrays you do not have to worry about this. As a new
+assignment of a <code class="docutils literal"><span class="pre">numpy</span></code> array will always generate a new object (just like a
+number assignment did in the previous section) and not a new
+pointer to an existing space in memory. Try this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myArray</span><span class="p">(</span><span class="n">inArray</span><span class="p">):</span>
+    <span class="c1"># This creates a local name that is a new object</span>
+    <span class="n">localArray</span> <span class="o">=</span> <span class="n">inArray</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localArray</span><span class="p">)</span>
+    <span class="n">localArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">localArray</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localArray</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">localArray</span>
+</pre></div>
+</div>
+<p>And calling it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">myArray</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [1 2 3]
+inside function:  [1 2 3]
+inside function:  [1 2 3 4]
+outside:  [1 2 3]
+</pre></div>
+</div>
+</div>
 <div class="section" id="functions-with-default-arguments">
-<h2>7.4. Functions with default arguments<a class="headerlink" href="#functions-with-default-arguments" title="Permalink to this headline">¶</a></h2>
+<h2>7.5. Functions with default arguments<a class="headerlink" href="#functions-with-default-arguments" title="Permalink to this headline">¶</a></h2>
 <p>A default argument is an argument that assumes a default value if a value is
 not provided in the function call for that argument.
 The following example illustrates default arguments in a simple function with
@@ -478,7 +577,7 @@ non-keyword arg after keyword arg (chunk, line 2)
 </div>
 </div>
 <div class="section" id="in-class-exercises">
-<h2>7.5. In class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
+<h2>7.6. In class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
 <p>A simple function again. We next program a function that calculates the
 standard deviation of the elements of an input vector.</p>
 </div>
