@@ -86,7 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
@@ -360,7 +360,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 </li>
 </ul>
 <p><strong>Python Program 1</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
@@ -371,7 +371,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># -----------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -----------------------------------------------</span>
 <span class="c1"># Root finding</span>
 <span class="c1"># -----------------------------------------------</span>
 
@@ -416,7 +416,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 <span class="c1">#print(&quot;fK=&quot;, fK)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Kv</span><span class="p">,</span> <span class="n">fKv</span><span class="p">)</span>
 <span class="c1"># Plot horizontal line at zero in red</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Kv</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Kv</span><span class="p">)),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -425,7 +425,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png"><img alt="_images/Slides_OLG_I_Capital_1.png" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Use built in &#39;fsolve&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Use built in &#39;fsolve&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; -------------- Fsolve ------------&quot;</span><span class="p">)</span>
 <span class="n">solutionK</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># starting from K = 2</span>
@@ -472,7 +472,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;ARC = {:6.4f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ARC</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -------------- Fsolve ------------
+<div class="highlight-python"><div class="highlight"><pre><span></span> -------------- Fsolve ------------
  -------------------------------------
  Root finding
  -------------------------------------
@@ -501,7 +501,7 @@ the so called <strong>Gauss-Seidl</strong> method</p>
 </ol>
 </div></blockquote>
 <p><strong>Python Program 2</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Guess capital stock</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Guess capital stock</span>
 <span class="n">glamda</span>  <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># updating parameter</span>
 <span class="n">Kold</span>    <span class="o">=</span> <span class="mf">0.4</span>
 <span class="n">jerror</span>  <span class="o">=</span> <span class="mi">100</span>
@@ -557,7 +557,7 @@ the so called <strong>Gauss-Seidl</strong> method</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;ARC = {:6.4f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ARC</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> -------------------------------------
+<div class="highlight-python"><div class="highlight"><pre><span></span> -------------------------------------
  Gauss-Seidl
  -------------------------------------
 Nr. of iterations = 200
