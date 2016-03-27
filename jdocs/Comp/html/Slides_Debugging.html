@@ -98,14 +98,15 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
 </ul>
 
             
@@ -160,12 +161,12 @@ finding <strong>bugs</strong>.</p>
 <p>The easiest method to find errors or computer-bugs is to put a lot of
 <code class="docutils literal"><span class="pre">print()</span></code> statements into your code, so you can see how specific variable
 values change.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">i</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">x</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;ZeroDivisionError&#39;&gt;
+<div class="code highlight-python"><div class="highlight"><pre>&lt;class &#39;ZeroDivisionError&#39;&gt;
 division by zero
 </pre></div>
 </div>
@@ -174,7 +175,7 @@ attempt to divide by zero, which is not defined. This is pretty obvious in this
 example but let&#8217;s assume that we have trouble spotting the mistake. What you
 can do now is you can add <code class="docutils literal"><span class="pre">print()</span></code> statements into the loop so you can see
 how the values of the variables change:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">i</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">x</span>
@@ -182,7 +183,7 @@ how the values of the variables change:</p>
 </pre></div>
 </div>
 <p>We now get:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x =  2
+<div class="highlight-python"><div class="highlight"><pre>x =  2
 y =  50.0
 x =  1
 y =  100.0
@@ -201,7 +202,7 @@ division by zero error happens eventually.</p>
 <div class="section" id="using-the-debugger">
 <h2>4.2. Using the debugger<a class="headerlink" href="#using-the-debugger" title="Permalink to this headline">¶</a></h2>
 <p>We next import the debugger:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>  <span class="c1"># XXX BREAKPOINT</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">i</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">x</span>

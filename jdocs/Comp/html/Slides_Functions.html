@@ -105,14 +105,15 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
 </ul>
 
             
@@ -163,7 +164,7 @@
 <h2>7.1. Use simple user defined functions<a class="headerlink" href="#use-simple-user-defined-functions" title="Permalink to this headline">¶</a></h2>
 <p>In Python we can write the following to define a simple function. We start with
 two simple function definitions and save them in a file called <code class="docutils literal"><span class="pre">myFunctions.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
@@ -176,7 +177,7 @@ two simple function definitions and save them in a file called <code class="docu
 </pre></div>
 </div>
 <p>We next define our own functions and save them as <code class="docutils literal"><span class="pre">myFunctions.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># File 1: myFunctions.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># File 1: myFunctions.py</span>
 <span class="k">def</span> <span class="nf">hw1</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -190,7 +191,7 @@ two simple function definitions and save them in a file called <code class="docu
 <p>In a separate Python script we can now import this previous file containing our
 functions with the <code class="docutils literal"><span class="pre">import</span></code> command. We save this new Python script as
 <code class="docutils literal"><span class="pre">Lecture_Functions\myFunctions.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># File 2: Lecture_Functions\myFunctions.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># File 2: Lecture_Functions\myFunctions.py</span>
 <span class="kn">import</span> <span class="nn">myFunctions</span> <span class="kn">as</span> <span class="nn">mfunc</span>
 <span class="c1"># This next line makes sure that if you</span>
 <span class="c1"># edited the file myfunctions.py -&gt; the</span>
@@ -202,7 +203,7 @@ functions with the <code class="docutils literal"><span class="pre">import</span
 <span class="n">mfunc</span><span class="o">.</span><span class="n">hw2</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">5.6</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0.31154136351337786
+<div class="highlight-python"><div class="highlight"><pre>0.31154136351337786
 Hello, World! sin(2.50+5.60) = 0.97
 </pre></div>
 </div>
@@ -217,7 +218,7 @@ Hello, World! sin(2.50+5.60) = 0.97
 <p>We first define an input grid for values of <span class="math">\(x\)</span> and store the grid in
 vector <code class="docutils literal"><span class="pre">xv</span></code>, followed by an input grid for values of <span class="math">\(y\)</span> which is
 stored in vector <code class="docutils literal"><span class="pre">yv</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -241,7 +242,7 @@ stored in vector <code class="docutils literal"><span class="pre">yv</span></cod
         <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -263,7 +264,7 @@ the function <cite>g</cite> at each combination of <cite>(x,y)</cite> using the 
 <p>The grid space between <cite>(x,y)</cite> is created using the <code class="docutils literal"><span class="pre">meshgrid</span></code> command. The
 function <code class="docutils literal"><span class="pre">g</span></code> is then evaluated at every point <cite>(x,y)</cite> over the grid. The
 <code class="docutils literal"><span class="pre">ax.plot_wireframe</span></code> command produces the picture.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Define function</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define function</span>
 <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">res</span>
@@ -281,7 +282,7 @@ function <code class="docutils literal"><span class="pre">g</span></code> is the
         <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;sin(x,y)&#39;</span><span class="p">)</span>
@@ -301,7 +302,7 @@ to functions and that can therefore be readily accessed and manipulated
 by the functions and
 variables that are defined outside of a function. These variables usually
 cannot be manipulated directly from within a function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myFun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x in myFun = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
@@ -311,14 +312,14 @@ cannot be manipulated directly from within a function.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x outside function = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x in myFun =  6
+<div class="highlight-python"><div class="highlight"><pre>x in myFun =  6
 x outside function =  10
 </pre></div>
 </div>
 <p>Now let&#8217;s try to access a variable that is defined outside of the function in
 what is called the global name space as opposed to the local name space inside of
 the function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myFun2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x inside myFun2 = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y inside myFun2 = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -328,7 +329,7 @@ the function.</p>
 <span class="n">myFun2</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x inside myFun2 =  6
+<div class="highlight-python"><div class="highlight"><pre>x inside myFun2 =  6
 y inside myFun2 =  10
 </pre></div>
 </div>
@@ -337,7 +338,7 @@ that it is not handed in explicitly. This is bad programming style and should
 be avoided. Always try to be as explicit as possible. If you want to use input
 argument <code class="docutils literal"><span class="pre">y</span></code> in your function, then define is explicitly as input argument.
 Let us now try to change the value of variable <code class="docutils literal"><span class="pre">y</span></code> inside of the function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myFun3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x inside myFun3 = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
@@ -349,7 +350,7 @@ Let us now try to change the value of variable <code class="docutils literal"><s
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x inside myFun3 =  6
+<div class="highlight-python"><div class="highlight"><pre>x inside myFun3 =  6
 y inside myFun3 =  5
 y outside function = 10
 </pre></div>
@@ -361,7 +362,7 @@ again. So <code class="docutils literal"><span class="pre">y</span></code> has n
 function and another one in the <strong>global</strong> name space outside of the function.</p>
 <p>Let&#8217;s next try to manipulate a variable that is not explicitly handed into the
 function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun4</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myFun4</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x inside myFun4 = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y inside myFun4 = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -374,7 +375,7 @@ function.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;UnboundLocalError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;UnboundLocalError&#39;&gt;
 local variable &#39;y&#39; referenced before assignment
 </pre></div>
 </div>
@@ -385,7 +386,7 @@ defined.</p>
 change it outside <strong>and</strong> inside the function. Again, this is considered bad
 programming style as it can very quickly lead to errors that will be difficult
 to spot.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myFun5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">y</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x inside myFun5 = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -400,7 +401,7 @@ to spot.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>y outside function = 10
+<div class="highlight-python"><div class="highlight"><pre>y outside function = 10
 x inside myFun5 =  6
 y inside myFun5 =  10
 y inside myFun5 =  11
@@ -411,7 +412,7 @@ y outside function = 11
 <div class="section" id="scope-of-lists-and-arrays-in-functions">
 <h2>7.4. Scope of lists and arrays in functions<a class="headerlink" href="#scope-of-lists-and-arrays-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The scoping is a little tricky with lists. Check out the following code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myList</span><span class="p">(</span><span class="n">inList</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myList</span><span class="p">(</span><span class="n">inList</span><span class="p">):</span>
     <span class="c1"># This creates a local name that points to the same list.</span>
     <span class="c1"># If you change this local name list you actually also</span>
     <span class="c1"># change the original list</span>
@@ -425,13 +426,13 @@ y outside function = 11
 <p>Calling this function you may expect that the local list should be different
 from the list that is handed in from the global namespace. However, the
 following will happen when you call the function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 <span class="n">myList</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+<div class="highlight-python"><div class="highlight"><pre>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
 inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
 inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
 outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
@@ -454,7 +455,7 @@ the list. This will effectively create a new list object inside the function
 scope. Changes in this new object will not trigger changes in the old list
 object that resides in the global namespace.</p>
 <p>Try this definition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">copy</span>
 
 <span class="k">def</span> <span class="nf">myList2</span><span class="p">(</span><span class="n">inList</span><span class="p">):</span>
     <span class="c1"># This creates a new local list object</span>
@@ -467,13 +468,13 @@ object that resides in the global namespace.</p>
 </div>
 <p>If you call this, we now have a separate list in the global and local
 namespace.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">queue2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Russell&quot;</span><span class="p">,</span> <span class="s2">&quot;Alison&quot;</span><span class="p">,</span> <span class="s2">&quot;Liam&quot;</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue2</span><span class="p">)</span>
 <span class="n">myList2</span><span class="p">(</span><span class="n">queue2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+<div class="highlight-python"><div class="highlight"><pre>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
 inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
 inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
 outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
@@ -483,7 +484,7 @@ outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
 assignment of a <code class="docutils literal"><span class="pre">numpy</span></code> array will always generate a new object (just like a
 number assignment did in the previous section) and not a new
 pointer to an existing space in memory. Try this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myArray</span><span class="p">(</span><span class="n">inArray</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">myArray</span><span class="p">(</span><span class="n">inArray</span><span class="p">):</span>
     <span class="c1"># This creates a local name that is a new object</span>
     <span class="n">localArray</span> <span class="o">=</span> <span class="n">inArray</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;inside function: &#39;</span><span class="p">,</span> <span class="n">localArray</span><span class="p">)</span>
@@ -493,13 +494,13 @@ pointer to an existing space in memory. Try this:</p>
 </pre></div>
 </div>
 <p>And calling it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">queue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 <span class="n">myArray</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [1 2 3]
+<div class="highlight-python"><div class="highlight"><pre>outside:  [1 2 3]
 inside function:  [1 2 3]
 inside function:  [1 2 3 4]
 outside:  [1 2 3]
@@ -513,7 +514,7 @@ not provided in the function call for that argument.
 The following example illustrates default arguments in a simple function with
 two inputs, a name and a number, that the function then prints in the terminal
 window.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">35</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">35</span><span class="p">):</span>
     <span class="s2">&quot;This prints the passed variable values&quot;</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------&#39;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Name: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
@@ -524,29 +525,29 @@ window.</p>
 </div>
 <p>We next call the function by differently assigning the name and age
 variables.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
+<div class="highlight-python"><div class="highlight"><pre>-----------------
 Name: mike
 Age: 50
 -----------------
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
+<div class="highlight-python"><div class="highlight"><pre>-----------------
 Name: mike
 Age: 35
 -----------------
 </pre></div>
 </div>
 <p>This next function call is problematic as it reverses the variable order!</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
+<div class="highlight-python"><div class="highlight"><pre>-----------------
 Name: 50
 Age: john
 -----------------
@@ -554,10 +555,10 @@ Age: john
 </div>
 <p>If you want to reverse the order you need to provide the keyword argument</p>
 <p>so that the function can assign the values correctly.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
+<div class="highlight-python"><div class="highlight"><pre>-----------------
 Name: mike
 Age: 50
 -----------------
@@ -568,10 +569,10 @@ call by providing a keyword argument for one of the input variables but not for
 the other <strong>and</strong> we reverse the order at the same time. Here the interpreter
 will not be able to figure out the correct correspondence between inputs and
 variable assignments and therefore it throws an error.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;SyntaxError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;SyntaxError&#39;&gt;
 non-keyword arg after keyword arg (chunk, line 2)
 </pre></div>
 </div>

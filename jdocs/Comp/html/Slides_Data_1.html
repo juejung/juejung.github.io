@@ -107,14 +107,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
 </ul>
 
             
@@ -183,7 +184,7 @@ a one dimensional <strong>DataFrame</strong>, i.e., a column or row of a matrix.
 <p>The first dataset that we are working with is a comma separated file, called
 <a class="reference download internal" href="_downloads/Lecture_Data_Excel_a1.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
 We first import this file using the <code class="docutils literal"><span class="pre">pd.read_csv</span></code> command from the <code class="docutils literal"><span class="pre">Pandas</span></code> library.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">ggplot</span> <span class="kn">import</span> <span class="o">*</span>
@@ -195,11 +196,11 @@ We first import this file using the <code class="docutils literal"><span class="
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;ImportError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ImportError&#39;&gt;
 No module named &#39;ggplot&#39;
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Read in small data from .csv file</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Read in small data from .csv file</span>
 <span class="c1"># Filepath</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;Lecture_Data/&#39;</span>
 <span class="c1"># In windows you can also specify the absolute path to your data file</span>
@@ -214,7 +215,7 @@ No module named &#39;ggplot&#39;
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  Unnamed: 2  Unnamed: 3
+<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  Unnamed: 2  Unnamed: 3
 0          Accounting         73         NaN         NaN
 1             Finance         52         NaN         NaN
 2  General management         36         NaN         NaN
@@ -223,11 +224,11 @@ No module named &#39;ggplot&#39;
 </pre></div>
 </div>
 <p>Alternatively we could have use the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>df = pd.read_table(filepath + &#39;Lecture_Data_Excel_a.csv&#39;), sep=&#39;,&#39;)
+<div class="highlight-python"><div class="highlight"><pre>df = pd.read_table(filepath + &#39;Lecture_Data_Excel_a.csv&#39;), sep=&#39;,&#39;)
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">Pandas</span></code> also has a built in Excel file reader that you can call as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Read entire excel spreadsheet</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Read entire excel spreadsheet</span>
 <span class="n">xl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;Lecture_Data_Excel_a.xlsx&quot;</span><span class="p">)</span>
 
 <span class="c1"># Check how many sheets we have inside the excel file</span>
@@ -240,7 +241,7 @@ No module named &#39;ggplot&#39;
 </div>
 <p>The <strong>DataFrame</strong> has an index for each row and a column header. We can query a
 <strong>DataFrame</strong> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Shape&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Shape&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Number of rows&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
@@ -252,7 +253,7 @@ No module named &#39;ggplot&#39;
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Shape (5, 4)
+<div class="highlight-python"><div class="highlight"><pre>Shape (5, 4)
 -------------------------
 Number of rows 5
 -------------------------
@@ -270,13 +271,13 @@ Index Int64Index([0, 1, 2, 3, 4], dtype=&#39;int64&#39;)
 </pre></div>
 </div>
 <p>Drop column 3 and 4 and let&#8217;s have a look at the data again.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency
+<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency
 0          Accounting         73
 1             Finance         52
 2  General management         36
@@ -287,7 +288,7 @@ Index Int64Index([0, 1, 2, 3, 4], dtype=&#39;int64&#39;)
 <p>Sometimes column headers have white spaces in them. It is probably a good idea
 to remove all white spaces from header names. You can use the <code class="docutils literal"><span class="pre">.strip()</span></code>
 command to accomplish this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Here we use the <code class="docutils literal"><span class="pre">lambda</span></code> command which is an inline function. Basically it is
@@ -295,13 +296,13 @@ a shortcut so that we don&#8217;t have to write a separate function using the <c
 keyword etc. It&#8217;s a shortcut for functions that you want to define &#8216;on the fly.&#8217;</p>
 <p>We next generate a new variable called <code class="docutils literal"><span class="pre">relFrequency</span></code> that contains the relative
 frequencies.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make new column with relative frequency</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Make new column with relative frequency</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relFrequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  relFrequency
+<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  relFrequency
 0          Accounting         73      0.288538
 1             Finance         52      0.205534
 2  General management         36      0.142292
@@ -310,21 +311,21 @@ frequencies.</p>
 </pre></div>
 </div>
 <p>Now we grab the relative frequencies out of the DataFrame into a numpy array.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relFrequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relFrequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Array xv is:&#39;</span><span class="p">,</span> <span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Array xv is: [ 0.28853755  0.2055336   0.14229249  0.25296443
+<div class="highlight-python"><div class="highlight"><pre>Array xv is: [ 0.28853755  0.2055336   0.14229249  0.25296443
 0.11067194]
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Let us make additional columns</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Let us make additional columns</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;random&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  relFrequency    random
+<div class="highlight-python"><div class="highlight"><pre>                 Area  Frequency  relFrequency    random
 0          Accounting         73      0.288538  0.288538
 1             Finance         52      0.205534  0.205534
 2  General management         36      0.142292  0.142292
@@ -338,13 +339,13 @@ frequencies.</p>
 <div class="section" id="renaming-variables">
 <h3>9.2.1. Renaming variables<a class="headerlink" href="#renaming-variables" title="Permalink to this headline">¶</a></h3>
 <p>For renaming column names we use a dictionary as follows.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="s1">&#39;absFrequency&#39;</span><span class="p">})</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  relFrequency    random
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  relFrequency    random
 0          Accounting            73      0.288538  0.288538
 1             Finance            52      0.205534  0.205534
 2  General management            36      0.142292  0.142292
@@ -356,7 +357,7 @@ the DataFrame.</p>
 </div>
 <div class="section" id="adding-a-new-column">
 <h3>9.2.2. Adding a new column<a class="headerlink" href="#adding-a-new-column" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Drop a column first so everything fits</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Drop a column first so everything fits</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Create a new column with some missing values</span>
@@ -368,7 +369,7 @@ the DataFrame.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 0          Accounting            73       NaN      0.288538     2
 1             Finance            52         1      0.205534     4
 2  General management            36       NaN      0.142292   NaN
@@ -381,38 +382,38 @@ the DataFrame.</p>
 <h3>9.2.3. Missing values of NaN&#8217;s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
 <p><strong>Count NaNs</strong></p>
 <p>Count the number of rows with missing values.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} rows have missing values&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nans</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>2 rows have missing values
+<div class="highlight-python"><div class="highlight"><pre>2 rows have missing values
 </pre></div>
 </div>
 <p><strong>Select rows with NaNs or overwrite NaNs</strong></p>
 <p>If you want to select the rows with missing values you can index them with the
 <code class="docutils literal"><span class="pre">isnull()</span></code> method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 0          Accounting            73       NaN      0.288538     2
 2  General management            36       NaN      0.142292   NaN
 </pre></div>
 </div>
 <p>Or if you want to search specific columns for missing values you can do</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 2  General management            36       NaN      0.142292   NaN
 </pre></div>
 </div>
 <p>Or if you want to grab all the rows without missing observations you can index
 the dataframe with the <code class="docutils literal"><span class="pre">notnull()</span></code> method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>              area  absFrequency  position  relFrequency  team
 0       Accounting            73       NaN      0.288538     2
 1          Finance            52         1      0.205534     4
 3  Marketing sales            64         1      0.252964     6
@@ -420,10 +421,10 @@ the dataframe with the <code class="docutils literal"><span class="pre">notnull(
 </pre></div>
 </div>
 <p><strong>Delete rows with NaNs</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>              area  absFrequency  position  relFrequency  team
 1          Finance            52         1      0.205534     4
 3  Marketing sales            64         1      0.252964     6
 4            other            28         3      0.110672    10
@@ -431,11 +432,11 @@ the dataframe with the <code class="docutils literal"><span class="pre">notnull(
 </div>
 <p>You can also reassign it to the orignal DataFrame or assign
 a new one.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>              area  absFrequency  position  relFrequency  team
 1          Finance            52         1      0.205534     4
 3  Marketing sales            64         1      0.252964     6
 4            other            28         3      0.110672    10
@@ -444,11 +445,11 @@ a new one.</p>
 <p><strong>Overwriting NaN with specific values</strong>
 If we want to overwrite the <code class="docutils literal"><span class="pre">NaN</span></code> entries with values we can use the
 <code class="docutils literal"><span class="pre">fillna()</span></code> method. In this example we replace all missing values with zeros.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 0          Accounting            73         0      0.288538     2
 1             Finance            52         1      0.205534     4
 2  General management            36         0      0.142292     0
@@ -460,7 +461,7 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <div class="section" id="add-rows-to-the-dataframe">
 <h3>9.2.4. Add rows to the DataFrame<a class="headerlink" href="#add-rows-to-the-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>We can use the <code class="docutils literal"><span class="pre">append()</span></code> method to add rows to the DataFrame.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="c1"># Fill cells with NaNs</span>
                 <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
                 <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -468,19 +469,19 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>              area  absFrequency  position  relFrequency  team
 3  Marketing sales            64         1      0.252964     6
 4            other            28         3      0.110672    10
 5              NaN           NaN       NaN           NaN   NaN
 </pre></div>
 </div>
 <p>We can then fill this empty row with data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Economics&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Economics&#39;</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;absFrequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 0          Accounting            73         0      0.288538     2
 1             Finance            52         1      0.205534     4
 2  General management            36         0      0.142292     0
@@ -494,11 +495,11 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <h3>9.2.5. Sorting and reindexing DataFrames<a class="headerlink" href="#sorting-and-reindexing-dataframes" title="Permalink to this headline">¶</a></h3>
 <p>We next sort the DataFrame by a certain column (from highest to lowest) using
 the <code class="docutils literal"><span class="pre">sort()</span></code> DataFrame method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 0          Accounting            73         0      0.288538     2
 3     Marketing sales            64         1      0.252964     6
 1             Finance            52         1      0.205534     4
@@ -509,7 +510,7 @@ the <code class="docutils literal"><span class="pre">sort()</span></code> DataFr
 <p>The <code class="docutils literal"><span class="pre">inplace=True</span></code> option will immediately overwrite the DataFrame <code class="docutils literal"><span class="pre">df</span></code>
 with the new, sorted, one. If you set <code class="docutils literal"><span class="pre">inplace=False</span></code> you would have to
 assign a new DataFrame in order to see the changes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Where <code class="docutils literal"><span class="pre">df1</span></code> would now be the sorted DataFrame and the original <code class="docutils literal"><span class="pre">df</span></code>
@@ -517,11 +518,11 @@ DataFrame would still be unsorted. However, we now have two objects with
 identical data in it which could become a memory problem if the DataFrames are
 very large. Setting <code class="docutils literal"><span class="pre">inplace=True</span></code> is probably a good default setting.</p>
 <p>If we want we could then reindex the DataFrame according to the new sort order.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>                 area  absFrequency  position  relFrequency  team
 1          Accounting            73         0      0.288538     2
 2     Marketing sales            64         1      0.252964     6
 3             Finance            52         1      0.205534     4
@@ -536,7 +537,7 @@ very large. Setting <code class="docutils literal"><span class="pre">inplace=Tru
 DataFrame. This new DataFrame contains additional team information that we
 would like to merge into the original DataFrame.</p>
 <p>First redefine the orginal <strong>DataFrame</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;area&#39;</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;area&#39;</span><span class="p">:</span>
 <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span><span class="s1">&#39;Marketing&#39;</span><span class="p">,</span><span class="s1">&#39;Finance&#39;</span><span class="p">,</span><span class="s1">&#39;Management&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">],</span>\
                   <span class="s1">&#39;absFrequency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">28</span><span class="p">],</span> \
                   <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> \
@@ -545,13 +546,13 @@ would like to merge into the original DataFrame.</p>
 </pre></div>
 </div>
 <p>Second define the new DataFrame and add some values to it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;team&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> \
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;team&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> \
                         <span class="s1">&#39;sales&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">450</span><span class="p">,</span><span class="mi">345</span><span class="p">,</span><span class="mi">123</span><span class="p">,</span><span class="mi">432</span><span class="p">,</span><span class="mi">890</span><span class="p">]})</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">df_team</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   sales  team
+<div class="highlight-python"><div class="highlight"><pre>   sales  team
 0    500     3
 1    300     4
 2    250     5
@@ -566,11 +567,11 @@ would like to merge into the original DataFrame.</p>
 this info into the main DataFrame using the <code class="docutils literal"><span class="pre">team</span></code> column as merge key or key
 variable. Before we merge in the new info we drop the <code class="docutils literal"><span class="pre">area</span></code> column so that
 the DataFrame fits on the screen.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
+<div class="highlight-python"><div class="highlight"><pre>   absFrequency  position  relFrequency  team  sales
 0            64         1          0.25     6    450
 1            52         1          0.20     4    300
 2            28         3          0.11    10    890
@@ -581,10 +582,10 @@ This is often too restrictive as many observations will be dropped.</p>
 <p>The next one, <code class="docutils literal"><span class="pre">left</span></code>, keeps the original (or main DataFrame) and adds the new
 information on the left. When it cannot find a team number in the main
 DataFrame it simply drops the info from the new DataFrame.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
+<div class="highlight-python"><div class="highlight"><pre>   absFrequency  position  relFrequency  team  sales
 0            73         0          0.28     2    NaN
 1            64         1          0.25     6    450
 2            52         1          0.20     4    300
@@ -594,10 +595,10 @@ DataFrame it simply drops the info from the new DataFrame.</p>
 </div>
 <p>The next method only keeps info from the new DataFrame and adds the info of
 the original main DataFrame.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
+<div class="highlight-python"><div class="highlight"><pre>   absFrequency  position  relFrequency  team  sales
 0            64         1          0.25     6    450
 1            52         1          0.20     4    300
 2            28         3          0.11    10    890
@@ -610,10 +611,10 @@ the original main DataFrame.</p>
 </div>
 <p>The final merge method merges by team whenever possible but keeps the info from both
 DataFrames, even for observations where no merge/overlap occurred.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
+<div class="highlight-python"><div class="highlight"><pre>   absFrequency  position  relFrequency  team  sales
 0            73         0          0.28     2    NaN
 1            64         1          0.25     6    450
 2            52         1          0.20     4    300
@@ -633,12 +634,12 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 sometimes necessary to convert a numbers column that is still a string, into
 floats, so that we can do math. Let&#8217;s drop some more columns first so the DataFrame
 fits nicely in the output window.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   position  relFrequency  team
+<div class="highlight-python"><div class="highlight"><pre>   position  relFrequency  team
 0         0          0.28     2
 1         1          0.25     6
 2         1          0.20     4
@@ -649,7 +650,7 @@ fits nicely in the output window.</p>
 <p>We now generate a column of &#8220;words&#8221; or &#8220;strings&#8221; that happen do be numbers.
 Since they are defined as words, we cannot run statistical analysis on these
 numbers yet.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">],</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">],</span>
 <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 <span class="c1"># Print DataFrame</span>
@@ -659,13 +660,13 @@ numbers yet.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;ValueError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;ValueError&#39;&gt;
 Wrong number of items passed 6, placement implies 5
 </pre></div>
 </div>
 <p>We first need to reassign the data type of the <code class="docutils literal"><span class="pre">string</span></code> column. We then
 rename the column and print summary statistics.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Transform strings into floats, i.e., words into numbers</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Transform strings into floats, i.e., words into numbers</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="c1"># Rename the column</span>
@@ -675,7 +676,7 @@ rename the column and print summary statistics.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;KeyError&#39;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;KeyError&#39;&gt;
 &#39;string&#39;
 </pre></div>
 </div>
@@ -685,11 +686,11 @@ rename the column and print summary statistics.</p>
 <p>If we need to replace values in a <strong>DataFrame</strong> based on certain criteria it is
 often more efficient to use <strong>indexing</strong> as opposed to loops. Let us first
 create a DataFrame with some random values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0          1          2          3          4
+<div class="highlight-python"><div class="highlight"><pre>           0          1          2          3          4
 0  23.245339  68.972620  78.506049  53.861274  69.550444
 1  58.398152   4.264563   2.405285  85.964288  22.144933
 2  71.348303  92.740345  95.175563  91.705137  39.377134
@@ -704,11 +705,11 @@ create a DataFrame with some random values:</p>
 </div>
 <p>We next replace all the values in column <code class="docutils literal"><span class="pre">2</span></code> that are smaller than 30 with
 the string <cite>low</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="mi">1</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">30</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Low&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span><span class="p">[</span><span class="mi">1</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">30</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Low&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2          3          4
+<div class="highlight-python"><div class="highlight"><pre>           0        1          2          3          4
 0  23.245339  68.9726  78.506049  53.861274  69.550444
 1  58.398152      Low   2.405285  85.964288  22.144933
 2  71.348303  92.7403  95.175563  91.705137  39.377134
@@ -723,11 +724,11 @@ the string <cite>low</cite>.</p>
 </div>
 <p>We next replace all the values of column <code class="docutils literal"><span class="pre">4</span></code> that are larger than 70 with the
 value 1000.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="mi">3</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">70</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span><span class="p">[</span><span class="mi">3</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">70</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2            3          4
+<div class="highlight-python"><div class="highlight"><pre>           0        1          2            3          4
 0  23.245339  68.9726  78.506049    53.861274  69.550444
 1  58.398152      Low   2.405285  1000.000000  22.144933
 2  71.348303  92.7403  95.175563  1000.000000  39.377134
@@ -743,11 +744,11 @@ value 1000.</p>
 <p>And finally we can combine logical statements and replace values on a
 combination of conditions. So let&#8217;s replace all the values in column <code class="docutils literal"><span class="pre">5</span></code> that
 are between 20 and 80 with the string <cite>middle</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Middle&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Middle&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2            3        4
+<div class="highlight-python"><div class="highlight"><pre>           0        1          2            3        4
 0  23.245339  68.9726  78.506049    53.861274   Middle
 1  58.398152      Low   2.405285  1000.000000   Middle
 2  71.348303  92.7403  95.175563  1000.000000   Middle

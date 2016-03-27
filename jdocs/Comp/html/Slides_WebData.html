@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11. Working with data from the web &mdash; Computational Economics 1.0 documentation</title>
+  <title>11. Working with Data from the Web I &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="12. Random numbers" href="Slides_Random.html"/>
+        <link rel="next" title="12. Working with Data from the Web II" href="Slides_WebData_2.html"/>
         <link rel="prev" title="10. Working with data II: Statistics" href="Slides_Data_2.html"/> 
 
   
@@ -92,19 +92,20 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">11. Working with data from the web</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">11. Working with Data from the Web I</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-deal-with-errors">11.1. How to Deal with Errors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">11.2. More tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">11.2. More Tutorials</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">12. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">13. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">14. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">15. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">16. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">17. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">18. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">19. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
 </ul>
 
             
@@ -135,7 +136,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>11. Working with data from the web</li>
+    <li>11. Working with Data from the Web I</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -149,8 +150,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-data-from-the-web">
-<h1>11. Working with data from the web<a class="headerlink" href="#working-with-data-from-the-web" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="working-with-data-from-the-web-i">
+<h1>11. Working with Data from the Web I<a class="headerlink" href="#working-with-data-from-the-web-i" title="Permalink to this headline">¶</a></h1>
 <p>When you try to scrape or harvest data from the internet it is useful to know
 the basics of <a class="reference external" href="http://www.google.com/search?q=what+is+html">html</a> which is
 the markup language that is used to create websites. You can look at the source
@@ -163,7 +164,7 @@ over the html source code to extract information.</p>
 the html-data that we get after downloading the web page. The additional
 library <code class="docutils literal"><span class="pre">request</span></code> allows us to download source codes from websites. We
 therefore first need to import these two libraries.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -181,35 +182,35 @@ The latter is useful for pattern matching as you will see below.</p>
 for each video, its number of views, likes and dislikes. We then store
 everything in a Pandas dataframe for further statistical analysis.</p>
 <p>We first define the YouTube URL and assign it to a variable.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Define url to Youtube</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define url to Youtube</span>
 <span class="n">jurl</span> <span class="o">=</span> <span class="s1">&#39;https://www.youtube.com/&#39;</span>
 </pre></div>
 </div>
 <p>We next open the Youtube site and read the page&#8217;s html code and assign it to
 the variable html.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>We then assign the html code to the BeautifulSoup data format which allows us
 to sort through the html code more systematically.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>We next run a loop and extract all featured video links. First check
 the source code of the YouTube page and convince yourself that
 the links to the videos are all part of the
 <a class="reference external" href="http://www.google.com/search?q=what+is+a+CSS+class">CSS class</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;div class=&quot;yt-lockup-content&quot;&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;div class=&quot;yt-lockup-content&quot;&gt;
 </pre></div>
 </div>
 <p>Also not that the actual links to the video all start with the html tag:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;a href=&quot;/watch
+<div class="highlight-python"><div class="highlight"><pre>&lt;a href=&quot;/watch
 </pre></div>
 </div>
 <p>We next define an empty list so we can store all the links to the videos and
 then run a loop through the html source code and extract all links that start
 with <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></code>. We append all these links to the <code class="docutils literal"><span class="pre">link_list</span></code> list.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.yt-lockup-content a[href^=/watch]&#39;</span><span class="p">):</span>
     <span class="c1"># Store all links in a list</span>
     <span class="n">newLink</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
@@ -217,24 +218,24 @@ with <code class="docutils literal"><span class="pre">&lt;a</span> <span class="
 </pre></div>
 </div>
 <p>Let&#8217;s print the first 5 entries of the list</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/watch?v=UnTPrYdGdkg&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=vU8dCYocuyI&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=_rDtZgLolHQ&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=o9bsP2As3uc&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=YQHsXMglC9A&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=YXSpXO4N-tI&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s1">&#39;/watch?v=dKrhgVFTI6I&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=q1ocajTGvcc&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=tfQdkYexulw&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=K-KwvPYakdI&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=XgJFqVvb2Ws&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=K_9tX4eHztY&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We then create an empty data frame that has the same number of rows as our
 list. In addition we add empty columns so that we can store the title, view,
 like and dislike information later on.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">))</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Views&#39;</span><span class="p">,</span> <span class="s1">&#39;Likes&#39;</span><span class="p">,</span> <span class="s1">&#39;Dislikes&#39;</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We next assign the <code class="docutils literal"><span class="pre">link_list</span></code> with all the video links to the dataframe.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_list</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jurl</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -249,7 +250,7 @@ in the text string that is generated by the <code class="docutils literal"><span
 pattern, that we search for in the html-code of the website.
 The letter <code class="docutils literal"><span class="pre">d</span></code> stands for digit. The plus sign that follows it indicates that
 the numbers we are looking for can be comprised of one or more digits.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} out of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
 
@@ -275,42 +276,48 @@ the numbers we are looking for can be comprised of one or more digits.</p>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0 out of 82
-1 out of 82
-2 out of 82
-3 out of 82
-4 out of 82
-78 out of 82
-79 out of 82
-80 out of 82
-81 out of 82
+<div class="highlight-python"><div class="highlight"><pre>0 out of 88
+1 out of 88
+2 out of 88
+3 out of 88
+4 out of 88
+84 out of 88
+85 out of 88
+86 out of 88
+87 out of 88
 </pre></div>
 </div>
 <p>We finally sort the data according to number of views, starting with the most
 viewed video and print the first couple of entries:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;Views&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;Views&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                                           Links  \
-4   https://www.youtube.com//watch?v=YQHsXMglC9A
-8   https://www.youtube.com//watch?v=fRh_vgS2dFE
-6   https://www.youtube.com//watch?v=uxpDa-c-4Mc
-12  https://www.youtube.com//watch?v=C_3d6GntKbk
-15  https://www.youtube.com//watch?v=kkx-7fsiWgg
+<div class="highlight-python"><div class="highlight"><pre>                                           Links  \
+78  https://www.youtube.com//watch?v=Nck6BZga7TQ
+83  https://www.youtube.com//watch?v=Dx06c0ZEBMk
+82  https://www.youtube.com//watch?v=329xjDM7YaE
+70  https://www.youtube.com//watch?v=ss9ygQqqL2Q
+54  https://www.youtube.com//watch?v=dKrVegVI0Us
 
-                                                Title       Views  \
-4                             Adele - Hello - YouTube  1361009505
-8   Justin Bieber - Sorry (PURPOSE : The Movement)...  1104606893
-6                     Drake - Hotline Bling - YouTube   604027194
-12                        ZAYN - PILLOWTALK - YouTube   250172376
-15  Hasta el Amanecer - Nicky Jam | Video Oficial ...   227304684
+                                                Title     Views
+Likes  \
+78                    Adele Carpool Karaoke - YouTube  89455937
+1.25617e+06
+83            Justin Bieber Carpool Karaoke - YouTube  68656016
+850073
+82            One Direction Carpool Karaoke - YouTube  54975983
+981804
+70  Wheel of Musical Impressions with Ariana Grand...  50751440
+505121
+54  Marvel&#39;s Captain America: Civil War - Trailer ...  50247384
+567509
 
-          Likes Dislikes
-4   9.37528e+06   426819
-8   4.94914e+06   493483
-6   3.08756e+06   272218
-12   2.5508e+06   281726
-15  1.05089e+06    42556
+   Dislikes
+78    14920
+83    31424
+82    11011
+70     9600
+54    10532
 </pre></div>
 </div>
 <div class="section" id="how-to-deal-with-errors">
@@ -326,7 +333,7 @@ the content of the website and extract all the info from the website. However,
 if the interpreter is not able to load the website then, instead of breaking
 the code, it will simply jump into an alternate branch (the <code class="docutils literal"><span class="pre">Except</span></code> part)
 and continue running the commands that are there.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} out of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
 
@@ -358,15 +365,15 @@ and continue running the commands that are there.</p>
         <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0 out of 82
-1 out of 82
-2 out of 82
-3 out of 82
-4 out of 82
-78 out of 82
-79 out of 82
-80 out of 82
-81 out of 82
+<div class="highlight-python"><div class="highlight"><pre>0 out of 88
+1 out of 88
+2 out of 88
+3 out of 88
+4 out of 88
+84 out of 88
+85 out of 88
+86 out of 88
+87 out of 88
 </pre></div>
 </div>
 <p>If you write your code in this way, your program will never break in case you hit a bad
@@ -374,14 +381,15 @@ link. It will simply print the exception message and then continue with the next
 link from the <code class="docutils literal"><span class="pre">link_list</span></code>.</p>
 </div>
 <div class="section" id="more-tutorials">
-<h2>11.2. More tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
+<h2>11.2. More Tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
 <p>Here are additional web tutorials about Python web scraping that you can check
 out:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Scraping URLs from the Pycon 2014 Conference by
-<a class="reference external" href="http://blog.miguelgrinberg.com/post/easy-web-scraping-with-python">Miguel Grinberg</a>.</li>
-<li>A <a class="reference external" href="https://www.youtube.com/watch?v=3xQTJi2tqgk">youtube tutorial</a> for web scraping with Python.</li>
+<a class="reference external" href="http://blog.miguelgrinberg.com/post/easy-web-scraping-with-python">Miguel Grinberg</a></li>
+<li>A <a class="reference external" href="https://www.youtube.com/watch?v=3xQTJi2tqgk">youtube tutorial</a> for web scraping with Python</li>
+<li><a class="reference external" href="http://blog.danwin.com/examples-of-web-scraping-in-python-3-x-for-data-journalists/">Dan Nguyens blog entry for scraping public data</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -394,7 +402,7 @@ out:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Random.html" class="btn btn-neutral float-right" title="12. Random numbers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_WebData_2.html" class="btn btn-neutral float-right" title="12. Working with Data from the Web II" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Slides_Data_2.html" class="btn btn-neutral" title="10. Working with data II: Statistics" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
