@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="11. Working with data from the web" href="Slides_WebData.html"/>
+        <link rel="next" title="11. Working with Data from the Web I" href="Slides_WebData.html"/>
         <link rel="prev" title="9. Working with data I: Data cleaning" href="Slides_Data_1.html"/> 
 
   
@@ -107,16 +107,22 @@
 <li class="toctree-l3"><a class="reference internal" href="#data-aggregation-or-summary-statistics-by-subgroup">10.3.4. Data aggregation or summary statistics by subgroup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#measures-of-linear-relationship">10.4. Measures of linear relationship</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#measures-of-linear-relationship">10.4. Measures of Linear Relationship</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#covariance">10.4.1. Covariance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#correlation-coefficient">10.4.2. Correlation coefficient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#regression-line">10.4.3. Regression line</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#measures-of-non-linear-relationship">10.5. Measures of Non-Linear Relationship</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logit">10.5.1. Logit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probit">10.5.2. Probit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with data from the web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorials">10.6. Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
@@ -173,13 +179,14 @@
 <h1>10. Working with data II: Statistics<a class="headerlink" href="#working-with-data-ii-statistics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="importing-data">
 <h2>10.1. Importing data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
-<p>We will be working with two data sets.
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.</p>
+<p>We will be working with three data sets.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a2.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b2.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_c.xlsx"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_c.xlsx</span></code></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">ggplot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1">#from ggplot import *</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
@@ -267,7 +274,7 @@ folder.</p>
 <div class="section" id="histogram">
 <h3>10.2.3. Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h3>
 <p>Next we use a new data file called
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b2.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.
 This data file contains data on height age and other variables. We first make a histogram of
 the continuous variable Height.
 The actual command for the histogram is <code class="docutils literal"><span class="pre">hist</span></code>. It returns three variables
@@ -336,10 +343,10 @@ Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28, 2
 <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Histogram of Height using ggplot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="s2">&quot;Height&quot;</span><span class="p">,</span> <span class="s2">&quot;Freq&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>&lt;ggplot: (10232829)&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;class &#39;NameError&#39;&gt;
+name &#39;ggplot&#39; is not defined
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Data_2_Boxplot_1.png"><img alt="_images/Slides_Data_2_Boxplot_1.png" src="_images/Slides_Data_2_Boxplot_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="boxplots">
 <h3>10.2.4. Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">¶</a></h3>
@@ -393,7 +400,7 @@ commands are part of the <code class="docutils literal"><span class="pre">numpy<
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">Mean</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">=</span>  <span class="mf">6.817</span>
 <span class="n">Median</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">=</span>  <span class="mf">6.850</span>
-<span class="n">Mode</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">=</span>  <span class="p">(</span><span class="n">array</span><span class="p">([</span> <span class="mf">1.1</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">]))</span>
+<span class="n">Mode</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">=</span>  <span class="n">ModeResult</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">array</span><span class="p">([</span> <span class="mf">1.1</span><span class="p">]),</span> <span class="n">count</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
 <p>We can also just summarize a variable using the <code class="docutils literal"><span class="pre">st.describe</span></code> command from
@@ -408,7 +415,7 @@ the <code class="docutils literal"><span class="pre">stats</span></code> package
 -------------
 DescribeResult(nobs=60, minmax=(1.1000000000000001,
 12.699999999999999), mean=6.8166666666666655,
-variance=12.757344632768362, skewness=0.01909961978127301,
+variance=12.757344632768362, skewness=0.019099619781273072,
 kurtosis=-1.1611486008105545)
 </pre></div>
 </div>
@@ -527,7 +534,7 @@ brackets <code class="docutils literal"><span class="pre">[...]]</span></code>.<
 </div>
 </div>
 <div class="section" id="measures-of-linear-relationship">
-<h2>10.4. Measures of linear relationship<a class="headerlink" href="#measures-of-linear-relationship" title="Permalink to this headline">¶</a></h2>
+<h2>10.4. Measures of Linear Relationship<a class="headerlink" href="#measures-of-linear-relationship" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="covariance">
 <h3>10.4.1. Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h3>
 <p>We first grab two variables <code class="docutils literal"><span class="pre">heightv</span></code> and <code class="docutils literal"><span class="pre">agev</span></code> from the dataframe and
@@ -785,10 +792,233 @@ dtype: float64
   <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Prediction: 193.65914627657307
+<div class="highlight-python"><div class="highlight"><pre>Prediction: 193.6591462765734
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="measures-of-non-linear-relationship">
+<h2>10.5. Measures of Non-Linear Relationship<a class="headerlink" href="#measures-of-non-linear-relationship" title="Permalink to this headline">¶</a></h2>
+<p>We next demonstrate how to run <strong>Probit</strong> and <strong>Logit</strong> regressions. These
+type of regression models are used when the dependent variable is a categorical
+0/1 variable. If you instead ran a simple linear OLS regression on such a
+variable, the possible predictions from this linear probability model could
+fall outside of the <code class="docutils literal"><span class="pre">[0,1]</span></code> range. The <strong>Probit</strong> and <strong>Logit</strong> specifications
+ensure that predictions are probabilities that will fall within the <code class="docutils literal"><span class="pre">[0,1]</span></code>
+range.</p>
+<p>Make sure that you have already downloaded the Excel data file
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_c.xlsx"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_c.xlsx</span></code></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Read entire excel spreadsheet</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;Lecture_Data/&#39;</span>
+<span class="n">xl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s2">&quot;Lecture_Data_Excel_c.xlsx&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check how many sheets we have inside the excel file</span>
+<span class="n">xl</span><span class="o">.</span><span class="n">sheet_names</span>
+
+<span class="c1"># Pick one sheet and define it as your DataFrame by parsing a sheet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># rename the &#39;rank&#39; column because there is also a DataFrame method</span>
+<span class="n">called</span> <span class="s1">&#39;rank&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;admit&quot;</span><span class="p">,</span> <span class="s2">&quot;gre&quot;</span><span class="p">,</span> <span class="s2">&quot;gpa&quot;</span><span class="p">,</span> <span class="s2">&quot;prestige&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>   admit  gre   gpa  rank
+0      0  380  3.61     3
+1      1  660  3.67     3
+2      1  800  4.00     1
+3      1  640  3.19     4
+4      0  520  2.93     4
+</pre></div>
+</div>
+<p>We next make dummies out of the rank variable.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># dummify rank</span>
+<span class="n">dummy_ranks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;prestige&#39;</span><span class="p">],</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;d_prest&#39;</span><span class="p">)</span>
+
+<span class="c1"># Join dataframes</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dummy_ranks</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>   admit  gre   gpa  prestige  d_prest_1  d_prest_2  d_prest_3
+d_prest_4
+0      0  380  3.61         3          0          0          1
+0
+1      1  660  3.67         3          0          0          1
+0
+2      1  800  4.00         1          1          0          0
+0
+3      1  640  3.19         4          0          0          0
+1
+4      0  520  2.93         4          0          0          0
+1
+</pre></div>
+</div>
+<div class="section" id="logit">
+<h3>10.5.1. Logit<a class="headerlink" href="#logit" title="Permalink to this headline">¶</a></h3>
+<p>We now estimate a <strong>Logit</strong> model as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Import the correct version of statsmodels</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
+
+<span class="c1"># Define the model</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;admit&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;gre&#39;</span><span class="p">,</span> <span class="s1">&#39;gpa&#39;</span><span class="p">,</span> <span class="s1">&#39;d_prest_2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;d_prest_3&#39;</span><span class="p">,</span> <span class="s1">&#39;d_prest_4&#39;</span><span class="p">]])</span>
+
+<span class="c1"># fit the model</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print results</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Optimization terminated successfully.
+         Current function value: 0.589306
+         Iterations 5
+                           Logit Regression Results
+==============================================================================
+Dep. Variable:                  admit   No. Observations:
+400
+Model:                          Logit   Df Residuals:
+395
+Method:                           MLE   Df Model:
+4
+Date:                Mon, 28 Mar 2016   Pseudo R-squ.:
+0.05707
+Time:                        22:44:37   Log-Likelihood:
+-235.72
+converged:                       True   LL-Null:
+-249.99
+                                        LLR p-value:
+9.732e-06
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [95.0%
+Conf. Int.]
+------------------------------------------------------------------------------
+gre            0.0014      0.001      1.329      0.184        -0.001
+0.003
+gpa           -0.1336      0.194     -0.687      0.492        -0.515
+0.248
+d_prest_2     -0.9663      0.300     -3.216      0.001        -1.555
+-0.377
+d_prest_3     -1.5451      0.332     -4.648      0.000        -2.197
+-0.894
+d_prest_4     -1.8776      0.402     -4.676      0.000        -2.665
+-1.091
+==============================================================================
+</pre></div>
+</div>
+<p>A Slightly different summary</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary2</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>                         Results: Logit
+=================================================================
+Model:              Logit            Pseudo R-squared: 0.057
+Dependent Variable: admit            AIC:              481.4452
+Date:               2016-03-28 22:44 BIC:              501.4025
+No. Observations:   400              Log-Likelihood:   -235.72
+Df Model:           4                LL-Null:          -249.99
+Df Residuals:       395              LLR p-value:      9.7322e-06
+Converged:          1.0000           Scale:            1.0000
+No. Iterations:     5.0000
+------------------------------------------------------------------
+               Coef.   Std.Err.     z     P&gt;|z|    [0.025   0.975]
+------------------------------------------------------------------
+gre            0.0014    0.0010   1.3287  0.1839  -0.0007   0.0034
+gpa           -0.1336    0.1945  -0.6869  0.4922  -0.5147   0.2476
+d_prest_2     -0.9663    0.3004  -3.2164  0.0013  -1.5551  -0.3775
+d_prest_3     -1.5451    0.3324  -4.6483  0.0000  -2.1966  -0.8936
+d_prest_4     -1.8776    0.4015  -4.6760  0.0000  -2.6646  -1.0906
+=================================================================
+</pre></div>
+</div>
+</div>
+<div class="section" id="probit">
+<h3>10.5.2. Probit<a class="headerlink" href="#probit" title="Permalink to this headline">¶</a></h3>
+<p>If you want to run a Probit regression, you can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Define the model</span>
+<span class="n">probit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Probit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;admit&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;gre&#39;</span><span class="p">,</span> <span class="s1">&#39;gpa&#39;</span><span class="p">,</span> <span class="s1">&#39;d_prest_2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;d_prest_3&#39;</span><span class="p">,</span> <span class="s1">&#39;d_prest_4&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">probit</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print results</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Optimization terminated successfully.
+         Current function value: 0.589135
+         Iterations 5
+                          Probit Regression Results
+==============================================================================
+Dep. Variable:                  admit   No. Observations:
+400
+Model:                         Probit   Df Residuals:
+395
+Method:                           MLE   Df Model:
+4
+Date:                Mon, 28 Mar 2016   Pseudo R-squ.:
+0.05734
+Time:                        22:44:37   Log-Likelihood:
+-235.65
+converged:                       True   LL-Null:
+-249.99
+                                        LLR p-value:
+9.128e-06
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [95.0%
+Conf. Int.]
+------------------------------------------------------------------------------
+gre            0.0008      0.001      1.350      0.177        -0.000
+0.002
+gpa           -0.0778      0.117     -0.667      0.505        -0.307
+0.151
+d_prest_2     -0.6064      0.186     -3.266      0.001        -0.970
+-0.242
+d_prest_3     -0.9566      0.201     -4.749      0.000        -1.351
+-0.562
+d_prest_4     -1.1455      0.235     -4.874      0.000        -1.606
+-0.685
+==============================================================================
+</pre></div>
+</div>
+<p>A Slightly different summary</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary2</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>                         Results: Probit
+=================================================================
+Model:              Probit           Pseudo R-squared: 0.057
+Dependent Variable: admit            AIC:              481.3081
+Date:               2016-03-28 22:44 BIC:              501.2654
+No. Observations:   400              Log-Likelihood:   -235.65
+Df Model:           4                LL-Null:          -249.99
+Df Residuals:       395              LLR p-value:      9.1282e-06
+Converged:          1.0000           Scale:            1.0000
+No. Iterations:     5.0000
+------------------------------------------------------------------
+               Coef.   Std.Err.     z     P&gt;|z|    [0.025   0.975]
+------------------------------------------------------------------
+gre            0.0008    0.0006   1.3501  0.1770  -0.0004   0.0021
+gpa           -0.0778    0.1168  -0.6666  0.5050  -0.3067   0.1510
+d_prest_2     -0.6064    0.1857  -3.2659  0.0011  -0.9703  -0.2425
+d_prest_3     -0.9566    0.2014  -4.7492  0.0000  -1.3514  -0.5618
+d_prest_4     -1.1455    0.2350  -4.8742  0.0000  -1.6061  -0.6849
+=================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h2>10.6. Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<p>Some of the notes above are summaries of these tutorials:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://blog.yhat.com/posts/logistic-regression-and-python.html">yhat-Blog</a></li>
+<li><a class="reference external" href="http://statsmodels.sourceforge.net/stable/index.html">Statsmodels library</a></li>
+</ul>
 </div>
 </div>
 
@@ -799,7 +1029,7 @@ dtype: float64
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_WebData.html" class="btn btn-neutral float-right" title="11. Working with data from the web" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_WebData.html" class="btn btn-neutral float-right" title="11. Working with Data from the Web I" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Slides_Data_1.html" class="btn btn-neutral" title="9. Working with data I: Data cleaning" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
