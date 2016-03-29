@@ -94,7 +94,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">12. Working with Data from the Web II</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">12.1. More tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">12.1. Yelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#economic-data-from-the-federal-reserve">12.2. Economic Data from the Federal Reserve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">12.3. More Tutorials</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
@@ -221,6 +223,8 @@ parameters for each request:</p>
 using their APIs in various popular programming languages. Sometimes, they even
 provide small <strong>Python</strong> libraries to facilitate the interaction with their
 website.</p>
+<div class="section" id="id1">
+<h2>12.1. Yelp<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>For interacting with the Yelp API for instance you could download the provided
 Python library from <a class="reference external" href="https://github.com/Yelp/yelp-python">here</a>. If you want
 to install this library you simply open a command line window (in Windows click
@@ -233,11 +237,10 @@ follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">yelp.client</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="kn">from</span> <span class="nn">yelp.oauth1_authenticator</span> <span class="kn">import</span> <span class="n">Oauth1Authenticator</span>
 
-<span class="n">auth</span> <span class="o">=</span> <span class="n">Oauth1Authenticator</span><span class="p">(</span>
-  <span class="n">consumer_key</span><span class="o">=</span><span class="n">YOUR_CONSUMER_KEY</span><span class="p">,</span>
-  <span class="n">consumer_secret</span><span class="o">=</span><span class="n">YOUR_CONSUMER_SECRET</span><span class="p">,</span>
-  <span class="n">token</span><span class="o">=</span><span class="n">YOUR_TOKEN</span><span class="p">,</span>
-  <span class="n">token_secret</span><span class="o">=</span><span class="n">YOUR_TOKEN_SECRET</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">Oauth1Authenticator</span><span class="p">(</span><span class="n">consumer_key</span><span class="o">=</span><span class="s1">&#39;YOUR_CONSUMER_KEY&#39;</span><span class="p">,</span> \
+  <span class="n">consumer_secret</span><span class="o">=</span><span class="s1">&#39;YOUR_CONSUMER_SECRET&#39;</span><span class="p">,</span> \
+  <span class="n">token</span><span class="o">=</span><span class="s1">&#39;YOUR_TOKEN&#39;</span><span class="p">,</span> \
+  <span class="n">token_secret</span><span class="o">=</span><span class="s1">&#39;YOUR_TOKEN_SECRET&#39;</span>
 <span class="p">)</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
@@ -252,8 +255,70 @@ follows:</p>
 <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="economic-data-from-the-federal-reserve">
+<h2>12.2. Economic Data from the Federal Reserve<a class="headerlink" href="#economic-data-from-the-federal-reserve" title="Permalink to this headline">¶</a></h2>
+<p>The website <a class="reference external" href="https://www.quandl.com/">Quandl</a> provides a very convenient API
+to download Economic data from various databases.
+<a class="reference external" href="https://www.quandl.com/browse">Here</a>
+is a list of databases
+that are accessible.</p>
+<p>The <a class="reference external" href="https://www.quandl.com/data/FRED?keyword=">Federal Reserve Economic Data (FRED)</a>
+is one of the accessible
+databases.  Quandl provides a nice <a class="reference external" href="https://www.quandl.com/tools/python">Python wrapper</a>
+which is a Python library that helps you to
+easily interact with the API of the website similar to the <code class="docutils literal"><span class="pre">Yelp</span></code> library
+above.</p>
+<p>After applying for a free account with Quandl, you will receive an <code class="docutils literal"><span class="pre">author-token</span></code>.
+Every time you access the API you need to provide this code. In addition you
+need to install the <code class="docutils literal"><span class="pre">Quandl</span></code> library using:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install Quandl
+</pre></div>
+</div>
+<p>You can now easily download data from the FRED database as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">Quandl</span>
+
+<span class="c1"># Download data from Quandl</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Quartely data</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">df_q</span> <span class="o">=</span> <span class="n">Quandl</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;FRED/GDP&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/GDPC1&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/PCECC96&quot;</span><span class="p">,</span> \
+    <span class="s2">&quot;FRED/PCNDGC96&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/DCLORX1Q020SBEA&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/UNRATE&quot;</span><span class="p">],</span> \
+    <span class="n">authtoken</span> <span class="o">=</span> <span class="s1">&#39;author-token&#39;</span><span class="p">,</span> \
+    <span class="n">trim_start</span><span class="o">=</span><span class="s2">&quot;1950-1-1&quot;</span><span class="p">,</span> <span class="n">trim_end</span><span class="o">=</span><span class="s2">&quot;2015-12-31&quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="s1">&#39;quarterly&#39;</span><span class="p">)</span>
+<span class="n">df_q</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GDP&#39;</span><span class="p">,</span> <span class="s1">&#39;realGDP&#39;</span><span class="p">,</span> <span class="s1">&#39;Consumption&#39;</span><span class="p">,</span> <span class="s1">&#39;Non-Durables&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;ClothingShoes&#39;</span><span class="p">,</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">]</span>
+
+<span class="c1"># Monthly data</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">df_m</span> <span class="o">=</span> <span class="n">Quandl</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;FRED/UNRATE&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/FEDFUNDS&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/CPIAUCSL&quot;</span><span class="p">],</span> \
+    <span class="n">authtoken</span> <span class="o">=</span> <span class="s1">&#39;author-token&#39;</span><span class="p">,</span> \
+    <span class="n">trim_start</span><span class="o">=</span><span class="s2">&quot;1950-1-1&quot;</span><span class="p">,</span> <span class="n">trim_end</span><span class="o">=</span><span class="s2">&quot;2015-12-31&quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="s1">&#39;monthly&#39;</span><span class="p">)</span>
+<span class="n">df_m</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span> <span class="s1">&#39;Interest-Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;CPI_Urban&#39;</span><span class="p">]</span>
+
+<span class="c1"># Annual data</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">df_a</span> <span class="o">=</span> <span class="n">Quandl</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;FRED/UNRATE&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/FEDFUNDS&quot;</span><span class="p">,</span> <span class="s2">&quot;FRED/CPIAUCSL&quot;</span><span class="p">],</span> \
+    <span class="n">authtoken</span> <span class="o">=</span> <span class="s1">&#39;author-token&#39;</span><span class="p">,</span> \
+    <span class="n">trim_start</span><span class="o">=</span><span class="s2">&quot;1950-1-1&quot;</span><span class="p">,</span> <span class="n">trim_end</span><span class="o">=</span><span class="s2">&quot;2015-12-31&quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="s1">&#39;annual&#39;</span><span class="p">)</span>
+<span class="n">df_a</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span> <span class="s1">&#39;Interest-Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;CPI_Urban&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot data</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">df_q</span><span class="p">[[</span><span class="s1">&#39;GDP&#39;</span><span class="p">,</span> <span class="s1">&#39;realGDP&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Nominal and Real US-GDP&#39;</span><span class="p">)</span>
+<span class="c1"># You can also save your graphs using</span>
+<span class="c1">#plt.savefig(gtexpath+&#39;GDP_Fig1.png&#39;, format=&#39;png&#39;)</span>
+<span class="c1">#plt.show()</span>
+</pre></div>
+</div>
+<p>This will download GDP and other variables and plot them. When you download the
+data you can specify the time frame. This will of course depend on the specific
+time series you are interested in. Read the documentation about the
+data on the <a class="reference external" href="https://www.quandl.com/data/FRED?keyword=">FRED</a> to see what is
+available.</p>
+</div>
 <div class="section" id="more-tutorials">
-<h2>12.1. More tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
+<h2>12.3. More Tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
 <p>Here are additional web tutorials about how to use Python together
 with the API of popular websites:</p>
 <blockquote>
