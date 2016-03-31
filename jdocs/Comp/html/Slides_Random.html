@@ -160,7 +160,7 @@
 <h1>13. Random numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="uniformly-distributed-random-numbers">
 <h2>13.1. Uniformly distributed random numbers<a class="headerlink" href="#uniformly-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
@@ -170,7 +170,7 @@
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># To always get the same random numbers on each run</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To always get the same random numbers on each run</span>
 <span class="c1"># (makes results reproducible)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># number of classes (i.e. bins or bars) in histogram</span>
@@ -179,7 +179,7 @@
 <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of uniform random variable&#39;</span><span class="p">)</span>
@@ -190,7 +190,7 @@
 </div>
 <div class="section" id="normally-distributed-random-numbers">
 <h2>13.2. Normally distributed random numbers<a class="headerlink" href="#normally-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># density function of standard normal</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -200,7 +200,7 @@
 </pre></div>
 </div>
 <p>Then plot it.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of normal random variable&#39;</span><span class="p">)</span>
@@ -215,12 +215,12 @@
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_Random_1.png"><img alt="_images/Slides_Random_Normal_Random_1.png" src="_images/Slides_Random_Normal_Random_1.png" style="width: 12cm;" /></a>
 <div class="section" id="two-normally-distributed-random-variables">
 <h3>13.2.1. Two normally distributed random variables<a class="headerlink" href="#two-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 <span class="n">z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 </pre></div>
 </div>
 <p>Now plot it.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
@@ -240,12 +240,12 @@
 </div>
 <div class="section" id="t-distributed-random-variable">
 <h2>13.3. T-distributed random variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">dof</span> <span class="o">=</span> <span class="mi">29</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dof</span> <span class="o">=</span> <span class="mi">29</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_t</span><span class="p">(</span><span class="n">dof</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span> <span class="mf">1.39223765</span> <span class="o">-</span><span class="mf">0.52924457</span> <span class="o">-</span><span class="mf">0.82809716</span> <span class="o">-</span><span class="mf">0.39349782</span> <span class="o">-</span><span class="mf">1.98709951</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">1.39223765</span> <span class="o">-</span><span class="mf">0.52924457</span> <span class="o">-</span><span class="mf">0.82809716</span> <span class="o">-</span><span class="mf">0.39349782</span> <span class="o">-</span><span class="mf">1.98709951</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We can also code the t-distribution as a combination of a normal and
@@ -259,7 +259,7 @@ itself can be expressed as a gamma distribution</p>
 \[\chi^2_v = \Gamma(1/2, v/2),\]</div>
 </div></blockquote>
 <p>with <span class="math">\(v\)</span> degrees of freedom.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">student_tvariate</span><span class="p">(</span><span class="n">df</span><span class="p">):</span> <span class="c1"># df is the number of degrees of freedom</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">student_tvariate</span><span class="p">(</span><span class="n">df</span><span class="p">):</span> <span class="c1"># df is the number of degrees of freedom</span>
     <span class="k">if</span> <span class="n">df</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">!=</span> <span class="n">df</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;student_tvariate: df must be a integer &gt; 1&#39;</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -272,7 +272,7 @@ itself can be expressed as a gamma distribution</p>
 </pre></div>
 </div>
 <p>And the plotting routine is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="c1">#</span>
 <span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
@@ -288,20 +288,20 @@ itself can be expressed as a gamma distribution</p>
 <p>If you want to draw integer numbers at random you can use the
 <code class="docutils literal"><span class="pre">np.random.randint()</span></code> method. If we would like to draw random integer numbers
 between {1,2,3,4} we need to specify:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">integerList</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>[2 2 3 3 4 4 2 3 1 2]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[2 2 3 3 4 4 2 3 1 2]
 </pre></div>
 </div>
 <p>Similarly, if you would like to draw five random integer numbers between 7 and
 10 you would specify:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">integerList</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>[10  9  9  7  8]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[10  9  9  7  8]
 </pre></div>
 </div>
 </div>
@@ -317,7 +317,7 @@ something <cite>randomly</cite> to our objects.</p>
 these type of objects. We call it the <code class="docutils literal"><span class="pre">RandomMan</span></code> class. Objects generated
 according to this blueprint are then <cite>instantiations</cite> of this class which we
 call <code class="docutils literal"><span class="pre">RandomMan</span></code> objects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Set random seed</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Set random seed</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">RandomMan</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -389,7 +389,7 @@ call <code class="docutils literal"><span class="pre">RandomMan</span></code> ob
 </pre></div>
 </div>
 <p>We next generate 10 randomMan objects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">randomManList</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">randomManList</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39; --- Create men --- &#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -399,7 +399,7 @@ call <code class="docutils literal"><span class="pre">RandomMan</span></code> ob
     <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">showMan</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre> --- Create men ---
+<div class="highlight-python"><div class="highlight"><pre><span></span> --- Create men ---
 
 
 Hello, let me introduce myself.
@@ -483,7 +483,7 @@ I have NO insurance
 </pre></div>
 </div>
 <p>Finally we let them live for one <cite>round</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------------&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39; --- Let man live --- &#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------------&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">randomManList</span><span class="p">)):</span>
@@ -498,7 +498,7 @@ I have NO insurance
     <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">showMan</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>----------------------
+<div class="highlight-python"><div class="highlight"><pre><span></span>----------------------
  --- Let man live ---
 ----------------------
 
