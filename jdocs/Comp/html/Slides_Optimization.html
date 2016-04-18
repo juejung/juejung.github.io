@@ -207,27 +207,6 @@
       <span class="mf">8.0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Some algorithms that we&#8217;ll encounter later will minimize a function. So if we
-want to maximize our function we have to define it as a negated function, that
-is:</p>
-<div class="math">
-\[g(x) = -f(x)\]</div>
-<p>then</p>
-<div class="math">
-\[min \ g(x)\]</div>
-<p>is the same as</p>
-<div class="math">
-\[max \ f(x).\]</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># gamma(2,3) density</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">))</span>
-</pre></div>
-</div>
 <p>Plotting the function is always a good idea!</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">xmax</span> <span class="o">=</span> <span class="mf">6.0</span>
@@ -249,7 +228,7 @@ is:</p>
   0.09041885  0.11590306  0.14256769  0.16992939]
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Optimization_figure5_1.png"><img alt="_images/Slides_Optimization_figure5_1.png" src="_images/Slides_Optimization_figure5_1.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Optimization_figure4_1.png"><img alt="_images/Slides_Optimization_figure4_1.png" src="_images/Slides_Optimization_figure4_1.png" style="width: 15cm;" /></a>
 </div>
 </div>
 <div class="section" id="optimization-methods">
@@ -259,10 +238,24 @@ is:</p>
 <p>In order to implement the Newton method we basically look for the root of a
 first derivative so that <span class="math">\(f'(x) = 0\)</span>. We then use the root finding
 algorithm from the previous section to find this point, or:</p>
-<blockquote>
-<div><div class="math">
-\[x(n+1) = x(n) - \frac{f'(x(x))}{f''(x(n))}\]</div>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span>   <span class="c1">#import matplotlib.image as mpimg</span>
+   <span class="c1">#import Image</span>
+
+   <span class="c1">#image = Image.open(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
+   <span class="c1">#image.show()</span>
+
+   <span class="c1">#img = mpimg.imread(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
+   <span class="c1">#plt.imshow(img)</span>
+   <span class="c1">#plt.show()</span>
+
+
+
+
+
+<span class="o">..</span> <span class="n">math</span><span class="p">::</span>
+  <span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> \<span class="n">frac</span><span class="p">{</span><span class="n">f</span><span class="s1">&#39;(x(x))}{f&#39;&#39;(x(n))}</span>
+</pre></div>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Newton&#39;s method for optimization, starting at x0</span>
     <span class="c1"># f3 is a function that given x returns the vector</span>
@@ -368,6 +361,10 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 </div>
 <div class="section" id="maximize-function-f">
 <h3>15.2.3. Maximize function: f<a class="headerlink" href="#maximize-function-f" title="Permalink to this headline">¶</a></h3>
+<p>We next use these algorithms to find the maximum point of our function <code class="docutils literal"><span class="pre">f1</span></code>
+and <code class="docutils literal"><span class="pre">f1simple</span></code>. Note that if we use the Newton algorithm we will need the
+first and second derivatives of the functions. This is why we use function
+<code class="docutils literal"><span class="pre">f1</span></code> that returns <code class="docutils literal"><span class="pre">f,</span> <span class="pre">f'</span> <span class="pre">and</span> <span class="pre">f''</span></code> via an array/vector as return value.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; Newton results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -386,6 +383,8 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 14.4236788158
 </pre></div>
 </div>
+<p>The Golden section algorithm does not require the derivates of the function, so
+we just call the <code class="docutils literal"><span class="pre">f1simple</span></code> function that only returns the functional value.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot; -----------------------------------&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; Golden section results &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; -----------------------------------&quot;</span><span class="p">)</span>
@@ -404,7 +403,34 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 1.00000000522
 </pre></div>
 </div>
-<p>The function <code class="docutils literal"><span class="pre">fmin</span></code> is in the <code class="docutils literal"><span class="pre">scipy.optimize</span></code> library.</p>
+<p>Finally, we can also use a built in function minimizer.
+The built in function <code class="docutils literal"><span class="pre">fmin</span></code> is in the <code class="docutils literal"><span class="pre">scipy.optimize</span></code> library. We need to
+import it first.  So if we want to maximize our function we have to define it
+as a negated function, that is:</p>
+<div class="math">
+\[g(x) = -f(x)\]</div>
+<p>then</p>
+<div class="math">
+\[min \ g(x)\]</div>
+<p>is the same as</p>
+<div class="math">
+\[max \ f(x).\]</div>
+<p>Since we want to find the maximum of the function, we need to &#8220;trick&#8221; the
+minimization algorithm. We therefore need to redefine the function as</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># gamma(2,3) density</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Here we simply return negative values of this function. If we now minimize this
+function, we actually maximize the original function</p>
+<div class="math">
+\[f(x) = 4x^2e^{-2x}\]</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; -----------------------------------&quot;</span><span class="p">)</span>
