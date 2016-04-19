@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>## Exercise 1 &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework 9: Optimization &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -130,7 +130,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>## Exercise 1</li>
+    <li>Homework 9: Optimization</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -144,52 +144,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p># Homework 9: Optimization</p>
-<p>Submit this homework in class on Tuesday.
-I need two files:</p>
+  <div class="section" id="homework-9-optimization">
+<h1>Homework 9: Optimization<a class="headerlink" href="#homework-9-optimization" title="Permalink to this headline">¶</a></h1>
+<p>Submit this homework via Dropbox by Monday, April 25 at 11:55 pm.</p>
 <blockquote>
 <div><ul class="simple">
-<li>R-scripts are submitted in one file called: <code class="docutils literal"><span class="pre">Homework9.R</span></code></li>
-<li>Python-scripts are submitted in one file called: <code class="docutils literal"><span class="pre">Homework9.py</span></code></li>
+<li>Python-scripts are submitted in one file called: <code class="docutils literal"><span class="pre">homework9.py</span></code></li>
 </ul>
 </div></blockquote>
-<p>I need to be able to quickly run these scripts on my computer.</p>
-<p>I will based your homework grade on my grading of 2 randomly selected homework exercises. So please make sure that you complete every homework 100% as you might otherwise end up with zero points.</p>
-<p>Implement all exercises in <strong>R</strong> and <strong>Python</strong>!</p>
 <div class="section" id="exercise-1">
-<h1>## Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
-<p>Read chapter 12 in your <strong>R</strong> book.
-Use the golden-section search algorithm to find all of the local maxima of the function
-[ f(n) = left{</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="docutils">
-<dt>begin{array}{l l}</dt>
-<dd>0 &amp; quad text{if $x=0$} \
-<a href="#id1"><span class="problematic" id="id2">|x|log(|x|</span></a>/2)e^{-<a href="#id3"><span class="problematic" id="id4">|x|</span></a>} &amp; quad text{otherwise} \</dd>
-</dl>
-<p>end{array}</p>
-</div></blockquote>
-<p>right.</p>
-</div></blockquote>
-<p>]
-within the interval [-10, 10].  Hint: plotting the function first will give you a good idea where to look.</p>
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Use the golden-section search algorithm to find all of the local maxima of the
+function.</p>
+<div class="math">
+\[f(n) = \left\{
+        \begin{array}{l l}
+            0 & \quad \text{if $x=0$} \\
+            |x|log(|x|/2)e^{-|x|} & \quad \text{otherwise} \\
+        \end{array}
+     \right.\]</div><p>within the interval [-10, 10].  Hint: plotting the function first will give you a good idea where to look.</p>
 </div>
 <div class="section" id="exercise-2">
-<h1>## Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h1>
-<p>Write a version of function <code class="docutils literal"><span class="pre">golden</span> <span class="pre">section</span></code> from class that plots intermediate results. That is, plot the function being optimised, then at each step draw a vertical line at the positions xl , xr , xm, and y (with the line at y in a different colour). Apply this new golden section algorithm to the function in exercise 1.</p>
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Find the allocation of capital <span class="math">\(K\)</span>  and labor <span class="math">\(L\)</span> that maximizes the following
+profit function of a representative firm:</p>
+<div class="math">
+\[max_{\{K,L\}} A(K^{0.33} * L^{0.67}) - wL - rK,\]</div>
+<p>where  the wage rate is <span class="math">\(w = 1.84\)</span> and the cost of capital is
+<span class="math">\(r=0.75\)</span> and <span class="math">\(A=4\)</span>.</p>
+<p>In order to NOT have to maximize over two dimensions, I would like you to
+maximize this function w.r.t. capital <span class="math">\(K\)</span> and various values for labor
+<span class="math">\(L\)</span>. So within a loop you need to maximize the function for
+<span class="math">\(L=\{1,1.5,2,2.5,3,3.5,4,4.5,5\}\)</span>.</p>
+<p>The result should be nine optimal <span class="math">\(K^*\)</span> values.
+Hint: I would define <span class="math">\(L\)</span> as a global variable so you can change its value
+outside of the function.</p>
 </div>
-<div class="section" id="exercise-3">
-<h1>## Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h1>
-<p>Find the allocation of capital $K$ and labor $L$ that maximizes the following profit function of a represenatative firm:</p>
-<p>$$ max_{{K,L}} A(K^{0.33} + L^{0.67}) - wL - rK,$$</p>
-<p>where  the wage rate is $w = 1.84$ and the cost of capital is $r=0.75$ and $A=4$.</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Plot the function assuming values for $K in[0,10]$ and $L in [0,10]$.</li>
-<li>Find $K^*$ and $L^*$ that maximize profits</li>
-</ol>
-</div></blockquote>
+<div class="section" id="harder-exercise-3">
+<h2>Harder: Exercise 3<a class="headerlink" href="#harder-exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Write a version of function <code class="docutils literal"><span class="pre">golden</span> <span class="pre">section</span></code> from class that plots
+intermediate results. That is, plot the function being optimised, then at each
+step draw a vertical line at the positions xl , xr , xm, and y (with the line
+at y in a different colour). Apply this new golden section algorithm to the
+function in exercise 1.</p>
+<p>As you run this code you should visually see how the brackets move in at each
+iteration and get closer and closer to the maximum.</p>
+</div>
 </div>
 
 
