@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -30,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="8. Object Oriented Programming" href="Slides_OOP.html"/>
         <link rel="prev" title="6. Plotting using matplotlib" href="Slides_Plot.html"/> 
@@ -41,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,14 +87,17 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">7. Functions</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#use-simple-user-defined-functions">7.1. Use simple user defined functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-graphing-using-loops-and-functions">7.2. Advanced Graphing using loops and functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#graphing-functions-with-two-input-arguments-z-f-x-y">7.2.1. Graphing functions with two input arguments z = f(x,y)</a></li>
@@ -104,16 +113,17 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">11. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">14. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">15. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">16. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">17. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">18. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">19. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">20. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">21. Assignments</a></li>
 </ul>
 
             
@@ -126,8 +136,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -140,19 +152,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>7. Functions</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>7. Functions</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/Slides_Functions.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/Slides_Functions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -203,7 +232,7 @@ functions with the <code class="docutils literal"><span class="pre">import</span
 <span class="n">mfunc</span><span class="o">.</span><span class="n">hw2</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">5.6</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0.31154136351337786
+<div class="highlight-default"><div class="highlight"><pre><span></span>0.31154136351337786
 Hello, World! sin(2.50+5.60) = 0.97
 </pre></div>
 </div>
@@ -312,11 +341,11 @@ cannot be manipulated directly from within a function.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x outside function = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x in myFun =  6
-x outside function =  10
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">in</span> <span class="n">myFun</span> <span class="o">=</span>  <span class="mi">6</span>
+<span class="n">x</span> <span class="n">outside</span> <span class="n">function</span> <span class="o">=</span>  <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Now let&#8217;s try to access a variable that is defined outside of the function in
+<p>Now let’s try to access a variable that is defined outside of the function in
 what is called the global name space as opposed to the local name space inside of
 the function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -329,8 +358,8 @@ the function.</p>
 <span class="n">myFun2</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x inside myFun2 =  6
-y inside myFun2 =  10
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">inside</span> <span class="n">myFun2</span> <span class="o">=</span>  <span class="mi">6</span>
+<span class="n">y</span> <span class="n">inside</span> <span class="n">myFun2</span> <span class="o">=</span>  <span class="mi">10</span>
 </pre></div>
 </div>
 <p>Here we see that it is still possible to access variable <code class="docutils literal"><span class="pre">y</span></code> despite the fact
@@ -350,9 +379,9 @@ Let us now try to change the value of variable <code class="docutils literal"><s
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>x inside myFun3 =  6
-y inside myFun3 =  5
-y outside function = 10
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">inside</span> <span class="n">myFun3</span> <span class="o">=</span>  <span class="mi">6</span>
+<span class="n">y</span> <span class="n">inside</span> <span class="n">myFun3</span> <span class="o">=</span>  <span class="mi">5</span>
+<span class="n">y</span> <span class="n">outside</span> <span class="n">function</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
 <p>Here we use variable <code class="docutils literal"><span class="pre">y</span></code> again and define it as a local variable inside the
@@ -360,7 +389,7 @@ function.  However, this change is only valid inside the <strong>local</strong> 
 of the function. Once we are outside the function the value of <code class="docutils literal"><span class="pre">y</span></code> is 10
 again. So <code class="docutils literal"><span class="pre">y</span></code> has now two instances, one in the local name space inside the
 function and another one in the <strong>global</strong> name space outside of the function.</p>
-<p>Let&#8217;s next try to manipulate a variable that is not explicitly handed into the
+<p>Let’s next try to manipulate a variable that is not explicitly handed into the
 function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun4</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -375,7 +404,7 @@ function.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;UnboundLocalError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;UnboundLocalError&#39;&gt;
 local variable &#39;y&#39; referenced before assignment
 </pre></div>
 </div>
@@ -401,11 +430,11 @@ to spot.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>y outside function = 10
-x inside myFun5 =  6
-y inside myFun5 =  10
-y inside myFun5 =  11
-y outside function = 11
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="n">outside</span> <span class="n">function</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="n">inside</span> <span class="n">myFun5</span> <span class="o">=</span>  <span class="mi">6</span>
+<span class="n">y</span> <span class="n">inside</span> <span class="n">myFun5</span> <span class="o">=</span>  <span class="mi">10</span>
+<span class="n">y</span> <span class="n">inside</span> <span class="n">myFun5</span> <span class="o">=</span>  <span class="mi">11</span>
+<span class="n">y</span> <span class="n">outside</span> <span class="n">function</span> <span class="o">=</span> <span class="mi">11</span>
 </pre></div>
 </div>
 </div>
@@ -432,16 +461,16 @@ following will happen when you call the function:</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
-inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
-inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
-outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">,</span> <span class="s1">&#39;bruno&#39;</span><span class="p">]</span>
+<span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">,</span> <span class="s1">&#39;bruno&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We see that the local operation on the list has now affected the global list as
 well. Why is that? It has to do with how <strong>Python</strong> treats list assignments.
 When you assign a list to a new name, you do not create a new list object. The
-new name simply points to the same location in the computer&#8217;s memory where the
+new name simply points to the same location in the computer’s memory where the
 original list is saved. This preserves space.
 If you now start manipulating the list under its new
 name, it will translate into changes when calling the same list under its old
@@ -474,10 +503,10 @@ namespace.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
-inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
-inside function:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;, &#39;bruno&#39;]
-outside:  [&#39;Steve&#39;, &#39;Russell&#39;, &#39;Alison&#39;, &#39;Liam&#39;]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">,</span> <span class="s1">&#39;bruno&#39;</span><span class="p">]</span>
+<span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Russell&#39;</span><span class="p">,</span> <span class="s1">&#39;Alison&#39;</span><span class="p">,</span> <span class="s1">&#39;Liam&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>If you deal with <code class="docutils literal"><span class="pre">numpy</span></code> arrays you do not have to worry about this. As a new
@@ -500,10 +529,10 @@ pointer to an existing space in memory. Try this:</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;outside: &#39;</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>outside:  [1 2 3]
-inside function:  [1 2 3]
-inside function:  [1 2 3 4]
-outside:  [1 2 3]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">inside</span> <span class="n">function</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">outside</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -528,29 +557,29 @@ variables.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
-Name: mike
-Age: 50
------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-----------------</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">mike</span>
+<span class="n">Age</span><span class="p">:</span> <span class="mi">50</span>
+<span class="o">-----------------</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
-Name: mike
-Age: 35
------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-----------------</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">mike</span>
+<span class="n">Age</span><span class="p">:</span> <span class="mi">35</span>
+<span class="o">-----------------</span>
 </pre></div>
 </div>
 <p>This next function call is problematic as it reverses the variable order!</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
-Name: 50
-Age: john
------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-----------------</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">Age</span><span class="p">:</span> <span class="n">john</span>
+<span class="o">-----------------</span>
 </pre></div>
 </div>
 <p>If you want to reverse the order you need to provide the keyword argument</p>
@@ -558,10 +587,10 @@ Age: john
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>-----------------
-Name: mike
-Age: 50
------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-----------------</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">mike</span>
+<span class="n">Age</span><span class="p">:</span> <span class="mi">50</span>
+<span class="o">-----------------</span>
 </pre></div>
 </div>
 <p>And this one throws a syntax error since we are inconsistent with out function
@@ -572,7 +601,7 @@ variable assignments and therefore it throws an error.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;SyntaxError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;SyntaxError&#39;&gt;
 non-keyword arg after keyword arg (chunk, line 2)
 </pre></div>
 </div>
@@ -586,15 +615,18 @@ standard deviation of the elements of an input vector.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_OOP.html" class="btn btn-neutral float-right" title="8. Object Oriented Programming" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_OOP.html" class="btn btn-neutral float-right" title="8. Object Oriented Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Plot.html" class="btn btn-neutral" title="6. Plotting using matplotlib" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Plot.html" class="btn btn-neutral" title="6. Plotting using matplotlib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -628,7 +660,8 @@ standard deviation of the elements of an input vector.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

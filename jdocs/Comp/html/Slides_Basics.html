@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -30,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="3. Basic programming techniques" href="Slides_Loop.html"/>
         <link rel="prev" title="1. Course Administration" href="Slides_CourseAdministration.html"/> 
@@ -41,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,9 +87,12 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">2. First steps in Python</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. First steps in Python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple-calculations">2.1. Simple calculations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-print-function">2.2. The print function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#script-files">2.3. Script files</a></li>
@@ -106,16 +115,17 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">11. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">14. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">15. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">16. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">17. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">18. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">19. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">20. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">21. Assignments</a></li>
 </ul>
 
             
@@ -128,8 +138,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -142,19 +154,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>2. First steps in Python</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. First steps in Python</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/Slides_Basics.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/Slides_Basics.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -166,16 +195,16 @@
 <span id="index-0"></span><h2>2.1. Simple calculations<a class="headerlink" href="#simple-calculations" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">After installation, open <strong>Spyder</strong> and try some of the following in the
 command line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.4</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-<span class="go">5.4</span>
+<span class="go">5.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="go">x=  2.4</span>
+<span class="go">x=  2.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;y= &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">y=  3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y = &quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">x + y =  5.4</span>
+<span class="go">x + y =  5.5</span>
 </pre></div>
 </div>
 <p>Then try the following:</p>
@@ -228,12 +257,12 @@ you can now take the square root with <code class="docutils literal"><span class
 <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> --- OUTPUT: ---
-5.578995
-7.6697787092
-0.7861700560920011
-16.542802038492464
-1.5670210592075653
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<span class="mf">5.578995</span>
+<span class="mf">7.6697787092</span>
+<span class="mf">0.7861700560920011</span>
+<span class="mf">16.542802038492464</span>
+<span class="mf">1.5670210592075653</span>
 </pre></div>
 </div>
 <p>If you want to see a list of all the functions in the math module you can type:
@@ -266,14 +295,14 @@ placeholder for where the number will be inserted.</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;sqrt(x)= {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> --- OUTPUT: ---
-x+y 5.578995
-x + y  = 5.578995
-x + y  =  5.58
-x * y  =  7.67
-x / y  =  0.79
-x ** y = 16.54
-sqrt(x)=  1.57
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<span class="n">x</span><span class="o">+</span><span class="n">y</span> <span class="mf">5.578995</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span> <span class="mf">5.578995</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">5.58</span>
+<span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">7.67</span>
+<span class="n">x</span> <span class="o">/</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">0.79</span>
+<span class="n">x</span> <span class="o">**</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">16.54</span>
+<span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span>  <span class="mf">1.57</span>
 </pre></div>
 </div>
 <p>You can write more complex output with more than one number embedded in a text
@@ -284,19 +313,19 @@ as follows:</p>
 <span class="s2">x/y = {2:4.2f}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> --- OUTPUT: ---
-We want to use variable x = 2.46
- and divide by
-variable y = 3.12,
- so that we end up with expression
-x/y = 0.79
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<span class="n">We</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.46</span>
+ <span class="ow">and</span> <span class="n">divide</span> <span class="n">by</span>
+<span class="n">variable</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12</span><span class="p">,</span>
+ <span class="n">so</span> <span class="n">that</span> <span class="n">we</span> <span class="n">end</span> <span class="n">up</span> <span class="k">with</span> <span class="n">expression</span>
+<span class="n">x</span><span class="o">/</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.79</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="script-files">
 <span id="index-3"></span><h2>2.3. Script files<a class="headerlink" href="#script-files" title="Permalink to this headline">¶</a></h2>
-<p>Before we go on, let&#8217;s save all our commands in a so called Script file. These
-are basically text files that contain all commands in one big &#8220;laundry list&#8221;
+<p>Before we go on, let’s save all our commands in a so called Script file. These
+are basically text files that contain all commands in one big “laundry list”
 that we can then execute all at once.  In order to open such a script file in
 <strong>Spyder</strong> simply click on <code class="docutils literal"><span class="pre">File</span></code> <span class="math">\(\rightarrow\)</span> <code class="docutils literal"><span class="pre">New</span></code>. Copy/paste the
 above commands into this script file and save it under a name of your choosing.
@@ -306,16 +335,16 @@ Python script file.  You can then edit this file at will and add commands etc.</
 button on top of your editor window. You can also execute the script file line
 by line. Simply mark the line, right click, and choose to execute
 selection or click on the <code class="docutils literal"><span class="pre">Run</span></code> icon on top of your
-editor window.  This is the green button with the &#8220;running man
-symbol&#8221; on top of your editor window. If you&#8217;d like to execute just one line,
-mark the line and click on the &#8220;running man symbol&#8221; to the right of the first
+editor window.  This is the green button with the “running man
+symbol” on top of your editor window. If you’d like to execute just one line,
+mark the line and click on the “running man symbol” to the right of the first
 green button.</p>
 <p>For the remainder of the class I highly recommend that you always use script
 files. This will help you to quickly run your code and evaluate your results.</p>
 </div>
 <div class="section" id="ipython-notebook">
 <span id="index-4"></span><h2>2.4. iPython Notebook<a class="headerlink" href="#ipython-notebook" title="Permalink to this headline">¶</a></h2>
-<p>A different way to write your codes is via th <a class="reference external" href="http://ipython.org/notebook.html">iPython Notebook</a>. Read the instructions carefully, it
+<p>A different way to write your codes is via the <a class="reference external" href="http://ipython.org/notebook.html">iPython Notebook</a>. Read the instructions carefully, it
 should be pretty self explanatory. All you need to do is you open a terminal
 window.</p>
 <blockquote>
@@ -344,18 +373,18 @@ example:</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The list is alist = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="nb">list</span> <span class="ow">is</span> <span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Alternatively we could translate the list into a string and then print it. You
 can tag together strings with the plus sign.
 which combines a string <code class="docutils literal"><span class="pre">&quot;The</span> <span class="pre">list</span> <span class="pre">is</span> <span class="pre">alist</span> <span class="pre">=</span> <span class="pre">&quot;</span></code> together with another string
 <code class="docutils literal"><span class="pre">str(alist)</span></code>. The Python funciton <strong>str()</strong> translates a number into a string,
-i.e., a word and then prints the combined &#8220;word&#8221;.</p>
+i.e., a word and then prints the combined “word”.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>The list is alist = [1, &#39;me&#39;, 3.456, &#39;you&#39;, 50]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="nb">list</span> <span class="ow">is</span> <span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We can access the elements of a list bit by bit using list indexation. Note
@@ -367,7 +396,7 @@ that the first element in the list is at position 0.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span>
 <span class="n">me</span>
 <span class="mf">3.456</span>
 <span class="n">you</span>
@@ -382,7 +411,7 @@ that the first element in the list is at position 0.</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[4] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">me</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.456</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">you</span>
@@ -400,7 +429,7 @@ can <code class="docutils literal"><span class="pre">alist[2:]</span></code></p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[2:] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
@@ -414,20 +443,20 @@ negative numbers.</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alist[-3] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">you</span>
 <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.456</span>
 </pre></div>
 </div>
 <p>You can change elements of a list by reassigning them using their index. So if
-you want to replace the third element of the list with the word &#8220;Mom&#8221; you
+you want to replace the third element of the list with the word “Mom” you
 simply assign it as</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>What about more complicated lists, where the elements inside the list are lists
@@ -436,20 +465,20 @@ themselves. In this case we are dealing with nested lists. Here is an example:</
 <span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kids&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kids&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Now let&#8217;s see what happens if we index this list. Try the following:</p>
+<p>Now let’s see what happens if we index this list. Try the following:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>[&#39;Mom&#39;, 42]
----------------
-[&#39;Dad&#39;, 41]
----------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="o">---------------</span>
+<span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">]</span>
+<span class="o">---------------</span>
 </pre></div>
 </div>
 <p>Then try</p>
@@ -461,15 +490,15 @@ themselves. In this case we are dealing with nested lists. Here is an example:</
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Mom
----------------
-Dad
----------------
-41
----------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Mom</span>
+<span class="o">---------------</span>
+<span class="n">Dad</span>
+<span class="o">---------------</span>
+<span class="mi">41</span>
+<span class="o">---------------</span>
 </pre></div>
 </div>
-<p>Now let&#8217;s go one step deeper into the list:</p>
+<p>Now let’s go one step deeper into the list:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
@@ -478,12 +507,12 @@ Dad
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>D
----------------
-a
----------------
-d
----------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span>
+<span class="o">---------------</span>
+<span class="n">a</span>
+<span class="o">---------------</span>
+<span class="n">d</span>
+<span class="o">---------------</span>
 </pre></div>
 </div>
 <p>This example shows how you can extract content from a list inside of a list by
@@ -492,7 +521,7 @@ outside the range of the inside list, the interpreter will throw an error:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;IndexError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;IndexError&#39;&gt;
 string index out of range
 </pre></div>
 </div>
@@ -505,7 +534,7 @@ It is a read-only list.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="mf">3.456</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now try to change an element of the tuple and see what happens.</p>
@@ -513,7 +542,7 @@ It is a read-only list.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;TypeError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;TypeError&#39;&gt;
 &#39;tuple&#39; object does not support item assignment
 </pre></div>
 </div>
@@ -521,7 +550,7 @@ It is a read-only list.</p>
 </div>
 <div class="section" id="dictionaries">
 <h3>2.5.3. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
-<p>Dictionaries or short &#8220;dicts&#8221; are more general mappings and word list
+<p>Dictionaries or short “dicts” are more general mappings and word list
 associative arrays or so called hashes. They are basically key-value pairs
 where a key can be almost any Python type. So instead of indexing a list with
 indexes (which are numbers starting from 0, 1, etc.) the indices of a dictionary
@@ -542,7 +571,7 @@ each person with the persons name.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;James&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
 <span class="mi">20000</span>
 <span class="mi">50000</span>
 <span class="mi">80000</span>
@@ -553,7 +582,7 @@ each person with the persons name.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +600,7 @@ mistakes.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -590,7 +619,7 @@ If you really just want to copy the list and give that separate copy the name
 <span class="k">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -602,14 +631,14 @@ If you really just want to copy the list and give that separate copy the name
 <span class="k">print</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>  <span class="c1"># You cannot do: print(list1.sort())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>But if you now try:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;TypeError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;TypeError&#39;&gt;
 can only concatenate list (not &quot;NoneType&quot;) to list
 </pre></div>
 </div>
@@ -623,7 +652,7 @@ Here is one way to fix this, use the <code class="docutils literal"><span class=
 <span class="k">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -642,15 +671,18 @@ Here is one way to fix this, use the <code class="docutils literal"><span class=
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="3. Basic programming techniques" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="3. Basic programming techniques" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_CourseAdministration.html" class="btn btn-neutral" title="1. Course Administration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_CourseAdministration.html" class="btn btn-neutral" title="1. Course Administration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -684,7 +716,8 @@ Here is one way to fix this, use the <code class="docutils literal"><span class=
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

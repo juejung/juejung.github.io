@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -30,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="10. Working with data II: Statistics" href="Slides_Data_2.html"/>
         <link rel="prev" title="8. Object Oriented Programming" href="Slides_OOP.html"/> 
@@ -41,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
@@ -90,12 +99,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">9. Working with data I: Data cleaning</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Working with data I: Data cleaning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#read-in-small-data-set-from-a-comma-separated-csv-file">9.1. Read in small data set from a comma separated (.csv) file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#some-pandas-tricks">9.2. Some Pandas tricks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#renaming-variables">9.2.1. Renaming variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-a-new-column">9.2.2. Adding a new column</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">9.2.3. Missing values of NaN&#8217;s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">9.2.3. Missing values of NaN’s</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-rows-to-the-dataframe">9.2.4. Add rows to the DataFrame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sorting-and-reindexing-dataframes">9.2.5. Sorting and reindexing DataFrames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#merging-dataframes-or-adding-columns">9.2.6. Merging DataFrames or adding columns</a></li>
@@ -106,16 +115,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">11. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">14. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">15. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">16. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">17. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">18. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">19. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">20. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">21. Assignments</a></li>
 </ul>
 
             
@@ -128,8 +138,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -142,19 +154,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>9. Working with data I: Data cleaning</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. Working with data I: Data cleaning</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/Slides_Data_1.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/Slides_Data_1.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -163,8 +192,8 @@
   <div class="section" id="working-with-data-i-data-cleaning">
 <h1>9. Working with data I: Data cleaning<a class="headerlink" href="#working-with-data-i-data-cleaning" title="Permalink to this headline">¶</a></h1>
 <p>We will be working with two data sets.
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a1.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b1.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.</p>
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a.csv" download=""><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_b.csv" download=""><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.</p>
 <div class="section" id="read-in-small-data-set-from-a-comma-separated-csv-file">
 <h2>9.1. Read in small data set from a comma separated (.csv) file<a class="headerlink" href="#read-in-small-data-set-from-a-comma-separated-csv-file" title="Permalink to this headline">¶</a></h2>
 <p>We use the <code class="docutils literal"><span class="pre">Pandas</span></code> package for data work.  We can import the <code class="docutils literal"><span class="pre">Pandas</span></code>
@@ -182,7 +211,7 @@ a one dimensional <strong>DataFrame</strong>, i.e., a column or row of a matrix.
 </ul>
 </div></blockquote>
 <p>The first dataset that we are working with is a comma separated file, called
-<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a1.csv"><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
+<a class="reference download internal" href="_downloads/Lecture_Data_Excel_a.csv" download=""><code class="xref download docutils literal"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
 We first import this file using the <code class="docutils literal"><span class="pre">pd.read_csv</span></code> command from the <code class="docutils literal"><span class="pre">Pandas</span></code> library.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -196,7 +225,7 @@ We first import this file using the <code class="docutils literal"><span class="
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;ImportError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;ModuleNotFoundError&#39;&gt;
 No module named &#39;ggplot&#39;
 </pre></div>
 </div>
@@ -215,25 +244,25 @@ No module named &#39;ggplot&#39;
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  Unnamed: 2  Unnamed: 3
-0          Accounting         73         NaN         NaN
-1             Finance         52         NaN         NaN
-2  General management         36         NaN         NaN
-3     Marketing sales         64         NaN         NaN
-4               other         28         NaN         NaN
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">2</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>Alternatively we could have use the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>df = pd.read_table(filepath + &#39;Lecture_Data_Excel_a.csv&#39;), sep=&#39;,&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">Pandas</span></code> also has a built in Excel file reader that you can call as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Read entire excel spreadsheet</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Read entire excel spreadsheet</span>
 <span class="n">xl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;Lecture_Data_Excel_a.xlsx&quot;</span><span class="p">)</span>
 
 <span class="c1"># Check how many sheets we have inside the excel file</span>
 <span class="n">xl</span><span class="o">.</span><span class="n">sheet_names</span>
-<span class="p">[</span><span class="s1">u&#39;Sheet1&#39;</span><span class="p">,</span> <span class="s1">u&#39;Sheet2&#39;</span><span class="p">,</span> <span class="s1">u&#39;Sheet3&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet3&#39;</span><span class="p">]</span>
 
 <span class="c1"># Pick one sheet and define it as your DataFrame by parsing a sheet</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
@@ -253,36 +282,36 @@ No module named &#39;ggplot&#39;
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Shape (5, 4)
--------------------------
-Number of rows 5
--------------------------
-Column headers Index([&#39;Area&#39;, &#39;Frequency&#39;, &#39;Unnamed: 2&#39;, &#39;Unnamed:
-3&#39;], dtype=&#39;object&#39;)
--------------------------
-Data types Area           object
-Frequency     float64
-Unnamed: 2    float64
-Unnamed: 3    float64
-dtype: object
--------------------------
-Index Int64Index([0, 1, 2, 3, 4], dtype=&#39;int64&#39;)
--------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Shape</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">-------------------------</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">rows</span> <span class="mi">5</span>
+<span class="o">-------------------------</span>
+<span class="n">Column</span> <span class="n">headers</span> <span class="n">Index</span><span class="p">([</span><span class="s1">&#39;Area&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Unnamed:</span>
+<span class="mi">3</span><span class="s1">&#39;], dtype=&#39;</span><span class="nb">object</span><span class="s1">&#39;)</span>
+<span class="o">-------------------------</span>
+<span class="n">Data</span> <span class="n">types</span> <span class="n">Area</span>           <span class="nb">object</span>
+<span class="n">Frequency</span>     <span class="n">float64</span>
+<span class="n">Unnamed</span><span class="p">:</span> <span class="mi">2</span>    <span class="n">float64</span>
+<span class="n">Unnamed</span><span class="p">:</span> <span class="mi">3</span>    <span class="n">float64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+<span class="o">-------------------------</span>
+<span class="n">Index</span> <span class="n">RangeIndex</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">-------------------------</span>
 </pre></div>
 </div>
-<p>Drop column 3 and 4 and let&#8217;s have a look at the data again.</p>
+<p>Drop column 3 and 4 and let’s have a look at the data again.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency
-0          Accounting         73
-1             Finance         52
-2  General management         36
-3     Marketing sales         64
-4               other         28
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>
+<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>
 </pre></div>
 </div>
 <p>Sometimes column headers have white spaces in them. It is probably a good idea
@@ -292,8 +321,8 @@ command to accomplish this:</p>
 </pre></div>
 </div>
 <p>Here we use the <code class="docutils literal"><span class="pre">lambda</span></code> command which is an inline function. Basically it is
-a shortcut so that we don&#8217;t have to write a separate function using the <code class="docutils literal"><span class="pre">def</span></code>
-keyword etc. It&#8217;s a shortcut for functions that you want to define &#8216;on the fly.&#8217;</p>
+a shortcut so that we don’t have to write a separate function using the <code class="docutils literal"><span class="pre">def</span></code>
+keyword etc. It’s a shortcut for functions that you want to define ‘on the fly.’</p>
 <p>We next generate a new variable called <code class="docutils literal"><span class="pre">relFrequency</span></code> that contains the relative
 frequencies.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make new column with relative frequency</span>
@@ -302,12 +331,12 @@ frequencies.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  relFrequency
-0          Accounting         73      0.288538
-1             Finance         52      0.205534
-2  General management         36      0.142292
-3     Marketing sales         64      0.252964
-4               other         28      0.110672
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>      <span class="mf">0.288538</span>
+<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>      <span class="mf">0.205534</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>      <span class="mf">0.142292</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>      <span class="mf">0.252964</span>
+<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>      <span class="mf">0.110672</span>
 </pre></div>
 </div>
 <p>Now we grab the relative frequencies out of the DataFrame into a numpy array.</p>
@@ -315,8 +344,8 @@ frequencies.</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Array xv is:&#39;</span><span class="p">,</span> <span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Array xv is: [ 0.28853755  0.2055336   0.14229249  0.25296443
-0.11067194]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Array</span> <span class="n">xv</span> <span class="ow">is</span><span class="p">:</span> <span class="p">[</span> <span class="mf">0.28853755</span>  <span class="mf">0.2055336</span>   <span class="mf">0.14229249</span>  <span class="mf">0.25296443</span>
+<span class="mf">0.11067194</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Let us make additional columns</span>
@@ -325,12 +354,12 @@ frequencies.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 Area  Frequency  relFrequency    random
-0          Accounting         73      0.288538  0.288538
-1             Finance         52      0.205534  0.205534
-2  General management         36      0.142292  0.142292
-3     Marketing sales         64      0.252964  0.252964
-4               other         28      0.110672  0.110672
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>    <span class="n">random</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>      <span class="mf">0.288538</span>  <span class="mf">0.288538</span>
+<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>      <span class="mf">0.205534</span>  <span class="mf">0.205534</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>      <span class="mf">0.142292</span>  <span class="mf">0.142292</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>      <span class="mf">0.252964</span>  <span class="mf">0.252964</span>
+<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>      <span class="mf">0.110672</span>  <span class="mf">0.110672</span>
 </pre></div>
 </div>
 </div>
@@ -345,10 +374,10 @@ frequencies.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  relFrequency    random
-0          Accounting            73      0.288538  0.288538
-1             Finance            52      0.205534  0.205534
-2  General management            36      0.142292  0.142292
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">relFrequency</span>    <span class="n">random</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>      <span class="mf">0.288538</span>  <span class="mf">0.288538</span>
+<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>      <span class="mf">0.205534</span>  <span class="mf">0.205534</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>      <span class="mf">0.142292</span>  <span class="mf">0.142292</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">head(x)</span></code> method allows us to print <code class="docutils literal"><span class="pre">x</span></code> rows from the top of the
@@ -369,24 +398,24 @@ the DataFrame.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-0          Accounting            73       NaN      0.288538     2
-1             Finance            52         1      0.205534     4
-2  General management            36       NaN      0.142292   NaN
-3     Marketing sales            64         1      0.252964     6
-4               other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="missing-values-of-nan-s">
-<h3>9.2.3. Missing values of NaN&#8217;s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.3. Missing values of NaN’s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
 <p><strong>Count NaNs</strong></p>
 <p>Count the number of rows with missing values.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} rows have missing values&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nans</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>2 rows have missing values
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="n">rows</span> <span class="n">have</span> <span class="n">missing</span> <span class="n">values</span>
 </pre></div>
 </div>
 <p><strong>Select rows with NaNs or overwrite NaNs</strong></p>
@@ -395,17 +424,17 @@ the DataFrame.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-0          Accounting            73       NaN      0.288538     2
-2  General management            36       NaN      0.142292   NaN
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>Or if you want to search specific columns for missing values you can do</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-2  General management            36       NaN      0.142292   NaN
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>Or if you want to grab all the rows without missing observations you can index
@@ -413,21 +442,21 @@ the dataframe with the <code class="docutils literal"><span class="pre">notnull(
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
-0       Accounting            73       NaN      0.288538     2
-1          Finance            52         1      0.205534     4
-3  Marketing sales            64         1      0.252964     6
-4            other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>       <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p><strong>Delete rows with NaNs</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
-1          Finance            52         1      0.205534     4
-3  Marketing sales            64         1      0.252964     6
-4            other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p>You can also reassign it to the orignal DataFrame or assign
@@ -436,10 +465,10 @@ a new one.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
-1          Finance            52         1      0.205534     4
-3  Marketing sales            64         1      0.252964     6
-4            other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p><strong>Overwriting NaN with specific values</strong>
@@ -449,12 +478,12 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-0          Accounting            73         0      0.288538     2
-1             Finance            52         1      0.205534     4
-2  General management            36         0      0.142292     0
-3     Marketing sales            64         1      0.252964     6
-4               other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="mf">0.0</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="mf">0.0</span>      <span class="mf">0.142292</span>   <span class="mf">0.0</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 </div>
@@ -469,10 +498,10 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>              area  absFrequency  position  relFrequency  team
-3  Marketing sales            64         1      0.252964     6
-4            other            28         3      0.110672    10
-5              NaN           NaN       NaN           NaN   NaN
+<div class="highlight-default"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>              <span class="n">NaN</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>We can then fill this empty row with data.</p>
@@ -481,13 +510,13 @@ If we want to overwrite the <code class="docutils literal"><span class="pre">NaN
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-0          Accounting            73         0      0.288538     2
-1             Finance            52         1      0.205534     4
-2  General management            36         0      0.142292     0
-3     Marketing sales            64         1      0.252964     6
-4               other            28         3      0.110672    10
-5           Economics            25       NaN           NaN   NaN
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="mf">0.0</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="mf">0.0</span>      <span class="mf">0.142292</span>   <span class="mf">0.0</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>           <span class="n">Economics</span>          <span class="mf">25.0</span>       <span class="n">NaN</span>           <span class="n">NaN</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 </div>
@@ -499,18 +528,14 @@ the <code class="docutils literal"><span class="pre">sort()</span></code> DataFr
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-0          Accounting            73         0      0.288538     2
-3     Marketing sales            64         1      0.252964     6
-1             Finance            52         1      0.205534     4
-2  General management            36         0      0.142292     0
-4               other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;AttributeError&#39;&gt;
+&#39;DataFrame&#39; object has no attribute &#39;sort&#39;
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">inplace=True</span></code> option will immediately overwrite the DataFrame <code class="docutils literal"><span class="pre">df</span></code>
 with the new, sorted, one. If you set <code class="docutils literal"><span class="pre">inplace=False</span></code> you would have to
 assign a new DataFrame in order to see the changes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Where <code class="docutils literal"><span class="pre">df1</span></code> would now be the sorted DataFrame and the original <code class="docutils literal"><span class="pre">df</span></code>
@@ -522,12 +547,12 @@ very large. Setting <code class="docutils literal"><span class="pre">inplace=Tru
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                 area  absFrequency  position  relFrequency  team
-1          Accounting            73         0      0.288538     2
-2     Marketing sales            64         1      0.252964     6
-3             Finance            52         1      0.205534     4
-4  General management            36         0      0.142292     0
-5               other            28         3      0.110672    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">1</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="mf">0.0</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">2</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="mf">0.0</span>      <span class="mf">0.142292</span>   <span class="mf">0.0</span>
+<span class="mi">4</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">5</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 </div>
@@ -552,15 +577,15 @@ would like to merge into the original DataFrame.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df_team</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   sales  team
-0    500     3
-1    300     4
-2    250     5
-3    450     6
-4    345     7
-5    123     8
-6    432     9
-7    890    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">sales</span>  <span class="n">team</span>
+<span class="mi">0</span>    <span class="mi">500</span>     <span class="mi">3</span>
+<span class="mi">1</span>    <span class="mi">300</span>     <span class="mi">4</span>
+<span class="mi">2</span>    <span class="mi">250</span>     <span class="mi">5</span>
+<span class="mi">3</span>    <span class="mi">450</span>     <span class="mi">6</span>
+<span class="mi">4</span>    <span class="mi">345</span>     <span class="mi">7</span>
+<span class="mi">5</span>    <span class="mi">123</span>     <span class="mi">8</span>
+<span class="mi">6</span>    <span class="mi">432</span>     <span class="mi">9</span>
+<span class="mi">7</span>    <span class="mi">890</span>    <span class="mi">10</span>
 </pre></div>
 </div>
 <p>This new DataFrame contains some sales information for each team. We next merge
@@ -571,10 +596,10 @@ the DataFrame fits on the screen.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
-0            64         1          0.25     6    450
-1            52         1          0.20     4    300
-2            28         3          0.11    10    890
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>            <span class="mi">64</span>         <span class="mi">1</span>          <span class="mf">0.25</span>     <span class="mi">6</span>    <span class="mi">450</span>
+<span class="mi">1</span>            <span class="mi">52</span>         <span class="mi">1</span>          <span class="mf">0.20</span>     <span class="mi">4</span>    <span class="mi">300</span>
+<span class="mi">2</span>            <span class="mi">28</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>    <span class="mi">890</span>
 </pre></div>
 </div>
 <p>The inner merge only keeps observations that are present in both DataFrames.
@@ -585,12 +610,12 @@ DataFrame it simply drops the info from the new DataFrame.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
-0            73         0          0.28     2    NaN
-1            64         1          0.25     6    450
-2            52         1          0.20     4    300
-3            36         0          0.14     0    NaN
-4            28         3          0.11    10    890
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>            <span class="mi">73</span>         <span class="mi">0</span>          <span class="mf">0.28</span>     <span class="mi">2</span>    <span class="n">NaN</span>
+<span class="mi">1</span>            <span class="mi">64</span>         <span class="mi">1</span>          <span class="mf">0.25</span>     <span class="mi">6</span>  <span class="mf">450.0</span>
+<span class="mi">2</span>            <span class="mi">52</span>         <span class="mi">1</span>          <span class="mf">0.20</span>     <span class="mi">4</span>  <span class="mf">300.0</span>
+<span class="mi">3</span>            <span class="mi">36</span>         <span class="mi">0</span>          <span class="mf">0.14</span>     <span class="mi">0</span>    <span class="n">NaN</span>
+<span class="mi">4</span>            <span class="mi">28</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>  <span class="mf">890.0</span>
 </pre></div>
 </div>
 <p>The next method only keeps info from the new DataFrame and adds the info of
@@ -598,15 +623,15 @@ the original main DataFrame.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
-0            64         1          0.25     6    450
-1            52         1          0.20     4    300
-2            28         3          0.11    10    890
-3           NaN       NaN           NaN     3    500
-4           NaN       NaN           NaN     5    250
-5           NaN       NaN           NaN     7    345
-6           NaN       NaN           NaN     8    123
-7           NaN       NaN           NaN     9    432
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>          <span class="mf">0.25</span>     <span class="mi">6</span>    <span class="mi">450</span>
+<span class="mi">1</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>          <span class="mf">0.20</span>     <span class="mi">4</span>    <span class="mi">300</span>
+<span class="mi">2</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>          <span class="mf">0.11</span>    <span class="mi">10</span>    <span class="mi">890</span>
+<span class="mi">3</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">3</span>    <span class="mi">500</span>
+<span class="mi">4</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">5</span>    <span class="mi">250</span>
+<span class="mi">5</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">7</span>    <span class="mi">345</span>
+<span class="mi">6</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">8</span>    <span class="mi">123</span>
+<span class="mi">7</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">9</span>    <span class="mi">432</span>
 </pre></div>
 </div>
 <p>The final merge method merges by team whenever possible but keeps the info from both
@@ -614,17 +639,17 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   absFrequency  position  relFrequency  team  sales
-0            73         0          0.28     2    NaN
-1            64         1          0.25     6    450
-2            52         1          0.20     4    300
-3            36         0          0.14     0    NaN
-4            28         3          0.11    10    890
-5           NaN       NaN           NaN     3    500
-6           NaN       NaN           NaN     5    250
-7           NaN       NaN           NaN     7    345
-8           NaN       NaN           NaN     8    123
-9           NaN       NaN           NaN     9    432
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>          <span class="mf">73.0</span>       <span class="mf">0.0</span>          <span class="mf">0.28</span>     <span class="mi">2</span>    <span class="n">NaN</span>
+<span class="mi">1</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>          <span class="mf">0.25</span>     <span class="mi">6</span>  <span class="mf">450.0</span>
+<span class="mi">2</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>          <span class="mf">0.20</span>     <span class="mi">4</span>  <span class="mf">300.0</span>
+<span class="mi">3</span>          <span class="mf">36.0</span>       <span class="mf">0.0</span>          <span class="mf">0.14</span>     <span class="mi">0</span>    <span class="n">NaN</span>
+<span class="mi">4</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>          <span class="mf">0.11</span>    <span class="mi">10</span>  <span class="mf">890.0</span>
+<span class="mi">5</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">3</span>  <span class="mf">500.0</span>
+<span class="mi">6</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">5</span>  <span class="mf">250.0</span>
+<span class="mi">7</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">7</span>  <span class="mf">345.0</span>
+<span class="mi">8</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">8</span>  <span class="mf">123.0</span>
+<span class="mi">9</span>           <span class="n">NaN</span>       <span class="n">NaN</span>           <span class="n">NaN</span>     <span class="mi">9</span>  <span class="mf">432.0</span>
 </pre></div>
 </div>
 </div>
@@ -632,22 +657,22 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 <h3>9.2.7. Converting Column Types<a class="headerlink" href="#converting-column-types" title="Permalink to this headline">¶</a></h3>
 <p>When converting text into a DataFrame to conduct statistical analysis it is
 sometimes necessary to convert a numbers column that is still a string, into
-floats, so that we can do math. Let&#8217;s drop some more columns first so the DataFrame
+floats, so that we can do math. Let’s drop some more columns first so the DataFrame
 fits nicely in the output window.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   position  relFrequency  team
-0         0          0.28     2
-1         1          0.25     6
-2         1          0.20     4
-3         0          0.14     0
-4         3          0.11    10
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>         <span class="mi">0</span>          <span class="mf">0.28</span>     <span class="mi">2</span>
+<span class="mi">1</span>         <span class="mi">1</span>          <span class="mf">0.25</span>     <span class="mi">6</span>
+<span class="mi">2</span>         <span class="mi">1</span>          <span class="mf">0.20</span>     <span class="mi">4</span>
+<span class="mi">3</span>         <span class="mi">0</span>          <span class="mf">0.14</span>     <span class="mi">0</span>
+<span class="mi">4</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>
 </pre></div>
 </div>
-<p>We now generate a column of &#8220;words&#8221; or &#8220;strings&#8221; that happen do be numbers.
+<p>We now generate a column of “words” or “strings” that happen do be numbers.
 Since they are defined as words, we cannot run statistical analysis on these
 numbers yet.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">],</span>
@@ -660,7 +685,7 @@ numbers yet.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;ValueError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;ValueError&#39;&gt;
 Wrong number of items passed 6, placement implies 5
 </pre></div>
 </div>
@@ -676,7 +701,7 @@ rename the column and print summary statistics.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;class &#39;KeyError&#39;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;KeyError&#39;&gt;
 &#39;string&#39;
 </pre></div>
 </div>
@@ -690,17 +715,17 @@ create a DataFrame with some random values:</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0          1          2          3          4
-0  23.245339  68.972620  78.506049  53.861274  69.550444
-1  58.398152   4.264563   2.405285  85.964288  22.144933
-2  71.348303  92.740345  95.175563  91.705137  39.377134
-3  45.009560  86.957242  26.713072  88.273456  67.612644
-4  63.497896  98.621197  41.685681  69.083375  59.485901
-5  44.982269  52.834804  54.520703  49.427121  71.559766
-6  79.588009  14.805966  41.577236  29.443251  20.875117
-7  37.492524  10.800072  54.938490  24.220174  27.707072
-8  91.888159  79.412286  62.278449  56.471522  88.383790
-9  22.665492  55.746956  75.348097  10.335150  67.857937
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
+<span class="mi">0</span>  <span class="mf">27.227011</span>  <span class="mf">43.091028</span>  <span class="mf">18.259194</span>  <span class="mf">56.302402</span>  <span class="mf">94.175781</span>
+<span class="mi">1</span>  <span class="mf">47.118297</span>  <span class="mf">37.559389</span>  <span class="mf">91.087126</span>  <span class="mf">19.487286</span>  <span class="mf">60.440354</span>
+<span class="mi">2</span>  <span class="mf">78.387656</span>  <span class="mf">43.196743</span>  <span class="mf">46.793219</span>  <span class="mf">91.384870</span>  <span class="mf">50.521390</span>
+<span class="mi">3</span>  <span class="mf">86.464214</span>  <span class="mf">62.170190</span>  <span class="mf">70.976320</span>   <span class="mf">3.438991</span>  <span class="mf">15.948738</span>
+<span class="mi">4</span>  <span class="mf">64.542377</span>  <span class="mf">40.959181</span>  <span class="mf">63.034253</span>  <span class="mf">16.496182</span>  <span class="mf">63.164617</span>
+<span class="mi">5</span>  <span class="mf">31.269450</span>  <span class="mf">53.171687</span>   <span class="mf">9.552947</span>   <span class="mf">8.029275</span>  <span class="mf">51.363806</span>
+<span class="mi">6</span>   <span class="mf">2.579720</span>  <span class="mf">11.938408</span>  <span class="mf">45.998760</span>  <span class="mf">71.663892</span>  <span class="mf">66.761011</span>
+<span class="mi">7</span>  <span class="mf">36.888725</span>  <span class="mf">16.947735</span>  <span class="mf">51.691290</span>  <span class="mf">45.150823</span>  <span class="mf">10.216382</span>
+<span class="mi">8</span>  <span class="mf">92.311375</span>  <span class="mf">22.189706</span>   <span class="mf">3.019264</span>  <span class="mf">24.172542</span>  <span class="mf">97.262514</span>
+<span class="mi">9</span>  <span class="mf">96.177538</span>  <span class="mf">40.679146</span>  <span class="mf">90.016236</span>  <span class="mf">84.660707</span>  <span class="mf">76.535804</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal"><span class="pre">2</span></code> that are smaller than 30 with
@@ -709,17 +734,17 @@ the string <cite>low</cite>.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2          3          4
-0  23.245339  68.9726  78.506049  53.861274  69.550444
-1  58.398152      Low   2.405285  85.964288  22.144933
-2  71.348303  92.7403  95.175563  91.705137  39.377134
-3  45.009560  86.9572  26.713072  88.273456  67.612644
-4  63.497896  98.6212  41.685681  69.083375  59.485901
-5  44.982269  52.8348  54.520703  49.427121  71.559766
-6  79.588009      Low  41.577236  29.443251  20.875117
-7  37.492524      Low  54.938490  24.220174  27.707072
-8  91.888159  79.4123  62.278449  56.471522  88.383790
-9  22.665492   55.747  75.348097  10.335150  67.857937
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
+<span class="mi">0</span>  <span class="mf">27.227011</span>   <span class="mf">43.091</span>  <span class="mf">18.259194</span>  <span class="mf">56.302402</span>  <span class="mf">94.175781</span>
+<span class="mi">1</span>  <span class="mf">47.118297</span>  <span class="mf">37.5594</span>  <span class="mf">91.087126</span>  <span class="mf">19.487286</span>  <span class="mf">60.440354</span>
+<span class="mi">2</span>  <span class="mf">78.387656</span>  <span class="mf">43.1967</span>  <span class="mf">46.793219</span>  <span class="mf">91.384870</span>  <span class="mf">50.521390</span>
+<span class="mi">3</span>  <span class="mf">86.464214</span>  <span class="mf">62.1702</span>  <span class="mf">70.976320</span>   <span class="mf">3.438991</span>  <span class="mf">15.948738</span>
+<span class="mi">4</span>  <span class="mf">64.542377</span>  <span class="mf">40.9592</span>  <span class="mf">63.034253</span>  <span class="mf">16.496182</span>  <span class="mf">63.164617</span>
+<span class="mi">5</span>  <span class="mf">31.269450</span>  <span class="mf">53.1717</span>   <span class="mf">9.552947</span>   <span class="mf">8.029275</span>  <span class="mf">51.363806</span>
+<span class="mi">6</span>   <span class="mf">2.579720</span>      <span class="n">Low</span>  <span class="mf">45.998760</span>  <span class="mf">71.663892</span>  <span class="mf">66.761011</span>
+<span class="mi">7</span>  <span class="mf">36.888725</span>      <span class="n">Low</span>  <span class="mf">51.691290</span>  <span class="mf">45.150823</span>  <span class="mf">10.216382</span>
+<span class="mi">8</span>  <span class="mf">92.311375</span>      <span class="n">Low</span>   <span class="mf">3.019264</span>  <span class="mf">24.172542</span>  <span class="mf">97.262514</span>
+<span class="mi">9</span>  <span class="mf">96.177538</span>  <span class="mf">40.6791</span>  <span class="mf">90.016236</span>  <span class="mf">84.660707</span>  <span class="mf">76.535804</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal"><span class="pre">4</span></code> that are larger than 70 with the
@@ -728,37 +753,37 @@ value 1000.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2            3          4
-0  23.245339  68.9726  78.506049    53.861274  69.550444
-1  58.398152      Low   2.405285  1000.000000  22.144933
-2  71.348303  92.7403  95.175563  1000.000000  39.377134
-3  45.009560  86.9572  26.713072  1000.000000  67.612644
-4  63.497896  98.6212  41.685681    69.083375  59.485901
-5  44.982269  52.8348  54.520703    49.427121  71.559766
-6  79.588009      Low  41.577236    29.443251  20.875117
-7  37.492524      Low  54.938490    24.220174  27.707072
-8  91.888159  79.4123  62.278449    56.471522  88.383790
-9  22.665492   55.747  75.348097    10.335150  67.857937
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
+<span class="mi">0</span>  <span class="mf">27.227011</span>   <span class="mf">43.091</span>  <span class="mf">18.259194</span>    <span class="mf">56.302402</span>  <span class="mf">94.175781</span>
+<span class="mi">1</span>  <span class="mf">47.118297</span>  <span class="mf">37.5594</span>  <span class="mf">91.087126</span>    <span class="mf">19.487286</span>  <span class="mf">60.440354</span>
+<span class="mi">2</span>  <span class="mf">78.387656</span>  <span class="mf">43.1967</span>  <span class="mf">46.793219</span>  <span class="mf">1000.000000</span>  <span class="mf">50.521390</span>
+<span class="mi">3</span>  <span class="mf">86.464214</span>  <span class="mf">62.1702</span>  <span class="mf">70.976320</span>     <span class="mf">3.438991</span>  <span class="mf">15.948738</span>
+<span class="mi">4</span>  <span class="mf">64.542377</span>  <span class="mf">40.9592</span>  <span class="mf">63.034253</span>    <span class="mf">16.496182</span>  <span class="mf">63.164617</span>
+<span class="mi">5</span>  <span class="mf">31.269450</span>  <span class="mf">53.1717</span>   <span class="mf">9.552947</span>     <span class="mf">8.029275</span>  <span class="mf">51.363806</span>
+<span class="mi">6</span>   <span class="mf">2.579720</span>      <span class="n">Low</span>  <span class="mf">45.998760</span>  <span class="mf">1000.000000</span>  <span class="mf">66.761011</span>
+<span class="mi">7</span>  <span class="mf">36.888725</span>      <span class="n">Low</span>  <span class="mf">51.691290</span>    <span class="mf">45.150823</span>  <span class="mf">10.216382</span>
+<span class="mi">8</span>  <span class="mf">92.311375</span>      <span class="n">Low</span>   <span class="mf">3.019264</span>    <span class="mf">24.172542</span>  <span class="mf">97.262514</span>
+<span class="mi">9</span>  <span class="mf">96.177538</span>  <span class="mf">40.6791</span>  <span class="mf">90.016236</span>  <span class="mf">1000.000000</span>  <span class="mf">76.535804</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
-combination of conditions. So let&#8217;s replace all the values in column <code class="docutils literal"><span class="pre">5</span></code> that
+combination of conditions. So let’s replace all the values in column <code class="docutils literal"><span class="pre">5</span></code> that
 are between 20 and 80 with the string <cite>middle</cite>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Middle&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>           0        1          2            3        4
-0  23.245339  68.9726  78.506049    53.861274   Middle
-1  58.398152      Low   2.405285  1000.000000   Middle
-2  71.348303  92.7403  95.175563  1000.000000   Middle
-3  45.009560  86.9572  26.713072  1000.000000   Middle
-4  63.497896  98.6212  41.685681    69.083375   Middle
-5  44.982269  52.8348  54.520703    49.427121   Middle
-6  79.588009      Low  41.577236    29.443251   Middle
-7  37.492524      Low  54.938490    24.220174   Middle
-8  91.888159  79.4123  62.278449    56.471522  88.3838
-9  22.665492   55.747  75.348097    10.335150   Middle
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>        <span class="mi">4</span>
+<span class="mi">0</span>  <span class="mf">27.227011</span>   <span class="mf">43.091</span>  <span class="mf">18.259194</span>    <span class="mf">56.302402</span>  <span class="mf">94.1758</span>
+<span class="mi">1</span>  <span class="mf">47.118297</span>  <span class="mf">37.5594</span>  <span class="mf">91.087126</span>    <span class="mf">19.487286</span>   <span class="n">Middle</span>
+<span class="mi">2</span>  <span class="mf">78.387656</span>  <span class="mf">43.1967</span>  <span class="mf">46.793219</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">3</span>  <span class="mf">86.464214</span>  <span class="mf">62.1702</span>  <span class="mf">70.976320</span>     <span class="mf">3.438991</span>  <span class="mf">15.9487</span>
+<span class="mi">4</span>  <span class="mf">64.542377</span>  <span class="mf">40.9592</span>  <span class="mf">63.034253</span>    <span class="mf">16.496182</span>   <span class="n">Middle</span>
+<span class="mi">5</span>  <span class="mf">31.269450</span>  <span class="mf">53.1717</span>   <span class="mf">9.552947</span>     <span class="mf">8.029275</span>   <span class="n">Middle</span>
+<span class="mi">6</span>   <span class="mf">2.579720</span>      <span class="n">Low</span>  <span class="mf">45.998760</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">7</span>  <span class="mf">36.888725</span>      <span class="n">Low</span>  <span class="mf">51.691290</span>    <span class="mf">45.150823</span>  <span class="mf">10.2164</span>
+<span class="mi">8</span>  <span class="mf">92.311375</span>      <span class="n">Low</span>   <span class="mf">3.019264</span>    <span class="mf">24.172542</span>  <span class="mf">97.2625</span>
+<span class="mi">9</span>  <span class="mf">96.177538</span>  <span class="mf">40.6791</span>  <span class="mf">90.016236</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
 </pre></div>
 </div>
 </div>
@@ -767,15 +792,18 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Data_2.html" class="btn btn-neutral float-right" title="10. Working with data II: Statistics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Data_2.html" class="btn btn-neutral float-right" title="10. Working with data II: Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_OOP.html" class="btn btn-neutral" title="8. Object Oriented Programming" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_OOP.html" class="btn btn-neutral" title="8. Object Oriented Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -809,7 +837,8 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
