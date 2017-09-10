@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -42,6 +44,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -82,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Slides_Loop.html">3. Basic programming techniques</a></li>
@@ -116,8 +122,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -126,23 +134,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
-    <li>First Steps in Python</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>First Steps in Python</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../_sources/Lecture_Basics/Homework/Homework_Basics.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -156,8 +181,8 @@
 <li>This file already exists in your shared Dropbox folder. So simply open this
 file with a text editor (or <strong>Spyder</strong>) and start adding to this script
 file.</li>
-<li>Make sure your Dropbox is turned on &#8211; you should see a Dropbox icon in your
-statusbar so that the file &#8216;syncs-up&#8217; to the cloud so that I can see the
+<li>Make sure your Dropbox is turned on – you should see a Dropbox icon in your
+statusbar so that the file ‘syncs-up’ to the cloud so that I can see the
 changes.</li>
 <li>I will base your homework grade on my grading of 2 randomly selected homework
 exercises. So please make sure that you complete every homework 100% as you
@@ -180,14 +205,14 @@ result.</p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2:<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p>Compute the growth of money in a bank. Let <span class="math">\(r\)</span> be a bank&#8217;s interest rate
+<p>Compute the growth of money in a bank. Let <span class="math">\(r\)</span> be a bank’s interest rate
 in percent per year. An initial amount <span class="math">\(A\)</span> has then grown to
 <span class="math">\(A(1+\frac{r}{100})^n\)</span>  after <span class="math">\(n\)</span> years. Make a program for computing how much
 money 1,000 dollars have grown to after three years with a <span class="math">\(5\%\)</span> interest rate.</p>
 </div>
 <div class="section" id="exercise-3">
 <h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
-<p>Type the following program in your Spyder editor and execute it. It won&#8217;t run.
+<p>Type the following program in your Spyder editor and execute it. It won’t run.
 Debug it and make sure it all runs through correctly.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># height</span>
@@ -223,10 +248,18 @@ work, identify and correct the erroneous statements.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Fix the following script. Hint, some variables are used before they are
-defined. Make up some values for undefined variables and add them to your
-script.</li>
+<li>Fix the following script. Hint: Some variables are used before they are
+defined. Make up some values for undefined variables <code class="docutils literal"><span class="pre">m</span></code>, <code class="docutils literal"><span class="pre">s</span></code> etc.
+and add them to your script and make sure it all runs through without any
+more errors. The respective formulas are:</li>
 </ul>
+<div class="math">
+\[\begin{split}\begin{eqnarray*}
+v_0 = 3 \left(\frac{m}{s}\right), \\
+t = 1 \times s, \\
+a = 2 \left(\frac{m}{s}\right)^2, \\
+s = v_0\times t + \left(\frac{1}{2}\right)a\times t^2. \\
+\end{eqnarray*}\end{split}\]</div>
 <p>Code:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">m</span><span class="o">/</span><span class="n">s</span>
 <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">s</span>
@@ -279,6 +312,9 @@ the program. You need to add some <code class="docutils literal"><span class="pr
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -312,7 +348,8 @@ the program. You need to add some <code class="docutils literal"><span class="pr
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
