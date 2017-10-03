@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="9. Working with data I: Data cleaning" href="Slides_Data_1.html"/>
         <link rel="prev" title="7. Functions" href="Slides_Functions.html"/> 
@@ -89,25 +92,25 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">8. Object Oriented Programming</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Object Oriented Programming</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">8.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inheritance-and-subclasses">8.2. Inheritance and subclasses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generating-multiple-objects">8.3. Generating multiple objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">8.4. Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inheritance-and-subclasses">8.2. Inheritance and Subclasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-multiple-objects">8.3. Generating Multiple Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">14. Root finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">11. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">14. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">15. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">16. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">17. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">18. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">19. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">20. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">21. Assignments</a></li>
 </ul>
 
             
@@ -130,7 +133,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -142,7 +145,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/Slides_OOP.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Slides_OOP.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -154,31 +157,47 @@
             
   <div class="section" id="object-oriented-programming">
 <h1>8. Object Oriented Programming<a class="headerlink" href="#object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="oop">
+<p class="first sidebar-title">Section Learning Objectives</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Define Object Class</li>
+<li>Discuss Methods vs. Data</li>
+<li>Subclasses and Inheritance</li>
+<li>Storing User Defined Objects in Lists</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="introduction">
 <h2>8.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Objects are like lists or arrays combined with functions that can be called on
 these lists or arrays. In essence an object is a container holding data and
 methods that can be applied to these data.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">import</span> <span class="nn">time</span> <span class="c1"># Imports system time module to time your script</span>
 </pre></div>
 </div>
 <p>Before using an object, we need to define the blueprint for it. We use the
-<code class="docutils literal"><span class="pre">class</span></code> method to do this and define the blueprint for an animal-object. We
-then defined more blueprints for sub-classes within animals that inherit some
-of the features of animals.</p>
+<code class="docutils literal"><span class="pre">class</span></code> method to do this and define the blueprint for an animal-object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Later we will define more blueprints for sub-classes within animals
+that inherit some common features of animals and then add more specific
+features that are particular to that animal.</p>
+</div>
 <p>When defining object we make the rough distinction between data that the object
 carries - these are usually variables with the prefix <code class="docutils literal"><span class="pre">.self</span></code> and functions
 that can be called on these data and that are defined within the object. These
 functions are called <strong>methods</strong> in object-oriented parlance. In python they
 are defined very similarly to functions from the previous chapter.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 
 <span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the animal class. It&#39;s the top class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Animal Doe&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize the dog-object with a name variable&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the animal-object with a</span>
+<span class="sd">        default name variable&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
 
@@ -202,94 +221,96 @@ are defined very similarly to functions from the previous chapter.</p>
 </pre></div>
 </div>
 <p>You can look at the class blueprint of the animal object using the help() function</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">Animal</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">Animal</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Help on class Animal in module builtins:
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Help</span> <span class="n">on</span> <span class="k">class</span> <span class="nc">Animal</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">builtins</span><span class="p">:</span>
 
-class Animal(object)
- |  This is the animal class. It&#39;s the top class.
- |
- |  Methods defined here:
- |
- |  __init__(self, name=&#39;Animal Doe&#39;, weight=0.0)
- |      Initialize the dog-object with a name variable
- |
- |  eatFood(self, foodAmount=0.0)
- |      Method: eatFood(foodAmount=0)
- |      translates food input &#39;foodAmount&#39;
- |      into additional weight according to the
- |      following formula:
- |      new_weight = old_weight + sqrt(foodAmount)
- |
- |  showMyself(self)
- |      Method: showMyself()
- |      prints out all the variables.
- |
- |
-----------------------------------------------------------------------
- |  Data descriptors defined here:
- |
- |  __dict__
- |      dictionary for instance variables (if defined)
- |
- |  __weakref__
- |      list of weak references to the object (if defined)
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+ <span class="o">|</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">animal</span> <span class="n">class</span><span class="o">.</span> <span class="n">It</span><span class="s1">&#39;s the top class.</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">Methods</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Animal Doe&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Initialize</span> <span class="n">the</span> <span class="n">animal</span><span class="o">-</span><span class="nb">object</span> <span class="k">with</span> <span class="n">a</span>
+ <span class="o">|</span>      <span class="n">default</span> <span class="n">name</span> <span class="n">variable</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">eatFood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">foodAmount</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Method</span><span class="p">:</span> <span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">translates</span> <span class="n">food</span> <span class="nb">input</span> <span class="s1">&#39;foodAmount&#39;</span>
+ <span class="o">|</span>      <span class="n">into</span> <span class="n">additional</span> <span class="n">weight</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span>
+ <span class="o">|</span>      <span class="n">following</span> <span class="n">formula</span><span class="p">:</span>
+ <span class="o">|</span>      <span class="n">new_weight</span> <span class="o">=</span> <span class="n">old_weight</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">foodAmount</span><span class="p">)</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">showMyself</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Method</span><span class="p">:</span> <span class="n">showMyself</span><span class="p">()</span>
+ <span class="o">|</span>      <span class="n">prints</span> <span class="n">out</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">variables</span><span class="o">.</span>
+ <span class="o">|</span>
+ <span class="o">|</span>
+<span class="o">----------------------------------------------------------------------</span>
+ <span class="o">|</span>  <span class="n">Data</span> <span class="n">descriptors</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__dict__</span>
+ <span class="o">|</span>      <span class="n">dictionary</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">variables</span> <span class="p">(</span><span class="k">if</span> <span class="n">defined</span><span class="p">)</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__weakref__</span>
+ <span class="o">|</span>      <span class="nb">list</span> <span class="n">of</span> <span class="n">weak</span> <span class="n">references</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">object</span> <span class="p">(</span><span class="k">if</span> <span class="n">defined</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We next generate an animal object. Here we create the first animal.
 Its name is Birdy and Birdy weighs 5 gramms.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Birdy&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Birdy&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can access the variables (or embedded data) of the
 animal using the animal object and the &#8216;dot&#8217; notation.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The name of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The name of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The weight of the first animal is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>The name of the first animal is Birdy
-The weight of the first animal is 5.0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">animal</span> <span class="ow">is</span> <span class="n">Birdy</span>
+<span class="n">The</span> <span class="n">weight</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">animal</span> <span class="ow">is</span> <span class="mf">5.0</span>
 </pre></div>
 </div>
 <p>Or you can simply call the showMyself() method that was defined within the
 class or blueprint of the animal object.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Birdy
-My weight is 5.0 pounds
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Birdy</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mf">5.0</span> <span class="n">pounds</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
-<p>Now we let the animal eat, by calling the method <code class="docutils literal"><span class="pre">eatFood()</span></code> on the bird object</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<p>Now we let the animal eat, by calling the method <code class="docutils literal"><span class="pre">eatFood()</span></code> on the bird
+object.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The animal&#39;s new weight is = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>The animal&#39;s new weight is = 8.0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">animal</span><span class="s1">&#39;s new weight is = 8.0</span>
 </pre></div>
 </div>
 <p>Another way to see the change is to call the same
 <code class="docutils literal"><span class="pre">showMyself()</span></code> method that we called earlier so you see that the
 animal1 object is actually storing the change in weight permanently.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">animal1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Birdy
-My weight is 8.0 pounds
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Birdy</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mf">8.0</span> <span class="n">pounds</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="inheritance-and-subclasses">
-<h2>8.2. Inheritance and subclasses<a class="headerlink" href="#inheritance-and-subclasses" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. Inheritance and Subclasses<a class="headerlink" href="#inheritance-and-subclasses" title="Permalink to this headline">¶</a></h2>
 <p>We next generate a new class that inherits features of the animal class
-but is more specific. We call it the bird class. A bird is an animal
+but is more specific. We call it the <strong>bird</strong> class. A bird is an animal
 but it has certain bird specific features that other animals do not share.
 Here is the blueprint.</p>
 <p>Note that it is derived from the Animal class
@@ -297,7 +318,13 @@ so that the Bird class <strong>inherits</strong> all the methods and variable de
 its <strong>superclass</strong> of Animals. However, it adds a couple more variables and methods.
 Plus it <strong>overrides</strong> the old method <code class="docutils literal"><span class="pre">showMyself()</span></code> with a more comprehensive
 output.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Inheritance saves us a lot of typing. As you generate other particual
+animal objects, you will not have to retype the methods that all animals
+share. This makes codes more condensed, re-usable and readable.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the bird class, derived from the</span>
 <span class="sd">    animal class.&quot;&quot;&quot;</span>
 
@@ -332,109 +359,109 @@ output.</p>
 <p>Here we redefined the <code class="docutils literal"><span class="pre">showMyself()</span></code> method from the animal class. When we
 call it on the bird object, it will use this new definition of the method.</p>
 <p>Now let&#8217;s look at the bird&#8217;s class blueprint</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">Bird</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">Bird</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Help on class Bird in module builtins:
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Help</span> <span class="n">on</span> <span class="k">class</span> <span class="nc">Bird</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">builtins</span><span class="p">:</span>
 
-class Bird(Animal)
- |  This is the bird class, derived from the
- |  animal class.
- |
- |  Method resolution order:
- |      Bird
- |      Animal
- |      object
- |
- |  Methods defined here:
- |
- |  __init__(self, name=&#39;Bird Doe&#39;, weight=0, color=&#39;na&#39;, speed=0)
- |      Initialize the bird-object calling the animal init method
- |      but also adding additional variables
- |
- |  flyTraining(self, workoutLength=0)
- |      Method: flyTraining(workoutLength)
- |      Augments the flight speed of the bird as a function
- |      of the bird objects workoutLength:
- |      new_speed = old_speed + log(workoutLength)
- |
- |  showMyself(self)
- |      Method: showMyself()
- |      prints out all the variables.
- |
- |
-----------------------------------------------------------------------
- |  Methods inherited from Animal:
- |
- |  eatFood(self, foodAmount=0.0)
- |      Method: eatFood(foodAmount=0)
- |      translates food input &#39;foodAmount&#39;
- |      into additional weight according to the
- |      following formula:
- |      new_weight = old_weight + sqrt(foodAmount)
- |
- |
-----------------------------------------------------------------------
- |  Data descriptors inherited from Animal:
- |
- |  __dict__
- |      dictionary for instance variables (if defined)
- |
- |  __weakref__
- |      list of weak references to the object (if defined)
+<span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">)</span>
+ <span class="o">|</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">bird</span> <span class="n">class</span><span class="p">,</span> <span class="n">derived</span> <span class="kn">from</span> <span class="nn">the</span>
+ <span class="o">|</span>  <span class="n">animal</span> <span class="n">class</span><span class="o">.</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">Method</span> <span class="n">resolution</span> <span class="n">order</span><span class="p">:</span>
+ <span class="o">|</span>      <span class="n">Bird</span>
+ <span class="o">|</span>      <span class="n">Animal</span>
+ <span class="o">|</span>      <span class="nb">object</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">Methods</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bird Doe&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;na&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Initialize</span> <span class="n">the</span> <span class="n">bird</span><span class="o">-</span><span class="nb">object</span> <span class="n">calling</span> <span class="n">the</span> <span class="n">animal</span> <span class="n">init</span> <span class="n">method</span>
+ <span class="o">|</span>      <span class="n">but</span> <span class="n">also</span> <span class="n">adding</span> <span class="n">additional</span> <span class="n">variables</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">flyTraining</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workoutLength</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Method</span><span class="p">:</span> <span class="n">flyTraining</span><span class="p">(</span><span class="n">workoutLength</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Augments</span> <span class="n">the</span> <span class="n">flight</span> <span class="n">speed</span> <span class="n">of</span> <span class="n">the</span> <span class="n">bird</span> <span class="k">as</span> <span class="n">a</span> <span class="n">function</span>
+ <span class="o">|</span>      <span class="n">of</span> <span class="n">the</span> <span class="n">bird</span> <span class="n">objects</span> <span class="n">workoutLength</span><span class="p">:</span>
+ <span class="o">|</span>      <span class="n">new_speed</span> <span class="o">=</span> <span class="n">old_speed</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="n">workoutLength</span><span class="p">)</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">showMyself</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Method</span><span class="p">:</span> <span class="n">showMyself</span><span class="p">()</span>
+ <span class="o">|</span>      <span class="n">prints</span> <span class="n">out</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">variables</span><span class="o">.</span>
+ <span class="o">|</span>
+ <span class="o">|</span>
+<span class="o">----------------------------------------------------------------------</span>
+ <span class="o">|</span>  <span class="n">Methods</span> <span class="n">inherited</span> <span class="kn">from</span> <span class="nn">Animal</span><span class="p">:</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">eatFood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">foodAmount</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">Method</span><span class="p">:</span> <span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="n">translates</span> <span class="n">food</span> <span class="nb">input</span> <span class="s1">&#39;foodAmount&#39;</span>
+ <span class="o">|</span>      <span class="n">into</span> <span class="n">additional</span> <span class="n">weight</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span>
+ <span class="o">|</span>      <span class="n">following</span> <span class="n">formula</span><span class="p">:</span>
+ <span class="o">|</span>      <span class="n">new_weight</span> <span class="o">=</span> <span class="n">old_weight</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">foodAmount</span><span class="p">)</span>
+ <span class="o">|</span>
+ <span class="o">|</span>
+<span class="o">----------------------------------------------------------------------</span>
+ <span class="o">|</span>  <span class="n">Data</span> <span class="n">descriptors</span> <span class="n">inherited</span> <span class="kn">from</span> <span class="nn">Animal</span><span class="p">:</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__dict__</span>
+ <span class="o">|</span>      <span class="n">dictionary</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">variables</span> <span class="p">(</span><span class="k">if</span> <span class="n">defined</span><span class="p">)</span>
+ <span class="o">|</span>
+ <span class="o">|</span>  <span class="n">__weakref__</span>
+ <span class="o">|</span>      <span class="nb">list</span> <span class="n">of</span> <span class="n">weak</span> <span class="n">references</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">object</span> <span class="p">(</span><span class="k">if</span> <span class="n">defined</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We next generate our first bird object.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">bird1</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s1">&#39;Herman&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bird1</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s1">&#39;Herman&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Herman
-My weight is 12 grams
-My color is blue
-My speed is 40
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Herman</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mi">12</span> <span class="n">grams</span>
+<span class="n">My</span> <span class="n">color</span> <span class="ow">is</span> <span class="n">blue</span>
+<span class="n">My</span> <span class="n">speed</span> <span class="ow">is</span> <span class="mi">40</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
 <p>We let the bird eat and then we train him a bit.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">bird1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bird1</span><span class="o">.</span><span class="n">eatFood</span><span class="p">(</span><span class="n">foodAmount</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">flyTraining</span><span class="p">(</span><span class="n">workoutLength</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">bird1</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Herman
-My weight is 15.0 grams
-My color is blue
-My speed is 42.30258509299404
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Herman</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mf">15.0</span> <span class="n">grams</span>
+<span class="n">My</span> <span class="n">color</span> <span class="ow">is</span> <span class="n">blue</span>
+<span class="n">My</span> <span class="n">speed</span> <span class="ow">is</span> <span class="mf">42.30258509299404</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
 <p>We next generate another bird, but this time we leave out some of the features
 when we generate it. Python will then simply assign the default values that
 we defined in the class blueprint above.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">bird2</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s1">&#39;Tweets&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bird2</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s1">&#39;Tweets&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">bird2</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Tweets
-My weight is 0 grams
-My color is na
-My speed is 12
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Tweets</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mi">0</span> <span class="n">grams</span>
+<span class="n">My</span> <span class="n">color</span> <span class="ow">is</span> <span class="n">na</span>
+<span class="n">My</span> <span class="n">speed</span> <span class="ow">is</span> <span class="mi">12</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="generating-multiple-objects">
-<h2>8.3. Generating multiple objects<a class="headerlink" href="#generating-multiple-objects" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. Generating Multiple Objects<a class="headerlink" href="#generating-multiple-objects" title="Permalink to this headline">¶</a></h2>
 <p>Generating a list full of bird objects from two lists
 with names and weights of animals, but no colors or speeds</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">birdObjectList</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">birdObjectList</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Birdy&#39;</span><span class="p">,</span> <span class="s1">&#39;Chip&#39;</span><span class="p">,</span> <span class="s1">&#39;Tweets&#39;</span><span class="p">,</span> <span class="s1">&#39;Feather&#39;</span><span class="p">,</span> <span class="s1">&#39;Gull&#39;</span><span class="p">]</span>
 <span class="n">weight_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">]</span>
 
@@ -448,50 +475,46 @@ with names and weights of animals, but no colors or speeds</p>
 <span class="k">print</span><span class="p">(</span><span class="n">birdObjectList</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Nr. 0: name = Birdy, weight = 4.3
-Nr. 1: name = Chip, weight = 2.3
-Nr. 2: name = Tweets, weight = 5.6
-Nr. 3: name = Feather, weight = 5.0
-Nr. 4: name = Gull, weight = 15.3
-[&lt;Bird object at 0x000000000B0455C0&gt;, &lt;Bird object at
-0x000000000B045A90&gt;, &lt;Bird object at 0x000000000B0453C8&gt;, &lt;Bird object
-at 0x000000000B045080&gt;, &lt;Bird object at 0x000000000AF9A320&gt;]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Nr</span><span class="o">.</span> <span class="mi">0</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Birdy</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">4.3</span>
+<span class="n">Nr</span><span class="o">.</span> <span class="mi">1</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Chip</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">2.3</span>
+<span class="n">Nr</span><span class="o">.</span> <span class="mi">2</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Tweets</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="n">Nr</span><span class="o">.</span> <span class="mi">3</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Feather</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">Nr</span><span class="o">.</span> <span class="mi">4</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Gull</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">15.3</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000000004F53710</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span> <span class="n">at</span>
+<span class="mh">0x0000000004F53588</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000000004F534E0</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span>
+<span class="n">at</span> <span class="mh">0x0000000004F535C0</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000000004F53748</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We can access the bird objects created in this list by list indexation and
 calling on methods defined on the bird class.</p>
 <p>Let&#8217;s graph the 3rd bird in the list and remember that indexing starts at 0.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2] =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2] =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2].name =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2].weight =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2].color =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;birdObjectList[2].speed =&#39;</span><span class="p">,</span> <span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>birdObjectList[2] = &lt;Bird object at 0x000000000B0453C8&gt;
-birdObjectList[2].name = Tweets
-birdObjectList[2].weight = 5.6
-birdObjectList[2].color = na
-birdObjectList[2].speed = 0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">Bird</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000000004F534E0</span><span class="o">&gt;</span>
+<span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">Tweets</span>
+<span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">na</span>
+<span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Or we could have also done:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">birdObjectList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">showMyself</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre><span></span>Hello, let me introduce myself.
--------------------------------
-My name is Tweets
-My weight is 5.6 grams
-My color is na
-My speed is 0
--------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Hello</span><span class="p">,</span> <span class="n">let</span> <span class="n">me</span> <span class="n">introduce</span> <span class="n">myself</span><span class="o">.</span>
+<span class="o">-------------------------------</span>
+<span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">Tweets</span>
+<span class="n">My</span> <span class="n">weight</span> <span class="ow">is</span> <span class="mf">5.6</span> <span class="n">grams</span>
+<span class="n">My</span> <span class="n">color</span> <span class="ow">is</span> <span class="n">na</span>
+<span class="n">My</span> <span class="n">speed</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="o">-------------------------------</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="homework">
-<h2>8.4. Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="Lecture_OOP/Homework/Homework_OOP.html"><em>Homework: OOP</em></a></p>
 </div>
 </div>
 
