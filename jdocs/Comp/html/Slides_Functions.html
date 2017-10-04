@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
@@ -131,8 +137,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -141,23 +149,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>7. Functions</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>7. Functions</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Functions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -176,9 +201,43 @@
 </ul>
 </div></blockquote>
 </div>
+<p>A callable object in Python is an object that can accept some input arguments
+and possibly return an object or a list of objects. A <strong>function</strong> is the
+simplest callable object in Python.</p>
+<p>It takes a number of inputs—inputs can be scalars, lists, tuples or
+objects—and produces a number of outputs—outputs can be scalars, lists,
+tuples or objects.</p>
+<img src="_images/graphviz-a5eb86d151746cf2452a0482d33adf947793ad07.png" alt="digraph {
+    rankdir=&quot;LR&quot;;
+    &quot;input1&quot; -&gt; &quot;function&quot;;
+    &quot;input2&quot; -&gt; &quot;function&quot;;
+    &quot;input ...&quot; -&gt; &quot;function&quot;;
+    &quot;function&quot; -&gt; &quot;output1&quot;;
+    &quot;function&quot; -&gt; &quot;output2&quot;;
+    &quot;function&quot; -&gt; &quot;output...&quot;;
+}" />
+<p>In Python we use the keyword <code class="docutils literal"><span class="pre">def</span></code> to start the function definition code
+block:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">functionname</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="n">statement1</span>
+    <span class="n">statement2</span>
+    <span class="n">obj1</span> <span class="o">=</span> <span class="n">some</span> <span class="n">calculation</span>
+    <span class="n">obj2</span> <span class="o">=</span> <span class="n">some</span> <span class="n">calculation</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">input1</span></code> and <code class="docutils literal"><span class="pre">input2</span></code> are the input arguments. They can be scalars, lists,
+tuples, objects and even other functions. Variables <code class="docutils literal"><span class="pre">obj1</span></code> and <code class="docutils literal"><span class="pre">obj2</span></code> are
+output objects that can again be scalars, lists, objects or functions.</p>
+<p>The codeblock defined as function can then be called by its name assigned to
+the output arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">out1</span><span class="p">,</span> <span class="n">out2</span><span class="p">,</span> <span class="o">...</span> <span class="o">=</span> <span class="n">functionname</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="a-simple-demonstration-example">
 <h2>7.1. A Simple Demonstration Example<a class="headerlink" href="#a-simple-demonstration-example" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s start with a simple example to demonstrate how powerful functional
+<p>Let’s start with a simple example to demonstrate how powerful functional
 programming can be. The task is to plot the composite function</p>
 <div class="math">
  f(x) =
@@ -573,7 +632,7 @@ variable assignments and therefore it throws an error.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;SyntaxError&#39;&gt;
-non-keyword arg after keyword arg (chunk, line 2)
+positional argument follows keyword argument (chunk, line 2)
 </pre></div>
 </div>
 </div>
@@ -598,7 +657,7 @@ cannot be manipulated directly from within a function.</p>
 <span class="n">x</span> <span class="n">outside</span> <span class="n">function</span> <span class="o">=</span>  <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Now let&#8217;s try to access a variable that is defined outside of the function in
+<p>Now let’s try to access a variable that is defined outside of the function in
 what is called the global name space as opposed to the local name space inside of
 the function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -646,7 +705,7 @@ function.  However, this change is only valid inside the <strong>local</strong> 
 of the function. Once we are outside the function the value of <code class="docutils literal"><span class="pre">y</span></code> is 10
 again. So <code class="docutils literal"><span class="pre">y</span></code> has now two instances, one in the local name space inside the
 function and another one in the <strong>global</strong> name space outside of the function.</p>
-<p>Let&#8217;s next try to manipulate a variable that is not explicitly handed into the
+<p>Let’s next try to manipulate a variable that is not explicitly handed into the
 function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myFun4</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -731,7 +790,7 @@ following will happen when you call the function:</p>
 <p>We see that the local operation on the list has now affected the global list as
 well. Why is that? It has to do with how <strong>Python</strong> treats list assignments.
 When you assign a list to a new name, you do not create a new list object. The
-new name simply points to the same location in the computer&#8217;s memory where the
+new name simply points to the same location in the computer’s memory where the
 original list is saved. This preserves space.
 If you now start manipulating the list under its new
 name, it will translate into changes when calling the same list under its old
@@ -809,15 +868,18 @@ standard deviation of the elements of an input vector.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_OOP.html" class="btn btn-neutral float-right" title="8. Object Oriented Programming" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_OOP.html" class="btn btn-neutral float-right" title="8. Object Oriented Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Plot.html" class="btn btn-neutral" title="6. Plotting using matplotlib" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Plot.html" class="btn btn-neutral" title="6. Plotting using matplotlib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -851,7 +913,8 @@ standard deviation of the elements of an input vector.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
