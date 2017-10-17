@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11. Working with data II: Statistics &mdash; Computational Economics 1.0 documentation</title>
+  <title>11. Working with Data II: Statistics &mdash; Computational Economics 1.0 documentation</title>
   
 
+  
+  
   
   
 
@@ -35,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="12. Regular Expressions" href="Slides_RegularExpressions.html"/>
-        <link rel="prev" title="10. Working with data I: Data cleaning" href="Slides_Data_1.html"/> 
+        <link rel="prev" title="10. Working with Data I: Data Cleaning" href="Slides_Data_1.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -94,8 +100,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with data I: Data cleaning</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Working with data II: Statistics</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Working with Data II: Statistics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#importing-data">11.1. Importing Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#making-simple-graphs-from-our-data">11.2. Making Simple Graphs from our Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bar-charts">11.2.1. Bar Charts</a></li>
@@ -148,8 +154,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -158,30 +166,47 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>11. Working with data II: Statistics</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>11. Working with Data II: Statistics</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Data_2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="working-with-data-ii-statistics">
-<h1>11. Working with data II: Statistics<a class="headerlink" href="#working-with-data-ii-statistics" title="Permalink to this headline">¶</a></h1>
+<h1>11. Working with Data II: Statistics<a class="headerlink" href="#working-with-data-ii-statistics" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="dataii">
 <p class="first sidebar-title">Section Learning Objectives</p>
 <blockquote class="last">
@@ -213,16 +238,21 @@ methods using the <code class="docutils literal"><span class="pre">pandas</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
 </div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">statsmodels</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">pandas</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span> <span class="ne">FutureWarning</span><span class="p">:</span> <span class="n">The</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">datetools</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">removed</span> <span class="ow">in</span> <span class="n">a</span>
+<span class="n">future</span> <span class="n">version</span><span class="o">.</span> <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">pandas</span><span class="o">.</span><span class="n">tseries</span> <span class="n">module</span> <span class="n">instead</span><span class="o">.</span>
+  <span class="kn">from</span> <span class="nn">pandas.core</span> <span class="k">import</span> <span class="n">datetools</span>
+</pre></div>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Read in small data from .csv file</span>
 <span class="c1"># Filepath</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;Lecture_Data/&#39;</span>
 <span class="c1"># In windows you can also specify the absolute path to your data file</span>
-<span class="c1"># filepath =</span>
-<span class="s1">&#39;C:/Dropbox/Towson/Teaching/3_ComputationalEconomics/Lectures/Lecture_Data/&#39;</span>
+<span class="c1"># filepath = &#39;C:/Dropbox/Towson/Teaching/3_ComputationalEconomics/Lectures/Lecture_Data/&#39;</span>
 
 <span class="c1"># ------------- Load data --------------------</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span>
-<span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -233,7 +263,7 @@ methods using the <code class="docutils literal"><span class="pre">pandas</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>
 <span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>      <span class="mf">0.288538</span>
 <span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>      <span class="mf">0.205534</span>
 <span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>      <span class="mf">0.142292</span>
@@ -262,8 +292,7 @@ methods using the <code class="docutils literal"><span class="pre">pandas</span>
 <span class="c1"># Annotate with text</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xv</span><span class="p">)))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xv</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">val</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-<span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">val</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relative Frequency Barchart&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -273,8 +302,8 @@ methods using the <code class="docutils literal"><span class="pre">pandas</span>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_2_Barchart_1.png"><img alt="_images/Slides_Data_2_Barchart_1.png" src="_images/Slides_Data_2_Barchart_1.png" style="width: 12cm;" /></a>
 <p>This simple command plots the barchart into a window and saves it as
-<strong>fig1.pdf</strong> into a subfolder called <code class="docutils literal"><span class="pre">Graphs</span></code>. Don&#8217;t forget to first make
-this subfolder, otherwise <code class="docutils literal"><span class="pre">Python</span></code> will throw an error when it can&#8217;t find the
+<strong>fig1.pdf</strong> into a subfolder called <code class="docutils literal"><span class="pre">Graphs</span></code>. Don’t forget to first make
+this subfolder, otherwise <code class="docutils literal"><span class="pre">Python</span></code> will throw an error when it can’t find the
 folder.</p>
 </div>
 <div class="section" id="pie-charts">
@@ -303,7 +332,7 @@ information to the histogram.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">Height</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Height</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
 <span class="mi">0</span>     <span class="mf">1.1</span>             <span class="mi">370</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>  <span class="n">Hisp</span>
 <span class="mi">1</span>     <span class="mf">1.2</span>             <span class="mi">393</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Wht</span>
 <span class="mi">2</span>     <span class="mf">1.3</span>             <span class="mi">413</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Blk</span>
@@ -327,8 +356,7 @@ information to the histogram.</p>
     <span class="n">percent</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
     <span class="c1"># only annotate non-zero values</span>
     <span class="k">if</span> <span class="n">percent</span><span class="p">:</span>
-        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">p</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">,</span>
-<span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">p</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height groups&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
@@ -341,8 +369,7 @@ information to the histogram.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height groups&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;AverageMathSAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="n">B</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span>
-<span class="mf">0.3</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;AverageMathSAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="n">B</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of Math SAT Scores&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -352,7 +379,7 @@ information to the histogram.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Another way to graph a histogram is by using the powerful <code class="docutils literal"><span class="pre">ggplot</span></code> package
-which is a translation of <strong>R&#8217;s</strong> <a class="reference external" href="http://ggplot2.org/">ggplot2</a> package into <strong>Python</strong>. It
+which is a translation of <strong>R’s</strong> <a class="reference external" href="http://ggplot2.org/">ggplot2</a> package into <strong>Python</strong>. It
 follows a completely different graphing philosophy based on the <strong>grammar of
 grapics</strong> by:</p>
 <p class="last">Hadley Wickham. A layered grammar of graphics.
@@ -393,7 +420,7 @@ command <code class="docutils literal"><span class="pre">describe</span></code>.
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>          <span class="n">Height</span>  <span class="n">AverageMathSAT</span>        <span class="n">Age</span>     <span class="n">Female</span>  <span class="n">Education</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Height</span>  <span class="n">AverageMathSAT</span>        <span class="n">Age</span>     <span class="n">Female</span>  <span class="n">Education</span>
 <span class="n">count</span>  <span class="mf">60.000000</span>       <span class="mf">60.000000</span>  <span class="mf">60.000000</span>  <span class="mf">60.000000</span>  <span class="mf">60.000000</span>
 <span class="n">mean</span>    <span class="mf">6.816667</span>      <span class="mf">493.666667</span>  <span class="mf">20.933333</span>   <span class="mf">0.333333</span>   <span class="mf">3.016667</span>
 <span class="n">std</span>     <span class="mf">3.571743</span>       <span class="mf">34.018274</span>   <span class="mf">1.176992</span>   <span class="mf">0.475383</span>   <span class="mf">1.096863</span>
@@ -502,7 +529,7 @@ sample.</p>
 </div>
 <div class="section" id="data-aggregation-or-summary-statistics-by-subgroup">
 <h3>11.3.4. Data Aggregation or Summary Statistics by Subgroup<a class="headerlink" href="#data-aggregation-or-summary-statistics-by-subgroup" title="Permalink to this headline">¶</a></h3>
-<p>We next want to summarize the data by subgroup. Let&#8217;s assume that we would like
+<p>We next want to summarize the data by subgroup. Let’s assume that we would like
 to compare the average <code class="docutils literal"><span class="pre">Height</span></code> by <code class="docutils literal"><span class="pre">Race</span></code>. We can use the <code class="docutils literal"><span class="pre">groupby()</span></code> to
 accomplish this.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">groupRace</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Race&#39;</span><span class="p">)</span>
@@ -551,7 +578,7 @@ follows.</p>
      <span class="mi">1</span>       <span class="mf">11.642857</span>      <span class="mf">528.714286</span>  <span class="mf">20.0000</span>   <span class="mf">2.714286</span>
 </pre></div>
 </div>
-<p>Be careful and don&#8217;t forget to add the various categories in a list using the
+<p>Be careful and don’t forget to add the various categories in a list using the
 brackets <code class="docutils literal"><span class="pre">[...]]</span></code>.</p>
 </div>
 </div>
@@ -593,8 +620,7 @@ toolbox command.</p>
   <span class="n">format</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">xv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">yv</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yv</span><span class="p">)))</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>\
   <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">yv</span><span class="p">))))</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Correlation coefficient =</span>
-<span class="p">{:</span><span class="o">.</span><span class="mi">3</span><span class="n">f</span><span class="p">}</span><span class="s2">&quot;.format(df.Age.corr(df.Height)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Correlation coefficient = {:.3f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Height</span><span class="p">)))</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Correlation</span> <span class="n">coefficient</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.038</span>
@@ -611,7 +637,7 @@ toolbox command.</p>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>We then &#8220;cast&#8221; these into a <code class="docutils literal"><span class="pre">pandas</span></code> DataFrame.</p>
+<p>We then “cast” these into a <code class="docutils literal"><span class="pre">pandas</span></code> DataFrame.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Define data frame</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
 </pre></div>
@@ -659,11 +685,9 @@ newer versions of <code class="docutils literal"><span class="pre">Pandas</span>
 
 <span class="c1"># Show coefficient estimates</span>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Parameters:&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="n">OLS</span> <span class="n">Regression</span> <span class="n">Results</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OLS</span> <span class="n">Regression</span> <span class="n">Results</span>
 <span class="o">==============================================================================</span>
 <span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                      <span class="n">y</span>   <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>
 <span class="mf">0.609</span>
@@ -671,9 +695,9 @@ newer versions of <code class="docutils literal"><span class="pre">Pandas</span>
 <span class="mf">0.544</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">9.358</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">17</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">0.0222</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">14</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">17</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">50</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">20.791</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                   <span class="mi">8</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">45.58</span>
@@ -682,12 +706,12 @@ newer versions of <code class="docutils literal"><span class="pre">Pandas</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                           <span class="mi">1</span>
 <span class="n">Covariance</span> <span class="n">Type</span><span class="p">:</span>            <span class="n">nonrobust</span>
 <span class="o">==============================================================================</span>
-                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">t</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>      <span class="p">[</span><span class="mf">95.0</span><span class="o">%</span>
-<span class="n">Conf</span><span class="o">.</span> <span class="n">Int</span><span class="o">.</span><span class="p">]</span>
+                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">t</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
+<span class="mf">0.975</span><span class="p">]</span>
 <span class="o">------------------------------------------------------------------------------</span>
-<span class="n">Intercept</span>      <span class="mf">1.8929</span>      <span class="mf">2.928</span>      <span class="mf">0.646</span>      <span class="mf">0.542</span>        <span class="o">-</span><span class="mf">5.272</span>
+<span class="n">Intercept</span>      <span class="mf">1.8929</span>      <span class="mf">2.928</span>      <span class="mf">0.646</span>      <span class="mf">0.542</span>      <span class="o">-</span><span class="mf">5.272</span>
 <span class="mf">9.058</span>
-<span class="n">x</span>              <span class="mf">1.7738</span>      <span class="mf">0.580</span>      <span class="mf">3.059</span>      <span class="mf">0.022</span>         <span class="mf">0.355</span>
+<span class="n">x</span>              <span class="mf">1.7738</span>      <span class="mf">0.580</span>      <span class="mf">3.059</span>      <span class="mf">0.022</span>       <span class="mf">0.355</span>
 <span class="mf">3.193</span>
 <span class="o">==============================================================================</span>
 <span class="n">Omnibus</span><span class="p">:</span>                        <span class="mf">0.555</span>   <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>
@@ -703,12 +727,45 @@ newer versions of <code class="docutils literal"><span class="pre">Pandas</span>
 <span class="n">Warnings</span><span class="p">:</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">assume</span> <span class="n">that</span> <span class="n">the</span> <span class="n">covariance</span> <span class="n">matrix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">is</span>
 <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
-<span class="n">Parameters</span><span class="p">:</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1334</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
+<span class="n">valid</span> <span class="k">for</span> <span class="n">n</span><span class="o">&gt;=</span><span class="mi">20</span> <span class="o">...</span> <span class="n">continuing</span> <span class="n">anyway</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span>
+  <span class="s2">&quot;anyway, n=</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Or if you simply want to have a look at the estimated coefficients you can
+access them via:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Parameters:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Parameters</span><span class="p">:</span>
 <span class="n">Intercept</span>    <span class="mf">1.892857</span>
 <span class="n">x</span>            <span class="mf">1.773810</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
+<p>Finally, we use the model to make a prediction of <code class="docutils literal"><span class="pre">y</span></code> when <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">8.5</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make prediction for x = 8.5</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Prediction of y for x = 8.5 is: {:.3f}&quot;</span><span class="o">.</span>\
+  <span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">]))))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Prediction</span> <span class="n">of</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">8.5</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">16.970</span>
+</pre></div>
+</div>
+<p>We can also use the results from the <code class="docutils literal"><span class="pre">OLS</span></code> command to make a scatterplot with
+the trendline through it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Linear Regression with Fitted Values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;OLS&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_2_Scatter2_1.png"><img alt="_images/Slides_Data_2_Scatter2_1.png" src="_images/Slides_Data_2_Scatter2_1.png" style="width: 12cm;" /></a>
 <p>Finally, we use the model to make a prediction of <code class="docutils literal"><span class="pre">y</span></code> when <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">8.5</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make prediction for x = 8.5</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
@@ -742,7 +799,7 @@ called <strong>dummy</strong> variables (i.e. indicator variables that are eithe
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">Height</span>  <span class="n">Response</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Height</span>  <span class="n">Response</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
 <span class="n">d_Blk</span>  \
 <span class="mi">0</span>     <span class="mf">1.1</span>         <span class="mi">3</span>             <span class="mi">370</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>  <span class="n">Hisp</span>
 <span class="mi">0</span>
@@ -769,8 +826,7 @@ etc.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span>
 
-<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;Height ~ Age + Education + Female + d_Blk + d_Hisp +</span>
-<span class="n">d_Mex</span> <span class="o">+</span> <span class="n">d_Wht</span><span class="s1">&#39;, data=df, return_type=&#39;</span><span class="n">dataframe</span><span class="s1">&#39;)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;Height ~ Age + Education + Female + d_Blk + d_Hisp + d_Mex + d_Wht&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="c1"># Show coefficient estimates</span>
@@ -781,7 +837,7 @@ etc.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="n">OLS</span> <span class="n">Regression</span> <span class="n">Results</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OLS</span> <span class="n">Regression</span> <span class="n">Results</span>
 <span class="o">==============================================================================</span>
 <span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                 <span class="n">Height</span>   <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>
 <span class="mf">0.944</span>
@@ -789,9 +845,9 @@ etc.</p>
 <span class="mf">0.936</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">124.4</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">17</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">3.52e-30</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">14</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">17</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">51</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">74.722</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                  <span class="mi">60</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">165.4</span>
@@ -800,24 +856,24 @@ etc.</p>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                           <span class="mi">7</span>
 <span class="n">Covariance</span> <span class="n">Type</span><span class="p">:</span>            <span class="n">nonrobust</span>
 <span class="o">==============================================================================</span>
-                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">t</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>      <span class="p">[</span><span class="mf">95.0</span><span class="o">%</span>
-<span class="n">Conf</span><span class="o">.</span> <span class="n">Int</span><span class="o">.</span><span class="p">]</span>
+                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">t</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
+<span class="mf">0.975</span><span class="p">]</span>
 <span class="o">------------------------------------------------------------------------------</span>
-<span class="n">Intercept</span>    <span class="o">-</span><span class="mf">35.2714</span>      <span class="mf">2.751</span>    <span class="o">-</span><span class="mf">12.821</span>      <span class="mf">0.000</span>       <span class="o">-</span><span class="mf">40.792</span>
+<span class="n">Intercept</span>    <span class="o">-</span><span class="mf">35.2714</span>      <span class="mf">2.751</span>    <span class="o">-</span><span class="mf">12.821</span>      <span class="mf">0.000</span>     <span class="o">-</span><span class="mf">40.792</span>
 <span class="o">-</span><span class="mf">29.751</span>
-<span class="n">Age</span>            <span class="mf">1.8944</span>      <span class="mf">0.124</span>     <span class="mf">15.269</span>      <span class="mf">0.000</span>         <span class="mf">1.645</span>
+<span class="n">Age</span>            <span class="mf">1.8944</span>      <span class="mf">0.124</span>     <span class="mf">15.269</span>      <span class="mf">0.000</span>       <span class="mf">1.645</span>
 <span class="mf">2.143</span>
-<span class="n">Education</span>     <span class="o">-</span><span class="mf">0.0514</span>      <span class="mf">0.127</span>     <span class="o">-</span><span class="mf">0.406</span>      <span class="mf">0.686</span>        <span class="o">-</span><span class="mf">0.305</span>
+<span class="n">Education</span>     <span class="o">-</span><span class="mf">0.0514</span>      <span class="mf">0.127</span>     <span class="o">-</span><span class="mf">0.406</span>      <span class="mf">0.686</span>      <span class="o">-</span><span class="mf">0.305</span>
 <span class="mf">0.203</span>
-<span class="n">Female</span>         <span class="mf">8.7359</span>      <span class="mf">0.308</span>     <span class="mf">28.387</span>      <span class="mf">0.000</span>         <span class="mf">8.118</span>
+<span class="n">Female</span>         <span class="mf">8.7359</span>      <span class="mf">0.308</span>     <span class="mf">28.387</span>      <span class="mf">0.000</span>       <span class="mf">8.118</span>
 <span class="mf">9.353</span>
-<span class="n">d_Blk</span>         <span class="o">-</span><span class="mf">0.3784</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.552</span>      <span class="mf">0.583</span>        <span class="o">-</span><span class="mf">1.754</span>
+<span class="n">d_Blk</span>         <span class="o">-</span><span class="mf">0.3784</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.552</span>      <span class="mf">0.583</span>      <span class="o">-</span><span class="mf">1.754</span>
 <span class="mf">0.997</span>
-<span class="n">d_Hisp</span>        <span class="o">-</span><span class="mf">1.0267</span>      <span class="mf">0.790</span>     <span class="o">-</span><span class="mf">1.300</span>      <span class="mf">0.199</span>        <span class="o">-</span><span class="mf">2.612</span>
+<span class="n">d_Hisp</span>        <span class="o">-</span><span class="mf">1.0267</span>      <span class="mf">0.790</span>     <span class="o">-</span><span class="mf">1.300</span>      <span class="mf">0.199</span>      <span class="o">-</span><span class="mf">2.612</span>
 <span class="mf">0.559</span>
-<span class="n">d_Mex</span>         <span class="o">-</span><span class="mf">0.5749</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.838</span>      <span class="mf">0.406</span>        <span class="o">-</span><span class="mf">1.952</span>
+<span class="n">d_Mex</span>         <span class="o">-</span><span class="mf">0.5749</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.838</span>      <span class="mf">0.406</span>      <span class="o">-</span><span class="mf">1.952</span>
 <span class="mf">0.802</span>
-<span class="n">d_Wht</span>          <span class="mf">0.0816</span>      <span class="mf">0.681</span>      <span class="mf">0.120</span>      <span class="mf">0.905</span>        <span class="o">-</span><span class="mf">1.285</span>
+<span class="n">d_Wht</span>          <span class="mf">0.0816</span>      <span class="mf">0.681</span>      <span class="mf">0.120</span>      <span class="mf">0.905</span>      <span class="o">-</span><span class="mf">1.285</span>
 <span class="mf">1.448</span>
 <span class="o">==============================================================================</span>
 <span class="n">Omnibus</span><span class="p">:</span>                        <span class="mf">0.297</span>   <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>
@@ -846,7 +902,7 @@ etc.</p>
 <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
-<p>Prediction: size of 8.5 will produce a math score of ...</p>
+<p>Prediction: size of 8.5 will produce a math score of …</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Take out results and define it as numpy-vector</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Prediction: {}&quot;</span><span class="o">.</span>\
@@ -881,13 +937,16 @@ range.</p>
 
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
-<span class="c1"># rename the &#39;rank&#39; column because there is also a DataFrame method</span>
-<span class="n">called</span> <span class="s1">&#39;rank&#39;</span>
+<span class="c1"># rename the &#39;rank&#39; column because there is also a DataFrame method called &#39;rank&#39;</span>
 <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;admit&quot;</span><span class="p">,</span> <span class="s2">&quot;gre&quot;</span><span class="p">,</span> <span class="s2">&quot;gpa&quot;</span><span class="p">,</span> <span class="s2">&quot;prestige&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;ImportError&#39;&gt;
-No module named &#39;xlrd&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">admit</span>  <span class="n">gre</span>   <span class="n">gpa</span>  <span class="n">rank</span>
+<span class="mi">0</span>      <span class="mi">0</span>  <span class="mi">380</span>  <span class="mf">3.61</span>     <span class="mi">3</span>
+<span class="mi">1</span>      <span class="mi">1</span>  <span class="mi">660</span>  <span class="mf">3.67</span>     <span class="mi">3</span>
+<span class="mi">2</span>      <span class="mi">1</span>  <span class="mi">800</span>  <span class="mf">4.00</span>     <span class="mi">1</span>
+<span class="mi">3</span>      <span class="mi">1</span>  <span class="mi">640</span>  <span class="mf">3.19</span>     <span class="mi">4</span>
+<span class="mi">4</span>      <span class="mi">0</span>  <span class="mi">520</span>  <span class="mf">2.93</span>     <span class="mi">4</span>
 </pre></div>
 </div>
 <p>We next make dummies out of the rank variable.</p>
@@ -899,8 +958,18 @@ No module named &#39;xlrd&#39;
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;KeyError&#39;&gt;
-&#39;prestige&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">admit</span>  <span class="n">gre</span>   <span class="n">gpa</span>  <span class="n">prestige</span>  <span class="n">d_prest_1</span>  <span class="n">d_prest_2</span>  <span class="n">d_prest_3</span>
+<span class="n">d_prest_4</span>
+<span class="mi">0</span>      <span class="mi">0</span>  <span class="mi">380</span>  <span class="mf">3.61</span>         <span class="mi">3</span>          <span class="mi">0</span>          <span class="mi">0</span>          <span class="mi">1</span>
+<span class="mi">0</span>
+<span class="mi">1</span>      <span class="mi">1</span>  <span class="mi">660</span>  <span class="mf">3.67</span>         <span class="mi">3</span>          <span class="mi">0</span>          <span class="mi">0</span>          <span class="mi">1</span>
+<span class="mi">0</span>
+<span class="mi">2</span>      <span class="mi">1</span>  <span class="mi">800</span>  <span class="mf">4.00</span>         <span class="mi">1</span>          <span class="mi">1</span>          <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">3</span>      <span class="mi">1</span>  <span class="mi">640</span>  <span class="mf">3.19</span>         <span class="mi">4</span>          <span class="mi">0</span>          <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">4</span>      <span class="mi">0</span>  <span class="mi">520</span>  <span class="mf">2.93</span>         <span class="mi">4</span>          <span class="mi">0</span>          <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">1</span>
 </pre></div>
 </div>
 <div class="section" id="logit">
@@ -910,8 +979,7 @@ No module named &#39;xlrd&#39;
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span>
 
-<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;admit ~ gre + gpa + d_prest_2 + d_prest_3 +</span>
-<span class="n">d_prest_4</span><span class="s1">&#39;, data=df, return_type=&#39;</span><span class="n">dataframe</span><span class="s1">&#39;)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;admit ~ gre + gpa + d_prest_2 + d_prest_3 + d_prest_4&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
 
 <span class="c1"># Define the model</span>
 <span class="n">logit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
@@ -923,41 +991,67 @@ No module named &#39;xlrd&#39;
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;patsy.PatsyError&#39;&gt;
-Error evaluating factor: NameError: name &#39;gre&#39; is not defined
-    admit ~ gre + gpa + d_prest_2 + d_prest_3 + d_prest_4
-            ^^^
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
+         <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="mf">0.573147</span>
+         <span class="n">Iterations</span> <span class="mi">6</span>
+                           <span class="n">Logit</span> <span class="n">Regression</span> <span class="n">Results</span>
+<span class="o">==============================================================================</span>
+<span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                  <span class="n">admit</span>   <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>
+<span class="mi">400</span>
+<span class="n">Model</span><span class="p">:</span>                          <span class="n">Logit</span>   <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>
+<span class="mi">394</span>
+<span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
+<span class="mi">5</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">17</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="mf">0.08292</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">17</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">52</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">229.26</span>
+<span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">249.99</span>
+                                        <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>
+<span class="mf">7.578e-08</span>
+<span class="o">==============================================================================</span>
+                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">z</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
+<span class="mf">0.975</span><span class="p">]</span>
+<span class="o">------------------------------------------------------------------------------</span>
+<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">3.9900</span>      <span class="mf">1.140</span>     <span class="o">-</span><span class="mf">3.500</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">6.224</span>
+<span class="o">-</span><span class="mf">1.756</span>
+<span class="n">gre</span>            <span class="mf">0.0023</span>      <span class="mf">0.001</span>      <span class="mf">2.070</span>      <span class="mf">0.038</span>       <span class="mf">0.000</span>
+<span class="mf">0.004</span>
+<span class="n">gpa</span>            <span class="mf">0.8040</span>      <span class="mf">0.332</span>      <span class="mf">2.423</span>      <span class="mf">0.015</span>       <span class="mf">0.154</span>
+<span class="mf">1.454</span>
+<span class="n">d_prest_2</span>     <span class="o">-</span><span class="mf">0.6754</span>      <span class="mf">0.316</span>     <span class="o">-</span><span class="mf">2.134</span>      <span class="mf">0.033</span>      <span class="o">-</span><span class="mf">1.296</span>
+<span class="o">-</span><span class="mf">0.055</span>
+<span class="n">d_prest_3</span>     <span class="o">-</span><span class="mf">1.3402</span>      <span class="mf">0.345</span>     <span class="o">-</span><span class="mf">3.881</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">2.017</span>
+<span class="o">-</span><span class="mf">0.663</span>
+<span class="n">d_prest_4</span>     <span class="o">-</span><span class="mf">1.5515</span>      <span class="mf">0.418</span>     <span class="o">-</span><span class="mf">3.713</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">2.370</span>
+<span class="o">-</span><span class="mf">0.733</span>
+<span class="o">==============================================================================</span>
 </pre></div>
 </div>
 <p>A Slightly different summary</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary2</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Results</span><span class="p">:</span> <span class="n">Ordinary</span> <span class="n">least</span> <span class="n">squares</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="p">:</span> <span class="n">Logit</span>
 <span class="o">=================================================================</span>
-<span class="n">Model</span><span class="p">:</span>              <span class="n">OLS</span>              <span class="n">Adj</span><span class="o">.</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>     <span class="mf">0.936</span>
-<span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">Height</span>           <span class="n">AIC</span><span class="p">:</span>                <span class="mf">165.4447</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span> <span class="mi">11</span><span class="p">:</span><span class="mi">39</span> <span class="n">BIC</span><span class="p">:</span>                <span class="mf">182.1994</span>
-<span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">60</span>               <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>     <span class="o">-</span><span class="mf">74.722</span>
-<span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">7</span>                <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>        <span class="mf">124.4</span>
-<span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">52</span>               <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span> <span class="mf">3.52e-30</span>
-<span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>          <span class="mf">0.944</span>            <span class="n">Scale</span><span class="p">:</span>              <span class="mf">0.81544</span>
-<span class="o">-----------------------------------------------------------------</span>
-               <span class="n">Coef</span><span class="o">.</span>   <span class="n">Std</span><span class="o">.</span><span class="n">Err</span><span class="o">.</span>    <span class="n">t</span>     <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>   <span class="p">[</span><span class="mf">0.025</span>   <span class="mf">0.975</span><span class="p">]</span>
-<span class="o">-----------------------------------------------------------------</span>
-<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">35.2714</span>   <span class="mf">2.7510</span> <span class="o">-</span><span class="mf">12.8212</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">40.7918</span> <span class="o">-</span><span class="mf">29.7511</span>
-<span class="n">Age</span>             <span class="mf">1.8944</span>   <span class="mf">0.1241</span>  <span class="mf">15.2691</span> <span class="mf">0.0000</span>   <span class="mf">1.6454</span>   <span class="mf">2.1433</span>
-<span class="n">Education</span>      <span class="o">-</span><span class="mf">0.0514</span>   <span class="mf">0.1265</span>  <span class="o">-</span><span class="mf">0.4060</span> <span class="mf">0.6864</span>  <span class="o">-</span><span class="mf">0.3053</span>   <span class="mf">0.2026</span>
-<span class="n">Female</span>          <span class="mf">8.7359</span>   <span class="mf">0.3077</span>  <span class="mf">28.3872</span> <span class="mf">0.0000</span>   <span class="mf">8.1184</span>   <span class="mf">9.3534</span>
-<span class="n">d_Blk</span>          <span class="o">-</span><span class="mf">0.3784</span>   <span class="mf">0.6855</span>  <span class="o">-</span><span class="mf">0.5519</span> <span class="mf">0.5834</span>  <span class="o">-</span><span class="mf">1.7540</span>   <span class="mf">0.9973</span>
-<span class="n">d_Hisp</span>         <span class="o">-</span><span class="mf">1.0267</span>   <span class="mf">0.7901</span>  <span class="o">-</span><span class="mf">1.2996</span> <span class="mf">0.1995</span>  <span class="o">-</span><span class="mf">2.6121</span>   <span class="mf">0.5586</span>
-<span class="n">d_Mex</span>          <span class="o">-</span><span class="mf">0.5749</span>   <span class="mf">0.6863</span>  <span class="o">-</span><span class="mf">0.8378</span> <span class="mf">0.4060</span>  <span class="o">-</span><span class="mf">1.9520</span>   <span class="mf">0.8021</span>
-<span class="n">d_Wht</span>           <span class="mf">0.0816</span>   <span class="mf">0.6808</span>   <span class="mf">0.1199</span> <span class="mf">0.9050</span>  <span class="o">-</span><span class="mf">1.2846</span>   <span class="mf">1.4479</span>
-<span class="o">-----------------------------------------------------------------</span>
-<span class="n">Omnibus</span><span class="p">:</span>               <span class="mf">0.297</span>        <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>          <span class="mf">0.581</span>
-<span class="n">Prob</span><span class="p">(</span><span class="n">Omnibus</span><span class="p">):</span>         <span class="mf">0.862</span>        <span class="n">Jarque</span><span class="o">-</span><span class="n">Bera</span> <span class="p">(</span><span class="n">JB</span><span class="p">):</span>       <span class="mf">0.478</span>
-<span class="n">Skew</span><span class="p">:</span>                  <span class="o">-</span><span class="mf">0.097</span>       <span class="n">Prob</span><span class="p">(</span><span class="n">JB</span><span class="p">):</span>               <span class="mf">0.787</span>
-<span class="n">Kurtosis</span><span class="p">:</span>              <span class="mf">2.607</span>        <span class="n">Condition</span> <span class="n">No</span><span class="o">.</span><span class="p">:</span>          <span class="mi">507</span>
+<span class="n">Model</span><span class="p">:</span>              <span class="n">Logit</span>            <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
+<span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.5175</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">17</span> <span class="mi">17</span><span class="p">:</span><span class="mi">52</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
+<span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.26</span>
+<span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
+<span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.5782e-08</span>
+<span class="n">Converged</span><span class="p">:</span>          <span class="mf">1.0000</span>           <span class="n">Scale</span><span class="p">:</span>            <span class="mf">1.0000</span>
+<span class="n">No</span><span class="o">.</span> <span class="n">Iterations</span><span class="p">:</span>     <span class="mf">6.0000</span>
+<span class="o">------------------------------------------------------------------</span>
+               <span class="n">Coef</span><span class="o">.</span>   <span class="n">Std</span><span class="o">.</span><span class="n">Err</span><span class="o">.</span>     <span class="n">z</span>     <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>    <span class="p">[</span><span class="mf">0.025</span>   <span class="mf">0.975</span><span class="p">]</span>
+<span class="o">------------------------------------------------------------------</span>
+<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">3.9900</span>    <span class="mf">1.1400</span>  <span class="o">-</span><span class="mf">3.5001</span>  <span class="mf">0.0005</span>  <span class="o">-</span><span class="mf">6.2242</span>  <span class="o">-</span><span class="mf">1.7557</span>
+<span class="n">gre</span>            <span class="mf">0.0023</span>    <span class="mf">0.0011</span>   <span class="mf">2.0699</span>  <span class="mf">0.0385</span>   <span class="mf">0.0001</span>   <span class="mf">0.0044</span>
+<span class="n">gpa</span>            <span class="mf">0.8040</span>    <span class="mf">0.3318</span>   <span class="mf">2.4231</span>  <span class="mf">0.0154</span>   <span class="mf">0.1537</span>   <span class="mf">1.4544</span>
+<span class="n">d_prest_2</span>     <span class="o">-</span><span class="mf">0.6754</span>    <span class="mf">0.3165</span>  <span class="o">-</span><span class="mf">2.1342</span>  <span class="mf">0.0328</span>  <span class="o">-</span><span class="mf">1.2958</span>  <span class="o">-</span><span class="mf">0.0551</span>
+<span class="n">d_prest_3</span>     <span class="o">-</span><span class="mf">1.3402</span>    <span class="mf">0.3453</span>  <span class="o">-</span><span class="mf">3.8812</span>  <span class="mf">0.0001</span>  <span class="o">-</span><span class="mf">2.0170</span>  <span class="o">-</span><span class="mf">0.6634</span>
+<span class="n">d_prest_4</span>     <span class="o">-</span><span class="mf">1.5515</span>    <span class="mf">0.4178</span>  <span class="o">-</span><span class="mf">3.7131</span>  <span class="mf">0.0002</span>  <span class="o">-</span><span class="mf">2.3704</span>  <span class="o">-</span><span class="mf">0.7325</span>
 <span class="o">=================================================================</span>
 </pre></div>
 </div>
@@ -968,8 +1062,7 @@ Error evaluating factor: NameError: name &#39;gre&#39; is not defined
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span>
 
-<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;admit ~ gre + gpa + d_prest_2 + d_prest_3 +</span>
-<span class="n">d_prest_4</span><span class="s1">&#39;, data=df, return_type=&#39;</span><span class="n">dataframe</span><span class="s1">&#39;)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;admit ~ gre + gpa + d_prest_2 + d_prest_3 + d_prest_4&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
 <span class="c1"># Define the model</span>
 <span class="n">probit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Probit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 
@@ -980,41 +1073,67 @@ Error evaluating factor: NameError: name &#39;gre&#39; is not defined
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;patsy.PatsyError&#39;&gt;
-Error evaluating factor: NameError: name &#39;gre&#39; is not defined
-    admit ~ gre + gpa + d_prest_2 + d_prest_3 + d_prest_4
-            ^^^
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
+         <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="mf">0.573016</span>
+         <span class="n">Iterations</span> <span class="mi">5</span>
+                          <span class="n">Probit</span> <span class="n">Regression</span> <span class="n">Results</span>
+<span class="o">==============================================================================</span>
+<span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                  <span class="n">admit</span>   <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>
+<span class="mi">400</span>
+<span class="n">Model</span><span class="p">:</span>                         <span class="n">Probit</span>   <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>
+<span class="mi">394</span>
+<span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
+<span class="mi">5</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">17</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="mf">0.08313</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">17</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">52</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">229.21</span>
+<span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">249.99</span>
+                                        <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>
+<span class="mf">7.219e-08</span>
+<span class="o">==============================================================================</span>
+                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">z</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
+<span class="mf">0.975</span><span class="p">]</span>
+<span class="o">------------------------------------------------------------------------------</span>
+<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">2.3868</span>      <span class="mf">0.674</span>     <span class="o">-</span><span class="mf">3.541</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">3.708</span>
+<span class="o">-</span><span class="mf">1.066</span>
+<span class="n">gre</span>            <span class="mf">0.0014</span>      <span class="mf">0.001</span>      <span class="mf">2.120</span>      <span class="mf">0.034</span>       <span class="mf">0.000</span>
+<span class="mf">0.003</span>
+<span class="n">gpa</span>            <span class="mf">0.4777</span>      <span class="mf">0.195</span>      <span class="mf">2.444</span>      <span class="mf">0.015</span>       <span class="mf">0.095</span>
+<span class="mf">0.861</span>
+<span class="n">d_prest_2</span>     <span class="o">-</span><span class="mf">0.4154</span>      <span class="mf">0.195</span>     <span class="o">-</span><span class="mf">2.126</span>      <span class="mf">0.033</span>      <span class="o">-</span><span class="mf">0.798</span>
+<span class="o">-</span><span class="mf">0.032</span>
+<span class="n">d_prest_3</span>     <span class="o">-</span><span class="mf">0.8121</span>      <span class="mf">0.209</span>     <span class="o">-</span><span class="mf">3.893</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">1.221</span>
+<span class="o">-</span><span class="mf">0.403</span>
+<span class="n">d_prest_4</span>     <span class="o">-</span><span class="mf">0.9359</span>      <span class="mf">0.246</span>     <span class="o">-</span><span class="mf">3.810</span>      <span class="mf">0.000</span>      <span class="o">-</span><span class="mf">1.417</span>
+<span class="o">-</span><span class="mf">0.454</span>
+<span class="o">==============================================================================</span>
 </pre></div>
 </div>
 <p>A Slightly different summary</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary2</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                 <span class="n">Results</span><span class="p">:</span> <span class="n">Ordinary</span> <span class="n">least</span> <span class="n">squares</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="p">:</span> <span class="n">Probit</span>
 <span class="o">=================================================================</span>
-<span class="n">Model</span><span class="p">:</span>              <span class="n">OLS</span>              <span class="n">Adj</span><span class="o">.</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>     <span class="mf">0.936</span>
-<span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">Height</span>           <span class="n">AIC</span><span class="p">:</span>                <span class="mf">165.4447</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span> <span class="mi">11</span><span class="p">:</span><span class="mi">39</span> <span class="n">BIC</span><span class="p">:</span>                <span class="mf">182.1994</span>
-<span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">60</span>               <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>     <span class="o">-</span><span class="mf">74.722</span>
-<span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">7</span>                <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>        <span class="mf">124.4</span>
-<span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">52</span>               <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span> <span class="mf">3.52e-30</span>
-<span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>          <span class="mf">0.944</span>            <span class="n">Scale</span><span class="p">:</span>              <span class="mf">0.81544</span>
-<span class="o">-----------------------------------------------------------------</span>
-               <span class="n">Coef</span><span class="o">.</span>   <span class="n">Std</span><span class="o">.</span><span class="n">Err</span><span class="o">.</span>    <span class="n">t</span>     <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>   <span class="p">[</span><span class="mf">0.025</span>   <span class="mf">0.975</span><span class="p">]</span>
-<span class="o">-----------------------------------------------------------------</span>
-<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">35.2714</span>   <span class="mf">2.7510</span> <span class="o">-</span><span class="mf">12.8212</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">40.7918</span> <span class="o">-</span><span class="mf">29.7511</span>
-<span class="n">Age</span>             <span class="mf">1.8944</span>   <span class="mf">0.1241</span>  <span class="mf">15.2691</span> <span class="mf">0.0000</span>   <span class="mf">1.6454</span>   <span class="mf">2.1433</span>
-<span class="n">Education</span>      <span class="o">-</span><span class="mf">0.0514</span>   <span class="mf">0.1265</span>  <span class="o">-</span><span class="mf">0.4060</span> <span class="mf">0.6864</span>  <span class="o">-</span><span class="mf">0.3053</span>   <span class="mf">0.2026</span>
-<span class="n">Female</span>          <span class="mf">8.7359</span>   <span class="mf">0.3077</span>  <span class="mf">28.3872</span> <span class="mf">0.0000</span>   <span class="mf">8.1184</span>   <span class="mf">9.3534</span>
-<span class="n">d_Blk</span>          <span class="o">-</span><span class="mf">0.3784</span>   <span class="mf">0.6855</span>  <span class="o">-</span><span class="mf">0.5519</span> <span class="mf">0.5834</span>  <span class="o">-</span><span class="mf">1.7540</span>   <span class="mf">0.9973</span>
-<span class="n">d_Hisp</span>         <span class="o">-</span><span class="mf">1.0267</span>   <span class="mf">0.7901</span>  <span class="o">-</span><span class="mf">1.2996</span> <span class="mf">0.1995</span>  <span class="o">-</span><span class="mf">2.6121</span>   <span class="mf">0.5586</span>
-<span class="n">d_Mex</span>          <span class="o">-</span><span class="mf">0.5749</span>   <span class="mf">0.6863</span>  <span class="o">-</span><span class="mf">0.8378</span> <span class="mf">0.4060</span>  <span class="o">-</span><span class="mf">1.9520</span>   <span class="mf">0.8021</span>
-<span class="n">d_Wht</span>           <span class="mf">0.0816</span>   <span class="mf">0.6808</span>   <span class="mf">0.1199</span> <span class="mf">0.9050</span>  <span class="o">-</span><span class="mf">1.2846</span>   <span class="mf">1.4479</span>
-<span class="o">-----------------------------------------------------------------</span>
-<span class="n">Omnibus</span><span class="p">:</span>               <span class="mf">0.297</span>        <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>          <span class="mf">0.581</span>
-<span class="n">Prob</span><span class="p">(</span><span class="n">Omnibus</span><span class="p">):</span>         <span class="mf">0.862</span>        <span class="n">Jarque</span><span class="o">-</span><span class="n">Bera</span> <span class="p">(</span><span class="n">JB</span><span class="p">):</span>       <span class="mf">0.478</span>
-<span class="n">Skew</span><span class="p">:</span>                  <span class="o">-</span><span class="mf">0.097</span>       <span class="n">Prob</span><span class="p">(</span><span class="n">JB</span><span class="p">):</span>               <span class="mf">0.787</span>
-<span class="n">Kurtosis</span><span class="p">:</span>              <span class="mf">2.607</span>        <span class="n">Condition</span> <span class="n">No</span><span class="o">.</span><span class="p">:</span>          <span class="mi">507</span>
+<span class="n">Model</span><span class="p">:</span>              <span class="n">Probit</span>           <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
+<span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.4132</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">17</span> <span class="mi">17</span><span class="p">:</span><span class="mi">52</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
+<span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.21</span>
+<span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
+<span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.2189e-08</span>
+<span class="n">Converged</span><span class="p">:</span>          <span class="mf">1.0000</span>           <span class="n">Scale</span><span class="p">:</span>            <span class="mf">1.0000</span>
+<span class="n">No</span><span class="o">.</span> <span class="n">Iterations</span><span class="p">:</span>     <span class="mf">5.0000</span>
+<span class="o">------------------------------------------------------------------</span>
+               <span class="n">Coef</span><span class="o">.</span>   <span class="n">Std</span><span class="o">.</span><span class="n">Err</span><span class="o">.</span>     <span class="n">z</span>     <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>    <span class="p">[</span><span class="mf">0.025</span>   <span class="mf">0.975</span><span class="p">]</span>
+<span class="o">------------------------------------------------------------------</span>
+<span class="n">Intercept</span>     <span class="o">-</span><span class="mf">2.3868</span>    <span class="mf">0.6741</span>  <span class="o">-</span><span class="mf">3.5408</span>  <span class="mf">0.0004</span>  <span class="o">-</span><span class="mf">3.7080</span>  <span class="o">-</span><span class="mf">1.0656</span>
+<span class="n">gre</span>            <span class="mf">0.0014</span>    <span class="mf">0.0006</span>   <span class="mf">2.1200</span>  <span class="mf">0.0340</span>   <span class="mf">0.0001</span>   <span class="mf">0.0026</span>
+<span class="n">gpa</span>            <span class="mf">0.4777</span>    <span class="mf">0.1955</span>   <span class="mf">2.4441</span>  <span class="mf">0.0145</span>   <span class="mf">0.0946</span>   <span class="mf">0.8608</span>
+<span class="n">d_prest_2</span>     <span class="o">-</span><span class="mf">0.4154</span>    <span class="mf">0.1954</span>  <span class="o">-</span><span class="mf">2.1261</span>  <span class="mf">0.0335</span>  <span class="o">-</span><span class="mf">0.7983</span>  <span class="o">-</span><span class="mf">0.0325</span>
+<span class="n">d_prest_3</span>     <span class="o">-</span><span class="mf">0.8121</span>    <span class="mf">0.2086</span>  <span class="o">-</span><span class="mf">3.8934</span>  <span class="mf">0.0001</span>  <span class="o">-</span><span class="mf">1.2210</span>  <span class="o">-</span><span class="mf">0.4033</span>
+<span class="n">d_prest_4</span>     <span class="o">-</span><span class="mf">0.9359</span>    <span class="mf">0.2456</span>  <span class="o">-</span><span class="mf">3.8101</span>  <span class="mf">0.0001</span>  <span class="o">-</span><span class="mf">1.4173</span>  <span class="o">-</span><span class="mf">0.4545</span>
 <span class="o">=================================================================</span>
 </pre></div>
 </div>
@@ -1032,15 +1151,18 @@ Error evaluating factor: NameError: name &#39;gre&#39; is not defined
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_RegularExpressions.html" class="btn btn-neutral float-right" title="12. Regular Expressions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_RegularExpressions.html" class="btn btn-neutral float-right" title="12. Regular Expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Data_1.html" class="btn btn-neutral" title="10. Working with data I: Data cleaning" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Data_1.html" class="btn btn-neutral" title="10. Working with Data I: Data Cleaning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1074,7 +1196,8 @@ Error evaluating factor: NameError: name &#39;gre&#39; is not defined
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

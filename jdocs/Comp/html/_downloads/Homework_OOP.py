@@ -1,4 +1,5 @@
 # Homework 6 - OOP
+import math as m
 
 #------------------------------------------------------------------------------
 # Exercise 1
@@ -45,7 +46,7 @@ gpa_list = [4.0, 3.0, 2.5, 3.6, 2.7]
 # Create student object
 student_list = []
 for i, (firstname, lastname, gender, status, gpa) in enumerate(zip(first_list,last_list,gend_list,stat_list,gpa_list)):
-    student_list.append(mf.Student(firstname=firstname, lastname=lastname, gender=gender, status=status, gpa=gpa))
+    student_list.append(Student(firstname=firstname, lastname=lastname, gender=gender, status=status, gpa=gpa))
 
 for i in range(len(student_list)):
     print('Student {}:'.format(i+1))
