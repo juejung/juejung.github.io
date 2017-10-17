@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -46,7 +44,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -87,10 +84,7 @@
           
             
             
-              
-            
-            
-              <ul class="current">
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -105,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#some-pandas-tricks">10.2. Some Pandas Tricks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#renaming-variables">10.2.1. Renaming Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-columns">10.2.2. Dropping and Adding Columns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">10.2.3. Missing Values of NaN’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">10.2.3. Missing Values of NaN&#8217;s</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-rows-to-a-dataframe">10.2.4. Dropping and Adding Rows to a DataFrame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sorting-and-reindexing-dataframes">10.2.5. Sorting and Reindexing DataFrames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#merging-dataframes-or-adding-columns">10.2.6. Merging DataFrames or Adding Columns</a></li>
@@ -139,10 +133,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Computational Economics</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Computational Economics</a>
       </nav>
 
 
@@ -151,40 +143,23 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>10. Working with Data I: Data Cleaning</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>10. Working with Data I: Data Cleaning</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/Slides_Data_1.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -268,7 +243,7 @@ We first import this file using the <code class="docutils literal"><span class="
 
 <span class="c1"># Check how many sheets we have inside the excel file</span>
 <span class="n">xl</span><span class="o">.</span><span class="n">sheet_names</span>
-<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet3&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">u&#39;Sheet1&#39;</span><span class="p">,</span> <span class="s1">u&#39;Sheet2&#39;</span><span class="p">,</span> <span class="s1">u&#39;Sheet3&#39;</span><span class="p">]</span>
 
 <span class="c1"># Pick one sheet and define it as your DataFrame by parsing a sheet</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
@@ -305,7 +280,7 @@ We first import this file using the <code class="docutils literal"><span class="
 <span class="o">-------------------------</span>
 </pre></div>
 </div>
-<p>Drop column 3 and 4 and let’s have a look at the data again.</p>
+<p>Drop column 3 and 4 and let&#8217;s have a look at the data again.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
@@ -327,8 +302,8 @@ command to accomplish this:</p>
 </pre></div>
 </div>
 <p>Here we use the <code class="docutils literal"><span class="pre">lambda</span></code> command which is an inline function. Basically it is
-a shortcut so that we don’t have to write a separate function using the <code class="docutils literal"><span class="pre">def</span></code>
-keyword etc. It’s a shortcut for functions that you want to define ‘on the fly.’</p>
+a shortcut so that we don&#8217;t have to write a separate function using the <code class="docutils literal"><span class="pre">def</span></code>
+keyword etc. It&#8217;s a shortcut for functions that you want to define &#8216;on the fly.&#8217;</p>
 <p>We next generate a new variable called <code class="docutils literal"><span class="pre">relFrequency</span></code> that contains the relative
 frequencies.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make new column with relative frequency</span>
@@ -414,7 +389,7 @@ the DataFrame.</p>
 </div>
 </div>
 <div class="section" id="missing-values-of-nan-s">
-<h3>10.2.3. Missing Values of NaN’s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.3. Missing Values of NaN&#8217;s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
 <p><strong>Count NaNs</strong></p>
 <p>Count the number of rows with missing values.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -549,9 +524,9 @@ DataFrame, so you do not need to specify the <code class="docutils literal"><spa
 the <code class="docutils literal"><span class="pre">sort_values()</span></code> DataFrame method.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">The old <code class="docutils literal"><span class="pre">pandas</span></code> method/function <code class="docutils literal"><span class="pre">.sort()</span></code> was replaced with</p>
+<p class="last">The old <code class="docutils literal"><span class="pre">pandas</span></code> method/function <code class="docutils literal"><span class="pre">.sort()</span></code> was replaced with
+<code class="docutils literal"><span class="pre">.sort_values()</span></code> and does not work anymore in newer versions of <code class="docutils literal"><span class="pre">pandas</span></code>.</p>
 </div>
-<p><code class="docutils literal"><span class="pre">.sort_values()</span></code> and does not work anymore in newer versions of <code class="docutils literal"><span class="pre">pandas</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
@@ -764,7 +739,7 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 <h3>10.2.7. Converting Column Types<a class="headerlink" href="#converting-column-types" title="Permalink to this headline">¶</a></h3>
 <p>When converting text into a DataFrame to conduct statistical analysis it is
 sometimes necessary to convert a numbers column that is still a string, into
-floats, so that we can do math. Let’s drop some more columns first so the DataFrame
+floats, so that we can do math. Let&#8217;s drop some more columns first so the DataFrame
 fits nicely in the output window.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;absFrequency&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
@@ -779,7 +754,7 @@ fits nicely in the output window.</p>
 <span class="mi">4</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>
 </pre></div>
 </div>
-<p>We now generate a column of “words” or “strings” that happen do be numbers.
+<p>We now generate a column of &#8220;words&#8221; or &#8220;strings&#8221; that happen do be numbers.
 Since they are defined as words, we cannot run statistical analysis on these
 numbers yet.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -842,16 +817,16 @@ create a DataFrame with some random values:</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.550308</span>  <span class="mf">29.725445</span>  <span class="mf">27.745370</span>  <span class="mf">83.835071</span>  <span class="mf">71.945701</span>
-<span class="mi">1</span>  <span class="mf">73.519370</span>  <span class="mf">94.360159</span>  <span class="mf">26.671814</span>  <span class="mf">35.892251</span>  <span class="mf">48.206674</span>
-<span class="mi">2</span>  <span class="mf">68.233532</span>  <span class="mf">23.090219</span>  <span class="mf">44.456507</span>  <span class="mf">83.352577</span>  <span class="mf">19.552704</span>
-<span class="mi">3</span>  <span class="mf">62.596597</span>  <span class="mf">13.235996</span>  <span class="mf">11.150485</span>   <span class="mf">0.542195</span>  <span class="mf">65.168699</span>
-<span class="mi">4</span>  <span class="mf">35.586518</span>  <span class="mf">95.648030</span>  <span class="mf">66.809537</span>  <span class="mf">63.842397</span>  <span class="mf">70.293077</span>
-<span class="mi">5</span>  <span class="mf">23.002074</span>   <span class="mf">0.789769</span>  <span class="mf">16.097028</span>  <span class="mf">37.995102</span>  <span class="mf">14.815117</span>
-<span class="mi">6</span>  <span class="mf">18.102101</span>  <span class="mf">63.677212</span>  <span class="mf">13.353384</span>  <span class="mf">93.669654</span>  <span class="mf">32.449837</span>
-<span class="mi">7</span>  <span class="mf">48.166909</span>  <span class="mf">81.690159</span>  <span class="mf">79.830586</span>  <span class="mf">59.096263</span>   <span class="mf">6.937707</span>
-<span class="mi">8</span>   <span class="mf">8.548314</span>   <span class="mf">4.785829</span>   <span class="mf">6.694978</span>  <span class="mf">26.385160</span>   <span class="mf">6.628177</span>
-<span class="mi">9</span>  <span class="mf">23.216429</span>  <span class="mf">65.106376</span>  <span class="mf">51.688013</span>  <span class="mf">29.182413</span>  <span class="mf">23.038617</span>
+<span class="mi">0</span>  <span class="mf">75.734573</span>  <span class="mf">16.303189</span>  <span class="mf">64.352219</span>  <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
+<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.447309</span>   <span class="mf">4.941257</span>  <span class="mf">75.950932</span>  <span class="mf">77.149530</span>
+<span class="mi">2</span>  <span class="mf">91.321244</span>  <span class="mf">86.889973</span>   <span class="mf">7.458090</span>  <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
+<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.399085</span>  <span class="mf">59.956548</span>  <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
+<span class="mi">4</span>  <span class="mf">96.946144</span>  <span class="mf">29.819570</span>  <span class="mf">56.636042</span>  <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
+<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.541398</span>  <span class="mf">33.692922</span>  <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
+<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.087839</span>  <span class="mf">71.065276</span>  <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
+<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.240739</span>  <span class="mf">73.851787</span>  <span class="mf">70.534121</span>  <span class="mf">22.804445</span>
+<span class="mi">8</span>  <span class="mf">51.263806</span>  <span class="mf">13.162561</span>  <span class="mf">92.482546</span>  <span class="mf">76.052456</span>  <span class="mf">39.807759</span>
+<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.380416</span>  <span class="mf">93.298864</span>  <span class="mf">81.928035</span>  <span class="mf">95.091615</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal"><span class="pre">2</span></code> that are smaller than 30 with
@@ -861,16 +836,16 @@ the string <cite>low</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.550308</span>      <span class="n">Low</span>  <span class="mf">27.745370</span>  <span class="mf">83.835071</span>  <span class="mf">71.945701</span>
-<span class="mi">1</span>  <span class="mf">73.519370</span>  <span class="mf">94.3602</span>  <span class="mf">26.671814</span>  <span class="mf">35.892251</span>  <span class="mf">48.206674</span>
-<span class="mi">2</span>  <span class="mf">68.233532</span>      <span class="n">Low</span>  <span class="mf">44.456507</span>  <span class="mf">83.352577</span>  <span class="mf">19.552704</span>
-<span class="mi">3</span>  <span class="mf">62.596597</span>      <span class="n">Low</span>  <span class="mf">11.150485</span>   <span class="mf">0.542195</span>  <span class="mf">65.168699</span>
-<span class="mi">4</span>  <span class="mf">35.586518</span>   <span class="mf">95.648</span>  <span class="mf">66.809537</span>  <span class="mf">63.842397</span>  <span class="mf">70.293077</span>
-<span class="mi">5</span>  <span class="mf">23.002074</span>      <span class="n">Low</span>  <span class="mf">16.097028</span>  <span class="mf">37.995102</span>  <span class="mf">14.815117</span>
-<span class="mi">6</span>  <span class="mf">18.102101</span>  <span class="mf">63.6772</span>  <span class="mf">13.353384</span>  <span class="mf">93.669654</span>  <span class="mf">32.449837</span>
-<span class="mi">7</span>  <span class="mf">48.166909</span>  <span class="mf">81.6902</span>  <span class="mf">79.830586</span>  <span class="mf">59.096263</span>   <span class="mf">6.937707</span>
-<span class="mi">8</span>   <span class="mf">8.548314</span>      <span class="n">Low</span>   <span class="mf">6.694978</span>  <span class="mf">26.385160</span>   <span class="mf">6.628177</span>
-<span class="mi">9</span>  <span class="mf">23.216429</span>  <span class="mf">65.1064</span>  <span class="mf">51.688013</span>  <span class="mf">29.182413</span>  <span class="mf">23.038617</span>
+<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>  <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
+<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">75.950932</span>  <span class="mf">77.149530</span>
+<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>  <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
+<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>  <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
+<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>  <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
+<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>  <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
+<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>  <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
+<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">70.534121</span>  <span class="mf">22.804445</span>
+<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">76.052456</span>  <span class="mf">39.807759</span>
+<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">81.928035</span>  <span class="mf">95.091615</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal"><span class="pre">4</span></code> that are larger than 70 with the
@@ -880,36 +855,36 @@ value 1000.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.550308</span>      <span class="n">Low</span>  <span class="mf">27.745370</span>  <span class="mf">1000.000000</span>  <span class="mf">71.945701</span>
-<span class="mi">1</span>  <span class="mf">73.519370</span>  <span class="mf">94.3602</span>  <span class="mf">26.671814</span>    <span class="mf">35.892251</span>  <span class="mf">48.206674</span>
-<span class="mi">2</span>  <span class="mf">68.233532</span>      <span class="n">Low</span>  <span class="mf">44.456507</span>  <span class="mf">1000.000000</span>  <span class="mf">19.552704</span>
-<span class="mi">3</span>  <span class="mf">62.596597</span>      <span class="n">Low</span>  <span class="mf">11.150485</span>     <span class="mf">0.542195</span>  <span class="mf">65.168699</span>
-<span class="mi">4</span>  <span class="mf">35.586518</span>   <span class="mf">95.648</span>  <span class="mf">66.809537</span>    <span class="mf">63.842397</span>  <span class="mf">70.293077</span>
-<span class="mi">5</span>  <span class="mf">23.002074</span>      <span class="n">Low</span>  <span class="mf">16.097028</span>    <span class="mf">37.995102</span>  <span class="mf">14.815117</span>
-<span class="mi">6</span>  <span class="mf">18.102101</span>  <span class="mf">63.6772</span>  <span class="mf">13.353384</span>  <span class="mf">1000.000000</span>  <span class="mf">32.449837</span>
-<span class="mi">7</span>  <span class="mf">48.166909</span>  <span class="mf">81.6902</span>  <span class="mf">79.830586</span>    <span class="mf">59.096263</span>   <span class="mf">6.937707</span>
-<span class="mi">8</span>   <span class="mf">8.548314</span>      <span class="n">Low</span>   <span class="mf">6.694978</span>    <span class="mf">26.385160</span>   <span class="mf">6.628177</span>
-<span class="mi">9</span>  <span class="mf">23.216429</span>  <span class="mf">65.1064</span>  <span class="mf">51.688013</span>    <span class="mf">29.182413</span>  <span class="mf">23.038617</span>
+<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>    <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
+<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">1000.000000</span>  <span class="mf">77.149530</span>
+<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>    <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
+<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>    <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
+<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>    <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
+<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>    <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
+<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>    <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
+<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">1000.000000</span>  <span class="mf">22.804445</span>
+<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">1000.000000</span>  <span class="mf">39.807759</span>
+<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">1000.000000</span>  <span class="mf">95.091615</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
-combination of conditions. So let’s replace all the values in column <code class="docutils literal"><span class="pre">5</span></code> that
+combination of conditions. So let&#8217;s replace all the values in column <code class="docutils literal"><span class="pre">5</span></code> that
 are between 20 and 80 with the string <cite>middle</cite>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">][(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Middle&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>        <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.550308</span>      <span class="n">Low</span>  <span class="mf">27.745370</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">1</span>  <span class="mf">73.519370</span>  <span class="mf">94.3602</span>  <span class="mf">26.671814</span>    <span class="mf">35.892251</span>   <span class="n">Middle</span>
-<span class="mi">2</span>  <span class="mf">68.233532</span>      <span class="n">Low</span>  <span class="mf">44.456507</span>  <span class="mf">1000.000000</span>  <span class="mf">19.5527</span>
-<span class="mi">3</span>  <span class="mf">62.596597</span>      <span class="n">Low</span>  <span class="mf">11.150485</span>     <span class="mf">0.542195</span>   <span class="n">Middle</span>
-<span class="mi">4</span>  <span class="mf">35.586518</span>   <span class="mf">95.648</span>  <span class="mf">66.809537</span>    <span class="mf">63.842397</span>   <span class="n">Middle</span>
-<span class="mi">5</span>  <span class="mf">23.002074</span>      <span class="n">Low</span>  <span class="mf">16.097028</span>    <span class="mf">37.995102</span>  <span class="mf">14.8151</span>
-<span class="mi">6</span>  <span class="mf">18.102101</span>  <span class="mf">63.6772</span>  <span class="mf">13.353384</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">7</span>  <span class="mf">48.166909</span>  <span class="mf">81.6902</span>  <span class="mf">79.830586</span>    <span class="mf">59.096263</span>  <span class="mf">6.93771</span>
-<span class="mi">8</span>   <span class="mf">8.548314</span>      <span class="n">Low</span>   <span class="mf">6.694978</span>    <span class="mf">26.385160</span>  <span class="mf">6.62818</span>
-<span class="mi">9</span>  <span class="mf">23.216429</span>  <span class="mf">65.1064</span>  <span class="mf">51.688013</span>    <span class="mf">29.182413</span>   <span class="n">Middle</span>
+<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>    <span class="mf">59.845179</span>  <span class="mf">13.8009</span>
+<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>    <span class="mf">18.170263</span>  <span class="mf">84.7599</span>
+<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>    <span class="mf">63.253837</span>  <span class="mf">98.0165</span>
+<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>    <span class="mf">66.929784</span>   <span class="n">Middle</span>
+<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>    <span class="mf">15.733203</span>   <span class="n">Middle</span>
+<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>    <span class="mf">15.151580</span>   <span class="n">Middle</span>
+<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">1000.000000</span>  <span class="mf">95.0916</span>
 </pre></div>
 </div>
 </div>
@@ -918,18 +893,15 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Data_2.html" class="btn btn-neutral float-right" title="11. Working with Data II: Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Data_2.html" class="btn btn-neutral float-right" title="11. Working with Data II: Statistics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_OOP.html" class="btn btn-neutral" title="9. Object Oriented Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_OOP.html" class="btn btn-neutral" title="9. Object Oriented Programming" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -963,8 +935,7 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
