@@ -23,7 +23,8 @@ analyse your data. Some example topics are:
 You can come up with similar projects based on online data. I prefer topics
 that are very local. Start with Towson, Baltimore, maybe Maryland centered
 topics if you can. Like `this example <http://www.cs.cornell.edu/~karthik/projects/rateprof-scrape/DOCUMENTATION.html>`_
-where a student wrote scripts to scrape RateMyProfessor.com. 
+where a student wrote scripts to scrape RateMyProfessor.com. And a follow up
+`project <ExampleProjectPPT.pdf>`_ where the ratings were correlated with graduation rates.
 
 2. Survey data analysis
 -------------------------------------------------------------------------------

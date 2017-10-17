@@ -11,6 +11,11 @@ Your suggested projects fall into three categories
 I will make some suggestions and provide links for each one of the project
 types next.
 
+When you work towards your first presentation, I strongly suggest you use and
+economics research relevant search engine like:
+`EconPapers <https://econpapers.repec.org/scripts/search.pf?ft=>`_
+in order to find relevant literature.
+
 1. Data Analysis Projects
 -------------------------------------------------------------------------------
 
