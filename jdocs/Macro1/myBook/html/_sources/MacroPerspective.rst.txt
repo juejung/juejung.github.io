@@ -35,7 +35,9 @@ not macroeconomics, but it is an apt analogy.
 
 
 Macroeconomics is a rather massive subject. How are we going to tackle it?
+
 We will study macroeconomics from three different perspectives:
+
     1. What are the macroeconomic goals? (Macroeconomics as a discipline does not have goals, but we do have
        goals for the macro economy.)
     2. What are the frameworks economists can use to analyze the macroeconomy?
@@ -353,18 +355,19 @@ Key Concepts and Summary
 Self-Check Questions
 --------------------
 
-.. todo:: Which of the following are included in GDP, and which are not?
+.. todo::
+    * Which of the following are included in GDP, and which are not?
 
-    a. The cost of hospital stays
-    b. The rise in life expectancy over time
-    c. Child care provided by a licensed day care center
-    d. Child care provided by a grandmother
-    e. The sale of a used car
-    f. The sale of a new car
-    g. The greater variety of cheese available in supermarkets
-    h. The iron that goes into the steel that goes into a refrigerator bought by a consumer.
+        a. The cost of hospital stays
+        b. The rise in life expectancy over time
+        c. Child care provided by a licensed day care center
+        d. Child care provided by a grandmother
+        e. The sale of a used car
+        f. The sale of a new car
+        g. The greater variety of cheese available in supermarkets
+        h. The iron that goes into the steel that goes into a refrigerator bought by a consumer.
 
-.. todo:: What are the main components of measuring GDP with what is demanded?
+    * What are the main components of measuring GDP with what is demanded?
 
 .. }}}2
 .. }}}1
@@ -387,19 +390,6 @@ Converting Nominal to Real GDP
 ------------------------------
 .. Code: Download data from quandl {{{3
 
-::
-
-    ---------------------------------------------------------------------------ModuleNotFoundError
-    Traceback (most recent call last)<ipython-input-1-3210eb731c79> in
-    <module>()
-          1 import os
-    ----> 2 import quandl
-          3 import numpy as np
-          4 import pandas as pd
-          5 import matplotlib.pyplot as plt
-    ModuleNotFoundError: No module named 'quandl'
-    
-
 
 
 .. }}}3
@@ -414,13 +404,64 @@ each stated year. This data is also reflected in the graph shown in
 
 ::
 
-    ---------------------------------------------------------------------------NameError
-    Traceback (most recent call last)<ipython-input-1-26eb617b6e36> in
-    <module>()
-    ----> 1 df1_a = df_a[['GDP', 'GDP_Deflator']].copy()
-          2
-          3 print(df1_a.loc['1960'::])
-    NameError: name 'df_a' is not defined
+                    GDP  GDP_Deflator
+    1960-12-31    541.1     17.560770
+    1961-12-31    581.6     17.744150
+    1962-12-31    613.1     17.937390
+    1963-12-31    654.8     18.214186
+    1964-12-31    698.4     18.475213
+    1965-12-31    773.1     18.853339
+    1966-12-31    834.9     19.481520
+    1967-12-31    883.2     20.067254
+    1968-12-31    970.1     20.998745
+    1969-12-31   1040.7     22.069770
+    1970-12-31   1091.5     23.182465
+    1971-12-31   1193.6     24.288301
+    1972-12-31   1332.0     25.365631
+    1973-12-31   1479.1     27.077841
+    1974-12-31   1603.0     29.922347
+    1975-12-31   1765.9     32.139997
+    1976-12-31   1938.4     33.814217
+    1977-12-31   2168.7     36.035692
+    1978-12-31   2482.2     38.661745
+    1979-12-31   2730.7     41.985578
+    1980-12-31   2993.5     46.045345
+    1981-12-31   3283.5     49.862569
+    1982-12-31   3407.8     52.483405
+    1983-12-31   3796.1     54.218382
+    1984-12-31   4147.6     56.078962
+    1985-12-31   4453.1     57.737987
+    1986-12-31   4669.4     58.812268
+    1987-12-31   5022.7     60.567728
+    1988-12-31   5412.7     62.858702
+    1989-12-31   5763.4     65.121692
+    1990-12-31   6023.3     67.621304
+    1991-12-31   6279.3     69.643095
+    1992-12-31   6697.6     71.201829
+    1993-12-31   7032.8     72.852333
+    1994-12-31   7476.7     74.376523
+    1995-12-31   7799.5     75.861767
+    1996-12-31   8287.1     77.167547
+    1997-12-31   8788.3     78.394869
+    1998-12-31   9325.7     79.228083
+    1999-12-31   9926.1     80.547418
+    2000-12-31  10472.3     82.593676
+    2001-12-31  10701.3     84.227055
+    2002-12-31  11103.8     85.651034
+    2003-12-31  11816.8     87.346160
+    2004-12-31  12562.2     90.049031
+    2005-12-31  13381.6     93.099754
+    2006-12-31  14066.4     95.579912
+    2007-12-31  14685.3     97.955549
+    2008-12-31  14549.9     99.814091
+    2009-12-31  14566.5    100.169166
+    2010-12-31  15230.2    101.949260
+    2011-12-31  15785.3    103.916973
+    2012-12-31  16297.3    105.934622
+    2013-12-31  16999.9    107.635859
+    2014-12-31  17735.9    109.344521
+    2015-12-31  18287.2    110.512703
+    2016-12-31  18905.5    112.189492
     
 
 
@@ -431,13 +472,14 @@ each stated year. This data is also reflected in the graph shown in
 
 ::
 
-    ---------------------------------------------------------------------------NameError
-    Traceback (most recent call last)<ipython-input-1-01ab6308f558> in
-    <module>()
-    ----> 1 df_a[['GDP']].loc['1960'::].plot(style = ['-'])
-          2 plt.title('Nominal GDP', fontsize=titleSize)
-    NameError: name 'df_a' is not defined
+    <matplotlib.text.Text at 0x7ff40260f630>
     
+
+.. figure:: _static/MacroPerspective_fig_NomGDP_1.png
+   :name: fig_NomGDP
+   :width: 12 cm
+
+   Nominal GDP over Time
 
 
 
@@ -460,13 +502,14 @@ done, using the GDP deflator.
 
 ::
 
-    ---------------------------------------------------------------------------NameError
-    Traceback (most recent call last)<ipython-input-1-1719005d96c8> in
-    <module>()
-    ----> 1 df_a[['GDP_Deflator']].loc['1960'::].plot(style = ['-'])
-          2 plt.title('GDP-Deflator', fontsize=titleSize)
-    NameError: name 'df_a' is not defined
+    <matplotlib.text.Text at 0x7ff3fade8f98>
     
+
+.. figure:: _static/MacroPerspective_fig_GDP_Deflator_1.png
+   :name: fig_GDP_Deflator
+   :width: 12 cm
+
+   GDP Deflator over Time
 
 
 
@@ -549,14 +592,12 @@ Now read the following Work It Out feature for more practice calculating real GD
 
 ::
 
-    ---------------------------------------------------------------------------NameError
-    Traceback (most recent call last)<ipython-input-1-f109528e581b> in
-    <module>()
-    ----> 1 df_q[['GDP', 'realGDP']].plot(style = ['-', '--'])
-          2 plt.title('Nominal and Real US-GDP (2010 Base Year)' ,
-    fontsize=titleSize)
-    NameError: name 'df_q' is not defined
+    <matplotlib.text.Text at 0x7ff3fad30b38>
     
+
+.. image:: _static/MacroPerspective_fig_NomRealGDP_1.png
+ :name: fig_NomRealGDP
+ :width: 12 cm
 
 
 
@@ -574,9 +615,10 @@ Key Concepts and Summary
 Self-Check Question
 -------------------
 
-.. todo:: What is the difference between a series of economic data over time measured in nominal terms versus the same data series over time measured in real terms?
+.. todo::
+    * What is the difference between a series of economic data over time measured in nominal terms versus the same data series over time measured in real terms?
 
-.. todo:: How do you convert a series of nominal economic data over time to real terms?
+    * How do you convert a series of nominal economic data over time to real terms?
 
 .. }}}2
 .. }}}1
@@ -598,13 +640,12 @@ When news reports indicate that “the economy grew 1.2% in the first quarter,�
 
 ::
 
-    ---------------------------------------------------------------------------NameError
-    Traceback (most recent call last)<ipython-input-1-a1af833c15c7> in
-    <module>()
-    ----> 1 df_q[['realGDP']].plot(style = ['-', '--'])
-          2 plt.title('Real US-GDP (2010 Base Year)' , fontsize=titleSize)
-    NameError: name 'df_q' is not defined
+    <matplotlib.text.Text at 0x7ff3fa904080>
     
+
+.. image:: _static/MacroPerspective_fig_RealGDP_1.png
+ :name: fig_RealGDP
+ :width: 12 cm
 
 
 
@@ -666,11 +707,13 @@ Key Concepts and Summary
 Self-Check Question
 -------------------
 
-.. todo:: What are the typical patterns of GDP for a high-income economy like the United States in the long run and the short run?
+.. todo::
+    * What are the typical patterns of GDP for a high-income economy like the United States in the long run and the short run?
 
-.. todo:: Why do you suppose that U.S. GDP is so much higher today than 50 or 100 years ago?
+    * Why do you suppose that u.s. gdp is so much higher today than 50 or 100 years ago?
 
-.. todo:: Why do you think that GDP does not grow at a steady rate, but rather speeds up and slows down
+    * Why do you think that GDP does not grow at a steady rate, but rather speeds up and slows down
+
 .. }}}2
 .. }}}1
 .. x.4 Comparing GDP among Countries {{{1
@@ -718,9 +761,9 @@ Key Concepts and Summary
 Self-Check Question
 -------------------
 
-.. todo:: What are the two main difficulties that arise in comparing the GDP of different countries?
-
-.. todo:: Is it possible for GDP to rise while at the same time per capita GDP is falling? Is it possible for GDP to fall while per capita GDP is rising?
+.. todo::
+    * What are the two main difficulties that arise in comparing the GDP of different countries?
+    * Is it possible for GDP to rise while at the same time per capita GDP is falling? Is it possible for GDP to fall while per capita GDP is rising?
 
 .. }}}2
 .. }}}1
@@ -794,9 +837,9 @@ Key Concepts and Summary
 Self-Check Question
 -------------------
 
-.. todo:: List some of the reasons why GDP should not be considered an effective measure of the standard of living in a country.
-
-.. todo:: How might a “green” GDP be measured?
+.. todo::
+    * List some of the reasons why GDP should not be considered an effective measure of the standard of living in a country.
+    * How might a “green” GDP be measured?
 
 .. }}}2
 .. }}}1
