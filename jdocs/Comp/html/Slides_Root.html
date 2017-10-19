@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>14. Root finding &mdash; Computational Economics 1.0 documentation</title>
+  <title>16. Root finding &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -30,9 +30,12 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="15. Optimization" href="Slides_Optimization.html"/>
-        <link rel="prev" title="13. Random numbers" href="Slides_Random.html"/> 
+        <link rel="next" title="17. Optimization" href="Slides_Optimization.html"/>
+        <link rel="prev" title="15. Random numbers" href="Slides_Random.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -83,39 +86,41 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First steps in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">3. Basic programming techniques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">4. Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">5. Vectors and Matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">6. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">7. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">8. Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">9. Working with data I: Data cleaning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">10. Working with data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">11. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">12. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">13. Random numbers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">14. Root finding</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#first-steps">14.1. First steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#define-example-function">14.1.1. Define example function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plot-the-function">14.1.2. Plot the function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic programming techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">12. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random numbers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. Root finding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-steps">16.1. First steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#define-example-function">16.1.1. Define example function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-the-function">16.1.2. Plot the function</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#newton-raphson">14.2. Newton-Raphson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#secant-method">14.3. Secant method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bisection">14.4. Bisection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-algorithm-of-the-bisection-method">14.4.1. The algorithm of the bisection method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#newton-raphson">16.2. Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#secant-method">16.3. Secant method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bisection">16.4. Bisection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-algorithm-of-the-bisection-method">16.4.1. The algorithm of the bisection method</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#using-built-in-unit-root-function">14.5. Using built in unit-root function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-built-in-unit-root-function">16.5. Using built in unit-root function</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">15. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">16. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">17. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">18. An OLG model with labor-leisure choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">19. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">20. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
 </ul>
 
             
@@ -138,7 +143,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -146,11 +151,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>14. Root finding</li>
+    <li>16. Root finding</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/Slides_Root.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Slides_Root.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,9 +166,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="root-finding">
-<h1>14. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
+<h1>16. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="first-steps">
-<h2>14.1. First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
+<h2>16.1. First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="c1">#</span>
@@ -173,7 +178,7 @@
 </pre></div>
 </div>
 <div class="section" id="define-example-function">
-<h3>14.1.1. Define example function<a class="headerlink" href="#define-example-function" title="Permalink to this headline">¶</a></h3>
+<h3>16.1.1. Define example function<a class="headerlink" href="#define-example-function" title="Permalink to this headline">¶</a></h3>
 <p>Define am example function for which we calculate the root, i.e. find <span class="math">\(x\)</span>
 so that <span class="math">\(f(x) = 0\)</span>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -196,7 +201,7 @@ first derivate of the function (i.e., the gradient).</p>
 </div>
 </div>
 <div class="section" id="plot-the-function">
-<h3>14.1.2. Plot the function<a class="headerlink" href="#plot-the-function" title="Permalink to this headline">¶</a></h3>
+<h3>16.1.2. Plot the function<a class="headerlink" href="#plot-the-function" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">xmax</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">xv</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="mf">200.0</span><span class="p">)</span>
@@ -216,7 +221,7 @@ first derivate of the function (i.e., the gradient).</p>
 </div>
 </div>
 <div class="section" id="newton-raphson">
-<h2>14.2. Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
+<h2>16.2. Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
 <p>We start with an initial guess <span class="math">\(x_0\)</span>. The tangent line through the
 initial guess can be defined as:</p>
 <div class="math">
@@ -278,18 +283,18 @@ entire domain of the function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">newtonraphson</span><span class="p">(</span><span class="n">func1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>At iteration: 1 the value of x is 1.122019645309717:
-At iteration: 2 the value of x is 1.2949969704390394:
-At iteration: 3 the value of x is 1.3097090626648604:
-At iteration: 4 the value of x is 1.309799582422906:
-At iteration: 5 the value of x is 1.3097995858041505:
-fx =  -5.55111512313e-17
-Algorithm converged
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">1</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.122019645309717</span><span class="p">:</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">2</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.2949969704390394</span><span class="p">:</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">3</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.3097090626648604</span><span class="p">:</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">4</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.309799582422906</span><span class="p">:</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">5</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.3097995858041505</span><span class="p">:</span>
+<span class="n">fx</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">5.55111512313e-17</span>
+<span class="n">Algorithm</span> <span class="n">converged</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="secant-method">
-<h2>14.3. Secant method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
+<h2>16.3. Secant method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
 <p>As pointed out above, in order to use the <strong>Newton-Raphson</strong> method we need to
 be able to calculate the derivative <span class="math">\(f'(x)\)</span> of the function. If this is
 computationally expensive or maybe even impossible, we can use the <strong>secant</strong>
@@ -320,11 +325,12 @@ is expressed as:</p>
 <div><div class="math">
 \[\boxed{x_{n+1} = x_n - f(x_n)\frac{x_{n-1}-x_n}{f(x_{n-1})-f(x_n)}}\]</div>
 </div></blockquote>
-<p>Note that if <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> are close together then:</p>
-<blockquote>
-<div><div class="math">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Keep in mind that if <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> are close together then:</p>
+<div class="last math">
 \[f'(x_n) \approx f(x_1)\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.\]</div>
-</div></blockquote>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">secant</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Secant algorithm for solving ftn(x) == 0</span>
     <span class="c1"># we assume that ftn is a function of a</span>
@@ -363,18 +369,18 @@ is expressed as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">secant</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>At iteration: 1 the value of x is: 1.3974104821696125
-At iteration: 2 the value of x is: 1.2854761201506528
-At iteration: 3 the value of x is: 1.310676758082541
-At iteration: 4 the value of x is: 1.3098083980193003
-At iteration: 5 the value of x is: 1.3097995826147546
-At iteration: 6 the value of x is: 1.309799585804162
-Algorithm converged
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">1</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.3974104821696125</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">2</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.2854761201506528</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">3</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.310676758082541</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">4</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.3098083980193003</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">5</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.3097995826147546</span>
+<span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">6</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">1.309799585804162</span>
+<span class="n">Algorithm</span> <span class="n">converged</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bisection">
-<h2>14.4. Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
+<h2>16.4. Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>Newton-Raphson</strong> as well as the <strong>Secant</strong> method are not guaranteed to
 work. The bisection method is the most robust method, but it is slow. We start with
 two values <span class="math">\(x_l &lt; x_r\)</span> which bracket the root of the function. It
@@ -390,7 +396,7 @@ repeatedly brackets around the root in the following systematic way:</p>
 </ol>
 </div></blockquote>
 <div class="section" id="the-algorithm-of-the-bisection-method">
-<h3>14.4.1. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
+<h3>16.4.1. The algorithm of the bisection method<a class="headerlink" href="#the-algorithm-of-the-bisection-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
     <span class="c1"># applies the bisection algorithm to find x</span>
     <span class="c1"># such that ftn(x) == 0</span>
@@ -443,54 +449,54 @@ repeatedly brackets around the root in the following systematic way:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>at iteration: 1 the root lies between 1 and 1.5
-at iteration: 2 the root lies between 1.25 and 1.5
-at iteration: 3 the root lies between 1.25 and 1.375
-at iteration: 4 the root lies between 1.25 and 1.3125
-at iteration: 5 the root lies between 1.28125 and 1.3125
-at iteration: 6 the root lies between 1.296875 and 1.3125
-at iteration: 7 the root lies between 1.3046875 and 1.3125
-at iteration: 8 the root lies between 1.30859375 and 1.3125
-at iteration: 9 the root lies between 1.30859375 and 1.310546875
-at iteration: 10 the root lies between 1.3095703125 and 1.310546875
-at iteration: 11 the root lies between 1.3095703125 and 1.31005859375
-at iteration: 12 the root lies between 1.3095703125 and 1.309814453125
-at iteration: 13 the root lies between 1.3096923828125 and
-1.309814453125
-at iteration: 14 the root lies between 1.30975341796875 and
-1.309814453125
-at iteration: 15 the root lies between 1.309783935546875 and
-1.309814453125
-at iteration: 16 the root lies between 1.3097991943359375 and
-1.309814453125
-at iteration: 17 the root lies between 1.3097991943359375 and
-1.3098068237304688
-at iteration: 18 the root lies between 1.3097991943359375 and
-1.3098030090332031
-at iteration: 19 the root lies between 1.3097991943359375 and
-1.3098011016845703
-at iteration: 20 the root lies between 1.3097991943359375 and
-1.309800148010254
-at iteration: 21 the root lies between 1.3097991943359375 and
-1.3097996711730957
-at iteration: 22 the root lies between 1.3097994327545166 and
-1.3097996711730957
-at iteration: 23 the root lies between 1.3097995519638062 and
-1.3097996711730957
-at iteration: 24 the root lies between 1.3097995519638062 and
-1.309799611568451
-at iteration: 25 the root lies between 1.3097995817661285 and
-1.309799611568451
-at iteration: 26 the root lies between 1.3097995817661285 and
-1.3097995966672897
-at iteration: 27 the root lies between 1.3097995817661285 and
-1.3097995892167091
-at iteration: 28 the root lies between 1.3097995854914188 and
-1.3097995892167091
-at iteration: 29 the root lies between 1.3097995854914188 and
-1.309799587354064
-at iteration: 30 the root lies between 1.3097995854914188 and
-1.3097995864227414
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">1</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mf">1.5</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">2</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.25</span> <span class="ow">and</span> <span class="mf">1.5</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">3</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.25</span> <span class="ow">and</span> <span class="mf">1.375</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">4</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.25</span> <span class="ow">and</span> <span class="mf">1.3125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">5</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.28125</span> <span class="ow">and</span> <span class="mf">1.3125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">6</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.296875</span> <span class="ow">and</span> <span class="mf">1.3125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">7</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3046875</span> <span class="ow">and</span> <span class="mf">1.3125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">8</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.30859375</span> <span class="ow">and</span> <span class="mf">1.3125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">9</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.30859375</span> <span class="ow">and</span> <span class="mf">1.310546875</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">10</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3095703125</span> <span class="ow">and</span> <span class="mf">1.310546875</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">11</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3095703125</span> <span class="ow">and</span> <span class="mf">1.31005859375</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">12</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3095703125</span> <span class="ow">and</span> <span class="mf">1.309814453125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">13</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3096923828125</span> <span class="ow">and</span>
+<span class="mf">1.309814453125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">14</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.30975341796875</span> <span class="ow">and</span>
+<span class="mf">1.309814453125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">15</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.309783935546875</span> <span class="ow">and</span>
+<span class="mf">1.309814453125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">16</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.309814453125</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">17</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.3098068237304688</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">18</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.3098030090332031</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">19</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.3098011016845703</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">20</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.309800148010254</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">21</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097991943359375</span> <span class="ow">and</span>
+<span class="mf">1.3097996711730957</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">22</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097994327545166</span> <span class="ow">and</span>
+<span class="mf">1.3097996711730957</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">23</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995519638062</span> <span class="ow">and</span>
+<span class="mf">1.3097996711730957</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">24</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995519638062</span> <span class="ow">and</span>
+<span class="mf">1.309799611568451</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">25</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995817661285</span> <span class="ow">and</span>
+<span class="mf">1.309799611568451</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">26</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995817661285</span> <span class="ow">and</span>
+<span class="mf">1.3097995966672897</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">27</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995817661285</span> <span class="ow">and</span>
+<span class="mf">1.3097995892167091</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">28</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995854914188</span> <span class="ow">and</span>
+<span class="mf">1.3097995892167091</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">29</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995854914188</span> <span class="ow">and</span>
+<span class="mf">1.309799587354064</span>
+<span class="n">at</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">30</span> <span class="n">the</span> <span class="n">root</span> <span class="n">lies</span> <span class="n">between</span> <span class="mf">1.3097995854914188</span> <span class="ow">and</span>
+<span class="mf">1.3097995864227414</span>
 </pre></div>
 </div>
 <p>The bisection method will not work if the function just touches the horizontal
@@ -501,7 +507,7 @@ a Newton-Raphson type method to then quickly converge to this root point.</p>
 </div>
 </div>
 <div class="section" id="using-built-in-unit-root-function">
-<h2>14.5. Using built in unit-root function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
+<h2>16.5. Using built in unit-root function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
 <p>The built in functions are part of the
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize">scipy.optimize</a> library.
 The functions work very similar to the ones that we just wrote ourselves. It
@@ -518,8 +524,8 @@ The first root finding algorithm is called
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The root of func is at {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myroot</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> -------------- Root ------------
-The root of func is at [ 1.30979959]
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">--------------</span> <span class="n">Root</span> <span class="o">------------</span>
+<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30979959</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The second root finding algorithm is called
@@ -534,8 +540,8 @@ The root of func is at [ 1.30979959]
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The root is at {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> -------------- Fsolve ------------
-The root is at [ 1.30979959]
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">--------------</span> <span class="n">Fsolve</span> <span class="o">------------</span>
+<span class="n">The</span> <span class="n">root</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30979959</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -548,10 +554,10 @@ The root is at [ 1.30979959]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Optimization.html" class="btn btn-neutral float-right" title="15. Optimization" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Optimization.html" class="btn btn-neutral float-right" title="17. Optimization" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Random.html" class="btn btn-neutral" title="13. Random numbers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Random.html" class="btn btn-neutral" title="15. Random numbers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -560,7 +566,7 @@ The root is at [ 1.30979959]
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, Juergen Jung.
+        &copy; Copyright 2017, Juergen Jung.
 
     </p>
   </div>
