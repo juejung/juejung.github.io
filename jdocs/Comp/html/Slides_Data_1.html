@@ -110,9 +110,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">12. Regular Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
@@ -295,15 +295,15 @@ We first import this file using the <code class="docutils literal"><span class="
 <span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>
 </pre></div>
 </div>
-<p>Sometimes column headers have white spaces in them. It is probably a good idea
-to remove all white spaces from header names. You can use the <code class="docutils literal"><span class="pre">.strip()</span></code>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Sometimes column headers have white spaces in them. It is probably a good idea
+to remove all white spaces from header names. You can use the <code class="docutils literal"><span class="pre">replace()</span></code>
 command to accomplish this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here we use the <code class="docutils literal"><span class="pre">lambda</span></code> command which is an inline function. Basically it is
-a shortcut so that we don&#8217;t have to write a separate function using the <code class="docutils literal"><span class="pre">def</span></code>
-keyword etc. It&#8217;s a shortcut for functions that you want to define &#8216;on the fly.&#8217;</p>
 <p>We next generate a new variable called <code class="docutils literal"><span class="pre">relFrequency</span></code> that contains the relative
 frequencies.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Make new column with relative frequency</span>
@@ -817,16 +817,16 @@ create a DataFrame with some random values:</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.734573</span>  <span class="mf">16.303189</span>  <span class="mf">64.352219</span>  <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
-<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.447309</span>   <span class="mf">4.941257</span>  <span class="mf">75.950932</span>  <span class="mf">77.149530</span>
-<span class="mi">2</span>  <span class="mf">91.321244</span>  <span class="mf">86.889973</span>   <span class="mf">7.458090</span>  <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
-<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.399085</span>  <span class="mf">59.956548</span>  <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
-<span class="mi">4</span>  <span class="mf">96.946144</span>  <span class="mf">29.819570</span>  <span class="mf">56.636042</span>  <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
-<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.541398</span>  <span class="mf">33.692922</span>  <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
-<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.087839</span>  <span class="mf">71.065276</span>  <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
-<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.240739</span>  <span class="mf">73.851787</span>  <span class="mf">70.534121</span>  <span class="mf">22.804445</span>
-<span class="mi">8</span>  <span class="mf">51.263806</span>  <span class="mf">13.162561</span>  <span class="mf">92.482546</span>  <span class="mf">76.052456</span>  <span class="mf">39.807759</span>
-<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.380416</span>  <span class="mf">93.298864</span>  <span class="mf">81.928035</span>  <span class="mf">95.091615</span>
+<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.925195</span>  <span class="mf">35.753313</span>  <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
+<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.569884</span>  <span class="mf">40.826105</span>  <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
+<span class="mi">2</span>  <span class="mf">37.100735</span>  <span class="mf">29.450848</span>  <span class="mf">13.674159</span>  <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
+<span class="mi">3</span>  <span class="mf">31.320635</span>   <span class="mf">7.444385</span>  <span class="mf">64.088394</span>  <span class="mf">78.434320</span>  <span class="mf">98.234483</span>
+<span class="mi">4</span>  <span class="mf">32.828307</span>  <span class="mf">13.722582</span>  <span class="mf">46.417531</span>  <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
+<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.845284</span>  <span class="mf">65.500385</span>   <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
+<span class="mi">6</span>  <span class="mf">59.513746</span>  <span class="mf">23.287106</span>  <span class="mf">51.803933</span>  <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
+<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.256182</span>  <span class="mf">98.618636</span>  <span class="mf">84.420507</span>  <span class="mf">45.445897</span>
+<span class="mi">8</span>  <span class="mf">68.894445</span>   <span class="mf">3.379559</span>  <span class="mf">80.424425</span>  <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
+<span class="mi">9</span>  <span class="mf">21.367668</span>  <span class="mf">56.707952</span>  <span class="mf">86.500927</span>  <span class="mf">86.416963</span>  <span class="mf">41.951254</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal"><span class="pre">2</span></code> that are smaller than 30 with
@@ -836,16 +836,16 @@ the string <cite>low</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>  <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
-<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">75.950932</span>  <span class="mf">77.149530</span>
-<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>  <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
-<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>  <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
-<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>  <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
-<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>  <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
-<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>  <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
-<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">70.534121</span>  <span class="mf">22.804445</span>
-<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">76.052456</span>  <span class="mf">39.807759</span>
-<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">81.928035</span>  <span class="mf">95.091615</span>
+<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>  <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
+<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>  <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
+<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>  <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
+<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">78.434320</span>  <span class="mf">98.234483</span>
+<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>  <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
+<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>   <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
+<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>  <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
+<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">84.420507</span>  <span class="mf">45.445897</span>
+<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>  <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
+<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">86.416963</span>  <span class="mf">41.951254</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal"><span class="pre">4</span></code> that are larger than 70 with the
@@ -855,16 +855,16 @@ value 1000.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>    <span class="mf">59.845179</span>  <span class="mf">13.800858</span>
-<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">1000.000000</span>  <span class="mf">77.149530</span>
-<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>    <span class="mf">18.170263</span>  <span class="mf">84.759883</span>
-<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>    <span class="mf">63.253837</span>  <span class="mf">98.016473</span>
-<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>    <span class="mf">66.929784</span>  <span class="mf">57.766466</span>
-<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>    <span class="mf">15.733203</span>  <span class="mf">52.921088</span>
-<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>    <span class="mf">15.151580</span>  <span class="mf">77.287329</span>
-<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">1000.000000</span>  <span class="mf">22.804445</span>
-<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">1000.000000</span>  <span class="mf">39.807759</span>
-<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">1000.000000</span>  <span class="mf">95.091615</span>
+<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>    <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
+<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>    <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
+<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>    <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
+<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">1000.000000</span>  <span class="mf">98.234483</span>
+<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>    <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
+<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>     <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
+<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>    <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
+<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">1000.000000</span>  <span class="mf">45.445897</span>
+<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>    <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
+<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">1000.000000</span>  <span class="mf">41.951254</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
@@ -875,16 +875,16 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>        <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">75.734573</span>      <span class="n">Low</span>  <span class="mf">64.352219</span>    <span class="mf">59.845179</span>  <span class="mf">13.8009</span>
-<span class="mi">1</span>  <span class="mf">60.445053</span>  <span class="mf">91.4473</span>   <span class="mf">4.941257</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">2</span>  <span class="mf">91.321244</span>    <span class="mf">86.89</span>   <span class="mf">7.458090</span>    <span class="mf">18.170263</span>  <span class="mf">84.7599</span>
-<span class="mi">3</span>  <span class="mf">80.845256</span>  <span class="mf">97.3991</span>  <span class="mf">59.956548</span>    <span class="mf">63.253837</span>  <span class="mf">98.0165</span>
-<span class="mi">4</span>  <span class="mf">96.946144</span>      <span class="n">Low</span>  <span class="mf">56.636042</span>    <span class="mf">66.929784</span>   <span class="n">Middle</span>
-<span class="mi">5</span>  <span class="mf">19.093203</span>  <span class="mf">64.5414</span>  <span class="mf">33.692922</span>    <span class="mf">15.733203</span>   <span class="n">Middle</span>
-<span class="mi">6</span>  <span class="mf">10.820818</span>  <span class="mf">44.0878</span>  <span class="mf">71.065276</span>    <span class="mf">15.151580</span>   <span class="n">Middle</span>
-<span class="mi">7</span>  <span class="mf">97.333763</span>  <span class="mf">89.2407</span>  <span class="mf">73.851787</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">8</span>  <span class="mf">51.263806</span>      <span class="n">Low</span>  <span class="mf">92.482546</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">9</span>  <span class="mf">23.388972</span>  <span class="mf">33.3804</span>  <span class="mf">93.298864</span>  <span class="mf">1000.000000</span>  <span class="mf">95.0916</span>
+<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>    <span class="mf">68.731281</span>   <span class="n">Middle</span>
+<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>    <span class="mf">26.344814</span>   <span class="n">Middle</span>
+<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>    <span class="mf">30.263435</span>  <span class="mf">9.40721</span>
+<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">1000.000000</span>  <span class="mf">98.2345</span>
+<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>    <span class="mf">19.307236</span>   <span class="n">Middle</span>
+<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>     <span class="mf">5.059135</span>   <span class="n">Middle</span>
+<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>    <span class="mf">61.576271</span>  <span class="mf">95.7453</span>
+<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>    <span class="mf">13.685797</span>   <span class="n">Middle</span>
+<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
 </pre></div>
 </div>
 </div>

@@ -230,36 +230,31 @@ provide small <strong>Python</strong> libraries to facilitate the interaction wi
 website.</p>
 <div class="section" id="id1">
 <h2>13.1. Yelp<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>For interacting with the Yelp API for instance you could download the provided
-Python library from <a class="reference external" href="https://github.com/Yelp/yelp-python">here</a>. If you want
+<p>For interacting with the Yelp API for instance you can find information
+<a class="reference external" href="https://www.yelp.com/developers/documentation/v3/get_started">here</a>. There
+is also a Python library available that you can download from
+<a class="reference external" href="https://github.com/gfairchild/yelpapi">here</a>.</p>
+<p>If you want
 to install this library you simply open a command line window (in Windows click
 on the windows start menu and type cmd followed by enter) and type:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">yelp</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">yelpapi</span>
 </pre></div>
 </div>
 <p>In order to use this library you can then simply write a small script as
 follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yelp.client</span> <span class="k">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">yelp.oauth1_authenticator</span> <span class="k">import</span> <span class="n">Oauth1Authenticator</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yelpapi</span> <span class="k">import</span> <span class="n">YelpAPI</span>
 
-<span class="n">auth</span> <span class="o">=</span> <span class="n">Oauth1Authenticator</span><span class="p">(</span><span class="n">consumer_key</span><span class="o">=</span><span class="s1">&#39;YOUR_CONSUMER_KEY&#39;</span><span class="p">,</span> \
-  <span class="n">consumer_secret</span><span class="o">=</span><span class="s1">&#39;YOUR_CONSUMER_SECRET&#39;</span><span class="p">,</span> \
-  <span class="n">token</span><span class="o">=</span><span class="s1">&#39;YOUR_TOKEN&#39;</span><span class="p">,</span> \
-  <span class="n">token_secret</span><span class="o">=</span><span class="s1">&#39;YOUR_TOKEN_SECRET&#39;</span>
-<span class="p">)</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CONSUMER_SECRET&#39;</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_SECRET&#39;</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+<span class="n">yelp_api</span> <span class="o">=</span> <span class="n">YelpAPI</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can then search the <code class="docutils literal"><span class="pre">client</span></code> object with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="s1">&#39;food&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;fr&#39;</span>
-<span class="p">}</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<p>You can then search the yelp_api <code class="docutils literal"><span class="pre">client</span></code> object with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">yelp_api</span><span class="o">.</span><span class="n">search_query</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="s1">&#39;ice cream&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;austin, tx&#39;</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Which searches for the top 5 rated ice cream places in Austin TX and orders the results by ratings.</p>
 </div>
 <div class="section" id="economic-data-from-the-federal-reserve">
 <h2>13.2. Economic Data from the Federal Reserve<a class="headerlink" href="#economic-data-from-the-federal-reserve" title="Permalink to this headline">¶</a></h2>
