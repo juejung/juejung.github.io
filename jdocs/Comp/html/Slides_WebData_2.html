@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -98,9 +104,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Working with Data from the Web II</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">13.1. Yelp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#economic-data-from-the-federal-reserve">13.2. Economic Data from the Federal Reserve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">13.3. More Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intro-to-apis">13.1. Intro to APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yelp-api">13.2. Yelp-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#economic-data-from-the-federal-reserve">13.3. Economic Data from the Federal Reserve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-tutorials">13.4. More Tutorials</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
@@ -124,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -134,23 +143,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>13. Working with Data from the Web II</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>13. Working with Data from the Web II</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_WebData_2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -158,9 +184,21 @@
             
   <div class="section" id="working-with-data-from-the-web-ii">
 <h1>13. Working with Data from the Web II<a class="headerlink" href="#working-with-data-from-the-web-ii" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="webscraping-ii">
+<p class="first sidebar-title">Section Learning Objectives</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Discuss APIs</li>
+<li>Yelp API Example</li>
+<li>Federal Reserve Bank - FRED API Example</li>
+</ul>
+</div></blockquote>
+</div>
 <p><strong>Application Programming Interfaces (APIs)</strong> provide convenient interfaces
-between different applications, independent of the application&#8217;s architecture
+between different applications, independent of the application’s architecture
 and programming language that it has been written in.</p>
+<div class="section" id="intro-to-apis">
+<h2>13.1. Intro to APIs<a class="headerlink" href="#intro-to-apis" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>web application API</strong> allows the user to make requests via HTTP for some type
 of data and the API will return this data in pre-packaged
 <a class="reference external" href="https://en.wikipedia.org/wiki/XML">XML</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> formats.</p>
@@ -184,52 +222,20 @@ updating already existing objects. Most APIs use POST instead of PUT, so PUT is
 very rare. Finally, the DELETE method is used to delete information/data from a
 web server.</p>
 <p>Most websites that provide APIs require prior authentication to operate with the
-web server via the API. In other words, you will first need to &#8216;apply for an
-API&#8217; by registering with the website. After registering for an API you may have
+web server via the API. In other words, you will first need to ‘apply for an
+API’ by registering with the website. After registering for an API you may have
 to wait for a few days. Once your application is granted you are provided with
 an <code class="docutils literal"><span class="pre">api_key</span></code> value that allows the server to identify you when you are making
 your calls.</p>
 <p>Some APIs require more detailed forms of identification using the
-<a class="reference external" href="https://en.wikipedia.org/wiki/OAuth">OAuth</a> protocol. The rating site
-<a class="reference external" href="http://www.yelp.com">Yelp</a> for instance requires the following protocol
-parameters for each request:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="23%" />
-<col width="77%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">OAuth Parameter</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>oauth_consumer_key</td>
-<td>Your OAuth consumer key (from Manage API Access)</td>
-</tr>
-<tr class="row-odd"><td>oauth_token</td>
-<td>The access token obtained (from Manage API Access)</td>
-</tr>
-<tr class="row-even"><td>oauth_signature_method</td>
-<td>hmac-sha1</td>
-</tr>
-<tr class="row-odd"><td>oauth_signature</td>
-<td>The generated request signature, signed with the oauth_token_secret obtained</td>
-</tr>
-<tr class="row-even"><td>oauth_timestamp</td>
-<td>Timestamp for the request in secs since the Unix epoch</td>
-</tr>
-<tr class="row-odd"><td>oauth_nonce</td>
-<td>A unique string randomly generated per request</td>
-</tr>
-</tbody>
-</table>
+<a class="reference external" href="https://en.wikipedia.org/wiki/OAuth">OAuth</a> protocol parameters for each request:</p>
 <p>This seems a bit complicated, but most larger website provide sample codes for
 using their APIs in various popular programming languages. Sometimes, they even
 provide small <strong>Python</strong> libraries to facilitate the interaction with their
 website.</p>
-<div class="section" id="id1">
-<h2>13.1. Yelp<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="yelp-api">
+<h2>13.2. Yelp-API<a class="headerlink" href="#yelp-api" title="Permalink to this headline">¶</a></h2>
 <p>For interacting with the Yelp API for instance you can find information
 <a class="reference external" href="https://www.yelp.com/developers/documentation/v3/get_started">here</a>. There
 is also a Python library available that you can download from
@@ -240,24 +246,105 @@ on the windows start menu and type cmd followed by enter) and type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">yelpapi</span>
 </pre></div>
 </div>
-<p>In order to use this library you can then simply write a small script as
+<p>Before you can use this library in a Python script you need to have a yelp
+account, so make one. Then log in. You then need to apply for a ‘new app’. This
+usually takes a few minutes. You will then be issued a unique <strong>client_id</strong> as
+well as a unique <strong>client_secret</strong> key. These two keys identify you as the
+user. Do not make these keys public.</p>
+<p>Now, in order to use this library you can then simply write a small script as
 follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yelpapi</span> <span class="k">import</span> <span class="n">YelpAPI</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
 
-<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CONSUMER_SECRET&#39;</span>
-<span class="n">client_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_SECRET&#39;</span>
+<span class="n">client_id</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_ID_FROM_YOUR_YELP_APPLICATION&#39;</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_SECRET_FROM_YOUR_YELP_APPLICATION&#39;</span>
 
 <span class="n">yelp_api</span> <span class="o">=</span> <span class="n">YelpAPI</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can then search the yelp_api <code class="docutils literal"><span class="pre">client</span></code> object with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">yelp_api</span><span class="o">.</span><span class="n">search_query</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="s1">&#39;ice cream&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;austin, tx&#39;</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">yelp_api</span><span class="o">.</span><span class="n">search_query</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="s1">&#39;ice cream&#39;</span><span class="p">,</span> \
+    <span class="n">location</span><span class="o">=</span><span class="s1">&#39;austin, tx&#39;</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Which searches for the top 5 rated ice cream places in Austin TX and orders the results by ratings.</p>
+<p>Which searches for the top 5 rated ice cream places in Austin TX and orders the
+results by ratings. The <code class="docutils literal"><span class="pre">pprint()</span></code> function prints the dictionary data with nice
+indents so that you can see the data structure better.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The yelp-api returns data in the form of a Python dictionary object. Go to the
+earlier chapter on data types on refresh your memory. It’s often convenient to
+transform the dictionary data into a Pandas DataFrame. Ultimately, it’s easier
+to analyse data when it is in a DataFrame.</p>
+</div>
+<p>Here is a small example script that shows an entire solution for this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yelpapi</span> <span class="k">import</span> <span class="n">YelpAPI</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">client_id</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_ID_FROM_YOUR_YELP_APPLICATION&#39;</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_SECRET_FROM_YOUR_YELP_APPLICATION&#39;</span>
+
+<span class="k">def</span> <span class="nf">parse_dict</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="n">lkey</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function &#39;flattens&#39; a nested dictionary so that all subkeys become</span>
+<span class="sd">    primary keys and can then be read into a DataFrame as separate columns</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">rkey</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">init</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">lkey</span><span class="o">+</span><span class="n">rkey</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">parse_dict</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">key</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ret</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">ret</span>
+
+<span class="c1"># Access Yelp with the user idenficiation codes</span>
+<span class="n">yelp_api</span> <span class="o">=</span> <span class="n">YelpAPI</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+
+<span class="c1"># Query Yelp via its API and search for 5 top ice cream places in Texas</span>
+<span class="c1"># This will return a &#39;dictionary&#39; data object.</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">yelp_api</span><span class="o">.</span><span class="n">search_query</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="s1">&#39;ice cream&#39;</span><span class="p">,</span> \
+    <span class="n">location</span><span class="o">=</span><span class="s1">&#39;austin, tx&#39;</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Print the results nicely with tabls for sub-keys in the resulting</span>
+<span class="c1"># dictionary</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="c1"># Prepare a Pandas DataFrame so we can transform the dictionary-data into</span>
+<span class="c1"># a Pandas DataFrame object</span>
+
+<span class="c1"># Nr. of obs from our search</span>
+<span class="n">nrObs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;businesses&#39;</span><span class="p">])</span>
+<span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrObs</span><span class="p">)</span>
+
+<span class="c1"># Take first observation as an example for key-extraction</span>
+<span class="c1">#print(parse_dict(response[&#39;businesses&#39;][0],&#39;&#39;))</span>
+<span class="n">tempDict</span> <span class="o">=</span> <span class="n">parse_dict</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;businesses&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make a list that contains all the keys in the dictionary</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">tempDict</span><span class="p">:</span>
+    <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="c1"># Generate the empty dataframe with all the key-columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Run a loop through the dictionary data and extract it into the DataFrame</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrObs</span><span class="p">):</span>
+    <span class="n">tempDict</span> <span class="o">=</span> <span class="n">parse_dict</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;businesses&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tempDict</span><span class="p">:</span>
+        <span class="c1"># From dictionary into dataframe</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">tempDict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<span class="c1"># Sort by rating</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="economic-data-from-the-federal-reserve">
-<h2>13.2. Economic Data from the Federal Reserve<a class="headerlink" href="#economic-data-from-the-federal-reserve" title="Permalink to this headline">¶</a></h2>
+<h2>13.3. Economic Data from the Federal Reserve<a class="headerlink" href="#economic-data-from-the-federal-reserve" title="Permalink to this headline">¶</a></h2>
 <p>The website <a class="reference external" href="https://www.quandl.com/">Quandl</a> provides a very convenient API
 to download Economic data from various databases.
 <a class="reference external" href="https://www.quandl.com/browse">Here</a>
@@ -335,7 +422,7 @@ data on the <a class="reference external" href="https://www.quandl.com/data/FRED
 available.</p>
 </div>
 <div class="section" id="more-tutorials">
-<h2>13.3. More Tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
+<h2>13.4. More Tutorials<a class="headerlink" href="#more-tutorials" title="Permalink to this headline">¶</a></h2>
 <p>Here are additional web tutorials about how to use Python together
 with the API of popular websites:</p>
 <blockquote>
@@ -351,15 +438,18 @@ with the API of popular websites:</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_RegularExpressions.html" class="btn btn-neutral float-right" title="14. Regular Expressions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_RegularExpressions.html" class="btn btn-neutral float-right" title="14. Regular Expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_WebData.html" class="btn btn-neutral" title="12. Working with Data from the Web I" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_WebData.html" class="btn btn-neutral" title="12. Working with Data from the Web I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -393,7 +483,8 @@ with the API of popular websites:</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
