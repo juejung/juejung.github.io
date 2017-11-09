@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15. Random numbers &mdash; Computational Economics 1.0 documentation</title>
+  <title>15. Random Numbers &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="16. Root finding" href="Slides_Root.html"/>
-        <link rel="prev" title="14. Working with Data from the Web II" href="Slides_WebData_2.html"/> 
+        <link rel="prev" title="14. Regular Expressions" href="Slides_RegularExpressions.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,18 +96,17 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">12. Regular Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Random numbers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#uniformly-distributed-random-numbers">15.1. Uniformly distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#normally-distributed-random-numbers">15.2. Normally distributed random numbers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#two-normally-distributed-random-variables">15.2.1. Two normally distributed random variables</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">15.3. T-distributed random variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">15.4. Drawing random integer values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">15.5. Drawing objects with random values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Random Numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-a-random-number">15.1. Drawing a Random Number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uniformly-distributed-random-numbers">15.2. Uniformly Distributed Random Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#normally-distributed-random-numbers">15.3. Normally distributed random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bivariate-normally-distributed-random-variables">15.4. Bivariate Normally Distributed Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">15.5. T-Distributed Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">15.6. Drawing Random Integer Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">15.7. Drawing Objects with Random Values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
@@ -147,7 +146,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>15. Random numbers</li>
+    <li>15. Random Numbers</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -162,9 +161,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="random-numbers">
-<h1>15. Random numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="uniformly-distributed-random-numbers">
-<h2>15.1. Uniformly distributed random numbers<a class="headerlink" href="#uniformly-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
+<h1>15. Random Numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="id1">
+<p class="first sidebar-title">Section Learning Objectives</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Uniformly Distributed Random Numbers</li>
+<li>Normally Distributed Random Numbers</li>
+<li>T-Distributed Random Numbers</li>
+<li>Integer Random Numbers</li>
+<li>Random Objects</li>
+</ul>
+</div></blockquote>
+</div>
+<p id="index-0">In this chapter we introduce how to generate random numbers from various
+distributions in Python. The core library we will be using is the <code class="docutils literal"><span class="pre">numpy</span></code>
+library which contains a powerful random number generator. We will then draw
+random numbers from different distributions and graph these numbers using
+histograms in order to check the shape of the distribution that these numbers
+follow.</p>
+<div class="section" id="drawing-a-random-number">
+<h2>15.1. Drawing a Random Number<a class="headerlink" href="#drawing-a-random-number" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -175,13 +192,71 @@
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To always get the same random numbers on each run</span>
-<span class="c1"># (makes results reproducible)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># number of classes (i.e. bins or bars) in histogram</span>
+<p>Let us start with a simple example. Draw a random number that is between zero
+and one.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">myNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;My first random number in [0,1] is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.34940463481664474</span>
+</pre></div>
+</div>
+<p>If you run this again you will get a different random number.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">myNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;My second random number in [0,1] is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.41163202181322744</span>
+</pre></div>
+</div>
+<p>Sometimes it is useful to make sure that the random number sequence that you
+draw at each run is identical. What you can now do is to set the random number
+generator on your computer to a specific starting value, or <code class="docutils literal"><span class="pre">seed</span></code>. On each run, the same
+sequence of random numbers is now generated.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
+<span class="n">myNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;My first random number in [0,1] is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.532833024789759</span>
+</pre></div>
+</div>
+<p>Now we reset the seed to the same value again and draw the second random
+number. You see, this time, it&#8217;s identical because it is the first number in a
+restarted sequence of random numbers.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
+<span class="n">myNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;My second random number in [0,1] is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.532833024789759</span>
+</pre></div>
+</div>
+<p>If you now draw yet another random number without re-setting the seed, you will
+get a different random number again.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">myNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;My third random number in [0,1] is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">third</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.5341366008904166</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uniformly-distributed-random-numbers">
+<h2>15.2. Uniformly Distributed Random Numbers<a class="headerlink" href="#uniformly-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
+<p>You can also draw multiple numbers at the same time without running a loop. In
+the next example we draw a sequence of 10,000 random numbers from the [0,1]
+interval.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123456789</span><span class="p">)</span>
 
 <span class="c1"># Uniform distributed random numbers</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
+</pre></div>
+</div>
+<p>We next make a histogram of these numbers to see the shape of the distribution
+where they come from. I set the number of bars in the histogram to 30 in order
+to get a nice picture.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -194,7 +269,7 @@
 <a class="reference internal image-reference" href="_images/Slides_Random_Uniform_1.png"><img alt="_images/Slides_Random_Uniform_1.png" src="_images/Slides_Random_Uniform_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="normally-distributed-random-numbers">
-<h2>15.2. Normally distributed random numbers<a class="headerlink" href="#normally-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
+<h2>15.3. Normally distributed random numbers<a class="headerlink" href="#normally-distributed-random-numbers" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># density function of standard normal</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -206,20 +281,22 @@
 </div>
 <p>Then plot it.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span>
+<span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of normal random variable&#39;</span><span class="p">)</span>
 <span class="c1"># Plot the N(0,1) density function into the histogram</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="c1">#ax.legend([&#39;Histogram&#39;,&#39;Normal Density&#39;], loc=&#39;best&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span><span class="s1">&#39;Normal Density&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_Random_1.png"><img alt="_images/Slides_Random_Normal_Random_1.png" src="_images/Slides_Random_Normal_Random_1.png" style="width: 12cm;" /></a>
-<div class="section" id="two-normally-distributed-random-variables">
-<h3>15.2.1. Two normally distributed random variables<a class="headerlink" href="#two-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bivariate-normally-distributed-random-variables">
+<h2>15.4. Bivariate Normally Distributed Random Variables<a class="headerlink" href="#bivariate-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 <span class="n">z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 </pre></div>
@@ -242,9 +319,8 @@
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_2_1.png"><img alt="_images/Slides_Random_Normal_2_1.png" src="_images/Slides_Random_Normal_2_1.png" style="width: 12cm;" /></a>
 </div>
-</div>
 <div class="section" id="t-distributed-random-variable">
-<h2>15.3. T-distributed random variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
+<h2>15.5. T-Distributed Random Variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dof</span> <span class="o">=</span> <span class="mi">29</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_t</span><span class="p">(</span><span class="n">dof</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
@@ -289,7 +365,7 @@ itself can be expressed as a gamma distribution</p>
 <a class="reference internal image-reference" href="_images/Slides_Random_T_dist_1.png"><img alt="_images/Slides_Random_T_dist_1.png" src="_images/Slides_Random_T_dist_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="drawing-random-integer-values">
-<h2>15.4. Drawing random integer values<a class="headerlink" href="#drawing-random-integer-values" title="Permalink to this headline">¶</a></h2>
+<h2>15.6. Drawing Random Integer Values<a class="headerlink" href="#drawing-random-integer-values" title="Permalink to this headline">¶</a></h2>
 <p>If you want to draw integer numbers at random you can use the
 <code class="docutils literal"><span class="pre">np.random.randint()</span></code> method. If we would like to draw random integer numbers
 between {1,2,3,4} we need to specify:</p>
@@ -309,9 +385,32 @@ between {1,2,3,4} we need to specify:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span>  <span class="mi">9</span>  <span class="mi">9</span>  <span class="mi">7</span>  <span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>We can again draw 10,000 values and plot them into a bar-chart.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We next count the number of occurrences of each integer value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">integerList</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span> <span class="mi">2553</span> <span class="mi">2515</span> <span class="mi">2444</span> <span class="mi">2488</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And now we plot the bar-chart with the absolute frequency of each one of the
+numbers from 7 to 10.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">xv</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">11</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="mf">7.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bar Chart of Random Number Occurrences&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random_Bar-Chart_1.png"><img alt="_images/Slides_Random_Bar-Chart_1.png" src="_images/Slides_Random_Bar-Chart_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="drawing-objects-with-random-values">
-<h2>15.5. Drawing objects with random values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
+<h2>15.7. Drawing Objects with Random Values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
 <p>In this section we demonstrate how we can combine the concepts from the prior
 chapter on object oriented programing with generating random numbers. We will
 generate a number of objects whose attributes (or <code class="docutils literal"><span class="pre">self.</span></code> variables) will be
@@ -601,7 +700,7 @@ I have insurance
         <a href="Slides_Root.html" class="btn btn-neutral float-right" title="16. Root finding" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_WebData_2.html" class="btn btn-neutral" title="14. Working with Data from the Web II" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_RegularExpressions.html" class="btn btn-neutral" title="14. Regular Expressions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
