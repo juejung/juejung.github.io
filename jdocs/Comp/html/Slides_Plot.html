@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -108,10 +114,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">12. Regular Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random Numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
@@ -131,8 +137,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -141,23 +149,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Plot.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -251,7 +276,7 @@ This time we save the graph as <code class="docutils literal"><span class="pre">
 need to define a grid of <cite>x</cite> values using the <code class="docutils literal"><span class="pre">linspace</span></code> function from the
 <strong>numpy</strong> library. We then calculate the <code class="docutils literal"><span class="pre">sin(x)</span></code> at each one of the <cite>x</cite>
 grid-points and record them in a <code class="docutils literal"><span class="pre">yv</span></code> vector. We then plot the <code class="docutils literal"><span class="pre">xv</span></code>
-&#8220;against&#8221; the <code class="docutils literal"><span class="pre">yv</span></code> vector.</p>
+“against” the <code class="docutils literal"><span class="pre">yv</span></code> vector.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
 
@@ -265,7 +290,7 @@ grid-points and record them in a <code class="docutils literal"><span class="pre
 <a class="reference internal image-reference" href="_images/Slides_Plot_Fig2Vectors_1.png" id="fig2vectors"><img alt="_images/Slides_Plot_Fig2Vectors_1.png" id="fig2vectors" src="_images/Slides_Plot_Fig2Vectors_1.png" style="width: 12cm;" /></a>
 <p>Here is another example with some more functions.  We again first define the
 input vector <code class="docutils literal"><span class="pre">xv</span></code> with the values we want to evaluate the function at and
-then specify the &#8220;output&#8221; vector <code class="docutils literal"><span class="pre">yv</span></code> as <span class="math">\(y = f(x)\)</span>. We use the
+then specify the “output” vector <code class="docutils literal"><span class="pre">yv</span></code> as <span class="math">\(y = f(x)\)</span>. We use the
 following examples:</p>
 <blockquote>
 <div><ul class="simple">
@@ -288,7 +313,7 @@ following examples:</p>
         <span class="n">xv</span><span class="p">,</span> <span class="n">y2v</span><span class="p">,</span> \
         <span class="n">xv</span><span class="p">,</span> <span class="n">y3v</span><span class="p">,</span> \
         <span class="n">xv</span><span class="p">,</span> <span class="n">y4v</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">,</span> <span class="s1">r&#39;$x^2$&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;y4&#39;</span><span class="p">],</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$x^2$&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;y4&#39;</span><span class="p">],</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -373,12 +398,12 @@ function at these values.</p>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Plot_Fig3DPlot_1.png" id="fig3dplot"><img alt="_images/Slides_Plot_Fig3DPlot_1.png" id="fig3dplot" src="_images/Slides_Plot_Fig3DPlot_1.png" style="width: 12cm;" /></a>
 <p>The problem with this approach is that the function gets only evaluated at the
-45-degree line, that is at points <code class="docutils literal"><span class="pre">(x=1,</span> <span class="pre">y=1)</span></code>, <code class="docutils literal"><span class="pre">(x=2,</span> <span class="pre">y=2)</span></code>, ..., <code class="docutils literal"><span class="pre">(x=10,</span>
+45-degree line, that is at points <code class="docutils literal"><span class="pre">(x=1,</span> <span class="pre">y=1)</span></code>, <code class="docutils literal"><span class="pre">(x=2,</span> <span class="pre">y=2)</span></code>, …, <code class="docutils literal"><span class="pre">(x=10,</span>
 <span class="pre">y=10)</span></code>. This is not really what we had in mind.</p>
-<p>In order to plot the entire &#8220;surface&#8221; of the function <span class="math">\(f(x,y)\)</span> we need to
+<p>In order to plot the entire “surface” of the function <span class="math">\(f(x,y)\)</span> we need to
 specify value pairs of <cite>x</cite> and <cite>y</cite> over the entire gridspace of the <cite>x/y</cite>
 plane. We use the command <code class="docutils literal"><span class="pre">meshgrid</span></code> in order to accomplish this. We then
-evaluate the function <span class="math">\(f(x,y)\)</span> for each point on this &#8220;meshgrid&#8221; which
+evaluate the function <span class="math">\(f(x,y)\)</span> for each point on this “meshgrid” which
 results in a surface plot of the function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
@@ -415,15 +440,18 @@ results in a surface plot of the function.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Functions.html" class="btn btn-neutral float-right" title="8. Functions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Functions.html" class="btn btn-neutral float-right" title="8. Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Arrays.html" class="btn btn-neutral" title="6. Vectors and Matrices" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Arrays.html" class="btn btn-neutral" title="6. Vectors and Matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -457,7 +485,8 @@ results in a surface plot of the function.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

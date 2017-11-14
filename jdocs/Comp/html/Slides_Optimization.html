@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -35,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
         <link rel="next" title="18. Constrainted Optimization" href="Slides_Cake.html"/>
-        <link rel="prev" title="16. Root finding" href="Slides_Root.html"/> 
+        <link rel="prev" title="16. Root Finding" href="Slides_Root.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -96,25 +102,23 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">12. Regular Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">12. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root Finding</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">17. Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#univariate-function-optimization">17.1. Univariate function optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#example-function-to-be-maximized">17.1.1. Example function to be maximized</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#univariate-function-optimization">17.1. Univariate Function Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimization-methods">17.2. Optimization Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#newton-s-method">17.2.1. Newton’s Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#golden-section-method">17.2.2. Golden Section Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maximize-function-f">17.2.3. Maximize Function: f</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#optimization-methods">17.2. Optimization methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#newton-s-method">17.2.1. Newton&#8217;s method</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#golden-section-method">17.2.2. Golden section method</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#maximize-function-f">17.2.3. Maximize function: f</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#finding-the-root-of-a-function-using-minimization">17.3. Finding the root of a function using minimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multivariate-optimization">17.4. Multivariate optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#multivariate-newton-method">17.4.1. Multivariate Newton method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-the-root-of-a-function-using-minimization">17.3. Finding the Root of a Function using Minimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multivariate-optimization">17.4. Multivariate Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#function">17.4.1. Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multivariate-newton-method">17.4.2. Multivariate Newton Method</a></li>
 </ul>
 </li>
 </ul>
@@ -136,8 +140,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -146,23 +152,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>17. Optimization</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>17. Optimization</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Optimization.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -170,10 +193,19 @@
             
   <div class="section" id="optimization">
 <h1>17. Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="regex">
+<p class="first sidebar-title">Section Learning Objectives</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Univariate Function Optimization</li>
+<li>Optimization Methods</li>
+<li>Finding Root using Function Minimization</li>
+<li>Multivariate Optimization</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="univariate-function-optimization">
-<h2>17.1. Univariate function optimization<a class="headerlink" href="#univariate-function-optimization" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="example-function-to-be-maximized">
-<h3>17.1.1. Example function to be maximized<a class="headerlink" href="#example-function-to-be-maximized" title="Permalink to this headline">¶</a></h3>
+<h2>17.1. Univariate Function Optimization<a class="headerlink" href="#univariate-function-optimization" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
@@ -235,11 +267,10 @@
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_figure4_1.png"><img alt="_images/Slides_Optimization_figure4_1.png" src="_images/Slides_Optimization_figure4_1.png" style="width: 15cm;" /></a>
 </div>
-</div>
 <div class="section" id="optimization-methods">
-<h2>17.2. Optimization methods<a class="headerlink" href="#optimization-methods" title="Permalink to this headline">¶</a></h2>
+<h2>17.2. Optimization Methods<a class="headerlink" href="#optimization-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="newton-s-method">
-<h3>17.2.1. Newton&#8217;s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.1. Newton’s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
 <p>In order to implement the Newton method we basically look for the root of a
 first derivative so that <span class="math">\(f'(x) = 0\)</span>. We then use the root finding
 algorithm from the previous section to find this point, or:</p>
@@ -280,7 +311,7 @@ algorithm from the previous section to find this point, or:</p>
 </div>
 </div>
 <div class="section" id="golden-section-method">
-<h3>17.2.2. Golden section method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.2. Golden Section Method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
 <p>The golden-section method works in one dimension only, but does not need the derivatives of the function.
 However, the function still needs to be continuous.
 In order to determine whether there is a local maximum we need three points:
@@ -365,7 +396,7 @@ Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 </div>
 </div>
 <div class="section" id="maximize-function-f">
-<h3>17.2.3. Maximize function: f<a class="headerlink" href="#maximize-function-f" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.3. Maximize Function: f<a class="headerlink" href="#maximize-function-f" title="Permalink to this headline">¶</a></h3>
 <p>We next use these algorithms to find the maximum point of our function <code class="docutils literal"><span class="pre">f1</span></code>
 and <code class="docutils literal"><span class="pre">f1simple</span></code>. Note that if we use the Newton algorithm we will need the
 first and second derivatives of the functions. This is why we use function
@@ -420,7 +451,7 @@ as a negated function, that is:</p>
 <p>is the same as</p>
 <div class="math">
 \[max \ f(x).\]</div>
-<p>Since we want to find the maximum of the function, we need to &#8220;trick&#8221; the
+<p>Since we want to find the maximum of the function, we need to “trick” the
 minimization algorithm. We therefore need to redefine the function as</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1simpleNeg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># gamma(2,3) density</span>
@@ -475,11 +506,11 @@ function, we actually maximize the original function</p>
 </div>
 </div>
 <div class="section" id="finding-the-root-of-a-function-using-minimization">
-<h2>17.3. Finding the root of a function using minimization<a class="headerlink" href="#finding-the-root-of-a-function-using-minimization" title="Permalink to this headline">¶</a></h2>
+<h2>17.3. Finding the Root of a Function using Minimization<a class="headerlink" href="#finding-the-root-of-a-function-using-minimization" title="Permalink to this headline">¶</a></h2>
 <p>In a previous chapter on root searching of a function we used various methods
 like the built in <strong>fsolve</strong> or <strong>root</strong> functions from the
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize">scipy.optimize</a>
-library.  Here&#8217;s the example from the Root finding chapter again:</p>
+library.  Here’s the example from the Root finding chapter again:</p>
 <p>The example function for which we calculate the root, i.e., find <span class="math">\(x\)</span>
 so that <span class="math">\(f(x) = 0\)</span> is defined as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -531,7 +562,9 @@ In order to do this we change the return value of the function slightly to</p>
 </div>
 </div>
 <div class="section" id="multivariate-optimization">
-<h2>17.4. Multivariate optimization<a class="headerlink" href="#multivariate-optimization" title="Permalink to this headline">¶</a></h2>
+<h2>17.4. Multivariate Optimization<a class="headerlink" href="#multivariate-optimization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="function">
+<h3>17.4.1. Function<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h3>
 <p>Here we want to optimize the following function <strong>f3</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f3simple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span>
@@ -590,8 +623,9 @@ and <span class="math">\(f''(x)\)</span> (i.e., the Hessian matrix):</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_Fig_Surface_1.png"><img alt="_images/Slides_Optimization_Fig_Surface_1.png" src="_images/Slides_Optimization_Fig_Surface_1.png" style="width: 12cm;" /></a>
+</div>
 <div class="section" id="multivariate-newton-method">
-<h3>17.4.1. Multivariate Newton method<a class="headerlink" href="#multivariate-newton-method" title="Permalink to this headline">¶</a></h3>
+<h3>17.4.2. Multivariate Newton Method<a class="headerlink" href="#multivariate-newton-method" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Newton&#39;s method for optimisation, starting at x0</span>
     <span class="c1"># f3 is a function that given x returns the list</span>
@@ -707,15 +741,18 @@ more than one optimum.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Cake.html" class="btn btn-neutral float-right" title="18. Constrainted Optimization" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Cake.html" class="btn btn-neutral float-right" title="18. Constrainted Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Root.html" class="btn btn-neutral" title="16. Root finding" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Root.html" class="btn btn-neutral" title="16. Root Finding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -749,7 +786,8 @@ more than one optimum.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -105,7 +111,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random Numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
@@ -125,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -135,23 +143,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>12. Working with Data from the Web I</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>12. Working with Data from the Web I</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_WebData.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -169,7 +194,7 @@
 </ul>
 </div></blockquote>
 </div>
-<p>When you try to scrape or &#8220;harvest&#8221; data from the web it is useful to know
+<p>When you try to scrape or “harvest” data from the web it is useful to know
 the basics of <a class="reference external" href="http://www.google.com/search?q=what+is+html">html</a> which is
 the markup language that is used to create websites. A browser interprets the
 html code and shows you the formatted website.</p>
@@ -215,7 +240,7 @@ everything in a Pandas dataframe for further statistical analysis.</p>
 <span class="n">jurl</span> <span class="o">=</span> <span class="s1">&#39;https://www.youtube.com/&#39;</span>
 </pre></div>
 </div>
-<p>We next open the Youtube site and read the page&#8217;s html code and assign it to
+<p>We next open the Youtube site and read the page’s html code and assign it to
 the variable html.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">jurl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
@@ -258,7 +283,7 @@ with <code class="docutils literal"><span class="pre">&lt;a</span> <span class="
     <span class="n">link_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newLink</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Let&#8217;s print the first 5 entries of the list</p>
+<p>Let’s print the first 5 entries of the list</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -309,12 +334,12 @@ the numbers we are looking for can be comprised of one or more digits.</p>
     <span class="c1"># Extracting number of likes</span>
     <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
       <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="c1"># Extracting number of dislikes</span>
     <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
       <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I dislike this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
@@ -401,12 +426,12 @@ and continue running the commands that are there.</p>
         <span class="c1"># Extracting number of likes</span>
         <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
           <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
         <span class="c1"># Extracting number of dislikes</span>
         <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
           <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I dislike this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Some is wrong, probably a server side issue!&#39;</span><span class="p">)</span>
@@ -445,15 +470,18 @@ out:</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_WebData_2.html" class="btn btn-neutral float-right" title="13. Working with Data from the Web II" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_WebData_2.html" class="btn btn-neutral float-right" title="13. Working with Data from the Web II" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Data_2.html" class="btn btn-neutral" title="11. Working with Data II: Statistics" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Data_2.html" class="btn btn-neutral" title="11. Working with Data II: Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -487,7 +515,8 @@ out:</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
