@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -36,7 +34,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="4. Basic programming techniques" href="Slides_Loop.html"/>
+        <link rel="next" title="4. Basic Programming Techniques" href="Slides_Loop.html"/>
         <link rel="prev" title="2. First Steps in Python" href="Slides_Basics.html"/> 
 
   
@@ -46,7 +44,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -87,10 +84,7 @@
           
             
             
-              
-            
-            
-              <ul class="current">
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Python Data Structures</a><ul>
@@ -102,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">3.6. In Class Exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic programming techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
@@ -114,11 +108,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG Model with Labor-Leisure Choice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
 </ul>
@@ -133,10 +127,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Computational Economics</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Computational Economics</a>
       </nav>
 
 
@@ -145,40 +137,23 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>3. Python Data Structures</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>3. Python Data Structures</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/Slides_DataStructures.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -213,7 +188,7 @@ example:</p>
 can tag together strings with the plus sign.
 which combines a string <code class="docutils literal"><span class="pre">&quot;The</span> <span class="pre">list</span> <span class="pre">is</span> <span class="pre">alist</span> <span class="pre">=</span> <span class="pre">&quot;</span></code> together with another string
 <code class="docutils literal"><span class="pre">str(alist)</span></code>. The Python funciton <strong>str()</strong> translates a number into a string,
-i.e., a word and then prints the combined “word”.</p>
+i.e., a word and then prints the combined &#8220;word&#8221;.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The list is alist = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -283,7 +258,7 @@ negative numbers.</p>
 </pre></div>
 </div>
 <p>You can change elements of a list by reassigning them using their index. So if
-you want to replace the third element of the list with the word “Mom” you
+you want to replace the third element of the list with the word &#8220;Mom&#8221; you
 simply assign it as</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mom&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
@@ -301,7 +276,7 @@ themselves. In this case we are dealing with nested lists. Here is an example:</
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;Mom&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Dad&#39;</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kids&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Now let’s see what happens if we index this list. Try the following:</p>
+<p>Now let&#8217;s see what happens if we index this list. Try the following:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -331,7 +306,7 @@ themselves. In this case we are dealing with nested lists. Here is an example:</
 <span class="o">---------------</span>
 </pre></div>
 </div>
-<p>Now let’s go one step deeper into the list:</p>
+<p>Now let&#8217;s go one step deeper into the list:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">myNestedList</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
@@ -383,7 +358,7 @@ It is a read-only list.</p>
 </div>
 <div class="section" id="dictionaries">
 <h2>3.3. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
-<p>Dictionaries or short “dicts” are more general mappings and word list
+<p>Dictionaries or short &#8220;dicts&#8221; are more general mappings and word list
 associative arrays or so called hashes. They are basically key-value pairs
 where a key can be almost any Python type. So instead of indexing a list with
 indexes (which are numbers starting from 0, 1, etc.) the indices of a dictionary
@@ -560,18 +535,15 @@ function.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="4. Basic programming techniques" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Loop.html" class="btn btn-neutral float-right" title="4. Basic Programming Techniques" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Basics.html" class="btn btn-neutral" title="2. First Steps in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Basics.html" class="btn btn-neutral" title="2. First Steps in Python" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -605,8 +577,7 @@ function.</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

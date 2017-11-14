@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -46,7 +44,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -87,14 +84,11 @@
           
             
             
-              
-            
-            
-              <ul class="current">
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic programming techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Vectors and Matrices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definitions-of-vectors-and-matrices">6.1. Definitions of Vectors and Matrices</a></li>
@@ -126,11 +120,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">13. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">14. Regular Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">15. Random Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG Model with Labor-Leisure Choice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
 </ul>
@@ -145,10 +139,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Computational Economics</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Computational Economics</a>
       </nav>
 
 
@@ -157,40 +149,23 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>6. Vectors and Matrices</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>6. Vectors and Matrices</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/Slides_Arrays.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -198,9 +173,23 @@
             
   <div class="section" id="vectors-and-matrices">
 <h1>6. Vectors and Matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="id1">
+<p class="first sidebar-title">Section Learning Objectives</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Vectors and Matrices</li>
+<li>Calculations with Vectors/Matrices</li>
+<li>Vector Manipulations</li>
+<li>Matrix Manipulations</li>
+</ul>
+</div></blockquote>
+</div>
+<p id="index-0">In this chapter we work with vectors and matrices. We cover the basic
+calculations that can be done with both. We also discuss how vectors and
+matrices can be manipulated.</p>
 <div class="section" id="definitions-of-vectors-and-matrices">
 <h2>6.1. Definitions of Vectors and Matrices<a class="headerlink" href="#definitions-of-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
-<p id="index-0">A vector is a list of numbers that we can do “math” with. The numbers in the
+<p id="index-1">A vector is a list of numbers that we can do &#8220;math&#8221; with. The numbers in the
 vector are indexed, so that we can access them.  Note that vector indexing in
 Python starts with zero, not with 1. So Python counts the first element in a vector as
 element 0, the second as element 1, etc.  We first need to import some
@@ -231,7 +220,7 @@ as follows:</p>
 </pre></div>
 </div>
 <p>Remember that Python starts numbering the elements with 0 and not 1! So if
-you want to access the first element in a vector <code class="docutils literal"><span class="pre">x</span></code> you’d need to type:
+you want to access the first element in a vector <code class="docutils literal"><span class="pre">x</span></code> you&#8217;d need to type:
 <code class="docutils literal"><span class="pre">xv[0]</span></code>.</p>
 <p>If you would like to print the vector formatted, you need to set the format
 option of the <code class="docutils literal"><span class="pre">numpy</span></code> object as:</p>
@@ -334,7 +323,7 @@ We then have</p>
 can&#39;t multiply sequence by non-int of type &#39;list&#39;
 </pre></div>
 </div>
-<p>Matrices are “two dimensional” vectors. In <strong>Python</strong> we write</p>
+<p>Matrices are &#8220;two dimensional&#8221; vectors. In <strong>Python</strong> we write</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
@@ -490,7 +479,7 @@ simply define a vector and calculate its norm (or length) as</p>
 <div class="section" id="adding-two-vectors">
 <h3>6.3.3. Adding Two Vectors<a class="headerlink" href="#adding-two-vectors" title="Permalink to this headline">¶</a></h3>
 <p>Adding vectors is simple. We just add all numbers of two vectors
-‘element-by-element’. So that  <span class="math">\(a + b = \left[ \begin{array}{c} a_1  + b_1 \\
+&#8216;element-by-element&#8217;. So that  <span class="math">\(a + b = \left[ \begin{array}{c} a_1  + b_1 \\
 a_2+b_2 \end{array} \right].\)</span> In <strong>Python</strong> this is done with</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
@@ -515,7 +504,7 @@ longer. If we multiply the vector with <span class="math">\(0 &lt; \lambda &lt; 
 shorter. If we multiply the vector with a negative number <span class="math">\(\lambda &lt; 0\)</span>
 then the arrow changes direction. More formally this is <span class="math">\(\lambda * a =
 \left[ \begin{array}{c} \lambda *a_1 \\ \lambda *a_2 \end{array} \right].\)</span></p>
-<p>In <strong>Python</strong> it’s simply</p>
+<p>In <strong>Python</strong> it&#8217;s simply</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">anorm</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># norm of vector a</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -544,7 +533,7 @@ then the arrow changes direction. More formally this is <span class="math">\(\la
 <span class="n">dnorm</span><span class="o">=</span> <span class="mf">15.0</span>
 </pre></div>
 </div>
-<p>When multiplying two vectors we form a so called ‘inner product’ as follows:
+<p>When multiplying two vectors we form a so called &#8216;inner product&#8217; as follows:
 <span class="math">\(a*b = \sum_{i=1}^{n}a_i*b_i.\)</span></p>
 <p>The following example shows this with numbers:</p>
 <p><span class="math">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right] \text{ and }  b =
@@ -567,7 +556,7 @@ then the arrow changes direction. More formally this is <span class="math">\(\la
 </div>
 <div class="section" id="matrix-manipulation">
 <h2>6.4. Matrix Manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">¶</a></h2>
-<p>Matrices are “two dimensional” vectors. In <strong>Python</strong> we define a matrix as</p>
+<p>Matrices are &#8220;two dimensional&#8221; vectors. In <strong>Python</strong> we define a matrix as</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
@@ -601,7 +590,7 @@ then the arrow changes direction. More formally this is <span class="math">\(\la
 <div class="section" id="adding-matrices">
 <h3>6.4.2. Adding Matrices<a class="headerlink" href="#adding-matrices" title="Permalink to this headline">¶</a></h3>
 <p>When adding two matrices <span class="math">\(A\)</span> and <span class="math">\(B\)</span> we simply add all the elements
-of each matrix ‘element-by-element’. Note that the dimensions (i.e. the number
+of each matrix &#8216;element-by-element&#8217;. Note that the dimensions (i.e. the number
 of rows and columns) of the two matrices have to be identical. So if matrix
 <span class="math">\(A\)</span> has dimension <span class="math">\(m \times n\)</span>, that is <span class="math">\(m\)</span> rows and
 <span class="math">\(n\)</span> columns, then matrix <span class="math">\(B\)</span> needs to be of dimensions <span class="math">\(m
@@ -629,7 +618,7 @@ of rows and columns) of the two matrices have to be identical. So if matrix
 the number of columns of matrix <span class="math">\(A\)</span> is equal the number of rows of matrix
 <span class="math">\(B\)</span>. So if <span class="math">\(A\)</span> has dimension <span class="math">\(m \times n\)</span> then <span class="math">\(B\)</span>
 needs to have dimension <span class="math">\(n \times r\)</span> since matrix multiplication implies
-that we form the ‘inner product’ of each row of <span class="math">\(A\)</span> with each column of
+that we form the &#8216;inner product&#8217; of each row of <span class="math">\(A\)</span> with each column of
 <span class="math">\(B\)</span>. This results in a new matrix of dimension <span class="math">\(m \times r\)</span>.  Here
 is an example. Given matrices <span class="math">\(A = \left[ \begin{array}{ccc} 12 &amp; 3 &amp;6 \\
 9 &amp;-1 &amp; -4 \end{array} \right] \text{ and } B = \left[ \begin{array}{cc} 7 &amp; 8
@@ -717,7 +706,7 @@ vector.</p>
 </pre></div>
 </div>
 <p>If you want to remove columns or rows you can use the <code class="docutils literal"><span class="pre">take</span></code> method and
-assign the result to a new matrix. Let’s say you would like to eliminate the
+assign the result to a new matrix. Let&#8217;s say you would like to eliminate the
 second column from a matrix <code class="docutils literal"><span class="pre">A</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
@@ -759,7 +748,7 @@ equal to 99.</p>
  <span class="p">[</span><span class="mi">90</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>If you want to run a loop “through” a matrix you can first find out the
+<p>If you want to run a loop &#8220;through&#8221; a matrix you can first find out the
 dimensions of the matrix using the <code class="docutils literal"><span class="pre">shape</span></code> method and then write nested
 loops, one for each dimension. Note the indentation of the various <code class="docutils literal"><span class="pre">print</span></code>
 statements in the next example!</p>
@@ -836,18 +825,15 @@ statements in the next example!</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Plot.html" class="btn btn-neutral float-right" title="7. Plotting using matplotlib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Plot.html" class="btn btn-neutral float-right" title="7. Plotting using matplotlib" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Debugging.html" class="btn btn-neutral" title="5. Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Debugging.html" class="btn btn-neutral" title="5. Debugging" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -881,8 +867,7 @@ statements in the next example!</p>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
