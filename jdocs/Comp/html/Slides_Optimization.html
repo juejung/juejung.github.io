@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="18. Constrainted Optimization" href="Slides_Cake.html"/>
+        <link rel="next" title="18. Constrained Optimization" href="Slides_Cake.html"/>
         <link rel="prev" title="16. Root Finding" href="Slides_Root.html"/> 
 
   
@@ -94,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic programming techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
@@ -123,9 +123,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrainted Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG model with labor-leisure choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG Model with Labor-Leisure Choice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
 </ul>
@@ -274,24 +274,19 @@
 <p>In order to implement the Newton method we basically look for the root of a
 first derivative so that <span class="math">\(f'(x) = 0\)</span>. We then use the root finding
 algorithm from the previous section to find this point, or:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>   <span class="c1">#import matplotlib.image as mpimg</span>
-   <span class="c1">#import Image</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#import matplotlib.image as mpimg</span>
+<span class="c1">#import Image</span>
 
-   <span class="c1">#image = Image.open(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
-   <span class="c1">#image.show()</span>
+<span class="c1">#image = Image.open(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
+<span class="c1">#image.show()</span>
 
-   <span class="c1">#img = mpimg.imread(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
-   <span class="c1">#plt.imshow(img)</span>
-   <span class="c1">#plt.show()</span>
-
-
-
-
-
-<span class="o">..</span> <span class="n">math</span><span class="p">::</span>
-  <span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> \<span class="n">frac</span><span class="p">{</span><span class="n">f</span><span class="s1">&#39;(x(x))}{f&#39;&#39;(x(n))}</span>
+<span class="c1">#img = mpimg.imread(&#39;figures/Slides_Optimization_Newton.jpg&#39;)</span>
+<span class="c1">#plt.imshow(img)</span>
+<span class="c1">#plt.show()</span>
 </pre></div>
 </div>
+<div class="math">
+\[x(n+1) = x(n) - \frac{f'(x(x))}{f''(x(n))}\]</div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Newton&#39;s method for optimization, starting at x0</span>
     <span class="c1"># f3 is a function that given x returns the vector</span>
@@ -320,20 +315,14 @@ must be a local maximum in the interval between <span class="math">\([a,b].\)</s
 <p>This method is very similar to the bisection method (root bracketing) from the previous section.
 The algorithm proceeds in the following way:
 Start with <span class="math">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
-<blockquote>
-<div><div class="math">
+<div class="math">
 \[f(x_l) \le (x_m)\]</div>
-</div></blockquote>
 <p>and</p>
-<blockquote>
-<div><div class="math">
+<div class="math">
 \[f(x_r) \le f(x_m)\]</div>
-</div></blockquote>
 <p>and</p>
-<blockquote>
-<div><div class="math">
+<div class="math">
 \[\rho = \frac{1+\sqrt{5}}{2}.\]</div>
-</div></blockquote>
 <p>Then check the following:</p>
 <ol class="arabic simple">
 <li>if <span class="math">\(x_r - x_l \le \epsilon\)</span> then stop</li>
@@ -534,10 +523,8 @@ so that <span class="math">\(f(x) = 0\)</span> is defined as:</p>
 </div>
 <p>In this section we set up the root finding problem as an optimization problem.
 In order to do this we change the return value of the function slightly to</p>
-<blockquote>
-<div><div class="math">
+<div class="math">
 \[\text{residual-error} = (f(x) - 0)^2.\]</div>
-</div></blockquote>
 <p>So we are trying to find the value of
 <code class="docutils literal"><span class="pre">x</span></code> so that the residual error between <span class="math">\(f(x)\)</span> and its target value of
 <span class="math">\(0\)</span> is as small as possible. The new function is defined as:</p>
@@ -749,7 +736,7 @@ more than one optimum.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Cake.html" class="btn btn-neutral float-right" title="18. Constrainted Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Cake.html" class="btn btn-neutral float-right" title="18. Constrained Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Slides_Root.html" class="btn btn-neutral" title="16. Root Finding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
