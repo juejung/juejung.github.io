@@ -109,8 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#analytical-solution">18.4. Analytical Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#solving-the-problem">18.5. Solving the Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-the-solution">18.6. Plotting the Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-definitions-and-plotting">18.7. Function Definitions and Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-in-python">18.8. Numerical Solution in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-in-python">18.7. Numerical Solution in Python</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
@@ -209,7 +208,7 @@ would last ten days long and nothing would be left in the end</li>
 <li>The present value in period 0 of the whole consumption path is:</li>
 </ul>
 <div class="math">
-\[V( c_1 ,c_2 ,...,c_T ) = \sum_{t=1}^{T} \beta^{t} U(c_t)\]</div>
+\[V(c_0, c_1 ,c_2 ,...,c_T ) = \sum_{t=0}^{T} \beta^{t} U(c_t)\]</div>
 <ul class="simple">
 <li>The person tries to maximize this by choosing her consumption in every
 period <span class="math">\(t=0,..,T\)</span></li>
@@ -218,7 +217,7 @@ period <span class="math">\(t=0,..,T\)</span></li>
 <div class="math">
 \[k_{t+1} = k_{t} - c_{t}\]</div>
 <ul class="simple">
-<li>Therefore, the cake size must be nonnegative in any period, so that</li>
+<li>Therefore, the cake size must be non-negative in any period, so that</li>
 </ul>
 <div class="math">
 \[k_t \ge 0\]</div>
@@ -243,13 +242,17 @@ period.</li>
 </ul>
 <div class="math">
 \[U'(c_{t}) = \beta U'(c_{t+1})\]</div>
-<ul class="simple">
-<li>The Euler equation has an intuitive interpretation</li>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The Euler equation has an intuitive interpretation</p>
+<ul class="last simple">
 <li>At a utility maximum, the consumer cannot gain from feasible shifts of consumption between periods</li>
 <li>A one-unit reduction in period <span class="math">\(t\)</span> consumption lowers <span class="math">\(U_t\)</span> by <span class="math">\(U'_t\)</span>.</li>
-<li>This unit saved can be shifted to period  <span class="math">\(t+1\)</span> where it raises utility by <span class="math">\(U'_{t+1}\)</span> discounted to period <span class="math">\(t\)</span>, that is: <span class="math">\(\beta U'_{t+1}\)</span></li>
-<li>In the optimum these two quantities must be equal</li>
+<li>This unit saved can be shifted to period  <span class="math">\(t+1\)</span> where it raises</li>
+<li>utility by <span class="math">\(U'_{t+1}\)</span> discounted to period <span class="math">\(t\)</span>, that is: <span class="math">\(\beta \times U'_{t+1}\)</span></li>
+<li>In the optimum these two quantities must be equal!</li>
 </ul>
+</div>
 </div>
 <div class="section" id="solving-the-problem">
 <h2>18.5. Solving the Problem<a class="headerlink" href="#solving-the-problem" title="Permalink to this headline">¶</a></h2>
@@ -266,49 +269,49 @@ period.</li>
 <li>Recursively plugging the budget constraint into the Euler equation we get:</li>
 </ul>
 <div class="math">
-\[c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0\]</div>
+\[\boxed{c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0}\]</div>
 <ul class="simple">
 <li>We can now map out the optimal consumption for any size cake: <span class="math">\(k_0\)</span></li>
 </ul>
-<p>The solution was found by solving the problem backwards, starting in the last
-period <span class="math">\(T\)</span>:</p>
-<ul class="simple">
-<li><span class="math">\(c_T = k_T\)</span> in the last period, eat entire cake</li>
-<li><dl class="first docutils">
-<dt><span class="math">\(c_{T-1}\)</span> we get by:</dt>
-<dd><ol class="first last arabic">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The solution was found by solving the problem backwards, starting in the last period <span class="math">\(T\)</span>:</p>
+<ul class="last">
+<li><p class="first"><span class="math">\(c_T = k_T\)</span> in the last period, eat entire cake</p>
+</li>
+<li><p class="first"><span class="math">\(c_{T-1}\)</span> we get by:</p>
+<blockquote>
+<div><ol class="arabic simple">
 <li>Substituting the Euler equation we have: <span class="math">\(c_{T-1}=\frac{1}{\beta} c_T=\frac{1}{\beta} k_T\)</span></li>
 <li>Substituting the budget constraint: <span class="math">\(c_{T-1}=\frac{1}{\beta} (k_{T-1} - c_{T-1})\)</span></li>
 <li>Which can be solved for: <span class="math">\(c_{T-1}=\frac{1}{1+\beta} k_{T-1}\)</span></li>
 </ol>
-</dd>
-</dl>
+</div></blockquote>
 </li>
-<li><dl class="first docutils">
-<dt>We next solve for: <span class="math">\(c_{T-2}=\frac{1}{\beta} c_{T-1}\)</span>, which after</dt>
-<dd>substituting for <span class="math">\(c_{T-1}=\frac{1}{1+\beta} k_{T-1}\)</span> we get
-<span class="math">\(c_{T-2}=\frac{1}{\beta +\beta^{2}} k_{T-1}\)</span>.
+<li><p class="first">We next solve for: <span class="math">\(c_{T-2}=\frac{1}{\beta} c_{T-1}\)</span>, which after substituting for <span class="math">\(c_{T-1}=\frac{1}{1+\beta} k_{T-1}\)</span> we get</p>
+<blockquote>
+<div><p><span class="math">\(c_{T-2}=\frac{1}{\beta +\beta^{2}} k_{T-1}\)</span>.
 We again substitute the budget constraint <span class="math">\(k_{T-1} = k_{T-2} - c_{T-2}\)</span>
 and get <span class="math">\(c_{T-2}=\frac{1}{\beta +\beta^{2}} (k_{T-2} - c_{T-2})\)</span>
 which we can solve for <span class="math">\(c_{T-2}\)</span> which becomes:
-<span class="math">\(c_{T-2}=\frac{1}{1 + \beta +\beta^{2}} k_{T-2}\)</span></dd>
-</dl>
+<span class="math">\(c_{T-2}=\frac{1}{1 + \beta +\beta^{2}} k_{T-2}\)</span></p>
+</div></blockquote>
 </li>
-<li>Continue with this and find: <span class="math">\(c_{T-T} = \frac{1}{1+\beta + \beta^2 +...+\beta^T} k_{T-T}\)</span></li>
-<li>Using: <span class="math">\(\sum_{t=1}^{T}\beta^t = \frac{1-\beta^{T+1}}{1-\beta}\)</span>, we get</li>
-<li><span class="math">\(c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0\)</span></li>
+<li><p class="first">Continue with this and find: <span class="math">\(c_{T-T} = \frac{1}{1+\beta + \beta^2 +...+\beta^T} k_{T-T}\)</span></p>
+</li>
+<li><p class="first">Using: <span class="math">\(\sum_{t=0}^{T}\beta^t = \frac{1-\beta^{T+1}}{1-\beta}\)</span>, we get</p>
+</li>
+<li><p class="first"><span class="math">\(\boxed{c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0}\)</span></p>
+</li>
 </ul>
+</div>
 </div>
 <div class="section" id="plotting-the-solution">
 <h2>18.6. Plotting the Solution<a class="headerlink" href="#plotting-the-solution" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>For any size <span class="math">\(k+0\)</span> and time horizon <span class="math">\(T\)</span> we can now calculate the</li>
-<li>optimal consumption in each period</li>
+<li>For any size <span class="math">\(k+0\)</span> and time horizon <span class="math">\(T\)</span> we can now calculate the optimal consumption in each period</li>
 <li>Example: <span class="math">\(k_0 = 50\)</span>, <span class="math">\(T=10\)</span>, and <span class="math">\(\beta = 0.96\)</span></li>
 </ul>
-</div>
-<div class="section" id="function-definitions-and-plotting">
-<h2>18.7. Function Definitions and Plotting<a class="headerlink" href="#function-definitions-and-plotting" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
@@ -357,12 +360,12 @@ above and plot the optimal consumption path over time.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">r&#39;$c^*_t$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Period t&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Optimal Consumption&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">r&#39;$k_t$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Period t&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cake size&#39;</span><span class="p">)</span>
@@ -373,10 +376,21 @@ above and plot the optimal consumption path over time.</p>
 <a class="reference internal image-reference" href="_images/Slides_Cake_Cake_1.png"><img alt="_images/Slides_Cake_Cake_1.png" src="_images/Slides_Cake_Cake_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="numerical-solution-in-python">
-<h2>18.8. Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
+<h2>18.7. Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>For a numerical solution we use the <code class="docutils literal"><span class="pre">optimize</span></code> package</li>
 <li>The routine <code class="docutils literal"><span class="pre">fmin_slsqp</span></code> minimizes constrained non-linear functions</li>
+</ul>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>I recommend getting into the habit of reading the documentation for functions
+of libraries so that you learn how to use them correctly as well as the
+different ways of their application.</li>
+<li>Here is the link: <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.13.0/reference/generated/scipy.optimize.fmin_slsqp.html">Scipy Documentation for fmin_slsqp</a></li>
+</ul>
+</div>
+<ul class="simple">
 <li>The constraints can be equality or inequality constraints</li>
 <li>Our problem has one equality constraint:</li>
 <li>We start by defining the functions that we would like to optimize, which is
@@ -415,35 +429,56 @@ you cannot eat more than the cake itself.</li>
 want to maximize <code class="docutils literal"><span class="pre">func1</span></code>, the starting values for consumption in each period
 <code class="docutils literal"><span class="pre">c0v</span></code> and the constraints vector for each period <code class="docutils literal"><span class="pre">constr1</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Starting guesses for the optimal consumption vector</span>
 <span class="n">c0v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span>
+
 <span class="n">coptv</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin_slsqp</span><span class="p">(</span><span class="n">func1</span><span class="p">,</span> <span class="n">c0v</span><span class="p">,</span> <span class="n">f_eqcons</span> <span class="o">=</span> <span class="n">constr1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">coptv</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>    <span class="p">(</span><span class="n">Exit</span> <span class="n">mode</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.287355363157735</span>
+            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.2873553632</span>
             <span class="n">Iterations</span><span class="p">:</span> <span class="mi">22</span>
             <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">264</span>
             <span class="n">Gradient</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">22</span>
+<span class="p">[</span> <span class="mf">15.33727223</span>  <span class="mf">13.82825036</span>  <span class="mf">12.45005498</span>  <span class="mf">11.19821343</span>  <span class="mf">10.06848065</span>
+   <span class="mf">9.05581662</span>   <span class="mf">8.15286629</span>   <span class="mf">7.34763605</span>   <span class="mf">6.62044636</span>   <span class="mf">5.94096304</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>And finally we plot the optimal consumption path <code class="docutils literal"><span class="pre">coptv</span></code> that we just solved
 for.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="c1"># Plot analytical and numerical solution</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">cv</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">coptv</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">cv</span><span class="p">,</span> <span class="s1">&#39;b-o&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">coptv</span><span class="p">,</span> <span class="s1">&#39;r--o&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Optimal consumption&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Period t&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;c_t&quot;</span><span class="p">)</span>
 <span class="c1"># Create a legend</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;analytical&#39;</span><span class="p">,</span> <span class="s1">&#39;numerical&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution cv =&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Numeric solution cv =&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;cv = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Numeric solution&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;cv = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coptv</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Analytic</span> <span class="n">solution</span> <span class="n">cv</span> <span class="o">=</span><span class="p">[</span> <span class="mf">15.35339933</span>  <span class="mf">13.8180594</span>   <span class="mf">12.43625346</span>
-<span class="mf">11.19262811</span>  <span class="mf">10.0733653</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-----------------------------</span>
+<span class="n">Analytic</span> <span class="n">solution</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">15.35339933</span>  <span class="mf">13.8180594</span>   <span class="mf">12.43625346</span>  <span class="mf">11.19262811</span>  <span class="mf">10.0733653</span>
    <span class="mf">9.06602877</span>   <span class="mf">8.15942589</span>   <span class="mf">7.3434833</span>    <span class="mf">6.60913497</span>   <span class="mf">5.94822148</span><span class="p">]</span>
-<span class="n">Numeric</span> <span class="n">solution</span> <span class="n">cv</span> <span class="o">=</span>
+<span class="o">-----------------------------</span>
+
+<span class="o">-----------------------------</span>
+<span class="n">Numeric</span> <span class="n">solution</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">15.33727223</span>  <span class="mf">13.82825036</span>  <span class="mf">12.45005498</span>  <span class="mf">11.19821343</span>  <span class="mf">10.06848065</span>
+   <span class="mf">9.05581662</span>   <span class="mf">8.15286629</span>   <span class="mf">7.34763605</span>   <span class="mf">6.62044636</span>   <span class="mf">5.94096304</span><span class="p">]</span>
+<span class="o">-----------------------------</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Cake_Optimal_Consumption_1.png"><img alt="_images/Slides_Cake_Optimal_Consumption_1.png" src="_images/Slides_Cake_Optimal_Consumption_1.png" style="width: 12cm;" /></a>

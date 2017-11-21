@@ -234,23 +234,23 @@
 </div>
 <div class="section" id="equilibrium-definition">
 <h2>19.2. Equilibrium Definition<a class="headerlink" href="#equilibrium-definition" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>Given sequences of</dt>
-<dd><ul class="first last">
+<ul>
+<li><p class="first">Given sequences of</p>
+<blockquote>
+<div><ul class="simple">
 <li>prices <span class="math">\(\left\{w_t, R_t \right\}\)</span></li>
 <li>government policies <span class="math">\(\left\{\tau_K, \tau_{L} \right\}\)</span> and equilibrium is defined as an allocation of:</li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
+</li>
+<li><p class="first">sequences of <span class="math">\(\left\{c_{y,t},c_{o,t},s_t\right\}\)</span> so that</p>
+<blockquote>
+<div><ul>
+<li><p class="first">the HH max problem is solved</p>
 </li>
 <li><dl class="first docutils">
-<dt>sequences of <span class="math">\(\left\{c_{y,t},c_{o,t},s_t\right\}\)</span> so that</dt>
-<dd><ul class="first last">
-<li>the HH max problem is solved</li>
-<li><dl class="first docutils">
 <dt>the firm maximization problem is solved, so that:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li><span class="math">\(q = F_K\)</span></li>
 <li><span class="math">\(w = F_L\)</span></li>
 <li><span class="math">\(r = q - \delta\)</span> is the interest rate</li>
@@ -259,42 +259,44 @@
 </dd>
 </dl>
 </li>
-<li>the gov&#8217;t budget constraint clears</li>
-<li><dl class="first docutils">
-<dt>Markets clear:</dt>
-<dd><ul class="first last">
+<li><p class="first">the gov&#8217;t budget constraint clears</p>
+</li>
+<li><p class="first">Markets clear:</p>
+<blockquote>
+<div><ul class="simple">
 <li><span class="math">\(K=S = N_y * s^*\)</span></li>
 <li><span class="math">\(ARC: C + S +G = Y + (1-\delta) K\)</span></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ul>
 </div>
 <div class="section" id="functional-forms-and-solutions">
 <h2>19.3. Functional Forms and Solutions<a class="headerlink" href="#functional-forms-and-solutions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Preferences are given as: <span class="math">\(u(c_y) = log(c_y)\)</span> and <span class="math">\(u(c_o)=log(c_o)\)</span></li>
+<li>Preferences are given as: <span class="math">\(u(c_y) = \ln(c_y)\)</span> and <span class="math">\(u(c_o)=\ln(c_o)\)</span></li>
 <li>We can either set up a Lagrangian with two constraints or simply substitute consumption out of the utilities using the BC.</li>
 <li>We follow the second approach, since the form of the utility functions guarantees interior solutions</li>
 <li>Therefor we don&#8217;t have to worry about corner solutions a la Kuhn-Tucker</li>
 </ul>
-<p><strong>Substitute the budget set into preferences</strong></p>
-<div class="math">
-\[max_s log( (1-\tau_L)w + t_y - s)  + \beta  log(R s + t_o)\]</div>
+<p><strong>Step 1: Substitute the budget set into preferences.</strong></p>
+<blockquote>
+<div><div class="math">
+\[max_s \ln( (1-\tau_L)w + t_y - s)  + \beta  \ln(R s + t_o)\]</div>
 <ul class="simple">
 <li>This is now a function in 1 choice variable <span class="math">\(s\)</span></li>
 <li>Derive this function w.r.t. <span class="math">\(s\)</span></li>
 </ul>
 <div class="math">
 \[\frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
-  \frac{\beta R}{R  s + t_o}\]</div>
-<p><strong>Solve for optimal household savings: :math:`s^*`</strong></p>
-<div class="math">
+    \frac{\beta R}{R  s + t_o}\]</div>
+</div></blockquote>
+<p><strong>Step 2: Solve for optimal household savings</strong> <span class="math">\(s^*\)</span> <strong>.</strong></p>
+<blockquote>
+<div><div class="math">
 \[s^* = \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
 <ul class="simple">
 <li>In equilibrium household savings equals the capital stock: <span class="math">\(S = K\)</span></li>
@@ -303,20 +305,11 @@
 <li>Measures of young and old agents <span class="math">\(N_y, N_o\)</span> we can now solve for a steady
 state equilibrium</li>
 <li>The solution is represented by the following equation system</li>
-<li>We will try to reduce the equation system into as few equations as possible,
-ideally into one non-linear equation that we can then solve with a <code class="docutils literal"><span class="pre">Newton</span>
-<span class="pre">Algorithm</span></code></li>
 </ul>
-<p><strong>Equation system</strong></p>
-<ul>
-<li><p class="first">For starters we assume that government is completely exogenous.</p>
-</li>
-<li><p class="first">Assume <span class="math">\(L=1\)</span> we have the following unknowns: <span class="math">\(K,Y,R,w,q\)</span> and the following
-equation.</p>
-</li>
-<li><p class="first">A solution exists if the number of unknowns is equal to the number of
-equations:</p>
-<div class="math">
+</div></blockquote>
+<p><strong>Step 3: Equation system</strong></p>
+<blockquote>
+<div><div class="math">
 \[K=N_y s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
 <div class="math">
 \[\alpha*Y/K = q\]</div>
@@ -326,8 +319,17 @@ equations:</p>
 \[F(K,L) = A K^{\alpha} L^{(1-\alpha)}\]</div>
 <div class="math">
 \[R = (1 + (1-\tau_K)q - \delta)\]</div>
-</li>
+<ul class="simple">
+<li>We will try to reduce the equation system into as few equations as possible,
+ideally into one non-linear equation that we can then solve with a <code class="docutils literal"><span class="pre">Newton</span>
+<span class="pre">Algorithm</span></code></li>
+<li>For starters we assume that government is completely exogenous.</li>
+<li>Assume <span class="math">\(L=1\)</span> we have the following unknowns: <span class="math">\(K,Y,R,w,q\)</span> and the following
+equation.</li>
+<li>A solution exists if the number of unknowns is equal to the number of
+equations!</li>
 </ul>
+</div></blockquote>
 </div>
 <div class="section" id="method-1-substituting-everything">
 <h2>19.4. Method 1: Substituting Everything<a class="headerlink" href="#method-1-substituting-everything" title="Permalink to this headline">¶</a></h2>
@@ -368,11 +370,20 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 <div class="math">
 \[G = \tau_L \times wL + \tau_K \times rK - N_y*t_y - N_o*t_o\]</div>
 </li>
-<li><p class="first">The aggregate resource constraint (or goods market clearing condition) is:</p>
+<li><p class="first">The aggregate resource constraint (ARC) or goods market clearing condition is:</p>
 <div class="math">
 \[C + N_y*s + G = Y + (1-\delta)K\]</div>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>While the ARC is not part of the solution algorithm directly, it is good practice to
+always check whether the ARC holds!</li>
+<li>If it doesn&#8217;t, there&#8217;s something wrong
+with your solution!</li>
+</ul>
+</div>
 <p><strong>Python Program 1</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -508,13 +519,38 @@ the so called <strong>Gauss-Seidl</strong> method</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Gauss-Seidl Algorithm</p>
-<ol class="last arabic simple">
-<li>For this method we start with a guess for capital <span class="math">\(K_{old}\)</span></li>
-<li>We then solve for prices <span class="math">\(w,R,q\)</span></li>
-<li>We then solve for optimal household savings <span class="math">\(s^*\)</span></li>
-<li>We then aggregate over all households and get the new capital stock <span class="math">\(K_{new}\)</span></li>
-<li>We then update capital <span class="math">\(K_{old} = \lambda * K_{new} + (1-\lambda) * K_{old}\)</span> and repeat from point 1 (<span class="math">\(\lambda\)</span> is an updating parameter)</li>
-</ol>
+<dl class="last docutils">
+<dt>Step 1.</dt>
+<dd>For this method we start with a guess for capital <span class="math">\(K_{old}\)</span></dd>
+<dt>Step 2.</dt>
+<dd><p class="first">We then solve for prices <span class="math">\(w,R,q\)</span></p>
+<div class="math">
+\[w = (1-\alpha)*K_{old}^{\alpha} \times L^{-\alpha}\]</div>
+<div class="math">
+\[q = \alpha \times A \times K_{old}^{(\alpha-1)} \times L^{1-\alpha}\]</div>
+<div class="last math">
+\[R = 1 + (1-\tau_K)q - \delta\]</div>
+</dd>
+<dt>Step 3.</dt>
+<dd><p class="first">We then solve for optimal household savings <span class="math">\(s^*\)</span></p>
+<div class="last math">
+\[s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
+</dd>
+<dt>Step 4.</dt>
+<dd><p class="first">We then aggregate over all households and get the new capital stock <span class="math">\(K_{new}\)</span></p>
+<div class="last math">
+\[K_{new}=N_y \times s^*\]</div>
+</dd>
+<dt>Step 5.</dt>
+<dd><p class="first">Calculate error and check whether algorithm has converged</p>
+<div class="last math">
+\[\text{error} = (K_{old} - K_{new})/K_{old}\]</div>
+</dd>
+<dt>Step 6.</dt>
+<dd>We then update capital <span class="math">\(K_{old} = \lambda * K_{new} + (1-\lambda) *
+K_{old}\)</span> and repeat from Step 2 above. Note that <span class="math">\(0 &lt; \lambda &lt; 1\)</span> is an updating
+parameter.</dd>
+</dl>
 </div>
 <p><strong>Python Program 2</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Guess capital stock</span>
