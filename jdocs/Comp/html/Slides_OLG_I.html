@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -126,8 +132,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
@@ -136,23 +144,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>19. A Simple OLG Model</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>19. A Simple OLG Model</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_OLG_I.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -218,7 +243,7 @@
 <ul>
 <li><p class="first">The government collects taxes on labor <span class="math">\(\tau_L\)</span> and capital <span class="math">\(\tau_K\)</span></p>
 </li>
-<li><p class="first">The government pays for gov&#8217;t consumption <span class="math">\(G\)</span> and transfers to households <span class="math">\(T_y\)</span> and <span class="math">\(T_o\)</span></p>
+<li><p class="first">The government pays for gov’t consumption <span class="math">\(G\)</span> and transfers to households <span class="math">\(T_y\)</span> and <span class="math">\(T_o\)</span></p>
 <div class="math">
 \[G + T_y + T_o =  \tau_L \times wL + \tau_K \times rK\]</div>
 </li>
@@ -259,7 +284,7 @@
 </dd>
 </dl>
 </li>
-<li><p class="first">the gov&#8217;t budget constraint clears</p>
+<li><p class="first">the gov’t budget constraint clears</p>
 </li>
 <li><p class="first">Markets clear:</p>
 <blockquote>
@@ -280,7 +305,7 @@
 <li>Preferences are given as: <span class="math">\(u(c_y) = \ln(c_y)\)</span> and <span class="math">\(u(c_o)=\ln(c_o)\)</span></li>
 <li>We can either set up a Lagrangian with two constraints or simply substitute consumption out of the utilities using the BC.</li>
 <li>We follow the second approach, since the form of the utility functions guarantees interior solutions</li>
-<li>Therefor we don&#8217;t have to worry about corner solutions a la Kuhn-Tucker</li>
+<li>Therefor we don’t have to worry about corner solutions a la Kuhn-Tucker</li>
 </ul>
 <p><strong>Step 1: Substitute the budget set into preferences.</strong></p>
 <blockquote>
@@ -301,7 +326,7 @@
 <ul class="simple">
 <li>In equilibrium household savings equals the capital stock: <span class="math">\(S = K\)</span></li>
 <li>Aggregate capital stock is therefore: <span class="math">\(K = S = N_y \times s^*\)</span></li>
-<li>Given parameter <span class="math">\(\beta\)</span>, gov&#8217;t policies <span class="math">\(\tau_K, \tau_L, t_y, t_o\)</span></li>
+<li>Given parameter <span class="math">\(\beta\)</span>, gov’t policies <span class="math">\(\tau_K, \tau_L, t_y, t_o\)</span></li>
 <li>Measures of young and old agents <span class="math">\(N_y, N_o\)</span> we can now solve for a steady
 state equilibrium</li>
 <li>The solution is represented by the following equation system</li>
@@ -309,7 +334,13 @@ state equilibrium</li>
 </div></blockquote>
 <p><strong>Step 3: Equation system</strong></p>
 <blockquote>
-<div><div class="math">
+<div><ul class="simple">
+<li>Assume <span class="math">\(L=1\)</span> we have the following unknowns: <span class="math">\(K,Y,R,w,q\)</span> and the following
+equation.</li>
+<li>A solution exists if the number of unknowns is equal to the number of
+equations!</li>
+</ul>
+<div class="math">
 \[K=N_y s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
 <div class="math">
 \[\alpha*Y/K = q\]</div>
@@ -318,24 +349,23 @@ state equilibrium</li>
 <div class="math">
 \[F(K,L) = A K^{\alpha} L^{(1-\alpha)}\]</div>
 <div class="math">
-\[R = (1 + (1-\tau_K)q - \delta)\]</div>
+\[R = (1 + (1-\tau_K)(q - \delta))\]</div>
 <ul class="simple">
 <li>We will try to reduce the equation system into as few equations as possible,
 ideally into one non-linear equation that we can then solve with a <code class="docutils literal"><span class="pre">Newton</span>
 <span class="pre">Algorithm</span></code></li>
 <li>For starters we assume that government is completely exogenous.</li>
-<li>Assume <span class="math">\(L=1\)</span> we have the following unknowns: <span class="math">\(K,Y,R,w,q\)</span> and the following
-equation.</li>
-<li>A solution exists if the number of unknowns is equal to the number of
-equations!</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="method-1-substituting-everything">
 <h2>19.4. Method 1: Substituting Everything<a class="headerlink" href="#method-1-substituting-everything" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that <span class="math">\(L=1\)</span> because household time endowments are <span class="math">\(l=1\)</span> and we
+have <span class="math">\(L = N_y \times l\)</span> and <span class="math">\(N_y\)</span> is also normalized to be one.</p>
+</div>
 <ul>
-<li><p class="first">Note that <span class="math">\(L=1\)</span></p>
-</li>
 <li><p class="first">Substitute <span class="math">\(Y\)</span> out and get <span class="math">\(q(K)\)</span> and <span class="math">\(w(K)\)</span>.</p>
 </li>
 <li><p class="first">Use <span class="math">\(q(K)\)</span> in <span class="math">\(R\)</span> and get <span class="math">\(R(K)\)</span></p>
@@ -345,16 +375,19 @@ R = 1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta)\]</div>
 </li>
 <li><p class="first">Plug <span class="math">\(w(K)\)</span> and <span class="math">\(R(K)\)</span> into <span class="math">\(K\)</span>-equation</p>
 </li>
-<li><p class="first">We now have one equation in <span class="math">\(K\)</span> only</p>
-</li>
 </ul>
-<p><strong>One equation in K</strong></p>
-<p>We have</p>
-<div class="math">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>We now have one equation in <span class="math">\(K\)</span> only that can be solved with a
+root-finding algorithm!</p>
+<div class="last math">
 \[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta))
 ((1-\tau_L)((1-\alpha)*A K^{\alpha}) + t_y) - t_o}
 {(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</div>
+</div>
+<p><strong>Model Parameters</strong></p>
 <ul class="simple">
+<li>In order to find the root of this function we first have to set the parameters of the model.</li>
 <li>Model parameters: <span class="math">\(N_y=N_o=1\)</span>, <span class="math">\(\alpha=0.3\)</span>, <span class="math">\(A=1\)</span>, <span class="math">\(\beta = 0.9\)</span>, <span class="math">\(\delta=0.1\)</span></li>
 <li>We assumed that government was exogenous, so here are some government
 parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_K=0.15\)</span>, <span class="math">\(T_y=T_o=t_y=t_o=0\)</span></li>
@@ -380,7 +413,7 @@ parameters: <span class="math">\(\tau_L=0.2\)</span>, <span class="math">\(\tau_
 <ul class="last simple">
 <li>While the ARC is not part of the solution algorithm directly, it is good practice to
 always check whether the ARC holds!</li>
-<li>If it doesn&#8217;t, there&#8217;s something wrong
+<li>If it doesn’t, there’s something wrong
 with your solution!</li>
 </ul>
 </div>
@@ -390,8 +423,7 @@ with your solution!</li>
 <span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
-<span class="kn">import</span> <span class="nn">time</span>            <span class="c1"># Imports system time module to time your</span>
-<span class="n">script</span>
+<span class="kn">import</span> <span class="nn">time</span>            <span class="c1"># Imports system time module to time your script</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
@@ -417,7 +449,9 @@ with your solution!</li>
 <span class="c1"># -------------------------------------------------------------</span>
 <span class="c1"># Method 1: Root finding</span>
 <span class="c1"># -------------------------------------------------------------</span>
-<span class="c1"># Define function of capital K</span>
+<span class="c1"># Find x so that f(x) = 0</span>
+
+<span class="c1"># Define function of capital K so that func(K) = 0</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="o">-</span> <span class="n">K</span> <span class="o">+</span> <span class="n">N_y</span>\
@@ -427,11 +461,13 @@ with your solution!</li>
 
     <span class="k">return</span> <span class="n">s</span>
 
-<span class="c1"># Plot the function</span>
+<span class="c1"># Plot the function to see whether it has a root-point</span>
 <span class="n">Kmin</span> <span class="o">=</span> <span class="mf">0.0001</span>
 <span class="n">Kmax</span> <span class="o">=</span> <span class="mf">0.3</span>
+
 <span class="c1"># Span grid with gridpoints between Kmin and Kmax</span>
-<span class="n">Kv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Kmin</span><span class="p">,</span> <span class="n">Kmax</span><span class="p">,</span> <span class="p">(</span><span class="n">Kmax</span> <span class="o">-</span> <span class="n">Kmin</span><span class="p">)</span><span class="o">/</span><span class="mf">200.0</span><span class="p">)</span>
+<span class="n">Kv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Kmin</span><span class="p">,</span> <span class="n">Kmax</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
 <span class="c1"># Output vector prefilled with zeros</span>
 <span class="n">fKv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Kv</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span> <span class="c1"># define column vector</span>
 
@@ -449,7 +485,7 @@ with your solution!</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png"><img alt="_images/Slides_OLG_I_Capital_1.png" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png" id="capital"><img alt="_images/Slides_OLG_I_Capital_1.png" id="capital" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Use built in &#39;fsolve&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot; -------------- Fsolve ------------&quot;</span><span class="p">)</span>
@@ -529,7 +565,7 @@ the so called <strong>Gauss-Seidl</strong> method</p>
 <div class="math">
 \[q = \alpha \times A \times K_{old}^{(\alpha-1)} \times L^{1-\alpha}\]</div>
 <div class="last math">
-\[R = 1 + (1-\tau_K)q - \delta\]</div>
+\[R = 1 + (1-\tau_K)(q - \delta)\]</div>
 </dd>
 <dt>Step 3.</dt>
 <dd><p class="first">We then solve for optimal household savings <span class="math">\(s^*\)</span></p>
@@ -628,15 +664,18 @@ parameter.</dd>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_OLG_II.html" class="btn btn-neutral float-right" title="20. An OLG Model with Labor-Leisure Choice" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_OLG_II.html" class="btn btn-neutral float-right" title="20. An OLG Model with Labor-Leisure Choice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Cake.html" class="btn btn-neutral" title="18. Constrained Optimization" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Cake.html" class="btn btn-neutral" title="18. Constrained Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -670,7 +709,8 @@ parameter.</dd>
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
