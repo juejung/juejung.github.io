@@ -13,43 +13,42 @@
 
   
   
+  
+  
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="3. Python Data Structures" href="Slides_DataStructures.html"/>
-        <link rel="prev" title="1. Course Administration" href="Slides_CourseAdministration.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Python Data Structures" href="Slides_DataStructures.html" />
+    <link rel="prev" title="1. Course Administration" href="Slides_CourseAdministration.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -84,7 +83,11 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. First Steps in Python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple-calculations">2.1. Simple Calculations</a></li>
@@ -98,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
@@ -110,10 +113,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrained Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">19. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">20. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">21. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">22. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">23. Assignments</a></li>
 </ul>
 
             
@@ -125,119 +129,167 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>2. First Steps in Python</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>First Steps in Python</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Basics.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="first-steps-in-python">
-<h1>2. First Steps in Python<a class="headerlink" href="#first-steps-in-python" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>First Steps in Python<a class="headerlink" href="#first-steps-in-python" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="functions">
-<p class="first sidebar-title">Section Learning Objectives</p>
-<blockquote class="last">
+<p class="sidebar-title">Section Learning Objectives</p>
+<blockquote>
 <div><ul class="simple">
-<li>Simple Calculations</li>
-<li>Print Function</li>
-<li>Script Files</li>
-<li>iPython Notebook</li>
+<li><p>Simple Calculations</p></li>
+<li><p>Print Function</p></li>
+<li><p>Script Files</p></li>
+<li><p>iPython Notebook</p></li>
 </ul>
 </div></blockquote>
 </div>
-<span class="target" id="index-0"></span><div class="section" id="simple-calculations">
-<h2>2.1. Simple Calculations<a class="headerlink" href="#simple-calculations" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">There are many online resource available that provide good introduction
+material to programming in Python. Here is a very good website to start with:
+<a class="reference external" href="https://www.learnpython.org/">www.learnpython.org</a> This is an interactive
+site where you can directly type Python code into your web browser to try out
+code snippets without installing anything.</p>
+<p>You should also check out some of the documentation of Python’s main scientific
+libraries such as:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>NumPy (<a class="reference external" href="https://numpy.org/">numpy.org</a>)</p></li>
+<li><p>Pandas (<a class="reference external" href="https://pandas.pydata.org/">pandas.pydata.org</a>)</p></li>
+<li><p>Matplotlib (<a class="reference external" href="https://matplotlib.org/">matplotlib.org</a>)</p></li>
+</ol>
+</div></blockquote>
+<div class="section" id="simple-calculations">
+<h2><span class="section-number">2.1. </span>Simple Calculations<a class="headerlink" href="#simple-calculations" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">After installation, open <strong>Spyder</strong> and try some of the following in the
 command line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-<span class="go">5.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="go">x=  2.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;y= &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">y=  3.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y = &quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">x + y =  5.5</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">5.5</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span>  <span class="mf">2.5</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y= &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span>  <span class="mf">3.0</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x + y = &quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">=</span>  <span class="mf">5.5</span>
 </pre></div>
 </div>
 <p>Then try the following:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col style="width: 52%" />
+<col style="width: 48%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operation</th>
-<th class="head">Expression</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Expression</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Subtraction:</td>
-<td><code class="docutils literal"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code></td>
+<tbody>
+<tr class="row-even"><td><p>Subtraction:</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code></p></td>
 </tr>
-<tr class="row-odd"><td>Division:</td>
-<td><code class="docutils literal"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></td>
+<tr class="row-odd"><td><p>Division:</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Multiplication:</td>
-<td><code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></td>
+<tr class="row-even"><td><p>Multiplication:</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></p></td>
 </tr>
-<tr class="row-odd"><td>Power:</td>
-<td><code class="docutils literal"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">y</span></code></td>
+<tr class="row-odd"><td><p>Power:</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">y</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Square root:</td>
-<td><code class="docutils literal"><span class="pre">m.sqrt(x)</span></code></td>
+<tr class="row-even"><td><p>Square root:</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m.sqrt(x)</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>Note that the power function is not <code class="docutils literal"><span class="pre">^</span></code> but <code class="docutils literal"><span class="pre">**</span></code>. Also in Python we need to
-import the <strong>math-module</strong> in order to use certain math functions like <code class="docutils literal"><span class="pre">sqrt()</span></code>
+<p>Note that the power function is not <code class="docutils literal notranslate"><span class="pre">^</span></code> but <code class="docutils literal notranslate"><span class="pre">**</span></code>. Also in Python we need to
+import the <strong>math-module</strong> in order to use certain math functions like <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code>
 etc.  When importing a module, we actually import a library of functions that
-all start with the module name. By typing <code class="docutils literal"><span class="pre">import</span> <span class="pre">math</span></code> at the beginning of
+all start with the module name. By typing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code> at the beginning of
 your script you can then call all the functions of the <strong>math-module</strong> (or
-library) by typing <code class="docutils literal"><span class="pre">math.functionName()</span></code>. So if you want to take the square
-root of number 9, you would then simply call <code class="docutils literal"><span class="pre">math.sqrt(9)</span></code>. You can also
-abbreviate the name of the module by typing <code class="docutils literal"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">m</span></code> in which case
-you can now take the square root with <code class="docutils literal"><span class="pre">m.sqrt(9)</span></code> as in the following script.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+library) by typing <code class="docutils literal notranslate"><span class="pre">math.functionName()</span></code>. So if you want to take the square
+root of number 9, you would then simply call <code class="docutils literal notranslate"><span class="pre">math.sqrt(9)</span></code>. You can also
+abbreviate the name of the module by typing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">m</span></code> in which case
+you can now take the square root with <code class="docutils literal notranslate"><span class="pre">m.sqrt(9)</span></code> as in the following script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="mf">5.578995</span>
 <span class="mf">7.6697787092</span>
 <span class="mf">0.7861700560920011</span>
@@ -246,54 +298,63 @@ you can now take the square root with <code class="docutils literal"><span class
 </pre></div>
 </div>
 <p>If you want to see a list of all the functions in the math module you can type:
-<code class="docutils literal"><span class="pre">dir(math)</span></code> or <code class="docutils literal"><span class="pre">dir(m)</span></code> and you will get a list of all methods/functions
+<code class="docutils literal notranslate"><span class="pre">dir(math)</span></code> or <code class="docutils literal notranslate"><span class="pre">dir(m)</span></code> and you will get a list of all methods/functions
 embedded in the module.</p>
 <span class="target" id="index-2"></span></div>
 <div class="section" id="the-print-function">
-<h2>2.2. The Print Function<a class="headerlink" href="#the-print-function" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>The Print Function<a class="headerlink" href="#the-print-function" title="Permalink to this headline">¶</a></h2>
 <p>If you want to format your print output and combine text with numbers
-you need to use the <code class="docutils literal"><span class="pre">.format</span></code> method of the print function. You will learn
+you need to use the <code class="docutils literal notranslate"><span class="pre">.format</span></code> method of the print function. You will learn
 more about objects and methods in a later chapter. Just hang in there fore now.</p>
-<p>If you want to format the numbers (e.g., round etc.) that <code class="docutils literal"><span class="pre">print</span></code> will output
-you need to type the double brackets <code class="docutils literal"><span class="pre">{}</span></code> in your text string as a
+<p>If you want to format the numbers (e.g., round etc.) that <code class="docutils literal notranslate"><span class="pre">print</span></code> will output
+you need to type the double brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code> in your text string as a
 placeholder for where the number will be inserted.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.455555</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12344</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
 <span class="c1"># Unformatted</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x+y&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x+y&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
 <span class="c1"># Still unformatted but using the .format() method</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y  = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unformatted: x + y  = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
 
 <span class="c1"># Formatted, finally ...</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x + y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x * y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x / y  = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x ** y = {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;sqrt(x)= {:5.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Formatted: x + y  = </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">x</span><span class="o">+</span><span class="n">y</span> <span class="mf">5.578995</span>
-<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span> <span class="mf">5.578995</span>
-<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">5.58</span>
-<span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">7.67</span>
+<span class="n">Unformatted</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span> <span class="mf">5.578995</span>
+<span class="n">Formatted</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">5.58</span>
+</pre></div>
+</div>
+<p>The format instruction :5.2f means that the output of the number is formatted
+as a five digit number with two fixed decimal places. If you want to see more
+details about how you can format numbered output have a look at this link:
+<a class="reference external" href="https://www.python-course.eu/python3_formatted_output.php">https://www.python-course.eu/python3_formatted_output.php</a></p>
+<p>Here are some more examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x * y  = </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x / y  = </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x ** y = </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sqrt(x)= </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">7.67</span>
 <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>  <span class="o">=</span>  <span class="mf">0.79</span>
 <span class="n">x</span> <span class="o">**</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">16.54</span>
 <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span>  <span class="mf">1.57</span>
 </pre></div>
 </div>
-<p>You can write more complex output with more than one number embedded in a text
-as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We want to use variable x = {0:4.2f} </span><span class="se">\n</span><span class="s2"> and divide by</span>
-<span class="s2">variable y = {1:4.2f},</span><span class="se">\n</span><span class="s2"> so that we end up with expression</span>
-<span class="s2">x/y = {2:4.2f}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
+<p>You can write more complex output with more than one number embedded in a line
+of text as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We want to use variable x = </span><span class="si">{0:4.2f}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> and divide by</span>
+<span class="s2">variable y = </span><span class="si">{1:4.2f}</span><span class="s2">,</span><span class="se">\n</span><span class="s2"> so that we end up with expression</span>
+<span class="s2">x/y = </span><span class="si">{2:4.2f}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">We</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.46</span>
  <span class="ow">and</span> <span class="n">divide</span> <span class="n">by</span>
 <span class="n">variable</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">3.12</span><span class="p">,</span>
@@ -301,69 +362,72 @@ as follows:</p>
 <span class="n">x</span><span class="o">/</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.79</span>
 </pre></div>
 </div>
+<p>The symbol <code class="docutils literal notranslate"><span class="pre">\n</span></code> that you see above is not printed but indicates a line break.</p>
 <span class="target" id="index-3"></span></div>
 <div class="section" id="script-files">
-<h2>2.3. Script Files<a class="headerlink" href="#script-files" title="Permalink to this headline">¶</a></h2>
-<p>Before we go on, let&#8217;s save all our commands in a so called Script file. These
-are basically text files that contain all commands in one big &#8220;laundry list&#8221;
+<h2><span class="section-number">2.3. </span>Script Files<a class="headerlink" href="#script-files" title="Permalink to this headline">¶</a></h2>
+<p>Before we go on, let’s save all our commands in a so called Script file. These
+are basically text files that contain all commands in one big “laundry list”
 that we can then execute all at once.  In order to open such a script file in
-<strong>Spyder</strong> simply click on <code class="docutils literal"><span class="pre">File</span></code> <span class="math">\(\rightarrow\)</span> <code class="docutils literal"><span class="pre">New</span></code>. Copy/paste the
+<strong>Spyder</strong> simply click on <code class="docutils literal notranslate"><span class="pre">File</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">New</span></code>. Copy/paste the
 above commands into this script file and save it under a name of your choosing.
-Note that the file has the extension <code class="docutils literal"><span class="pre">.py</span></code> which indicates that it is a
+Note that the file has the extension <code class="docutils literal notranslate"><span class="pre">.py</span></code> which indicates that it is a
 Python script file.  You can then edit this file at will and add commands etc.</p>
-<p>If you want to run or execute the script file simply click the <code class="docutils literal"><span class="pre">Source</span></code>
+<p>If you want to run or execute the script file simply click the <code class="docutils literal notranslate"><span class="pre">Source</span></code>
 button on top of your editor window. You can also execute the script file line
 by line. Simply mark the line, right click, and choose to execute
-selection or click on the <code class="docutils literal"><span class="pre">Run</span></code> icon on top of your
-editor window.  This is the green button with the &#8220;running man
-symbol&#8221; on top of your editor window. If you&#8217;d like to execute just one line,
-mark the line and click on the &#8220;running man symbol&#8221; to the right of the first
+selection or click on the <code class="docutils literal notranslate"><span class="pre">Run</span></code> icon on top of your
+editor window.  This is the green button with the “running man
+symbol” on top of your editor window. If you’d like to execute just one line,
+mark the line and click on the “running man symbol” to the right of the first
 green button.</p>
 <p>For the remainder of the class I highly recommend that you always use script
 files. This will help you to quickly run your code and evaluate your results.</p>
 <span class="target" id="index-4"></span></div>
 <div class="section" id="ipython-notebook">
-<h2>2.4. iPython Notebook<a class="headerlink" href="#ipython-notebook" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>iPython Notebook<a class="headerlink" href="#ipython-notebook" title="Permalink to this headline">¶</a></h2>
 <p>A different way to write your codes is via the <a class="reference external" href="http://ipython.org/notebook.html">iPython Notebook</a>. Read the instructions carefully, it
 should be pretty self explanatory. All you need to do is you open a terminal
 window.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Windows: Go to the start button and type <cite>cmd</cite> in the search box. This will
-open a black terminal window.</li>
-<li>Mac: Open a terminal by clicking on the terminal symbol in the dashboard at
-the bottom.</li>
+<li><p>Windows: Go to the start button and type <cite>cmd</cite> in the search box. This will
+open a black terminal window.</p></li>
+<li><p>Mac: Open a terminal by clicking on the terminal symbol in the dashboard at
+the bottom.</p></li>
 </ul>
 </div></blockquote>
 <p>In this window, after the dollar prompt, you simply type ipython-notebook. This
 will start your browser and get you to the iPython-Notebook dashboard. You can
 start a new notebook from there and start typing code into the input boxes. You
-can immediately evaluate python code pressing: <code class="docutils literal"><span class="pre">shift-enter</span></code>. There are many
+can immediately evaluate python code pressing: <code class="docutils literal notranslate"><span class="pre">shift-enter</span></code>. There are many
 <a class="reference external" href="http://www.google.com/search?q=intro+ipython+notebook">tutorials</a>
 about the iPython Notebook on the internet.</p>
 </div>
 <div class="section" id="in-class-exercises">
-<h2>2.5. In Class Exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.5. </span>In Class Exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Generate a list with numbers from 1 to 10</li>
-<li>Print the first 5 elements of this list</li>
-<li>Replace the last entry of the list with 100 and print the list again</li>
-<li>Sort the list from largest to smallest element</li>
+<li><p>Generate a list with numbers from 1 to 10</p></li>
+<li><p>Print the first 5 elements of this list</p></li>
+<li><p>Replace the last entry of the list with 100 and print the list again</p></li>
+<li><p>Sort the list from largest to smallest element</p></li>
+<li><p>Go to <a class="reference external" href="https://www.learnpython.org/">www.learnpython.org</a></p></li>
 </ol>
 </div>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_DataStructures.html" class="btn btn-neutral float-right" title="3. Python Data Structures" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_DataStructures.html" class="btn btn-neutral float-right" title="3. Python Data Structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_CourseAdministration.html" class="btn btn-neutral" title="1. Course Administration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_CourseAdministration.html" class="btn btn-neutral float-left" title="1. Course Administration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -372,11 +436,11 @@ about the iPython Notebook on the internet.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Juergen Jung.
+        &copy; Copyright 2017, Juergen Jung
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -389,36 +453,15 @@ about the iPython Notebook on the internet.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

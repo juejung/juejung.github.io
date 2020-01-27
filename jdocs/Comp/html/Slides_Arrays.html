@@ -13,43 +13,42 @@
 
   
   
+  
+  
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Computational Economics 1.0 documentation" href="index.html"/>
-        <link rel="next" title="7. Plotting using matplotlib" href="Slides_Plot.html"/>
-        <link rel="prev" title="5. Debugging" href="Slides_Debugging.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Plotting using matplotlib" href="Slides_Plot.html" />
+    <link rel="prev" title="5. Debugging" href="Slides_Debugging.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -84,7 +83,11 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -108,10 +111,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#indexing-and-accessing-elements-of-a-matrix">6.4.5. Indexing and Accessing Elements of a Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#in-class-exercises">6.5. In Class Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">6.5. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">6.6. Self-Check Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
@@ -123,10 +127,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">16. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">17. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">18. Constrained Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">19. A Simple OLG Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">20. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">21. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">22. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">19. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">20. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">21. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">22. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">23. Assignments</a></li>
 </ul>
 
             
@@ -138,49 +143,69 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Computational Economics</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>6. Vectors and Matrices</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">6. </span>Vectors and Matrices</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/Slides_Arrays.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="vectors-and-matrices">
-<h1>6. Vectors and Matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Vectors and Matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="id1">
-<p class="first sidebar-title">Section Learning Objectives</p>
-<blockquote class="last">
+<p class="sidebar-title">Section Learning Objectives</p>
+<blockquote>
 <div><ul class="simple">
-<li>Vectors and Matrices</li>
-<li>Calculations with Vectors/Matrices</li>
-<li>Vector Manipulations</li>
-<li>Matrix Manipulations</li>
+<li><p>Vectors and Matrices</p></li>
+<li><p>Calculations with Vectors/Matrices</p></li>
+<li><p>Vector Manipulations</p></li>
+<li><p>Matrix Manipulations</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -188,84 +213,84 @@
 calculations that can be done with both. We also discuss how vectors and
 matrices can be manipulated.</p>
 <div class="section" id="definitions-of-vectors-and-matrices">
-<h2>6.1. Definitions of Vectors and Matrices<a class="headerlink" href="#definitions-of-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
-<p id="index-1">A vector is a list of numbers that we can do &#8220;math&#8221; with. The numbers in the
+<h2><span class="section-number">6.1. </span>Definitions of Vectors and Matrices<a class="headerlink" href="#definitions-of-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">A vector is a list of numbers that we can do “math” with. The numbers in the
 vector are indexed, so that we can access them.  Note that vector indexing in
 Python starts with zero, not with 1. So Python counts the first element in a vector as
 element 0, the second as element 1, etc.  We first need to import some
 important packages so that Python understands basic numerical procedures and
 definitions, like vectors and matrices and not with a list. The command
 <strong>np.array</strong> from the <strong>numpy</strong> package does just that.</p>
-<p>Here are some examples. Vectors <code class="docutils literal"><span class="pre">x</span></code> <code class="docutils literal"><span class="pre">y</span></code> <code class="docutils literal"><span class="pre">year</span></code> and <code class="docutils literal"><span class="pre">names</span></code> are assigned
+<p>Here are some examples. Vectors <code class="docutils literal notranslate"><span class="pre">x</span></code> <code class="docutils literal notranslate"><span class="pre">y</span></code> <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">names</span></code> are assigned
 as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># You can document your script files using the ``#`` symbol.</span>
 <span class="c1"># This allows you to add commentary to your codes.</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3333</span><span class="p">,</span> <span class="mf">4.8976</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
 <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.233</span><span class="p">,</span> <span class="mf">0.3453</span><span class="p">,</span> <span class="mf">3.29999</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;yv = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yv</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv[0] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv[1] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv[2] = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yv = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv[0] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv[1] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv[2] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.</span>      <span class="mf">3.3333</span>  <span class="mf">4.8976</span>  <span class="mf">9.</span>    <span class="p">]</span>
-<span class="n">yv</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">9.233</span>    <span class="mf">0.3453</span>   <span class="mf">3.29999</span>  <span class="mf">2.8</span>    <span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span>     <span class="mf">3.3333</span> <span class="mf">4.8976</span> <span class="mf">9.</span>    <span class="p">]</span>
+<span class="n">yv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.233</span>   <span class="mf">0.3453</span>  <span class="mf">3.29999</span> <span class="mf">2.8</span>    <span class="p">]</span>
 <span class="n">xv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">xv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.3333</span>
 <span class="n">xv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.8976</span>
 </pre></div>
 </div>
 <p>Remember that Python starts numbering the elements with 0 and not 1! So if
-you want to access the first element in a vector <code class="docutils literal"><span class="pre">x</span></code> you&#8217;d need to type:
-<code class="docutils literal"><span class="pre">xv[0]</span></code>.</p>
+you want to access the first element in a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> you’d need to type:
+<code class="docutils literal notranslate"><span class="pre">xv[0]</span></code>.</p>
 <p>If you would like to print the vector formatted, you need to set the format
-option of the <code class="docutils literal"><span class="pre">numpy</span></code> object as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;xv= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;yv= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yv</span><span class="p">))</span>
+option of the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> object as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yv= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yv</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xv</span><span class="o">=</span> <span class="p">[</span> <span class="mf">1.</span>    <span class="mf">3.33</span>  <span class="mf">4.9</span>   <span class="mf">9.</span>  <span class="p">]</span>
-<span class="n">yv</span><span class="o">=</span> <span class="p">[</span> <span class="mf">9.23</span>  <span class="mf">0.35</span>  <span class="mf">3.3</span>   <span class="mf">2.8</span> <span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xv</span><span class="o">=</span> <span class="p">[</span><span class="mf">1.</span>   <span class="mf">3.33</span> <span class="mf">4.9</span>  <span class="mf">9.</span>  <span class="p">]</span>
+<span class="n">yv</span><span class="o">=</span> <span class="p">[</span><span class="mf">9.23</span> <span class="mf">0.35</span> <span class="mf">3.3</span>  <span class="mf">2.8</span> <span class="p">]</span>
 </pre></div>
 </div>
 <p>Note that if you like a vector: 2000,2001,2002,2003 you need to
-write the <code class="docutils literal"><span class="pre">arange</span></code> command with the upper limit+1.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">year</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># np.arange(from, to, stepsize)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;year= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+write the <code class="docutils literal notranslate"><span class="pre">arange</span></code> command with the upper limit+1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">year</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># np.arange(from, to, stepsize)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;year= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">year</span><span class="o">=</span> <span class="p">[</span><span class="mi">2000</span> <span class="mi">2001</span> <span class="mi">2002</span> <span class="mi">2003</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">year</span><span class="o">=</span> <span class="p">[</span><span class="mi">2000</span> <span class="mi">2001</span> <span class="mi">2002</span> <span class="mi">2003</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>If you would like to generate a certain number of elements between two boundary
-points you can use <code class="docutils literal"><span class="pre">np.linspace()</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">somev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># np.linspace(from, to, nr. of steps)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;somev= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">somev</span><span class="p">))</span>
+points you can use <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">somev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># np.linspace(from, to, nr. of steps)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;somev= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">somev</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">somev</span><span class="o">=</span> <span class="p">[</span> <span class="mf">2000.</span>    <span class="mf">2000.75</span>  <span class="mf">2001.5</span>   <span class="mf">2002.25</span>  <span class="mf">2003.</span>  <span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">somev</span><span class="o">=</span> <span class="p">[</span><span class="mf">2000.</span>   <span class="mf">2000.75</span> <span class="mf">2001.5</span>  <span class="mf">2002.25</span> <span class="mf">2003.</span>  <span class="p">]</span>
 </pre></div>
 </div>
 <p>Remember from the previous chapter how it is very similar to lists and tuples.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># A list of strings is simply:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list of strings is simply:</span>
 <span class="n">names_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Dick&quot;</span><span class="p">,</span> <span class="s2">&quot;Harry&quot;</span><span class="p">,</span> <span class="s2">&quot;Patrick&quot;</span><span class="p">]</span>
 
 <span class="c1"># A tuple of strings is simply:</span>
 <span class="n">names_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Dick&quot;</span><span class="p">,</span> <span class="s2">&quot;Harry&quot;</span><span class="p">,</span> <span class="s2">&quot;Patrick&quot;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;names_list= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;names_tuple= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_tuple</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;names_list= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;names_tuple= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_tuple</span><span class="p">))</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;names_list[1]= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;names_list[3]= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;names_list[1]= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;names_list[3]= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">names_list</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Dick&#39;</span><span class="p">,</span> <span class="s1">&#39;Harry&#39;</span><span class="p">,</span> <span class="s1">&#39;Patrick&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">names_list</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Dick&#39;</span><span class="p">,</span> <span class="s1">&#39;Harry&#39;</span><span class="p">,</span> <span class="s1">&#39;Patrick&#39;</span><span class="p">]</span>
 <span class="n">names_tuple</span><span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Dick&#39;</span><span class="p">,</span> <span class="s1">&#39;Harry&#39;</span><span class="p">,</span> <span class="s1">&#39;Patrick&#39;</span><span class="p">)</span>
 <span class="n">names_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="n">Dick</span>
 <span class="n">names_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span> <span class="n">Patrick</span>
@@ -273,21 +298,21 @@ points you can use <code class="docutils literal"><span class="pre">np.linspace(
 </div>
 </div>
 <div class="section" id="simple-calculations-with-vectors-and-matrices">
-<h2>6.2. Simple Calculations with Vectors and Matrices<a class="headerlink" href="#simple-calculations-with-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<h2><span class="section-number">6.2. </span>Simple Calculations with Vectors and Matrices<a class="headerlink" href="#simple-calculations-with-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1"># Element-by-element operations</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="c1">#</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1+x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1*x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1+x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1*x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">x1</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">9</span><span class="p">]</span>
 <span class="n">x2</span><span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">3</span><span class="p">]</span>
  <span class="o">----------------</span>
@@ -296,19 +321,19 @@ points you can use <code class="docutils literal"><span class="pre">np.linspace(
 </pre></div>
 </div>
 <p>This is different behavior from what we have seen so far from lists. Let us
-repeat the above example, but instead of <code class="docutils literal"><span class="pre">numpy</span></code>-arrays we use lists instead.
+repeat the above example, but instead of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>-arrays we use lists instead.
 We then have</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="c1">#</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1+x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1+x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">x1</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="n">x2</span><span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
  <span class="o">----------------</span>
@@ -316,28 +341,31 @@ We then have</p>
 </pre></div>
 </div>
 <p>This just joins the lists together. If we try to multiply the lists we get:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;x1*x2= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1*x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;class &#39;TypeError&#39;&gt;
-can&#39;t multiply sequence by non-int of type &#39;list&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">TypeError</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">0466185</span><span class="n">c78fb</span><span class="o">&gt;</span> <span class="ow">in</span>
+<span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1*x2= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">))</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t multiply sequence by non-int of type &#39;</span><span class="nb">list</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
-<p>Matrices are &#8220;two dimensional&#8221; vectors. In <strong>Python</strong> we write</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<p>Matrices are “two dimensional” vectors. In <strong>Python</strong> we write</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="c1">#</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a*b= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a-b= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a*b= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a-b= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">a</span><span class="o">=</span>
  <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">]]</span>
@@ -356,42 +384,42 @@ can&#39;t multiply sequence by non-int of type &#39;list&#39;
 </div>
 <p>If you want to generate matrices filled with either zeros or ones of a
 particular size in <strong>Python</strong> you can use the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">a</span><span class="o">=</span>
- <span class="p">[[</span> <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]]</span>
+ <span class="p">[[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]]</span>
  <span class="o">----------------</span>
 <span class="n">b</span><span class="o">=</span>
- <span class="p">[[</span> <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]]</span>
+ <span class="p">[[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>If you want a matrix with integer numbers the simply define the output as
-<code class="docutils literal"><span class="pre">int</span></code> so that</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<code class="docutils literal notranslate"><span class="pre">int</span></code> so that</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ---------------- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">a</span><span class="o">=</span>
  <span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
@@ -406,148 +434,148 @@ particular size in <strong>Python</strong> you can use the following:</p>
 </div>
 <p>If you want to create an <strong>identity matrix</strong> with the value one in the main
 diagonal and zeros everywhere else you can:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;c= </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; --- OUTPUT: --- &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c= </span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">---</span> <span class="n">OUTPUT</span><span class="p">:</span> <span class="o">---</span>
 <span class="n">c</span><span class="o">=</span>
- <span class="p">[[</span> <span class="mf">1.</span>  <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">1.</span>  <span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">1.</span><span class="p">]]</span>
+ <span class="p">[[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">1.</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vector-manipulation">
-<h2>6.3. Vector Manipulation<a class="headerlink" href="#vector-manipulation" title="Permalink to this headline">¶</a></h2>
-<p>A vector of order <span class="math">\(n&gt;0\)</span> is a set of ordered numbers.
-<span class="math">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right], \:
+<h2><span class="section-number">6.3. </span>Vector Manipulation<a class="headerlink" href="#vector-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transposing-vectors">
+<h3><span class="section-number">6.3.1. </span>Transposing Vectors<a class="headerlink" href="#transposing-vectors" title="Permalink to this headline">¶</a></h3>
+<p>A vector of order <span class="math notranslate nohighlight">\(n&gt;0\)</span> is a set of ordered numbers.
+<span class="math notranslate nohighlight">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right], \:
 e_{1} = \left[ \begin{array}{c} 1 \\ 0 \\ 0 \end{array} \right], \: ...\)</span></p>
 <p>These are column vectors. Row vectors are transposed column vectors, that is
-<span class="math">\(a'=[4 \: 3], \: e'_{1}=[1 \: 0 \: 0], \: ...\)</span></p>
-<div class="section" id="transposing-vectors">
-<h3>6.3.1. Transposing Vectors<a class="headerlink" href="#transposing-vectors" title="Permalink to this headline">¶</a></h3>
+<span class="math notranslate nohighlight">\(a'=[4 \: 3], \: e'_{1}=[1 \: 0 \: 0], \: ...\)</span></p>
 <p>In <strong>Python</strong> vectors are formed as column vectors by default. We can simply
-transpose vectors using the transpose function <code class="docutils literal"><span class="pre">t()</span></code> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+transpose vectors using the transpose function <code class="docutils literal notranslate"><span class="pre">t()</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 <span class="kn">import</span> <span class="nn">time</span>  <span class="c1"># Imports system time module to time your script</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>      <span class="c1"># column vector</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>      <span class="c1"># column vector</span>
 <span class="n">aprime</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>   <span class="c1"># row vector</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a&#39;= {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aprime</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&#39;= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aprime</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">a</span><span class="s1">&#39;= [4 3]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="length-of-vectors">
-<h3>6.3.2. Length of Vectors<a class="headerlink" href="#length-of-vectors" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2. </span>Length of Vectors<a class="headerlink" href="#length-of-vectors" title="Permalink to this headline">¶</a></h3>
 <p>A vector (at least a two dimensional one) has a convenient geometric
 representation. It is an arrow, where the two coordinates indicate the
-direction and length of this arrow. Vector <span class="math">\(a = \left[ \begin{array}{c} 4
+direction and length of this arrow. Vector <span class="math notranslate nohighlight">\(a = \left[ \begin{array}{c} 4
 \\ 3 \end{array} \right]\)</span> points to the upper right (i.e. 4 over, 3 up). The
 length of a vector can be calculated using the Pythagoras theorem for the
-triangle. The length of vector <span class="math">\(a = \left[ \begin{array}{c} a_1 \\ a_2
-\end{array} \right]\)</span> where <span class="math">\(a_1\)</span> and <span class="math">\(a_2\)</span> are simply numbers, can
-be calculated as <span class="math">\(\|a\| = \sqrt{a_1^2 + a_2^2}.\)</span> For our example, the
-vector norm for <span class="math">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right]
+triangle. The length of vector <span class="math notranslate nohighlight">\(a = \left[ \begin{array}{c} a_1 \\ a_2
+\end{array} \right]\)</span> where <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> are simply numbers, can
+be calculated as <span class="math notranslate nohighlight">\(\|a\| = \sqrt{a_1^2 + a_2^2}.\)</span> For our example, the
+vector norm for <span class="math notranslate nohighlight">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right]
 \text{ is } \rightarrow \|a\| = \sqrt{4^2 + 3^2} = 5.\)</span> In <strong>Python</strong> we can
 simply define a vector and calculate its norm (or length) as</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">norma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;norm(a) = &quot;</span><span class="p">,</span> <span class="n">norma</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;norm(a) = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c1"># built in norm() command</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;norm(a) = &quot;</span><span class="p">,</span> <span class="n">norma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;norm(a) = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c1"># built in norm() command</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span>  <span class="mf">5.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span>  <span class="mf">5.0</span>
 <span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span>  <span class="mf">5.0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="adding-two-vectors">
-<h3>6.3.3. Adding Two Vectors<a class="headerlink" href="#adding-two-vectors" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3. </span>Adding Two Vectors<a class="headerlink" href="#adding-two-vectors" title="Permalink to this headline">¶</a></h3>
 <p>Adding vectors is simple. We just add all numbers of two vectors
-&#8216;element-by-element&#8217;. So that  <span class="math">\(a + b = \left[ \begin{array}{c} a_1  + b_1 \\
+‘element-by-element’. So that  <span class="math notranslate nohighlight">\(a + b = \left[ \begin{array}{c} a_1  + b_1 \\
 a_2+b_2 \end{array} \right].\)</span> In <strong>Python</strong> this is done with</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b= &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a+b=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># adding up vectors element-by-element</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b= &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a+b=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># adding up vectors element-by-element</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span>  <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span>  <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">b</span><span class="o">=</span>  <span class="p">[</span><span class="mi">12</span>  <span class="mi">5</span><span class="p">]</span>
 <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">=</span> <span class="p">[</span><span class="mi">16</span>  <span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="multiplication-of-vectors">
-<h3>6.3.4. Multiplication of Vectors<a class="headerlink" href="#multiplication-of-vectors" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.4. </span>Multiplication of Vectors<a class="headerlink" href="#multiplication-of-vectors" title="Permalink to this headline">¶</a></h3>
 <p>A vector can be multiplied by a number (we call it a scalar denoted as :math:`
 lambda` to distinguish it from vectors and the numbers that it contains). The
 scalar is multiplied with all numbers of the vector. If we multiply the vector
-with <span class="math">\(\lambda &gt; 1\)</span> then the arrow that the vector symbolizes is becoming
-longer. If we multiply the vector with <span class="math">\(0 &lt; \lambda &lt; 1\)</span> the arrow gets
-shorter. If we multiply the vector with a negative number <span class="math">\(\lambda &lt; 0\)</span>
-then the arrow changes direction. More formally this is <span class="math">\(\lambda * a =
+with <span class="math notranslate nohighlight">\(\lambda &gt; 1\)</span> then the arrow that the vector symbolizes is becoming
+longer. If we multiply the vector with <span class="math notranslate nohighlight">\(0 &lt; \lambda &lt; 1\)</span> the arrow gets
+shorter. If we multiply the vector with a negative number <span class="math notranslate nohighlight">\(\lambda &lt; 0\)</span>
+then the arrow changes direction. More formally this is <span class="math notranslate nohighlight">\(\lambda * a =
 \left[ \begin{array}{c} \lambda *a_1 \\ \lambda *a_2 \end{array} \right].\)</span></p>
-<p>In <strong>Python</strong> it&#8217;s simply</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<p>In <strong>Python</strong> it’s simply</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">anorm</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># norm of vector a</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;anorm=&quot;</span><span class="p">,</span> <span class="n">anorm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;anorm=&quot;</span><span class="p">,</span> <span class="n">anorm</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">a</span>
 <span class="n">bnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># norm of longer vector</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b=&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;bnorm=&quot;</span><span class="p">,</span> <span class="n">bnorm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b=&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bnorm=&quot;</span><span class="p">,</span> <span class="n">bnorm</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span>
 <span class="n">cnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># norm of shorter vector</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;c=&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;cnorm=&quot;</span><span class="p">,</span> <span class="n">cnorm</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c=&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cnorm=&quot;</span><span class="p">,</span> <span class="n">cnorm</span> <span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">a</span>       <span class="c1"># vector changes direction</span>
 <span class="n">dnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;d=&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;dnorm=&quot;</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;d=&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dnorm=&quot;</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">anorm</span><span class="o">=</span> <span class="mf">5.0</span>
 <span class="n">b</span><span class="o">=</span> <span class="p">[</span><span class="mi">20</span> <span class="mi">15</span><span class="p">]</span>
 <span class="n">bnorm</span><span class="o">=</span> <span class="mf">25.0</span>
-<span class="n">c</span><span class="o">=</span> <span class="p">[</span> <span class="mf">2.</span>   <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">c</span><span class="o">=</span> <span class="p">[</span><span class="mf">2.</span>  <span class="mf">1.5</span><span class="p">]</span>
 <span class="n">cnorm</span><span class="o">=</span> <span class="mf">2.5</span>
 <span class="n">d</span><span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">12</span>  <span class="o">-</span><span class="mi">9</span><span class="p">]</span>
 <span class="n">dnorm</span><span class="o">=</span> <span class="mf">15.0</span>
 </pre></div>
 </div>
-<p>When multiplying two vectors we form a so called &#8216;inner product&#8217; as follows:
-<span class="math">\(a*b = \sum_{i=1}^{n}a_i*b_i.\)</span></p>
+<p>When multiplying two vectors we form a so called ‘inner product’ as follows:
+<span class="math notranslate nohighlight">\(a*b = \sum_{i=1}^{n}a_i*b_i.\)</span></p>
 <p>The following example shows this with numbers:</p>
-<p><span class="math">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right] \text{ and }  b =
+<p><span class="math notranslate nohighlight">\(a = \left[ \begin{array}{c} 4 \\ 3 \end{array} \right] \text{ and }  b =
 \left[ \begin{array}{c} 12 \\ 5 \end{array} \right]\)</span></p>
 <p>then</p>
-<p><span class="math">\(ax*b = 4*12 + 3*5.\)</span> In <strong>Python</strong> the inner product is simply:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<p><span class="math notranslate nohighlight">\(ax*b = 4*12 + 3*5.\)</span> In <strong>Python</strong> the inner product is simply:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a= &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b= &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;a*b =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>   <span class="c1"># inner product</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a= &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b= &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a*b =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>   <span class="c1"># inner product</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span>  <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span>  <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">b</span><span class="o">=</span>  <span class="p">[</span><span class="mi">12</span>  <span class="mi">5</span><span class="p">]</span>
 <span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">63</span>
 </pre></div>
@@ -555,31 +583,31 @@ then the arrow changes direction. More formally this is <span class="math">\(\la
 </div>
 </div>
 <div class="section" id="matrix-manipulation">
-<h2>6.4. Matrix Manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">¶</a></h2>
-<p>Matrices are &#8220;two dimensional&#8221; vectors. In <strong>Python</strong> we define a matrix as</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<h2><span class="section-number">6.4. </span>Matrix Manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transposing-matrices">
+<h3><span class="section-number">6.4.1. </span>Transposing Matrices<a class="headerlink" href="#transposing-matrices" title="Permalink to this headline">¶</a></h3>
+<p>Matrices are “two dimensional” vectors. In <strong>Python</strong> we define a matrix as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">]]</span>
 <span class="n">B</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">6</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]]</span>
 </pre></div>
 </div>
-<div class="section" id="transposing-matrices">
-<h3>6.4.1. Transposing Matrices<a class="headerlink" href="#transposing-matrices" title="Permalink to this headline">¶</a></h3>
-<p>Transposing matrices requires again the <code class="docutils literal"><span class="pre">t()</span></code> command. It writes each column as row of a new matrix. So that the transpose of matrix <span class="math">\(A\)</span> in the above example becomes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<p>Transposing matrices requires again the <code class="docutils literal notranslate"><span class="pre">t()</span></code> command. It writes each column as row of a new matrix. So that the transpose of matrix <span class="math notranslate nohighlight">\(A\)</span> in the above example becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="n">Atrans</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A&#39;=&quot;</span><span class="p">,</span> <span class="n">Atrans</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&#39;=&quot;</span><span class="p">,</span> <span class="n">Atrans</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">]]</span>
 <span class="n">A</span><span class="s1">&#39;= [[2 4]</span>
  <span class="p">[</span><span class="mi">3</span> <span class="mi">5</span><span class="p">]]</span>
@@ -588,22 +616,22 @@ then the arrow changes direction. More formally this is <span class="math">\(\la
 <p>If we transpose the transpose of matrix A, we get the original matrix A back.</p>
 </div>
 <div class="section" id="adding-matrices">
-<h3>6.4.2. Adding Matrices<a class="headerlink" href="#adding-matrices" title="Permalink to this headline">¶</a></h3>
-<p>When adding two matrices <span class="math">\(A\)</span> and <span class="math">\(B\)</span> we simply add all the elements
-of each matrix &#8216;element-by-element&#8217;. Note that the dimensions (i.e. the number
+<h3><span class="section-number">6.4.2. </span>Adding Matrices<a class="headerlink" href="#adding-matrices" title="Permalink to this headline">¶</a></h3>
+<p>When adding two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we simply add all the elements
+of each matrix ‘element-by-element’. Note that the dimensions (i.e. the number
 of rows and columns) of the two matrices have to be identical. So if matrix
-<span class="math">\(A\)</span> has dimension <span class="math">\(m \times n\)</span>, that is <span class="math">\(m\)</span> rows and
-<span class="math">\(n\)</span> columns, then matrix <span class="math">\(B\)</span> needs to be of dimensions <span class="math">\(m
+<span class="math notranslate nohighlight">\(A\)</span> has dimension <span class="math notranslate nohighlight">\(m \times n\)</span>, that is <span class="math notranslate nohighlight">\(m\)</span> rows and
+<span class="math notranslate nohighlight">\(n\)</span> columns, then matrix <span class="math notranslate nohighlight">\(B\)</span> needs to be of dimensions <span class="math notranslate nohighlight">\(m
 \times n\)</span> as well.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span>  <span class="n">A</span><span class="o">+</span><span class="n">B</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">]]</span>
 <span class="n">B</span><span class="o">=</span> <span class="p">[[</span><span class="mi">2</span> <span class="mi">6</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]]</span>
@@ -613,35 +641,35 @@ of rows and columns) of the two matrices have to be identical. So if matrix
 </div>
 </div>
 <div class="section" id="multiplying-matrices">
-<h3>6.4.3. Multiplying Matrices<a class="headerlink" href="#multiplying-matrices" title="Permalink to this headline">¶</a></h3>
-<p>When multiplying two matrices <span class="math">\(A\)</span> and <span class="math">\(B\)</span> we need to make sure that
-the number of columns of matrix <span class="math">\(A\)</span> is equal the number of rows of matrix
-<span class="math">\(B\)</span>. So if <span class="math">\(A\)</span> has dimension <span class="math">\(m \times n\)</span> then <span class="math">\(B\)</span>
-needs to have dimension <span class="math">\(n \times r\)</span> since matrix multiplication implies
-that we form the &#8216;inner product&#8217; of each row of <span class="math">\(A\)</span> with each column of
-<span class="math">\(B\)</span>. This results in a new matrix of dimension <span class="math">\(m \times r\)</span>.  Here
-is an example. Given matrices <span class="math">\(A = \left[ \begin{array}{ccc} 12 &amp; 3 &amp;6 \\
+<h3><span class="section-number">6.4.3. </span>Multiplying Matrices<a class="headerlink" href="#multiplying-matrices" title="Permalink to this headline">¶</a></h3>
+<p>When multiplying two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we need to make sure that
+the number of columns of matrix <span class="math notranslate nohighlight">\(A\)</span> is equal the number of rows of matrix
+<span class="math notranslate nohighlight">\(B\)</span>. So if <span class="math notranslate nohighlight">\(A\)</span> has dimension <span class="math notranslate nohighlight">\(m \times n\)</span> then <span class="math notranslate nohighlight">\(B\)</span>
+needs to have dimension <span class="math notranslate nohighlight">\(n \times r\)</span> since matrix multiplication implies
+that we form the ‘inner product’ of each row of <span class="math notranslate nohighlight">\(A\)</span> with each column of
+<span class="math notranslate nohighlight">\(B\)</span>. This results in a new matrix of dimension <span class="math notranslate nohighlight">\(m \times r\)</span>.  Here
+is an example. Given matrices <span class="math notranslate nohighlight">\(A = \left[ \begin{array}{ccc} 12 &amp; 3 &amp;6 \\
 9 &amp;-1 &amp; -4 \end{array} \right] \text{ and } B = \left[ \begin{array}{cc} 7 &amp; 8
 \\ -2 &amp;0 \\ 1 &amp; 11 \end{array} \right]\)</span></p>
-<p>the product of <span class="math">\(A\)</span> <span class="math">\((2 \times 3)\)</span> and <span class="math">\(B\)</span> of dimension
-<span class="math">\((3 \times 2)\)</span> is a matrix <span class="math">\(C\)</span> with dimension <span class="math">\((2 \times 2)\)</span>:</p>
-<p><span class="math">\(AB = \left[ \begin{array}{cc} 12*7+3*(-2)+6*1 &amp; 12*8+3*0+6*11 \\
+<p>the product of <span class="math notranslate nohighlight">\(A\)</span> <span class="math notranslate nohighlight">\((2 \times 3)\)</span> and <span class="math notranslate nohighlight">\(B\)</span> of dimension
+<span class="math notranslate nohighlight">\((3 \times 2)\)</span> is a matrix <span class="math notranslate nohighlight">\(C\)</span> with dimension <span class="math notranslate nohighlight">\((2 \times 2)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(AB = \left[ \begin{array}{cc} 12*7+3*(-2)+6*1 &amp; 12*8+3*0+6*11 \\
 9*7+(-1)*(-2)+(-4)*1 &amp; 9*8+(-1)*0+(-4)*11 \end{array} \right].\)</span></p>
-<p>In <strong>Python</strong> matrix multiplication is achieved using the command <code class="docutils literal"><span class="pre">dot()</span></code> or
-the <code class="docutils literal"><span class="pre">&#64;</span></code> operator. This last operator is new and will only work with <strong>Python
+<p>In <strong>Python</strong> matrix multiplication is achieved using the command <code class="docutils literal notranslate"><span class="pre">dot()</span></code> or
+the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator. This last operator is new and will only work with <strong>Python
 3.5</strong> and newer.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span> <span class="c1"># matrix multiplication</span>
 <span class="c1">#D = A @ B # new matrix multiplication operator</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B=&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 <span class="c1">#print(&quot;D=&quot;, D)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">12</span>  <span class="mi">3</span>  <span class="mi">6</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">12</span>  <span class="mi">3</span>  <span class="mi">6</span><span class="p">]</span>
  <span class="p">[</span> <span class="mi">3</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">4</span><span class="p">]]</span>
 <span class="n">B</span><span class="o">=</span> <span class="p">[[</span> <span class="mi">7</span>  <span class="mi">8</span><span class="p">]</span>
  <span class="p">[</span><span class="o">-</span><span class="mi">2</span>  <span class="mi">0</span><span class="p">]</span>
@@ -652,20 +680,19 @@ the <code class="docutils literal"><span class="pre">&#64;</span></code> operato
 </div>
 </div>
 <div class="section" id="multiplying-a-matrix-with-a-vector">
-<h3>6.4.4. Multiplying a Matrix with a Vector<a class="headerlink" href="#multiplying-a-matrix-with-a-vector" title="Permalink to this headline">¶</a></h3>
-<p>Vectors are simply <span class="math">\(n \times 1\)</span> or <span class="math">\(1 \times n\)</span> dimensional
+<h3><span class="section-number">6.4.4. </span>Multiplying a Matrix with a Vector<a class="headerlink" href="#multiplying-a-matrix-with-a-vector" title="Permalink to this headline">¶</a></h3>
+<p>Vectors are simply <span class="math notranslate nohighlight">\(n \times 1\)</span> or <span class="math notranslate nohighlight">\(1 \times n\)</span> dimensional
 matrices so that the same rules as above apply for multiplying a matrix with a
 vector.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># matrix multiplied by vector: (m x n) x (n x 1) = (m</span>
-<span class="n">x</span> <span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;b=&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># matrix multiplied by vector: (m x n) x (n x 1) = (m x 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b=&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C=&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">12</span>  <span class="mi">3</span>  <span class="mi">6</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">12</span>  <span class="mi">3</span>  <span class="mi">6</span><span class="p">]</span>
  <span class="p">[</span> <span class="mi">3</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">4</span><span class="p">]]</span>
 <span class="n">b</span><span class="o">=</span> <span class="p">[</span> <span class="mi">7</span> <span class="o">-</span><span class="mi">2</span>  <span class="mi">1</span><span class="p">]</span>
 <span class="n">C</span><span class="o">=</span> <span class="p">[</span><span class="mi">84</span> <span class="mi">19</span><span class="p">]</span>
@@ -673,24 +700,24 @@ vector.</p>
 </div>
 </div>
 <div class="section" id="indexing-and-accessing-elements-of-a-matrix">
-<h3>6.4.5. Indexing and Accessing Elements of a Matrix<a class="headerlink" href="#indexing-and-accessing-elements-of-a-matrix" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">],[</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">]])</span>
+<h3><span class="section-number">6.4.5. </span>Indexing and Accessing Elements of a Matrix<a class="headerlink" href="#indexing-and-accessing-elements-of-a-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">],[</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">]])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 
 <span class="c1"># Element row 2, column 3 (remember Python starts indexing at 0!!)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A[1,2] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A[0,:] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>   <span class="c1"># First row</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A[:,0] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># First column</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A[1:,:] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:,])</span>  <span class="c1"># All, except first row</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[1,2] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[0,:] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>   <span class="c1"># First row</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[:,0] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># First column</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[1:,:] = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:,])</span>  <span class="c1"># All, except first row</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 <span class="o">---------------</span>
@@ -705,18 +732,18 @@ vector.</p>
  <span class="p">[</span><span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>If you want to remove columns or rows you can use the <code class="docutils literal"><span class="pre">take</span></code> method and
-assign the result to a new matrix. Let&#8217;s say you would like to eliminate the
-second column from a matrix <code class="docutils literal"><span class="pre">A</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<p>If you want to remove columns or rows you can use the <code class="docutils literal notranslate"><span class="pre">take</span></code> method and
+assign the result to a new matrix. Let’s say you would like to eliminate the
+second column from a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 
 <span class="c1"># Remove column 2 (or take column 1, 3, and 4)</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;B =&quot;</span><span class="p">,</span> <span class="n">B</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B =&quot;</span><span class="p">,</span> <span class="n">B</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 <span class="o">---------------</span>
@@ -726,20 +753,20 @@ second column from a matrix <code class="docutils literal"><span class="pre">A</
 </pre></div>
 </div>
 <p>If you want to replace matrix elements based on certain criteria you can use
-the criteria as a logical statement in combination with the <code class="docutils literal"><span class="pre">choose</span></code> method.
+the criteria as a logical statement in combination with the <code class="docutils literal notranslate"><span class="pre">choose</span></code> method.
 In the next example we replace all the elements of the matrix that are larger
 than 90 with the number 90. We start by setting some elements of the matrix
 equal to 99.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span> <span class="c1"># Fill first column with 99</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span> <span class="c1"># Fill first column with 99</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 
 <span class="c1"># Replace all elements &gt; 90 with number 90</span>
 <span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="o">&gt;</span><span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;(A&gt;90).choose(A,90) = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(A&gt;90).choose(A,90) = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span>  <span class="p">[[</span><span class="mi">99</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span>  <span class="p">[[</span><span class="mi">99</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">99</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">99</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 <span class="o">---------------</span>
@@ -748,34 +775,33 @@ equal to 99.</p>
  <span class="p">[</span><span class="mi">90</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>If you want to run a loop &#8220;through&#8221; a matrix you can first find out the
-dimensions of the matrix using the <code class="docutils literal"><span class="pre">shape</span></code> method and then write nested
-loops, one for each dimension. Note the indentation of the various <code class="docutils literal"><span class="pre">print</span></code>
+<p>If you want to run a loop “through” a matrix you can first find out the
+dimensions of the matrix using the <code class="docutils literal notranslate"><span class="pre">shape</span></code> method and then write nested
+loops, one for each dimension. Note the indentation of the various <code class="docutils literal notranslate"><span class="pre">print</span></code>
 statements in the next example!</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">],[</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; Start loops &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">],[</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Start loops &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 
 <span class="n">nrRows</span><span class="p">,</span> <span class="n">nrCols</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrRows</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Row {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Row </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrCols</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The element in row {} and column {} is: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
-<span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The element in row </span><span class="si">{}</span><span class="s2"> and column </span><span class="si">{}</span><span class="s2"> is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]))</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Done with row {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done with row </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; All Done &quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; All Done &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="p">[[</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span><span class="p">]]</span>
 <span class="o">---------------</span>
@@ -812,28 +838,47 @@ statements in the next example!</p>
 </div>
 </div>
 </div>
-<div class="section" id="in-class-exercises">
-<h2>6.5. In Class Exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="key-concepts-and-summary">
+<h2><span class="section-number">6.5. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>A vector is a list of numbers.</p></li>
+<li><p>A matrix is a 2 dimensional vector.</p></li>
+<li><p>A numpy array is a higher dimensional matrix.</p></li>
+<li><p>An array is a higher dimensional list i.e., contents do not have to be
+numbers</p></li>
+<li><p>Vectors, matrices, and arrays can be indexed and their content can be
+overwritten</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-check-questions">
+<h2><span class="section-number">6.6. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
 <ol class="arabic simple">
-<li>Generate a vector with entries from 1 to 20, stepsize 0.5</li>
-<li>Divide the first 10 entries by 5</li>
-<li>Replace the last entry with the value from the first entry</li>
-<li>Sort the vector from largest to smallest element</li>
+<li><p>Generate a vector with entries from 1 to 20, stepsize 0.5</p></li>
+<li><p>Divide the first 10 entries by 5</p></li>
+<li><p>Replace the last entry with the value from the first entry</p></li>
+<li><p>Sort the vector from largest to smallest element</p></li>
 </ol>
+</div>
 </div>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Plot.html" class="btn btn-neutral float-right" title="7. Plotting using matplotlib" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Plot.html" class="btn btn-neutral float-right" title="7. Plotting using matplotlib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Debugging.html" class="btn btn-neutral" title="5. Debugging" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Debugging.html" class="btn btn-neutral float-left" title="5. Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -842,11 +887,11 @@ statements in the next example!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Juergen Jung.
+        &copy; Copyright 2017, Juergen Jung
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -859,36 +904,15 @@ statements in the next example!</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
