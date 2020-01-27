@@ -86,7 +86,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
@@ -206,7 +207,7 @@ simplest callable object in Python.</p>
 <p>It takes a number of inputs—inputs can be scalars, lists, tuples or
 objects—and produces a number of outputs—outputs can be scalars, lists,
 tuples or objects.</p>
-digraph {
+<div class="graphviz"><img src="_images/graphviz-c8aaa49262d88b246188d908e0715c8406b0fe62.png" alt="digraph {
     rankdir=&quot;LR&quot;;
     &quot;input1&quot; -&gt; &quot;function&quot;;
     &quot;input2&quot; -&gt; &quot;function&quot;;
@@ -214,7 +215,8 @@ digraph {
     &quot;function&quot; -&gt; &quot;output1&quot;;
     &quot;function&quot; -&gt; &quot;output2&quot;;
     &quot;function&quot; -&gt; &quot;output...&quot;;
-}<p>In Python we use the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> to start the function definition code
+}" class="graphviz" /></div>
+<p>In Python we use the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> to start the function definition code
 block:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">functionname</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
     <span class="n">statement1</span>
@@ -453,14 +455,23 @@ two simple function definitions and save them in a file called <code class="docu
 
 <span class="k">def</span> <span class="nf">hw2</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World! sin(</span><span class="si">{0:4.2f}</span><span class="s2">+</span><span class="si">{1:4.2f}</span><span class="s2">) = </span><span class="si">{2:4.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span>
-<span class="n">r2</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World! sin(</span><span class="si">{0:4.2f}</span><span class="s2">+</span><span class="si">{1:4.2f}</span><span class="s2">) = </span><span class="si">{2:4.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In a separate Python script we can now import this previous file containing our
 functions with the <code class="docutils literal notranslate"><span class="pre">import</span></code> command. We save this new Python script as
-<code class="docutils literal notranslate"><span class="pre">Lecture_Functions\myFunctions.py</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># File 2: Lecture_Functions\myFunctions.py</span>
+<code class="docutils literal notranslate"><span class="pre">Lecture_Functions/myFunctions.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: If the myFunctions.py is stored in the same location than the script</span>
+<span class="c1"># file you are currently running, then you do not need these complicated import</span>
+<span class="c1"># statements on the next two lines.</span>
+
+<span class="c1"># File 2 stored in: Lecture_Functions/myFunctions.py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;/home/jjung/Dropbox/Towson/teaching/2_ComputationalEconomics/LecturesNew/source/Lecture_Functions&#39;</span><span class="p">)</span>
+
+<span class="c1"># Skip the above and start here if your function file is stored in the same</span>
+<span class="c1"># location as your script file.</span>
+
 <span class="kn">import</span> <span class="nn">myFunctions</span> <span class="k">as</span> <span class="nn">mfunc</span>
 <span class="c1"># This next line makes sure that if you</span>
 <span class="c1"># edited the file myfunctions.py -&gt; the</span>
@@ -473,7 +484,7 @@ functions with the <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0.31154136351337786
-Hello, World! sin(2.50+5.60) = 0.97
+Hello, World! sin(2.5+5.6)=0.96989
 </pre></div>
 </div>
 </div>
@@ -544,8 +555,7 @@ function <code class="docutils literal notranslate"><span class="pre">g</span></
 
 <span class="n">xn</span><span class="p">,</span> <span class="n">yn</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">xn</span><span class="p">,</span><span class="n">xn</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>   <span class="c1"># Define matrix size nxn with zero</span>
-<span class="n">entries</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">xn</span><span class="p">,</span><span class="n">xn</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>   <span class="c1"># Define matrix size nxn with zero entries</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xn</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">yn</span><span class="p">):</span>
         <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
@@ -629,8 +639,10 @@ variable assignments and therefore it throws an error.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;SyntaxError&#39;&gt;
-non-keyword arg after keyword arg (chunk, line 2)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-1-95c77d76a7d9&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">f_printInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+                            <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">positional</span> <span class="n">argument</span> <span class="n">follows</span> <span class="n">keyword</span> <span class="n">argument</span>
 </pre></div>
 </div>
 </div>
@@ -718,8 +730,23 @@ function.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;UnboundLocalError&#39;&gt;
-local variable &#39;y&#39; referenced before assignment
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">inside</span> <span class="n">myFun4</span> <span class="o">=</span>  <span class="mi">6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">UnboundLocalError</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">897</span><span class="n">c56e0726e</span><span class="o">&gt;</span> <span class="ow">in</span>
+<span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+      <span class="mi">8</span> <span class="c1"># Call function</span>
+      <span class="mi">9</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">---&gt;</span> <span class="mi">10</span> <span class="n">myFun4</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+     <span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y outside function =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">897</span><span class="n">c56e0726e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="n">myFun4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="mi">2</span>     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x inside myFun4 = &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y inside myFun4 = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+      <span class="mi">5</span>     <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y inside myFun4 = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="ne">UnboundLocalError</span><span class="p">:</span> <span class="n">local</span> <span class="n">variable</span> <span class="s1">&#39;y&#39;</span> <span class="n">referenced</span> <span class="n">before</span> <span class="n">assignment</span>
 </pre></div>
 </div>
 <p>Here we get an error because the interpreter defines <code class="docutils literal notranslate"><span class="pre">y</span></code> as local variable
