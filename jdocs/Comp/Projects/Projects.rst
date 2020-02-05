@@ -42,7 +42,31 @@ If you already took Econometrics you can try to implement ``mlogit`` or ``mprobi
     `Jung (2015) <https://juejung.github.io/papers/markovtransitions.pdf>`_
   * Data: `MEPS <http://meps.ahrq.gov/mepsweb/>`_
 
-3. Tax simulation policy
+3. Machine learning project
+-------------------------------------------------------------------------------
+
+For a machine learning project you will need data. Either you use an existing
+data source, i.e., a survey, data from a firm, a city, etc. or you have to
+assemble or collect the data yourself. You could use web-scraping for this or
+download data through an API from a website or content provider.
+
+Once you have the data you can try to predict, classify, etc.
+
+Here is a link to a pretty cool project I just found: 
+`Employee Churn Model based on IBM firm level data <https://towardsdatascience.com/building-an-employee-churn-model-in-python-to-develop-a-strategic-retention-plan-57d5bd882c2d>`_
+As you can see it's really just a logistic regression that predicts whether an
+employee is going to resign or not and which variables are the main drivers for
+that decision. It is of course presented as machine learning topic as opposed
+to the traditional econometric framework that you are familiar with from Econ
+306. This just means that the "regressions" are not just logistic regressions,
+but include other forecasting models such as tree decision models, etc.
+The models are then evaluated following the machine learning approach to
+find the best model which makes the most accurate predictions. If you are
+interested in digging deeper into this please have a look at Geron (2019)
+"Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow" which is
+a very comprehensive introduction to machine learning in Python.
+
+4. Tax simulation policy
 -------------------------------------------------------------------------------
 
 Simulate optimal tax policy in an overlapping generations economy. This
@@ -52,7 +76,7 @@ is probably a Python project as it deals with optimization methods.
     `Glomm and Jung (2013) <https://juejung.github.io/papers/timing05142012.pdf>`_
   * Codes:
 
-4. GUI programming
+5. GUI programming
 -------------------------------------------------------------------------------
 
 GUI programming in Python using
@@ -60,7 +84,7 @@ GUI programming in Python using
 
   * Literature to get you started:
 
-5. Object oriented programming
+6. Object oriented programming
 -------------------------------------------------------------------------------
 
 Agent-based modeling using `simPy <http://simpy.readthedocs.org/en/latest/>`_ in
@@ -73,7 +97,7 @@ Python. This requires object-oriented-programming
         Economy Vol. 101, No. 1, pp. 119-137 
      2. `John Stachurski's website <http://quant-econ.net/py/python_oop.html>`_
 
-6. Network graphs
+7. Network graphs
 -------------------------------------------------------------------------------
 
 Use `iGraph <http://igraph.sourceforge.net/index.html>`_ 
