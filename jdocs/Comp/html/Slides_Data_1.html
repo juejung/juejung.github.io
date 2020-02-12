@@ -678,12 +678,13 @@ dataframes.</p>
 both DataFrames along which we can connect them. In our example we use the
 <code class="docutils literal notranslate"><span class="pre">team</span></code> column as <strong>merge-key</strong> or <strong>key-variable</strong> because it appears in both
 DataFrames. We have now four different options for merging the two DataFrames.</p>
-digraph {
+<div class="graphviz"><img src="_images/graphviz-ab797d480ea3285a108222658c09620bfbfbc2b3.png" alt="digraph {
 &quot;Merge Options&quot; -&gt; &quot;Inner Merge&quot;
 &quot;Merge Options&quot; -&gt; &quot;Left Merge&quot;
 &quot;Merge Options&quot; -&gt; &quot;Right Merge&quot;
 &quot;Merge Options&quot; -&gt; &quot;Outer Merge&quot;
-}<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inner Merge&#39;</span><span class="p">)</span>
+}" class="graphviz" /></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inner Merge&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
 </pre></div>

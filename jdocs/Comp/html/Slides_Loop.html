@@ -95,10 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#branching">4.1. Branching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for-loops">4.2. For-Loops</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#loop-1">4.2.1. Loop 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-3">4.2.2. Loop 3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-4">4.2.3. Loop 4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#looping-through-the-content-of-a-list">4.2.4. Looping through the Content of a List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#combining-lists-and-looping-through-them">4.2.5. Combining Lists and Looping Through Them</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-2">4.2.2. Loop 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-3">4.2.3. Loop 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-4">4.2.4. Loop 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-5">4.2.5. Loop 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nested-loops">4.2.6. Nested Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-lists-and-looping-through-them">4.2.7. Combining Lists and Looping Through Them</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#while-loop">4.3. While Loop</a><ul>
@@ -106,7 +108,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#while-loop-2">4.3.2. While Loop 2</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#time-your-work">4.4. Time Your Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combining-branching-statements-and-loops">4.4. Combining Branching Statements and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-your-work">4.5. Time Your Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">4.6. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">4.7. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
@@ -263,11 +268,10 @@ eventuality we can then assign a string of commands to be executed.</p>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is greater than 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to</span>
-<span class="mf">0.5</span><span class="s2">&quot;.format(x))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.94</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.63</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 <p>We can also ask for more than one branching criteria again such as</p>
@@ -281,11 +285,10 @@ eventuality we can then assign a string of commands to be executed.</p>
 <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is greater than 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to</span>
-<span class="mf">0.7</span><span class="s2">&quot;.format(x))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.44</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.95</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.9</span>
 </pre></div>
 </div>
 <p>Running the same script again, will result in a different random number being
@@ -300,11 +303,10 @@ drawn, so that the result may differ of course.</p>
 <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is greater than 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to</span>
-<span class="mf">0.7</span><span class="s2">&quot;.format(x))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.45</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.27</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
 </pre></div>
 </div>
 </div>
@@ -440,6 +442,9 @@ Here’s a more elaborate example</p>
 <span class="o">------------------------</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="loop-2">
+<h3><span class="section-number">4.2.2. </span>Loop 2<a class="headerlink" href="#loop-2" title="Permalink to this headline">¶</a></h3>
 <p>Here is another simple example. We first assign a list with values 0,1,2,3,4,5.
 We then “loop” through all the values of this list and print them one by one.
 In addition, we add up all the values of this list.  The command
@@ -481,13 +486,14 @@ programming languages will not even allow you to assign a value to an iterator
 within a loop statement.</p>
 </div>
 <div class="section" id="loop-3">
-<h3><span class="section-number">4.2.2. </span>Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.3. </span>Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
 <p>Here is another example. We write a loop that calculates the factorial of a
 number: <span class="math notranslate nohighlight">\(3!\)</span>. Remember that <span class="math notranslate nohighlight">\(3! = 1 * 2 * 3\)</span>.  In order to make
 this happen we write a loop that sets <span class="math notranslate nohighlight">\(i = 1, 2,\)</span> and 3 and multiplies it
 with the product of the previous round. The variable <code class="docutils literal notranslate"><span class="pre">n_fac</span></code> stores the
 product from each round.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">n_fac</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -512,13 +518,12 @@ but a product.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The factorial of 6 is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;NameError&#39;&gt;
-name &#39;m&#39; is not defined
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">factorial</span> <span class="n">of</span> <span class="mi">6</span> <span class="ow">is</span> <span class="mi">720</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="loop-4">
-<h3><span class="section-number">4.2.3. </span>Loop 4<a class="headerlink" href="#loop-4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.4. </span>Loop 4<a class="headerlink" href="#loop-4" title="Permalink to this headline">¶</a></h3>
 <p>Finally, here is an example where we loop through the values of a list again.
 In each round we reach the value of the vector and print it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
@@ -554,8 +559,77 @@ results in formatted output.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="looping-through-the-content-of-a-list">
-<h3><span class="section-number">4.2.4. </span>Looping through the Content of a List<a class="headerlink" href="#looping-through-the-content-of-a-list" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-5">
+<h3><span class="section-number">4.2.5. </span>Loop 5<a class="headerlink" href="#loop-5" title="Permalink to this headline">¶</a></h3>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> command in the previous example, Python will
+generate an internal list with the values <cite>[0,1,2,3,4]</cite> and then let the loop
+run through the values of this list so that the iterator variable will start
+with value <code class="docutils literal notranslate"><span class="pre">0</span></code>, then increment to value <code class="docutils literal notranslate"><span class="pre">1</span></code> in the second round, then increment to
+<code class="docutils literal notranslate"><span class="pre">3</span></code> in the third round and so on.</p>
+<p>If you want the iterator variable of the loop to take on certain values and not
+start from <code class="docutils literal notranslate"><span class="pre">0</span></code> you can specify the range command slightly differently and give it
+a new starting value such as <code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">6)</span></code> would generate an internal list of
+<code class="docutils literal notranslate"><span class="pre">[3,4,5]</span></code> and then let the iterator variable run through that list in each
+round of the loop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python uses half open intervals in its internal list generation processes.
+This means that the interval you hand into the <code class="docutils literal notranslate"><span class="pre">range</span></code> command in
+mathematical notation is [3,6). This means it’s closed at the bottom and open
+on top. Closed at the bottom means that the number <code class="docutils literal notranslate"><span class="pre">3</span></code> is included in the
+interval and open on top means that the number <code class="docutils literal notranslate"><span class="pre">6</span></code> is excluded from the
+interval.</p>
+</div>
+<p>Here is an example of a loop where the iterator variable does not start with
+value zero.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;i = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-loops">
+<h3><span class="section-number">4.2.6. </span>Nested Loops<a class="headerlink" href="#nested-loops" title="Permalink to this headline">¶</a></h3>
+<p>In this section you will see an example of a loop inside a loop, or a nested
+loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside first loop but outside second loop i = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">105</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside second loop: i = </span><span class="si">{}</span><span class="s1"> and j = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Inside</span> <span class="n">first</span> <span class="n">loop</span> <span class="n">but</span> <span class="n">outside</span> <span class="n">second</span> <span class="n">loop</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">103</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">104</span>
+<span class="n">Inside</span> <span class="n">first</span> <span class="n">loop</span> <span class="n">but</span> <span class="n">outside</span> <span class="n">second</span> <span class="n">loop</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">103</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">104</span>
+<span class="n">Inside</span> <span class="n">first</span> <span class="n">loop</span> <span class="n">but</span> <span class="n">outside</span> <span class="n">second</span> <span class="n">loop</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">103</span>
+<span class="n">Inside</span> <span class="n">second</span> <span class="n">loop</span><span class="p">:</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">104</span>
+</pre></div>
+</div>
+<p>As you can see the first loop gets executed and the iterator variable <code class="docutils literal notranslate"><span class="pre">i</span></code>
+takes on value 3. Then the code jumps to the “inside” loop and executes the
+repetitions for iterator variable <code class="docutils literal notranslate"><span class="pre">j</span></code>.</p>
+<p>..}}}2
+.. Looping through the Content of a List {{{2
+Looping through the Content of a List
+——————————————————————————-</p>
 <p>If you already have a list predefined and you want to loop through the content
 of that list you can use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in a more direct way without explicitly
 indexing the list elements inside of brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
@@ -595,7 +669,7 @@ is an example using the previous list:</p>
 </div>
 </div>
 <div class="section" id="combining-lists-and-looping-through-them">
-<h3><span class="section-number">4.2.5. </span>Combining Lists and Looping Through Them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.7. </span>Combining Lists and Looping Through Them<a class="headerlink" href="#combining-lists-and-looping-through-them" title="Permalink to this headline">¶</a></h3>
 <p>If you have two or more lists that you want to loop through simultaneously
 pulling the first elements from both lists (in tandem), followed by the second
 elements from both lists, etc. you can use the <code class="docutils literal notranslate"><span class="pre">zip</span></code> command. The <code class="docutils literal notranslate"><span class="pre">zip</span></code>
@@ -710,8 +784,66 @@ outstanding debt. The key formula in this example is:</p>
 </div>
 </div>
 </div>
+<div class="section" id="combining-branching-statements-and-loops">
+<h2><span class="section-number">4.4. </span>Combining Branching Statements and Loops<a class="headerlink" href="#combining-branching-statements-and-loops" title="Permalink to this headline">¶</a></h2>
+<p>We can of course combine everything we have learned so far. Let’s assume you
+have the following programming task. You have to generate a list with numbers
+from 1 to 20. You then have to collect all numbers from 1 to 10 in a blue bin
+and add them up. All numbers from 11 to 20 are to be added up in the bin.
+How would you do that?</p>
+<p>You use a loop that runs through all the numbers of a list and combine it with
+a branching statement that checks whether a number is smaller than 11. If YES
+(i.e., numbers are smaller 11) execute one block of code where the numbers are
+collected in a blue bin and if NO (i.e., numbers are greater 10) then put those
+numbers into the red bin.</p>
+<p>Here is the example code that would accomplish this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blueBin</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">redBin</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number i = </span><span class="si">{:2d}</span><span class="s1"> will be put in BLUE bin&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">blueBin</span> <span class="o">=</span> <span class="n">blueBin</span> <span class="o">+</span> <span class="n">i</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number i = </span><span class="si">{:2d}</span><span class="s1"> will be put in RED bin&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">redBin</span> <span class="o">=</span> <span class="n">redBin</span> <span class="o">+</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------- &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum of numbers in BLUE bin is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">blueBin</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum of numbers in RED  bin is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">redBin</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------- &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">1</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">2</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">3</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">4</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">5</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">6</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">7</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">8</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">9</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">11</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">12</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">14</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">16</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">17</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">18</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">19</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+<span class="n">Number</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">20</span> <span class="n">will</span> <span class="n">be</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">RED</span> <span class="nb">bin</span>
+
+<span class="o">-------------------------------------------</span>
+<span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">numbers</span> <span class="ow">in</span> <span class="n">BLUE</span> <span class="nb">bin</span> <span class="ow">is</span> <span class="mi">55</span>
+<span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">numbers</span> <span class="ow">in</span> <span class="n">RED</span>  <span class="nb">bin</span> <span class="ow">is</span> <span class="mi">155</span>
+<span class="o">-------------------------------------------</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="time-your-work">
-<h2><span class="section-number">4.4. </span>Time Your Work<a class="headerlink" href="#time-your-work" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.5. </span>Time Your Work<a class="headerlink" href="#time-your-work" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes it is useful to know how long it takes for a script to run through.
 In order to accomplish this you can use the <code class="docutils literal notranslate"><span class="pre">time()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">time</span></code>
 library. When you call it, it gives you the current time.
@@ -735,8 +867,34 @@ time period. Here’s an example that times a “large” while loop.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time elapsed = </span><span class="si">{}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.13124608993530273</span> <span class="n">seconds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.1471235752105713</span> <span class="n">seconds</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="key-concepts-and-summary">
+<h2><span class="section-number">4.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>A branching statment allows you to split your code into alternative
+execution blocks.</p></li>
+<li><p>A loop statement allows you to execute code blocks repeatedly.</p></li>
+<li><p>You can nest loops inside of each other and you can nest branching
+statements as well.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-check-questions">
+<h2><span class="section-number">4.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Generate a list with entries from 14 to 40 with stepsize 2.</p></li>
+<li><p>Write a loop that divides the first 10 entries  of your list above by 5</p></li>
+<li><p>Write a loop that replaces all the elements of your list with elements
+that are half a big. If you list says <code class="docutils literal notranslate"><span class="pre">[1,2,3,4]</span></code> your new list
+should read <code class="docutils literal notranslate"><span class="pre">[0.5,1,1.5,2]</span></code>.</p></li>
+</ol>
 </div>
 </div>
 </div>
