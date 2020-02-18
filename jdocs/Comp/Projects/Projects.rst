@@ -2,9 +2,26 @@
 CompEcon: Some Project Ideas 
 ===============================================================================
 
-You are encouraged to come up with your own project ideas. If you have
-trouble with that, you can use some of these suggestions to get you
-started on a project.
+You are encouraged to come up with your own project ideas. 
+Please pick a topic that has to do with economics. It is often best to focus on
+a more local topic as opposed to a very broad question such as "poverty in the
+world."  It is going to be much easier and ultimately more meaningful if you
+focus on "poverty in Maryland" or even better "poverty in Baltimore." The more
+local, usually, the better and the less abstract the whole research exercise
+becomes. For some topics that's of course not possible.
+
+I would also encourage you to pick economic topics that "matter." Now, what
+matters often depends on who is asking of course but think about all the big
+issues in economics such as inequality, poverty, unemployment, minimum wages,
+guaranteed minimum income, inflation, economic growth, health insurance issues,
+retirement issues, obesity epidemic, discrimination issues along various
+socioeconomic dimensions (i.e., race, gender, sexual orientation, religion,
+etc.), immigration issues, political economics (i.e., election issues), crime, 
+environmental issues, educational issues to just name a few.
+There are many interesting research questions that you could ask that I would
+consider meaningful and important. 
+
+These are the types of projects student typically do in this class.
 
 1. Web scraping
 -------------------------------------------------------------------------------
@@ -13,12 +30,6 @@ data from the web. Use the `Pandas <http://pandas.pydata.org/>`_ and
 `ggplot <http://ggplot.yhathq.com/>`_ libraries for data
 cleaning and graphical summaries and employ basic Econometric methods  to
 analyse your data. Some example topics are:
-
-  * Use `Yelp <http://www.yelp.com/baltimore>`_ reviews to find the best car
-    wash in Baltimore. You need to write a script that automatically downloads
-    the data from various website based on yelp links. You need to parse
-    through the html files to find star ratings, prices, discounts, etc. You
-    can plot time trends by repeatedly scraping data on different days.
 
 You can come up with similar projects based on online data. I prefer topics
 that are very local. Start with Towson, Baltimore, maybe Maryland centered
