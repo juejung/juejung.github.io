@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -112,7 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#downloading-the-data">19.2.1. Downloading the Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inspecting-the-data">19.2.2. Inspecting the Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#splitting-the-data">19.2.3. Splitting the Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#visualize-data-to-gain-insight-2">19.2.4. Visualize data to gain insight {{{2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-data-to-gain-insight">19.2.4. Visualize data to gain insight</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#training-a-regression-model">19.2.5. Training a Regression Model</a></li>
 </ul>
 </li>
@@ -521,7 +521,7 @@ distribution of income.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;median_income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fe50ccce690</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fa6105707d0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure9_1.png"><img alt="_images/Slides_MachineLearning_1_figure9_1.png" src="_images/Slides_MachineLearning_1_figure9_1.png" style="width: 15cm;" /></a>
@@ -549,7 +549,7 @@ variable.</p>
 <span class="n">Name</span><span class="p">:</span> <span class="n">income_cat</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fe50cbf2090</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fa61048eed0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure11_1.png"><img alt="_images/Slides_MachineLearning_1_figure11_1.png" src="_images/Slides_MachineLearning_1_figure11_1.png" style="width: 15cm;" /></a>
@@ -610,15 +610,9 @@ this categorical variable in our “forecasting” model.</p>
     <span class="n">set_</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;income_cat&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>..}}}2</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">2</span></dt>
-<dd><p>Visualize data to gain insight {{{2</p>
-</dd>
-</dl>
 </div>
-<div class="section" id="visualize-data-to-gain-insight-2">
-<h3><span class="section-number">19.2.4. </span>Visualize data to gain insight {{{2<a class="headerlink" href="#visualize-data-to-gain-insight-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="visualize-data-to-gain-insight">
+<h3><span class="section-number">19.2.4. </span>Visualize data to gain insight<a class="headerlink" href="#visualize-data-to-gain-insight" title="Permalink to this headline">¶</a></h3>
 <p>We next copy the stratified training data set and assign it a shorter name.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">strat_train_set</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
@@ -630,7 +624,7 @@ California.</p>
 <span class="c1"># save_fig(&quot;bad_visualization_plot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fe508a93510</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fa60c335490</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure17_1.png"><img alt="_images/Slides_MachineLearning_1_figure17_1.png" src="_images/Slides_MachineLearning_1_figure17_1.png" style="width: 15cm;" /></a>
@@ -639,7 +633,7 @@ California.</p>
 <span class="c1"># save_fig(&quot;better_visualization_plot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fe508a76450</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7fa60c318210</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure18_1.png"><img alt="_images/Slides_MachineLearning_1_figure18_1.png" src="_images/Slides_MachineLearning_1_figure18_1.png" style="width: 15cm;" /></a>
@@ -654,7 +648,7 @@ density.</p>
 <span class="c1"># save_fig(&quot;housing_prices_scatterplot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7fe508a8cb10</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7fa60c26a210</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure19_1.png"><img alt="_images/Slides_MachineLearning_1_figure19_1.png" src="_images/Slides_MachineLearning_1_figure19_1.png" style="width: 15cm;" /></a>
@@ -730,270 +724,18 @@ variables in our original data set.</p>
 <div class="section" id="training-a-regression-model">
 <h3><span class="section-number">19.2.5. </span>Training a Regression Model<a class="headerlink" href="#training-a-regression-model" title="Permalink to this headline">¶</a></h3>
 <p>Before training (estimating) the model we need to prepare the data for the
-built in Machine Learning algorithms.</p>
+built in Machine Learning algorithms. We need to make sure that the data only
+contains numeric data and not strings, lists, etc.</p>
+<p>We first put the label variable and the rest of the data (the X variables) into
+separate dataframes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">strat_train_set</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># drop labels for training set</span>
 <span class="n">housing_labels</span> <span class="o">=</span> <span class="n">strat_train_set</span><span class="p">[</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="n">sample_incomplete_rows</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="n">housing</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We then check how many observations with incomplete (i.e., missing)
+observations we have.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_incomplete_rows</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="n">housing</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_incomplete_rows</span><span class="p">)</span>
-
-<span class="c1"># Warning: Since Scikit-Learn 0.20, the sklearn.preprocessing.Imputer class was replaced by the sklearn.impute.SimpleImputer class.</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span> <span class="c1"># Scikit-Learn 0.20+</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span> <span class="k">as</span> <span class="n">SimpleImputer</span>
-
-<span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
-
-<span class="c1"># Remove the text attribute because median can only be calculated on numerical attributes:</span>
-
-<span class="n">housing_num</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;ocean_proximity&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># alternatively: housing_num = housing.select_dtypes(include=[np.number])</span>
-<span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imputer</span><span class="o">.</span><span class="n">statistics_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">housing_num</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
-
-<span class="n">housing_tr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">housing_num</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-                          <span class="n">index</span><span class="o">=</span><span class="n">housing</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-
-<span class="n">housing_cat</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[[</span><span class="s1">&#39;ocean_proximity&#39;</span><span class="p">]]</span>
-<span class="n">housing_cat</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># Warning: earlier versions of the book used the LabelEncoder class or Pandas&#39; Series.factorize() method to encode string categorical attributes as integers. However, the OrdinalEncoder class that was introduced in Scikit-Learn 0.20 (see PR #10521) is preferable since it is designed for input features (X instead of labels y) and it plays well with pipelines (introduced later in this notebook). If you are using an older version of Scikit-Learn (&lt;0.20), then you can import it from future_encoders.py instead.</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">future_encoders</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span> <span class="c1"># Scikit-Learn &lt; 0.20</span>
-
-<span class="n">ordinal_encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">()</span>
-<span class="n">housing_cat_encoded</span> <span class="o">=</span> <span class="n">ordinal_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">housing_cat</span><span class="p">)</span>
-<span class="n">housing_cat_encoded</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">ordinal_encoder</span><span class="o">.</span><span class="n">categories_</span><span class="p">)</span>
-
-<span class="c1"># Warning: earlier versions of the book used the LabelBinarizer or CategoricalEncoder classes to convert each categorical value to a one-hot vector. It is now preferable to use the OneHotEncoder class. Since Scikit-Learn 0.20 it can handle string categorical inputs (see PR #10521), not just integer categorical inputs. If you are using an older version of Scikit-Learn, you can import the new version from future_encoders.py:</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span> <span class="c1"># just to raise an ImportError if Scikit-Learn &lt; 0.20</span>
-    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">future_encoders</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span> <span class="c1"># Scikit-Learn &lt; 0.20</span>
-
-<span class="n">cat_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
-<span class="n">housing_cat_1hot</span> <span class="o">=</span> <span class="n">cat_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">housing_cat</span><span class="p">)</span>
-<span class="n">housing_cat_1hot</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat_encoder</span><span class="o">.</span><span class="n">categories_</span><span class="p">)</span>
-
-<span class="c1"># get the right column indices: safer than hard-coding indices 3, 4, 5, 6</span>
-<span class="n">rooms_ix</span><span class="p">,</span> <span class="n">bedrooms_ix</span><span class="p">,</span> <span class="n">population_ix</span><span class="p">,</span> <span class="n">household_ix</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="nb">list</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;total_rooms&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bedrooms&quot;</span><span class="p">,</span> <span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="s2">&quot;households&quot;</span><span class="p">)]</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span>
-
-<span class="k">def</span> <span class="nf">add_extra_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">add_bedrooms_per_room</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">rooms_per_household</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">rooms_ix</span><span class="p">]</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">household_ix</span><span class="p">]</span>
-    <span class="n">population_per_household</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">population_ix</span><span class="p">]</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">household_ix</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">add_bedrooms_per_room</span><span class="p">:</span>
-        <span class="n">bedrooms_per_room</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">bedrooms_ix</span><span class="p">]</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">rooms_ix</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">rooms_per_household</span><span class="p">,</span> <span class="n">population_per_household</span><span class="p">,</span>
-                     <span class="n">bedrooms_per_room</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">rooms_per_household</span><span class="p">,</span> <span class="n">population_per_household</span><span class="p">]</span>
-
-<span class="n">attr_adder</span> <span class="o">=</span> <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">add_extra_features</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                 <span class="n">kw_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;add_bedrooms_per_room&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-<span class="n">housing_extra_attribs</span> <span class="o">=</span> <span class="n">attr_adder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-
-<span class="n">housing_extra_attribs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">housing_extra_attribs</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="s2">&quot;rooms_per_household&quot;</span><span class="p">,</span> <span class="s2">&quot;population_per_household&quot;</span><span class="p">],</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">housing</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">housing_extra_attribs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-
-<span class="n">num_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-        <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s1">&#39;attribs_adder&#39;</span><span class="p">,</span> <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">add_extra_features</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s1">&#39;std_scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-    <span class="p">])</span>
-
-<span class="n">housing_num_tr</span> <span class="o">=</span> <span class="n">num_pipeline</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
-
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">future_encoders</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span> <span class="c1"># Scikit-Learn &lt; 0.20</span>
-
-
-<span class="n">num_attribs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
-<span class="n">cat_attribs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ocean_proximity&quot;</span><span class="p">]</span>
-
-<span class="n">full_pipeline</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
-        <span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">,</span> <span class="n">num_pipeline</span><span class="p">,</span> <span class="n">num_attribs</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="n">cat_attribs</span><span class="p">),</span>
-    <span class="p">])</span>
-
-<span class="n">housing_prepared</span> <span class="o">=</span> <span class="n">full_pipeline</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">housing</span><span class="p">)</span>
-
-
-
-<span class="c1">#%% Select and train a model</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">)</span>
-
-<span class="c1"># let&#39;s try the full preprocessing pipeline on a few training instances</span>
-<span class="n">some_data</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">some_labels</span> <span class="o">=</span> <span class="n">housing_labels</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">some_data_prepared</span> <span class="o">=</span> <span class="n">full_pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predictions:&quot;</span><span class="p">,</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">some_data_prepared</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lables:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">some_labels</span><span class="p">))</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-
-<span class="n">housing_predictions</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">)</span>
-<span class="n">lin_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">housing_labels</span><span class="p">,</span> <span class="n">housing_predictions</span><span class="p">)</span>
-<span class="n">lin_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">lin_mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lin_rmse</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
-
-<span class="n">lin_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">housing_labels</span><span class="p">,</span> <span class="n">housing_predictions</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lin_mae</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-
-<span class="n">tree_reg</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">tree_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">)</span>
-
-<span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-           <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-           <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-           <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-           <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-
-<span class="n">housing_predictions</span> <span class="o">=</span> <span class="n">tree_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">)</span>
-<span class="n">tree_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">housing_labels</span><span class="p">,</span> <span class="n">housing_predictions</span><span class="p">)</span>
-<span class="n">tree_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tree_mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tree_rmse</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">tree_reg</span><span class="p">,</span> <span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span>
-                         <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">tree_rmse_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">f_display_scores</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
-
-<span class="n">f_display_scores</span><span class="p">(</span><span class="n">tree_rmse_scores</span><span class="p">)</span>
-
-
-<span class="n">lin_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lin_reg</span><span class="p">,</span> <span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span>
-                             <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">lin_rmse_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">lin_scores</span><span class="p">)</span>
-<span class="n">f_display_scores</span><span class="p">(</span><span class="n">lin_rmse_scores</span><span class="p">)</span>
-
-<span class="c1"># Note: we specify n_estimators=10 to avoid a warning about the fact that the default value is going to change to 100 in Scikit-Learn 0.22.</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
-
-<span class="n">forest_reg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">forest_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">)</span>
-
-
-<span class="n">housing_predictions</span> <span class="o">=</span> <span class="n">forest_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">)</span>
-<span class="n">forest_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">housing_labels</span><span class="p">,</span> <span class="n">housing_predictions</span><span class="p">)</span>
-<span class="n">forest_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">forest_mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">forest_rmse</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-
-<span class="n">forest_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">forest_reg</span><span class="p">,</span> <span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span>
-                                <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">forest_rmse_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">forest_scores</span><span class="p">)</span>
-<span class="n">f_display_scores</span><span class="p">(</span><span class="n">forest_rmse_scores</span><span class="p">)</span>
-
-
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lin_reg</span><span class="p">,</span> <span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="p">))</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-
-<span class="c1">#%% Fine Tune Mdel</span>
-<span class="c1"># -----------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c1"># try 12 (3×4) combinations of hyperparameters</span>
-    <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]},</span>
-    <span class="c1"># then try 6 (2×3) combinations with bootstrap set as False</span>
-    <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]},</span>
-  <span class="p">]</span>
-
-<span class="n">forest_reg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="c1"># train across 5 folds, that&#39;s a total of (12+6)*5=90 rounds of training</span>
-<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">forest_reg</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                           <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
-
-
-<span class="c1"># Let&#39;s look at the score of each hyperparameter combination tested during the grid search:</span>
-<span class="n">cvres</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span>
-
-<span class="k">for</span> <span class="n">mean_score</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cvres</span><span class="p">[</span><span class="s2">&quot;mean_test_score&quot;</span><span class="p">],</span> <span class="n">cvres</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">mean_score</span><span class="p">),</span> <span class="n">params</span><span class="p">)</span>
-
-
-<span class="n">feature_importances</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">feature_importances_</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">feature_importances</span><span class="p">)</span>
-
-<span class="n">extra_attribs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rooms_per_hhold&quot;</span><span class="p">,</span> <span class="s2">&quot;pop_per_hhold&quot;</span><span class="p">,</span> <span class="s2">&quot;bedrooms_per_room&quot;</span><span class="p">]</span>
-<span class="c1">#cat_encoder = cat_pipeline.named_steps[&quot;cat_encoder&quot;] # old solution</span>
-<span class="n">cat_encoder</span> <span class="o">=</span> <span class="n">full_pipeline</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">]</span>
-<span class="n">cat_one_hot_attribs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cat_encoder</span><span class="o">.</span><span class="n">categories_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">attributes</span> <span class="o">=</span> <span class="n">num_attribs</span> <span class="o">+</span> <span class="n">extra_attribs</span> <span class="o">+</span> <span class="n">cat_one_hot_attribs</span>
-<span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">feature_importances</span><span class="p">,</span> <span class="n">attributes</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">final_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
-
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">strat_test_set</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">strat_test_set</span><span class="p">[</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="n">X_test_prepared</span> <span class="o">=</span> <span class="n">full_pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">final_predictions</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_prepared</span><span class="p">)</span>
-
-<span class="n">final_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">final_predictions</span><span class="p">)</span>
-<span class="n">final_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">final_mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">final_rmse</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-<span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.95</span>
-<span class="n">squared_errors</span> <span class="o">=</span> <span class="p">(</span><span class="n">final_predictions</span> <span class="o">-</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">squared_errors</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">squared_errors</span><span class="p">)</span>
-
-<span class="n">CI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">confidence</span><span class="p">,</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
-                         <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">squared_errors</span><span class="p">),</span>
-                         <span class="n">scale</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">squared_errors</span><span class="p">)))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence Interval&quot;</span><span class="p">,</span> <span class="n">CI</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">longitude</span>  <span class="n">latitude</span>  <span class="n">housing_median_age</span>  <span class="n">total_rooms</span>
@@ -1015,79 +757,285 @@ built in Machine Learning algorithms.</p>
 <span class="mi">17923</span>       <span class="mf">999.0</span>       <span class="mf">386.0</span>         <span class="mf">4.6328</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
 <span class="mi">13656</span>      <span class="mf">1039.0</span>       <span class="mf">391.0</span>         <span class="mf">1.6675</span>          <span class="n">INLAND</span>
 <span class="mi">19252</span>      <span class="mf">3468.0</span>      <span class="mf">1405.0</span>         <span class="mf">3.1662</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
-    <span class="mf">3.5409</span><span class="p">]</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
-    <span class="mf">3.5409</span><span class="p">]</span>
-<span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;&lt;1H OCEAN&#39;</span><span class="p">,</span> <span class="s1">&#39;INLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;ISLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR BAY&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR OCEAN&#39;</span><span class="p">],</span>
-      <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)]</span>
-<span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;&lt;1H OCEAN&#39;</span><span class="p">,</span> <span class="s1">&#39;INLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;ISLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR BAY&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR OCEAN&#39;</span><span class="p">],</span>
-      <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)]</span>
-<span class="n">Predictions</span><span class="p">:</span> <span class="p">[</span><span class="mf">210644.60459286</span> <span class="mf">317768.80697211</span> <span class="mf">210956.43331178</span>
-<span class="mf">59218.98886849</span>
- <span class="mf">189747.55849879</span><span class="p">]</span>
-<span class="n">Lables</span><span class="p">:</span> <span class="p">[</span><span class="mf">286600.0</span><span class="p">,</span> <span class="mf">340600.0</span><span class="p">,</span> <span class="mf">196900.0</span><span class="p">,</span> <span class="mf">46300.0</span><span class="p">,</span> <span class="mf">254500.0</span><span class="p">]</span>
-<span class="mf">68628.19819848922</span>
-<span class="mf">49439.89599001897</span>
-<span class="mf">0.0</span>
-<span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">70194.33680785</span> <span class="mf">66855.16363941</span> <span class="mf">72432.58244769</span> <span class="mf">70758.73896782</span>
- <span class="mf">71115.88230639</span> <span class="mf">75585.14172901</span> <span class="mf">70262.86139133</span> <span class="mf">70273.6325285</span>
- <span class="mf">75366.87952553</span> <span class="mf">71231.65726027</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">71407.68766037929</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2439.4345041191004</span>
-<span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">66782.73843989</span> <span class="mf">66960.118071</span>   <span class="mf">70347.95244419</span> <span class="mf">74739.57052552</span>
- <span class="mf">68031.13388938</span> <span class="mf">71193.84183426</span> <span class="mf">64969.63056405</span> <span class="mf">68281.61137997</span>
- <span class="mf">71552.91566558</span> <span class="mf">67665.10082067</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">69052.46136345083</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2731.6740017983466</span>
-<span class="mf">21933.31414779769</span>
-<span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">51646.44545909</span> <span class="mf">48940.60114882</span> <span class="mf">53050.86323649</span> <span class="mf">54408.98730149</span>
- <span class="mf">50922.14870785</span> <span class="mf">56482.50703987</span> <span class="mf">51864.52025526</span> <span class="mf">49760.85037653</span>
- <span class="mf">55434.21627933</span> <span class="mf">53326.10093303</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">52583.72407377466</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2298.353351147122</span>
-<span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span>
-                      <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                      <span class="n">max_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                      <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                      <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                      <span class="n">n_estimators</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                      <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="mf">63669.11631261028</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">55627.099719926795</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">53384.57275149205</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">60965.950449450494</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52741.04704299915</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">50377.40461678399</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">58663.93866579625</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52006.19873526564</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">50146.51167415009</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">57869.25276169646</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">51711.127883959234</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">49682.273345071546</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">62895.06951262424</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">54658.176157539405</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">59470.40652318466</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52724.9822587892</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">57490.5691951261</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">51009.495668875716</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-<span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="p">[</span><span class="mf">7.33442355e-02</span> <span class="mf">6.29090705e-02</span> <span class="mf">4.11437985e-02</span> <span class="mf">1.46726854e-02</span>
- <span class="mf">1.41064835e-02</span> <span class="mf">1.48742809e-02</span> <span class="mf">1.42575993e-02</span> <span class="mf">3.66158981e-01</span>
- <span class="mf">5.64191792e-02</span> <span class="mf">1.08792957e-01</span> <span class="mf">5.33510773e-02</span> <span class="mf">1.03114883e-02</span>
- <span class="mf">1.64780994e-01</span> <span class="mf">6.02803867e-05</span> <span class="mf">1.96041560e-03</span> <span class="mf">2.85647464e-03</span><span class="p">]</span>
-<span class="mf">47730.22690385927</span>
-<span class="n">Confidence</span> <span class="n">Interval</span> <span class="p">[</span><span class="mf">45685.10470776</span> <span class="mf">49691.25001878</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>We next run a built in function over our data that attempts to impute missing
+data with the median values of similar observations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Warning: Since Scikit-Learn 0.20, the sklearn.preprocessing.Imputer class was replaced by the sklearn.impute.SimpleImputer class.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span> <span class="c1"># Scikit-Learn 0.20+</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span> <span class="k">as</span> <span class="n">SimpleImputer</span>
+
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Before we run the imputing algorithm we need to remove variables from the
+dataframe that are not numeric such as categorical variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the text attribute because median can only be calculated on numerical attributes:</span>
+
+<span class="n">housing_num</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;ocean_proximity&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># alternatively: housing_num = housing.select_dtypes(include=[np.number])</span>
+<span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imputer</span><span class="o">.</span><span class="n">statistics_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">housing_num</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
+
+<span class="n">housing_tr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">housing_num</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+                          <span class="n">index</span><span class="o">=</span><span class="n">housing</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
+    <span class="mf">3.5409</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
+    <span class="mf">3.5409</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We have now created a complete dataset with no more missing observations that
+only contains numeric variables.</p>
+<p>We next need to handle the categorical variable of ocean proximity of a housing
+unit. Let us inspect this variable first.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_cat</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[[</span><span class="s1">&#39;ocean_proximity&#39;</span><span class="p">]]</span>
+<span class="n">housing_cat</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">ocean_proximity</span>
+<span class="mi">17606</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">18632</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">14650</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
+<span class="mi">3230</span>           <span class="n">INLAND</span>
+<span class="mi">3555</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">19480</span>          <span class="n">INLAND</span>
+<span class="mi">8879</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">13685</span>          <span class="n">INLAND</span>
+<span class="mi">4937</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">4861</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+</pre></div>
+</div>
+<p>We next use a label encoder function which is part of the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> toolkit.
+This is basically a function that will generate dummy variables out of
+categorical variables. Dummy variables are variables that are either 0 or 1 and
+and it can be used to encode categorical (i.e., non numerical attributes) such
+as gender. The dummy variable could be called <code class="docutils literal notranslate"><span class="pre">d_female</span></code>. It is equal to
+1 if a person is female and 0 if a person is not female.</p>
+<p>The ocean proximity variable has multiple categories in it, not just two as in
+the gender example. For each category of the ocean proximity variable we have
+to create a dummy variable. We could accomplish this separately for each dummy
+variable using <code class="docutils literal notranslate"><span class="pre">if</span></code> statements or we can use the built in <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code>
+to do it in one line of code.</p>
+<p># Warning: earlier versions of the book used the LabelEncoder class or Pandas’ Series.factorize() method to encode string categorical attributes as integers. However, the OrdinalEncoder class that was introduced in Scikit-Learn 0.20 (see PR #10521) is preferable since it is designed for input features (X instead of labels y) and it plays well with pipelines (introduced later in this notebook). If you are using an older version of Scikit-Learn (&lt;0.20), then you can import it from future_encoders.py instead.
+try:</p>
+<blockquote>
+<div><p>from sklearn.preprocessing import OrdinalEncoder</p>
+</div></blockquote>
+<dl class="simple">
+<dt>except ImportError:</dt><dd><p>from future_encoders import OrdinalEncoder # Scikit-Learn &lt; 0.20</p>
+</dd>
+</dl>
+<p>ordinal_encoder = OrdinalEncoder()
+housing_cat_encoded = ordinal_encoder.fit_transform(housing_cat)
+housing_cat_encoded[:10]</p>
+<p>print(<a href="#id3"><span class="problematic" id="id4">ordinal_encoder.categories_</span></a>)</p>
+<p># Warning: earlier versions of the book used the LabelBinarizer or CategoricalEncoder classes to convert each categorical value to a one-hot vector. It is now preferable to use the OneHotEncoder class. Since Scikit-Learn 0.20 it can handle string categorical inputs (see PR #10521), not just integer categorical inputs. If you are using an older version of Scikit-Learn, you can import the new version from future_encoders.py:</p>
+<dl class="simple">
+<dt>try:</dt><dd><p>from sklearn.preprocessing import OrdinalEncoder # just to raise an ImportError if Scikit-Learn &lt; 0.20
+from sklearn.preprocessing import OneHotEncoder</p>
+</dd>
+<dt>except ImportError:</dt><dd><p>from future_encoders import OneHotEncoder # Scikit-Learn &lt; 0.20</p>
+</dd>
+</dl>
+<p>cat_encoder = OneHotEncoder()
+housing_cat_1hot = cat_encoder.fit_transform(housing_cat)
+housing_cat_1hot</p>
+<p>print(<a href="#id5"><span class="problematic" id="id6">cat_encoder.categories_</span></a>)</p>
+<p># get the right column indices: safer than hard-coding indices 3, 4, 5, 6
+rooms_ix, bedrooms_ix, population_ix, household_ix = [</p>
+<blockquote>
+<div><p>list(housing.columns).index(col)
+for col in (“total_rooms”, “total_bedrooms”, “population”, “households”)]</p>
+</div></blockquote>
+<p>from sklearn.preprocessing import FunctionTransformer</p>
+<dl>
+<dt>def add_extra_features(X, add_bedrooms_per_room=True):</dt><dd><p>rooms_per_household = X[:, rooms_ix] / X[:, household_ix]
+population_per_household = X[:, population_ix] / X[:, household_ix]
+if add_bedrooms_per_room:</p>
+<blockquote>
+<div><p>bedrooms_per_room = X[:, bedrooms_ix] / X[:, rooms_ix]
+return np.c_[X, rooms_per_household, population_per_household,</p>
+<blockquote>
+<div><p>bedrooms_per_room]</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt>else:</dt><dd><p>return np.c_[X, rooms_per_household, population_per_household]</p>
+</dd>
+</dl>
+</dd>
+<dt>attr_adder = FunctionTransformer(add_extra_features, validate=False,</dt><dd><p>kw_args={“add_bedrooms_per_room”: False})</p>
+</dd>
+</dl>
+<p>housing_extra_attribs = attr_adder.fit_transform(housing.values)</p>
+<dl class="simple">
+<dt>housing_extra_attribs = pd.DataFrame(</dt><dd><p>housing_extra_attribs,
+columns=list(housing.columns)+[“rooms_per_household”, “population_per_household”],
+index=housing.index)</p>
+</dd>
+</dl>
+<p>housing_extra_attribs.head()</p>
+<p>from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler</p>
+<dl>
+<dt>num_pipeline = Pipeline([</dt><dd><blockquote>
+<div><p>(‘imputer’, SimpleImputer(strategy=”median”)),
+(‘attribs_adder’, FunctionTransformer(add_extra_features, validate=False)),
+(‘std_scaler’, StandardScaler()),</p>
+</div></blockquote>
+<p>])</p>
+</dd>
+</dl>
+<p>housing_num_tr = num_pipeline.fit_transform(housing_num)</p>
+<dl class="simple">
+<dt>try:</dt><dd><p>from sklearn.compose import ColumnTransformer</p>
+</dd>
+<dt>except ImportError:</dt><dd><p>from future_encoders import ColumnTransformer # Scikit-Learn &lt; 0.20</p>
+</dd>
+</dl>
+<p>num_attribs = list(housing_num)
+cat_attribs = [“ocean_proximity”]</p>
+<dl>
+<dt>full_pipeline = ColumnTransformer([</dt><dd><blockquote>
+<div><p>(“num”, num_pipeline, num_attribs),
+(“cat”, OneHotEncoder(), cat_attribs),</p>
+</div></blockquote>
+<p>])</p>
+</dd>
+</dl>
+<p>housing_prepared = full_pipeline.fit_transform(housing)</p>
+<p>#%% Select and train a model</p>
+<p>from sklearn.linear_model import LinearRegression</p>
+<p>lin_reg = LinearRegression()
+lin_reg.fit(housing_prepared, housing_labels)</p>
+<p># let’s try the full preprocessing pipeline on a few training instances
+some_data = housing.iloc[:5]
+some_labels = housing_labels.iloc[:5]
+some_data_prepared = full_pipeline.transform(some_data)</p>
+<p>print(“Predictions:”, lin_reg.predict(some_data_prepared))
+print(“Lables:”, list(some_labels))</p>
+<p>from sklearn.metrics import mean_squared_error</p>
+<p>housing_predictions = lin_reg.predict(housing_prepared)
+lin_mse = mean_squared_error(housing_labels, housing_predictions)
+lin_rmse = np.sqrt(lin_mse)
+print(lin_rmse)</p>
+<p>from sklearn.metrics import mean_absolute_error</p>
+<p>lin_mae = mean_absolute_error(housing_labels, housing_predictions)
+print(lin_mae)</p>
+<p>from sklearn.tree import DecisionTreeRegressor</p>
+<p>tree_reg = DecisionTreeRegressor(random_state=42)
+tree_reg.fit(housing_prepared, housing_labels)</p>
+<dl class="simple">
+<dt>DecisionTreeRegressor(criterion=’mse’, max_depth=None, max_features=None,</dt><dd><p>max_leaf_nodes=None, min_impurity_decrease=0.0,
+min_impurity_split=None, min_samples_leaf=1,
+min_samples_split=2, min_weight_fraction_leaf=0.0,
+presort=False, random_state=42, splitter=’best’)</p>
+</dd>
+</dl>
+<p>housing_predictions = tree_reg.predict(housing_prepared)
+tree_mse = mean_squared_error(housing_labels, housing_predictions)
+tree_rmse = np.sqrt(tree_mse)
+print(tree_rmse)</p>
+<p>from sklearn.model_selection import cross_val_score</p>
+<dl class="simple">
+<dt>scores = cross_val_score(tree_reg, housing_prepared, housing_labels,</dt><dd><p>scoring=”neg_mean_squared_error”, cv=10)</p>
+</dd>
+</dl>
+<p>tree_rmse_scores = np.sqrt(-scores)</p>
+<dl class="simple">
+<dt>def f_display_scores(scores):</dt><dd><p>print(“Scores:”, scores)
+print(“Mean:”, scores.mean())
+print(“Standard deviation:”, scores.std())</p>
+</dd>
+</dl>
+<p>f_display_scores(tree_rmse_scores)</p>
+<dl class="simple">
+<dt>lin_scores = cross_val_score(lin_reg, housing_prepared, housing_labels,</dt><dd><p>scoring=”neg_mean_squared_error”, cv=10)</p>
+</dd>
+</dl>
+<p>lin_rmse_scores = np.sqrt(-lin_scores)
+f_display_scores(lin_rmse_scores)</p>
+<p># Note: we specify n_estimators=10 to avoid a warning about the fact that the default value is going to change to 100 in Scikit-Learn 0.22.
+from sklearn.ensemble import RandomForestRegressor</p>
+<p>forest_reg = RandomForestRegressor(n_estimators=10, random_state=42)
+forest_reg.fit(housing_prepared, housing_labels)</p>
+<p>housing_predictions = forest_reg.predict(housing_prepared)
+forest_mse = mean_squared_error(housing_labels, housing_predictions)
+forest_rmse = np.sqrt(forest_mse)
+print(forest_rmse)</p>
+<p>from sklearn.model_selection import cross_val_score</p>
+<dl class="simple">
+<dt>forest_scores = cross_val_score(forest_reg, housing_prepared, housing_labels,</dt><dd><p>scoring=”neg_mean_squared_error”, cv=10)</p>
+</dd>
+</dl>
+<p>forest_rmse_scores = np.sqrt(-forest_scores)
+f_display_scores(forest_rmse_scores)</p>
+<p>scores = cross_val_score(lin_reg, housing_prepared, housing_labels, scoring=”neg_mean_squared_error”, cv=10)
+pd.Series(np.sqrt(-scores)).describe()</p>
+<p>#%% Fine Tune Model
+# ———————————————————————–
+from sklearn.model_selection import GridSearchCV</p>
+<dl>
+<dt>param_grid = [</dt><dd><blockquote>
+<div><p># try 12 (3×4) combinations of hyperparameters
+{‘n_estimators’: [3, 10, 30], ‘max_features’: [2, 4, 6, 8]},
+# then try 6 (2×3) combinations with bootstrap set as False
+{‘bootstrap’: [False], ‘n_estimators’: [3, 10], ‘max_features’: [2, 3, 4]},</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>forest_reg = RandomForestRegressor(random_state=42)
+# train across 5 folds, that’s a total of (12+6)*5=90 rounds of training
+grid_search = GridSearchCV(forest_reg, param_grid, cv=5,</p>
+<blockquote>
+<div><p>scoring=’neg_mean_squared_error’, return_train_score=True)</p>
+</div></blockquote>
+<p>grid_search.fit(housing_prepared, housing_labels)</p>
+<p>print(<a href="#id7"><span class="problematic" id="id8">grid_search.best_params_</span></a>)</p>
+<p>print(<a href="#id9"><span class="problematic" id="id10">grid_search.best_estimator_</span></a>)</p>
+<p># Let’s look at the score of each hyperparameter combination tested during the grid search:
+cvres = <a href="#id11"><span class="problematic" id="id12">grid_search.cv_results_</span></a></p>
+<dl class="simple">
+<dt>for mean_score, params in zip(cvres[“mean_test_score”], cvres[“params”]):</dt><dd><p>print(np.sqrt(-mean_score), params)</p>
+</dd>
+</dl>
+<p>feature_importances = <a href="#id13"><span class="problematic" id="id14">grid_search.best_estimator_</span></a>.feature_importances_
+print(feature_importances)</p>
+<p>extra_attribs = [“rooms_per_hhold”, “pop_per_hhold”, “bedrooms_per_room”]
+#cat_encoder = cat_pipeline.named_steps[“cat_encoder”] # old solution
+cat_encoder = full_pipeline.named_transformers_[“cat”]
+cat_one_hot_attribs = list(cat_encoder.categories_[0])
+attributes = num_attribs + extra_attribs + cat_one_hot_attribs
+sorted(zip(feature_importances, attributes), reverse=True)</p>
+<p>final_model = <a href="#id15"><span class="problematic" id="id16">grid_search.best_estimator_</span></a></p>
+<p>X_test = strat_test_set.drop(“median_house_value”, axis=1)
+y_test = strat_test_set[“median_house_value”].copy()</p>
+<p>X_test_prepared = full_pipeline.transform(X_test)
+final_predictions = final_model.predict(X_test_prepared)</p>
+<p>final_mse = mean_squared_error(y_test, final_predictions)
+final_rmse = np.sqrt(final_mse)
+print(final_rmse)</p>
+<p>from scipy import stats</p>
+<p>confidence = 0.95
+squared_errors = (final_predictions - y_test) ** 2
+mean = squared_errors.mean()
+m = len(squared_errors)</p>
+<dl class="simple">
+<dt>CI = np.sqrt(stats.t.interval(confidence, m - 1,</dt><dd><p>loc=np.mean(squared_errors),
+scale=stats.sem(squared_errors)))</p>
+</dd>
+</dl>
+<p>print(“Confidence Interval”, CI)</p>
+<p>&#64;</p>
 </div>
 </div>
 <div class="section" id="key-concepts-and-summary">
@@ -1103,7 +1051,7 @@ built in Machine Learning algorithms.</p>
 </div>
 <div class="section" id="self-check-questions">
 <h2><span class="section-number">19.4. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="id3">
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Why is regression analysis machine learning. What type of machine
