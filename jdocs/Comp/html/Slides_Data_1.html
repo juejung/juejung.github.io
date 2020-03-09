@@ -239,12 +239,10 @@ We first import this file using the <code class="docutils literal notranslate"><
 <span class="c1"># Filepath</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;Lecture_Data/&#39;</span>
 <span class="c1"># In windows you can also specify the absolute path to your data file</span>
-<span class="c1"># filepath =</span>
-<span class="s1">&#39;C:/Dropbox/Towson/Teaching/3_ComputationalEconomics/Lectures/Lecture_Data/&#39;</span>
+<span class="c1"># filepath = &#39;C:/Dropbox/Towson/Teaching/3_ComputationalEconomics/Lectures/Lecture_Data/&#39;</span>
 
 <span class="c1"># ------------- Load data --------------------</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span>
-<span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
 
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -350,8 +348,7 @@ frequencies.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Array xv is:&#39;</span><span class="p">,</span> <span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span> <span class="n">xv</span> <span class="ow">is</span><span class="p">:</span> <span class="p">[</span> <span class="mf">0.28853755</span>  <span class="mf">0.2055336</span>   <span class="mf">0.14229249</span>  <span class="mf">0.25296443</span>
-<span class="mf">0.11067194</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span> <span class="n">xv</span> <span class="ow">is</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.28853755</span> <span class="mf">0.2055336</span>  <span class="mf">0.14229249</span> <span class="mf">0.25296443</span> <span class="mf">0.11067194</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us make additional columns</span>
@@ -598,8 +595,7 @@ very large. Setting <code class="docutils literal notranslate"><span class="pre"
 DataFrame. This new DataFrame contains additional team information that we
 would like to merge into the original DataFrame.</p>
 <p>First redefine the orginal <strong>DataFrame</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;area&#39;</span><span class="p">:</span>
-<span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span><span class="s1">&#39;Marketing&#39;</span><span class="p">,</span><span class="s1">&#39;Finance&#39;</span><span class="p">,</span><span class="s1">&#39;Management&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">],</span>\
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span><span class="s1">&#39;Marketing&#39;</span><span class="p">,</span><span class="s1">&#39;Finance&#39;</span><span class="p">,</span><span class="s1">&#39;Management&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">],</span>\
                   <span class="s1">&#39;absFrequency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">28</span><span class="p">],</span> \
                   <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> \
                   <span class="s1">&#39;relFrequency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.28</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.20</span><span class="p">,</span><span class="mf">0.14</span><span class="p">,</span><span class="mf">0.11</span><span class="p">],</span> \
@@ -608,12 +604,12 @@ would like to merge into the original DataFrame.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">absFrequency</span>        <span class="n">area</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">0</span>            <span class="mi">73</span>  <span class="n">Accounting</span>         <span class="mi">0</span>          <span class="mf">0.28</span>     <span class="mi">2</span>
-<span class="mi">1</span>            <span class="mi">64</span>   <span class="n">Marketing</span>         <span class="mi">1</span>          <span class="mf">0.25</span>     <span class="mi">6</span>
-<span class="mi">2</span>            <span class="mi">52</span>     <span class="n">Finance</span>         <span class="mi">1</span>          <span class="mf">0.20</span>     <span class="mi">4</span>
-<span class="mi">3</span>            <span class="mi">36</span>  <span class="n">Management</span>         <span class="mi">0</span>          <span class="mf">0.14</span>     <span class="mi">0</span>
-<span class="mi">4</span>            <span class="mi">28</span>       <span class="n">other</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
+<span class="mi">0</span>  <span class="n">Accounting</span>            <span class="mi">73</span>         <span class="mi">0</span>          <span class="mf">0.28</span>     <span class="mi">2</span>
+<span class="mi">1</span>   <span class="n">Marketing</span>            <span class="mi">64</span>         <span class="mi">1</span>          <span class="mf">0.25</span>     <span class="mi">6</span>
+<span class="mi">2</span>     <span class="n">Finance</span>            <span class="mi">52</span>         <span class="mi">1</span>          <span class="mf">0.20</span>     <span class="mi">4</span>
+<span class="mi">3</span>  <span class="n">Management</span>            <span class="mi">36</span>         <span class="mi">0</span>          <span class="mf">0.14</span>     <span class="mi">0</span>
+<span class="mi">4</span>       <span class="n">other</span>            <span class="mi">28</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>
 </pre></div>
 </div>
 <p>Second, we define the new DataFrame and add some values to it:</p>
@@ -623,15 +619,15 @@ would like to merge into the original DataFrame.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_team</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">sales</span>  <span class="n">team</span>
-<span class="mi">0</span>    <span class="mi">500</span>     <span class="mi">3</span>
-<span class="mi">1</span>    <span class="mi">300</span>     <span class="mi">4</span>
-<span class="mi">2</span>    <span class="mi">250</span>     <span class="mi">5</span>
-<span class="mi">3</span>    <span class="mi">450</span>     <span class="mi">6</span>
-<span class="mi">4</span>    <span class="mi">345</span>     <span class="mi">7</span>
-<span class="mi">5</span>    <span class="mi">123</span>     <span class="mi">8</span>
-<span class="mi">6</span>    <span class="mi">432</span>     <span class="mi">9</span>
-<span class="mi">7</span>    <span class="mi">890</span>    <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>     <span class="mi">3</span>    <span class="mi">500</span>
+<span class="mi">1</span>     <span class="mi">4</span>    <span class="mi">300</span>
+<span class="mi">2</span>     <span class="mi">5</span>    <span class="mi">250</span>
+<span class="mi">3</span>     <span class="mi">6</span>    <span class="mi">450</span>
+<span class="mi">4</span>     <span class="mi">7</span>    <span class="mi">345</span>
+<span class="mi">5</span>     <span class="mi">8</span>    <span class="mi">123</span>
+<span class="mi">6</span>     <span class="mi">9</span>    <span class="mi">432</span>
+<span class="mi">7</span>    <span class="mi">10</span>    <span class="mi">890</span>
 </pre></div>
 </div>
 <p>This new DataFrame contains some sales information for each team.</p>
@@ -663,15 +659,15 @@ dataframes.</p>
 <span class="o">-----------------------------</span>
 <span class="n">Second</span> <span class="n">new</span> <span class="n">DataFrame</span><span class="p">:</span> <span class="n">RIGHT</span>
 <span class="o">-----------------------------</span>
-   <span class="n">sales</span>  <span class="n">team</span>
-<span class="mi">0</span>    <span class="mi">500</span>     <span class="mi">3</span>
-<span class="mi">1</span>    <span class="mi">300</span>     <span class="mi">4</span>
-<span class="mi">2</span>    <span class="mi">250</span>     <span class="mi">5</span>
-<span class="mi">3</span>    <span class="mi">450</span>     <span class="mi">6</span>
-<span class="mi">4</span>    <span class="mi">345</span>     <span class="mi">7</span>
-<span class="mi">5</span>    <span class="mi">123</span>     <span class="mi">8</span>
-<span class="mi">6</span>    <span class="mi">432</span>     <span class="mi">9</span>
-<span class="mi">7</span>    <span class="mi">890</span>    <span class="mi">10</span>
+   <span class="n">team</span>  <span class="n">sales</span>
+<span class="mi">0</span>     <span class="mi">3</span>    <span class="mi">500</span>
+<span class="mi">1</span>     <span class="mi">4</span>    <span class="mi">300</span>
+<span class="mi">2</span>     <span class="mi">5</span>    <span class="mi">250</span>
+<span class="mi">3</span>     <span class="mi">6</span>    <span class="mi">450</span>
+<span class="mi">4</span>     <span class="mi">7</span>    <span class="mi">345</span>
+<span class="mi">5</span>     <span class="mi">8</span>    <span class="mi">123</span>
+<span class="mi">6</span>     <span class="mi">9</span>    <span class="mi">432</span>
+<span class="mi">7</span>    <span class="mi">10</span>    <span class="mi">890</span>
 </pre></div>
 </div>
 <p>When merging two dataframes we need to find a common variable that appears in
@@ -684,6 +680,23 @@ DataFrames. We have now four different options for merging the two DataFrames.</
 &quot;Merge Options&quot; -&gt; &quot;Right Merge&quot;
 &quot;Merge Options&quot; -&gt; &quot;Outer Merge&quot;
 }" class="graphviz" /></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Merge Summary</strong></p>
+<ol class="arabic simple">
+<li><p>The <strong>inner merge</strong> only keeps observations that are present in both DataFrames.</p></li>
+<li><p>The <strong>left merge</strong> keeps all of the observations of the original (or
+main DataFrame) and adds the new information on the left if
+available.</p></li>
+<li><p>The <strong>right</strong> merge only keeps info from the new DataFrame and adds the info of
+the original main DataFrame.</p></li>
+<li><p>The <strong>outer merge</strong>  method merges by team whenever possible but keeps the info from both
+DataFrames, even for observations where no merge/overlap occurred.</p></li>
+</ol>
+</div>
+<p>Now we do it step my step. Inner merge first.  As you will see now, the <strong>inner
+merge</strong> only keeps observations that are present in both DataFrames.  This is
+often too restrictive as many observations will be dropped.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inner Merge&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_team</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
@@ -697,8 +710,6 @@ DataFrames. We have now four different options for merging the two DataFrames.</
 <span class="mi">2</span>            <span class="mi">28</span>         <span class="mi">3</span>          <span class="mf">0.11</span>    <span class="mi">10</span>    <span class="mi">890</span>
 </pre></div>
 </div>
-<p>The <strong>inner merge</strong> only keeps observations that are present in both DataFrames.
-This is often too restrictive as many observations will be dropped.</p>
 <p>The <strong>left merge</strong> keeps the original (or main DataFrame) and adds the new
 information on the left. When it cannot find a team number in the main
 DataFrame it simply drops the info from the new DataFrame.</p>
@@ -842,16 +853,16 @@ create a DataFrame with some random values:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.925195</span>  <span class="mf">35.753313</span>  <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
-<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.569884</span>  <span class="mf">40.826105</span>  <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
-<span class="mi">2</span>  <span class="mf">37.100735</span>  <span class="mf">29.450848</span>  <span class="mf">13.674159</span>  <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
-<span class="mi">3</span>  <span class="mf">31.320635</span>   <span class="mf">7.444385</span>  <span class="mf">64.088394</span>  <span class="mf">78.434320</span>  <span class="mf">98.234483</span>
-<span class="mi">4</span>  <span class="mf">32.828307</span>  <span class="mf">13.722582</span>  <span class="mf">46.417531</span>  <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
-<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.845284</span>  <span class="mf">65.500385</span>   <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
-<span class="mi">6</span>  <span class="mf">59.513746</span>  <span class="mf">23.287106</span>  <span class="mf">51.803933</span>  <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
-<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.256182</span>  <span class="mf">98.618636</span>  <span class="mf">84.420507</span>  <span class="mf">45.445897</span>
-<span class="mi">8</span>  <span class="mf">68.894445</span>   <span class="mf">3.379559</span>  <span class="mf">80.424425</span>  <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
-<span class="mi">9</span>  <span class="mf">21.367668</span>  <span class="mf">56.707952</span>  <span class="mf">86.500927</span>  <span class="mf">86.416963</span>  <span class="mf">41.951254</span>
+<span class="mi">0</span>  <span class="mf">74.690643</span>  <span class="mf">38.312509</span>  <span class="mf">23.232006</span>  <span class="mf">67.925812</span>  <span class="mf">63.817206</span>
+<span class="mi">1</span>  <span class="mf">29.282255</span>  <span class="mf">48.415448</span>  <span class="mf">63.663542</span>  <span class="mf">41.617741</span>  <span class="mf">45.217187</span>
+<span class="mi">2</span>   <span class="mf">1.411067</span>   <span class="mf">2.663911</span>  <span class="mf">62.807640</span>  <span class="mf">48.958229</span>  <span class="mf">60.556835</span>
+<span class="mi">3</span>  <span class="mf">84.063586</span>  <span class="mf">48.576374</span>  <span class="mf">21.308121</span>  <span class="mf">66.768895</span>  <span class="mf">30.249135</span>
+<span class="mi">4</span>   <span class="mf">5.730063</span>  <span class="mf">87.554720</span>  <span class="mf">85.426393</span>  <span class="mf">93.000108</span>  <span class="mf">49.947868</span>
+<span class="mi">5</span>  <span class="mf">53.181712</span>  <span class="mf">15.623123</span>  <span class="mf">72.522871</span>  <span class="mf">46.628460</span>  <span class="mf">80.216061</span>
+<span class="mi">6</span>   <span class="mf">5.853467</span>  <span class="mf">79.563367</span>   <span class="mf">1.667852</span>  <span class="mf">12.435298</span>  <span class="mf">78.552356</span>
+<span class="mi">7</span>   <span class="mf">3.431456</span>  <span class="mf">98.535204</span>   <span class="mf">0.091792</span>  <span class="mf">44.405773</span>  <span class="mf">62.368098</span>
+<span class="mi">8</span>  <span class="mf">18.022969</span>  <span class="mf">98.241034</span>  <span class="mf">55.057490</span>  <span class="mf">76.444165</span>  <span class="mf">96.535309</span>
+<span class="mi">9</span>  <span class="mf">22.988244</span>  <span class="mf">97.604216</span>  <span class="mf">60.383665</span>  <span class="mf">15.995307</span>  <span class="mf">87.941036</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal notranslate"><span class="pre">2</span></code> that are smaller than 30 with
@@ -861,16 +872,16 @@ the string <cite>low</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>  <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
-<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>  <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
-<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>  <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
-<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">78.434320</span>  <span class="mf">98.234483</span>
-<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>  <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
-<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>   <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
-<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>  <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
-<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">84.420507</span>  <span class="mf">45.445897</span>
-<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>  <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
-<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">86.416963</span>  <span class="mf">41.951254</span>
+<span class="mi">0</span>  <span class="mf">74.690643</span>  <span class="mf">38.3125</span>  <span class="mf">23.232006</span>  <span class="mf">67.925812</span>  <span class="mf">63.817206</span>
+<span class="mi">1</span>  <span class="mf">29.282255</span>  <span class="mf">48.4154</span>  <span class="mf">63.663542</span>  <span class="mf">41.617741</span>  <span class="mf">45.217187</span>
+<span class="mi">2</span>   <span class="mf">1.411067</span>      <span class="n">Low</span>  <span class="mf">62.807640</span>  <span class="mf">48.958229</span>  <span class="mf">60.556835</span>
+<span class="mi">3</span>  <span class="mf">84.063586</span>  <span class="mf">48.5764</span>  <span class="mf">21.308121</span>  <span class="mf">66.768895</span>  <span class="mf">30.249135</span>
+<span class="mi">4</span>   <span class="mf">5.730063</span>  <span class="mf">87.5547</span>  <span class="mf">85.426393</span>  <span class="mf">93.000108</span>  <span class="mf">49.947868</span>
+<span class="mi">5</span>  <span class="mf">53.181712</span>      <span class="n">Low</span>  <span class="mf">72.522871</span>  <span class="mf">46.628460</span>  <span class="mf">80.216061</span>
+<span class="mi">6</span>   <span class="mf">5.853467</span>  <span class="mf">79.5634</span>   <span class="mf">1.667852</span>  <span class="mf">12.435298</span>  <span class="mf">78.552356</span>
+<span class="mi">7</span>   <span class="mf">3.431456</span>  <span class="mf">98.5352</span>   <span class="mf">0.091792</span>  <span class="mf">44.405773</span>  <span class="mf">62.368098</span>
+<span class="mi">8</span>  <span class="mf">18.022969</span>   <span class="mf">98.241</span>  <span class="mf">55.057490</span>  <span class="mf">76.444165</span>  <span class="mf">96.535309</span>
+<span class="mi">9</span>  <span class="mf">22.988244</span>  <span class="mf">97.6042</span>  <span class="mf">60.383665</span>  <span class="mf">15.995307</span>  <span class="mf">87.941036</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal notranslate"><span class="pre">4</span></code> that are larger than 70 with the
@@ -880,16 +891,23 @@ value 1000.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>    <span class="mf">68.731281</span>  <span class="mf">26.324753</span>
-<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>    <span class="mf">26.344814</span>  <span class="mf">26.017575</span>
-<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>    <span class="mf">30.263435</span>   <span class="mf">9.407213</span>
-<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">1000.000000</span>  <span class="mf">98.234483</span>
-<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>    <span class="mf">19.307236</span>  <span class="mf">28.292595</span>
-<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>     <span class="mf">5.059135</span>  <span class="mf">55.828272</span>
-<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>    <span class="mf">61.576271</span>  <span class="mf">95.745253</span>
-<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">1000.000000</span>  <span class="mf">45.445897</span>
-<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>    <span class="mf">13.685797</span>  <span class="mf">24.315676</span>
-<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">1000.000000</span>  <span class="mf">41.951254</span>
+<span class="mi">0</span>  <span class="mf">74.690643</span>  <span class="mf">38.3125</span>  <span class="mf">23.232006</span>    <span class="mf">67.925812</span>  <span class="mf">63.817206</span>
+<span class="mi">1</span>  <span class="mf">29.282255</span>  <span class="mf">48.4154</span>  <span class="mf">63.663542</span>    <span class="mf">41.617741</span>  <span class="mf">45.217187</span>
+<span class="mi">2</span>   <span class="mf">1.411067</span>      <span class="n">Low</span>  <span class="mf">62.807640</span>    <span class="mf">48.958229</span>  <span class="mf">60.556835</span>
+<span class="mi">3</span>  <span class="mf">84.063586</span>  <span class="mf">48.5764</span>  <span class="mf">21.308121</span>    <span class="mf">66.768895</span>  <span class="mf">30.249135</span>
+<span class="mi">4</span>   <span class="mf">5.730063</span>  <span class="mf">87.5547</span>  <span class="mf">85.426393</span>  <span class="mf">1000.000000</span>  <span class="mf">49.947868</span>
+<span class="mi">5</span>  <span class="mf">53.181712</span>      <span class="n">Low</span>  <span class="mf">72.522871</span>    <span class="mf">46.628460</span>  <span class="mf">80.216061</span>
+<span class="mi">6</span>   <span class="mf">5.853467</span>  <span class="mf">79.5634</span>   <span class="mf">1.667852</span>    <span class="mf">12.435298</span>  <span class="mf">78.552356</span>
+<span class="mi">7</span>   <span class="mf">3.431456</span>  <span class="mf">98.5352</span>   <span class="mf">0.091792</span>    <span class="mf">44.405773</span>  <span class="mf">62.368098</span>
+<span class="mi">8</span>  <span class="mf">18.022969</span>   <span class="mf">98.241</span>  <span class="mf">55.057490</span>  <span class="mf">1000.000000</span>  <span class="mf">96.535309</span>
+<span class="mi">9</span>  <span class="mf">22.988244</span>  <span class="mf">97.6042</span>  <span class="mf">60.383665</span>    <span class="mf">15.995307</span>  <span class="mf">87.941036</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pweave</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">SettingWithCopyWarning</span><span class="p">:</span>
+<span class="n">A</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">a</span> <span class="nb">slice</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">DataFrame</span>
+
+<span class="n">See</span> <span class="n">the</span> <span class="n">caveats</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">documentation</span><span class="p">:</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pandas</span><span class="o">.</span><span class="n">pydata</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pandas</span><span class="o">-</span>
+<span class="n">docs</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">user_guide</span><span class="o">/</span><span class="n">indexing</span><span class="o">.</span><span class="n">html</span><span class="c1">#returning-a-view-versus-a-copy</span>
+  <span class="c1">#!/home/jjung/anaconda3/bin/python3.7</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
@@ -900,16 +918,23 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>        <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>        <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">68.195493</span>  <span class="mf">87.9252</span>  <span class="mf">35.753313</span>    <span class="mf">68.731281</span>   <span class="n">Middle</span>
-<span class="mi">1</span>  <span class="mf">96.306633</span>  <span class="mf">78.5699</span>  <span class="mf">40.826105</span>    <span class="mf">26.344814</span>   <span class="n">Middle</span>
-<span class="mi">2</span>  <span class="mf">37.100735</span>      <span class="n">Low</span>  <span class="mf">13.674159</span>    <span class="mf">30.263435</span>  <span class="mf">9.40721</span>
-<span class="mi">3</span>  <span class="mf">31.320635</span>      <span class="n">Low</span>  <span class="mf">64.088394</span>  <span class="mf">1000.000000</span>  <span class="mf">98.2345</span>
-<span class="mi">4</span>  <span class="mf">32.828307</span>      <span class="n">Low</span>  <span class="mf">46.417531</span>    <span class="mf">19.307236</span>   <span class="n">Middle</span>
-<span class="mi">5</span>  <span class="mf">25.820431</span>  <span class="mf">40.8453</span>  <span class="mf">65.500385</span>     <span class="mf">5.059135</span>   <span class="n">Middle</span>
-<span class="mi">6</span>  <span class="mf">59.513746</span>      <span class="n">Low</span>  <span class="mf">51.803933</span>    <span class="mf">61.576271</span>  <span class="mf">95.7453</span>
-<span class="mi">7</span>  <span class="mf">53.789249</span>  <span class="mf">66.2562</span>  <span class="mf">98.618636</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
-<span class="mi">8</span>  <span class="mf">68.894445</span>      <span class="n">Low</span>  <span class="mf">80.424425</span>    <span class="mf">13.685797</span>   <span class="n">Middle</span>
-<span class="mi">9</span>  <span class="mf">21.367668</span>   <span class="mf">56.708</span>  <span class="mf">86.500927</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">0</span>  <span class="mf">74.690643</span>  <span class="mf">38.3125</span>  <span class="mf">23.232006</span>    <span class="mf">67.925812</span>   <span class="n">Middle</span>
+<span class="mi">1</span>  <span class="mf">29.282255</span>  <span class="mf">48.4154</span>  <span class="mf">63.663542</span>    <span class="mf">41.617741</span>   <span class="n">Middle</span>
+<span class="mi">2</span>   <span class="mf">1.411067</span>      <span class="n">Low</span>  <span class="mf">62.807640</span>    <span class="mf">48.958229</span>   <span class="n">Middle</span>
+<span class="mi">3</span>  <span class="mf">84.063586</span>  <span class="mf">48.5764</span>  <span class="mf">21.308121</span>    <span class="mf">66.768895</span>   <span class="n">Middle</span>
+<span class="mi">4</span>   <span class="mf">5.730063</span>  <span class="mf">87.5547</span>  <span class="mf">85.426393</span>  <span class="mf">1000.000000</span>   <span class="n">Middle</span>
+<span class="mi">5</span>  <span class="mf">53.181712</span>      <span class="n">Low</span>  <span class="mf">72.522871</span>    <span class="mf">46.628460</span>  <span class="mf">80.2161</span>
+<span class="mi">6</span>   <span class="mf">5.853467</span>  <span class="mf">79.5634</span>   <span class="mf">1.667852</span>    <span class="mf">12.435298</span>   <span class="n">Middle</span>
+<span class="mi">7</span>   <span class="mf">3.431456</span>  <span class="mf">98.5352</span>   <span class="mf">0.091792</span>    <span class="mf">44.405773</span>   <span class="n">Middle</span>
+<span class="mi">8</span>  <span class="mf">18.022969</span>   <span class="mf">98.241</span>  <span class="mf">55.057490</span>  <span class="mf">1000.000000</span>  <span class="mf">96.5353</span>
+<span class="mi">9</span>  <span class="mf">22.988244</span>  <span class="mf">97.6042</span>  <span class="mf">60.383665</span>    <span class="mf">15.995307</span>   <span class="mf">87.941</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pweave</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">SettingWithCopyWarning</span><span class="p">:</span>
+<span class="n">A</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">a</span> <span class="nb">slice</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">DataFrame</span>
+
+<span class="n">See</span> <span class="n">the</span> <span class="n">caveats</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">documentation</span><span class="p">:</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pandas</span><span class="o">.</span><span class="n">pydata</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pandas</span><span class="o">-</span>
+<span class="n">docs</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">user_guide</span><span class="o">/</span><span class="n">indexing</span><span class="o">.</span><span class="n">html</span><span class="c1">#returning-a-view-versus-a-copy</span>
+  <span class="c1">#!/home/jjung/anaconda3/bin/python3.7</span>
 </pre></div>
 </div>
 </div>
