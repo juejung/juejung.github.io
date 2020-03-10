@@ -262,24 +262,80 @@ Windows you could try:</p>
 </pre></div>
 </div>
 </div>
-<p>We next run a loop and extract all featured video links. First check
-the source code of the YouTube page and convince yourself that
+<p>Next  look at the source code of the YouTube webpage (right click on the webpage
+and select <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">page</span> <span class="pre">source</span></code>) and convince yourself that
 the links to the videos are all part of the
 <a class="reference external" href="http://www.google.com/search?q=what+is+a+CSS+class">CSS class</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-lockup-content&quot;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-sessionlink spf-link&quot;</span><span class="o">&gt;</span>
 </pre></div>
+</div>
+<p>If you inspect this <strong>soup</strong> object it is a bit easier to see that all videos are part of a
+link class that starts with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-sessionlink spf-link&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Where <strong>&lt;a&gt;</strong> is the ancor element that starts a section that contains a link.
+A typical html code with a link would look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://example.com/&quot;</span><span class="o">&gt;</span><span class="n">Link</span> <span class="n">to</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">href</span></code> stands for hyper reference (or link) and the <strong>&lt;/a&gt;</strong> at the end
+of the line closes the link section. That is <strong>&lt;a …&gt;</strong> is the opening tag and
+<strong>/a&gt;</strong> is the closing tag.</p>
 </div>
 <p>Also not that the actual links to the video all start with the html tag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/watch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;/watch?v= ... &quot;</span>
 </pre></div>
 </div>
-<p>We next define an empty list so we can store all the links to the videos and
+<p>where instead of the “…” you will see a code for a particular video such as
+<code class="docutils literal notranslate"><span class="pre">-6BvA4U1dLI</span></code>.</p>
+<p>We next extract all these <code class="docutils literal notranslate"><span class="pre">a</span></code> sections from the <code class="docutils literal notranslate"><span class="pre">soup</span></code> object. We limit the
+extraction of link sections to particular <code class="docutils literal notranslate"><span class="pre">a</span></code> sections that contain the
+actual links to videos as opposed to other links that are also part of the html
+code of YouTube’s starting site. Since we observed above, that the links are
+actually part of a specific <code class="docutils literal notranslate"><span class="pre">a</span></code> class that has the attributes ‘aria-hidden’
+as ‘true’ and ‘class’ as ‘yt-uix-sessionlink spf-link’ we will filter for these
+particular <cite>a</cite> sections next.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">linkSections</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;aria-hidden&#39;</span><span class="p">:</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;yt-uix-sessionlink spf-link&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>We can now  define an empty list so we can store all the links to the videos and
 then run a loop through the html source code and extract all links that start
-with <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;/watch</span></code>. We append all these links to the <code class="docutils literal notranslate"><span class="pre">link_list</span></code> list.</p>
+with <code class="docutils literal notranslate"><span class="pre">href=&quot;/watch?v=&gt;</span></code>. We append all these links to the <code class="docutils literal notranslate"><span class="pre">link_list</span></code> list.</p>
+<p>Let us test this first before we run a loop. Let’s have a look at the first
+element of our extracted list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">linkSections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-sessionlink spf-link&quot;</span> <span class="n">data</span><span class="o">-</span>
+<span class="n">sessionlink</span><span class="o">=</span><span class="s2">&quot;itct=CEUQlDUYDCITCJCS5MLXkOgCFWWynAodWaYBFTIKZy1oaWdoLXRydloPRkV3aGF0X3RvX3dhdGNo&quot;</span>
+<span class="n">href</span><span class="o">=</span><span class="s2">&quot;/watch?v=wD79NZroV88&quot;</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-thumb video-thumb&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span>
+<span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-thumb-simple&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">data</span><span class="o">-</span>
+<span class="n">thumb</span><span class="o">=</span><span class="s2">&quot;https://i.ytimg.com/vi/wD79NZroV88/hqdefault.jpg?sqp=-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&amp;amp;rs=AOn4CLDdaB6oJNZjIqcY4yGlzHjKPYZClw&quot;</span>
+<span class="n">data</span><span class="o">-</span><span class="n">ytimg</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;110&quot;</span> <span class="n">onload</span><span class="o">=</span><span class="s2">&quot;;window.__ytRIL &amp;amp;&amp;amp;</span>
+<span class="n">__ytRIL</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="s2">&quot; src=&quot;</span><span class="o">/</span><span class="n">yts</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">pixel</span><span class="o">-</span><span class="n">vfl3z5WfW</span><span class="o">.</span><span class="n">gif</span><span class="s2">&quot; width=&quot;</span><span class="mi">196</span><span class="s2">&quot;/&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;video-</span>
+<span class="n">time</span><span class="s2">&quot;&gt;9:51&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Next let us have a look at the link to the video in that section.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">linkSections</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/watch?v=wD79NZroV88
+</pre></div>
+</div>
+<p>If we combine this with <code class="docutils literal notranslate"><span class="pre">https://www.youtube.com/</span></code> that we have already
+stored in variable <code class="docutils literal notranslate"><span class="pre">jurl</span></code> we have the complete html link to the video that we
+can copy/paste into a browser.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">link_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.yt-lockup-content a[href^=/watch]&#39;</span><span class="p">):</span>
+
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">linkSections</span><span class="p">:</span>
     <span class="c1"># Store all links in a list</span>
-    <span class="n">newLink</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+    <span class="n">newLink</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
     <span class="n">link_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newLink</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -287,9 +343,9 @@ with <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/watch?v=spkfIpPmPgs&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=xj4gar5dKAU&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=iDXlWTRyxgE&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=NxW0j3d-V-Y&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=8bl19RoR7lc&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=hNQMVweQjlw&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/watch?v=wD79NZroV88&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=6K1nqPcLkZ4&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=P4tf_5EG8Wo&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=KZf91qlu5nI&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=6d7Vk_qaiB8&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=Ni41PhM0df4&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We then create an empty data frame that has the same number of rows as our
@@ -342,15 +398,23 @@ the numbers we are looking for can be comprised of one or more digits.</p>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">1</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">2</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">3</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">4</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">112</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">113</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">114</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">115</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">33</span>
+<span class="mi">1</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">33</span>
+<span class="mi">2</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">33</span>
+<span class="mi">3</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">33</span>
+<span class="mi">4</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">33</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">IndexError</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a39196d524bd</span><span class="o">&gt;</span> <span class="ow">in</span>
+<span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+     <span class="mi">12</span>     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+     <span class="mi">13</span>     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Views&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> \
+<span class="o">---&gt;</span> <span class="mi">14</span>       <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-</span>
+<span class="n">count</span><span class="s1">&#39;)[0].get_text().split()[0]))</span>
+     <span class="mi">15</span>
+     <span class="mi">16</span>     <span class="c1"># Extracting number of likes</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
 </pre></div>
 </div>
 <p>We finally sort the data according to number of views, starting with the most
@@ -364,31 +428,31 @@ viewed video and print the first couple of entries:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                           Links  \
-78  https://www.youtube.com//watch?v=3tmd-ClpJxA
-84  https://www.youtube.com//watch?v=iGk5fR-t5AU
-77  https://www.youtube.com//watch?v=PEGccV-NOm8
-75  https://www.youtube.com//watch?v=J_ub7Etch2U
-55  https://www.youtube.com//watch?v=2VDLPiEdp74
+9   https://www.youtube.com//watch?v=3tyYsfl4DlA
+10  https://www.youtube.com//watch?v=gBJjRYk0yC0
+8   https://www.youtube.com//watch?v=H4qvO0StKto
+4   https://www.youtube.com//watch?v=6d7Vk_qaiB8
+1   https://www.youtube.com//watch?v=6K1nqPcLkZ4
 
-                                                Title      Views
+                                                Title     Views
 Likes  \
-78  Taylor Swift - Look What You Made Me Do - YouTube  680335974
-6.44958e+06
-84  Katy Perry - Swish Swish (Official) ft. Nicki ...  313602328
-2.93907e+06
-77  Cardi B - Bodak Yellow [OFFICIAL MUSIC VIDEO] ...  294427043
-2.40489e+06
-75  Sam Smith - Too Good At Goodbyes (Official Vid...  213554069
-1.50609e+06
-55  Don&#39;t Judge Challenge Compilation - #dontjudge...  185208171
-1.26542e+06
+9   Ramsay Can’t Handle Being Served APPLE JUICE R...  23576495
+221177
+10  Eggs Benedict With Crispy Parma Ham | Gordon R...  10290458
+184795
+8               Coronavirus Cold Open - SNL - YouTube   6970505
+79611
+4                       Airport Sushi - SNL - YouTube   5263440
+97955
+1   Juventus 2-0 Inter | Ramsey and Dybala Seal HU...   4545776
+62014
 
-       Dislikes
-78  1.08856e+06
-84       891279
-77       269037
-75        53911
-55       189405
+   Dislikes
+9      5243
+10     2547
+8      6422
+4      6155
+1      1754
 </pre></div>
 </div>
 </div>
@@ -438,15 +502,19 @@ and continue running the commands that are there.</p>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">1</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">2</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">3</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">4</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">112</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">113</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">114</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
-<span class="mi">115</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">116</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0 out of 33
+1 out of 33
+2 out of 33
+3 out of 33
+4 out of 33
+Some is wrong, probably a server side issue!
+list index out of range
+Some is wrong, probably a server side issue!
+list index out of range
+29 out of 33
+30 out of 33
+31 out of 33
+32 out of 33
 </pre></div>
 </div>
 <p>If you write your code in this way, your program will never break in case you hit a bad
