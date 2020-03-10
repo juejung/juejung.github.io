@@ -111,6 +111,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#a-simple-classification-model">20.1. A Simple Classification Model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-the-data">20.1.1. Downloading the Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#training-the-model">20.1.2. Training the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-predictions">20.1.3. Making Predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precision-recall-trade-off">20.1.4. Precision Recall Trade-off</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roc-curves">20.1.5. ROC curves</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">20.2. Key Concepts and Summary</a></li>
@@ -198,6 +201,9 @@
 <p id="index-0">In this chapter we cover a categorization algorithm that can recognize hand
 written letters. This is an example of a supervised, batch learning, model
 based algorithm.</p>
+<p>This chapter is heavily built on chapter 3 in [Geron2019]
+Hands-On Machine Learning with Scikit-Learn, Kera &amp; TensorFlow. You can find a
+link to the GitHub page of this textbook at Geron GitHub</p>
 <div class="section" id="a-simple-classification-model">
 <h2><span class="section-number">20.1. </span>A Simple Classification Model<a class="headerlink" href="#a-simple-classification-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="downloading-the-data">
@@ -208,16 +214,19 @@ based algorithm.</p>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># These are all the functions we use in these codes.</span>
+<span class="c1"># We import them at the appropriate place further down.</span>
+<span class="c1">#from sklearn.linear_model import SGDClassifier</span>
+<span class="c1">#from sklearn.model_selection import cross_val_score</span>
+<span class="c1">#from sklearn.model_selection import cross_val_predict</span>
+<span class="c1">#from sklearn.metrics import confusion_matrix</span>
+<span class="c1">#from sklearn.metrics import precision_score, recall_score</span>
+<span class="c1">#from sklearn.metrics import f1_score</span>
+<span class="c1">#from sklearn.metrics import precision_recall_curve</span>
+<span class="c1">#from sklearn.metrics import roc_curve</span>
+<span class="c1">#from sklearn.metrics import roc_auc_score</span>
+<span class="c1">#from sklearn.ensemble import RandomForestClassifier</span>
 </pre></div>
 </div>
 <p>We next define two functions that will help us save and load data in Python’s
@@ -298,7 +307,8 @@ of zero if it is not a handwritten number 5.</p>
 <p>We are now ready to define and subsequently train (i.e., estimate) our model
 using the training sample, that is the first 60,000 values of the total sample
 that we downloaded earlier.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sgd_clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">infty</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="n">sgd_clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">infty</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">sgd_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -314,6 +324,9 @@ that we downloaded earlier.</p>
               <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="making-predictions">
+<h3><span class="section-number">20.1.3. </span>Making Predictions<a class="headerlink" href="#making-predictions" title="Permalink to this headline">¶</a></h3>
 <p>We can now use our trained (or estimated) classification model to make
 predictions of whether a handwritten number might be the number 5 or not. Let’s
 try this with the 36,001st handwritten number from our training set. We already
@@ -331,39 +344,86 @@ prediction should say <code class="docutils literal notranslate"><span class="pr
 <p>Et voila, our trained model has correctly identified the number as NOT 5.</p>
 <p>We next run through a battery of checks that determine how well our model can
 classify handwritten numbers of value 5.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">0.96285</span> <span class="mf">0.9648</span>  <span class="mf">0.96285</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
 <span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
-
-<span class="n">y_train_perfect_predictions</span> <span class="o">=</span> <span class="n">y_train_5</span>
-
-<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_perfect_predictions</span><span class="p">)</span>
-
-<span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
-
-<span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
-
-<span class="n">f1_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
-
-<span class="n">y_scores</span> <span class="o">=</span> <span class="n">sgd_clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([</span><span class="n">some_digit</span><span class="p">])</span>
-<span class="n">y_scores</span>
-
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">53689</span>   <span class="mi">890</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">1300</span>  <span class="mi">4121</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_perfect_predictions</span> <span class="o">=</span> <span class="n">y_train_5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_perfect_predictions</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">54579</span>     <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span>    <span class="mi">0</span>  <span class="mi">5421</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8223907403711834</span>
+<span class="mf">0.7601918465227818</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.790069018404908</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="precision-recall-trade-off">
+<h3><span class="section-number">20.1.4. </span>Precision Recall Trade-off<a class="headerlink" href="#precision-recall-trade-off" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">sgd_clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([</span><span class="n">some_digit</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mf">408634.50109637</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y_some_digit_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
-
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">200000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_some_digit_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">200000</span>
 <span class="n">y_some_digit_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
-<span class="n">y_some_digit_pred</span>
-
-<span class="n">y_scores</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_some_digit_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                              <span class="n">method</span><span class="o">=</span><span class="s2">&quot;decision_function&quot;</span><span class="p">)</span>
 
 <span class="c1"># hack to work around issue #9589 in Scikit-Learn 0.19.0</span>
 <span class="k">if</span> <span class="n">y_scores</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="n">y_scores</span> <span class="o">=</span> <span class="n">y_scores</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
+</pre></div>
+</div>
+<p>With these scores we can now use the <code class="docutils literal notranslate"><span class="pre">precision_recall_curve()</span></code> function from
+the <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
 <span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot_precision_recall_vs_threshold</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">):</span>
@@ -378,16 +438,23 @@ classify handwritten numbers of value 5.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">700000</span><span class="p">,</span> <span class="mi">700000</span><span class="p">])</span>
 <span class="c1"># save_fig(&quot;precision_recall_vs_threshold_plot&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure20_1.png"><img alt="_images/Slides_MachineLearning_2_figure20_1.png" src="_images/Slides_MachineLearning_2_figure20_1.png" style="width: 15cm;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
 <span class="n">y_train_pred_90</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span>
 
-<span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">))</span>
 
-<span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">plot_precision_vs_recall</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.896551724137931</span>
+<span class="mf">0.6378896882494005</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_precision_vs_recall</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">recalls</span><span class="p">,</span> <span class="n">precisions</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -397,11 +464,13 @@ classify handwritten numbers of value 5.</p>
 <span class="n">plot_precision_vs_recall</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">)</span>
 <span class="c1"># save_fig(&quot;precision_vs_recall_plot&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Saving figure precision_vs_recall_plot</span>
-
-<span class="c1"># ROC curves</span>
-
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure22_1.png"><img alt="_images/Slides_MachineLearning_2_figure22_1.png" src="_images/Slides_MachineLearning_2_figure22_1.png" style="width: 15cm;" /></a>
+</div>
+<div class="section" id="roc-curves">
+<h3><span class="section-number">20.1.5. </span>ROC curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
 <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -415,12 +484,22 @@ classify handwritten numbers of value 5.</p>
 <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
 <span class="c1"># save_fig(&quot;roc_curve_plot&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Saving figure roc_curve_plot</span>
-<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
-
-<span class="c1"># Note: we set n_estimators=10 to avoid a warning about the fact that its default value will be set to 100 in Scikit-Learn 0.22.</span>
-
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure23_1.png"><img alt="_images/Slides_MachineLearning_2_figure23_1.png" src="_images/Slides_MachineLearning_2_figure23_1.png" style="width: 15cm;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.9608926315517949</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We set n_estimators=10 to avoid a warning about the fact that its default
+value will be set to 100 in Scikit-Learn 0.22.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="n">forest_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">y_probas_forest</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">forest_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                     <span class="n">method</span><span class="o">=</span><span class="s2">&quot;predict_proba&quot;</span><span class="p">)</span>
@@ -434,23 +513,24 @@ classify handwritten numbers of value 5.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="c1"># save_fig(&quot;roc_curve_comparison_plot&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Saving figure roc_curve_comparison_plot</span>
-<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores_forest</span><span class="p">)</span>
-
-<span class="n">y_train_pred_forest</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">forest_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure25_1.png"><img alt="_images/Slides_MachineLearning_2_figure25_1.png" src="_images/Slides_MachineLearning_2_figure25_1.png" style="width: 15cm;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_scores_forest</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.9932680166070984</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_pred_forest</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">forest_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_5</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_forest</span><span class="p">)</span>
 
-<span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_forest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_5</span><span class="p">,</span> <span class="n">y_train_pred_forest</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.823648773289061</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8271536616860358</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure10_1.png"><img alt="_images/Slides_MachineLearning_2_figure10_1.png" src="_images/Slides_MachineLearning_2_figure10_1.png" style="width: 15cm;" /></a>
-<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure10_2.png"><img alt="_images/Slides_MachineLearning_2_figure10_2.png" src="_images/Slides_MachineLearning_2_figure10_2.png" style="width: 15cm;" /></a>
-<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure10_3.png"><img alt="_images/Slides_MachineLearning_2_figure10_3.png" src="_images/Slides_MachineLearning_2_figure10_3.png" style="width: 15cm;" /></a>
-<a class="reference internal image-reference" href="_images/Slides_MachineLearning_2_figure10_4.png"><img alt="_images/Slides_MachineLearning_2_figure10_4.png" src="_images/Slides_MachineLearning_2_figure10_4.png" style="width: 15cm;" /></a>
 </div>
 </div>
 <div class="section" id="key-concepts-and-summary">
@@ -473,6 +553,11 @@ classify handwritten numbers of value 5.</p>
 learning is it?</p></li>
 </ul>
 </div>
+<dl class="citation">
+<dt class="label" id="geron2019"><span class="brackets">Geron2019</span></dt>
+<dd><p>Geron, Aurelien (2019), Hands-On Machine Learning with Scikit-Learn, Keras &amp; Tensorflow, O’Reilly, 2nd edition.</p>
+</dd>
+</dl>
 </div>
 </div>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Homework 9: Optimization &mdash; Computational Economics 1.0 documentation</title>
+  <title>Homework 10: Optimization &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -155,7 +155,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Homework 9: Optimization</li>
+      <li>Homework 10: Optimization</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -174,13 +174,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="homework-9-optimization">
-<h1>Homework 9: Optimization<a class="headerlink" href="#homework-9-optimization" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="homework-10-optimization">
+<h1>Homework 10: Optimization<a class="headerlink" href="#homework-10-optimization" title="Permalink to this headline">¶</a></h1>
 <p>Submit this homework via Dropbox. For the deadline please consult the schedule
 posted on Blackboard.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Python-scripts are submitted in one file called: <code class="docutils literal notranslate"><span class="pre">homework9.py</span></code></p></li>
+<li><p>Python-scripts are submitted in one file called: <code class="docutils literal notranslate"><span class="pre">homework10.py</span></code></p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="exercise-1">
@@ -188,21 +188,22 @@ posted on Blackboard.</p>
 <p>Use the golden-section search algorithm to find all of the local maxima of the
 function.</p>
 <div class="math notranslate nohighlight">
-f(n) = \left\{
+\[\begin{split}f(n) = \left\{
         \begin{array}{l l}
             0 &amp; \quad \text{if $x=0$} \\
             |x|log(|x|/2)e^{-|x|} &amp; \quad \text{otherwise} \\
         \end{array}
-     \right.</div><p>within the interval [-10, 10].  Hint: plotting the function first will give you a good idea where to look.</p>
+     \right.\end{split}\]</div>
+<p>within the interval [-10, 10].  Hint: plotting the function first will give you a good idea where to look.</p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <p>Find the allocation of capital <span class="math notranslate nohighlight">\(K\)</span>  and labor <span class="math notranslate nohighlight">\(L\)</span> that maximizes the following
 profit function of a representative firm:</p>
 <div class="math notranslate nohighlight">
-\[max_{\{K,L\}} A(K^{0.33} * L^{0.67}) - wL - rK,\]</div>
+\[max_{\{K,L\}} A(K^{0.33} \times L^{0.67}) - w \times L - r \times K,\]</div>
 <p>where  the wage rate is <span class="math notranslate nohighlight">\(w = 1.84\)</span> and the cost of capital is
-<span class="math notranslate nohighlight">\(r=0.75\)</span> and <span class="math notranslate nohighlight">\(A=4\)</span>.</p>
+<span class="math notranslate nohighlight">\(r=0.75\)</span> and the total factor productivity (TFP) is <span class="math notranslate nohighlight">\(A=4\)</span>.</p>
 <p>In order to NOT have to maximize over two dimensions, I would like you to
 maximize this function w.r.t. capital <span class="math notranslate nohighlight">\(K\)</span> and various values for labor
 <span class="math notranslate nohighlight">\(L\)</span>. So within a loop you need to maximize the function for
