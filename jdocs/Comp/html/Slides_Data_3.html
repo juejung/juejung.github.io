@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>12. Working with Data III: Case Study &mdash; Computational Economics 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="13. Working with Data from the Web I" href="Slides_WebData.html" />
+    <link rel="prev" title="11. Working with Data II: Statistics" href="Slides_Data_2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Computational Economics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Working with Data III: Case Study</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#importing-data">12.1. Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-cases-of-infections">12.2. Plotting Cases of Infections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-cases-of-infections-on-a-map">12.3. Plotting Cases of Infections on a Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-time-series-of-cases">12.4. Plotting Time Series of Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-time-series-of-corona-virus-deaths">12.5. Plotting Time Series of Corona Virus Deaths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">12.6. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">12.7. Self-Check Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">15. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">16. Random Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">17. Root Finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">18. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">19. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">20. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">21. Machine Learning II: Categorization Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">22. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">23. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">24. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">25. Assignments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">12. </span>Working with Data III: Case Study</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Slides_Data_3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="working-with-data-iii-case-study">
+<h1><span class="section-number">12. </span>Working with Data III: Case Study<a class="headerlink" href="#working-with-data-iii-case-study" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="dataiii">
+<p class="sidebar-title">Section Learning Objectives</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Data from Github</p></li>
+<li><p>Graphs from Data</p></li>
+<li><p>Summary Statistics</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p id="index-0">In this chapter we introduce a case study using Corona virus data. We will
+track infection rates and plot figures using the latest data tracking the
+spread of the corona virus.</p>
+<div class="section" id="importing-data">
+<h2><span class="section-number">12.1. </span>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
+<p>We will be working with data from the Johns Hopkins Whiting School of
+Engineering, Center for Systems Science and Engineering. Their <strong>Github</strong>
+portal is at: <a class="reference external" href="https://github.com/CSSEGISandData">https://github.com/CSSEGISandData</a></p>
+<p>This is the data repository for the 2019 Novel Coronavirus Visual Dashboard
+operated by the Johns Hopkins University Center for Systems Science and
+Engineering (JHU CSSE). Also, Supported by ESRI Living Atlas Team and the Johns
+Hopkins University Applied Physics Lab (JHU APL).</p>
+<p>You can find their dashboard with all the visual information under this link:
+<a class="reference external" href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">Dashboard</a></p>
+<p>We will use their data (it’s updated twice daily) and make our own graphs.
+We first need to import the data from their website. We can simply do this with
+a <strong>Pandas</strong> function <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># ----------------------------------------</span>
+<span class="n">i_downloadData</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Indicator flag whether you want to freshly download the</span>
+                     <span class="c1"># data</span>
+<span class="c1"># ----------------------------------------</span>
+
+<span class="k">if</span> <span class="n">i_downloadData</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">urlConf</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv&#39;</span>
+    <span class="n">urlDead</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv&#39;</span>
+    <span class="n">urlRec</span>  <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv&#39;</span>
+
+    <span class="c1"># Download</span>
+    <span class="n">dfConf_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlConf</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfDead_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlDead</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfRec_orig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlRec</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to locally store the data and not download the data everytime
+you run your script file you could save the data first with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save data locally on harddrive</span>
+<span class="n">dfConf</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaConfirmed&#39;</span><span class="p">)</span>
+<span class="n">dfDead</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaDeath&#39;</span><span class="p">)</span>
+<span class="n">dfRec</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaRecovered&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then simply read it from your harddisk using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data from harddrive</span>
+<span class="n">dfConf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaConfirmed&#39;</span><span class="p">)</span>
+<span class="n">dfDead</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaDeath&#39;</span><span class="p">)</span>
+<span class="n">dfRec</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;CoronaRecovered&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You would then of course have to “outcomment” the webreading section above
+or set the <code class="docutils literal notranslate"><span class="pre">i_downloadData</span></code> flag equal to zero so that the downloading
+part gets skipped.</p>
+</div>
+<p>Have a careful look at the data. Use the <strong>Variable Explorer</strong> tab in
+<strong>Spyder</strong> to investigate the dataframe. The nature of your data is basically
+an observation over time of confirmed corona virus infections by Province/State
+as the “smallest” geographical denominator. You also know which country the
+Pronvince/State belongs to (you see this in the second column) and then you
+also have the Latitude/Longitude coordinates of the Province/State from which
+the corona cases are reported from. This is followed by daily observations from
+this Province/State.</p>
+</div>
+<div class="section" id="plotting-cases-of-infections">
+<h2><span class="section-number">12.2. </span>Plotting Cases of Infections<a class="headerlink" href="#plotting-cases-of-infections" title="Permalink to this headline">¶</a></h2>
+<p>I first copy the original data into new dataframes because I want to keep the
+raw data intact and untouched in case I want to come back to it later, which we
+will!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfConf</span> <span class="o">=</span> <span class="n">dfConf_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dfDead</span> <span class="o">=</span> <span class="n">dfDead_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dfRec</span>  <span class="o">=</span> <span class="n">dfRec_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We next add a column with the sum of all the confirmed coronavirus cases for
+each Province/State. In other words, we
+sum up all the columns of the time series of cases which starts in column five,
+so that we go from <code class="docutils literal notranslate"><span class="pre">[4:]</span></code> to the end.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfConf</span><span class="p">[</span><span class="s1">&#39;Confirmed&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfConf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dfDead</span><span class="p">[</span><span class="s1">&#39;Dead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfDead</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dfRec</span><span class="p">[</span><span class="s1">&#39;Recovered&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfRec</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We then drop the entire time series and only keep the overall sum of cases. We
+are not interested in the single day observations for this first summary graph.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfConf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dfConf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">dfDead</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dfDead</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">dfRec</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dfRec</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We next merge the three dataframes together by <code class="docutils literal notranslate"><span class="pre">Province/State</span></code>, <code class="docutils literal notranslate"><span class="pre">Country/Region</span></code>, <code class="docutils literal notranslate"><span class="pre">Lat</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">Long</span></code> variables so that we have the sum of all confirmed infection cases,
+the sum of all corona virus associated deaths, and the sum of all the recovered
+cases for each Province/State in the same dataframe.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dftemp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfConf</span><span class="p">,</span> <span class="n">dfDead</span><span class="p">,</span> \
+   <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">,</span> <span class="s1">&#39;Country/Region&#39;</span><span class="p">,</span><span class="s1">&#39;Lat&#39;</span><span class="p">,</span><span class="s1">&#39;Long&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dftemp</span><span class="p">,</span> <span class="n">dfRec</span><span class="p">,</span> \
+   <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">,</span> <span class="s1">&#39;Country/Region&#39;</span><span class="p">,</span><span class="s1">&#39;Lat&#39;</span><span class="p">,</span><span class="s1">&#39;Long&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We have now one dataframe with the sum of all confirmed coronavirus cases, the
+sum of all deaths due to corona virus, as well as the sum of all recorded
+recoveries from a coronavirus infection.</p>
+<p>We next plot the infection cases by their latitude and longitude of the
+province/state where they were recorded. We plot circles and use the number of
+cases per 1000 as circle size. The larger the circle in the plot, the more
+cases have been recorded for the Latitude/Longitude coordinate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Long&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Confirmed Infections&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Long&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Deaths&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure6_1.png"><img alt="_images/Slides_Data_3_figure6_1.png" src="_images/Slides_Data_3_figure6_1.png" style="width: 15cm;" /></a>
+<p>From this graph you can already see the outline of countries. However, it would
+be better if we could superimpose the information onto a real map of the world.
+We do this next.</p>
+</div>
+<div class="section" id="plotting-cases-of-infections-on-a-map">
+<h2><span class="section-number">12.3. </span>Plotting Cases of Infections on a Map<a class="headerlink" href="#plotting-cases-of-infections-on-a-map" title="Permalink to this headline">¶</a></h2>
+<p>We next use the Cartopy library to plot the same information superimposed on a
+worl map.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will need to install the <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> library via the command line. Open
+a command line terminal and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cartopy</span>
+</pre></div>
+</div>
+<p>Followed by enter, then hit <code class="docutils literal notranslate"><span class="pre">y</span></code> for yes when it prompts you. This should
+install the <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> library.</p>
+</div>
+<p>We will next import the <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> \
+        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> \
+        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure8_1.png"><img alt="_images/Slides_Data_3_figure8_1.png" src="_images/Slides_Data_3_figure8_1.png" style="width: 15cm;" /></a>
+<p>You now have a nice plot of the world map and the corona cases superimposed on
+it.</p>
+</div>
+<div class="section" id="plotting-time-series-of-cases">
+<h2><span class="section-number">12.4. </span>Plotting Time Series of Cases<a class="headerlink" href="#plotting-time-series-of-cases" title="Permalink to this headline">¶</a></h2>
+<p>We now go back to the original dataframe with the time series data of confirmed
+coronavirus cases. We then drop some variables that we do not need, such as
+<code class="docutils literal notranslate"><span class="pre">Province/State</span></code>, <code class="docutils literal notranslate"><span class="pre">Lat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Long</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is the original data again</span>
+<span class="n">dfConf</span> <span class="o">=</span> <span class="n">dfConf_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dfDead</span> <span class="o">=</span> <span class="n">dfDead_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dfRec</span>  <span class="o">=</span> <span class="n">dfRec_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now pick the confirmed cases and drop some columns</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span> <span class="o">=</span> <span class="n">dfConf</span>
+<span class="n">dft</span> <span class="o">=</span> <span class="n">dft</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;Long&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Let us have a look at the first three rows to see how our raw data look like.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dft</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">20</span>
+\
+<span class="mi">0</span>       <span class="n">Thailand</span>        <span class="mi">2</span>        <span class="mi">3</span>        <span class="mi">5</span>        <span class="mi">7</span>        <span class="mi">8</span>        <span class="mi">8</span>
+<span class="mi">1</span>          <span class="n">Japan</span>        <span class="mi">2</span>        <span class="mi">1</span>        <span class="mi">2</span>        <span class="mi">2</span>        <span class="mi">4</span>        <span class="mi">4</span>
+<span class="mi">2</span>      <span class="n">Singapore</span>        <span class="mi">0</span>        <span class="mi">1</span>        <span class="mi">3</span>        <span class="mi">3</span>        <span class="mi">4</span>        <span class="mi">5</span>
+
+   <span class="mi">1</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">15</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="mi">20</span>
+\
+<span class="mi">0</span>       <span class="mi">14</span>       <span class="mi">14</span>       <span class="mi">14</span>  <span class="o">...</span>       <span class="mi">75</span>       <span class="mi">82</span>      <span class="mi">114</span>      <span class="mi">147</span>
+<span class="mi">1</span>        <span class="mi">7</span>        <span class="mi">7</span>       <span class="mi">11</span>  <span class="o">...</span>      <span class="mi">701</span>      <span class="mi">773</span>      <span class="mi">839</span>      <span class="mi">825</span>
+<span class="mi">2</span>        <span class="mi">7</span>        <span class="mi">7</span>       <span class="mi">10</span>  <span class="o">...</span>      <span class="mi">200</span>      <span class="mi">212</span>      <span class="mi">226</span>      <span class="mi">243</span>
+
+   <span class="mi">3</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">19</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>
+<span class="mi">0</span>      <span class="mi">177</span>      <span class="mi">212</span>      <span class="mi">272</span>      <span class="mi">322</span>      <span class="mi">411</span>      <span class="mi">599</span>
+<span class="mi">1</span>      <span class="mi">878</span>      <span class="mi">889</span>      <span class="mi">924</span>      <span class="mi">963</span>     <span class="mi">1007</span>     <span class="mi">1086</span>
+<span class="mi">2</span>      <span class="mi">266</span>      <span class="mi">313</span>      <span class="mi">345</span>      <span class="mi">385</span>      <span class="mi">432</span>      <span class="mi">455</span>
+
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">62</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We next add up all the cases for each day by <code class="docutils literal notranslate"><span class="pre">Country/Region</span></code> using the
+<code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function that comes with <strong>Pandas</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span> <span class="o">=</span> <span class="n">dft</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And again, let us peek at the data real quick.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dft</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">20</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  \
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>
+<span class="n">Afghanistan</span>           <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="n">Albania</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="n">Algeria</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
+<span class="mi">0</span>
+
+                <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">20</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">15</span><span class="o">/</span><span class="mi">20</span>  \
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>                             <span class="o">...</span>
+<span class="n">Afghanistan</span>           <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>        <span class="mi">7</span>       <span class="mi">11</span>
+<span class="mi">16</span>
+<span class="n">Albania</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>       <span class="mi">33</span>       <span class="mi">38</span>
+<span class="mi">42</span>
+<span class="n">Algeria</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>       <span class="mi">26</span>       <span class="mi">37</span>
+<span class="mi">48</span>
+
+                <span class="mi">3</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">19</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">20</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>
+<span class="n">Afghanistan</span>          <span class="mi">21</span>       <span class="mi">22</span>       <span class="mi">22</span>       <span class="mi">22</span>       <span class="mi">24</span>       <span class="mi">24</span>
+<span class="mi">40</span>
+<span class="n">Albania</span>              <span class="mi">51</span>       <span class="mi">55</span>       <span class="mi">59</span>       <span class="mi">64</span>       <span class="mi">70</span>       <span class="mi">76</span>
+<span class="mi">89</span>
+<span class="n">Algeria</span>              <span class="mi">54</span>       <span class="mi">60</span>       <span class="mi">74</span>       <span class="mi">87</span>       <span class="mi">90</span>      <span class="mi">139</span>
+<span class="mi">201</span>
+
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">61</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We now transpose the dataframe because we want the time observations as rows
+and not columns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span> <span class="o">=</span> <span class="n">dft</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dft</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Afghanistan</span>  <span class="n">Albania</span>  <span class="n">Algeria</span>  <span class="n">Andorra</span>  <span class="n">Angola</span>  \
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>                   <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>                   <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>                   <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Antigua</span> <span class="ow">and</span> <span class="n">Barbuda</span>  <span class="n">Argentina</span>  <span class="n">Armenia</span>  <span class="n">Australia</span>
+<span class="n">Austria</span>  \
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>                           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>                           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>                           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">Uganda</span>  <span class="n">Ukraine</span>  <span class="n">United</span> <span class="n">Arab</span> <span class="n">Emirates</span>  <span class="n">United</span>
+<span class="n">Kingdom</span>  \
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Uruguay</span>  <span class="n">Uzbekistan</span>  <span class="n">Venezuela</span>  <span class="n">Vietnam</span>  <span class="n">Zambia</span>
+<span class="n">Zimbabwe</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">171</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We are now ready to convert the index of the dataframe into a date index so
+that we can use the built in time series commands in <strong>Pandas</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converting the index as date</span>
+<span class="n">dft</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dft</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dft</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Afghanistan</span>  <span class="n">Albania</span>  <span class="n">Algeria</span>  <span class="n">Andorra</span>  <span class="n">Angola</span>  \
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>                <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>                <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>                <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Antigua</span> <span class="ow">and</span> <span class="n">Barbuda</span>  <span class="n">Argentina</span>  <span class="n">Armenia</span>  <span class="n">Australia</span>
+<span class="n">Austria</span>  \
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>                        <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>                        <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>                        <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">Uganda</span>  <span class="n">Ukraine</span>  <span class="n">United</span> <span class="n">Arab</span> <span class="n">Emirates</span>  <span class="n">United</span>
+<span class="n">Kingdom</span>  \
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>      <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>      <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>      <span class="o">...</span>       <span class="mi">0</span>        <span class="mi">0</span>                     <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Uruguay</span>  <span class="n">Uzbekistan</span>  <span class="n">Venezuela</span>  <span class="n">Vietnam</span>  <span class="n">Zambia</span>
+<span class="n">Zimbabwe</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>            <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>            <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>            <span class="mi">0</span>           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>       <span class="mi">0</span>
+<span class="mi">0</span>
+
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">171</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Drop the last observation because it is an empty row.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span> <span class="o">=</span> <span class="n">dft</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We are now ready to plot the time series for different countries. We don’t want
+to plot the whole time series because the curves are very flat in January and
+February. We will instead just plot the most recent 30 observations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span>  <span class="c1"># Just plot the recent 30 obs</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dft</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;US: Number of Infections&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the major grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the minor grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure18_1.png"><img alt="_images/Slides_Data_3_figure18_1.png" src="_images/Slides_Data_3_figure18_1.png" style="width: 15cm;" /></a>
+<p>In order to plot multiple countries into a single graph, I first make
+a list of countries and then run a loop over this list and invoke the plot
+command. Otherwise we would have a lot of repeat code which is bad programming
+style.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plot</span>
+
+<span class="n">countryList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;Korea, South&#39;</span><span class="p">,</span> <span class="s1">&#39;Austria&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">,</span> <span class="s1">&#39;Italy&#39;</span><span class="p">,</span> \
+                <span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;Spain&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">]</span>
+
+<span class="c1"># Shorter list for alternative graph</span>
+<span class="c1"># countryList = [&#39;US&#39;, &#39;Korea, South&#39;, &#39;Austria&#39;, &#39;Japan&#39;, \</span>
+<span class="c1">#                &#39;Germany&#39;, &#39;Spain&#39;, &#39;France&#39;, &#39;United Kingdom&#39;]</span>
+
+<span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dft</span><span class="p">[</span><span class="n">countryList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countryList</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">dft</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Corona Virus Infections: Absolute Levels&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the major grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the minor grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure19_1.png"><img alt="_images/Slides_Data_3_figure19_1.png" src="_images/Slides_Data_3_figure19_1.png" style="width: 15cm;" /></a>
+<p>We next investigate the changes in the numbers from one day to the next using
+the <code class="docutils literal notranslate"><span class="pre">diff()</span></code> function. It basically subtracts consecutive observations from
+each other, i.e., it takes the number of infections from day <code class="docutils literal notranslate"><span class="pre">t</span></code> and
+subtracts the number of infections from the prior day <code class="docutils literal notranslate"><span class="pre">t-1</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">dft</span><span class="p">[</span><span class="n">countryList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countryList</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">dft</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Corona Virus Infections: Daily Increases&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the major grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the minor grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure20_1.png"><img alt="_images/Slides_Data_3_figure20_1.png" src="_images/Slides_Data_3_figure20_1.png" style="width: 15cm;" /></a>
+</div>
+<div class="section" id="plotting-time-series-of-corona-virus-deaths">
+<h2><span class="section-number">12.5. </span>Plotting Time Series of Corona Virus Deaths<a class="headerlink" href="#plotting-time-series-of-corona-virus-deaths" title="Permalink to this headline">¶</a></h2>
+<p>We again need to transform the data into a time series dataframe first.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Death Rates</span>
+<span class="n">dfDead_t</span> <span class="o">=</span> <span class="n">dfDead</span>
+<span class="n">dfDead_t</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;Long&#39;</span><span class="p">])</span>
+<span class="n">dfDead_t</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">dfDead_t</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># Converting the index as date</span>
+<span class="n">dfDead_t</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dfDead_t</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">dfDead_t</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And we can now plot the information. We again start with the absolute levels.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="p">[</span><span class="n">countryList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countryList</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">dfDead_t</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Corona Virus Deaths: Absolute Levels&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the major grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the minor grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure22_1.png"><img alt="_images/Slides_Data_3_figure22_1.png" src="_images/Slides_Data_3_figure22_1.png" style="width: 15cm;" /></a>
+<p>The daily changes in number of deaths can be plotted as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">dfDead_t</span><span class="p">[</span><span class="n">countryList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countryList</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">dfDead_t</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Corona Virus Deaths: Daily Increases&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the major grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+<span class="c1"># Customize the minor grid</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_3_figure23_1.png"><img alt="_images/Slides_Data_3_figure23_1.png" src="_images/Slides_Data_3_figure23_1.png" style="width: 15cm;" /></a>
+</div>
+<div class="section" id="key-concepts-and-summary">
+<h2><span class="section-number">12.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Importing data from Github</p></li>
+<li><p>Plotting scatterplots</p></li>
+<li><p>Plotting time series data</p></li>
+<li><p>Differencing time series data</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-check-questions">
+<h2><span class="section-number">12.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Generate graphs that track the corona virus infection rates for all 50
+US states</p></li>
+<li><p>Generate graphs that show the daily change of number of infections for
+all 50 US states.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Slides_WebData.html" class="btn btn-neutral float-right" title="13. Working with Data from the Web I" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Slides_Data_2.html" class="btn btn-neutral float-left" title="11. Working with Data II: Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Juergen Jung
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
