@@ -117,7 +117,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#measures-of-linear-relationship">11.4. Measures of Linear Relationship</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#covariance">11.4.1. Covariance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#correlation-coefficient">11.4.2. Correlation Coefficient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#regression-line">11.4.3. Regression Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regression-line-example-1">11.4.3. Regression Line:  Example 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regression-line-example-2">11.4.4. Regression Line: Example 2</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#measures-of-non-linear-relationship">11.5. Measures of Non-Linear Relationship</a><ul>
@@ -731,9 +732,8 @@ toolbox command.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="regression-line">
-<h3><span class="section-number">11.4.3. </span>Regression Line<a class="headerlink" href="#regression-line" title="Permalink to this headline">¶</a></h3>
-<p><strong>Example 1: Simple example</strong></p>
+<div class="section" id="regression-line-example-1">
+<h3><span class="section-number">11.4.3. </span>Regression Line:  Example 1<a class="headerlink" href="#regression-line-example-1" title="Permalink to this headline">¶</a></h3>
 <p>We first generate some data. A variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and a variable <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define data. 2 vectors xv and yv</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -798,9 +798,9 @@ newer versions of <code class="docutils literal notranslate"><span class="pre">P
 <span class="mf">0.544</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">9.358</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Mon</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">0.0222</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">08</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">26</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">20.791</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                   <span class="mi">8</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">45.58</span>
@@ -830,8 +830,8 @@ newer versions of <code class="docutils literal notranslate"><span class="pre">P
 <span class="n">Warnings</span><span class="p">:</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">assume</span> <span class="n">that</span> <span class="n">the</span> <span class="n">covariance</span> <span class="n">matrix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">is</span>
 <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
-<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1535</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pweaveEnv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1450</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
 <span class="n">valid</span> <span class="k">for</span> <span class="n">n</span><span class="o">&gt;=</span><span class="mi">20</span> <span class="o">...</span> <span class="n">continuing</span> <span class="n">anyway</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span>
   <span class="s2">&quot;anyway, n=</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 </pre></div>
@@ -890,11 +890,198 @@ the trendline through it.</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_2_Scatter2_1.png"><img alt="_images/Slides_Data_2_Scatter2_1.png" src="_images/Slides_Data_2_Scatter2_1.png" style="width: 12cm;" /></a>
-<p><strong>Example 2: OLS with categorical (dummy variables)</strong></p>
-<p>The next example is a bit more involved as we increase the number of
+</div>
+<div class="section" id="regression-line-example-2">
+<h3><span class="section-number">11.4.4. </span>Regression Line: Example 2<a class="headerlink" href="#regression-line-example-2" title="Permalink to this headline">¶</a></h3>
+<p>In this example we estimate an OLS model with categorical (dummy variables).
+This is a bit more involved as we increase the number of
 explanatory variables. In addition, some explanatory variables are categorical
 variables. In order to use them in our OLS regression we first have to make so
 called <strong>dummy</strong> variables (i.e. indicator variables that are either 0 or 1).</p>
+<p>I will next demonstrate how to make dummy variables. I first show you a more
+cumbersome way to do it which is more powerful as it gives you more control
+over how to exactly define your dummy variable. Then I show you a quick way to
+do it if your categorical variable is already in the form of distinct
+categories.</p>
+<p>We first import our dataset and investigate the form of our categorical
+variable <code class="docutils literal notranslate"><span class="pre">Race</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>      <span class="mi">60</span>
+<span class="n">unique</span>      <span class="mi">5</span>
+<span class="n">top</span>       <span class="n">Blk</span>
+<span class="n">freq</span>       <span class="mi">23</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Race</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>From this summary we see that our categorical variables has five unique race
+categories. We therefore start with making a new variable for each one of these race
+categories that we pre-fill with zeros.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I use a prefix <code class="docutils literal notranslate"><span class="pre">d_</span></code> for my dummy
+variables which is a convenient naming convention that allows for quick
+identification of dummy variables for users who want to work with these data in
+the future.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Wht&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Blk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Mex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Hisp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Oth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>We next need to set these dummy variables equal to one, whenever the person is
+of that race. Let us first have a look at what the following command procudes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Wht&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>     <span class="kc">False</span>
+<span class="mi">1</span>      <span class="kc">True</span>
+<span class="mi">2</span>     <span class="kc">False</span>
+<span class="mi">3</span>      <span class="kc">True</span>
+<span class="mi">4</span>     <span class="kc">False</span>
+<span class="mi">5</span>     <span class="kc">False</span>
+<span class="mi">6</span>     <span class="kc">False</span>
+<span class="mi">7</span>     <span class="kc">False</span>
+<span class="mi">8</span>     <span class="kc">False</span>
+<span class="mi">9</span>     <span class="kc">False</span>
+<span class="mi">10</span>    <span class="kc">False</span>
+<span class="mi">11</span>     <span class="kc">True</span>
+<span class="mi">12</span>    <span class="kc">False</span>
+<span class="mi">13</span>    <span class="kc">False</span>
+<span class="mi">14</span>    <span class="kc">False</span>
+<span class="mi">15</span>    <span class="kc">False</span>
+<span class="mi">16</span>    <span class="kc">False</span>
+<span class="mi">17</span>    <span class="kc">False</span>
+<span class="mi">18</span>     <span class="kc">True</span>
+<span class="mi">19</span>    <span class="kc">False</span>
+<span class="mi">20</span>    <span class="kc">False</span>
+<span class="mi">21</span>    <span class="kc">False</span>
+<span class="mi">22</span>     <span class="kc">True</span>
+<span class="mi">23</span>    <span class="kc">False</span>
+<span class="mi">24</span>    <span class="kc">False</span>
+<span class="mi">25</span>    <span class="kc">False</span>
+<span class="mi">26</span>    <span class="kc">False</span>
+<span class="mi">27</span>     <span class="kc">True</span>
+<span class="mi">28</span>    <span class="kc">False</span>
+<span class="mi">29</span>    <span class="kc">False</span>
+<span class="mi">30</span>    <span class="kc">False</span>
+<span class="mi">31</span>     <span class="kc">True</span>
+<span class="mi">32</span>    <span class="kc">False</span>
+<span class="mi">33</span>     <span class="kc">True</span>
+<span class="mi">34</span>    <span class="kc">False</span>
+<span class="mi">35</span>    <span class="kc">False</span>
+<span class="mi">36</span>    <span class="kc">False</span>
+<span class="mi">37</span>     <span class="kc">True</span>
+<span class="mi">38</span>    <span class="kc">False</span>
+<span class="mi">39</span>     <span class="kc">True</span>
+<span class="mi">40</span>     <span class="kc">True</span>
+<span class="mi">41</span>    <span class="kc">False</span>
+<span class="mi">42</span>    <span class="kc">False</span>
+<span class="mi">43</span>    <span class="kc">False</span>
+<span class="mi">44</span>    <span class="kc">False</span>
+<span class="mi">45</span>     <span class="kc">True</span>
+<span class="mi">46</span>    <span class="kc">False</span>
+<span class="mi">47</span>    <span class="kc">False</span>
+<span class="mi">48</span>    <span class="kc">False</span>
+<span class="mi">49</span>    <span class="kc">False</span>
+<span class="mi">50</span>    <span class="kc">False</span>
+<span class="mi">51</span>    <span class="kc">False</span>
+<span class="mi">52</span>    <span class="kc">False</span>
+<span class="mi">53</span>     <span class="kc">True</span>
+<span class="mi">54</span>    <span class="kc">False</span>
+<span class="mi">55</span>    <span class="kc">False</span>
+<span class="mi">56</span>     <span class="kc">True</span>
+<span class="mi">57</span>     <span class="kc">True</span>
+<span class="mi">58</span>     <span class="kc">True</span>
+<span class="mi">59</span>     <span class="kc">True</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Race</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p>This is a vector with true/false statements. It results in a True statement if
+the race of the person is white and a false statement otherwise. We can use
+this vector “inside” a dataframe to make a conditional statement. We can
+combine this with the <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> function of Pandas to replace values in the
+<code class="docutils literal notranslate"><span class="pre">d_Wht</span></code> column given conditions are met in the <code class="docutils literal notranslate"><span class="pre">Race</span></code> column. Here is the
+syntax that replaces zeros in the <code class="docutils literal notranslate"><span class="pre">d_Wht</span></code> column with the value one, whenever
+the race of the person is equal to <code class="docutils literal notranslate"><span class="pre">Wht</span></code> in the <code class="docutils literal notranslate"><span class="pre">Race</span></code> column.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Wht&#39;</span><span class="p">),</span> <span class="s1">&#39;d_Wht&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">Height</span>  <span class="n">Response</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
+<span class="n">d_Wht</span>  \
+<span class="mi">0</span>     <span class="mf">1.1</span>         <span class="mi">3</span>             <span class="mi">370</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>  <span class="n">Hisp</span>
+<span class="mi">0</span>
+<span class="mi">1</span>     <span class="mf">1.2</span>         <span class="mi">4</span>             <span class="mi">393</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Wht</span>
+<span class="mi">1</span>
+<span class="mi">2</span>     <span class="mf">1.3</span>         <span class="mi">4</span>             <span class="mi">413</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Blk</span>
+<span class="mi">0</span>
+<span class="mi">3</span>     <span class="mf">1.4</span>         <span class="mi">5</span>             <span class="mi">430</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Wht</span>
+<span class="mi">1</span>
+<span class="mi">4</span>     <span class="mf">1.5</span>         <span class="mi">3</span>             <span class="mi">440</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>   <span class="n">Mex</span>
+<span class="mi">0</span>
+
+   <span class="n">d_Blk</span>  <span class="n">d_Mex</span>  <span class="n">d_Hisp</span>  <span class="n">d_Oth</span>
+<span class="mi">0</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">1</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">2</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">3</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">4</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+</pre></div>
+</div>
+<p>You can do this now for the other four race categories to get your complete set
+of dummy variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Blk&#39;</span><span class="p">),</span> <span class="s1">&#39;d_Blk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Mex&#39;</span><span class="p">),</span> <span class="s1">&#39;d_Mex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hisp&#39;</span><span class="p">),</span> <span class="s1">&#39;d_Hisp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Oth&#39;</span><span class="p">),</span> <span class="s1">&#39;d_Oth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">Height</span>  <span class="n">Response</span>  <span class="n">AverageMathSAT</span>  <span class="n">Age</span>  <span class="n">Female</span>  <span class="n">Education</span>  <span class="n">Race</span>
+<span class="n">d_Wht</span>  \
+<span class="mi">0</span>     <span class="mf">1.1</span>         <span class="mi">3</span>             <span class="mi">370</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>  <span class="n">Hisp</span>
+<span class="mi">0</span>
+<span class="mi">1</span>     <span class="mf">1.2</span>         <span class="mi">4</span>             <span class="mi">393</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Wht</span>
+<span class="mi">1</span>
+<span class="mi">2</span>     <span class="mf">1.3</span>         <span class="mi">4</span>             <span class="mi">413</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Blk</span>
+<span class="mi">0</span>
+<span class="mi">3</span>     <span class="mf">1.4</span>         <span class="mi">5</span>             <span class="mi">430</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">4</span>   <span class="n">Wht</span>
+<span class="mi">1</span>
+<span class="mi">4</span>     <span class="mf">1.5</span>         <span class="mi">3</span>             <span class="mi">440</span>   <span class="mi">20</span>       <span class="mi">0</span>          <span class="mi">2</span>   <span class="n">Mex</span>
+<span class="mi">0</span>
+
+   <span class="n">d_Blk</span>  <span class="n">d_Mex</span>  <span class="n">d_Hisp</span>  <span class="n">d_Oth</span>
+<span class="mi">0</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">1</span>      <span class="mi">0</span>
+<span class="mi">1</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">2</span>      <span class="mi">1</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">3</span>      <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>
+<span class="mi">4</span>      <span class="mi">0</span>      <span class="mi">1</span>       <span class="mi">0</span>      <span class="mi">0</span>
+</pre></div>
+</div>
+<p>This is a very powerful way to make your own dummy variables as it allows you
+complete control over what you code as 0 and what you code as 1. Inside the
+<code class="docutils literal notranslate"><span class="pre">.loc()</span></code> function you can use more complex conditional statments such as
+<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, as well as logical commands such as <code class="docutils literal notranslate"><span class="pre">|</span></code> (which stands for the logical
+<code class="docutils literal notranslate"><span class="pre">or</span></code>) and  <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (which stands for the logical <code class="docutils literal notranslate"><span class="pre">and</span></code>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">and</span></code> python statements require truth-values. For pandas these are
+considered ambiguous so you should use “bitwise” <code class="docutils literal notranslate"><span class="pre">|</span></code> (or) or <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (and) operations.</p>
+</div>
+<p>We next create a
+categorical variable that indicates whether somebody is Mexican <strong>or</strong> Hispanic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;d_Mex_Hisp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Mex&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hisp&#39;</span><span class="p">)),</span> <span class="s1">&#39;d_Mex_Hisp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Here is the quick way to make dummy variables out of a categorical variables
+with distinct categories. I first import the data again, so we can work with
+the original (raw) data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
 
 <span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
@@ -948,9 +1135,9 @@ etc.</p>
 <span class="mf">0.936</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">124.4</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Mon</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">3.52e-30</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">09</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">27</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">74.722</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                  <span class="mi">60</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">165.4</span>
@@ -1105,9 +1292,9 @@ range.</p>
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Mon</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08292</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">10</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">27</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1140,7 +1327,7 @@ range.</p>
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Logit</span>            <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.5175</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">12</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">45</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.5782e-08</span>
@@ -1187,9 +1374,9 @@ range.</p>
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Mon</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Mar</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08313</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">10</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">27</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1222,7 +1409,7 @@ range.</p>
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Probit</span>           <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.4132</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">12</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">45</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.2189e-08</span>
