@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>17. Root Finding &mdash; Computational Economics 1.0 documentation</title>
+  <title>18. Root Finding &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="18. Optimization" href="Slides_Optimization.html" />
-    <link rel="prev" title="16. Random Numbers" href="Slides_Random.html" /> 
+    <link rel="next" title="19. Optimization" href="Slides_Optimization.html" />
+    <link rel="prev" title="17. Random Numbers II: An Infectious Disease Simulation" href="Slides_Random2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,22 +104,23 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">15. Regular Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">16. Random Numbers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">17. Root Finding</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#first-steps">17.1. First Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#newton-raphson">17.2. Newton-Raphson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#secant-method">17.3. Secant Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bisection">17.4. Bisection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-built-in-unit-root-function">17.5. Using Built in Unit-Root Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random2.html">17. Random Numbers II: An Infectious Disease Simulation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Root Finding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-steps">18.1. First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#newton-raphson">18.2. Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#secant-method">18.3. Secant Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bisection">18.4. Bisection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-built-in-unit-root-function">18.5. Using Built in Unit-Root Function</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">18. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">19. Constrained Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">20. Machine Learning I: Introduction to Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">21. Machine Learning II: Categorization Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">22. A Simple OLG Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">23. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">24. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">25. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">19. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">20. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
 </ul>
 
             
@@ -165,7 +166,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">17. </span>Root Finding</li>
+      <li><span class="section-number">18. </span>Root Finding</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,7 +186,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="root-finding">
-<h1><span class="section-number">17. </span>Root Finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">18. </span>Root Finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="rootfinding">
 <p class="sidebar-title">Section Learning Objectives</p>
 <blockquote>
@@ -200,7 +201,7 @@
 in the domain of the function where the function evaluates to zero. In other
 words we try to find the value of <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(f(x) = 0\)</span>.</p>
 <div class="section" id="first-steps">
-<h2><span class="section-number">17.1. </span>First Steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.1. </span>First Steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1">#</span>
@@ -248,11 +249,11 @@ first derivate of the function (i.e., the gradient).</p>
 <a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png" id="figautos"><img alt="_images/Slides_Root_FigAutos_1.png" id="figautos" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="newton-raphson">
-<h2><span class="section-number">17.2. </span>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#fig-root"><span class="std std-numref">Fig. 17.1</span></a> presents an illustration of the Newton-Raphson algorithm.</p>
+<h2><span class="section-number">18.2. </span>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#fig-root"><span class="std std-numref">Fig. 18.1</span></a> presents an illustration of the Newton-Raphson algorithm.</p>
 <div class="figure align-center" id="fig-root">
 <img alt="_images/InkscapeRoot.png" src="_images/InkscapeRoot.png" />
-<p class="caption"><span class="caption-number">Fig. 17.1 </span><span class="caption-text">The Newton-Raphson Algorithm</span><a class="headerlink" href="#fig-root" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 18.1 </span><span class="caption-text">The Newton-Raphson Algorithm</span><a class="headerlink" href="#fig-root" title="Permalink to this image">¶</a></p>
 </div>
 <p>We start with an initial guess <span class="math notranslate nohighlight">\(x_0\)</span>. The slope of the  tangent line through the
 initial guess can be defined as:</p>
@@ -345,7 +346,7 @@ the function in the graph.</p>
 <a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png" id="id1"><img alt="_images/Slides_Root_FigAutos_1.png" id="id1" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="secant-method">
-<h2><span class="section-number">17.3. </span>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.3. </span>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
 <p>As pointed out above, in order to use the <strong>Newton-Raphson</strong> method we need to
 be able to calculate the derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> of the function. If this is
 computationally expensive or maybe even impossible, we can use the <strong>secant</strong>
@@ -440,7 +441,7 @@ method, where we substitute <span class="math notranslate nohighlight">\(\frac{f
 </div>
 </div>
 <div class="section" id="bisection">
-<h2><span class="section-number">17.4. </span>Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.4. </span>Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>Newton-Raphson</strong> as well as the <strong>Secant</strong> method are not guaranteed to
 work. The bisection method is the most robust method, but it is slow. We start with
 two values <span class="math notranslate nohighlight">\(x_l &lt; x_r\)</span> which bracket the root of the function. It
@@ -577,7 +578,7 @@ switch over to a Newton-Raphson type method to then quickly converge to this
 root point.</p>
 </div>
 <div class="section" id="using-built-in-unit-root-function">
-<h2><span class="section-number">17.5. </span>Using Built in Unit-Root Function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.5. </span>Using Built in Unit-Root Function<a class="headerlink" href="#using-built-in-unit-root-function" title="Permalink to this headline">¶</a></h2>
 <p>The built in functions are part of the
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize">scipy.optimize</a> library.
 The functions work very similar to the ones that we just wrote ourselves.</p>
@@ -625,10 +626,10 @@ solver algorithm with a starting guess of the root position.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Optimization.html" class="btn btn-neutral float-right" title="18. Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Optimization.html" class="btn btn-neutral float-right" title="19. Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Random.html" class="btn btn-neutral float-left" title="16. Random Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Random2.html" class="btn btn-neutral float-left" title="17. Random Numbers II: An Infectious Disease Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

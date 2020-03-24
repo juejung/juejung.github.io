@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>19. Constrained Optimization &mdash; Computational Economics 1.0 documentation</title>
+  <title>20. Constrained Optimization &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. Machine Learning I: Introduction to Machine Learning" href="Slides_MachineLearning_1.html" />
-    <link rel="prev" title="18. Optimization" href="Slides_Optimization.html" /> 
+    <link rel="next" title="21. Machine Learning I: Introduction to Machine Learning" href="Slides_MachineLearning_1.html" />
+    <link rel="prev" title="19. Optimization" href="Slides_Optimization.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,24 +104,25 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">15. Regular Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">16. Random Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">17. Root Finding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">18. Optimization</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">19. Constrained Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-cake-eating-problem">19.1. The Cake Eating Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution">19.2. Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formally">19.3. Formally</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#analytical-solution">19.4. Analytical Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solving-the-problem">19.5. Solving the Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-the-solution">19.6. Plotting the Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-in-python">19.7. Numerical Solution in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random2.html">17. Random Numbers II: An Infectious Disease Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">19. Optimization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">20. Constrained Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-cake-eating-problem">20.1. The Cake Eating Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">20.2. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formally">20.3. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analytical-solution">20.4. Analytical Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-the-problem">20.5. Solving the Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-solution">20.6. Plotting the Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-in-python">20.7. Numerical Solution in Python</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">20. Machine Learning I: Introduction to Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">21. Machine Learning II: Categorization Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">22. A Simple OLG Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">23. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">24. Growth Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">25. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
 </ul>
 
             
@@ -167,7 +168,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">19. </span>Constrained Optimization</li>
+      <li><span class="section-number">20. </span>Constrained Optimization</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,7 +188,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="constrained-optimization">
-<h1><span class="section-number">19. </span>Constrained Optimization<a class="headerlink" href="#constrained-optimization" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">20. </span>Constrained Optimization<a class="headerlink" href="#constrained-optimization" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="datastructures">
 <p class="sidebar-title">Section Learning Objectives</p>
 <blockquote>
@@ -199,7 +200,7 @@
 </div></blockquote>
 </div>
 <span class="target" id="index-0"></span><div class="section" id="the-cake-eating-problem">
-<h2><span class="section-number">19.1. </span>The Cake Eating Problem<a class="headerlink" href="#the-cake-eating-problem" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.1. </span>The Cake Eating Problem<a class="headerlink" href="#the-cake-eating-problem" title="Permalink to this headline">¶</a></h2>
 <p>Once upon a time there was a little girl who got a cake. The girl decided to
 eat the cake all alone. But she was not sure when she wanted to eat the cake.
 First, she thought of eating the whole cake right away. But then, nothing would
@@ -214,7 +215,7 @@ spoiled if she kept it more than nine days. Therefore, she would eat the cake
 in the first ten days. Yet, how much should she eat everyday?</p>
 </div>
 <div class="section" id="solution">
-<h2><span class="section-number">19.2. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.2. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>She thought of eating everyday a piece of the same size.</p></li>
 <li><p>But if eating cake today is better than waiting for tomorrow, how can it possibly
@@ -226,7 +227,7 @@ would last ten days long and nothing would be left in the end</p></li>
 </ul>
 </div>
 <div class="section" id="formally">
-<h2><span class="section-number">19.3. </span>Formally<a class="headerlink" href="#formally" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.3. </span>Formally<a class="headerlink" href="#formally" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Assume preferences in every period <span class="math notranslate nohighlight">\(t\)</span> follow: <span class="math notranslate nohighlight">\(u(c_t) = ln(c_t)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(c_t\)</span> is the amount of cake consumed in period <span class="math notranslate nohighlight">\(t\)</span></p></li>
@@ -249,7 +250,7 @@ period <span class="math notranslate nohighlight">\(t=0,..,T\)</span></p></li>
 \[k_t \ge 0\]</div>
 </div>
 <div class="section" id="analytical-solution">
-<h2><span class="section-number">19.4. </span>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.4. </span>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Substituting the constraint into the life-time consumption path we get:</p></li>
 </ul>
@@ -281,7 +282,7 @@ period.</p></li>
 </div>
 </div>
 <div class="section" id="solving-the-problem">
-<h2><span class="section-number">19.5. </span>Solving the Problem<a class="headerlink" href="#solving-the-problem" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.5. </span>Solving the Problem<a class="headerlink" href="#solving-the-problem" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Plugging the functional form for the utility function into the Euler equation we get:</p></li>
 </ul>
@@ -329,7 +330,7 @@ which we can solve for <span class="math notranslate nohighlight">\(c_{T-2}\)</s
 </div>
 </div>
 <div class="section" id="plotting-the-solution">
-<h2><span class="section-number">19.6. </span>Plotting the Solution<a class="headerlink" href="#plotting-the-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.6. </span>Plotting the Solution<a class="headerlink" href="#plotting-the-solution" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For any size <span class="math notranslate nohighlight">\(k+0\)</span> and time horizon <span class="math notranslate nohighlight">\(T\)</span> we can now calculate the optimal consumption in each period</p></li>
 <li><p>Example: <span class="math notranslate nohighlight">\(k_0 = 50\)</span>, <span class="math notranslate nohighlight">\(T=10\)</span>, and <span class="math notranslate nohighlight">\(\beta = 0.96\)</span></p></li>
@@ -398,7 +399,7 @@ above and plot the optimal consumption path over time.</p>
 <a class="reference internal image-reference" href="_images/Slides_Cake_Cake_1.png"><img alt="_images/Slides_Cake_Cake_1.png" src="_images/Slides_Cake_Cake_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="numerical-solution-in-python">
-<h2><span class="section-number">19.7. </span>Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.7. </span>Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For a numerical solution we use the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> package</p></li>
 <li><p>The routine <code class="docutils literal notranslate"><span class="pre">fmin_slsqp</span></code> minimizes constrained non-linear functions</p></li>
@@ -519,10 +520,10 @@ consumption. Still, you want to eat a bit of cake every period.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_MachineLearning_1.html" class="btn btn-neutral float-right" title="20. Machine Learning I: Introduction to Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_MachineLearning_1.html" class="btn btn-neutral float-right" title="21. Machine Learning I: Introduction to Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_Optimization.html" class="btn btn-neutral float-left" title="18. Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Optimization.html" class="btn btn-neutral float-left" title="19. Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

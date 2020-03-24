@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>17. Random Numbers II: An Infectious Disease Simulation &mdash; Computational Economics 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="18. Root Finding" href="Slides_Root.html" />
+    <link rel="prev" title="16. Random Numbers" href="Slides_Random.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Computational Economics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_3.html">12. Working with Data III: Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">15. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">16. Random Numbers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">17. Random Numbers II: An Infectious Disease Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#defining-a-class-object-of-a-person">17.1. Defining a Class Object of a Person</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-functions-for-plotting-and-moving-individuals">17.2. Defining Functions for Plotting and Moving Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-simulation">17.3. Running the Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">17.4. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">17.5. Self-Check Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">19. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">20. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">17. </span>Random Numbers II: An Infectious Disease Simulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Slides_Random2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="random-numbers-ii-an-infectious-disease-simulation">
+<h1><span class="section-number">17. </span>Random Numbers II: An Infectious Disease Simulation<a class="headerlink" href="#random-numbers-ii-an-infectious-disease-simulation" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="random-numbers-ii">
+<p class="sidebar-title">Section Learning Objectives</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Write an infectious disease simulation</p></li>
+<li><p>Random Objects</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p id="index-0">In this chapter we write a simple simulation of how a virus infection can
+spread within a population.
+The simulation makes the following assumptions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At the start only 1 percent of the population is sick</p></li>
+<li><p>A person can move on a grid in the following eight directions:</p>
+<ol class="arabic simple">
+<li><p>North</p></li>
+<li><p>NorthEast</p></li>
+<li><p>East</p></li>
+<li><p>SouthEast</p></li>
+<li><p>South</p></li>
+<li><p>SouthWest</p></li>
+<li><p>West</p></li>
+<li><p>NorthWest</p></li>
+</ol>
+</li>
+<li><p>The size of the movement is regulated by a variable <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code>. If this
+variable is equal to zero, the person does not move at all (i.e., she self
+isolates).</p></li>
+<li><p>If a person who is healthy lands on a field on the grid adjacent to a
+person who is sick, the healthy person will get infected.</p></li>
+<li><p>If a person is sick for more than 14 rounds (days), then she will have
+developed full immunity. She will then be healthy again and cannot be
+infected anymore.</p></li>
+<li><p>Nobody dies</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="defining-a-class-object-of-a-person">
+<h2><span class="section-number">17.1. </span>Defining a Class Object of a Person<a class="headerlink" href="#defining-a-class-object-of-a-person" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#%% Class Definition</span>
+<span class="k">class</span> <span class="nc">person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">0.01</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span>
+    <span class="c1">#end</span>
+
+    <span class="k">def</span> <span class="nf">movePerson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jumpSize</span><span class="p">):</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+
+        <span class="c1"># Check boundaries</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">&gt;</span> <span class="n">xmax</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span><span class="mi">0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">&gt;</span> <span class="n">ymax</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="c1">#end</span>
+
+    <span class="k">def</span> <span class="nf">updateHealth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">):</span>
+        <span class="c1"># Neighborhood</span>
+        <span class="n">neighxv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">neighyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">neighxv</span><span class="p">[</span><span class="n">neighxv</span> <span class="o">&gt;</span> <span class="n">xmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="n">neighxv</span><span class="p">[</span><span class="n">neighxv</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">neighyv</span><span class="p">[</span><span class="n">neighyv</span> <span class="o">&gt;</span> <span class="n">ymax</span><span class="p">]</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="n">neighyv</span><span class="p">[</span><span class="n">neighyv</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">neighv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">neighxv</span><span class="p">,</span><span class="n">neighyv</span><span class="p">)):</span>
+            <span class="n">neighv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">boardXY</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+        <span class="c1">#end</span>
+
+        <span class="c1"># If you bump into a sick field, make guy sick</span>
+        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly sick</span>
+        <span class="c1">#end</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># recovered and healthy again</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1">#end</span>
+
+        <span class="k">return</span>
+    <span class="c1">#end</span>
+
+<span class="c1">#end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-functions-for-plotting-and-moving-individuals">
+<h2><span class="section-number">17.2. </span>Defining Functions for Plotting and Moving Individuals<a class="headerlink" href="#defining-functions-for-plotting-and-moving-individuals" title="Permalink to this headline">¶</a></h2>
+<p>We next define functions that allow us to make interim plots after each
+simulation round. One simulation round represents a day in our setup.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_plotPeople</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Healthy/Sick Population&#39;</span><span class="p">)</span>
+
+    <span class="n">xposSickv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposSickv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">xposHealthyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposHealthyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
+        <span class="n">person</span> <span class="o">=</span> <span class="n">persList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">xposSickv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposSickv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposSickv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposSickv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xposHealthyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposHealthyv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposHealthyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposHealthyv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposSickv</span><span class="p">,</span> <span class="n">yposSickv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposHealthyv</span><span class="p">,</span> <span class="n">yposHealthyv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Infected&#39;</span><span class="p">,</span> <span class="s1">&#39;Healthy&#39;</span><span class="p">],</span> <span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>The next function updates the population of people by first allowing the person
+to move according to the <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> variable. If <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> equals zero the
+person self isolates and does not move at all.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">):</span>
+    <span class="n">nrSick</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
+        <span class="n">person</span> <span class="o">=</span> <span class="n">persList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">movePerson</span><span class="p">(</span><span class="n">jumpSize</span><span class="p">)</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+    <span class="c1">#end</span>
+    <span class="c1">#Update board</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
+        <span class="n">person</span> <span class="o">=</span> <span class="n">persList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nrSick</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">boardXY</span><span class="p">[</span><span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+    <span class="k">return</span> <span class="n">nrSick</span><span class="p">,</span> <span class="n">boardXY</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">):</span>
+    <span class="n">persList</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">boardXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">xmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">nrSickv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">maxIter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Make person list</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
+        <span class="c1"># Make person</span>
+        <span class="n">person_i</span> <span class="o">=</span> <span class="n">person</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">)</span>
+        <span class="c1"># If person is sick update board</span>
+        <span class="k">if</span> <span class="n">person_i</span><span class="o">.</span><span class="n">sick</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">boardXY</span><span class="p">[</span><span class="n">person_i</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="n">person_i</span><span class="o">.</span><span class="n">ypos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+        <span class="c1"># Store person in list</span>
+        <span class="n">persList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">person_i</span><span class="p">)</span>
+    <span class="c1">#end</span>
+
+    <span class="k">for</span> <span class="n">i_loop</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxIter</span><span class="p">):</span>
+        <span class="n">nrSickv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">],</span> <span class="n">boardXY</span> <span class="o">=</span> \
+            <span class="n">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">i_loop</span> <span class="o">&lt;</span><span class="mi">10</span> <span class="ow">or</span> <span class="n">i_loop</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maxIter</span><span class="o">-</span><span class="mi">5</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------------------&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round </span><span class="si">{}</span><span class="s1"> nr. sick </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_loop</span><span class="p">,</span> <span class="n">nrSickv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="p">((</span><span class="n">i_loop</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i_plotBoard</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="n">f_plotPeople</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">)</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+
+    <span class="k">return</span> <span class="n">nrSickv</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-the-simulation">
+<h2><span class="section-number">17.3. </span>Running the Simulation<a class="headerlink" href="#running-the-simulation" title="Permalink to this headline">¶</a></h2>
+<p>We first set some basic parameters for our simulation. The number of days we
+want to simulate is determined by variable <code class="docutils literal notranslate"><span class="pre">maxIter</span></code>. The size of the grid
+where the people live is guided by <code class="docutils literal notranslate"><span class="pre">xmax</span></code> and <code class="docutils literal notranslate"><span class="pre">ymax</span></code> and the number of
+individuals is determined by <code class="docutils literal notranslate"><span class="pre">nrPeople</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="c1"># Set random seed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">156789</span><span class="p">)</span>
+
+<span class="c1"># Maximum days to simulate</span>
+<span class="n">maxIter</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="c1"># Size of their world</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="c1"># People</span>
+<span class="n">nrPeople</span> <span class="o">=</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>We next run our simulation for three different cases.</p>
+<ol class="arabic simple">
+<li><p>In the first everybody is allowed to move freely. We set <code class="docutils literal notranslate"><span class="pre">jumpSize</span> <span class="pre">=</span> <span class="pre">2</span></code> which
+allows for this wider movement. This entails a high risk of getting infected.</p></li>
+<li><p>In the second case the government recommends some restrictions on the movement
+of the individuals which we simulate by setting <code class="docutils literal notranslate"><span class="pre">jumpSize</span> <span class="pre">=</span> <span class="pre">1</span></code>. People move
+less, their risk of getting infected is therefore somewhat lower.</p></li>
+<li><p>In the final case, the government completely locks down the country and
+everybody is “forced to” self-isolate so that the movement parameter <code class="docutils literal notranslate"><span class="pre">jumpSize</span>
+<span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+</ol>
+<p>We start start the simulation with a case where the government is not
+restricting any of the movements so that <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> is set to a “large” value
+of 2.  People are allowed to move a lot and are at great risk of getting
+infected if they bump into someone who is sick i.e. land on an adjacent field
+of a sick person. We also plot the entire grid every 10 days so you can track
+the changes.  The simulation tracks the number of sick people on each day of
+the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv1</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 1: Move a lot (no restrictions)</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSick1v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">6</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">8</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">12</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">15</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">20</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">27</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">36</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">50</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">64</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">78</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">67</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_1.png"><img alt="_images/Slides_Random2_figure6_1.png" src="_images/Slides_Random2_figure6_1.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_2.png"><img alt="_images/Slides_Random2_figure6_2.png" src="_images/Slides_Random2_figure6_2.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_3.png"><img alt="_images/Slides_Random2_figure6_3.png" src="_images/Slides_Random2_figure6_3.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_4.png"><img alt="_images/Slides_Random2_figure6_4.png" src="_images/Slides_Random2_figure6_4.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_5.png"><img alt="_images/Slides_Random2_figure6_5.png" src="_images/Slides_Random2_figure6_5.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_6.png"><img alt="_images/Slides_Random2_figure6_6.png" src="_images/Slides_Random2_figure6_6.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure6_7.png"><img alt="_images/Slides_Random2_figure6_7.png" src="_images/Slides_Random2_figure6_7.png" style="width: 15cm;" /></a>
+<p>We next simulate the case where the <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> variable is set to one. People
+are allowed to move (somewhat) and are at risk of getting infected if they bump
+into someone who is sick i.e. land on an adjacent field of a sick person. We
+also plot the entire grid for every 10 days so you can track the changes.
+The simulation tracks the number of sick people on
+for each day of the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv2</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 2: Some distancing</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSick2v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">8</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">10</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">12</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">17</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">22</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">31</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">33</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">35</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">41</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">47</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">67</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Finally, the government locks everything down and nobody is allowed to move
+anymore. The <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> variable is set to zero. We suppress the
+graphical output for this case since nothing much happens here. The number of
+infected people stays roughly constant and after 14 days everybody is immune
+and nobody is sick anymore. The simulation tracks the number of sick people on
+for each day of the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv3</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 3: Total Isolation</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSick3v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">5</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">6</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">67</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>We now generate a plot of all three cases over time where we plot the total
+number of infected people on each day.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plot Barchard of Nr. of Sick People</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrSick1v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrSick2v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrSick3v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nr. of Sick over Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;No Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Some Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Isolation&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time (sec)&quot;</span><span class="p">,(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span> <span class="mf">5.734219474004931</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure9_1.png"><img alt="_images/Slides_Random2_figure9_1.png" src="_images/Slides_Random2_figure9_1.png" style="width: 15cm;" /></a>
+<p>Without any distancing the virus spreads very quickly and leads to the highest
+number if infections per day which can easily overwhelm any healthcare system.</p>
+<p>With some distancing the peak is much lower but more spread out. While in this
+case the whole pandemic lasts longer, the total number of infected people on
+any given day is smaller and might be more manageable for a healthcare system.</p>
+<p>Finally, we can clearly see that with total isolation the infection rate is very low and
+the virus dies out after about two weeks. Keep in mind, in this scenario nobody
+is leaving their house for two weeks at all.</p>
+</div>
+<div class="section" id="key-concepts-and-summary">
+<h2><span class="section-number">17.4. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Drawing random numbers</p></li>
+<li><p>Writing a simple simulation</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-check-questions">
+<h2><span class="section-number">17.5. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Change the simulation to include more people</p></li>
+<li><p>Change the simulation to allow for death</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Slides_Root.html" class="btn btn-neutral float-right" title="18. Root Finding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Slides_Random.html" class="btn btn-neutral float-left" title="16. Random Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Juergen Jung
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
