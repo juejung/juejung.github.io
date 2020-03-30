@@ -102,7 +102,15 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Data_3.html">12. Working with Data III: Case Study</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Working with Data from the Web I</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#beautiful-soup-library">13.1. Beautiful Soup Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scraping-youtube">13.2. Scraping YouTube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scraping-youtube">13.2. Scraping YouTube</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">13.2.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-information-from-html-code">13.2.2. Extracting Information from html Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storing-information-in-a-dataframe">13.2.3. Storing Information in a DataFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-the-view-count-for-the-first-video">13.2.4. Extract the View Count for the First Video</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-the-likes-and-dislikes-for-the-first-video">13.2.5. Extract the Likes and Dislikes for the First Video</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-remaining-video-info-using-loop">13.2.6. Extract Remaining Video Info Using Loop</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-deal-with-errors">13.3. How to Deal with Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#more-tutorials">13.4. More Tutorials</a></li>
 </ul>
@@ -233,6 +241,8 @@ chapter on Regular Expressions in these lecture notes.</p>
 </div>
 <div class="section" id="scraping-youtube">
 <h2><span class="section-number">13.2. </span>Scraping YouTube<a class="headerlink" href="#scraping-youtube" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3><span class="section-number">13.2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>In this exercise we will download all video links from the
 <a class="reference external" href="https://www.youtube.com/">YouTube</a> starting page. We will extract the title
 for each video, its number of views, likes and dislikes. We then store
@@ -268,6 +278,9 @@ Windows you could try:</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="extracting-information-from-html-code">
+<h3><span class="section-number">13.2.2. </span>Extracting Information from html Code<a class="headerlink" href="#extracting-information-from-html-code" title="Permalink to this headline">¶</a></h3>
 <p>Next  look at the source code of the YouTube webpage (right click on the webpage
 and select <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">page</span> <span class="pre">source</span></code>) and convince yourself that
 the links to the videos are all part of the
@@ -315,23 +328,24 @@ element of our extracted list.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">linkSections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;a aria-hidden=&quot;true&quot; class=&quot;yt-uix-sessionlink spf-link&quot; data-
-sessionlink=&quot;itct=CFYQlDUYDCITCLWj05yvtugCFYLhwQod4XMPoDIKZy1oaWdoLXRydloPRkV3aGF0X3RvX3dhdGNo&quot;
-href=&quot;/watch?v=x_R-qzjZrKQ&quot;&gt;&lt;div class=&quot;yt-thumb video-thumb&quot;&gt;&lt;span
-class=&quot;yt-thumb-simple&quot;&gt;
-&lt;img alt=&quot;&quot; data-thumb=&quot;https://i.ytimg.com/vi/x_R-
-qzjZrKQ/hqdefault.jpg?sqp=-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&amp;amp;rs=AOn4CLDFYSwPH1DIhcjkWbNj0Vit2WvrwA&quot;
-data-ytimg=&quot;1&quot; height=&quot;110&quot; onload=&quot;;window.__ytRIL &amp;amp;&amp;amp;
-__ytRIL(this)&quot; src=&quot;/yts/img/pixel-vfl3z5WfW.gif&quot; width=&quot;196&quot;/&gt;
-&lt;span aria-hidden=&quot;true&quot; class=&quot;video-
-time&quot;&gt;11:45&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-sessionlink spf-link&quot;</span> <span class="n">data</span><span class="o">-</span>
+<span class="n">sessionlink</span><span class="o">=</span><span class="s2">&quot;itct=CE8QlDUYDCITCLnPhtOJw-</span>
+<span class="n">gCFQq8wQodiykNfzIKZy1oaWdoLXRydloPRkV3aGF0X3RvX3dhdGNo</span><span class="s2">&quot;</span>
+<span class="n">href</span><span class="o">=</span><span class="s2">&quot;/watch?v=BqbfT5r-DzA&quot;</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-thumb video-thumb&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span>
+<span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-thumb-simple&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">data</span><span class="o">-</span>
+<span class="n">thumb</span><span class="o">=</span><span class="s2">&quot;https://i.ytimg.com/vi/BqbfT5r-DzA/hqdefault.jpg?sqp=-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&amp;amp;rs=AOn4CLCXRKXynrkq7kA90QUE7SIWtRpaBw&quot;</span>
+<span class="n">data</span><span class="o">-</span><span class="n">ytimg</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;110&quot;</span> <span class="n">onload</span><span class="o">=</span><span class="s2">&quot;;window.__ytRIL &amp;amp;&amp;amp;</span>
+<span class="n">__ytRIL</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="s2">&quot; src=&quot;</span><span class="o">/</span><span class="n">yts</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">pixel</span><span class="o">-</span><span class="n">vfl3z5WfW</span><span class="o">.</span><span class="n">gif</span><span class="s2">&quot; width=&quot;</span><span class="mi">196</span><span class="s2">&quot;/&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;video-</span>
+<span class="n">time</span><span class="s2">&quot;&gt;2:10&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;</span>
 </pre></div>
 </div>
 <p>Next let us have a look at the link to the video in that section.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">linkSections</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/watch?v=x_R-qzjZrKQ
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/watch?v=BqbfT5r-DzA
 </pre></div>
 </div>
 <p>If we combine this with <code class="docutils literal notranslate"><span class="pre">https://www.youtube.com/</span></code> that we have already
@@ -349,11 +363,14 @@ can copy/paste into a browser.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">link_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/watch?v=x_R-qzjZrKQ&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=wbrXnHUwhYA&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=kN9uR1hAOPk&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=LZgDSYXZe90&#39;</span><span class="p">,</span>
-<span class="s1">&#39;/watch?v=qTJeHfqP36E&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=bbhiYH3sRk4&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;/watch?v=BqbfT5r-DzA&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=4wS4PYnWSrw&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=l3Rm8avK6kM&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=EoLQUdt8xsk&#39;</span><span class="p">,</span>
+<span class="s1">&#39;/watch?v=2AdUsBwuJSk&#39;</span><span class="p">,</span> <span class="s1">&#39;/watch?v=BWb8YqAVTgw&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="storing-information-in-a-dataframe">
+<h3><span class="section-number">13.2.3. </span>Storing Information in a DataFrame<a class="headerlink" href="#storing-information-in-a-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>We then create an empty data frame that has the same number of rows as our
 list. In addition we add empty columns so that we can store the title, view,
 like and dislike information later on.</p>
@@ -395,9 +412,249 @@ read from this object which then ends up in errors such as:</p>
 </div>
 <p>We learn how to deal with such issues in the next section.</p>
 </div>
-<p>Here is the script that goes to each single video on youtube and extracts the
-additional information such as title, views, likes, and dislikes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)):</span>
+</div>
+<div class="section" id="extract-the-view-count-for-the-first-video">
+<h3><span class="section-number">13.2.4. </span>Extract the View Count for the First Video<a class="headerlink" href="#extract-the-view-count-for-the-first-video" title="Permalink to this headline">¶</a></h3>
+<p>Let us now start with the link to the first video. We again read in the html
+code and decode it as a soup object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Open first youtube video link</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># Assign it to Soup object</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
+<span class="c1"># To suppress error specify the filter explicitly.</span>
+<span class="c1">#soup = BeautifulSoup(html.decode(&#39;utf-8&#39;, &#39;ignore&#39;), features=&quot;lxml&quot;)</span>
+</pre></div>
+</div>
+<p>We first extract the title. This is such a common thing that it is
+pre-programmed as a function in of the Beautiful Soup library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract info and store in dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We are next looking for the information about the view counts. This requires a
+bit of detective works. After staring at the html code for a bit we find that
+the number of views is embedded in an html block with the keywork
+<code class="docutils literal notranslate"><span class="pre">.watch-view-count'</span></code>. We use this info and select the block of text where
+this occurs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;watch-view-count&quot;</span><span class="o">&gt;</span><span class="mi">448</span><span class="p">,</span><span class="mi">950</span> <span class="n">views</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This returns a list, so let us just grab the content (first entry) of this
+list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;watch-view-count&quot;</span><span class="o">&gt;</span><span class="mi">448</span><span class="p">,</span><span class="mi">950</span> <span class="n">views</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now let us just get the text between the html tags using the <code class="docutils literal notranslate"><span class="pre">get_text()</span></code>
+function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">448</span><span class="p">,</span><span class="mi">950</span> <span class="n">views</span>
+</pre></div>
+</div>
+<p>Ok, our number is in there. Let us now split this string into separate strings
+so that we can grab our number more easily.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;448,950&#39;</span><span class="p">,</span> <span class="s1">&#39;views&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Almost there, grab the first element of this list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">448</span><span class="p">,</span><span class="mi">950</span>
+</pre></div>
+</div>
+<p>Now we use Regular Expressions and search for everything that is not a number
+and replace that with nothing. In other words you delete everything that is not
+a number or digit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">448950</span>
+</pre></div>
+</div>
+<p>This is still a string, so let us retype it as an integer number so we can
+assign it into our dataframe and do math with it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">448950</span>
+</pre></div>
+</div>
+<p>And finally stick it into our dataframe in the <code class="docutils literal notranslate"><span class="pre">Views</span></code> column at row zero,
+which is the first row.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Views&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> \
+            <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Let us have a quick look at the dataframe to see whether it has been stored in
+the correct position.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                          Links  \
+0  https://www.youtube.com//watch?v=BqbfT5r-DzA
+1  https://www.youtube.com//watch?v=4wS4PYnWSrw
+2  https://www.youtube.com//watch?v=l3Rm8avK6kM
+3  https://www.youtube.com//watch?v=EoLQUdt8xsk
+4  https://www.youtube.com//watch?v=2AdUsBwuJSk
+
+                                               Title   Views Likes
+Dislikes
+0  Trump extends coronavirus guidelines until Apr...  448950   NaN
+NaN
+1                                                NaN     NaN   NaN
+NaN
+2                                                NaN     NaN   NaN
+NaN
+3                                                NaN     NaN   NaN
+NaN
+4                                                NaN     NaN   NaN
+NaN
+</pre></div>
+</div>
+</div>
+<div class="section" id="extract-the-likes-and-dislikes-for-the-first-video">
+<h3><span class="section-number">13.2.5. </span>Extract the Likes and Dislikes for the First Video<a class="headerlink" href="#extract-the-likes-and-dislikes-for-the-first-video" title="Permalink to this headline">¶</a></h3>
+<p>Next we do a similar procedure extracting the “likes” information. After some
+digging in the html code of the web page we find that the “likes” information
+is in a text block with the <code class="docutils literal notranslate"><span class="pre">button</span></code> tag and the button title “I like this”.
+We use this in the <code class="docutils literal notranslate"><span class="pre">find_all()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">soup</span></code> object we have created
+above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extracting number of likes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">button</span> <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;like this video along with 4,457 other people&quot;</span>
+<span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-button yt-uix-button-size-default yt-uix-button-opacity</span>
+<span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">has</span><span class="o">-</span><span class="n">icon</span> <span class="n">no</span><span class="o">-</span><span class="n">icon</span><span class="o">-</span><span class="n">markup</span> <span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">renderer</span><span class="o">-</span><span class="n">like</span><span class="o">-</span><span class="n">button</span>
+<span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">renderer</span><span class="o">-</span><span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">unclicked</span> <span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">clickcard</span><span class="o">-</span><span class="n">target</span> <span class="n">yt</span><span class="o">-</span>
+<span class="n">uix</span><span class="o">-</span><span class="n">tooltip</span><span class="s2">&quot; data-force-position=&quot;</span><span class="n">true</span><span class="s2">&quot; data-orientation=&quot;</span><span class="n">vertical</span><span class="s2">&quot;</span>
+<span class="n">data</span><span class="o">-</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;bottomright&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;;return false;&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;I like</span>
+<span class="n">this</span><span class="s2">&quot; type=&quot;</span><span class="n">button</span><span class="s2">&quot;&gt;&lt;span class=&quot;</span><span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">button</span><span class="o">-</span>
+<span class="n">content</span><span class="s2">&quot;&gt;4,457&lt;/span&gt;&lt;/button&gt;]</span>
+</pre></div>
+</div>
+<p>We almost have it. Let us get rid of the comma using the <code class="docutils literal notranslate"><span class="pre">replace()</span></code>
+function. This function only works on strings, so we need to re-type the number
+we just had as a string using the <code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">button</span> <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;like this video along with 4457 other people&quot;</span>
+<span class="n">class</span><span class="o">=</span><span class="s2">&quot;yt-uix-button yt-uix-button-size-default yt-uix-button-opacity</span>
+<span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">has</span><span class="o">-</span><span class="n">icon</span> <span class="n">no</span><span class="o">-</span><span class="n">icon</span><span class="o">-</span><span class="n">markup</span> <span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">renderer</span><span class="o">-</span><span class="n">like</span><span class="o">-</span><span class="n">button</span>
+<span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">renderer</span><span class="o">-</span><span class="n">like</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="n">unclicked</span> <span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">clickcard</span><span class="o">-</span><span class="n">target</span> <span class="n">yt</span><span class="o">-</span>
+<span class="n">uix</span><span class="o">-</span><span class="n">tooltip</span><span class="s2">&quot; data-force-position=&quot;</span><span class="n">true</span><span class="s2">&quot; data-orientation=&quot;</span><span class="n">vertical</span><span class="s2">&quot;</span>
+<span class="n">data</span><span class="o">-</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;bottomright&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;;return false;&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;I like</span>
+<span class="n">this</span><span class="s2">&quot; type=&quot;</span><span class="n">button</span><span class="s2">&quot;&gt;&lt;span class=&quot;</span><span class="n">yt</span><span class="o">-</span><span class="n">uix</span><span class="o">-</span><span class="n">button</span><span class="o">-</span>
+<span class="n">content</span><span class="s2">&quot;&gt;4457&lt;/span&gt;&lt;/button&gt;]</span>
+</pre></div>
+</div>
+<p>Let us store this whole thing as variable <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let us just get the digits so that we can build our number again. Remember
+right now it is a string (i.e., a “word”) that we cannot do math with. So let’s
+look for all the digits of the number using Regular Expressions and then change
+or re-type it into a floating point number (i.e., a decimal number) using the
+<code class="docutils literal notranslate"><span class="pre">float()</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;4457&#39;</span><span class="p">,</span> <span class="s1">&#39;4457&#39;</span><span class="p">]</span>
+<span class="mf">4457.0</span>
+</pre></div>
+</div>
+<p>Here is the entire thing for “likes” and “dislikes” which works in an identical
+way.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extracting number of likes</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Extracting number of dislikes</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I dislike this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Let us have a look at the dataframe again.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                          Links  \
+0  https://www.youtube.com//watch?v=BqbfT5r-DzA
+1  https://www.youtube.com//watch?v=4wS4PYnWSrw
+2  https://www.youtube.com//watch?v=l3Rm8avK6kM
+3  https://www.youtube.com//watch?v=EoLQUdt8xsk
+4  https://www.youtube.com//watch?v=2AdUsBwuJSk
+
+                                               Title   Views Likes
+Dislikes
+0  Trump extends coronavirus guidelines until Apr...  448950  4457
+794
+1                                                NaN     NaN   NaN
+NaN
+2                                                NaN     NaN   NaN
+NaN
+3                                                NaN     NaN   NaN
+NaN
+4                                                NaN     NaN   NaN
+NaN
+</pre></div>
+</div>
+<p>Finally, here is  the entire code that extracts all the information for the
+first video:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># First video i.e., first element of the Links column in dataframe</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Open first youtube video link</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Links&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># Assign it to Soup object</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">),</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract info and store in dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+
+<span class="c1"># Extract number of views</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Views&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> \
+    <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-count&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># Extracting number of likes</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I like this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Likes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Extracting number of dislikes</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> \
+    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;I dislike this&#39;</span><span class="p">}))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extract-remaining-video-info-using-loop">
+<h3><span class="section-number">13.2.6. </span>Extract Remaining Video Info Using Loop<a class="headerlink" href="#extract-remaining-video-info-using-loop" title="Permalink to this headline">¶</a></h3>
+<p>We finally scrape all the other videos in the same way. In order to make this a
+bit nicer we simply put it into a loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">link_list</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> out of </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
 
@@ -423,27 +680,20 @@ additional information such as title, views, likes, and dislikes.</p>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dislikes&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">44</span>
-<span class="mi">1</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">44</span>
-<span class="mi">2</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">44</span>
-<span class="mi">3</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">44</span>
-<span class="mi">4</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">44</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">IndexError</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a39196d524bd</span><span class="o">&gt;</span> <span class="ow">in</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">TypeError</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">003</span><span class="n">d55c96af3</span><span class="o">&gt;</span> <span class="ow">in</span>
 <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-     <span class="mi">12</span>     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-     <span class="mi">13</span>     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Views&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> \
-<span class="o">---&gt;</span> <span class="mi">14</span>       <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.watch-view-</span>
-<span class="n">count</span><span class="s1">&#39;)[0].get_text().split()[0]))</span>
-     <span class="mi">15</span>
-     <span class="mi">16</span>     <span class="c1"># Extracting number of likes</span>
-<span class="ne">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">link_list</span><span class="p">)):</span>
+      <span class="mi">2</span>     <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+      <span class="mi">3</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> out of </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_list</span><span class="p">)))</span>
+      <span class="mi">4</span>
+      <span class="mi">5</span>     <span class="c1"># Open first youtube video link</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="nb">len</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="n">one</span> <span class="n">argument</span> <span class="p">(</span><span class="mi">2</span> <span class="n">given</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This may have resulted in an error if there was a server issues for one of the
 many videos we tried to scrape. Do not worry. We will fix this now.</p>
+</div>
 </div>
 <div class="section" id="how-to-deal-with-errors">
 <h2><span class="section-number">13.3. </span>How to Deal with Errors<a class="headerlink" href="#how-to-deal-with-errors" title="Permalink to this headline">¶</a></h2>
@@ -493,30 +743,30 @@ and continue running the commands that are there.</p>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0 out of 44
-1 out of 44
-2 out of 44
-3 out of 44
-4 out of 44
-Something is wrong with link 5
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0 out of 37
+1 out of 37
+Something is wrong with link 1
 Probably a server side issue!
 list index out of range
-Something is wrong with link 8
+2 out of 37
+3 out of 37
+4 out of 37
+Something is wrong with link 4
 Probably a server side issue!
 list index out of range
-Something is wrong with link 12
+Something is wrong with link 10
 Probably a server side issue!
 list index out of range
-Something is wrong with link 17
+Something is wrong with link 24
 Probably a server side issue!
 list index out of range
-40 out of 44
-41 out of 44
-42 out of 44
-Something is wrong with link 42
+33 out of 37
+Something is wrong with link 33
 Probably a server side issue!
 list index out of range
-43 out of 44
+34 out of 37
+35 out of 37
+36 out of 37
 </pre></div>
 </div>
 <p>If you write your code in this way, your program will never break in case you hit a bad
@@ -533,31 +783,31 @@ viewed video and print the first couple of entries:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                           Links  \
-41  https://www.youtube.com//watch?v=imW392e6XR0
-10  https://www.youtube.com//watch?v=aAOC71qqXxM
-14  https://www.youtube.com//watch?v=5NxKNrfqUjs
-18  https://www.youtube.com//watch?v=aiEuzkJDwUg
-27  https://www.youtube.com//watch?v=J5wqeUewAXk
+7   https://www.youtube.com//watch?v=OPdbdjctx2I
+9   https://www.youtube.com//watch?v=NaY91YjVbEM
+8   https://www.youtube.com//watch?v=cLmCJKT5ssw
+23  https://www.youtube.com//watch?v=sX8GgDgjq00
+11  https://www.youtube.com//watch?v=GYMF5mhuBUE
 
-                                                Title     Views
+                                                Title      Views
 Likes  \
-41          Celebrities Read Mean Tweets #7 - YouTube  81139548
-448604
-10            SIDEMEN TINDER IN REAL LIFE 2 - YouTube  35933634
-799583
-14  SIDEMEN $20,000 VS $200 HOLIDAY (EUROPE EDITIO...  20440460
-618473
-18  Wade Wilson (Deadpool) Deflecting Bullets Scen...  19781922
-135976
-27          Doing Charli D&#39;Amelio&#39;s Makeup! - YouTube  15884736
-839461
+7   Jimmy and Kevin Hart Ride a Roller Coaster - Y...  106701515
+824491
+9   Musical Genre Challenge with Ariana Grande - Y...   68500194
+1.2407e+06
+8   Jack Black Performs His Legendary Sax-A-Boom w...   47298301
+1.099e+06
+23  Tiniest Puppy Loves To Race Around On His Whee...   37824437
+593040
+11  Whisper Challenge Veterans Day Reunion Surpris...   34100237
+728669
 
    Dislikes
-41     7270
-10    21195
-14     7599
-18     3614
-27    31085
+7     14032
+9     21610
+8     17020
+23    14018
+11    10213
 </pre></div>
 </div>
 </div>
