@@ -108,8 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#defining-a-class-object-of-a-person">17.1. Defining a Class Object of a Person</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#defining-functions-for-plotting-and-moving-individuals">17.2. Defining Functions for Plotting and Moving Individuals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-simulation">17.3. Running the Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">17.4. Key Concepts and Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">17.5. Self-Check Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#s-i-r-model-a-more-complete-model-of-infectious-disease">17.4. S.I.R. Model - A More Complete Model of Infectious Disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">17.5. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">17.6. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
@@ -594,7 +595,7 @@ number of infected people on each day.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time (sec)&quot;</span><span class="p">,(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span> <span class="mf">5.734219474004931</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span> <span class="mf">5.733541349996813</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random2_figure9_1.png"><img alt="_images/Slides_Random2_figure9_1.png" src="_images/Slides_Random2_figure9_1.png" style="width: 15cm;" /></a>
@@ -607,8 +608,474 @@ any given day is smaller and might be more manageable for a healthcare system.</
 the virus dies out after about two weeks. Keep in mind, in this scenario nobody
 is leaving their house for two weeks at all.</p>
 </div>
+<div class="section" id="s-i-r-model-a-more-complete-model-of-infectious-disease">
+<h2><span class="section-number">17.4. </span>S.I.R. Model - A More Complete Model of Infectious Disease<a class="headerlink" href="#s-i-r-model-a-more-complete-model-of-infectious-disease" title="Permalink to this headline">¶</a></h2>
+<p>We next build on the previous section and introduce a more complete model. This
+model is referred to as SIR model as it track the number of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Susceptible individuals, the number of</p></li>
+<li><p>Infected (and therefore infectious) individuals, and the number of</p></li>
+<li><p>Recovered individuals</p></li>
+</ul>
+</div></blockquote>
+<p>in a dynamic framework. In addition, I also introduce a death probability that
+is experienced by the infected population only. In this model only the infected
+can die.</p>
+<p>Here are the codes. We again start with a class definition and change some of
+the wording. Individuals can be infected, recovered, or dead. If they are not
+any of these, they are currently healthy and susceptible to be infected. We therefore add new attributes to the person class.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">movePerson()</span></code> is unchanged. The method <code class="docutils literal notranslate"><span class="pre">updateHealth()</span></code>
+includes a <code class="docutils literal notranslate"><span class="pre">deathProbability</span></code> variable which is the probability that an
+infected person dies as well as a <code class="docutils literal notranslate"><span class="pre">recoveryTime</span></code> variable which is the time
+(in the simulation it is the number of simulation iterations) it takes for an
+infectious person to recover from the infection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#%% Class Definition</span>
+<span class="k">class</span> <span class="nc">person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">0.01</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span>
+    <span class="c1">#end</span>
+
+    <span class="k">def</span> <span class="nf">movePerson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jumpSize</span><span class="p">):</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">-=</span> <span class="n">jumpSize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
+
+        <span class="c1"># Check boundaries</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">&gt;</span> <span class="n">xmax</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span> <span class="o">=</span><span class="mi">0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">&gt;</span> <span class="n">ymax</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="c1">#end</span>
+
+    <span class="k">def</span> <span class="nf">updateHealth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">):</span>
+        <span class="c1"># Neighborhood</span>
+        <span class="n">neighxv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpos</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">neighyv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">neighxv</span><span class="p">[</span><span class="n">neighxv</span> <span class="o">&gt;</span> <span class="n">xmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="n">neighxv</span><span class="p">[</span><span class="n">neighxv</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">neighyv</span><span class="p">[</span><span class="n">neighyv</span> <span class="o">&gt;</span> <span class="n">ymax</span><span class="p">]</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="n">neighyv</span><span class="p">[</span><span class="n">neighyv</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">neighv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">neighxv</span><span class="p">,</span><span class="n">neighyv</span><span class="p">)):</span>
+            <span class="n">neighv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">boardXY</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+        <span class="c1">#end</span>
+
+        <span class="c1"># If you bump into a infected field, make guy infected</span>
+        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly infected</span>
+        <span class="c1">#end</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate whether infected person dies</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">deathProbability</span><span class="p">):</span>
+                <span class="c1"># Dead</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Still alive, we count nr. of days infected in this variable</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1">#end</span>
+        <span class="c1">#end</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">&gt;</span> <span class="n">recoveryTime</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># recovered and now immune --&gt; recovered status</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1">#end</span>
+
+        <span class="k">return</span>
+    <span class="c1">#end</span>
+
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>We next need to change the <code class="docutils literal notranslate"><span class="pre">f_update()</span></code> function so that it accounts for all
+four possible person types: susceptible, infectious, recovered, or diseased.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Functions</span>
+<span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persList</span><span class="p">:</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">movePerson</span><span class="p">(</span><span class="n">jumpSize</span><span class="p">)</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+    <span class="c1">#end</span>
+
+    <span class="c1">#Update board and count SIR cases</span>
+    <span class="n">nrInfected</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nrDead</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nrRecovered</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">infected</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nrInfected</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">boardXY</span><span class="p">[</span><span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">nrDead</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">recovered</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">nrRecovered</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+
+    <span class="n">nrSusceptible</span> <span class="o">=</span> <span class="n">nrPeople</span> <span class="o">-</span> <span class="n">nrInfected</span> <span class="o">-</span> <span class="n">nrRecovered</span> <span class="o">-</span> <span class="n">nrDead</span>
+
+    <span class="k">return</span> <span class="n">nrSusceptible</span><span class="p">,</span> <span class="n">nrInfected</span><span class="p">,</span> <span class="n">nrRecovered</span><span class="p">,</span> <span class="n">nrDead</span><span class="p">,</span> <span class="n">boardXY</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>Similar changes need to be made for the plot function. Each person type is
+attributed to a color:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Susceptible individuals are blue</p></li>
+<li><p>Infectious  individuals are red</p></li>
+<li><p>Recovered individuals are green, and</p></li>
+<li><p>Dead individuals are black.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_plotPeople</span><span class="p">(</span><span class="n">persList</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Susceptible/Infected/Recovered/Dead Population&#39;</span><span class="p">)</span>
+
+    <span class="n">xposSusceptiblev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposSusceptiblev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">xposInfectedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposInfectedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">xposRecoveredv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposRecoveredv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">xposDeadv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">yposDeadv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">infected</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">xposInfectedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposInfectedv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposInfectedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposInfectedv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">person</span><span class="o">.</span><span class="n">recovered</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">xposRecoveredv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposRecoveredv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposRecoveredv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposRecoveredv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">person</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">xposDeadv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposDeadv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposDeadv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposDeadv</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Susceptible</span>
+            <span class="n">xposSusceptiblev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xposSusceptiblev</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">xpos</span><span class="p">)</span>
+            <span class="n">yposSusceptiblev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yposSusceptiblev</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">ypos</span><span class="p">)</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposSusceptiblev</span><span class="p">,</span> <span class="n">yposSusceptiblev</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposInfectedv</span><span class="p">,</span> <span class="n">yposInfectedv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposRecoveredv</span><span class="p">,</span> <span class="n">yposRecoveredv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xposDeadv</span><span class="p">,</span> <span class="n">yposDeadv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> \
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Susceptible&#39;</span><span class="p">,</span> <span class="s1">&#39;Infected&#39;</span><span class="p">,</span> <span class="s1">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s1">&#39;Dead&#39;</span><span class="p">],</span> <span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>The simulation function is also updated so reflect the four person types that
+are now possible. We suppress some of the output to not clutter the screen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_simCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">):</span>
+    <span class="n">persList</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">boardXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">xmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># Tracking SIR model</span>
+    <span class="n">nrSusceptiblev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">maxIter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">nrInfectedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">maxIter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">nrRecoveredv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">maxIter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">nrDeadv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">maxIter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Make person list</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
+        <span class="c1"># Make person</span>
+        <span class="n">person_i</span> <span class="o">=</span> <span class="n">person</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">)</span>
+        <span class="c1"># If person is infected update board</span>
+        <span class="k">if</span> <span class="n">person_i</span><span class="o">.</span><span class="n">infected</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">boardXY</span><span class="p">[</span><span class="n">person_i</span><span class="o">.</span><span class="n">xpos</span><span class="p">,</span> <span class="n">person_i</span><span class="o">.</span><span class="n">ypos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#end</span>
+        <span class="c1"># Store person in list</span>
+        <span class="n">persList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">person_i</span><span class="p">)</span>
+    <span class="c1">#end</span>
+
+    <span class="k">for</span> <span class="n">i_loop</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxIter</span><span class="p">):</span>
+        <span class="n">nrSusceptiblev</span><span class="p">[</span><span class="n">i_loop</span><span class="p">],</span> <span class="n">nrInfectedv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">],</span> <span class="n">nrRecoveredv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">],</span> <span class="n">nrDeadv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">],</span> <span class="n">boardXY</span> <span class="o">=</span> \
+            <span class="n">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">i_loop</span> <span class="o">&lt;</span><span class="mi">3</span> <span class="ow">or</span> <span class="n">i_loop</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maxIter</span><span class="o">-</span><span class="mi">3</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------------------&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round </span><span class="si">{}</span><span class="s1"> nr. Susceptible </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_loop</span><span class="p">,</span> <span class="n">nrSusceptiblev</span><span class="p">[</span><span class="n">i_loop</span><span class="p">]))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round </span><span class="si">{}</span><span class="s1"> nr. Infected    </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_loop</span><span class="p">,</span> <span class="n">nrInfectedv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">]))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round </span><span class="si">{}</span><span class="s1"> nr. Recovered   </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_loop</span><span class="p">,</span> <span class="n">nrDeadv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">]))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round </span><span class="si">{}</span><span class="s1"> nr. dead        </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_loop</span><span class="p">,</span> <span class="n">nrDeadv</span><span class="p">[</span><span class="n">i_loop</span><span class="p">]))</span>
+
+
+        <span class="k">if</span> <span class="p">((</span><span class="n">i_loop</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i_plotBoard</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="n">f_plotPeople</span><span class="p">(</span><span class="n">persList</span><span class="p">)</span>
+        <span class="c1">#end</span>
+    <span class="c1">#end</span>
+
+    <span class="k">return</span> <span class="n">nrSusceptiblev</span><span class="p">,</span> <span class="n">nrInfectedv</span><span class="p">,</span> <span class="n">nrRecoveredv</span><span class="p">,</span> <span class="n">nrDeadv</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>We finally introduce a new plot function that tracks all for types over time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plot Time Series of all different types</span>
+<span class="k">def</span> <span class="nf">f_plotTimeSeries</span><span class="p">(</span><span class="n">nrSusceptiblev</span><span class="p">,</span> <span class="n">nrInfectedv</span><span class="p">,</span> <span class="n">nrRecoveredv</span><span class="p">,</span> <span class="n">nrDeadv</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrSusceptiblev</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrInfectedv</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrRecoveredv</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrDeadv</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nr. Susceptible, Infected, Recovered, and Dead over Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Susceptible&#39;</span><span class="p">,</span> <span class="s1">&#39;Infected&#39;</span><span class="p">,</span> <span class="s1">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s1">&#39;Dead&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+    <span class="c1"># Customize the major grid</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+    <span class="c1"># Customize the minor grid</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">#end</span>
+</pre></div>
+</div>
+<p>We are now ready to start the simulation. We again define the core parameters
+of the model. The two new parameters are <code class="docutils literal notranslate"><span class="pre">deathProbability</span></code> and
+<code class="docutils literal notranslate"><span class="pre">recoveryTime</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">156789</span><span class="p">)</span>
+
+<span class="c1"># Maximum days to simulate</span>
+<span class="n">maxIter</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="c1"># Size of their world</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="c1"># People</span>
+<span class="n">nrPeople</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Death probability when infected</span>
+<span class="n">deathProbability</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="c1"># Recovery time from infection</span>
+<span class="n">recoveryTime</span> <span class="o">=</span> <span class="mi">14</span>
+</pre></div>
+</div>
+<p>We now run the first case where we assume that the government does nothing and
+everybody in the economy (or simulation) is free to move 2 steps in any
+direction.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 1: Move a lot (no restrictions)</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSusceptible1v</span><span class="p">,</span> <span class="n">nrInfected1v</span><span class="p">,</span> <span class="n">nrRecovered1v</span><span class="p">,</span> <span class="n">nrDead1v</span> \
+    <span class="o">=</span> <span class="n">f_simCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">195</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">5</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">193</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">187</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">13</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">56</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">56</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">56</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">56</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_1.png"><img alt="_images/Slides_Random2_figure16_1.png" src="_images/Slides_Random2_figure16_1.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_2.png"><img alt="_images/Slides_Random2_figure16_2.png" src="_images/Slides_Random2_figure16_2.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_3.png"><img alt="_images/Slides_Random2_figure16_3.png" src="_images/Slides_Random2_figure16_3.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_4.png"><img alt="_images/Slides_Random2_figure16_4.png" src="_images/Slides_Random2_figure16_4.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_5.png"><img alt="_images/Slides_Random2_figure16_5.png" src="_images/Slides_Random2_figure16_5.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_6.png"><img alt="_images/Slides_Random2_figure16_6.png" src="_images/Slides_Random2_figure16_6.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_7.png"><img alt="_images/Slides_Random2_figure16_7.png" src="_images/Slides_Random2_figure16_7.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_8.png"><img alt="_images/Slides_Random2_figure16_8.png" src="_images/Slides_Random2_figure16_8.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_9.png"><img alt="_images/Slides_Random2_figure16_9.png" src="_images/Slides_Random2_figure16_9.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_10.png"><img alt="_images/Slides_Random2_figure16_10.png" src="_images/Slides_Random2_figure16_10.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_11.png"><img alt="_images/Slides_Random2_figure16_11.png" src="_images/Slides_Random2_figure16_11.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_12.png"><img alt="_images/Slides_Random2_figure16_12.png" src="_images/Slides_Random2_figure16_12.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_13.png"><img alt="_images/Slides_Random2_figure16_13.png" src="_images/Slides_Random2_figure16_13.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure16_14.png"><img alt="_images/Slides_Random2_figure16_14.png" src="_images/Slides_Random2_figure16_14.png" style="width: 15cm;" /></a>
+<p>After running the simulation we can plot the four types over time using the new
+plot function <code class="docutils literal notranslate"><span class="pre">f_plotTimeSeries</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f_plotTimeSeries</span><span class="p">(</span><span class="n">nrSusceptible1v</span><span class="p">,</span> <span class="n">nrInfected1v</span><span class="p">,</span> <span class="n">nrRecovered1v</span><span class="p">,</span> <span class="n">nrDead1v</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure17_1.png"><img alt="_images/Slides_Random2_figure17_1.png" src="_images/Slides_Random2_figure17_1.png" style="width: 15cm;" /></a>
+<p>We next run the other two cases with some government intervention in Case 2 and with full
+government intervention in Case 3 where nobody is allowed to move anymore. We
+again plot the time series for each case.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 2: Some distancing</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSusceptible2v</span><span class="p">,</span> <span class="n">nrInfected2v</span><span class="p">,</span> <span class="n">nrRecovered2v</span><span class="p">,</span> <span class="n">nrDead2v</span> \
+    <span class="o">=</span> <span class="n">f_simCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+<span class="n">f_plotTimeSeries</span><span class="p">(</span><span class="n">nrSusceptible2v</span><span class="p">,</span> <span class="n">nrInfected2v</span><span class="p">,</span> <span class="n">nrRecovered2v</span><span class="p">,</span> <span class="n">nrDead2v</span><span class="p">)</span>
+
+<span class="c1"># Case 3: Total Isolation</span>
+<span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># How far they travel (interaction radius)</span>
+<span class="n">nrSusceptible3v</span><span class="p">,</span> <span class="n">nrInfected3v</span><span class="p">,</span> <span class="n">nrRecovered3v</span><span class="p">,</span> <span class="n">nrDead3v</span> \
+    <span class="o">=</span> <span class="n">f_simCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+<span class="n">f_plotTimeSeries</span><span class="p">(</span><span class="n">nrSusceptible3v</span><span class="p">,</span> <span class="n">nrInfected3v</span><span class="p">,</span> <span class="n">nrRecovered3v</span><span class="p">,</span> <span class="n">nrDead3v</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">195</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">5</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">193</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">191</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">9</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">39</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">39</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">39</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">39</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">196</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">4</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">6</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">6</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">1</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">1</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">1</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">1</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure18_1.png"><img alt="_images/Slides_Random2_figure18_1.png" src="_images/Slides_Random2_figure18_1.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure18_2.png"><img alt="_images/Slides_Random2_figure18_2.png" src="_images/Slides_Random2_figure18_2.png" style="width: 15cm;" /></a>
+<p>We finally compare across the three cases and plot the number of infected
+people for all three cases superimposed into the same graph.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plot Bar chart of Nr. of Infected People of the 3 Cases</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrInfected1v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrInfected2v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrInfected3v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nr. of Infected over Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;No Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Some Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Isolation&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure19_1.png"><img alt="_images/Slides_Random2_figure19_1.png" src="_images/Slides_Random2_figure19_1.png" style="width: 15cm;" /></a>
+<p>From this graph we again see, as before, that government intervention helps
+keeping the number of infected people lower.</p>
+<p>In our final graph we compare the number of diseased people across the three
+cases.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Plot Time Series of Nr. of Dead People Across the 3 Cases</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrDead1v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrDead2v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">maxIter</span><span class="p">),</span> <span class="n">nrDead3v</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nr. of Dead over Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;No Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Some Distancing&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Isolation&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random2_figure20_1.png"><img alt="_images/Slides_Random2_figure20_1.png" src="_images/Slides_Random2_figure20_1.png" style="width: 15cm;" /></a>
+<p>From this graph it is pretty clear that without government intervention the
+death count is very large, even with a “small” death probability of 2 percent.</p>
+<p>Some government intervention would mitigate the death count dramatically.</p>
+<p>Not surprisingly, full government intervention, where the
+government mandates that everybody has to stay home from day one of the disease
+would keep the death count the lowest.</p>
+</div>
 <div class="section" id="key-concepts-and-summary">
-<h2><span class="section-number">17.4. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.5. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -618,12 +1085,17 @@ is leaving their house for two weeks at all.</p>
 </div>
 </div>
 <div class="section" id="self-check-questions">
-<h2><span class="section-number">17.5. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.6. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <ol class="arabic simple">
 <li><p>Change the simulation to include more people</p></li>
-<li><p>Change the simulation to allow for death</p></li>
+<li><p>Change the simulation to allow for age dependent death probabilities</p></li>
+<li><p>Change the simulation to allow for age dependent infection probabilities.
+Currently, if a healthy (susceptible) person bumps into an infectious
+one, she will contract with 100 percent probability. It is more realistic
+that this happens with a certain probability and it might also depend on
+one’s age.</p></li>
 </ol>
 </div>
 </div>
