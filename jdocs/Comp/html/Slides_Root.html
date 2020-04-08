@@ -246,7 +246,7 @@ first derivate of the function (i.e., the gradient).</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png" id="figautos"><img alt="_images/Slides_Root_FigAutos_1.png" id="figautos" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png"><img alt="_images/Slides_Root_FigAutos_1.png" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="newton-raphson">
 <h2><span class="section-number">18.2. </span>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
@@ -256,20 +256,32 @@ first derivate of the function (i.e., the gradient).</p>
 <p class="caption"><span class="caption-number">Fig. 18.1 </span><span class="caption-text">The Newton-Raphson Algorithm</span><a class="headerlink" href="#fig-root" title="Permalink to this image">¶</a></p>
 </div>
 <p>We start with an initial guess <span class="math notranslate nohighlight">\(x_0\)</span>. The slope of the  tangent line through the
-initial guess can be defined as:</p>
+initial guess can be defined as rise <span class="math notranslate nohighlight">\(f(x_0) - 0\)</span> over run <span class="math notranslate nohighlight">\(x_0-x_1\)</span> or:</p>
 <div class="math notranslate nohighlight">
 \[slope=\frac{f(x_0)-0}{x_0-x_1},\]</div>
-<p>where <span class="math notranslate nohighlight">\(x_1\)</span> is the point where the tangent line crosses the x-axis.
-Similarly, we can also write the slope of this tangent line as the derivative</p>
+<p>where <span class="math notranslate nohighlight">\(x_1\)</span> is the point where the tangent line crosses the x-axis. This
+point has coordinates <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(y_1 = 0\)</span>. Our goal is to find the
+value of <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
+<p>Since this line is a tangent line, we can also write its slope as the
+derivative of function <span class="math notranslate nohighlight">\(f\)</span> that is: <span class="math notranslate nohighlight">\(f'(x)\)</span>. We now set the
+derivative equal to the expression for the slope:</p>
 <blockquote>
-<div><p>of function <span class="math notranslate nohighlight">\(f\)</span> that is: <span class="math notranslate nohighlight">\(f'(x)\)</span>. We now set the derivative equal
-to the expression for the slope:</p>
-<div class="math notranslate nohighlight">
-\[f'(x_0)= slope = \frac{f(x_0)-0}{x_0-x_1},\]</div>
+<div><div class="math notranslate nohighlight">
+\[f'(x_0) = slope = \frac{f(x_0)-0}{x_0-x_1},\]</div>
 </div></blockquote>
-<p>which we can solve for <span class="math notranslate nohighlight">\(x_1\)</span> as:</p>
+<p>which we  can now use to solve for the value of <span class="math notranslate nohighlight">\(x_1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}.\]</div>
+<p>We next put a tangent line through the value of <span class="math notranslate nohighlight">\(f(x_1)\)</span> and search where
+this tangent line crosses the x-axis at point <span class="math notranslate nohighlight">\(x_2\)</span> in
+<a class="reference internal" href="#fig-root"><span class="std std-numref">Fig. 18.1</span></a>. This results in</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[f'(x_1) = slope = \frac{f(x_1)-0}{x_1-x_2},\]</div>
+</div></blockquote>
+<p>which we  can now use to solve for the value of <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}.\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We can now repeat this successively using the iterative procedure:</p>
@@ -326,7 +338,7 @@ entire domain of the function.</p>
 <span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">3</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.3097090626648604</span><span class="p">:</span>
 <span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">4</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.309799582422906</span><span class="p">:</span>
 <span class="n">At</span> <span class="n">iteration</span><span class="p">:</span> <span class="mi">5</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span> <span class="mf">1.3097995858041505</span><span class="p">:</span>
-<span class="n">fx</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">5.55111512313e-17</span>
+<span class="n">fx</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">5.551115123125783e-17</span>
 <span class="n">Algorithm</span> <span class="n">converged</span>
 <span class="o">--------------------------------</span>
 <span class="n">My</span> <span class="n">Root</span> <span class="ow">is</span> <span class="n">at</span>   <span class="mf">1.3098</span>
@@ -343,7 +355,7 @@ the function in the graph.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png" id="id1"><img alt="_images/Slides_Root_FigAutos_1.png" id="id1" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png"><img alt="_images/Slides_Root_FigAutos_1.png" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="secant-method">
 <h2><span class="section-number">18.3. </span>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
@@ -596,7 +608,7 @@ solver algorithm with a starting guess of the root position.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">--------------</span> <span class="n">Root</span> <span class="o">------------</span>
-<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30979959</span><span class="p">]</span>
+<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span><span class="mf">1.30979959</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The second root finding algorithm is called
@@ -612,7 +624,7 @@ solver algorithm with a starting guess of the root position.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">--------------</span> <span class="n">Fsolve</span> <span class="o">------------</span>
-<span class="n">The</span> <span class="n">root</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30979959</span><span class="p">]</span>
+<span class="n">The</span> <span class="n">root</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span><span class="mf">1.30979959</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
