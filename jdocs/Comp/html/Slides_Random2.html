@@ -245,7 +245,9 @@ infected anymore.</p></li>
     <span class="c1">#end</span>
 
     <span class="k">def</span> <span class="nf">movePerson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jumpSize</span><span class="p">):</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Generate a random integer number [1,2,...,8]</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
         <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -300,12 +302,6 @@ infected anymore.</p></li>
             <span class="n">neighv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">boardXY</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
         <span class="c1">#end</span>
 
-        <span class="c1"># If you bump into a sick field, make guy sick</span>
-        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly sick</span>
-        <span class="c1">#end</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="c1">#end</span>
@@ -313,6 +309,12 @@ infected anymore.</p></li>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">14</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># recovered and healthy again</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1">#end</span>
+
+        <span class="c1"># If you bump into a sick person-field, make guy sick</span>
+        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">immune</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sick</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly sick</span>
         <span class="c1">#end</span>
 
         <span class="k">return</span>
@@ -359,14 +361,15 @@ simulation round. One simulation round represents a day in our setup.</p>
 <p>The next function updates the population of people by first allowing the person
 to move according to the <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> variable. If <code class="docutils literal notranslate"><span class="pre">jumpSize</span></code> equals zero the
 person self isolates and does not move at all.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXYin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">):</span>
     <span class="n">nrSick</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
         <span class="n">person</span> <span class="o">=</span> <span class="n">persList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">person</span><span class="o">.</span><span class="n">movePerson</span><span class="p">(</span><span class="n">jumpSize</span><span class="p">)</span>
-        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXYin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
     <span class="c1">#end</span>
-    <span class="c1">#Update board</span>
+    <span class="c1"># Make new board and mark all the sick fields</span>
+    <span class="n">boardXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">xmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">):</span>
         <span class="n">person</span> <span class="o">=</span> <span class="n">persList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">sick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -421,8 +424,9 @@ want to simulate is determined by variable <code class="docutils literal notrans
 where the people live is guided by <code class="docutils literal notranslate"><span class="pre">xmax</span></code> and <code class="docutils literal notranslate"><span class="pre">ymax</span></code> and the number of
 individuals is determined by <code class="docutils literal notranslate"><span class="pre">nrPeople</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
 <span class="c1"># Set random seed</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">156789</span><span class="p">)</span>
+<span class="n">mySeedNumber</span> <span class="o">=</span> <span class="mi">143895784</span>
 
 <span class="c1"># Maximum days to simulate</span>
 <span class="n">maxIter</span> <span class="o">=</span> <span class="mi">70</span>
@@ -454,31 +458,32 @@ of a sick person. We also plot the entire grid every 10 days so you can track
 the changes.  The simulation tracks the number of sick people on each day of
 the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv1</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 1: Move a lot (no restrictions)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSick1v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">6</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">5</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">8</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">9</span>
 <span class="o">---------------------------</span>
 <span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">12</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">15</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">20</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">20</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">26</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">27</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">30</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">36</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">35</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">50</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">40</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">64</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">48</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">78</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">58</span>
 <span class="o">---------------------------</span>
 <span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
 <span class="o">---------------------------</span>
@@ -502,40 +507,48 @@ into someone who is sick i.e. land on an adjacent field of a sick person. We
 also plot the entire grid for every 10 days so you can track the changes.
 The simulation tracks the number of sick people on
 for each day of the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv2</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When we run the simulation again, we set the seed to the identical number
+as before so that the initial conditions remain the same and changes are
+therefore driven by the difference in policies and not random differences
+from the random number generation process.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 2: Some distancing</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSick2v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">8</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">3</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">10</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">5</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">12</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">8</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">17</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">10</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">22</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">13</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">31</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">16</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">33</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">16</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">35</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">19</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">41</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">19</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">47</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">21</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">35</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">67</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">67</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">28</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">24</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">22</span>
 </pre></div>
 </div>
 <p>Finally, the government locks everything down and nobody is allowed to move
@@ -545,31 +558,32 @@ infected people stays roughly constant and after 14 days everybody is immune
 and nobody is sick anymore. The simulation tracks the number of sick people on
 for each day of the simulation in vector <code class="docutils literal notranslate"><span class="pre">nrSickv3</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 3: Total Isolation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSick3v</span> <span class="o">=</span> <span class="n">f_simulateCase</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span><span class="n">jumpSize</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">maxIter</span><span class="p">,</span><span class="n">i_plotBoard</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">5</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">6</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">3</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">4</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">5</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">6</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">7</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">8</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">7</span>
+<span class="n">Round</span> <span class="mi">9</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">2</span>
 <span class="o">---------------------------</span>
 <span class="n">Round</span> <span class="mi">66</span> <span class="n">nr</span><span class="o">.</span> <span class="n">sick</span> <span class="mi">0</span>
 <span class="o">---------------------------</span>
@@ -595,7 +609,7 @@ number of infected people on each day.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time (sec)&quot;</span><span class="p">,(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span> <span class="mf">5.733541349996813</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="p">(</span><span class="n">sec</span><span class="p">)</span> <span class="mf">5.766575524001382</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random2_figure9_1.png"><img alt="_images/Slides_Random2_figure9_1.png" src="_images/Slides_Random2_figure9_1.png" style="width: 15cm;" /></a>
@@ -648,7 +662,8 @@ infectious person to recover from the infection.</p>
     <span class="c1">#end</span>
 
     <span class="k">def</span> <span class="nf">movePerson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jumpSize</span><span class="p">):</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Generate a random integer number [1,2,...,8]</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ypos</span> <span class="o">+=</span> <span class="n">jumpSize</span>
         <span class="k">elif</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -703,12 +718,6 @@ infectious person to recover from the infection.</p>
             <span class="n">neighv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">boardXY</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
         <span class="c1">#end</span>
 
-        <span class="c1"># If you bump into a infected field, make guy infected</span>
-        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly infected</span>
-        <span class="c1">#end</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># Calculate whether infected person dies</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">deathProbability</span><span class="p">):</span>
@@ -726,6 +735,12 @@ infectious person to recover from the infection.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1">#end</span>
 
+        <span class="c1"># If you bump into a infected field, make guy infected</span>
+        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">neighv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recovered</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dead</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">infected</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># newly infected</span>
+        <span class="c1">#end</span>
+
         <span class="k">return</span>
     <span class="c1">#end</span>
 
@@ -735,14 +750,15 @@ infectious person to recover from the infection.</p>
 <p>We next need to change the <code class="docutils literal notranslate"><span class="pre">f_update()</span></code> function so that it accounts for all
 four possible person types: susceptible, infectious, recovered, or diseased.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%% Functions</span>
-<span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">f_update</span><span class="p">(</span><span class="n">nrPeople</span><span class="p">,</span> <span class="n">persList</span><span class="p">,</span> <span class="n">boardXYin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">):</span>
 
     <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persList</span><span class="p">:</span>
         <span class="n">person</span><span class="o">.</span><span class="n">movePerson</span><span class="p">(</span><span class="n">jumpSize</span><span class="p">)</span>
-        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXY</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">updateHealth</span><span class="p">(</span><span class="n">boardXYin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">deathProbability</span><span class="p">,</span> <span class="n">recoveryTime</span><span class="p">)</span>
     <span class="c1">#end</span>
 
-    <span class="c1">#Update board and count SIR cases</span>
+    <span class="c1"># Make new board and mark all the sick fields and count SIR cases</span>
+    <span class="n">boardXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">xmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">nrInfected</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">nrDead</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">nrRecovered</span> <span class="o">=</span> <span class="mi">0</span>
@@ -890,10 +906,7 @@ are now possible. We suppress some of the output to not clutter the screen.</p>
 <p>We are now ready to start the simulation. We again define the core parameters
 of the model. The two new parameters are <code class="docutils literal notranslate"><span class="pre">deathProbability</span></code> and
 <code class="docutils literal notranslate"><span class="pre">recoveryTime</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seed</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">156789</span><span class="p">)</span>
-
-<span class="c1"># Maximum days to simulate</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maximum days to simulate</span>
 <span class="n">maxIter</span> <span class="o">=</span> <span class="mi">70</span>
 
 <span class="c1"># Size of their world</span>
@@ -913,7 +926,14 @@ of the model. The two new parameters are <code class="docutils literal notransla
 <p>We now run the first case where we assume that the government does nothing and
 everybody in the economy (or simulation) is free to move 2 steps in any
 direction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We again set the random seed in all three simulations so that
+differences in the outcomes are driven by policy changes and not differences in
+the way that random numbers are generated.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 1: Move a lot (no restrictions)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSusceptible1v</span><span class="p">,</span> <span class="n">nrInfected1v</span><span class="p">,</span> <span class="n">nrRecovered1v</span><span class="p">,</span> <span class="n">nrDead1v</span> \
@@ -921,8 +941,8 @@ direction.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">195</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">5</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">197</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">3</span>
 <span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
@@ -931,20 +951,20 @@ direction.</p>
 <span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">187</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">13</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">190</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">10</span>
 <span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
 <span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">56</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">56</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">54</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">54</span>
 <span class="o">---------------------------</span>
 <span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">56</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">56</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">54</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">54</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random2_figure16_1.png"><img alt="_images/Slides_Random2_figure16_1.png" src="_images/Slides_Random2_figure16_1.png" style="width: 15cm;" /></a>
@@ -971,6 +991,7 @@ plot function <code class="docutils literal notranslate"><span class="pre">f_plo
 government intervention in Case 3 where nobody is allowed to move anymore. We
 again plot the time series for each case.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case 2: Some distancing</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSusceptible2v</span><span class="p">,</span> <span class="n">nrInfected2v</span><span class="p">,</span> <span class="n">nrRecovered2v</span><span class="p">,</span> <span class="n">nrDead2v</span> \
@@ -978,6 +999,7 @@ again plot the time series for each case.</p>
 <span class="n">f_plotTimeSeries</span><span class="p">(</span><span class="n">nrSusceptible2v</span><span class="p">,</span> <span class="n">nrInfected2v</span><span class="p">,</span> <span class="n">nrRecovered2v</span><span class="p">,</span> <span class="n">nrDead2v</span><span class="p">)</span>
 
 <span class="c1"># Case 3: Total Isolation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">mySeedNumber</span><span class="p">)</span>
 <span class="n">i_plotBoard</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">jumpSize</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># How far they travel (interaction radius)</span>
 <span class="n">nrSusceptible3v</span><span class="p">,</span> <span class="n">nrInfected3v</span><span class="p">,</span> <span class="n">nrRecovered3v</span><span class="p">,</span> <span class="n">nrDead3v</span> \
@@ -986,38 +1008,13 @@ again plot the time series for each case.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">195</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">5</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">197</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">3</span>
 <span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">193</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">7</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
-<span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">191</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">9</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
-<span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">39</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">39</span>
-<span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">39</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">39</span>
-<span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">196</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">4</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
-<span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
-<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">6</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">195</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">5</span>
 <span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
@@ -1026,15 +1023,40 @@ again plot the time series for each case.</p>
 <span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
 <span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">1</span>
-<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">1</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">64</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">25</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">23</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">23</span>
 <span class="o">---------------------------</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">194</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">63</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">23</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">24</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">24</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">198</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">2</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">0</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">198</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">2</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">1</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">198</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">2</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">2</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">198</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">68</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
+<span class="o">---------------------------</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Susceptible</span> <span class="mi">198</span>
 <span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Infected</span>    <span class="mi">0</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">1</span>
-<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">1</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">Recovered</span>   <span class="mi">0</span>
+<span class="n">Round</span> <span class="mi">69</span> <span class="n">nr</span><span class="o">.</span> <span class="n">dead</span>        <span class="mi">0</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random2_figure18_1.png"><img alt="_images/Slides_Random2_figure18_1.png" src="_images/Slides_Random2_figure18_1.png" style="width: 15cm;" /></a>
