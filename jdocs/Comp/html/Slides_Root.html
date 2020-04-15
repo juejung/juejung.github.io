@@ -250,10 +250,10 @@ first derivate of the function (i.e., the gradient).</p>
 </div>
 <div class="section" id="newton-raphson">
 <h2><span class="section-number">18.2. </span>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#fig-root"><span class="std std-numref">Fig. 18.1</span></a> presents an illustration of the Newton-Raphson algorithm.</p>
-<div class="figure align-center" id="fig-root">
-<img alt="_images/InkscapeRoot.png" src="_images/InkscapeRoot.png" />
-<p class="caption"><span class="caption-number">Fig. 18.1 </span><span class="caption-text">The Newton-Raphson Algorithm</span><a class="headerlink" href="#fig-root" title="Permalink to this image">¶</a></p>
+<p><a class="reference internal" href="#fig-newton"><span class="std std-numref">Fig. 18.1</span></a> presents an illustration of the Newton-Raphson algorithm.</p>
+<div class="figure align-center" id="fig-newton">
+<img alt="_images/InkscapeRootNewton.png" src="_images/InkscapeRootNewton.png" />
+<p class="caption"><span class="caption-number">Fig. 18.1 </span><span class="caption-text">The Newton-Raphson Algorithm</span><a class="headerlink" href="#fig-newton" title="Permalink to this image">¶</a></p>
 </div>
 <p>We start with an initial guess <span class="math notranslate nohighlight">\(x_0\)</span>. The slope of the  tangent line through the
 initial guess can be defined as rise <span class="math notranslate nohighlight">\(f(x_0) - 0\)</span> over run <span class="math notranslate nohighlight">\(x_0-x_1\)</span> or:</p>
@@ -274,7 +274,7 @@ derivative equal to the expression for the slope:</p>
 \[x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}.\]</div>
 <p>We next put a tangent line through the value of <span class="math notranslate nohighlight">\(f(x_1)\)</span> and search where
 this tangent line crosses the x-axis at point <span class="math notranslate nohighlight">\(x_2\)</span> in
-<a class="reference internal" href="#fig-root"><span class="std std-numref">Fig. 18.1</span></a>. This results in</p>
+<a class="reference internal" href="#fig-newton"><span class="std std-numref">Fig. 18.1</span></a>. This results in</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[f'(x_1) = slope = \frac{f(x_1)-0}{x_1-x_2},\]</div>
@@ -356,6 +356,25 @@ the function in the graph.</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png"><img alt="_images/Slides_Root_FigAutos_1.png" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
+<dl class="simple">
+<dt>The Newton-Raphson algorithm has two shortcomings.</dt><dd><ol class="arabic simple">
+<li><p>It requires that the function is differentiable. For non-differential
+functions (i.e., functions with “kinks” or steps) this algorithm will
+not work.</p></li>
+<li><p>It is sensitive to starting values. If a bad starting value is chosen and
+if the function exhibits “flat” spots, the algorithm will not converge.</p></li>
+</ol>
+</dd>
+</dl>
+<p><a class="reference internal" href="#fig-newton1"><span class="std std-numref">Fig. 18.2</span></a> presents an illustration of the Newton-Raphson algorithm
+when the starting value is chosen far from the root point in the “flat” area of
+the function. In this case the tangent line crosses the z-axis at a very
+distant point from the root we are looking for and might not converge or only
+converge very slowly.</p>
+<div class="figure align-center" id="fig-newton1">
+<img alt="_images/InkscapeRootNewton1.png" src="_images/InkscapeRootNewton1.png" />
+<p class="caption"><span class="caption-number">Fig. 18.2 </span><span class="caption-text">The Newton-Raphson Algorithm with Bad Starting Value</span><a class="headerlink" href="#fig-newton1" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="secant-method">
 <h2><span class="section-number">18.3. </span>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
@@ -368,27 +387,34 @@ not have to be differentiable over its domain.</p>
 <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span> and
 put a line through the functional values <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>. The
 advantage of this method is that we do not have to calculate the first
-derivative of the function. The line through <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>
-is expressed as:</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[\frac{y-f(x_1)}{x-x_1} = \frac{f(x_0)-f(x_1)}{x_0-x_1}.\]</div>
-</div></blockquote>
-<p>The point <span class="math notranslate nohighlight">\(x_2\)</span> where this line crosses the x-axis can be found using:</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
-\[\frac{0-f(x_1)}{x_2-x_1} = \frac{f(x_0)-f(x_1)}{x_0-x_1},\]</div>
-</div></blockquote>
-<p>which results in</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
+derivative of the function.</p>
+<p><a class="reference internal" href="#fig-secant"><span class="std std-numref">Fig. 18.3</span></a> presents an illustration of the Secant method. The green
+line is formed using the functional values of the two starting guesses
+,:math:<cite>x_0</cite> and <span class="math notranslate nohighlight">\(x_1\)</span>. The closer the two starting values are to each
+other the more the green secant (line) will resemble the tangent line in
+<a class="reference internal" href="#fig-newton"><span class="std std-numref">Fig. 18.1</span></a> that was used in the Newton-Raphson algorithm above.</p>
+<div class="figure align-center" id="fig-secant">
+<img alt="_images/InkscapeRootSecant.png" src="_images/InkscapeRootSecant.png" />
+<p class="caption"><span class="caption-number">Fig. 18.3 </span><span class="caption-text">The Secant Algorithm</span><a class="headerlink" href="#fig-secant" title="Permalink to this image">¶</a></p>
+</div>
+<p>The algorithm then proceeds in finding point <span class="math notranslate nohighlight">\(x_2\)</span> where the green secant
+crosses the x-axis. The slope of the secant line can be calculated in two ways
+using the rise-over-run method. We can first express the slope as:</p>
+<div class="math notranslate nohighlight">
+\[\text{slope} = \frac{f(x_0)-f(x_1)}{x_0-x_1}\]</div>
+<p>And similarly we can use a second triangle (rise over run)  and express the slope as:</p>
+<div class="math notranslate nohighlight">
+\[\text{slope} = \frac{f(x_1)- 0}{x_1-x_2}\]</div>
+<p>We can now set the two expressions equal to each other</p>
+<div class="math notranslate nohighlight">
+\[\frac{f(x_0)-f(x_1)}{x_0-x_1} = \text{slope} = \frac{f(x_1)- 0}{x_1-x_2}\]</div>
+<p>and since we have <span class="math notranslate nohighlight">\(x_0,x_1,f(x_0),\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span> we can solve for
+<span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<div class="math notranslate nohighlight">
 \[x_2 = x_1 - f(x_1)\frac{x_0-x_1}{f(x_0)-f(x_1)}.\]</div>
-</div></blockquote>
 <p>The iterative procedure can be written as:</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\boxed{x_{n+1} = x_n - f(x_n)\frac{x_{n-1}-x_n}{f(x_{n-1})-f(x_n)}}\]</div>
-</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Keep in mind that if <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span> are close together then:</p>
