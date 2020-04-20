@@ -262,9 +262,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span>  <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.00339035</span>  <span class="mf">0.01277165</span>  <span class="mf">0.02706275</span>
-<span class="mf">0.04530976</span>  <span class="mf">0.06667364</span>
-  <span class="mf">0.09041885</span>  <span class="mf">0.11590306</span>  <span class="mf">0.14256769</span>  <span class="mf">0.16992939</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span>  <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.00339035</span> <span class="mf">0.01277165</span> <span class="mf">0.02706275</span> <span class="mf">0.04530976</span>
+<span class="mf">0.06667364</span>
+ <span class="mf">0.09041885</span> <span class="mf">0.11590306</span> <span class="mf">0.14256769</span> <span class="mf">0.16992939</span><span class="p">]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Optimization_figure4_1.png"><img alt="_images/Slides_Optimization_figure4_1.png" src="_images/Slides_Optimization_figure4_1.png" style="width: 15cm;" /></a>
@@ -328,41 +328,72 @@ already the first derivative of a function, so that we have:</p>
 <h3><span class="section-number">19.2.2. </span>Golden Section Method<a class="headerlink" href="#golden-section-method" title="Permalink to this headline">¶</a></h3>
 <p>The golden-section method works in one dimension only, but does not need the derivatives of the function.
 However, the function still needs to be continuous.
-In order to determine whether there is a local maximum we need three points:
-if <span class="math notranslate nohighlight">\(a&lt;c&lt;b\)</span> and <span class="math notranslate nohighlight">\(f(a) \leq f(c)\)</span> and <span class="math notranslate nohighlight">\(f(b) \leq f(c)\)</span> then there
-must be a local maximum in the interval between <span class="math notranslate nohighlight">\([a,b].\)</span></p>
-<p>This method is very similar to the bisection method (root bracketing) from the previous section.
-The algorithm proceeds in the following way:
-Start with <span class="math notranslate nohighlight">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
+In order to determine whether there is a local maximum we need three points.
+Then we can use the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <span class="math notranslate nohighlight">\(x_l&lt;x_m&lt;x_r\)</span> and</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x_l) \leq f(x_m)\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x_r) \leq f(x_m)\)</span> then there</p></li>
+</ol>
+</div></blockquote>
+<p>must be a local maximum in the interval between <span class="math notranslate nohighlight">\([x_l,x_r].\)</span></p>
+</div>
+<p>This method is very similar to the bisection method (root bracketing) from the
+previous section.</p>
+<p>The method starts with three starting values and operates by successively
+narrowing the range of values on the specified interval, which makes it
+relatively slow, but very robust. The
+technique derives its name from the fact that the algorithm maintains the
+function values for four points whose three interval widths are in the ratio</p>
+<div class="math notranslate nohighlight">
+\[2-\rho : 2 \times \rho-3 : 2- \rho,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho\)</span> is the golden ratio.</p>
+<p>In mathematics, two quantities <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are in the <strong>golden ratio</strong> if their ratio is the
+same as the ratio of their sum to the larger of the two quantities. Assume
+<span class="math notranslate nohighlight">\(a&gt;b\)</span> then the ratio:</p>
+<div class="math notranslate nohighlight">
+\[\frac{a}{b} = \frac{a+b}{a} = \rho\]</div>
+<p><a class="reference internal" href="#fig-goldenratioline"><span class="std std-numref">Fig. 19.1</span></a> illustrates this geometric relationship.</p>
+<div class="figure align-center" id="fig-goldenratioline">
+<a class="reference internal image-reference" href="_images/Golden_ratio_line.png"><img alt="_images/Golden_ratio_line.png" src="_images/Golden_ratio_line.png" style="width: 384.0px; height: 221.8px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 19.1 </span><span class="caption-text">Line segments in the golden ratio</span><a class="headerlink" href="#fig-goldenratioline" title="Permalink to this image">¶</a></p>
+</div>
+<p>The golden ratio is the solution to:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{a}{b}\right)^2 - \left(\frac{a}{b}\right) -1 = 0,\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{a}{b}\right) = \rho = \frac{1+\sqrt{5}}{2}.\]</div>
+<p>The algorithm proceeds in the following way:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Start with <span class="math notranslate nohighlight">\(x_l&lt;x_m&lt;x_r\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[f(x_l) \le (x_m)\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[f(x_r) \le f(x_m)\]</div>
-<p>and</p>
+<p>and the <strong>golden ratio</strong></p>
 <div class="math notranslate nohighlight">
 \[\rho = \frac{1+\sqrt{5}}{2}.\]</div>
-<p>Then check the following:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ol class="arabic">
-<li><p>if <span class="math notranslate nohighlight">\(x_r - x_l \le \epsilon\)</span> then stop</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(x_r-x_m &gt; x_m-x_l\)</span> then do <span class="math notranslate nohighlight">\((a)\)</span> otherwise do <span class="math notranslate nohighlight">\((b)\)</span></p>
+<p>In the algorithm we then check the following:</p>
 <blockquote>
-<div><ul class="simple">
-<li><ol class="loweralpha simple">
-<li><p>let <span class="math notranslate nohighlight">\(y=x_m+(x_r-x_m)/(1+\rho)\)</span> if <span class="math notranslate nohighlight">\(f(y) \ge  f(x_m)\)</span> then put <span class="math notranslate nohighlight">\(x_l=x_m\)</span> and <span class="math notranslate nohighlight">\(x_m=y\)</span> otherwise put <span class="math notranslate nohighlight">\(x_r=y\)</span></p></li>
+<div><ol class="arabic">
+<li><p>If <span class="math notranslate nohighlight">\(x_r - x_l \le \epsilon\)</span> then stop</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x_r-x_m &gt; x_m-x_l\)</span> then do <span class="math notranslate nohighlight">\((a)\)</span> otherwise do <span class="math notranslate nohighlight">\((b)\)</span></p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Let <span class="math notranslate nohighlight">\(y=x_m+(x_r-x_m)/(1+\rho)\)</span> if <span class="math notranslate nohighlight">\(f(y) \ge  f(x_m)\)</span> then put <span class="math notranslate nohighlight">\(x_l=x_m\)</span> and <span class="math notranslate nohighlight">\(x_m=y\)</span> otherwise put <span class="math notranslate nohighlight">\(x_r=y\)</span></p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(y=x_m+(x_m-x_l)/(1+\rho)\)</span> if <span class="math notranslate nohighlight">\(f(y) \ge  f(x_m)\)</span> then put <span class="math notranslate nohighlight">\(x_r=x_m\)</span> and <span class="math notranslate nohighlight">\(x_m=y\)</span> otherwise put <span class="math notranslate nohighlight">\(x_l=y\)</span></p></li>
 </ol>
-</li>
-<li><ol class="loweralpha simple" start="2">
-<li><p>let <span class="math notranslate nohighlight">\(y=x_m+(x_m-x_l)/(1+\rho)\)</span> if <span class="math notranslate nohighlight">\(f(y) \ge  f(x_m)\)</span> then put <span class="math notranslate nohighlight">\(x_r=x_m\)</span> and <span class="math notranslate nohighlight">\(x_m=y\)</span> otherwise put <span class="math notranslate nohighlight">\(x_l=y\)</span></p></li>
-</ol>
-</li>
-</ul>
 </div></blockquote>
 </li>
-<li><p>go back to step 1</p></li>
+<li><p>Go back to step 1</p></li>
 </ol>
+</div></blockquote>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gsection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xm</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
     <span class="c1"># applies the golden-section algorithm to maximise ftn</span>
@@ -425,8 +456,8 @@ first and second derivatives of the functions. This is why we use function
  <span class="o">-----------------------------------</span>
 <span class="o">-</span><span class="mf">1.25</span>
 <span class="mf">1.0</span>
-<span class="mf">0.999999999998</span>
-<span class="mf">14.4236788158</span>
+<span class="mf">0.9999999999980214</span>
+<span class="mf">14.42367881581733</span>
 </pre></div>
 </div>
 <p>The Golden section algorithm does not require the derivates of the function, so
@@ -444,10 +475,10 @@ we just call the <code class="docutils literal notranslate"><span class="pre">f1
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-----------------------------------</span>
  <span class="n">Golden</span> <span class="n">section</span> <span class="n">results</span>
  <span class="o">-----------------------------------</span>
-<span class="mf">1.00000001179</span>
-<span class="mf">1.00000001073</span>
-<span class="mf">0.999999992138</span>
-<span class="mf">1.00000000522</span>
+<span class="mf">1.0000000117853984</span>
+<span class="mf">1.0000000107340477</span>
+<span class="mf">0.9999999921384167</span>
+<span class="mf">1.0000000052246139</span>
 </pre></div>
 </div>
 <p>Finally, we can also use a built in function minimizer.
@@ -496,22 +527,22 @@ function, we actually maximize the original function</p>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.541341</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">18</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">36</span>
-<span class="p">[</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.541341</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">16</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">32</span>
-<span class="p">[</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.541341</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">14</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">28</span>
-<span class="p">[</span> <span class="mf">0.99997559</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.99997559</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.541341</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">16</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">32</span>
-<span class="p">[</span> <span class="mf">1.00001221</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.00001221</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -541,7 +572,7 @@ so that <span class="math notranslate nohighlight">\(f(x) = 0\)</span> is define
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">--------------</span> <span class="n">Root</span> <span class="o">------------</span>
-<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">d_func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30979959</span><span class="p">]</span>
+<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">d_func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span><span class="mf">1.30979959</span><span class="p">]</span>
 <span class="n">The</span> <span class="nb">max</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">function</span> <span class="ow">is</span> <span class="mf">1.0000000117853984</span>
 </pre></div>
 </div>
@@ -568,7 +599,7 @@ In order to do this we change the return value of the function slightly to</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--------------</span> <span class="n">Root</span> <span class="o">------------</span>
-<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span> <span class="mf">1.30976562</span><span class="p">]</span>
+<span class="n">The</span> <span class="n">root</span> <span class="n">of</span> <span class="n">func</span> <span class="ow">is</span> <span class="n">at</span> <span class="p">[</span><span class="mf">1.30976562</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -599,15 +630,13 @@ and <span class="math notranslate nohighlight">\(f''(x)\)</span> (i.e., the Hess
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
-    <span class="n">f2</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span>
-<span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">f11</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> \
         <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">f12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
         <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">f22</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
-        <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span>
-<span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> \
+        <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> \
         <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="c1"># Function f3 returns: f(x), f&#39;(x), and f&#39;&#39;(x)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">f11</span><span class="p">,</span> <span class="n">f12</span><span class="p">],</span> <span class="p">[</span><span class="n">f12</span><span class="p">,</span> <span class="n">f22</span><span class="p">]]))</span>
@@ -662,8 +691,7 @@ more than one optimum.</p>
 <span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
         <span class="c1"># This algorithm requires f(x), f&#39;(x), and f&#39;&#39;(x)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Newton: f3  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; --&gt; &#39;</span> <span class="o">+</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> \
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Newton: f3  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; --&gt; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">newtonMult</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> \
             <span class="n">np</span><span class="o">.</span> <span class="n">array</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">]))))</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fmin: f3 &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; --&gt; &#39;</span> \
@@ -672,77 +700,68 @@ more than one optimum.</p>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; ----------------------------------------- &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">0.04074437</span>
-<span class="o">-</span><span class="mf">2.50729047</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">0.04074437</span> <span class="o">-</span><span class="mf">2.50729047</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">47</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">89</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.0307334</span>
-<span class="mf">1.40155445</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.0307334</span>  <span class="mf">1.40155445</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">0.11797341</span>  <span class="mf">3.34466147</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">0.11797341</span> <span class="mf">3.34466147</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">50</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">93</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03072555</span>  <span class="mf">1.40154756</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03072555</span> <span class="mf">1.40154756</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5531627</span>
-<span class="mf">6.0200129</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5531627</span>  <span class="mf">6.0200129</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">43</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">82</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.3999999999999999</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03068816</span>
-<span class="mf">1.40151998</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03068816</span> <span class="mf">1.40151998</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.83714224</span>  <span class="mf">5.35398196</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.83714224</span> <span class="mf">5.35398196</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">48</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">90</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03067611</span>  <span class="mf">1.40149298</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03067611</span> <span class="mf">1.40149298</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
 <span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">0.04074437</span> <span class="o">-</span><span class="mf">2.50729047</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">42</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">82</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03071509</span>  <span class="mf">1.40155165</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03071509</span> <span class="mf">1.40155165</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span>  <span class="mf">9.89908350e-10</span>
-<span class="mf">1.36639196e-09</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">9.89908350e-10</span> <span class="mf">1.36639196e-09</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">43</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">82</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.0307244</span>   <span class="mf">1.40153761</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.0307244</span>  <span class="mf">1.40153761</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.55841026</span>
-<span class="o">-</span><span class="mf">0.78971136</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.55841026</span> <span class="o">-</span><span class="mf">0.78971136</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">47</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">88</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.40000000000000002</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.0307159</span>
-<span class="mf">1.40150964</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.0307159</span>  <span class="mf">1.40150964</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.29022131</span> <span class="o">-</span><span class="mf">0.23047994</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.29022131</span> <span class="o">-</span><span class="mf">0.23047994</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">44</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">80</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03074135</span>  <span class="mf">1.40151521</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03074135</span> <span class="mf">1.40151521</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
-<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.55294692</span>
-<span class="o">-</span><span class="mf">3.33263763</span><span class="p">]</span>
+<span class="n">Newton</span><span class="p">:</span> <span class="n">f3</span>  <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.55294692</span> <span class="o">-</span><span class="mf">3.33263763</span><span class="p">]</span>
 <span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
          <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.000000</span>
          <span class="n">Iterations</span><span class="p">:</span> <span class="mi">42</span>
          <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">80</span>
-<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6000000000000001</span><span class="p">,</span> <span class="mf">0.59999999999999998</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span> <span class="mf">2.03069759</span>
-<span class="mf">1.40155333</span><span class="p">]</span>
+<span class="n">fmin</span><span class="p">:</span> <span class="n">f3</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="p">[</span><span class="mf">2.03069759</span> <span class="mf">1.40155333</span><span class="p">]</span>
  <span class="o">-----------------------------------------</span>
 </pre></div>
 </div>
