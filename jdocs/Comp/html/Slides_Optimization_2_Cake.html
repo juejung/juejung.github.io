@@ -268,7 +268,7 @@ period <span class="math notranslate nohighlight">\(t=0,..,T\)</span></p></li>
 <li><p>Substituting these consumption expressions into the life-time consumption path we get:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[U(k_{0} - k_{1})+ \beta U(k_{1} - k_{2})+...+ \beta^{t-1} U(k_{t-1} - k_{t}) + \beta^{t}  U(k_{t} - k_{t+1}) + \beta^{t+2}  U(k_{t+2} - k_{t+2}) ...\]</div>
+\[U(k_{0} - k_{1})+ \beta U(k_{1} - k_{2})+...+ \beta^{t-1} U(k_{t-1} - k_{t}) + \beta^{t}  U(k_{t} - k_{t+1}) + \beta^{t+1}  U(k_{t+1} - k_{t+2}) ...\]</div>
 <ul>
 <li><p>Deriving this objective function w.r.t. <span class="math notranslate nohighlight">\(k_t\)</span> and setting is equal to
 zero as it is a first order condition we get:</p>
@@ -407,8 +407,13 @@ period’s optimal consumption</p>
 </div>
 <p>We next calculate the solutions following the analytical procedure introduced
 above and plot the optimal consumption path over time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since we defined the problem above as t=0,t=1,…,t=T-1, t=T. A 10 period problem
+goes from t=0, t=1, …, t=9 so that T=9.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">9</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.96</span>
 <span class="n">kv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">uv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
@@ -430,11 +435,11 @@ above and plot the optimal consumption path over time.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kv = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.35339933</span> <span class="mf">13.8180594</span>  <span class="mf">12.43625346</span> <span class="mf">11.19262811</span> <span class="mf">10.0733653</span>
-<span class="mf">9.06602877</span>
-  <span class="mf">8.15942589</span>  <span class="mf">7.3434833</span>   <span class="mf">6.60913497</span>  <span class="mf">5.94822148</span><span class="p">]</span>
-<span class="n">kv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">100.</span>          <span class="mf">84.64660067</span>  <span class="mf">70.82854128</span>  <span class="mf">58.39228782</span>  <span class="mf">47.19965971</span>
-  <span class="mf">37.12629441</span>  <span class="mf">28.06026564</span>  <span class="mf">19.90083975</span>  <span class="mf">12.55735645</span>   <span class="mf">5.94822148</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.93433618</span> <span class="mf">11.45696274</span> <span class="mf">10.99868423</span> <span class="mf">10.55873686</span> <span class="mf">10.13638738</span>
+<span class="mf">9.73093189</span>
+  <span class="mf">9.34169461</span>  <span class="mf">8.96802683</span>  <span class="mf">8.60930576</span>  <span class="mf">8.26493353</span><span class="p">]</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">100.</span>          <span class="mf">88.06566382</span>  <span class="mf">76.60870108</span>  <span class="mf">65.61001685</span>  <span class="mf">55.05127999</span>
+  <span class="mf">44.91489261</span>  <span class="mf">35.18396072</span>  <span class="mf">25.84226611</span>  <span class="mf">16.87423928</span>   <span class="mf">8.26493353</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Plotting the function is achieved via:</p>
@@ -460,7 +465,9 @@ above and plot the optimal consumption path over time.</p>
 <h2><span class="section-number">20.7. </span>Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For a numerical solution we use the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> package</p></li>
-<li><p>The routine <code class="docutils literal notranslate"><span class="pre">fmin_slsqp</span></code> minimizes constrained non-linear functions</p></li>
+<li><p>The routine <code class="docutils literal notranslate"><span class="pre">fmin_slsqp</span></code> minimizes constrained non-linear functions.
+More specifically it minimizes a function using Sequential Least SQuares
+Programming hence the name <code class="docutils literal notranslate"><span class="pre">_slsqp</span></code>.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -484,7 +491,7 @@ added up. We define this welfare stream from consumption as <code class="docutil
     <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span>
     <span class="n">uv</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-        <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.96</span>
         <span class="c1"># Period utility with discounting</span>
         <span class="n">uv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
@@ -533,13 +540,13 @@ want to maximize <code class="docutils literal notranslate"><span class="pre">f_
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>    <span class="p">(</span><span class="n">Exit</span> <span class="n">mode</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.287355363157735</span>
-            <span class="n">Iterations</span><span class="p">:</span> <span class="mi">22</span>
-            <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">264</span>
-            <span class="n">Gradient</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">22</span>
-<span class="p">[</span><span class="mf">15.33727223</span> <span class="mf">13.82825036</span> <span class="mf">12.45005498</span> <span class="mf">11.19821343</span> <span class="mf">10.06848065</span>
-<span class="mf">9.05581662</span>
-  <span class="mf">8.15286629</span>  <span class="mf">7.34763605</span>  <span class="mf">6.62044636</span>  <span class="mf">5.94096304</span><span class="p">]</span>
+            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">19.351131201280168</span>
+            <span class="n">Iterations</span><span class="p">:</span> <span class="mi">6</span>
+            <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">72</span>
+            <span class="n">Gradient</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">6</span>
+<span class="p">[</span><span class="mf">11.90586733</span> <span class="mf">11.44702338</span> <span class="mf">11.00252664</span> <span class="mf">10.57170585</span> <span class="mf">10.15394251</span>
+<span class="mf">9.74861554</span>
+  <span class="mf">9.35514463</span>  <span class="mf">8.97302557</span>  <span class="mf">8.60163014</span>  <span class="mf">8.2405184</span> <span class="p">]</span>
 </pre></div>
 </div>
 <p>And finally we plot the optimal consumption path <code class="docutils literal notranslate"><span class="pre">coptv</span></code> that we just solved
@@ -554,37 +561,104 @@ for.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$c_t$&quot;</span><span class="p">)</span>
 <span class="c1"># Create a legend</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;analytical&#39;</span><span class="p">,</span> <span class="s1">&#39;numerical&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7f01a5edc6a0</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png"><img alt="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" src="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" style="width: 12cm;" /></a>
+<p>We can also print the results to see it more clearly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;float&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{0:0.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Numeric solution&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coptv</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----------------------------</span>
 <span class="n">Analytic</span> <span class="n">solution</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.35339933</span> <span class="mf">13.8180594</span>  <span class="mf">12.43625346</span> <span class="mf">11.19262811</span> <span class="mf">10.0733653</span>
-<span class="mf">9.06602877</span>
-  <span class="mf">8.15942589</span>  <span class="mf">7.3434833</span>   <span class="mf">6.60913497</span>  <span class="mf">5.94822148</span><span class="p">]</span>
 <span class="o">-----------------------------</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.9343</span> <span class="mf">11.4570</span> <span class="mf">10.9987</span> <span class="mf">10.5587</span> <span class="mf">10.1364</span> <span class="mf">9.7309</span> <span class="mf">9.3417</span> <span class="mf">8.9680</span>
+<span class="mf">8.6093</span>
+ <span class="mf">8.2649</span><span class="p">]</span>
 
 <span class="o">-----------------------------</span>
 <span class="n">Numeric</span> <span class="n">solution</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.33727223</span> <span class="mf">13.82825036</span> <span class="mf">12.45005498</span> <span class="mf">11.19821343</span> <span class="mf">10.06848065</span>
-<span class="mf">9.05581662</span>
-  <span class="mf">8.15286629</span>  <span class="mf">7.34763605</span>  <span class="mf">6.62044636</span>  <span class="mf">5.94096304</span><span class="p">]</span>
+<span class="o">-----------------------------</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.9059</span> <span class="mf">11.4470</span> <span class="mf">11.0025</span> <span class="mf">10.5717</span> <span class="mf">10.1539</span> <span class="mf">9.7486</span> <span class="mf">9.3551</span> <span class="mf">8.9730</span>
+<span class="mf">8.6016</span>
+ <span class="mf">8.2405</span><span class="p">]</span>
 <span class="o">-----------------------------</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png"><img alt="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" src="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" style="width: 12cm;" /></a>
 <p>We can now see that the numerical solution is very close to the analytical
 solution we derived ‘by hand’ above. The optimal consumption path is
 decreasing. You start out eating a lot of cake and then gradually decrease your
 consumption. Still, you want to eat a bit of cake every period.</p>
+<p>Let us see whether we can increase the accuracy of the solution by allowing for
+more iterations and choosing a smaller optimization tolerance criteria.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Starting guesses for the optimal consumption vector</span>
+<span class="n">c0v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span>
+
+<span class="n">copt2v</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin_slsqp</span><span class="p">(</span><span class="n">f_welf</span><span class="p">,</span> <span class="n">c0v</span><span class="p">,</span> <span class="n">f_eqcons</span> <span class="o">=</span> <span class="n">f_constr1</span><span class="p">,</span> \
+        <span class="nb">iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">acc</span><span class="o">=</span><span class="mf">1e-08</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution: Default iterations and tolerance&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coptv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution: More iterations and smaller tolerance&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">copt2v</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>    <span class="p">(</span><span class="n">Exit</span> <span class="n">mode</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">19.351141900757867</span>
+            <span class="n">Iterations</span><span class="p">:</span> <span class="mi">14</span>
+            <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">168</span>
+            <span class="n">Gradient</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">14</span>
+<span class="o">--------------------------------------------------------</span>
+<span class="n">Analytic</span> <span class="n">solution</span><span class="p">:</span> <span class="n">Default</span> <span class="n">iterations</span> <span class="ow">and</span> <span class="n">tolerance</span>
+<span class="o">--------------------------------------------------------</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.9059</span> <span class="mf">11.4470</span> <span class="mf">11.0025</span> <span class="mf">10.5717</span> <span class="mf">10.1539</span> <span class="mf">9.7486</span> <span class="mf">9.3551</span> <span class="mf">8.9730</span>
+<span class="mf">8.6016</span>
+ <span class="mf">8.2405</span><span class="p">]</span>
+
+<span class="o">--------------------------------------------------------</span>
+<span class="n">Analytic</span> <span class="n">solution</span><span class="p">:</span> <span class="n">More</span> <span class="n">iterations</span> <span class="ow">and</span> <span class="n">smaller</span> <span class="n">tolerance</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.9320</span> <span class="mf">11.4575</span> <span class="mf">11.0004</span> <span class="mf">10.5604</span> <span class="mf">10.1372</span> <span class="mf">9.7305</span> <span class="mf">9.3403</span> <span class="mf">8.9663</span>
+<span class="mf">8.6085</span>
+ <span class="mf">8.2669</span><span class="p">]</span>
+
+<span class="o">--------------------------------------------------------</span>
+<span class="n">Analytic</span> <span class="n">solution</span>
+<span class="o">--------------------------------------------------------</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.9343</span> <span class="mf">11.4570</span> <span class="mf">10.9987</span> <span class="mf">10.5587</span> <span class="mf">10.1364</span> <span class="mf">9.7309</span> <span class="mf">9.3417</span> <span class="mf">8.9680</span>
+<span class="mf">8.6093</span>
+ <span class="mf">8.2649</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We can see that our numerical solution is now more accurate and much closer to
+the analytic solution.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>There is a trade off between accuracy and computational time. Here it is not
+an issue, but in bigger (large scale) optimization problems, computation
+time is often a factor.</p>
+</div>
 </div>
 </div>
 
