@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>20. Constrained Optimization &mdash; Computational Economics 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="21. Machine Learning I: Introduction to Machine Learning" href="Slides_MachineLearning_1.html" />
+    <link rel="prev" title="19. Optimization" href="Slides_Optimization_1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Computational Economics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slides_CourseAdministration.html">1. Course Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Loop.html">4. Basic Programming Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Debugging.html">5. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Arrays.html">6. Vectors and Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Plot.html">7. Plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_1.html">10. Working with Data I: Data Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_2.html">11. Working with Data II: Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Data_3.html">12. Working with Data III: Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData.html">13. Working with Data from the Web I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_WebData_2.html">14. Working with Data from the Web II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_RegularExpressions.html">15. Regular Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random.html">16. Random Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Random2.html">17. Random Numbers II: An Infectious Disease Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_1.html">19. Optimization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">20. Constrained Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-cake-eating-problem">20.1. The Cake Eating Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">20.2. Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formally">20.3. Formally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analytical-solution">20.4. Analytical Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-the-problem">20.5. Solving the Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-solution">20.6. Plotting the Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-in-python">20.7. Numerical Solution in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Computational Economics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">20. </span>Constrained Optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Slides_Optimization_2_Cake.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="constrained-optimization">
+<h1><span class="section-number">20. </span>Constrained Optimization<a class="headerlink" href="#constrained-optimization" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar" id="datastructures">
+<p class="sidebar-title">Section Learning Objectives</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cake Eating Problem</p></li>
+<li><p>Analytical Solution</p></li>
+<li><p>Numerical Solution</p></li>
+</ul>
+</div></blockquote>
+</div>
+<span class="target" id="index-0"></span><div class="section" id="the-cake-eating-problem">
+<h2><span class="section-number">20.1. </span>The Cake Eating Problem<a class="headerlink" href="#the-cake-eating-problem" title="Permalink to this headline">¶</a></h2>
+<p>Once upon a time there was a little girl who got a cake. The girl decided to
+eat the cake all alone. But she was not sure when she wanted to eat the cake.
+First, she thought of eating the whole cake right away. But then, nothing would
+be left for tomorrow and the day after tomorrow.</p>
+<p>Well, on the one hand, eating cake today is better than eating it tomorrow.
+But then, eating too much at the same time might not be the best either.  She
+imagined that the first mouthful of cake is a real treat, the second is great,
+the third is also nice. But the more you eat, the less you enjoy it.</p>
+<p>So, she decided to eat only a bit of the cake everyday. Then, she could eat
+everyday another first mouthful of cake.  The girl knew that the cake would be
+spoiled if she kept it more than nine days. Therefore, she would eat the cake
+in the first ten days. Yet, how much should she eat everyday?</p>
+</div>
+<div class="section" id="solution">
+<h2><span class="section-number">20.2. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>She thought of eating everyday a piece of the same size.</p></li>
+<li><p>But if eating cake today is better than waiting for tomorrow, how can it possibly
+be the best to do the same today as tomorrow?</p></li>
+<li><p>If I ate just a little bit less tomorrow and a little bit more today I would be
+better off, she concluded.</p></li>
+<li><p>And she would eat everyday a bit less than the previous day and the cake
+would last ten days long and nothing would be left in the end</p></li>
+</ul>
+</div>
+<div class="section" id="formally">
+<h2><span class="section-number">20.3. </span>Formally<a class="headerlink" href="#formally" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Assume preferences in every period <span class="math notranslate nohighlight">\(t\)</span> follow: <span class="math notranslate nohighlight">\(u(c_t) = ln(c_t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(c_t\)</span> is the amount of cake consumed in period <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>Future consumption is discounted with the time-preference factor <span class="math notranslate nohighlight">\(\beta&lt; 1\)</span>.</p></li>
+<li><p>The present value in period 0 of the whole consumption path is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[V(c_0, c_1 ,c_2 ,...,c_T ) = \sum_{t=0}^{T} \beta^{t} U(c_t)\]</div>
+<ul class="simple">
+<li><p>The person tries to maximize this by choosing her consumption in every
+period <span class="math notranslate nohighlight">\(t=0,..,T\)</span></p></li>
+<li><p>The cake size in the next period <span class="math notranslate nohighlight">\(t+1\)</span> is the size today less the consumption today</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[k_{t+1} = k_{t} - c_{t}\]</div>
+<ul class="simple">
+<li><p>Therefore, the cake size must be non-negative in any period, so that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[k_t \ge 0\]</div>
+<p>The maximization problem can be written as</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\max_{c_0,c_1,...,c_T} \sum_{t=0}^{T} \beta^{t} U(c_t)\\s.t.\\c_0 + c_1 + ... + c_T = k_0\end{aligned}\end{align} \]</div>
+<p>It is a constrained maximization problem with one constraint.</p>
+</div>
+<div class="section" id="analytical-solution">
+<h2><span class="section-number">20.4. </span>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We can express consumption in period <span class="math notranslate nohighlight">\(t\)</span> from the budget constraint as</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[c_t = k_t - k_{t+1}\]</div>
+<p>and similarly we can express consumption in other periods, say <span class="math notranslate nohighlight">\(t-1\)</span>,
+<span class="math notranslate nohighlight">\(t\)</span>, or <span class="math notranslate nohighlight">\(t+1\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}c_{t-1} = k_{t-1} - k_{t}\\c_{t} = k_{t} - k_{t+1}\\c_{t+1} = k_{t+1} - k_{t+2}\end{aligned}\end{align} \]</div>
+<ul class="simple">
+<li><p>Substituting these consumption expressions into the life-time consumption path we get:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[U(k_{0} - k_{1})+ \beta U(k_{1} - k_{2})+...+ \beta^{t-1} U(k_{t-1} - k_{t}) + \beta^{t}  U(k_{t} - k_{t+1}) + \beta^{t+2}  U(k_{t+2} - k_{t+2}) ...\]</div>
+<ul>
+<li><p>Deriving this objective function w.r.t. <span class="math notranslate nohighlight">\(k_t\)</span> and setting is equal to
+zero as it is a first order condition we get:</p>
+<div class="math notranslate nohighlight">
+\[\beta^{t-1} U'(k_{t-1} - k_{t})\times (-1) + \beta^{t}  U'(k_{t} - k_{t+1}) = 0.\]</div>
+<p>This can be rearranged to</p>
+<div class="math notranslate nohighlight">
+\[U'(k_{t-1} - k_{t}) = \frac{\beta^{t}}{\beta^{t-1}} U'(k_{t} - k_{t+1})\]</div>
+<p>or with the budget constraints plugged back in</p>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[U'(c_{t-1}) = \beta U'(c_{t})\]</div>
+<ul class="simple">
+<li><p>This is the so called <strong>Euler Equation</strong>. It relates the marginal utility of
+consumption today to the marginal utility of consumption tomorrow. It is an
+inter-temporal optimality condition.</p></li>
+<li><p>The Euler equation links two periods together. For the solution (the
+consumption path we are looking for) to be an optimum, this equation  has to hold in every
+period.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[U'(c_{t}) = \beta U'(c_{t+1})\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>Euler Equation</strong> has an intuitive interpretation:</p>
+<ul class="simple">
+<li><p>At a utility maximum, the consumer cannot gain from feasible shifts of consumption between periods</p></li>
+<li><p>A one-unit reduction in period <span class="math notranslate nohighlight">\(t\)</span> consumption lowers <span class="math notranslate nohighlight">\(U_t\)</span> by <span class="math notranslate nohighlight">\(U'_t\)</span></p></li>
+<li><p>This unit saved can be shifted to period  <span class="math notranslate nohighlight">\(t+1\)</span> where it raises
+utility by <span class="math notranslate nohighlight">\(U'_{t+1}\)</span> which needs to be discounted back one
+period so the marginal utility values become comparable <span class="math notranslate nohighlight">\(t\)</span>, that is: <span class="math notranslate nohighlight">\(\beta \times U'_{t+1}\)</span></p></li>
+<li><p>In the optimum these two quantities must be equal!</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="solving-the-problem">
+<h2><span class="section-number">20.5. </span>Solving the Problem<a class="headerlink" href="#solving-the-problem" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Plugging the functional form for the utility function into the Euler equation we get:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{1}{c_{t}} = \frac{\beta}{c_{t+1}}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[c_{t+1} = \beta c_{t}\]</div>
+<p>or reformulated again and expressed as <span class="math notranslate nohighlight">\(c_{t}\)</span></p>
+<div class="math notranslate nohighlight">
+\[c_{t} = \frac{1}{\beta}\times c_{t+1}\]</div>
+</div></blockquote>
+</li>
+<li><p>In the optimum we know that: <span class="math notranslate nohighlight">\(k_{T+1} = 0\)</span>. After the last period
+<span class="math notranslate nohighlight">\(T\)</span> we won’t have any leftover cake. It would not be optimal to have
+leftover cake.</p></li>
+<li><p>Recursively plugging the budget constraint into the Euler equation we get:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\boxed{c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0}\]</div>
+<ul class="simple">
+<li><p>We can now map out the optimal consumption for any size cake: <span class="math notranslate nohighlight">\(k_0\)</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The solution above (in the box) was found by solving the problem backwards, starting in the last period <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(c_T = k_T\)</span> in the last period, eat rest of cake you still have and
+do not leave anything for period <span class="math notranslate nohighlight">\(T+1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(c_{T-1}\)</span> we get by:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Substituting the solution we got above into the Euler equation that
+connects period <span class="math notranslate nohighlight">\(T-1\)</span> to the last period <span class="math notranslate nohighlight">\(T\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[c_{T-1}=\frac{1}{\beta} c_T=\frac{1}{\beta} k_T\]</div>
+<p>We now have an expression for <span class="math notranslate nohighlight">\(c_{T-1}\)</span> as a funciton of cake
+in the last period <span class="math notranslate nohighlight">\(k_T\)</span>. However, we need an expression that
+tells us how much to consume in period <span class="math notranslate nohighlight">\(T-1\)</span> as a function of
+the amount of cake in <span class="math notranslate nohighlight">\(T-1\)</span> that is <span class="math notranslate nohighlight">\(k_{T-1}\)</span></p>
+</li>
+<li><p>We use the the budget constraint in period <span class="math notranslate nohighlight">\(T-1\)</span></p>
+<div class="math notranslate nohighlight">
+\[c_{T-1} = k_{T-1} - k_{T}\]</div>
+<p>solve it for <span class="math notranslate nohighlight">\(k_T\)</span> and replace <span class="math notranslate nohighlight">\(k_T\)</span> in the Euler
+equation above so that we get</p>
+<div class="math notranslate nohighlight">
+\[c_{T-1}=\frac{1}{\beta} (k_{T-1} - c_{T-1})\]</div>
+</li>
+<li><p>Which can be solved for <span class="math notranslate nohighlight">\(c_{T-1}\)</span> which is</p>
+<div class="math notranslate nohighlight">
+\[c_{T-1}=\frac{1}{1+\beta} k_{T-1}\]</div>
+<p>This is now an expression of optimal consumption in <span class="math notranslate nohighlight">\(T-1\)</span> as a
+function of the amount of cake in the same period, that is
+<span class="math notranslate nohighlight">\(k_{T-1}\)</span></p>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>We next solve for: <span class="math notranslate nohighlight">\(c_{T-2}=\frac{1}{\beta} c_{T-1}\)</span>, which after substituting for <span class="math notranslate nohighlight">\(c_{T-1}=\frac{1}{1+\beta} k_{T-1}\)</span> we get</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(c_{T-2}=\frac{1}{\beta +\beta^{2}} k_{T-1}\)</span>.
+We again substitute the budget constraint <span class="math notranslate nohighlight">\(k_{T-1} = k_{T-2} - c_{T-2}\)</span>
+and get <span class="math notranslate nohighlight">\(c_{T-2}=\frac{1}{\beta +\beta^{2}} (k_{T-2} - c_{T-2})\)</span>
+which we can solve for <span class="math notranslate nohighlight">\(c_{T-2}\)</span> which becomes:
+<span class="math notranslate nohighlight">\(c_{T-2}=\frac{1}{1 + \beta +\beta^{2}} k_{T-2}\)</span></p>
+</div></blockquote>
+</li>
+<li><p>Continue with this and find: <span class="math notranslate nohighlight">\(c_{T-T} = \frac{1}{1+\beta + \beta^2 +...+\beta^T} k_{T-T}\)</span></p></li>
+<li><p>Using the summation formulat for a finite series <span class="math notranslate nohighlight">\(\sum_{t=0}^{T}\beta^t = \frac{1-\beta^{T+1}}{1-\beta}\)</span>, we get</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boxed{c_0=\frac{1-\beta}{(1-\beta)^{T+1}}k_0}\)</span></p></li>
+<li><p>Once we have this, we can solve the problem for any amount of starting
+cake <span class="math notranslate nohighlight">\(k_0\)</span>. Using the optimal consumption in the first period
+<span class="math notranslate nohighlight">\(c_0\)</span> we can immediately use the Euler equation to solve for next
+period’s optimal consumption</p>
+<div class="math notranslate nohighlight">
+\[c_1 = \beta \times c_0\]</div>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="plotting-the-solution">
+<h2><span class="section-number">20.6. </span>Plotting the Solution<a class="headerlink" href="#plotting-the-solution" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>For any size <span class="math notranslate nohighlight">\(k+0\)</span> and time horizon <span class="math notranslate nohighlight">\(T\)</span> we can now calculate the optimal consumption in each period</p></li>
+<li><p>Example: <span class="math notranslate nohighlight">\(k_0 = 100\)</span>, <span class="math notranslate nohighlight">\(T=10\)</span>, and <span class="math notranslate nohighlight">\(\beta = 0.96\)</span></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">time</span>            <span class="c1"># Imports system time module to time your script</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
+</pre></div>
+</div>
+<p>We next calculate the solutions following the analytical procedure introduced
+above and plot the optimal consumption path over time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">kv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># k0</span>
+<span class="n">cv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta</span><span class="o">**</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">kv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># c0</span>
+<span class="n">uv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1">#print &quot;i=&quot; + str(i)</span>
+    <span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">kv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Period utility with discounting</span>
+    <span class="n">uv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">uv</span><span class="p">)</span>  <span class="c1"># total utility</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cv = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kv = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.35339933</span> <span class="mf">13.8180594</span>  <span class="mf">12.43625346</span> <span class="mf">11.19262811</span> <span class="mf">10.0733653</span>
+<span class="mf">9.06602877</span>
+  <span class="mf">8.15942589</span>  <span class="mf">7.3434833</span>   <span class="mf">6.60913497</span>  <span class="mf">5.94822148</span><span class="p">]</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">100.</span>          <span class="mf">84.64660067</span>  <span class="mf">70.82854128</span>  <span class="mf">58.39228782</span>  <span class="mf">47.19965971</span>
+  <span class="mf">37.12629441</span>  <span class="mf">28.06026564</span>  <span class="mf">19.90083975</span>  <span class="mf">12.55735645</span>   <span class="mf">5.94822148</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Plotting the function is achieved via:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$c^*_t$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Period t&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Optimal Consumption&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$k_t$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Period t&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cake size&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Optimization_2_Cake_Cake_1.png"><img alt="_images/Slides_Optimization_2_Cake_Cake_1.png" src="_images/Slides_Optimization_2_Cake_Cake_1.png" style="width: 12cm;" /></a>
+</div>
+<div class="section" id="numerical-solution-in-python">
+<h2><span class="section-number">20.7. </span>Numerical Solution in Python<a class="headerlink" href="#numerical-solution-in-python" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>For a numerical solution we use the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> package</p></li>
+<li><p>The routine <code class="docutils literal notranslate"><span class="pre">fmin_slsqp</span></code> minimizes constrained non-linear functions</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>I recommend getting into the habit of reading the documentation for functions
+of libraries so that you learn how to use them correctly as well as the
+different ways of their application.</p></li>
+<li><p>Here is the link: <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.13.0/reference/generated/scipy.optimize.fmin_slsqp.html">Scipy Documentation for fmin_slsqp</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>The constraints can be equality or inequality constraints</p></li>
+<li><p>Our problem has one equality constraint:</p></li>
+<li><p>We start by defining the functions that we would like to optimize, which is
+basically present value welfare, or the present value of all future utilities
+added up. We define this welfare stream from consumption as <code class="docutils literal notranslate"><span class="pre">f_welf</span></code>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sum_{t=0}^{T}\beta^{t} U(c_t)\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_welf</span><span class="p">(</span><span class="n">cv</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span>
+    <span class="n">uv</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="c1"># Period utility with discounting</span>
+        <span class="n">uv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># We want to maximize this welfare,</span>
+    <span class="c1"># so we need to &#39;negate&#39; the result</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">uv</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>We want to maximize welfare. Since the routine we will be calling is a
+minimization routine, we need to define the <strong>negative</strong> welfare function.
+Minimizing this negative function, will maximize welfare.</p>
+</div>
+<ul class="simple">
+<li><p>The constraint needs to be  defined as function as well. We therefore define
+the constraint as <code class="docutils literal notranslate"><span class="pre">f_const1</span></code>. This basically states that
+you cannot eat more than the cake itself.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[c_0+c_1+...+c_T=k_0\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The constraint</span>
+<span class="k">def</span> <span class="nf">f_constr1</span><span class="p">(</span><span class="n">cv</span><span class="p">):</span>
+    <span class="n">k0</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span> <span class="o">-</span> <span class="n">k0</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z1</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Note that the constraint function has the
+same input argument (i.e., the vector of consumptions for each period) as the
+welfare function that we want to maximize.</p>
+</div>
+<p>We finally call the optimizer routine <code class="docutils literal notranslate"><span class="pre">fmin_slsqp</span></code> handing in the function we
+want to maximize <code class="docutils literal notranslate"><span class="pre">f_welf</span></code>, the starting values (guesses) for consumption in each period
+<code class="docutils literal notranslate"><span class="pre">c0v</span></code> and the constraints function <code class="docutils literal notranslate"><span class="pre">f_constr1</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Starting guesses for the optimal consumption vector</span>
+<span class="n">c0v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span>
+
+<span class="n">coptv</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin_slsqp</span><span class="p">(</span><span class="n">f_welf</span><span class="p">,</span> <span class="n">c0v</span><span class="p">,</span> <span class="n">f_eqcons</span> <span class="o">=</span> <span class="n">f_constr1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">coptv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>    <span class="p">(</span><span class="n">Exit</span> <span class="n">mode</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.287355363157735</span>
+            <span class="n">Iterations</span><span class="p">:</span> <span class="mi">22</span>
+            <span class="n">Function</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">264</span>
+            <span class="n">Gradient</span> <span class="n">evaluations</span><span class="p">:</span> <span class="mi">22</span>
+<span class="p">[</span><span class="mf">15.33727223</span> <span class="mf">13.82825036</span> <span class="mf">12.45005498</span> <span class="mf">11.19821343</span> <span class="mf">10.06848065</span>
+<span class="mf">9.05581662</span>
+  <span class="mf">8.15286629</span>  <span class="mf">7.34763605</span>  <span class="mf">6.62044636</span>  <span class="mf">5.94096304</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And finally we plot the optimal consumption path <code class="docutils literal notranslate"><span class="pre">coptv</span></code> that we just solved
+for.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># Plot analytical solution</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">cv</span><span class="p">,</span> <span class="s1">&#39;b-o&#39;</span><span class="p">)</span>
+<span class="c1"># Plot numerical solution</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">),</span> <span class="n">coptv</span><span class="p">,</span> <span class="s1">&#39;r--o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Optimal consumption&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Period t&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$c_t$&quot;</span><span class="p">)</span>
+<span class="c1"># Create a legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;analytical&#39;</span><span class="p">,</span> <span class="s1">&#39;numerical&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic solution&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Numeric solution&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cv = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coptv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----------------------------</span>
+<span class="n">Analytic</span> <span class="n">solution</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.35339933</span> <span class="mf">13.8180594</span>  <span class="mf">12.43625346</span> <span class="mf">11.19262811</span> <span class="mf">10.0733653</span>
+<span class="mf">9.06602877</span>
+  <span class="mf">8.15942589</span>  <span class="mf">7.3434833</span>   <span class="mf">6.60913497</span>  <span class="mf">5.94822148</span><span class="p">]</span>
+<span class="o">-----------------------------</span>
+
+<span class="o">-----------------------------</span>
+<span class="n">Numeric</span> <span class="n">solution</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">15.33727223</span> <span class="mf">13.82825036</span> <span class="mf">12.45005498</span> <span class="mf">11.19821343</span> <span class="mf">10.06848065</span>
+<span class="mf">9.05581662</span>
+  <span class="mf">8.15286629</span>  <span class="mf">7.34763605</span>  <span class="mf">6.62044636</span>  <span class="mf">5.94096304</span><span class="p">]</span>
+<span class="o">-----------------------------</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png"><img alt="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" src="_images/Slides_Optimization_2_Cake_Optimal_Consumption_1.png" style="width: 12cm;" /></a>
+<p>We can now see that the numerical solution is very close to the analytical
+solution we derived ‘by hand’ above. The optimal consumption path is
+decreasing. You start out eating a lot of cake and then gradually decrease your
+consumption. Still, you want to eat a bit of cake every period.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Slides_MachineLearning_1.html" class="btn btn-neutral float-right" title="21. Machine Learning I: Introduction to Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Slides_Optimization_1.html" class="btn btn-neutral float-left" title="19. Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Juergen Jung
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
