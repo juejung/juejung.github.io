@@ -116,6 +116,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#functional-forms-and-solutions">23.3. Functional Forms and Solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#method-1-substituting-everything">23.4. Method 1: Substituting Everything</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#method-2-gauss-seidl-algorithm">23.5. Method 2: Gauss-Seidl Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">23.6. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">23.7. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
@@ -270,15 +272,15 @@
 <blockquote>
 <div><ul>
 <li><p>the HH max problem is solved</p></li>
-<li><dl class="simple">
-<dt>the firm maximization problem is solved, so that:</dt><dd><ul class="simple">
+<li><p>the firm maximization problem is solved, so that</p>
+<blockquote>
+<div><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(q = F_K\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(w = F_L\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(r = q - \delta\)</span> is the interest rate</p></li>
 <li><p><span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K)(q - \delta))\)</span> is the after tax gross interest rate</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 <li><p>the gov’t budget constraint clears</p></li>
 <li><p>Markets clear:</p>
@@ -338,11 +340,11 @@ equations!</p></li>
 <div class="math notranslate nohighlight">
 \[K=N_y s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
 <div class="math notranslate nohighlight">
-\[\alpha*Y/K = q\]</div>
+\[\alpha \times Y/K = q\]</div>
 <div class="math notranslate nohighlight">
-\[(1-\alpha)*Y/L = w\]</div>
+\[(1-\alpha) \times Y/L = w\]</div>
 <div class="math notranslate nohighlight">
-\[F(K,L) = A K^{\alpha} L^{(1-\alpha)}\]</div>
+\[Y = F(K,L) = A \times K^{\alpha} L^{(1-\alpha)}\]</div>
 <div class="math notranslate nohighlight">
 \[R = (1 + (1-\tau_K)(q - \delta))\]</div>
 <ul class="simple">
@@ -361,21 +363,28 @@ ideally into one non-linear equation that we can then solve with a <code class="
 have <span class="math notranslate nohighlight">\(L = N_y \times l\)</span> and <span class="math notranslate nohighlight">\(N_y\)</span> is also normalized to be one.</p>
 </div>
 <ul>
-<li><p>Substitute <span class="math notranslate nohighlight">\(Y\)</span> out and get <span class="math notranslate nohighlight">\(q(K)\)</span> and <span class="math notranslate nohighlight">\(w(K)\)</span>.</p></li>
-<li><p>Use <span class="math notranslate nohighlight">\(q(K)\)</span> in <span class="math notranslate nohighlight">\(R\)</span> and get <span class="math notranslate nohighlight">\(R(K)\)</span></p>
+<li><p>Substitute <span class="math notranslate nohighlight">\(Y\)</span> out of the system of equations and get</p>
 <div class="math notranslate nohighlight">
-\[w = (1-\alpha)*A K^{\alpha}
-R = 1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta)\]</div>
+\[q(K) = \alpha \times \frac{A \times  K^{\alpha} L^{(1-\alpha)}}{K}\]</div>
+<div class="math notranslate nohighlight">
+\[w(K) = (1-\alpha) \times \frac{A \times  K^{\alpha} L^{(1-\alpha)}}{L}\]</div>
 </li>
-<li><p>Plug <span class="math notranslate nohighlight">\(w(K)\)</span> and <span class="math notranslate nohighlight">\(R(K)\)</span> into <span class="math notranslate nohighlight">\(K\)</span>-equation</p></li>
+<li><p>After using <span class="math notranslate nohighlight">\(q(K)\)</span> in the expression for <span class="math notranslate nohighlight">\(R\)</span> above and
+some simplifications we get two expressions for prices <span class="math notranslate nohighlight">\(w\)</span> and
+<span class="math notranslate nohighlight">\(R\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}w = (1-\alpha)*A K^{\alpha}\\R = 1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta)\end{aligned}\end{align} \]</div>
+</li>
+<li><p>Plug <span class="math notranslate nohighlight">\(w(K)\)</span> and <span class="math notranslate nohighlight">\(R(K)\)</span> into <span class="math notranslate nohighlight">\(K\)</span>-equation of the 5 equation
+system above.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We now have one equation in <span class="math notranslate nohighlight">\(K\)</span> only that can be solved with a
 root-finding algorithm!</p>
 <div class="math notranslate nohighlight">
-\[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta))
-((1-\tau_L)((1-\alpha)*A K^{\alpha}) + t_y) - t_o}
+\[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha \times A K^{\alpha-1} - \delta))
+((1-\tau_L)((1-\alpha) \times A K^{\alpha}) + t_y) - t_o}
 {(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</div>
 </div>
 <p><strong>Model Parameters</strong></p>
@@ -390,15 +399,15 @@ parameters: <span class="math notranslate nohighlight">\(\tau_L=0.2\)</span>, <s
 <ul>
 <li><p>Aggregate consumption is:</p>
 <div class="math notranslate nohighlight">
-\[C = N_y*c_y + N_o*c_o\]</div>
+\[C = N_y \times c_y + N_o \times c_o\]</div>
 </li>
 <li><p>Aggregate government consumption is:</p>
 <div class="math notranslate nohighlight">
-\[G = \tau_L \times wL + \tau_K \times rK - N_y*t_y - N_o*t_o\]</div>
+\[G = \tau_L \times w \times L + \tau_K \times r \times K - N_y \times t_y - N_o \times t_o\]</div>
 </li>
 <li><p>The aggregate resource constraint (ARC) or goods market clearing condition is:</p>
 <div class="math notranslate nohighlight">
-\[C + N_y*s + G = Y + (1-\delta)K\]</div>
+\[C + N_y \times s + G = Y + (1-\delta)K\]</div>
 </li>
 </ul>
 <div class="admonition warning">
@@ -478,7 +487,7 @@ with your solution!</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png" id="capital"><img alt="_images/Slides_OLG_I_Capital_1.png" id="capital" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png"><img alt="_images/Slides_OLG_I_Capital_1.png" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use built in &#39;fsolve&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------- Fsolve ------------&quot;</span><span class="p">)</span>
@@ -647,6 +656,32 @@ parameter.</p>
  <span class="o">-------------------------------------</span>
 <span class="n">ARC</span> <span class="o">=</span> <span class="mf">0.0000</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="key-concepts-and-summary">
+<h2><span class="section-number">23.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Introduction of OLG model</p></li>
+<li><p>Deriving optimality conditions in OLG model</p></li>
+<li><p>Introduction of non-linear function solution</p></li>
+<li><p>Gauss-Seidl Algorithm</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-check-questions">
+<h2><span class="section-number">23.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Use either one of the models above and resolve the model
+for <span class="math notranslate nohighlight">\(\tau_K = [0.01, 0.02, 0.03,...,0.1]\)</span> and track output,
+agggregate capital and tax revenue from capital as well as labor
+taxes.</p></li>
+<li><p>Repeat the exercise above but this time change the labor tax parameter
+and resolve the model for <span class="math notranslate nohighlight">\(\tau_L = [0.11, 0.12, 0.13,...,0.2]\)</span></p></li>
+</ol>
 </div>
 </div>
 </div>
