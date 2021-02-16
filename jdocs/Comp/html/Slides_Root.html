@@ -24,7 +24,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -37,7 +36,7 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="19. Optimization" href="Slides_Optimization.html" />
+    <link rel="next" title="19. Optimization" href="Slides_Optimization_1.html" />
     <link rel="prev" title="17. Random Numbers II: An Infectious Disease Simulation" href="Slides_Random2.html" /> 
 </head>
 
@@ -113,8 +112,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#using-built-in-unit-root-function">18.5. Using Built in Unit-Root Function</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization.html">19. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Cake.html">20. Constrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_1.html">19. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_2_Cake.html">20. Constrained Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
@@ -483,7 +482,7 @@ method, where we substitute <span class="math notranslate nohighlight">\(\frac{f
 <p>The <strong>Newton-Raphson</strong> as well as the <strong>Secant</strong> method are not guaranteed to
 work. The bisection method is the most robust method, but it is slow. We start with
 two values <span class="math notranslate nohighlight">\(x_l &lt; x_r\)</span> which bracket the root of the function. It
-therefore must hold that <span class="math notranslate nohighlight">\(f(x_l) f(x_r) &lt; 0\)</span>. The algorithm then
+therefore must hold that <span class="math notranslate nohighlight">\(f(x_l) \times f(x_r) &lt; 0\)</span>. The algorithm then
 repeatedly brackets around the root in the following systematic way:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -491,9 +490,16 @@ repeatedly brackets around the root in the following systematic way:</p>
 <li><p>if <span class="math notranslate nohighlight">\(x_r - x_l \le \epsilon\)</span> then stop</p></li>
 <li><p>calculate midpoint: <span class="math notranslate nohighlight">\(x_m = (x_l+x_r)/2\)</span></p></li>
 <li><p>if <span class="math notranslate nohighlight">\(f(x_m)==0\)</span> stop</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(f(x_l) f(x_m) &lt; 0\)</span> then set <span class="math notranslate nohighlight">\(x_r = x_m\)</span> otherwise <span class="math notranslate nohighlight">\(x_l=x_m\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(f(x_l) \times  f(x_m) &lt; 0\)</span> then set <span class="math notranslate nohighlight">\(x_r = x_m\)</span> otherwise <span class="math notranslate nohighlight">\(x_l=x_m\)</span></p></li>
 <li><p>go back to step 1</p></li>
 </ol>
+</div>
+<p><a class="reference internal" href="#fig-bisection"><span class="std std-numref">Fig. 18.4</span></a> demonstrates the Bisection algorithm. In the figure we
+demonstrate the first case in step 4 above, where <span class="math notranslate nohighlight">\(f(x_l) \times  f(x_m)
+&lt; 0\)</span> so that we move the right bracket inwards.</p>
+<div class="figure align-center" id="fig-bisection">
+<img alt="_images/InkscapeRootBisection.png" src="_images/InkscapeRootBisection.png" />
+<p class="caption"><span class="caption-number">Fig. 18.4 </span><span class="caption-text">The Bisection Algorithm</span><a class="headerlink" href="#fig-bisection" title="Permalink to this image">¶</a></p>
 </div>
 <p>Here is the algorithm of the Bisection method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
@@ -664,7 +670,7 @@ solver algorithm with a starting guess of the root position.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_Optimization.html" class="btn btn-neutral float-right" title="19. Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_Optimization_1.html" class="btn btn-neutral float-right" title="19. Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Slides_Random2.html" class="btn btn-neutral float-left" title="17. Random Numbers II: An Infectious Disease Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
