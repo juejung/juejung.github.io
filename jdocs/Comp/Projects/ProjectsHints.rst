@@ -16,7 +16,7 @@ economics research relevant search engine like:
 `EconPapers <https://econpapers.repec.org/scripts/search.pf?ft=>`_
 in order to find relevant literature.
 
-1. Data Analysis Projects
+1. Data Analysis Projects (and Machine Learning Projects)
 -------------------------------------------------------------------------------
 
 Since you are working with data that is already available in some form, your
