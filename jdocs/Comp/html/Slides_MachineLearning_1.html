@@ -24,7 +24,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -533,7 +532,7 @@ distribution of income.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;median_income&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f4570086d50</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure9_1.png"><img alt="_images/Slides_MachineLearning_1_figure9_1.png" src="_images/Slides_MachineLearning_1_figure9_1.png" style="width: 15cm;" /></a>
@@ -561,7 +560,7 @@ variable.</p>
 <span class="n">Name</span><span class="p">:</span> <span class="n">income_cat</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f45700621d0</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure11_1.png"><img alt="_images/Slides_MachineLearning_1_figure11_1.png" src="_images/Slides_MachineLearning_1_figure11_1.png" style="width: 15cm;" /></a>
@@ -591,8 +590,8 @@ block.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>    <span class="mf">0.350533</span>
 <span class="mi">2</span>    <span class="mf">0.318798</span>
 <span class="mi">4</span>    <span class="mf">0.176357</span>
-<span class="mi">5</span>    <span class="mf">0.114583</span>
-<span class="mi">1</span>    <span class="mf">0.039729</span>
+<span class="mi">5</span>    <span class="mf">0.114341</span>
+<span class="mi">1</span>    <span class="mf">0.039971</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">income_cat</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
@@ -632,11 +631,11 @@ original data.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Overall</span>  <span class="n">Stratified</span>    <span class="n">Random</span>  <span class="n">Rand</span><span class="o">.</span> <span class="o">%</span><span class="n">error</span>  <span class="n">Strat</span><span class="o">.</span> <span class="o">%</span><span class="n">error</span>
-<span class="mi">1</span>  <span class="mf">0.039826</span>    <span class="mf">0.039729</span>  <span class="mf">0.040213</span>      <span class="mf">0.973236</span>      <span class="o">-</span><span class="mf">0.243309</span>
+<span class="mi">1</span>  <span class="mf">0.039826</span>    <span class="mf">0.039971</span>  <span class="mf">0.040213</span>      <span class="mf">0.973236</span>       <span class="mf">0.364964</span>
 <span class="mi">2</span>  <span class="mf">0.318847</span>    <span class="mf">0.318798</span>  <span class="mf">0.324370</span>      <span class="mf">1.732260</span>      <span class="o">-</span><span class="mf">0.015195</span>
 <span class="mi">3</span>  <span class="mf">0.350581</span>    <span class="mf">0.350533</span>  <span class="mf">0.358527</span>      <span class="mf">2.266446</span>      <span class="o">-</span><span class="mf">0.013820</span>
 <span class="mi">4</span>  <span class="mf">0.176308</span>    <span class="mf">0.176357</span>  <span class="mf">0.167393</span>     <span class="o">-</span><span class="mf">5.056334</span>       <span class="mf">0.027480</span>
-<span class="mi">5</span>  <span class="mf">0.114438</span>    <span class="mf">0.114583</span>  <span class="mf">0.109496</span>     <span class="o">-</span><span class="mf">4.318374</span>       <span class="mf">0.127011</span>
+<span class="mi">5</span>  <span class="mf">0.114438</span>    <span class="mf">0.114341</span>  <span class="mf">0.109496</span>     <span class="o">-</span><span class="mf">4.318374</span>      <span class="o">-</span><span class="mf">0.084674</span>
 </pre></div>
 </div>
 <p>Before we move on, we drop the income category variable because we do not use
@@ -659,7 +658,7 @@ California.</p>
 <span class="c1"># save_fig(&quot;bad_visualization_plot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f456ff160d0</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure19_1.png"><img alt="_images/Slides_MachineLearning_1_figure19_1.png" src="_images/Slides_MachineLearning_1_figure19_1.png" style="width: 15cm;" /></a>
@@ -670,7 +669,7 @@ specify the “opaqueness” of the dots in the scatterplot.</p>
 <span class="c1"># save_fig(&quot;better_visualization_plot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f456c67c090</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure20_1.png"><img alt="_images/Slides_MachineLearning_1_figure20_1.png" src="_images/Slides_MachineLearning_1_figure20_1.png" style="width: 15cm;" /></a>
@@ -685,7 +684,7 @@ density.</p>
 <span class="c1"># save_fig(&quot;housing_prices_scatterplot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7f456c66a210</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7ff1072c59a0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure21_1.png"><img alt="_images/Slides_MachineLearning_1_figure21_1.png" src="_images/Slides_MachineLearning_1_figure21_1.png" style="width: 15cm;" /></a>
@@ -697,14 +696,14 @@ should factor in.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">median_house_value</span>    <span class="mf">1.000000</span>
-<span class="n">median_income</span>         <span class="mf">0.687160</span>
-<span class="n">total_rooms</span>           <span class="mf">0.135097</span>
-<span class="n">housing_median_age</span>    <span class="mf">0.114110</span>
-<span class="n">households</span>            <span class="mf">0.064506</span>
-<span class="n">total_bedrooms</span>        <span class="mf">0.047689</span>
-<span class="n">population</span>           <span class="o">-</span><span class="mf">0.026920</span>
-<span class="n">longitude</span>            <span class="o">-</span><span class="mf">0.047432</span>
-<span class="n">latitude</span>             <span class="o">-</span><span class="mf">0.142724</span>
+<span class="n">median_income</span>         <span class="mf">0.687151</span>
+<span class="n">total_rooms</span>           <span class="mf">0.135140</span>
+<span class="n">housing_median_age</span>    <span class="mf">0.114146</span>
+<span class="n">households</span>            <span class="mf">0.064590</span>
+<span class="n">total_bedrooms</span>        <span class="mf">0.047781</span>
+<span class="n">population</span>           <span class="o">-</span><span class="mf">0.026882</span>
+<span class="n">longitude</span>            <span class="o">-</span><span class="mf">0.047466</span>
+<span class="n">latitude</span>             <span class="o">-</span><span class="mf">0.142673</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">median_house_value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
@@ -720,38 +719,34 @@ the correlation between variables.</p>
 <span class="c1"># save_fig(&quot;scatter_matrix_plot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f45700393d0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f4570062dd0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f456fffe090</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f456ffd8610</span><span class="o">&gt;</span><span class="p">],</span>
-       <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f457002e6d0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f4567145ed0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f456716f450</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f4567299f10</span><span class="o">&gt;</span><span class="p">],</span>
-       <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f45672a1b50</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f45671a3410</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f457009b790</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f457009cf90</span><span class="o">&gt;</span><span class="p">],</span>
-       <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f45670cb7d0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f45672d4fd0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f4567036810</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span>
-<span class="mh">0x7f4566feff90</span><span class="o">&gt;</span><span class="p">]],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="o">&gt;</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="o">&gt;</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="o">&gt;</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="p">,</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;housing_median_age&#39;</span><span class="o">&gt;</span><span class="p">]],</span>
       <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -762,7 +757,7 @@ the correlation between variables.</p>
 <span class="c1"># save_fig(&quot;income_vs_house_value_scatterplot&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">550000</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">550000.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_MachineLearning_1_figure24_1.png"><img alt="_images/Slides_MachineLearning_1_figure24_1.png" src="_images/Slides_MachineLearning_1_figure24_1.png" style="width: 15cm;" /></a>
@@ -779,17 +774,17 @@ variables in our original data set.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">median_house_value</span>          <span class="mf">1.000000</span>
-<span class="n">median_income</span>               <span class="mf">0.687160</span>
-<span class="n">rooms_per_household</span>         <span class="mf">0.146285</span>
-<span class="n">total_rooms</span>                 <span class="mf">0.135097</span>
-<span class="n">housing_median_age</span>          <span class="mf">0.114110</span>
-<span class="n">households</span>                  <span class="mf">0.064506</span>
-<span class="n">total_bedrooms</span>              <span class="mf">0.047689</span>
-<span class="n">population_per_household</span>   <span class="o">-</span><span class="mf">0.021985</span>
-<span class="n">population</span>                 <span class="o">-</span><span class="mf">0.026920</span>
-<span class="n">longitude</span>                  <span class="o">-</span><span class="mf">0.047432</span>
-<span class="n">latitude</span>                   <span class="o">-</span><span class="mf">0.142724</span>
-<span class="n">bedrooms_per_room</span>          <span class="o">-</span><span class="mf">0.259984</span>
+<span class="n">median_income</span>               <span class="mf">0.687151</span>
+<span class="n">rooms_per_household</span>         <span class="mf">0.146255</span>
+<span class="n">total_rooms</span>                 <span class="mf">0.135140</span>
+<span class="n">housing_median_age</span>          <span class="mf">0.114146</span>
+<span class="n">households</span>                  <span class="mf">0.064590</span>
+<span class="n">total_bedrooms</span>              <span class="mf">0.047781</span>
+<span class="n">population_per_household</span>   <span class="o">-</span><span class="mf">0.021991</span>
+<span class="n">population</span>                 <span class="o">-</span><span class="mf">0.026882</span>
+<span class="n">longitude</span>                  <span class="o">-</span><span class="mf">0.047466</span>
+<span class="n">latitude</span>                   <span class="o">-</span><span class="mf">0.142673</span>
+<span class="n">bedrooms_per_room</span>          <span class="o">-</span><span class="mf">0.259952</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">median_house_value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
@@ -813,23 +808,23 @@ observations we have.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">longitude</span>  <span class="n">latitude</span>  <span class="n">housing_median_age</span>  <span class="n">total_rooms</span>
 <span class="n">total_bedrooms</span>  \
-<span class="mi">4629</span>     <span class="o">-</span><span class="mf">118.30</span>     <span class="mf">34.07</span>                <span class="mf">18.0</span>       <span class="mf">3759.0</span>
+<span class="mi">1606</span>     <span class="o">-</span><span class="mf">122.08</span>     <span class="mf">37.88</span>                <span class="mf">26.0</span>       <span class="mf">2947.0</span>
 <span class="n">NaN</span>
-<span class="mi">6068</span>     <span class="o">-</span><span class="mf">117.86</span>     <span class="mf">34.01</span>                <span class="mf">16.0</span>       <span class="mf">4632.0</span>
+<span class="mi">10915</span>    <span class="o">-</span><span class="mf">117.87</span>     <span class="mf">33.73</span>                <span class="mf">45.0</span>       <span class="mf">2264.0</span>
 <span class="n">NaN</span>
-<span class="mi">17923</span>    <span class="o">-</span><span class="mf">121.97</span>     <span class="mf">37.35</span>                <span class="mf">30.0</span>       <span class="mf">1955.0</span>
+<span class="mi">19150</span>    <span class="o">-</span><span class="mf">122.70</span>     <span class="mf">38.35</span>                <span class="mf">14.0</span>       <span class="mf">2313.0</span>
 <span class="n">NaN</span>
-<span class="mi">13656</span>    <span class="o">-</span><span class="mf">117.30</span>     <span class="mf">34.05</span>                 <span class="mf">6.0</span>       <span class="mf">2155.0</span>
+<span class="mi">4186</span>     <span class="o">-</span><span class="mf">118.23</span>     <span class="mf">34.13</span>                <span class="mf">48.0</span>       <span class="mf">1308.0</span>
 <span class="n">NaN</span>
-<span class="mi">19252</span>    <span class="o">-</span><span class="mf">122.79</span>     <span class="mf">38.48</span>                 <span class="mf">7.0</span>       <span class="mf">6837.0</span>
+<span class="mi">16885</span>    <span class="o">-</span><span class="mf">122.40</span>     <span class="mf">37.58</span>                <span class="mf">26.0</span>       <span class="mf">3281.0</span>
 <span class="n">NaN</span>
 
        <span class="n">population</span>  <span class="n">households</span>  <span class="n">median_income</span> <span class="n">ocean_proximity</span>
-<span class="mi">4629</span>       <span class="mf">3296.0</span>      <span class="mf">1462.0</span>         <span class="mf">2.2708</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">6068</span>       <span class="mf">3038.0</span>       <span class="mf">727.0</span>         <span class="mf">5.1762</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">17923</span>       <span class="mf">999.0</span>       <span class="mf">386.0</span>         <span class="mf">4.6328</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">13656</span>      <span class="mf">1039.0</span>       <span class="mf">391.0</span>         <span class="mf">1.6675</span>          <span class="n">INLAND</span>
-<span class="mi">19252</span>      <span class="mf">3468.0</span>      <span class="mf">1405.0</span>         <span class="mf">3.1662</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">1606</span>        <span class="mf">825.0</span>       <span class="mf">626.0</span>         <span class="mf">2.9330</span>        <span class="n">NEAR</span> <span class="n">BAY</span>
+<span class="mi">10915</span>      <span class="mf">1970.0</span>       <span class="mf">499.0</span>         <span class="mf">3.4193</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">19150</span>       <span class="mf">954.0</span>       <span class="mf">397.0</span>         <span class="mf">3.7813</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">4186</span>        <span class="mf">835.0</span>       <span class="mf">294.0</span>         <span class="mf">4.2891</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">16885</span>      <span class="mf">1145.0</span>       <span class="mf">480.0</span>         <span class="mf">6.3580</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
 </pre></div>
 </div>
 <p>We next run a built in function over our data that attempts to impute missing
@@ -862,10 +857,10 @@ categorical variable information.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">housing_num</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
-    <span class="mf">3.5409</span><span class="p">]</span>
-<span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>     <span class="mf">34.26</span>     <span class="mf">29.</span>     <span class="mf">2119.5</span>     <span class="mf">433.</span>     <span class="mf">1164.</span>      <span class="mf">408.</span>
-    <span class="mf">3.5409</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>      <span class="mf">34.26</span>      <span class="mf">29.</span>      <span class="mf">2119.</span>       <span class="mf">433.</span>      <span class="mf">1164.</span>
+  <span class="mf">408.</span>         <span class="mf">3.54155</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">118.51</span>      <span class="mf">34.26</span>      <span class="mf">29.</span>      <span class="mf">2119.</span>       <span class="mf">433.</span>      <span class="mf">1164.</span>
+  <span class="mf">408.</span>         <span class="mf">3.54155</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">housing_num</span><span class="p">)</span>
@@ -878,23 +873,23 @@ categorical variable information.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">longitude</span>  <span class="n">latitude</span>  <span class="n">housing_median_age</span>  <span class="n">total_rooms</span>
 <span class="n">total_bedrooms</span>  \
-<span class="mi">17606</span>    <span class="o">-</span><span class="mf">121.89</span>     <span class="mf">37.29</span>                <span class="mf">38.0</span>       <span class="mf">1568.0</span>
-<span class="mf">351.0</span>
-<span class="mi">18632</span>    <span class="o">-</span><span class="mf">121.93</span>     <span class="mf">37.05</span>                <span class="mf">14.0</span>        <span class="mf">679.0</span>
-<span class="mf">108.0</span>
-<span class="mi">14650</span>    <span class="o">-</span><span class="mf">117.20</span>     <span class="mf">32.77</span>                <span class="mf">31.0</span>       <span class="mf">1952.0</span>
-<span class="mf">471.0</span>
-<span class="mi">3230</span>     <span class="o">-</span><span class="mf">119.61</span>     <span class="mf">36.31</span>                <span class="mf">25.0</span>       <span class="mf">1847.0</span>
-<span class="mf">371.0</span>
-<span class="mi">3555</span>     <span class="o">-</span><span class="mf">118.59</span>     <span class="mf">34.23</span>                <span class="mf">17.0</span>       <span class="mf">6592.0</span>
-<span class="mf">1525.0</span>
+<span class="mi">12655</span>    <span class="o">-</span><span class="mf">121.46</span>     <span class="mf">38.52</span>                <span class="mf">29.0</span>       <span class="mf">3873.0</span>
+<span class="mf">797.0</span>
+<span class="mi">15502</span>    <span class="o">-</span><span class="mf">117.23</span>     <span class="mf">33.09</span>                 <span class="mf">7.0</span>       <span class="mf">5320.0</span>
+<span class="mf">855.0</span>
+<span class="mi">2908</span>     <span class="o">-</span><span class="mf">119.04</span>     <span class="mf">35.37</span>                <span class="mf">44.0</span>       <span class="mf">1618.0</span>
+<span class="mf">310.0</span>
+<span class="mi">14053</span>    <span class="o">-</span><span class="mf">117.13</span>     <span class="mf">32.75</span>                <span class="mf">24.0</span>       <span class="mf">1877.0</span>
+<span class="mf">519.0</span>
+<span class="mi">20496</span>    <span class="o">-</span><span class="mf">118.70</span>     <span class="mf">34.28</span>                <span class="mf">27.0</span>       <span class="mf">3536.0</span>
+<span class="mf">646.0</span>
 
        <span class="n">population</span>  <span class="n">households</span>  <span class="n">median_income</span>
-<span class="mi">17606</span>       <span class="mf">710.0</span>       <span class="mf">339.0</span>         <span class="mf">2.7042</span>
-<span class="mi">18632</span>       <span class="mf">306.0</span>       <span class="mf">113.0</span>         <span class="mf">6.4214</span>
-<span class="mi">14650</span>       <span class="mf">936.0</span>       <span class="mf">462.0</span>         <span class="mf">2.8621</span>
-<span class="mi">3230</span>       <span class="mf">1460.0</span>       <span class="mf">353.0</span>         <span class="mf">1.8839</span>
-<span class="mi">3555</span>       <span class="mf">4459.0</span>      <span class="mf">1463.0</span>         <span class="mf">3.0347</span>
+<span class="mi">12655</span>      <span class="mf">2237.0</span>       <span class="mf">706.0</span>         <span class="mf">2.1736</span>
+<span class="mi">15502</span>      <span class="mf">2015.0</span>       <span class="mf">768.0</span>         <span class="mf">6.3373</span>
+<span class="mi">2908</span>        <span class="mf">667.0</span>       <span class="mf">300.0</span>         <span class="mf">2.8750</span>
+<span class="mi">14053</span>       <span class="mf">898.0</span>       <span class="mf">483.0</span>         <span class="mf">2.2264</span>
+<span class="mi">20496</span>      <span class="mf">1837.0</span>       <span class="mf">580.0</span>         <span class="mf">4.4964</span>
 </pre></div>
 </div>
 <p>We have now created a complete dataset with no more missing observations that
@@ -906,15 +901,15 @@ unit. Let us inspect this variable first.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">ocean_proximity</span>
-<span class="mi">17606</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">18632</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">14650</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
-<span class="mi">3230</span>           <span class="n">INLAND</span>
-<span class="mi">3555</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">19480</span>          <span class="n">INLAND</span>
-<span class="mi">8879</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mi">13685</span>          <span class="n">INLAND</span>
-<span class="mi">4937</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">12655</span>          <span class="n">INLAND</span>
+<span class="mi">15502</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
+<span class="mi">2908</span>           <span class="n">INLAND</span>
+<span class="mi">14053</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
+<span class="mi">20496</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">1481</span>         <span class="n">NEAR</span> <span class="n">BAY</span>
+<span class="mi">18125</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">5830</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mi">17989</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
 <span class="mi">4861</span>        <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
 </pre></div>
 </div>
@@ -954,14 +949,14 @@ instead.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">ordinal_encoder</span><span class="o">.</span><span class="n">categories_</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span><span class="mf">0.</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">1.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">4.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">4.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span><span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">0.</span><span class="p">]</span>
- <span class="p">[</span><span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">0.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">0.</span><span class="p">]]</span>
 <span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;&lt;1H OCEAN&#39;</span><span class="p">,</span> <span class="s1">&#39;INLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;ISLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR BAY&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR OCEAN&#39;</span><span class="p">],</span>
@@ -1004,57 +999,57 @@ can import the new version from future_encoders.py:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">cat_encoder</span><span class="o">.</span><span class="n">categories_</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>        <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="mf">1.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>        <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>        <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>       <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="mf">1.0</span>
   <span class="p">:</span>     <span class="p">:</span>
   <span class="p">(</span><span class="mi">16487</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16488</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16488</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16489</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16490</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16491</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16492</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16493</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16494</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16490</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16491</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16492</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16493</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16494</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16495</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16496</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16497</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16498</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16497</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16498</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16499</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16500</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16501</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16502</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16503</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16501</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16502</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16503</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16504</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16505</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16505</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16506</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16507</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16507</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16508</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16509</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16509</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
   <span class="p">(</span><span class="mi">16510</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="mf">1.0</span>
-  <span class="p">(</span><span class="mi">16511</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>    <span class="mf">1.0</span>
+  <span class="p">(</span><span class="mi">16511</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="mf">1.0</span>
 <span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;&lt;1H OCEAN&#39;</span><span class="p">,</span> <span class="s1">&#39;INLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;ISLAND&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR BAY&#39;</span><span class="p">,</span> <span class="s1">&#39;NEAR OCEAN&#39;</span><span class="p">],</span>
       <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)]</span>
 </pre></div>
@@ -1087,12 +1082,12 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">housing_extra_attribs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,:])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">121.89</span> <span class="mf">37.29</span> <span class="mf">38.0</span> <span class="mf">1568.0</span> <span class="mf">351.0</span> <span class="mf">710.0</span> <span class="mf">339.0</span> <span class="mf">2.7042</span> <span class="s1">&#39;&lt;1H OCEAN&#39;</span>
-  <span class="mf">4.625368731563422</span> <span class="mf">2.094395280235988</span><span class="p">]</span>
- <span class="p">[</span><span class="o">-</span><span class="mf">121.93</span> <span class="mf">37.05</span> <span class="mf">14.0</span> <span class="mf">679.0</span> <span class="mf">108.0</span> <span class="mf">306.0</span> <span class="mf">113.0</span> <span class="mf">6.4214</span> <span class="s1">&#39;&lt;1H OCEAN&#39;</span>
-  <span class="mf">6.008849557522124</span> <span class="mf">2.7079646017699117</span><span class="p">]</span>
- <span class="p">[</span><span class="o">-</span><span class="mf">117.2</span> <span class="mf">32.77</span> <span class="mf">31.0</span> <span class="mf">1952.0</span> <span class="mf">471.0</span> <span class="mf">936.0</span> <span class="mf">462.0</span> <span class="mf">2.8621</span> <span class="s1">&#39;NEAR OCEAN&#39;</span>
-  <span class="mf">4.225108225108225</span> <span class="mf">2.0259740259740258</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">121.46</span> <span class="mf">38.52</span> <span class="mf">29.0</span> <span class="mf">3873.0</span> <span class="mf">797.0</span> <span class="mf">2237.0</span> <span class="mf">706.0</span> <span class="mf">2.1736</span> <span class="s1">&#39;INLAND&#39;</span>
+  <span class="mf">5.485835694050992</span> <span class="mf">3.168555240793201</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">117.23</span> <span class="mf">33.09</span> <span class="mf">7.0</span> <span class="mf">5320.0</span> <span class="mf">855.0</span> <span class="mf">2015.0</span> <span class="mf">768.0</span> <span class="mf">6.3373</span> <span class="s1">&#39;NEAR OCEAN&#39;</span>
+  <span class="mf">6.927083333333333</span> <span class="mf">2.6236979166666665</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">119.04</span> <span class="mf">35.37</span> <span class="mf">44.0</span> <span class="mf">1618.0</span> <span class="mf">310.0</span> <span class="mf">667.0</span> <span class="mf">300.0</span> <span class="mf">2.875</span> <span class="s1">&#39;INLAND&#39;</span>
+  <span class="mf">5.3933333333333335</span> <span class="mf">2.223333333333333</span><span class="p">]]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_extra_attribs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -1106,31 +1101,31 @@ we need to set validate=False because the data contains non-float values
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">longitude</span> <span class="n">latitude</span> <span class="n">housing_median_age</span> <span class="n">total_rooms</span> <span class="n">total_bedrooms</span>
 \
-<span class="mi">17606</span>   <span class="o">-</span><span class="mf">121.89</span>    <span class="mf">37.29</span>                 <span class="mi">38</span>        <span class="mi">1568</span>            <span class="mi">351</span>
-<span class="mi">18632</span>   <span class="o">-</span><span class="mf">121.93</span>    <span class="mf">37.05</span>                 <span class="mi">14</span>         <span class="mi">679</span>            <span class="mi">108</span>
-<span class="mi">14650</span>    <span class="o">-</span><span class="mf">117.2</span>    <span class="mf">32.77</span>                 <span class="mi">31</span>        <span class="mi">1952</span>            <span class="mi">471</span>
-<span class="mi">3230</span>    <span class="o">-</span><span class="mf">119.61</span>    <span class="mf">36.31</span>                 <span class="mi">25</span>        <span class="mi">1847</span>            <span class="mi">371</span>
-<span class="mi">3555</span>    <span class="o">-</span><span class="mf">118.59</span>    <span class="mf">34.23</span>                 <span class="mi">17</span>        <span class="mi">6592</span>           <span class="mi">1525</span>
+<span class="mi">12655</span>   <span class="o">-</span><span class="mf">121.46</span>    <span class="mf">38.52</span>               <span class="mf">29.0</span>      <span class="mf">3873.0</span>          <span class="mf">797.0</span>
+<span class="mi">15502</span>   <span class="o">-</span><span class="mf">117.23</span>    <span class="mf">33.09</span>                <span class="mf">7.0</span>      <span class="mf">5320.0</span>          <span class="mf">855.0</span>
+<span class="mi">2908</span>    <span class="o">-</span><span class="mf">119.04</span>    <span class="mf">35.37</span>               <span class="mf">44.0</span>      <span class="mf">1618.0</span>          <span class="mf">310.0</span>
+<span class="mi">14053</span>   <span class="o">-</span><span class="mf">117.13</span>    <span class="mf">32.75</span>               <span class="mf">24.0</span>      <span class="mf">1877.0</span>          <span class="mf">519.0</span>
+<span class="mi">20496</span>    <span class="o">-</span><span class="mf">118.7</span>    <span class="mf">34.28</span>               <span class="mf">27.0</span>      <span class="mf">3536.0</span>          <span class="mf">646.0</span>
 
       <span class="n">population</span> <span class="n">households</span> <span class="n">median_income</span> <span class="n">ocean_proximity</span>
 <span class="n">rooms_per_household</span>  \
-<span class="mi">17606</span>        <span class="mi">710</span>        <span class="mi">339</span>        <span class="mf">2.7042</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mf">4.62537</span>
-<span class="mi">18632</span>        <span class="mi">306</span>        <span class="mi">113</span>        <span class="mf">6.4214</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mf">6.00885</span>
-<span class="mi">14650</span>        <span class="mi">936</span>        <span class="mi">462</span>        <span class="mf">2.8621</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
-<span class="mf">4.22511</span>
-<span class="mi">3230</span>        <span class="mi">1460</span>        <span class="mi">353</span>        <span class="mf">1.8839</span>          <span class="n">INLAND</span>
-<span class="mf">5.23229</span>
-<span class="mi">3555</span>        <span class="mi">4459</span>       <span class="mi">1463</span>        <span class="mf">3.0347</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
-<span class="mf">4.50581</span>
+<span class="mi">12655</span>     <span class="mf">2237.0</span>      <span class="mf">706.0</span>        <span class="mf">2.1736</span>          <span class="n">INLAND</span>
+<span class="mf">5.485836</span>
+<span class="mi">15502</span>     <span class="mf">2015.0</span>      <span class="mf">768.0</span>        <span class="mf">6.3373</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
+<span class="mf">6.927083</span>
+<span class="mi">2908</span>       <span class="mf">667.0</span>      <span class="mf">300.0</span>         <span class="mf">2.875</span>          <span class="n">INLAND</span>
+<span class="mf">5.393333</span>
+<span class="mi">14053</span>      <span class="mf">898.0</span>      <span class="mf">483.0</span>        <span class="mf">2.2264</span>      <span class="n">NEAR</span> <span class="n">OCEAN</span>
+<span class="mf">3.886128</span>
+<span class="mi">20496</span>     <span class="mf">1837.0</span>      <span class="mf">580.0</span>        <span class="mf">4.4964</span>       <span class="o">&lt;</span><span class="mi">1</span><span class="n">H</span> <span class="n">OCEAN</span>
+<span class="mf">6.096552</span>
 
       <span class="n">population_per_household</span>
-<span class="mi">17606</span>                   <span class="mf">2.0944</span>
-<span class="mi">18632</span>                  <span class="mf">2.70796</span>
-<span class="mi">14650</span>                  <span class="mf">2.02597</span>
-<span class="mi">3230</span>                   <span class="mf">4.13598</span>
-<span class="mi">3555</span>                   <span class="mf">3.04785</span>
+<span class="mi">12655</span>                 <span class="mf">3.168555</span>
+<span class="mi">15502</span>                 <span class="mf">2.623698</span>
+<span class="mi">2908</span>                  <span class="mf">2.223333</span>
+<span class="mi">14053</span>                 <span class="mf">1.859213</span>
+<span class="mi">20496</span>                 <span class="mf">3.167241</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -1163,18 +1158,18 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">[:</span><span class="mi">3</span><span class="p">,:])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">1.15604281</span>  <span class="mf">0.77194962</span>  <span class="mf">0.74333089</span> <span class="o">-</span><span class="mf">0.49323393</span> <span class="o">-</span><span class="mf">0.44543821</span>
-<span class="o">-</span><span class="mf">0.63621141</span>
-  <span class="o">-</span><span class="mf">0.42069842</span> <span class="o">-</span><span class="mf">0.61493744</span> <span class="o">-</span><span class="mf">0.31205452</span> <span class="o">-</span><span class="mf">0.08649871</span>  <span class="mf">0.15531753</span>  <span class="mf">1.</span>
-   <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
- <span class="p">[</span><span class="o">-</span><span class="mf">1.17602483</span>  <span class="mf">0.6596948</span>  <span class="o">-</span><span class="mf">1.1653172</span>  <span class="o">-</span><span class="mf">0.90896655</span> <span class="o">-</span><span class="mf">1.0369278</span>
-<span class="o">-</span><span class="mf">0.99833135</span>
-  <span class="o">-</span><span class="mf">1.02222705</span>  <span class="mf">1.33645936</span>  <span class="mf">0.21768338</span> <span class="o">-</span><span class="mf">0.03353391</span> <span class="o">-</span><span class="mf">0.83628902</span>  <span class="mf">1.</span>
-   <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
- <span class="p">[</span> <span class="mf">1.18684903</span> <span class="o">-</span><span class="mf">1.34218285</span>  <span class="mf">0.18664186</span> <span class="o">-</span><span class="mf">0.31365989</span> <span class="o">-</span><span class="mf">0.15334458</span>
-<span class="o">-</span><span class="mf">0.43363936</span>
-  <span class="o">-</span><span class="mf">0.0933178</span>  <span class="o">-</span><span class="mf">0.5320456</span>  <span class="o">-</span><span class="mf">0.46531516</span> <span class="o">-</span><span class="mf">0.09240499</span>  <span class="mf">0.4222004</span>   <span class="mf">0.</span>
-   <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">1.</span>        <span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">0.94135046</span>  <span class="mf">1.34743822</span>  <span class="mf">0.02756357</span>  <span class="mf">0.58477745</span>  <span class="mf">0.64037127</span>
+<span class="mf">0.73260236</span>
+   <span class="mf">0.55628602</span> <span class="o">-</span><span class="mf">0.8936472</span>   <span class="mf">0.01739526</span>  <span class="mf">0.00622264</span> <span class="o">-</span><span class="mf">0.12112176</span>  <span class="mf">0.</span>
+   <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.17178212</span> <span class="o">-</span><span class="mf">1.19243966</span> <span class="o">-</span><span class="mf">1.72201763</span>  <span class="mf">1.26146668</span>  <span class="mf">0.78156132</span>
+<span class="mf">0.53361152</span>
+   <span class="mf">0.72131799</span>  <span class="mf">1.292168</span>    <span class="mf">0.56925554</span> <span class="o">-</span><span class="mf">0.04081077</span> <span class="o">-</span><span class="mf">0.81086696</span>  <span class="mf">0.</span>
+   <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">1.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.26758118</span> <span class="o">-</span><span class="mf">0.1259716</span>   <span class="mf">1.22045984</span> <span class="o">-</span><span class="mf">0.46977281</span> <span class="o">-</span><span class="mf">0.54513828</span>
+<span class="o">-</span><span class="mf">0.67467519</span>
+  <span class="o">-</span><span class="mf">0.52440722</span> <span class="o">-</span><span class="mf">0.52543365</span> <span class="o">-</span><span class="mf">0.01802432</span> <span class="o">-</span><span class="mf">0.07537122</span> <span class="o">-</span><span class="mf">0.33827252</span>  <span class="mf">0.</span>
+   <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1196,10 +1191,10 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lables:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">some_labels</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Predictions</span><span class="p">:</span> <span class="p">[</span><span class="mf">210644.60459286</span> <span class="mf">317768.80697211</span> <span class="mf">210956.43331178</span>
-<span class="mf">59218.98886849</span>
- <span class="mf">189747.55849879</span><span class="p">]</span>
-<span class="n">Lables</span><span class="p">:</span> <span class="p">[</span><span class="mf">286600.0</span><span class="p">,</span> <span class="mf">340600.0</span><span class="p">,</span> <span class="mf">196900.0</span><span class="p">,</span> <span class="mf">46300.0</span><span class="p">,</span> <span class="mf">254500.0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Predictions</span><span class="p">:</span> <span class="p">[</span> <span class="mf">85657.90192014</span> <span class="mf">305492.60737488</span> <span class="mf">152056.46122456</span>
+<span class="mf">186095.70946094</span>
+ <span class="mf">244550.67966089</span><span class="p">]</span>
+<span class="n">Lables</span><span class="p">:</span> <span class="p">[</span><span class="mf">72100.0</span><span class="p">,</span> <span class="mf">279600.0</span><span class="p">,</span> <span class="mf">82700.0</span><span class="p">,</span> <span class="mf">112500.0</span><span class="p">,</span> <span class="mf">238300.0</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
@@ -1210,7 +1205,7 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">lin_rmse</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">68628.19819848922</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">68627.87390018743</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
@@ -1219,7 +1214,7 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">lin_mae</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">49439.89599001897</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">49438.66860915803</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -1239,7 +1234,17 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">tree_rmse</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span><span class="ne">TypeError</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_8088</span><span class="o">/</span><span class="mf">2927567427.</span><span class="n">py</span> <span class="ow">in</span>
+<span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+      <span class="mi">4</span> <span class="n">tree_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">)</span>
+      <span class="mi">5</span>
+<span class="o">----&gt;</span> <span class="mi">6</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+      <span class="mi">7</span>            <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="mi">8</span>            <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="fm">__init__</span><span class="p">()</span> <span class="n">got</span> <span class="n">an</span> <span class="n">unexpected</span> <span class="n">keyword</span> <span class="n">argument</span>
+<span class="s1">&#39;min_impurity_split&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -1256,11 +1261,11 @@ we need to set validate=False because the data contains non-float values
 <span class="n">f_display_scores</span><span class="p">(</span><span class="n">tree_rmse_scores</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">70194.33680785</span> <span class="mf">66855.16363941</span> <span class="mf">72432.58244769</span> <span class="mf">70758.73896782</span>
- <span class="mf">71115.88230639</span> <span class="mf">75585.14172901</span> <span class="mf">70262.86139133</span> <span class="mf">70273.6325285</span>
- <span class="mf">75366.87952553</span> <span class="mf">71231.65726027</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">71407.68766037929</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2439.4345041191004</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">72831.45749112</span> <span class="mf">69973.18438322</span> <span class="mf">69528.56551415</span> <span class="mf">72517.78229792</span>
+ <span class="mf">69145.50006909</span> <span class="mf">79094.74123727</span> <span class="mf">68960.045444</span>   <span class="mf">73344.50225684</span>
+ <span class="mf">69826.02473916</span> <span class="mf">71077.09753998</span><span class="p">]</span>
+<span class="n">Mean</span><span class="p">:</span> <span class="mf">71629.89009727491</span>
+<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2914.035468468928</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lin_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lin_reg</span><span class="p">,</span> <span class="n">housing_prepared</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span>
@@ -1269,11 +1274,11 @@ we need to set validate=False because the data contains non-float values
 <span class="n">f_display_scores</span><span class="p">(</span><span class="n">lin_rmse_scores</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">66782.73843989</span> <span class="mf">66960.118071</span>   <span class="mf">70347.95244419</span> <span class="mf">74739.57052552</span>
- <span class="mf">68031.13388938</span> <span class="mf">71193.84183426</span> <span class="mf">64969.63056405</span> <span class="mf">68281.61137997</span>
- <span class="mf">71552.91566558</span> <span class="mf">67665.10082067</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">69052.46136345083</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2731.6740017983466</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">71762.76364394</span> <span class="mf">64114.99166359</span> <span class="mf">67771.17124356</span> <span class="mf">68635.19072082</span>
+ <span class="mf">66846.14089488</span> <span class="mf">72528.03725385</span> <span class="mf">73997.08050233</span> <span class="mf">68802.33629334</span>
+ <span class="mf">66443.28836884</span> <span class="mf">70139.79923956</span><span class="p">]</span>
+<span class="n">Mean</span><span class="p">:</span> <span class="mf">69104.07998247063</span>
+<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2880.328209818062</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: we specify n_estimators=10 to avoid a warning about the fact that the default value is going to change to 100 in Scikit-Learn 0.22.</span>
@@ -1289,7 +1294,7 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">forest_rmse</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">21933.31414779769</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">22413.454658589766</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -1304,21 +1309,21 @@ we need to set validate=False because the data contains non-float values
 <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="p">))</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">51646.44545909</span> <span class="mf">48940.60114882</span> <span class="mf">53050.86323649</span> <span class="mf">54408.98730149</span>
- <span class="mf">50922.14870785</span> <span class="mf">56482.50703987</span> <span class="mf">51864.52025526</span> <span class="mf">49760.85037653</span>
- <span class="mf">55434.21627933</span> <span class="mf">53326.10093303</span><span class="p">]</span>
-<span class="n">Mean</span><span class="p">:</span> <span class="mf">52583.72407377466</span>
-<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2298.353351147122</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scores</span><span class="p">:</span> <span class="p">[</span><span class="mf">53519.05518628</span> <span class="mf">50467.33817051</span> <span class="mf">48924.16513902</span> <span class="mf">53771.72056856</span>
+ <span class="mf">50810.90996358</span> <span class="mf">54876.09682033</span> <span class="mf">56012.79985518</span> <span class="mf">52256.88927227</span>
+ <span class="mf">51527.73185039</span> <span class="mf">55762.56008531</span><span class="p">]</span>
+<span class="n">Mean</span><span class="p">:</span> <span class="mf">52792.92669114079</span>
+<span class="n">Standard</span> <span class="n">deviation</span><span class="p">:</span> <span class="mf">2262.8151900582</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>       <span class="mf">10.000000</span>
-<span class="n">mean</span>     <span class="mf">69052.461363</span>
-<span class="n">std</span>       <span class="mf">2879.437224</span>
-<span class="nb">min</span>      <span class="mf">64969.630564</span>
-<span class="mi">25</span><span class="o">%</span>      <span class="mf">67136.363758</span>
-<span class="mi">50</span><span class="o">%</span>      <span class="mf">68156.372635</span>
-<span class="mi">75</span><span class="o">%</span>      <span class="mf">70982.369487</span>
-<span class="nb">max</span>      <span class="mf">74739.570526</span>
+<span class="n">mean</span>     <span class="mf">69104.079982</span>
+<span class="n">std</span>       <span class="mf">3036.132517</span>
+<span class="nb">min</span>      <span class="mf">64114.991664</span>
+<span class="mi">25</span><span class="o">%</span>      <span class="mf">67077.398482</span>
+<span class="mi">50</span><span class="o">%</span>      <span class="mf">68718.763507</span>
+<span class="mi">75</span><span class="o">%</span>      <span class="mf">71357.022543</span>
+<span class="nb">max</span>      <span class="mf">73997.080502</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
@@ -1349,15 +1354,8 @@ we need to set validate=False because the data contains non-float values
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span>
-                      <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                      <span class="n">max_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                      <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                      <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                      <span class="n">n_estimators</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                      <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the score of each hyperparameter combination tested during the grid search:</span>
@@ -1367,29 +1365,29 @@ we need to set validate=False because the data contains non-float values
     <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">mean_score</span><span class="p">),</span> <span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">63669.11631261028</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">55627.099719926795</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">53384.57275149205</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">60965.950449450494</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52741.04704299915</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">50377.40461678399</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">58663.93866579625</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52006.19873526564</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">50146.51167415009</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">57869.25276169646</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">51711.127883959234</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">49682.273345071546</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-<span class="mf">62895.06951262424</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">63895.161577951665</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="mf">54916.32386349543</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="mf">52885.86715332332</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="mf">60075.3680329983</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="mf">52495.01284985185</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="mf">50187.24324926565</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="mf">58064.73529982314</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="mf">51519.32062366315</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="mf">49969.80441627874</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="mf">58895.824998155826</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="mf">52459.79624724529</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="mf">49898.98913455217</span> <span class="p">{</span><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="mf">62381.765106921855</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">54658.176157539405</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="mf">54476.57050944266</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">59470.40652318466</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="mf">59974.60028085155</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">52724.9822587892</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="mf">52754.5632813202</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
-<span class="mf">57490.5691951261</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="mf">57831.136061214274</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="mf">51009.495668875716</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="mf">51278.37877140253</span> <span class="p">{</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
 <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1397,10 +1395,10 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">feature_importances</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">7.33442355e-02</span> <span class="mf">6.29090705e-02</span> <span class="mf">4.11437985e-02</span> <span class="mf">1.46726854e-02</span>
- <span class="mf">1.41064835e-02</span> <span class="mf">1.48742809e-02</span> <span class="mf">1.42575993e-02</span> <span class="mf">3.66158981e-01</span>
- <span class="mf">5.64191792e-02</span> <span class="mf">1.08792957e-01</span> <span class="mf">5.33510773e-02</span> <span class="mf">1.03114883e-02</span>
- <span class="mf">1.64780994e-01</span> <span class="mf">6.02803867e-05</span> <span class="mf">1.96041560e-03</span> <span class="mf">2.85647464e-03</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">6.96542523e-02</span> <span class="mf">6.04213840e-02</span> <span class="mf">4.21882202e-02</span> <span class="mf">1.52450557e-02</span>
+ <span class="mf">1.55545295e-02</span> <span class="mf">1.58491147e-02</span> <span class="mf">1.49346552e-02</span> <span class="mf">3.79009225e-01</span>
+ <span class="mf">5.47789150e-02</span> <span class="mf">1.07031322e-01</span> <span class="mf">4.82031213e-02</span> <span class="mf">6.79266007e-03</span>
+ <span class="mf">1.65706303e-01</span> <span class="mf">7.83480660e-05</span> <span class="mf">1.52473276e-03</span> <span class="mf">3.02816106e-03</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extra_attribs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rooms_per_hhold&quot;</span><span class="p">,</span> <span class="s2">&quot;pop_per_hhold&quot;</span><span class="p">,</span> <span class="s2">&quot;bedrooms_per_room&quot;</span><span class="p">]</span>
@@ -1423,7 +1421,7 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="n">final_rmse</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">47730.22690385927</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">47873.26095812988</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -1440,7 +1438,7 @@ we need to set validate=False because the data contains non-float values
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence Interval&quot;</span><span class="p">,</span> <span class="n">CI</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Confidence</span> <span class="n">Interval</span> <span class="p">[</span><span class="mf">45685.10470776</span> <span class="mf">49691.25001878</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Confidence</span> <span class="n">Interval</span> <span class="p">[</span><span class="mf">45893.36082829</span> <span class="mf">49774.46796717</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1492,7 +1490,7 @@ learning is it?</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Juergen Jung
+        &copy; Copyright 2021, Juergen Jung
 
     </p>
   </div>

@@ -24,7 +24,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -231,13 +230,13 @@ a <strong>Pandas</strong> function <code class="docutils literal notranslate"><s
     <span class="n">urlRec</span>  <span class="o">=</span> <span class="n">urlBase</span> <span class="o">+</span> <span class="s1">&#39;time_series_covid19_recovered_global.csv&#39;</span>
 
     <span class="c1"># Download and Save</span>
-    <span class="n">dfConf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlConf</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfConf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlConf</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
     <span class="c1">#dfConf.to_pickle(&#39;CoronaConfirmed&#39;)</span>
 
-    <span class="n">dfDead</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlDead</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfDead</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlDead</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
     <span class="c1">#dfDead.to_pickle(&#39;CoronaDeath&#39;)</span>
 
-    <span class="n">dfRec</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlRec</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfRec</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">urlRec</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
     <span class="c1">#dfRec.to_pickle(&#39;CoronaRecovered&#39;)</span>
 </pre></div>
 </div>
@@ -324,9 +323,9 @@ province/state where they were recorded. We plot circles and use the number of
 cases per 1000 as circle size. The larger the circle in the plot, the more
 cases have been recorded for the Latitude/Longitude coordinate.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Long&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Confirmed Infections&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Confirmed Infections&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Long&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Deaths&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Deaths&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -358,9 +357,9 @@ install the <code class="docutils literal notranslate"><span class="pre">cartopy
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> \
-        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Confirmed&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> \
-        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dead&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -396,18 +395,18 @@ coronavirus cases. We then drop some variables that we do not need, such as
 <span class="mi">1</span>        <span class="n">Albania</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">2</span>        <span class="n">Algeria</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
 
-   <span class="mi">1</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">20</span>
+   <span class="mi">1</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">19</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">22</span>
 \
-<span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>       <span class="mi">74</span>       <span class="mi">84</span>       <span class="mi">94</span>      <span class="mi">110</span>
-<span class="mi">1</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>      <span class="mi">123</span>      <span class="mi">146</span>      <span class="mi">174</span>      <span class="mi">186</span>
-<span class="mi">2</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>      <span class="mi">264</span>      <span class="mi">302</span>      <span class="mi">367</span>      <span class="mi">409</span>
+<span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">158826</span>   <span class="mi">158974</span>   <span class="mi">159070</span>   <span class="mi">159303</span>
+<span class="mi">1</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">233654</span>   <span class="mi">236486</span>   <span class="mi">239129</span>   <span class="mi">241512</span>
+<span class="mi">2</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">226749</span>   <span class="mi">227559</span>   <span class="mi">228918</span>   <span class="mi">230470</span>
 
-   <span class="mi">3</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">4</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">4</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">20</span>
-<span class="mi">0</span>      <span class="mi">110</span>      <span class="mi">120</span>      <span class="mi">170</span>      <span class="mi">174</span>     <span class="mi">237</span>     <span class="mi">273</span>
-<span class="mi">1</span>      <span class="mi">197</span>      <span class="mi">212</span>      <span class="mi">223</span>      <span class="mi">243</span>     <span class="mi">259</span>     <span class="mi">277</span>
-<span class="mi">2</span>      <span class="mi">454</span>      <span class="mi">511</span>      <span class="mi">584</span>      <span class="mi">716</span>     <span class="mi">847</span>     <span class="mi">986</span>
+   <span class="mi">1</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">22</span>
+<span class="mi">0</span>   <span class="mi">159516</span>   <span class="mi">159548</span>   <span class="mi">159649</span>   <span class="mi">159896</span>   <span class="mi">160252</span>   <span class="mi">160692</span>
+<span class="mi">1</span>   <span class="mi">244182</span>   <span class="mi">246412</span>   <span class="mi">248070</span>   <span class="mi">248070</span>   <span class="mi">248859</span>   <span class="mi">251015</span>
+<span class="mi">2</span>   <span class="mi">232325</span>   <span class="mi">234536</span>   <span class="mi">236670</span>   <span class="mi">238885</span>   <span class="mi">241406</span>   <span class="mi">243568</span>
 
-<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">73</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">737</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We next add up all the cases for each day by <code class="docutils literal notranslate"><span class="pre">Country/Region</span></code> using the
@@ -429,27 +428,27 @@ coronavirus cases. We then drop some variables that we do not need, such as
 <span class="n">Algeria</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
 
-                <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">20</span>
-<span class="mi">3</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">20</span>  \
+                <span class="mi">1</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">20</span>  <span class="o">...</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">22</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">19</span><span class="o">/</span><span class="mi">22</span>  \
 <span class="n">Country</span><span class="o">/</span><span class="n">Region</span>                             <span class="o">...</span>
-<span class="n">Afghanistan</span>           <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>       <span class="mi">74</span>       <span class="mi">84</span>
-<span class="mi">94</span>
-<span class="n">Albania</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>      <span class="mi">123</span>      <span class="mi">146</span>
-<span class="mi">174</span>
-<span class="n">Algeria</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>      <span class="mi">264</span>      <span class="mi">302</span>
-<span class="mi">367</span>
+<span class="n">Afghanistan</span>           <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">158826</span>   <span class="mi">158974</span>
+<span class="mi">159070</span>
+<span class="n">Albania</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">233654</span>   <span class="mi">236486</span>
+<span class="mi">239129</span>
+<span class="n">Algeria</span>               <span class="mi">0</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">...</span>   <span class="mi">226749</span>   <span class="mi">227559</span>
+<span class="mi">228918</span>
 
-                <span class="mi">3</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">3</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">4</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">20</span>
-<span class="mi">4</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">20</span>
+                <span class="mi">1</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">22</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="mi">22</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">26</span><span class="o">/</span><span class="mi">22</span>
 <span class="n">Country</span><span class="o">/</span><span class="n">Region</span>
-<span class="n">Afghanistan</span>         <span class="mi">110</span>      <span class="mi">110</span>      <span class="mi">120</span>      <span class="mi">170</span>      <span class="mi">174</span>     <span class="mi">237</span>
-<span class="mi">273</span>
-<span class="n">Albania</span>             <span class="mi">186</span>      <span class="mi">197</span>      <span class="mi">212</span>      <span class="mi">223</span>      <span class="mi">243</span>     <span class="mi">259</span>
-<span class="mi">277</span>
-<span class="n">Algeria</span>             <span class="mi">409</span>      <span class="mi">454</span>      <span class="mi">511</span>      <span class="mi">584</span>      <span class="mi">716</span>     <span class="mi">847</span>
-<span class="mi">986</span>
+<span class="n">Afghanistan</span>      <span class="mi">159303</span>   <span class="mi">159516</span>   <span class="mi">159548</span>   <span class="mi">159649</span>   <span class="mi">159896</span>   <span class="mi">160252</span>
+<span class="mi">160692</span>
+<span class="n">Albania</span>          <span class="mi">241512</span>   <span class="mi">244182</span>   <span class="mi">246412</span>   <span class="mi">248070</span>   <span class="mi">248070</span>   <span class="mi">248859</span>
+<span class="mi">251015</span>
+<span class="n">Algeria</span>          <span class="mi">230470</span>   <span class="mi">232325</span>   <span class="mi">234536</span>   <span class="mi">236670</span>   <span class="mi">238885</span>   <span class="mi">241406</span>
+<span class="mi">243568</span>
 
-<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">72</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">736</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We now transpose the dataframe because we want the time observations as rows
@@ -472,30 +471,21 @@ and not columns.</p>
 <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>                           <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
 <span class="mi">0</span>
 
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">Ukraine</span>  <span class="n">United</span> <span class="n">Arab</span> <span class="n">Emirates</span>  <span class="n">United</span> <span class="n">Kingdom</span>
-<span class="n">Uruguay</span>  \
-<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">United</span> <span class="n">Kingdom</span>  <span class="n">Uruguay</span>  <span class="n">Uzbekistan</span>  <span class="n">Vanuatu</span>
+<span class="n">Venezuela</span>  \
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
-<span class="mi">0</span>
-
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Uzbekistan</span>  <span class="n">Venezuela</span>  <span class="n">Vietnam</span>  <span class="n">West</span> <span class="n">Bank</span> <span class="ow">and</span> <span class="n">Gaza</span>
-<span class="n">Zambia</span>  \
-<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>                  <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>                   <span class="mi">0</span>
-<span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>                  <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>                   <span class="mi">0</span>
-<span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>                  <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>                   <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>         <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
 
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Zimbabwe</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>                <span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>                <span class="mi">0</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>                <span class="mi">0</span>
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Vietnam</span>  <span class="n">West</span> <span class="n">Bank</span> <span class="ow">and</span> <span class="n">Gaza</span>  <span class="n">Yemen</span>  <span class="n">Zambia</span>  <span class="n">Zimbabwe</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">22</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">0</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">2</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">20</span>               <span class="mi">2</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
 
-<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">181</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">196</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We are now ready to convert the index of the dataframe into a date index so
@@ -521,30 +511,21 @@ that we can use the built in time series commands in <strong>Pandas</strong>.</p
 <span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>                        <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>          <span class="mi">0</span>
 <span class="mi">0</span>
 
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">Ukraine</span>  <span class="n">United</span> <span class="n">Arab</span> <span class="n">Emirates</span>  <span class="n">United</span> <span class="n">Kingdom</span>
-<span class="n">Uruguay</span>  \
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>      <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="o">...</span>  <span class="n">United</span> <span class="n">Kingdom</span>  <span class="n">Uruguay</span>  <span class="n">Uzbekistan</span>  <span class="n">Vanuatu</span>
+<span class="n">Venezuela</span>  \
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>      <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>      <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>      <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>      <span class="o">...</span>        <span class="mi">0</span>                     <span class="mi">0</span>               <span class="mi">0</span>
-<span class="mi">0</span>
-
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Uzbekistan</span>  <span class="n">Venezuela</span>  <span class="n">Vietnam</span>  <span class="n">West</span> <span class="n">Bank</span> <span class="ow">and</span> <span class="n">Gaza</span>
-<span class="n">Zambia</span>  \
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>               <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">0</span>                   <span class="mi">0</span>
-<span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>               <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>                   <span class="mi">0</span>
-<span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>               <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>                   <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>      <span class="o">...</span>               <span class="mi">0</span>        <span class="mi">0</span>           <span class="mi">0</span>        <span class="mi">0</span>
 <span class="mi">0</span>
 
-<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Zimbabwe</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>             <span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>             <span class="mi">0</span>
-<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>             <span class="mi">0</span>
+<span class="n">Country</span><span class="o">/</span><span class="n">Region</span>  <span class="n">Vietnam</span>  <span class="n">West</span> <span class="n">Bank</span> <span class="ow">and</span> <span class="n">Gaza</span>  <span class="n">Yemen</span>  <span class="n">Zambia</span>  <span class="n">Zimbabwe</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">22</span>            <span class="mi">0</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>            <span class="mi">2</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">24</span>            <span class="mi">2</span>                   <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">0</span>
 
-<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">181</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">196</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Drop the last observation because it is an empty row.</p>
@@ -560,10 +541,10 @@ that we can use the built in time series commands in <strong>Pandas</strong>.</p
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Data</span> <span class="n">complete</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>We are now ready to plot the time series for different countries. We don’t want
-to plot the whole time series because the curves are very flat in January and
-February. We will instead just plot the most recent 30 observations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span>  <span class="c1"># Just plot the recent 30 obs</span>
+<p>We are now ready to plot the time series for different countries. We can choose
+the number of days we want to plot. Here we choose the most recent 700
+observations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">700</span>  <span class="c1"># Just plot the recent 700 obs (days)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">dfConf_t</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 
@@ -590,7 +571,7 @@ style.</p>
 <span class="c1"># countryList = [&#39;US&#39;, &#39;Korea, South&#39;, &#39;Austria&#39;, &#39;Japan&#39;, \</span>
 <span class="c1">#                &#39;Germany&#39;, &#39;Spain&#39;, &#39;France&#39;, &#39;United Kingdom&#39;]</span>
 
-<span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span>
+<span class="n">nrObs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">700</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">dfConf_t</span><span class="p">[</span><span class="n">countryList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nrObs</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countryList</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
@@ -724,7 +705,7 @@ all 50 US states.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Juergen Jung
+        &copy; Copyright 2021, Juergen Jung
 
     </p>
   </div>

@@ -24,7 +24,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -249,8 +248,8 @@ methods using the <code class="docutils literal notranslate"><span class="pre">p
 <span class="c1"># ------------- Load data --------------------</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let us now have a look at the dataframe to see what we have got.</p>
@@ -351,7 +350,7 @@ Let us first import the data and have a quick look.</p>
 <p>Let us clean this somewhat and drop a column
 that we do not plan on using, the <code class="docutils literal notranslate"><span class="pre">Response</span></code> column.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_b.csv&#39;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span> <span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -493,7 +492,7 @@ Python if you wanted to use this library as of writing this.</p>
 <p>We can also use the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> library to make fancy looking histograms
 quickly as in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Histogram2</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AverageMathSAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AverageMathSAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -798,9 +797,9 @@ newer versions of <code class="docutils literal notranslate"><span class="pre">P
 <span class="mf">0.544</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">9.358</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Wed</span><span class="p">,</span> <span class="mi">29</span> <span class="n">Apr</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Jan</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">0.0222</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">44</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">20.791</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                   <span class="mi">8</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">45.58</span>
@@ -827,13 +826,13 @@ newer versions of <code class="docutils literal notranslate"><span class="pre">P
 <span class="mf">11.5</span>
 <span class="o">==============================================================================</span>
 
-<span class="n">Warnings</span><span class="p">:</span>
+<span class="n">Notes</span><span class="p">:</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">assume</span> <span class="n">that</span> <span class="n">the</span> <span class="n">covariance</span> <span class="n">matrix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">is</span>
 <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pweaveEnv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
-<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1535</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pweaveEnv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1541</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
 <span class="n">valid</span> <span class="k">for</span> <span class="n">n</span><span class="o">&gt;=</span><span class="mi">20</span> <span class="o">...</span> <span class="n">continuing</span> <span class="n">anyway</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span>
-  <span class="s2">&quot;anyway, n=</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+  <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;</span>
 </pre></div>
 </div>
 <p>Or if you simply want to have a look at the estimated coefficients you can
@@ -1135,9 +1134,9 @@ etc.</p>
 <span class="mf">0.936</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">124.4</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Wed</span><span class="p">,</span> <span class="mi">29</span> <span class="n">Apr</span> <span class="mi">2020</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Jan</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">3.52e-30</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">55</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">45</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">74.722</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                  <span class="mi">60</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">165.4</span>
@@ -1176,7 +1175,7 @@ etc.</p>
 <span class="mf">507.</span>
 <span class="o">==============================================================================</span>
 
-<span class="n">Warnings</span><span class="p">:</span>
+<span class="n">Notes</span><span class="p">:</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">assume</span> <span class="n">that</span> <span class="n">the</span> <span class="n">covariance</span> <span class="n">matrix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">is</span>
 <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
 
@@ -1308,9 +1307,9 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Wed</span><span class="p">,</span> <span class="mi">29</span> <span class="n">Apr</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Jan</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08292</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">55</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">45</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1343,7 +1342,7 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Logit</span>            <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.5175</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">29</span> <span class="mi">15</span><span class="p">:</span><span class="mi">00</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">27</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.5782e-08</span>
@@ -1390,9 +1389,9 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Wed</span><span class="p">,</span> <span class="mi">29</span> <span class="n">Apr</span> <span class="mi">2020</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Jan</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08313</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">55</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">45</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1425,7 +1424,7 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Probit</span>           <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.4132</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">29</span> <span class="mi">15</span><span class="p">:</span><span class="mi">00</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">27</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.2189e-08</span>
@@ -1475,7 +1474,7 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Juergen Jung
+        &copy; Copyright 2021, Juergen Jung
 
     </p>
   </div>
