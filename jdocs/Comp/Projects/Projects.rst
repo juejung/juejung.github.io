@@ -108,7 +108,7 @@ and summary statistics.
 If you already took Econometrics you can try to implement ``mlogit`` or ``mprobit`` models.
 
   * Literature to get you started: 
-    `Jung (2015) <https://juejung.github.io/papers/markovtransitions.pdf>`_
+    `Jung (2021) <https://econpapers.repec.org/paper/towwpaper/2020-06.htm>`_
   * Data: `MEPS <http://meps.ahrq.gov/mepsweb/>`_
 
 5. Tax simulation policy
@@ -119,7 +119,7 @@ is probably a Python project as it deals with optimization methods.
 
   * Literature to get you started: 
     `Glomm and Jung (2013) <https://juejung.github.io/papers/timing05142012.pdf>`_
-  * Codes:
+    `Glomm and Jung (Published version 2013) <https://www.jstor.org/stable/23809517?seq=1#metadata_info_tab_contents>`_
 
 6. GUI programming
 -------------------------------------------------------------------------------
