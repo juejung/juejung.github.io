@@ -252,7 +252,45 @@ exclusive conditions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="n">Y</span>
 </pre></div>
 </div>
-<p>Here is another simple example. We
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note the double equal symbol <code class="docutils literal notranslate"><span class="pre">==</span></code>. This is a logical operator or
+a Boolean operator such as EQUAL, AND, OR, and NOT. While the single equal
+symbol <code class="docutils literal notranslate"><span class="pre">=</span></code> is an assignment operator (i.e., <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code> assigns the value 3
+to variable with name <code class="docutils literal notranslate"><span class="pre">x</span></code>), the double equal symbol is a logical operator.
+You can find more information about Boolean operators here: <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_algebra">Wiki-Boolean
+Operators</a></p>
+</div>
+<p>The expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">3</span></code> for instance asks whether the content of  variable
+<code class="docutils literal notranslate"><span class="pre">x</span></code> equals the value of 3. If it does, the statement returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and
+if it does not, the statement returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+In the field of Logic the state of <code class="docutils literal notranslate"><span class="pre">True</span></code> is often coded with the value
+<code class="docutils literal notranslate"><span class="pre">1</span></code> and the state of <code class="docutils literal notranslate"><span class="pre">False</span></code> is coded as the value <code class="docutils literal notranslate"><span class="pre">0</span></code>. When you used
+<strong>dummy</strong> variables in econometrics you basically used a Boolean variable. A
+dummy variable is simply an indicator variable taking the value 0 or 1 to
+indicate whether a certain observation belongs to a specific category.</p>
+<p>Here is an example to illustrate the difference between <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">==</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign value 3 to variable with name x using singe equal symbol</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Check whether the value of variable x is 3?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Check whether the value of variable x is 4?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+<span class="kc">True</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">(x==y)</span></code> statement above checks whether the value of variable <code class="docutils literal notranslate"><span class="pre">x</span></code>
+is equal to the value of variable <code class="docutils literal notranslate"><span class="pre">y</span></code> at that particular point in your code
+(i.e., at runtime). If this is the case, the <code class="docutils literal notranslate"><span class="pre">elif</span></code> function returns the
+value <code class="docutils literal notranslate"><span class="pre">1</span></code> (which means <code class="docutils literal notranslate"><span class="pre">True</span></code>) and then executes the associated code block.</p>
+<p>Here is another simple example using a branching <code class="docutils literal notranslate"><span class="pre">if</span></code> statement. We
 first draw some random number between 0 and 1 using the <code class="docutils literal notranslate"><span class="pre">random()</span></code> function.
 In order to use this function we first have to import the library in which this
 function is stored as it is not part of the core functions. We again use the
@@ -273,7 +311,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.76</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.62</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 <p>We can also ask for more than one branching criteria again such as</p>
@@ -290,7 +328,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.67</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.73</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.7</span>
 </pre></div>
 </div>
 <p>Running the same script again, will result in a different random number being
@@ -308,7 +346,7 @@ drawn, so that the result may differ of course.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.05</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.16</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
 </pre></div>
 </div>
 </div>
@@ -868,7 +906,7 @@ time period. Here’s an example that times a “large” while loop.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time elapsed = </span><span class="si">{}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.15117383003234863</span> <span class="n">seconds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.13269615173339844</span> <span class="n">seconds</span>
 </pre></div>
 </div>
 </div>
