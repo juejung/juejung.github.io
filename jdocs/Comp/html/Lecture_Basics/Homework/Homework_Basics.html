@@ -193,25 +193,29 @@ might otherwise end up with zero points.</p></li>
 </ul>
 <div class="section" id="exercise-1">
 <h2>Exercise 1:<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<p>Give Python expressions that return the following list of numbers.</p>
+<p>Make two lists having the following numbers as content:</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\((1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5)\)</span></p></li>
 </ol>
-<p>and define them as <code class="docutils literal notranslate"><span class="pre">listA</span></code> and <code class="docutils literal notranslate"><span class="pre">listB</span></code>.</p>
+<p>Define the two lists as <code class="docutils literal notranslate"><span class="pre">listA</span></code> and <code class="docutils literal notranslate"><span class="pre">listB</span></code>.</p>
 <ol class="arabic simple" start="3">
-<li><p>Print the 3. element of <code class="docutils literal notranslate"><span class="pre">listA</span></code>.</p></li>
-<li><p>Print elements 5-8 of <code class="docutils literal notranslate"><span class="pre">listB</span></code> with a one line command.</p></li>
+<li><p>Print the 3. element of <code class="docutils literal notranslate"><span class="pre">listA</span></code> using list indexing.</p></li>
+<li><p>Print elements 5-8 of <code class="docutils literal notranslate"><span class="pre">listB</span></code> with a one line command using list slicing.</p></li>
 </ol>
 <p>5. Add the 3. element of <code class="docutils literal notranslate"><span class="pre">listA</span></code> to the 8. element of <code class="docutils literal notranslate"><span class="pre">listB</span></code> and print the
-result.</p>
+result. Use list indexing to “extract” the numbers from the list.</p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2:<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <p>Compute the growth of money in a bank. Let <span class="math notranslate nohighlight">\(r\)</span> be a bank’s interest rate
-in percent per year. An initial amount <span class="math notranslate nohighlight">\(A\)</span> has then grown to
-<span class="math notranslate nohighlight">\(A(1+\frac{r}{100})^n\)</span>  after <span class="math notranslate nohighlight">\(n\)</span> years. Make a program for computing how much
-money 1,000 dollars have grown to after three years with a <span class="math notranslate nohighlight">\(5\%\)</span> interest rate.</p>
+in percent per year. An initial amount <span class="math notranslate nohighlight">\(A\)</span> will then grow to:</p>
+<p><span class="math notranslate nohighlight">\(A(1+\frac{r}{100})^n\)</span>,</p>
+<p>after <span class="math notranslate nohighlight">\(n\)</span> years.</p>
+<p>Now, make a program (or script) for computing how much
+money you have if you take 1,000 dollars and invest it for three years
+according to the formula above. Assume that your interest rate is <span class="math notranslate nohighlight">\(5\)</span>
+percent.</p>
 </div>
 <div class="section" id="exercise-3">
 <h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
@@ -243,7 +247,8 @@ money 1,000 dollars have grown to after three years with a <span class="math not
 </li>
 </ol>
 <p>Type the following program in your Spyder editor and execute it. It won’t run.
-Debug it and make sure it all runs through correctly.:</p>
+Debug it and make sure it all runs through correctly. Try to update it to the
+newest Python syntax (e.g., <code class="docutils literal notranslate"><span class="pre">.format()</span></code> function, …):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># height</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="c1"># base</span>
@@ -268,7 +273,9 @@ Debug it and make sure it all runs through correctly.:</p>
 <p>Type these short programs in your editor and execute them. When they do not
 work, identify and correct the erroneous statements.</p>
 <ul class="simple">
-<li><p>The following code checks whether <span class="math notranslate nohighlight">\(sin(x)^2  + cos(x)^2 = 1\)</span></p></li>
+<li><p>The following code checks whether <span class="math notranslate nohighlight">\(sin(x)^2  + cos(x)^2 = 1\)</span>. Make sure
+it runs through and make sure the code verifies that the left hand side value
+equal the right hand side value of the equation above.</p></li>
 </ul>
 <p>Code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
@@ -278,7 +285,8 @@ work, identify and correct the erroneous statements.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Fix the following script. Hint: Some variables are used before they are
+<li><p>Second, fix the following script that implements the formulas below.
+Hint: Some variables are used before they are
 defined. Make up some values for undefined variables <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code> etc.
 and add them to your script and make sure it all runs through without any
 more errors. The respective formulas are:</p></li>
@@ -322,7 +330,8 @@ k = v_0\times t + \left(\frac{1}{2}\right)a\times t^2. \\
 <div class="section" id="exercise-5">
 <h2>Exercise 5:<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
 <p>Find errors in the coding of a formula. Given a quadratic equation,
-<span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>, the two roots are:
+<span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>, the two roots (i.e., the x values that would make
+the left hand side equal to zero) are:
 <span class="math notranslate nohighlight">\(x_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a},  x_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}\)</span></p>
 <p>What are the problems with the following program:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
@@ -334,9 +343,11 @@ k = v_0\times t + \left(\frac{1}{2}\right)a\times t^2. \\
 </pre></div>
 </div>
 <p>Hint: Compute all terms in the math expression above with the aid of a
-calculator, and compare with the corresponding intermediate results computed in
-the program. You need to add some <code class="docutils literal notranslate"><span class="pre">print</span></code> statements to see the result of
-<code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">-b+q</span></code>, and <code class="docutils literal notranslate"><span class="pre">2*a</span></code>.</p>
+calculator (you can use the command line in Spyder to do that, no need to find
+a pocket calculator), and compare with the corresponding intermediate results
+computed in the program. You need to add some <code class="docutils literal notranslate"><span class="pre">print</span></code> statements to see the
+result of
+<code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">-b+q</span></code>, and <code class="docutils literal notranslate"><span class="pre">2*a</span></code>, etc.</p>
 </div>
 </div>
 
