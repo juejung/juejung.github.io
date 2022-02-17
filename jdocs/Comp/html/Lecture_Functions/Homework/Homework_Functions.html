@@ -249,18 +249,27 @@ Then plot this function.</p>
  \end{cases}</div></div>
 <div class="section" id="exercise-5-more-difficult">
 <h2>Exercise 5 (more difficult)<a class="headerlink" href="#exercise-5-more-difficult" title="Permalink to this headline">¶</a></h2>
-<p>Some object is moving along a path in the plane. At n points of time we have
-recorded the corresponding (x, y) positions of the object:
-<span class="math notranslate nohighlight">\((x_0 , y_0), (x_1, y_2), ..., (x_{n-1}, y_{n-1})\)</span>.
-The total length L of the path from <span class="math notranslate nohighlight">\((x_0, y_0)\)</span> to
+<p>Some object is moving along a path in the X-Y plane. Maybe think of a chessboard,
+where the X values are the rows and the Y values are the columns.</p>
+<p>At <span class="math notranslate nohighlight">\(n\)</span> points of time we have
+recorded the corresponding (x, y) positions of the object that moves on our
+“chessboard”. Here are the coordinates for the <cite>n</cite> different positions, indexed
+as <span class="math notranslate nohighlight">\(0,1, ..., n-1\)</span>:
+<span class="math notranslate nohighlight">\((x_0 , y_0), (x_1, y_2), ..., (x_{n-1}, y_{n-1})\)</span>.</p>
+<p>The total length <span class="math notranslate nohighlight">\(L\)</span> of the path from <span class="math notranslate nohighlight">\((x_0, y_0)\)</span> to
 <span class="math notranslate nohighlight">\((x_{n-1}, y_{n-1})\)</span> is the sum of all the individual line segments
-<span class="math notranslate nohighlight">\((x_{i-1}, y_{i-1})\)</span> to <span class="math notranslate nohighlight">\($(x_i, y_i)\)</span>, for <span class="math notranslate nohighlight">\(i = 1,..., n-1)\)</span>:</p>
+<span class="math notranslate nohighlight">\((x_{i-1}, y_{i-1})\)</span> to <span class="math notranslate nohighlight">\((x_i, y_i)\)</span>, for <span class="math notranslate nohighlight">\(i = 1,..., n-1\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(L = \sum_{i=1}^{n-1} \sqrt{(x_i - x_{i-1})^2 + (y_i - y_{i-1})^2}\)</span></p>
 <p>Make a function with the name  <code class="docutils literal notranslate"><span class="pre">pathlength(x,y)</span></code> for computing this length
-<span class="math notranslate nohighlight">\(L\)</span> according to the formula above.
-The arguments <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> hold all the <span class="math notranslate nohighlight">\(x_0,...,x_{n-1}\)</span> and <span class="math notranslate nohighlight">\(y_0,...,y_{n-1}\)</span>
+<span class="math notranslate nohighlight">\(L\)</span> according to the formula above.</p>
+<p>The arguments <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> hold all the <span class="math notranslate nohighlight">\(x_0,...,x_{n-1}\)</span> and <span class="math notranslate nohighlight">\(y_0,...,y_{n-1}\)</span>
 coordinates, respectively. Test the function on a triangular path with the four
 points (1,1), (2,1), (1,2), and (1,1).</p>
+<p><strong>Hint</strong>: As the object moves from (1,1) to (2,1) calculate the length of that
+path and store it in an “accumulator variable”. Then calculate the length of the
+path from (2,1) to (1,2) and add that to the stored value, etc. Put this into a
+loop so that if more points are added the function can calculate the total
+length traveled.</p>
 </div>
 </div>
 
