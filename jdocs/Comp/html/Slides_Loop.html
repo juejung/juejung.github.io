@@ -91,13 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Basic Programming Techniques</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#branching">4.1. Branching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#branching-into-alternative-code-blocks">4.1. Branching into Alternative Code Blocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for-loops">4.2. For-Loops</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#loop-1">4.2.1. Loop 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-2">4.2.2. Loop 2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-3">4.2.3. Loop 3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-4">4.2.4. Loop 4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-5">4.2.5. Loop 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-to-repeat-a-simple-print-function">4.2.1. Loop to Repeat a Simple Print Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-to-calculate-the-sum-of-numbers">4.2.2. Loop to Calculate the Sum of Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-to-calculate-the-product-of-numbers">4.2.3. Loop to Calculate the Product of Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-to-print-the-elements-stored-in-a-list">4.2.4. Loop to Print the Elements stored in a List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-with-iterator-values-not-starting-at-zero">4.2.5. Loop with Iterator Values Not Starting at Zero</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nested-loops">4.2.6. Nested Loops</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#looping-through-the-content-of-a-list">4.2.7. Looping through the Content of a List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#combining-lists-and-looping-through-them">4.2.8. Combining Lists and Looping Through Them</a></li>
@@ -215,17 +215,24 @@
 We use loops if we have codes that needs to get repeated. We use branching if
 we want to evaluate alternative parts of our codes depending on a runtime
 condition.</p>
-<div class="section" id="branching">
-<h2><span class="section-number">4.1. </span>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="branching-into-alternative-code-blocks">
+<h2><span class="section-number">4.1. </span>Branching into Alternative Code Blocks<a class="headerlink" href="#branching-into-alternative-code-blocks" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> command can be used to check whether a certain condition is true. If
-it is true, then we can assign a certain chain of commands for this
-eventuality. If the condition is wrong, we can branch off our program into
-another direction and assign different commands. So we can basically branch our
+it is true, then we can assign a certain chain of commands (i.e., a block of
+code) for <strong>this</strong>
+eventuality. If, on the other hand, the condition in the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is
+wrong, we can branch off our program into another direction and assign
+different commands (i.e., an alternative code block). This allows us to branch our
 program into two (or more) separate possible directions.</p>
 <p>In Python it is very important to get the “indentation” right. So all the
-commands that we want to be executed after the if statement need to “indented”
-by 4 spaces (just his the tab key once). Python does not use the curly
-brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code> that R uses in the if-statements and for- loops.</p>
+commands that we want to be executed after the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement need to be “indented”
+by 4 spaces (just hit the tab-key on your keyboard once). Python does not use the curly
+brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code> that R, Stata, Java, C or other programming languages use in
+their versions of the if-statements and for-loops.</p>
+<p>Here is a simple example of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that is used to branch the code
+into two alternate routes depending on the value stored in variable <code class="docutils literal notranslate"><span class="pre">x</span></code>. You
+can read the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement below as “if the value of x is larger than one
+half, then do one thing. If it is not, then do the other thing.”</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number x= </span><span class="si">{}</span><span class="s2"> is greater than 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -311,7 +318,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.62</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.76</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 <p>We can also ask for more than one branching criteria again such as</p>
@@ -328,7 +335,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.73</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.84</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.8</span>
 </pre></div>
 </div>
 <p>Running the same script again, will result in a different random number being
@@ -346,14 +353,14 @@ drawn, so that the result may differ of course.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.16</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.81</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.8</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="for-loops">
 <h2><span class="section-number">4.2. </span>For-Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="loop-1">
-<h3><span class="section-number">4.2.1. </span>Loop 1<a class="headerlink" href="#loop-1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-to-repeat-a-simple-print-function">
+<h3><span class="section-number">4.2.1. </span>Loop to Repeat a Simple Print Function<a class="headerlink" href="#loop-to-repeat-a-simple-print-function" title="Permalink to this headline">¶</a></h3>
 <p>Assume you have the following assignment. Please print the following on a
 screen:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -413,14 +420,15 @@ it.</p>
 </div>
 <p>Note that we again need to increment the print statement <strong>inside</strong> of the loop
 with 4! white-spaces.
-The <code class="docutils literal notranslate"><span class="pre">range()</span></code> command will generate a list from <code class="docutils literal notranslate"><span class="pre">0,1,...9</span></code> and then
+The <code class="docutils literal notranslate"><span class="pre">range()</span></code> command will generate a list with <code class="docutils literal notranslate"><span class="pre">10</span></code> objects in it. The
+objects are the numbers from <code class="docutils literal notranslate"><span class="pre">[0,1,...9]</span></code>. It will then
 instruct the computer to assign the list elements to variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in each
-round. You can then decide what to do with the specific value of
-variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in each round by incrementing your codes.
+round.</p>
+<p>You can then decide what to do with the specific value of
+variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in each round.
 Variable <code class="docutils literal notranslate"><span class="pre">i</span></code> is called the <strong>iterator</strong> or <strong>counter</strong> as it changes its value in
-every iteration of the loop and in a why counts in which round you currently
-are.
-Here’s a more elaborate example</p>
+every iteration of the loop and in a way counts in which round you currently
+are.  Here’s a more elaborate example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">2</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Round: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
@@ -483,8 +491,8 @@ Here’s a more elaborate example</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="loop-2">
-<h3><span class="section-number">4.2.2. </span>Loop 2<a class="headerlink" href="#loop-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-to-calculate-the-sum-of-numbers">
+<h3><span class="section-number">4.2.2. </span>Loop to Calculate the Sum of Numbers<a class="headerlink" href="#loop-to-calculate-the-sum-of-numbers" title="Permalink to this headline">¶</a></h3>
 <p>Here is another simple example. We first assign a list with values 0,1,2,3,4,5.
 We then “loop” through all the values of this list and print them one by one.
 In addition, we add up all the values of this list.  The command
@@ -525,8 +533,8 @@ round and adds it to the already accumulated sum of previous iterations.</p>
 programming languages will not even allow you to assign a value to an iterator
 within a loop statement.</p>
 </div>
-<div class="section" id="loop-3">
-<h3><span class="section-number">4.2.3. </span>Loop 3<a class="headerlink" href="#loop-3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-to-calculate-the-product-of-numbers">
+<h3><span class="section-number">4.2.3. </span>Loop to Calculate the Product of Numbers<a class="headerlink" href="#loop-to-calculate-the-product-of-numbers" title="Permalink to this headline">¶</a></h3>
 <p>Here is another example. We write a loop that calculates the factorial of a
 number: <span class="math notranslate nohighlight">\(3!\)</span>. Remember that <span class="math notranslate nohighlight">\(3! = 1 * 2 * 3\)</span>.  In order to make
 this happen we write a loop that sets <span class="math notranslate nohighlight">\(i = 1, 2,\)</span> and 3 and multiplies it
@@ -562,10 +570,11 @@ but a product.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="loop-4">
-<h3><span class="section-number">4.2.4. </span>Loop 4<a class="headerlink" href="#loop-4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-to-print-the-elements-stored-in-a-list">
+<h3><span class="section-number">4.2.4. </span>Loop to Print the Elements stored in a List<a class="headerlink" href="#loop-to-print-the-elements-stored-in-a-list" title="Permalink to this headline">¶</a></h3>
 <p>Finally, here is an example where we loop through the values of a list again.
-In each round we reach the value of the vector and print it.</p>
+In each round we “grab” a number from the list and print it.</p>
+<p>Let’s first define a list with some numbers in it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xv= </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xv</span><span class="p">))</span>
 </pre></div>
@@ -599,8 +608,8 @@ results in formatted output.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="loop-5">
-<h3><span class="section-number">4.2.5. </span>Loop 5<a class="headerlink" href="#loop-5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loop-with-iterator-values-not-starting-at-zero">
+<h3><span class="section-number">4.2.5. </span>Loop with Iterator Values Not Starting at Zero<a class="headerlink" href="#loop-with-iterator-values-not-starting-at-zero" title="Permalink to this headline">¶</a></h3>
 <p>If you use the <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> command in the previous example, Python will
 generate an internal list with the values <cite>[0,1,2,3,4]</cite> and then let the loop
 run through the values of this list so that the iterator variable will start
@@ -906,7 +915,7 @@ time period. Here’s an example that times a “large” while loop.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time elapsed = </span><span class="si">{}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.13269615173339844</span> <span class="n">seconds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.13982748985290527</span> <span class="n">seconds</span>
 </pre></div>
 </div>
 </div>
