@@ -202,9 +202,12 @@
 </ul>
 </div></blockquote>
 </div>
-<p id="index-0">We will be working with two data sets.
-<a class="reference download internal" download="" href="_downloads/66ad2a5fc21a463e267163745790f8d3/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
-<a class="reference download internal" download="" href="_downloads/0f0e88a6abe1e41cee4da4aa4d6fa612/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a>.</p>
+<p id="index-0">We will be working with two data sets.</p>
+<p><a class="reference download internal" download="" href="_downloads/66ad2a5fc21a463e267163745790f8d3/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a></p>
+<p>Or the Excel version of it:</p>
+<p><a class="reference download internal" download="" href="_downloads/8a5733cfdbc8cb0ca889e0e226aea9f7/Lecture_Data_Excel_a.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.xlsx</span></code></a></p>
+<p>Here is a second data set in comma separated (.csv) format:</p>
+<p><a class="reference download internal" download="" href="_downloads/0f0e88a6abe1e41cee4da4aa4d6fa612/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a></p>
 <div class="section" id="read-small-data-set-from-a-comma-separated-csv-file">
 <h2><span class="section-number">10.1. </span>Read Small Data Set from a Comma Separated (.csv) File<a class="headerlink" href="#read-small-data-set-from-a-comma-separated-csv-file" title="Permalink to this headline">¶</a></h2>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> package for data work.  We can import the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>
@@ -244,7 +247,7 @@ We first import this file using the <code class="docutils literal notranslate"><
 <span class="c1"># ------------- Load data --------------------</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
 
-<span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
+<span class="c1"># Let&#39;s have a look at it.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -257,21 +260,50 @@ We first import this file using the <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <p>Alternatively we could have use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s have a look at it.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> also has a built in Excel file reader that you can call as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read entire excel spreadsheet</span>
-<span class="n">xl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;Lecture_Data_Excel_a.xlsx&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check how many sheets we have inside the excel file</span>
-<span class="n">xl</span><span class="o">.</span><span class="n">sheet_names</span>
-<span class="p">[</span><span class="sa">u</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Sheet3&#39;</span><span class="p">]</span>
-
-<span class="c1"># Pick one sheet and define it as your DataFrame by parsing a sheet</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">2</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>         <span class="mi">73</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">1</span>             <span class="n">Finance</span>         <span class="mi">52</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>         <span class="mi">36</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>         <span class="mi">64</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">4</span>               <span class="n">other</span>         <span class="mi">28</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
 </pre></div>
 </div>
+<p>The best way to import Excel files directly is probably to use the built in
+importer in <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In order for this to work you need to make sure that the <code class="docutils literal notranslate"><span class="pre">xlrd</span></code> package is
+installed. Open a terminal window and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">xlrd</span>
+</pre></div>
+</div>
+<p>Press yes at the prompt and it will install the package.</p>
+</div>
+<p>You can use it as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read entire excel spreadsheet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filepath</span> <span class="o">+</span> <span class="s1">&#39;Lecture_Data_Excel_a.xlsx&#39;</span><span class="p">,</span> \
+     <span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;Lecture_Data_Excel_a&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="s1">&#39;A:D&#39;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s have a look at it.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">2</span>  <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>         <span class="mi">73</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">1</span>             <span class="n">Finance</span>         <span class="mi">52</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>         <span class="mi">36</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>         <span class="mi">64</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+<span class="mi">4</span>               <span class="n">other</span>         <span class="mi">28</span>         <span class="n">NaN</span>         <span class="n">NaN</span>
+</pre></div>
+</div>
+<p>Note how I also specified the excel <strong>sheet_name</strong> this is convenient in case
+you have more complex Excel spreadsheets with multiple <strong>tabs</strong> in it.</p>
 <p>The <strong>DataFrame</strong> has an index for each row and a column header. We can query a
 <strong>DataFrame</strong> as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -294,7 +326,7 @@ We first import this file using the <code class="docutils literal notranslate"><
 <span class="mi">3</span><span class="s1">&#39;], dtype=&#39;</span><span class="nb">object</span><span class="s1">&#39;)</span>
 <span class="o">-------------------------</span>
 <span class="n">Data</span> <span class="n">types</span> <span class="n">Area</span>           <span class="nb">object</span>
-<span class="n">Frequency</span>     <span class="n">float64</span>
+<span class="n">Frequency</span>       <span class="n">int64</span>
 <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">2</span>    <span class="n">float64</span>
 <span class="n">Unnamed</span><span class="p">:</span> <span class="mi">3</span>    <span class="n">float64</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
@@ -303,20 +335,22 @@ We first import this file using the <code class="docutils literal notranslate"><
 <span class="o">-------------------------</span>
 </pre></div>
 </div>
-<p>Drop column 3 and 4 and let’s have a look at the data again.
-df.drop(‘column_name’, axis=1, inplace=True)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Drop column 3 and 4 and let’s have a look at the data again.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># axis = 1 means that you are dropping a column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 2&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 3&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>
-<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>
-<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>
-<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>         <span class="mi">73</span>
+<span class="mi">1</span>             <span class="n">Finance</span>         <span class="mi">52</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>         <span class="mi">36</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>         <span class="mi">64</span>
+<span class="mi">4</span>               <span class="n">other</span>         <span class="mi">28</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -328,42 +362,64 @@ command to accomplish this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We next generate a new variable called <code class="docutils literal notranslate"><span class="pre">relFrequency</span></code> that contains the relative
+<p>The <code class="docutils literal notranslate"><span class="pre">\s+</span></code> is a <strong>regular expression</strong> which is basically a pattern matching
+language. The <cite>s</cite> stands for <strong>space</strong> and the <code class="docutils literal notranslate"><span class="pre">+</span></code> means look for one or more
+spaces and replace them with <code class="docutils literal notranslate"><span class="pre">''</span></code>, well, nothing i.e. a blank string.</p>
+<p>We can make new columns using information from the existing columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Making new columns in the <strong>DataFrame</strong> is very similar to making new
+variables in Stata using the <code class="docutils literal notranslate"><span class="pre">generate</span></code> or <code class="docutils literal notranslate"><span class="pre">gen</span></code> command.</p>
+</div>
+<p>More specifically, we next generate a new variable called <code class="docutils literal notranslate"><span class="pre">relFrequency</span></code> that contains the relative
 frequencies.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make new column with relative frequency</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relFrequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
 <span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>      <span class="mf">0.288538</span>
-<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>      <span class="mf">0.205534</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>      <span class="mf">0.142292</span>
-<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>      <span class="mf">0.252964</span>
-<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>      <span class="mf">0.110672</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>         <span class="mi">73</span>      <span class="mf">0.288538</span>
+<span class="mi">1</span>             <span class="n">Finance</span>         <span class="mi">52</span>      <span class="mf">0.205534</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>         <span class="mi">36</span>      <span class="mf">0.142292</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>         <span class="mi">64</span>      <span class="mf">0.252964</span>
+<span class="mi">4</span>               <span class="n">other</span>         <span class="mi">28</span>      <span class="mf">0.110672</span>
 </pre></div>
 </div>
-<p>Now we grab the relative frequencies out of the DataFrame into a numpy array.</p>
+<p>We can also just grab the relative frequencies out of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and store it
+in the familiar a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array. This is now a vector. You can only do this if
+the information in the column is only numbers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xv</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relFrequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Array xv is:&#39;</span><span class="p">,</span> <span class="n">xv</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span> <span class="n">xv</span> <span class="ow">is</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.28853755</span> <span class="mf">0.2055336</span>  <span class="mf">0.14229249</span> <span class="mf">0.25296443</span> <span class="mf">0.11067194</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us make additional columns</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;random&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="c1"># Let&#39;s have a look at it, it&#39;s a nested list</span>
+<p>You can now do simple calculations with this vector as you did in the previous
+chapters such as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum of the vector xv is: &#39;</span><span class="p">,</span> <span class="n">xv</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vector</span> <span class="n">xv</span> <span class="ow">is</span><span class="p">:</span>  <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>Let us make an additional column so we have more data to play with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;random&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Let&#39;s have a look at it.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Area</span>  <span class="n">Frequency</span>  <span class="n">relFrequency</span>    <span class="n">random</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>       <span class="mf">73.0</span>      <span class="mf">0.288538</span>  <span class="mf">0.288538</span>
-<span class="mi">1</span>             <span class="n">Finance</span>       <span class="mf">52.0</span>      <span class="mf">0.205534</span>  <span class="mf">0.205534</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>       <span class="mf">36.0</span>      <span class="mf">0.142292</span>  <span class="mf">0.142292</span>
-<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>       <span class="mf">64.0</span>      <span class="mf">0.252964</span>  <span class="mf">0.252964</span>
-<span class="mi">4</span>               <span class="n">other</span>       <span class="mf">28.0</span>      <span class="mf">0.110672</span>  <span class="mf">0.110672</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>         <span class="mi">73</span>      <span class="mf">0.288538</span>  <span class="mf">4.589471</span>
+<span class="mi">1</span>             <span class="n">Finance</span>         <span class="mi">52</span>      <span class="mf">0.205534</span>  <span class="mf">3.269212</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>         <span class="mi">36</span>      <span class="mf">0.142292</span>  <span class="mf">2.263301</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>         <span class="mi">64</span>      <span class="mf">0.252964</span>  <span class="mf">4.023646</span>
+<span class="mi">4</span>               <span class="n">other</span>         <span class="mi">28</span>      <span class="mf">0.110672</span>  <span class="mf">1.760345</span>
 </pre></div>
 </div>
 </div>
@@ -371,17 +427,28 @@ frequencies.</p>
 <h2><span class="section-number">10.2. </span>Some Pandas Tricks<a class="headerlink" href="#some-pandas-tricks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="renaming-variables">
 <h3><span class="section-number">10.2.1. </span>Renaming Variables<a class="headerlink" href="#renaming-variables" title="Permalink to this headline">¶</a></h3>
-<p>For renaming column names we use a dictionary as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="s1">&#39;absFrequency&#39;</span><span class="p">})</span>
+<p>For renaming column names we use a dictionary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember, dictionaries are similar to lists but the indexing of the elements
+of a dictionary is not done with 0,1,2, etc. but we user defined <strong>keys</strong> so
+that a dictionary consists of <strong>key - value</strong> pairs such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="n">value2</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>It works as follows. You see how the dictionary that you hand-in here defines
+the old column name as <code class="docutils literal notranslate"><span class="pre">key</span></code> and the new column name as the associated
+<code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="s1">&#39;absFrequency&#39;</span><span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">relFrequency</span>    <span class="n">random</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>      <span class="mf">0.288538</span>  <span class="mf">0.288538</span>
-<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>      <span class="mf">0.205534</span>  <span class="mf">0.205534</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>      <span class="mf">0.142292</span>  <span class="mf">0.142292</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>            <span class="mi">73</span>      <span class="mf">0.288538</span>  <span class="mf">4.589471</span>
+<span class="mi">1</span>             <span class="n">Finance</span>            <span class="mi">52</span>      <span class="mf">0.205534</span>  <span class="mf">3.269212</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>            <span class="mi">36</span>      <span class="mf">0.142292</span>  <span class="mf">2.263301</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">head(x)</span></code> method allows us to print <code class="docutils literal notranslate"><span class="pre">x</span></code> rows from the top of the
@@ -403,11 +470,11 @@ the DataFrame.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
-<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
-<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
-<span class="mi">4</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>            <span class="mi">73</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>            <span class="mi">52</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>            <span class="mi">36</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>            <span class="mi">64</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>               <span class="n">other</span>            <span class="mi">28</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 </div>
@@ -429,8 +496,8 @@ the DataFrame.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>            <span class="mi">73</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>            <span class="mi">36</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>Or if you want to search specific columns for missing values you can do</p>
@@ -438,7 +505,7 @@ the DataFrame.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>            <span class="mi">36</span>       <span class="n">NaN</span>      <span class="mf">0.142292</span>   <span class="n">NaN</span>
 </pre></div>
 </div>
 <p>Or if you want to grab all the rows without missing observations you can index
@@ -447,10 +514,10 @@ the dataframe with the <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">0</span>       <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
-<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
-<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
-<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">0</span>       <span class="n">Accounting</span>            <span class="mi">73</span>       <span class="n">NaN</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>          <span class="n">Finance</span>            <span class="mi">52</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>            <span class="mi">64</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>            <span class="mi">28</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p><strong>Delete rows with NaNs</strong></p>
@@ -458,9 +525,9 @@ the dataframe with the <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
-<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
-<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">1</span>          <span class="n">Finance</span>            <span class="mi">52</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>            <span class="mi">64</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>            <span class="mi">28</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p>You can also reassign it to the orignal DataFrame or assign
@@ -470,9 +537,9 @@ a new one.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">1</span>          <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
-<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
-<span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">1</span>          <span class="n">Finance</span>            <span class="mi">52</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">3</span>  <span class="n">Marketing</span> <span class="n">sales</span>            <span class="mi">64</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>            <span class="n">other</span>            <span class="mi">28</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 <p><strong>Overwriting NaN with specific values</strong>
@@ -483,11 +550,11 @@ If we want to overwrite the <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">area</span>  <span class="n">absFrequency</span>  <span class="n">position</span>  <span class="n">relFrequency</span>  <span class="n">team</span>
-<span class="mi">0</span>          <span class="n">Accounting</span>          <span class="mf">73.0</span>       <span class="mf">0.0</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
-<span class="mi">1</span>             <span class="n">Finance</span>          <span class="mf">52.0</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
-<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>          <span class="mf">36.0</span>       <span class="mf">0.0</span>      <span class="mf">0.142292</span>   <span class="mf">0.0</span>
-<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>          <span class="mf">64.0</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
-<span class="mi">4</span>               <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
+<span class="mi">0</span>          <span class="n">Accounting</span>            <span class="mi">73</span>       <span class="mf">0.0</span>      <span class="mf">0.288538</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>             <span class="n">Finance</span>            <span class="mi">52</span>       <span class="mf">1.0</span>      <span class="mf">0.205534</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>  <span class="n">General</span> <span class="n">management</span>            <span class="mi">36</span>       <span class="mf">0.0</span>      <span class="mf">0.142292</span>   <span class="mf">0.0</span>
+<span class="mi">3</span>     <span class="n">Marketing</span> <span class="n">sales</span>            <span class="mi">64</span>       <span class="mf">1.0</span>      <span class="mf">0.252964</span>   <span class="mf">6.0</span>
+<span class="mi">4</span>               <span class="n">other</span>            <span class="mi">28</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
 </div>
@@ -854,16 +921,16 @@ create a DataFrame with some random values:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">65.316093</span>  <span class="mf">99.629169</span>   <span class="mf">6.431082</span>  <span class="mf">40.469251</span>  <span class="mf">26.483981</span>
-<span class="mi">1</span>  <span class="mf">69.521942</span>  <span class="mf">55.440950</span>  <span class="mf">86.456472</span>  <span class="mf">19.590200</span>  <span class="mf">26.566945</span>
-<span class="mi">2</span>  <span class="mf">34.309069</span>  <span class="mf">30.997590</span>  <span class="mf">91.374310</span>  <span class="mf">15.133872</span>  <span class="mf">73.243195</span>
-<span class="mi">3</span>  <span class="mf">40.805439</span>   <span class="mf">3.902514</span>  <span class="mf">12.956844</span>  <span class="mf">83.844006</span>  <span class="mf">24.893528</span>
-<span class="mi">4</span>  <span class="mf">48.185413</span>  <span class="mf">45.341519</span>  <span class="mf">42.881360</span>  <span class="mf">74.927949</span>   <span class="mf">9.695843</span>
-<span class="mi">5</span>  <span class="mf">73.222133</span>  <span class="mf">42.027744</span>  <span class="mf">10.364944</span>   <span class="mf">1.699795</span>  <span class="mf">91.782855</span>
-<span class="mi">6</span>  <span class="mf">46.419781</span>  <span class="mf">18.359289</span>   <span class="mf">4.745153</span>  <span class="mf">52.173517</span>  <span class="mf">60.187353</span>
-<span class="mi">7</span>  <span class="mf">44.614628</span>   <span class="mf">3.129078</span>  <span class="mf">26.833591</span>  <span class="mf">76.226302</span>  <span class="mf">60.457840</span>
-<span class="mi">8</span>  <span class="mf">64.369312</span>  <span class="mf">76.406292</span>  <span class="mf">14.086529</span>  <span class="mf">67.132247</span>  <span class="mf">66.255940</span>
-<span class="mi">9</span>  <span class="mf">77.066552</span>  <span class="mf">43.089115</span>  <span class="mf">47.811957</span>  <span class="mf">22.917860</span>  <span class="mf">49.174269</span>
+<span class="mi">0</span>  <span class="mf">82.172707</span>  <span class="mf">44.209177</span>  <span class="mf">18.175448</span>  <span class="mf">27.970986</span>  <span class="mf">61.988266</span>
+<span class="mi">1</span>  <span class="mf">64.168857</span>  <span class="mf">93.558473</span>  <span class="mf">33.040785</span>  <span class="mf">16.715728</span>  <span class="mf">37.137578</span>
+<span class="mi">2</span>  <span class="mf">55.536816</span>  <span class="mf">32.688467</span>  <span class="mf">55.445031</span>  <span class="mf">51.197391</span>  <span class="mf">56.571643</span>
+<span class="mi">3</span>  <span class="mf">39.576494</span>  <span class="mf">65.885574</span>  <span class="mf">79.324840</span>   <span class="mf">4.375993</span>  <span class="mf">13.564571</span>
+<span class="mi">4</span>  <span class="mf">81.836956</span>  <span class="mf">52.876696</span>  <span class="mf">83.089792</span>  <span class="mf">77.797724</span>  <span class="mf">63.343551</span>
+<span class="mi">5</span>  <span class="mf">49.107985</span>  <span class="mf">67.296713</span>  <span class="mf">91.556694</span>  <span class="mf">32.280456</span>  <span class="mf">60.868025</span>
+<span class="mi">6</span>  <span class="mf">27.116474</span>  <span class="mf">53.226262</span>  <span class="mf">62.983507</span>  <span class="mf">42.359878</span>  <span class="mf">43.635091</span>
+<span class="mi">7</span>  <span class="mf">58.360279</span>  <span class="mf">35.874996</span>  <span class="mf">69.500427</span>  <span class="mf">80.252453</span>  <span class="mf">94.897277</span>
+<span class="mi">8</span>  <span class="mf">85.182831</span>  <span class="mf">61.495107</span>  <span class="mf">62.469928</span>  <span class="mf">38.180224</span>  <span class="mf">34.124025</span>
+<span class="mi">9</span>  <span class="mf">66.287709</span>  <span class="mf">92.281084</span>  <span class="mf">60.019698</span>  <span class="mf">97.893771</span>  <span class="mf">52.544395</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal notranslate"><span class="pre">2</span></code> that are smaller than 30 with
@@ -873,16 +940,16 @@ the string <cite>low</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">65.316093</span>  <span class="mf">99.629169</span>   <span class="mf">6.431082</span>  <span class="mf">40.469251</span>  <span class="mf">26.483981</span>
-<span class="mi">1</span>  <span class="mf">69.521942</span>   <span class="mf">55.44095</span>  <span class="mf">86.456472</span>  <span class="mf">19.590200</span>  <span class="mf">26.566945</span>
-<span class="mi">2</span>  <span class="mf">34.309069</span>   <span class="mf">30.99759</span>  <span class="mf">91.374310</span>  <span class="mf">15.133872</span>  <span class="mf">73.243195</span>
-<span class="mi">3</span>  <span class="mf">40.805439</span>        <span class="n">Low</span>  <span class="mf">12.956844</span>  <span class="mf">83.844006</span>  <span class="mf">24.893528</span>
-<span class="mi">4</span>  <span class="mf">48.185413</span>  <span class="mf">45.341519</span>  <span class="mf">42.881360</span>  <span class="mf">74.927949</span>   <span class="mf">9.695843</span>
-<span class="mi">5</span>  <span class="mf">73.222133</span>  <span class="mf">42.027744</span>  <span class="mf">10.364944</span>   <span class="mf">1.699795</span>  <span class="mf">91.782855</span>
-<span class="mi">6</span>  <span class="mf">46.419781</span>        <span class="n">Low</span>   <span class="mf">4.745153</span>  <span class="mf">52.173517</span>  <span class="mf">60.187353</span>
-<span class="mi">7</span>  <span class="mf">44.614628</span>        <span class="n">Low</span>  <span class="mf">26.833591</span>  <span class="mf">76.226302</span>  <span class="mf">60.457840</span>
-<span class="mi">8</span>  <span class="mf">64.369312</span>  <span class="mf">76.406292</span>  <span class="mf">14.086529</span>  <span class="mf">67.132247</span>  <span class="mf">66.255940</span>
-<span class="mi">9</span>  <span class="mf">77.066552</span>  <span class="mf">43.089115</span>  <span class="mf">47.811957</span>  <span class="mf">22.917860</span>  <span class="mf">49.174269</span>
+<span class="mi">0</span>  <span class="mf">82.172707</span>  <span class="mf">44.209177</span>  <span class="mf">18.175448</span>  <span class="mf">27.970986</span>  <span class="mf">61.988266</span>
+<span class="mi">1</span>  <span class="mf">64.168857</span>  <span class="mf">93.558473</span>  <span class="mf">33.040785</span>  <span class="mf">16.715728</span>  <span class="mf">37.137578</span>
+<span class="mi">2</span>  <span class="mf">55.536816</span>  <span class="mf">32.688467</span>  <span class="mf">55.445031</span>  <span class="mf">51.197391</span>  <span class="mf">56.571643</span>
+<span class="mi">3</span>  <span class="mf">39.576494</span>  <span class="mf">65.885574</span>  <span class="mf">79.324840</span>   <span class="mf">4.375993</span>  <span class="mf">13.564571</span>
+<span class="mi">4</span>  <span class="mf">81.836956</span>  <span class="mf">52.876696</span>  <span class="mf">83.089792</span>  <span class="mf">77.797724</span>  <span class="mf">63.343551</span>
+<span class="mi">5</span>  <span class="mf">49.107985</span>  <span class="mf">67.296713</span>  <span class="mf">91.556694</span>  <span class="mf">32.280456</span>  <span class="mf">60.868025</span>
+<span class="mi">6</span>  <span class="mf">27.116474</span>  <span class="mf">53.226262</span>  <span class="mf">62.983507</span>  <span class="mf">42.359878</span>  <span class="mf">43.635091</span>
+<span class="mi">7</span>  <span class="mf">58.360279</span>  <span class="mf">35.874996</span>  <span class="mf">69.500427</span>  <span class="mf">80.252453</span>  <span class="mf">94.897277</span>
+<span class="mi">8</span>  <span class="mf">85.182831</span>  <span class="mf">61.495107</span>  <span class="mf">62.469928</span>  <span class="mf">38.180224</span>  <span class="mf">34.124025</span>
+<span class="mi">9</span>  <span class="mf">66.287709</span>  <span class="mf">92.281084</span>  <span class="mf">60.019698</span>  <span class="mf">97.893771</span>  <span class="mf">52.544395</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal notranslate"><span class="pre">4</span></code> that are larger than 70 with the
@@ -892,16 +959,16 @@ value 1000.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">65.316093</span>  <span class="mf">99.629169</span>   <span class="mf">6.431082</span>    <span class="mf">40.469251</span>  <span class="mf">26.483981</span>
-<span class="mi">1</span>  <span class="mf">69.521942</span>   <span class="mf">55.44095</span>  <span class="mf">86.456472</span>    <span class="mf">19.590200</span>  <span class="mf">26.566945</span>
-<span class="mi">2</span>  <span class="mf">34.309069</span>   <span class="mf">30.99759</span>  <span class="mf">91.374310</span>    <span class="mf">15.133872</span>  <span class="mf">73.243195</span>
-<span class="mi">3</span>  <span class="mf">40.805439</span>        <span class="n">Low</span>  <span class="mf">12.956844</span>  <span class="mf">1000.000000</span>  <span class="mf">24.893528</span>
-<span class="mi">4</span>  <span class="mf">48.185413</span>  <span class="mf">45.341519</span>  <span class="mf">42.881360</span>  <span class="mf">1000.000000</span>   <span class="mf">9.695843</span>
-<span class="mi">5</span>  <span class="mf">73.222133</span>  <span class="mf">42.027744</span>  <span class="mf">10.364944</span>     <span class="mf">1.699795</span>  <span class="mf">91.782855</span>
-<span class="mi">6</span>  <span class="mf">46.419781</span>        <span class="n">Low</span>   <span class="mf">4.745153</span>    <span class="mf">52.173517</span>  <span class="mf">60.187353</span>
-<span class="mi">7</span>  <span class="mf">44.614628</span>        <span class="n">Low</span>  <span class="mf">26.833591</span>  <span class="mf">1000.000000</span>  <span class="mf">60.457840</span>
-<span class="mi">8</span>  <span class="mf">64.369312</span>  <span class="mf">76.406292</span>  <span class="mf">14.086529</span>    <span class="mf">67.132247</span>  <span class="mf">66.255940</span>
-<span class="mi">9</span>  <span class="mf">77.066552</span>  <span class="mf">43.089115</span>  <span class="mf">47.811957</span>    <span class="mf">22.917860</span>  <span class="mf">49.174269</span>
+<span class="mi">0</span>  <span class="mf">82.172707</span>  <span class="mf">44.209177</span>  <span class="mf">18.175448</span>    <span class="mf">27.970986</span>  <span class="mf">61.988266</span>
+<span class="mi">1</span>  <span class="mf">64.168857</span>  <span class="mf">93.558473</span>  <span class="mf">33.040785</span>    <span class="mf">16.715728</span>  <span class="mf">37.137578</span>
+<span class="mi">2</span>  <span class="mf">55.536816</span>  <span class="mf">32.688467</span>  <span class="mf">55.445031</span>    <span class="mf">51.197391</span>  <span class="mf">56.571643</span>
+<span class="mi">3</span>  <span class="mf">39.576494</span>  <span class="mf">65.885574</span>  <span class="mf">79.324840</span>     <span class="mf">4.375993</span>  <span class="mf">13.564571</span>
+<span class="mi">4</span>  <span class="mf">81.836956</span>  <span class="mf">52.876696</span>  <span class="mf">83.089792</span>  <span class="mf">1000.000000</span>  <span class="mf">63.343551</span>
+<span class="mi">5</span>  <span class="mf">49.107985</span>  <span class="mf">67.296713</span>  <span class="mf">91.556694</span>    <span class="mf">32.280456</span>  <span class="mf">60.868025</span>
+<span class="mi">6</span>  <span class="mf">27.116474</span>  <span class="mf">53.226262</span>  <span class="mf">62.983507</span>    <span class="mf">42.359878</span>  <span class="mf">43.635091</span>
+<span class="mi">7</span>  <span class="mf">58.360279</span>  <span class="mf">35.874996</span>  <span class="mf">69.500427</span>  <span class="mf">1000.000000</span>  <span class="mf">94.897277</span>
+<span class="mi">8</span>  <span class="mf">85.182831</span>  <span class="mf">61.495107</span>  <span class="mf">62.469928</span>    <span class="mf">38.180224</span>  <span class="mf">34.124025</span>
+<span class="mi">9</span>  <span class="mf">66.287709</span>  <span class="mf">92.281084</span>  <span class="mf">60.019698</span>  <span class="mf">1000.000000</span>  <span class="mf">52.544395</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
@@ -912,16 +979,16 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">65.316093</span>  <span class="mf">99.629169</span>   <span class="mf">6.431082</span>    <span class="mf">40.469251</span>     <span class="n">Middle</span>
-<span class="mi">1</span>  <span class="mf">69.521942</span>   <span class="mf">55.44095</span>  <span class="mf">86.456472</span>    <span class="mf">19.590200</span>     <span class="n">Middle</span>
-<span class="mi">2</span>  <span class="mf">34.309069</span>   <span class="mf">30.99759</span>  <span class="mf">91.374310</span>    <span class="mf">15.133872</span>     <span class="n">Middle</span>
-<span class="mi">3</span>  <span class="mf">40.805439</span>        <span class="n">Low</span>  <span class="mf">12.956844</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
-<span class="mi">4</span>  <span class="mf">48.185413</span>  <span class="mf">45.341519</span>  <span class="mf">42.881360</span>  <span class="mf">1000.000000</span>   <span class="mf">9.695843</span>
-<span class="mi">5</span>  <span class="mf">73.222133</span>  <span class="mf">42.027744</span>  <span class="mf">10.364944</span>     <span class="mf">1.699795</span>  <span class="mf">91.782855</span>
-<span class="mi">6</span>  <span class="mf">46.419781</span>        <span class="n">Low</span>   <span class="mf">4.745153</span>    <span class="mf">52.173517</span>     <span class="n">Middle</span>
-<span class="mi">7</span>  <span class="mf">44.614628</span>        <span class="n">Low</span>  <span class="mf">26.833591</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
-<span class="mi">8</span>  <span class="mf">64.369312</span>  <span class="mf">76.406292</span>  <span class="mf">14.086529</span>    <span class="mf">67.132247</span>     <span class="n">Middle</span>
-<span class="mi">9</span>  <span class="mf">77.066552</span>  <span class="mf">43.089115</span>  <span class="mf">47.811957</span>    <span class="mf">22.917860</span>     <span class="n">Middle</span>
+<span class="mi">0</span>  <span class="mf">82.172707</span>  <span class="mf">44.209177</span>  <span class="mf">18.175448</span>    <span class="mf">27.970986</span>     <span class="n">Middle</span>
+<span class="mi">1</span>  <span class="mf">64.168857</span>  <span class="mf">93.558473</span>  <span class="mf">33.040785</span>    <span class="mf">16.715728</span>     <span class="n">Middle</span>
+<span class="mi">2</span>  <span class="mf">55.536816</span>  <span class="mf">32.688467</span>  <span class="mf">55.445031</span>    <span class="mf">51.197391</span>     <span class="n">Middle</span>
+<span class="mi">3</span>  <span class="mf">39.576494</span>  <span class="mf">65.885574</span>  <span class="mf">79.324840</span>     <span class="mf">4.375993</span>  <span class="mf">13.564571</span>
+<span class="mi">4</span>  <span class="mf">81.836956</span>  <span class="mf">52.876696</span>  <span class="mf">83.089792</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
+<span class="mi">5</span>  <span class="mf">49.107985</span>  <span class="mf">67.296713</span>  <span class="mf">91.556694</span>    <span class="mf">32.280456</span>     <span class="n">Middle</span>
+<span class="mi">6</span>  <span class="mf">27.116474</span>  <span class="mf">53.226262</span>  <span class="mf">62.983507</span>    <span class="mf">42.359878</span>     <span class="n">Middle</span>
+<span class="mi">7</span>  <span class="mf">58.360279</span>  <span class="mf">35.874996</span>  <span class="mf">69.500427</span>  <span class="mf">1000.000000</span>  <span class="mf">94.897277</span>
+<span class="mi">8</span>  <span class="mf">85.182831</span>  <span class="mf">61.495107</span>  <span class="mf">62.469928</span>    <span class="mf">38.180224</span>     <span class="n">Middle</span>
+<span class="mi">9</span>  <span class="mf">66.287709</span>  <span class="mf">92.281084</span>  <span class="mf">60.019698</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
 </pre></div>
 </div>
 </div>
