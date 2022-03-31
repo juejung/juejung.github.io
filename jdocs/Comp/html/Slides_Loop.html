@@ -91,7 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Basics.html">2. First Steps in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_DataStructures.html">3. Python Data Structures</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Basic Programming Techniques</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#branching-into-alternative-code-blocks">4.1. Branching into Alternative Code Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#branching-into-alternative-code-blocks">4.1. Branching into Alternative Code Blocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-if-statment">4.1.1. The if statment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#branching-with-logical-operators">4.1.2. Branching with Logical Operators</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#for-loops">4.2. For-Loops</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#loop-to-repeat-a-simple-print-function">4.2.1. Loop to Repeat a Simple Print Function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#loop-to-calculate-the-sum-of-numbers">4.2.2. Loop to Calculate the Sum of Numbers</a></li>
@@ -217,6 +221,8 @@ we want to evaluate alternative parts of our codes depending on a runtime
 condition.</p>
 <div class="section" id="branching-into-alternative-code-blocks">
 <h2><span class="section-number">4.1. </span>Branching into Alternative Code Blocks<a class="headerlink" href="#branching-into-alternative-code-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-if-statment">
+<h3><span class="section-number">4.1.1. </span>The if statment<a class="headerlink" href="#the-if-statment" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> command can be used to check whether a certain condition is true. If
 it is true, then we can assign a certain chain of commands (i.e., a block of
 code) for <strong>this</strong>
@@ -318,7 +324,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.76</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.07</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 <p>We can also ask for more than one branching criteria again such as</p>
@@ -335,7 +341,7 @@ eventuality we can then assign a string of commands to be executed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.84</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.96</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.9</span>
 </pre></div>
 </div>
 <p>Running the same script again, will result in a different random number being
@@ -353,8 +359,67 @@ drawn, so that the result may differ of course.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number x= </span><span class="si">{:5.2f}</span><span class="s2"> is smaller than or equal to 0.7&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.81</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Random</span> <span class="n">Number</span> <span class="n">x</span><span class="o">=</span>  <span class="mf">0.07</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="mf">0.7</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="branching-with-logical-operators">
+<h3><span class="section-number">4.1.2. </span>Branching with Logical Operators<a class="headerlink" href="#branching-with-logical-operators" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we can use logical operators such as <code class="docutils literal notranslate"><span class="pre">and</span></code> as well as <code class="docutils literal notranslate"><span class="pre">or</span></code> to
+construct more sophisticated conditions for code branching. Assume, for
+instance, that you program a game that assigns a price of $1 if a random number
+is greater than 0.3 but less than 0.5. You could use the logical statement
+<code class="docutils literal notranslate"><span class="pre">and</span></code> to accomplish this as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number is x= </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.3</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You win a price of $1, congratulations!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, you win nothing!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Random Number is x=  0.93
+Sorry, you win nothing!
+</pre></div>
+</div>
+<p>A different game could assign a price of $1 to a player if a randomly drawn
+number is less than 0.3 or greater than 0.5. If you want to program this game,
+you would use the logical operator <code class="docutils literal notranslate"><span class="pre">or</span></code> as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number is x= </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.3</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You win a price of $1, congratulations!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, you win nothing!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Random Number is x=  0.73
+You win a price of $1, congratulations!
+</pre></div>
+</div>
+<p>And you can of course combine these as well. A more complex game could pay the
+player $1 if the random number is at least 0.1 but less than two 0.2 or larger
+than 0.6. Notice that “at least 0.1” means that 0.1 is included in the
+condition so you need the <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> symbol as opposed the strictly greater <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.
+You could program this as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Number is x= </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You win a price of $1, congratulations!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, you win nothing!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Random Number is x=  0.96
+You win a price of $1, congratulations!
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="for-loops">
@@ -915,7 +980,7 @@ time period. Here’s an example that times a “large” while loop.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time elapsed = </span><span class="si">{}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.13982748985290527</span> <span class="n">seconds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.14289498329162598</span> <span class="n">seconds</span>
 </pre></div>
 </div>
 </div>

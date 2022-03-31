@@ -272,23 +272,27 @@ so called <strong>character classes</strong> for this where:</p>
 </div></blockquote>
 <p>You can also create your own character classes by putting them inside brackets:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[aeiouAEIOU]</span></code> matches vowels <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">e</span></code> or etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[aeiouAEIOU]</span></code> matches vowels <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">e</span></code> or <code class="docutils literal notranslate"><span class="pre">i</span></code> etc.</p></li>
 </ul>
-<p>By putting the caret (‘^’) character in front of your class definition you can
+<p>By putting the caret <code class="docutils literal notranslate"><span class="pre">^</span></code> character in front of your class definition you can
 negate the meaning so that</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[^aeiouAEIOU]</span></code> matches all non-vowels <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[^aeiouAEIOU]</span></code> matches all non-vowels <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> etc. So this
+would include all the consonants, numbers, and other symbols.</p></li>
 </ul>
 <p>You will often see the group <code class="docutils literal notranslate"><span class="pre">[0-9a-zA-z]</span></code> which is the same as <code class="docutils literal notranslate"><span class="pre">\w</span></code> above,
-it matches either a digit or a lowercase letter or an upper case letter.</p>
-<p>Punctuation symbols like <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>,
+it matches either a digit or a lowercase letter or an upper case letter. The
+hyphen character <code class="docutils literal notranslate"><span class="pre">-</span></code> acts as a range indicator, so <code class="docutils literal notranslate"><span class="pre">0-9</span></code> means any of the
+digits from 0, 1, 2, … , 9. Similarly <code class="docutils literal notranslate"><span class="pre">a-z</span></code> means any of the lowercase
+characters a, b, … , z.</p>
+<p>Punctuation symbols such as <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>,
 <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">\</span></code>, <code class="docutils literal notranslate"><span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">}</span></code>, <code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">]</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code> have
-meaning in <strong>regular expression</strong> “language” so if the pattern that you are
-looking for contains some of these characters you need to “escape” them first
-in order to use them. If you want to match parenthesis for instance you can
+meaning in <strong>regular expression</strong> “language”. If the pattern that you are
+looking for contains some of these characters, you need to “escape” them first
+in order to use them. If you want to match parenthesis <code class="docutils literal notranslate"><span class="pre">(</span></code> and <code class="docutils literal notranslate"><span class="pre">)</span></code> for instance you can
 define your regex pattern as</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[\(\)]</span></code> which matches open parenthesis <code class="docutils literal notranslate"><span class="pre">(</span></code> or a close parenthesis <code class="docutils literal notranslate"><span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[\(\)]</span></code> which matches open an parenthesis <code class="docutils literal notranslate"><span class="pre">(</span></code> or a closed parenthesis <code class="docutils literal notranslate"><span class="pre">)</span></code></p></li>
 </ul>
 <p>The pattern definition for matching the phone number in the example above is
 therefore:</p>
@@ -313,14 +317,22 @@ would look like:</p>
 </pre></div>
 </div>
 <p>where the curly brackets indicate how many times the <code class="docutils literal notranslate"><span class="pre">\d</span></code> character is
-repeated in the pattern.</p>
+repeated in the pattern. Notice how we do not put the backslash escape
+character <code class="docutils literal notranslate"><span class="pre">\</span></code> in front of the curly brackets. Curly brackets have meaning in
+regular expression language. Once you put the escape character in front of it,
+the regular expression interpreter thinks you are looking for a curly bracket
+in the text that you are analysing.</p>
 <p>Now let’s combine everything. The following code block will extract the first
 instance of a phone number pattern match.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">mySearchObject</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We need to call</span>
+
+<span class="c1"># Assign your text info to a string variable</span>
+<span class="n">myTextString</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;We need to call</span>
 <span class="s2">    John (412-233-9876), James (312-323-7658)</span>
-<span class="s2">    as well as Jimmy (450-123-1234) to make sure it gets all done.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">    as well as Jimmy (450-123-1234) to make sure it gets all done.&quot;&quot;&quot;</span>
+
+<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">mySearchObject</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">myTextString</span><span class="p">)</span>
 <span class="n">myList</span> <span class="o">=</span> <span class="n">mySearchObject</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span>
 </pre></div>
@@ -330,10 +342,15 @@ instance of a phone number pattern match.</p>
 </div>
 <p>If you want to return all the phone numbers you can use the <code class="docutils literal notranslate"><span class="pre">findall</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">myList</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We need to call</span>
+
+<span class="c1"># Assign your text info to a string variable</span>
+<span class="n">myTextString</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;We need to call</span>
 <span class="s2">    John (412-233-9876), James (312-323-7658)</span>
-<span class="s2">    as well as Jimmy (450-123-1234) to make sure it gets all done.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">    as well as Jimmy (450-123-1234) to make sure it gets all done.&quot;&quot;&quot;</span>
+
+
+<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{3}</span><span class="s1">-\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">myTextString</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -428,12 +445,14 @@ which is a website-tool where you see how your regular expression matches
 certain patterns in real time. In addition, if you hover over the regular
 expression a pop-out appears that describes what the regular expression does.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\w_\-\.]+@[\w_\-\.]+\.[a-zA-Z]{2,5}&#39;</span><span class="p">)</span>
-<span class="n">myList</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;We need to call</span>
+
+<span class="n">myTextString</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;We need to call</span>
 <span class="s2">    John (foo@demo.net), James (bar.ba@test.co.au)</span>
 <span class="s2">    as well as Jimmy (jjing@towson.edu) and Charles</span>
-<span class="s2">    (ch.ch.43-1_20@towson.students.edu) to make sure it gets all</span>
-<span class="s2">done.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">    (ch.ch.43-1_20@towson.students.edu) to make sure it gets all done.&quot;&quot;&quot;</span>
+
+<span class="n">myRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\w_\-\.]+@[\w_\-\.]+\.[a-zA-Z]{2,5}&#39;</span><span class="p">)</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="n">myRegex</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">myTextString</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="p">)</span>
 </pre></div>
 </div>
