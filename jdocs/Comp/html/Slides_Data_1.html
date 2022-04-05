@@ -96,17 +96,22 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Functions.html">8. Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OOP.html">9. Object Oriented Programming</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">10. Working with Data I: Data Cleaning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#read-small-data-set-from-a-comma-separated-csv-file">10.1. Read Small Data Set from a Comma Separated (.csv) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#some-pandas-tricks">10.2. Some Pandas Tricks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#renaming-variables">10.2.1. Renaming Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-columns">10.2.2. Dropping and Adding Columns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">10.2.3. Missing Values of NaN’s</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-rows-to-a-dataframe">10.2.4. Dropping and Adding Rows to a DataFrame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dropping-rows-based-on-conditions">10.2.5. Dropping Rows Based on Conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sorting-and-reindexing-dataframes">10.2.6. Sorting and Reindexing DataFrames</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#merging-dataframes-or-adding-columns">10.2.7. Merging DataFrames or Adding Columns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#converting-column-types">10.2.8. Converting Column Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#replacing-values-in-a-dataframe-conditional-on-criteria">10.2.9. Replacing Values in a DataFrame Conditional on Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-dataframe-from-multiple-lists">10.1. Create Dataframe from Multiple Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#every-list-holds-information-of-a-separate-variable">10.1.1. Every List Holds Information of a Separate Variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#every-list-holds-information-of-one-unit-of-observation">10.1.2. Every List Holds Information of one Unit of Observation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#read-small-data-set-from-a-comma-separated-csv-file">10.2. Read Small Data Set from a Comma Separated (.csv) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-pandas-tricks">10.3. Some Pandas Tricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#renaming-variables">10.3.1. Renaming Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-columns">10.3.2. Dropping and Adding Columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-values-of-nan-s">10.3.3. Missing Values of NaN’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dropping-and-adding-rows-to-a-dataframe">10.3.4. Dropping and Adding Rows to a DataFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dropping-rows-based-on-conditions">10.3.5. Dropping Rows Based on Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sorting-and-reindexing-dataframes">10.3.6. Sorting and Reindexing DataFrames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-dataframes-or-adding-columns">10.3.7. Merging DataFrames or Adding Columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-column-types">10.3.8. Converting Column Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replacing-values-in-a-dataframe-conditional-on-criteria">10.3.9. Replacing Values in a DataFrame Conditional on Criteria</a></li>
 </ul>
 </li>
 </ul>
@@ -203,29 +208,115 @@
 </ul>
 </div></blockquote>
 </div>
-<p id="index-0">We will be working with two data sets.</p>
-<p><a class="reference download internal" download="" href="_downloads/66ad2a5fc21a463e267163745790f8d3/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a></p>
-<p>Or the Excel version of it:</p>
-<p><a class="reference download internal" download="" href="_downloads/8a5733cfdbc8cb0ca889e0e226aea9f7/Lecture_Data_Excel_a.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.xlsx</span></code></a></p>
-<p>Here is a second data set in comma separated (.csv) format:</p>
-<p><a class="reference download internal" download="" href="_downloads/0f0e88a6abe1e41cee4da4aa4d6fa612/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a></p>
-<div class="section" id="read-small-data-set-from-a-comma-separated-csv-file">
-<h2><span class="section-number">10.1. </span>Read Small Data Set from a Comma Separated (.csv) File<a class="headerlink" href="#read-small-data-set-from-a-comma-separated-csv-file" title="Permalink to this headline">¶</a></h2>
-<p>We use the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> package for data work.  We can import the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>
+<p id="index-0">We use the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> package for data work.  We can import the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>
 library using the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement.  <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> allows easy organization of
 data in the spirit of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> concept in <strong>R</strong>. You can think of a
 <strong>DataFrame</strong> as an array with labels similar to an Excel spreadsheet.</p>
 <p>A <strong>DataFrame</strong> can be created in the following ways:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>From another <strong>DataFrame</strong>.</p></li>
-<li><p>From a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array.</p></li>
+<li><p>From another <strong>DataFrame</strong></p></li>
+<li><p>From a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array</p></li>
+<li><p>From lists</p></li>
 <li><p>From another <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structure called <code class="docutils literal notranslate"><span class="pre">series</span></code> which is basically
-a one dimensional <strong>DataFrame</strong>, i.e., a column or row of a matrix.</p></li>
+a one dimensional <strong>DataFrame</strong>, i.e., a column or row of a matrix</p></li>
 <li><p>From a file like a CSV file etc.</p></li>
 </ul>
 </div></blockquote>
-<p>The first dataset that we are working with is a comma separated file, called
+<p>Later in this chapter we will be working with two data sets. You can download
+them from here:</p>
+<p><a class="reference download internal" download="" href="_downloads/66ad2a5fc21a463e267163745790f8d3/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a></p>
+<p>Or the Excel version of it:</p>
+<p><a class="reference download internal" download="" href="_downloads/8a5733cfdbc8cb0ca889e0e226aea9f7/Lecture_Data_Excel_a.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.xlsx</span></code></a></p>
+<p>Here is a second data set in comma separated (.csv) format:</p>
+<p><a class="reference download internal" download="" href="_downloads/0f0e88a6abe1e41cee4da4aa4d6fa612/Lecture_Data_Excel_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_b.csv</span></code></a></p>
+<div class="section" id="create-dataframe-from-multiple-lists">
+<h2><span class="section-number">10.1. </span>Create Dataframe from Multiple Lists<a class="headerlink" href="#create-dataframe-from-multiple-lists" title="Permalink to this headline">¶</a></h2>
+<p>If you scrape information from a website or a pdf document, you often end up
+with your data stored across various lists. Sometimes these lists are simply
+holding the column information of a specific variable, sometimes the lists are
+nested lists, where one list contains the information of all variables per
+observation. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is intelligent enough (usually) to handle them all in a
+very similar way. I next illustrate the two most often found list structures in
+data work.</p>
+<div class="section" id="every-list-holds-information-of-a-separate-variable">
+<h3><span class="section-number">10.1.1. </span>Every List Holds Information of a Separate Variable<a class="headerlink" href="#every-list-holds-information-of-a-separate-variable" title="Permalink to this headline">¶</a></h3>
+<p>Let us assume you observe information about 4! people. The unit of observation
+is therefore a person. For each person you know the name, age, and the city
+where they live. This information is stored in 3! separate lists.</p>
+<p>There is an easy way to combine these lists into a Dataframe for easy
+statistical analysis.
+The process has two steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> command to combine the lists</p></li>
+<li><p>Assign the “zipped” lists to a Pandas Dataframe</p></li>
+</ol>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Katie&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick&#39;</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">,</span> <span class="s1">&#39;Eva&#39;</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="s1">&#39;Baltimore&#39;</span><span class="p">,</span> <span class="s1">&#39;Atlanta&#39;</span><span class="p">,</span> <span class="s1">&#39;Madrid&#39;</span><span class="p">]</span>
+
+<span class="c1"># Now zip the lists together</span>
+<span class="n">zipped</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">,</span> <span class="n">locations</span><span class="p">))</span>
+
+<span class="c1"># Assign the zipped lists into a Dataframe</span>
+<span class="n">myData</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zipped</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Location&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myData</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Name</span>  <span class="n">Age</span>   <span class="n">Location</span>
+<span class="mi">0</span>  <span class="n">Katie</span>   <span class="mi">32</span>     <span class="n">London</span>
+<span class="mi">1</span>   <span class="n">Nick</span>   <span class="mi">32</span>  <span class="n">Baltimore</span>
+<span class="mi">2</span>  <span class="n">James</span>   <span class="mi">36</span>    <span class="n">Atlanta</span>
+<span class="mi">3</span>    <span class="n">Eva</span>   <span class="mi">31</span>     <span class="n">Madrid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="every-list-holds-information-of-one-unit-of-observation">
+<h3><span class="section-number">10.1.2. </span>Every List Holds Information of one Unit of Observation<a class="headerlink" href="#every-list-holds-information-of-one-unit-of-observation" title="Permalink to this headline">¶</a></h3>
+<p>In this example, the information is stored per person. So each person is stored
+in a list that contains all 3! variables. Then these person lists are stored in
+another list. We now are dealing with a nested list.</p>
+<p>The steps to move the information from the lists into a Dataframe are pretty
+much the same. Pandas is intelligent in that way and recognizes the structure
+of the data.</p>
+<p>Again the process has two steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> command to combine the lists</p></li>
+<li><p>Assign the “zipped” lists to a Pandas Dataframe</p></li>
+</ol>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># This is the structure of your data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Katie&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;London&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Nik&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;Toronto&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;James&#39;</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="s1">&#39;Atlanta&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Evan&#39;</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;Madrid&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Assign the multi-dimensional (or nested) list to Dataframe</span>
+<span class="n">myData</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Location&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myData</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Name</span>  <span class="n">Age</span> <span class="n">Location</span>
+<span class="mi">0</span>  <span class="n">Katie</span>   <span class="mi">32</span>   <span class="n">London</span>
+<span class="mi">1</span>    <span class="n">Nik</span>   <span class="mi">32</span>  <span class="n">Toronto</span>
+<span class="mi">2</span>  <span class="n">James</span>   <span class="mi">36</span>  <span class="n">Atlanta</span>
+<span class="mi">3</span>   <span class="n">Evan</span>   <span class="mi">31</span>   <span class="n">Madrid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="read-small-data-set-from-a-comma-separated-csv-file">
+<h2><span class="section-number">10.2. </span>Read Small Data Set from a Comma Separated (.csv) File<a class="headerlink" href="#read-small-data-set-from-a-comma-separated-csv-file" title="Permalink to this headline">¶</a></h2>
+<p>It is more common that your data is stored in a file such as a text file, Excel
+spreadsheet, or a file format of some other data management software such as
+Stata, R, SAS, or SPSS. The Pandas library does provide you with routines
+(i.e., commands) that will allow you to import data directly from the most
+common file formats.</p>
+<p>In our first example, we will work with data stored as a comma separated file, called
 <a class="reference download internal" download="" href="_downloads/66ad2a5fc21a463e267163745790f8d3/Lecture_Data_Excel_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Lecture_Data_Excel_a.csv</span></code></a>.
 We first import this file using the <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> command from the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -425,9 +516,9 @@ chapters such as:</p>
 </div>
 </div>
 <div class="section" id="some-pandas-tricks">
-<h2><span class="section-number">10.2. </span>Some Pandas Tricks<a class="headerlink" href="#some-pandas-tricks" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3. </span>Some Pandas Tricks<a class="headerlink" href="#some-pandas-tricks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="renaming-variables">
-<h3><span class="section-number">10.2.1. </span>Renaming Variables<a class="headerlink" href="#renaming-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.1. </span>Renaming Variables<a class="headerlink" href="#renaming-variables" title="Permalink to this headline">¶</a></h3>
 <p>For renaming column names we use a dictionary.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -457,7 +548,7 @@ the old column name as <code class="docutils literal notranslate"><span class="p
 the DataFrame.</p>
 </div>
 <div class="section" id="dropping-and-adding-columns">
-<h3><span class="section-number">10.2.2. </span>Dropping and Adding Columns<a class="headerlink" href="#dropping-and-adding-columns" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.2. </span>Dropping and Adding Columns<a class="headerlink" href="#dropping-and-adding-columns" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a column first so everything fits</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -480,7 +571,7 @@ the DataFrame.</p>
 </div>
 </div>
 <div class="section" id="missing-values-of-nan-s">
-<h3><span class="section-number">10.2.3. </span>Missing Values of NaN’s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.3. </span>Missing Values of NaN’s<a class="headerlink" href="#missing-values-of-nan-s" title="Permalink to this headline">¶</a></h3>
 <p><strong>Count NaNs</strong></p>
 <p>Count the number of rows with missing values.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nans</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -560,7 +651,7 @@ If we want to overwrite the <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="section" id="dropping-and-adding-rows-to-a-dataframe">
-<h3><span class="section-number">10.2.4. </span>Dropping and Adding Rows to a DataFrame<a class="headerlink" href="#dropping-and-adding-rows-to-a-dataframe" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.4. </span>Dropping and Adding Rows to a DataFrame<a class="headerlink" href="#dropping-and-adding-rows-to-a-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method to add rows to the DataFrame.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="c1"># Fill cells with NaNs</span>
@@ -610,7 +701,7 @@ DataFrame, so you do not need to specify the <code class="docutils literal notra
 <p>However, if you drop a column, then you need the dimension specifier <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">1</span></code>.</p>
 </div>
 <div class="section" id="dropping-rows-based-on-conditions">
-<h3><span class="section-number">10.2.5. </span>Dropping Rows Based on Conditions<a class="headerlink" href="#dropping-rows-based-on-conditions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.5. </span>Dropping Rows Based on Conditions<a class="headerlink" href="#dropping-rows-based-on-conditions" title="Permalink to this headline">¶</a></h3>
 <p>Before running a regression, a researcher might like to drop certain
 observations that are clearly not correct such as negative age observations for
 instance.</p>
@@ -644,6 +735,9 @@ based on the value condition of variable <code class="docutils literal notransla
 <span class="mi">4</span>            <span class="n">other</span>          <span class="mf">28.0</span>       <span class="mf">3.0</span>      <span class="mf">0.110672</span>  <span class="mf">10.0</span>
 </pre></div>
 </div>
+<p>As you can see we accomplished this by “keeping” the observations for which the
+<code class="docutils literal notranslate"><span class="pre">position</span></code> value is strictly positive as opposed to “dropping” the negative
+ones.</p>
 <p>And also let’s make sure that the original dataframe is still what it was.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -659,7 +753,7 @@ based on the value condition of variable <code class="docutils literal notransla
 </div>
 </div>
 <div class="section" id="sorting-and-reindexing-dataframes">
-<h3><span class="section-number">10.2.6. </span>Sorting and Reindexing DataFrames<a class="headerlink" href="#sorting-and-reindexing-dataframes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.6. </span>Sorting and Reindexing DataFrames<a class="headerlink" href="#sorting-and-reindexing-dataframes" title="Permalink to this headline">¶</a></h3>
 <p>We next sort the DataFrame by a certain column (from highest to lowest) using
 the <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> DataFrame method.</p>
 <div class="admonition warning">
@@ -710,7 +804,7 @@ very large. Setting <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div class="section" id="merging-dataframes-or-adding-columns">
-<h3><span class="section-number">10.2.7. </span>Merging DataFrames or Adding Columns<a class="headerlink" href="#merging-dataframes-or-adding-columns" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.7. </span>Merging DataFrames or Adding Columns<a class="headerlink" href="#merging-dataframes-or-adding-columns" title="Permalink to this headline">¶</a></h3>
 <p>Let us create a new <strong>DataFrame</strong> that has the variable <code class="docutils literal notranslate"><span class="pre">team</span></code> in common with the previous
 DataFrame. This new DataFrame contains additional team information that we
 would like to merge into the original DataFrame.</p>
@@ -892,7 +986,7 @@ DataFrames, even for observations where no merge/overlap occurred.</p>
 </div>
 </div>
 <div class="section" id="converting-column-types">
-<h3><span class="section-number">10.2.8. </span>Converting Column Types<a class="headerlink" href="#converting-column-types" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.8. </span>Converting Column Types<a class="headerlink" href="#converting-column-types" title="Permalink to this headline">¶</a></h3>
 <p>When converting text into a DataFrame to conduct statistical analysis it is
 sometimes necessary to convert a numbers column that is still a string, into
 floats, so that we can do math. Let’s drop some more columns first so the DataFrame
@@ -964,7 +1058,7 @@ rename the column and print summary statistics.</p>
 </div>
 </div>
 <div class="section" id="replacing-values-in-a-dataframe-conditional-on-criteria">
-<h3><span class="section-number">10.2.9. </span>Replacing Values in a DataFrame Conditional on Criteria<a class="headerlink" href="#replacing-values-in-a-dataframe-conditional-on-criteria" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.9. </span>Replacing Values in a DataFrame Conditional on Criteria<a class="headerlink" href="#replacing-values-in-a-dataframe-conditional-on-criteria" title="Permalink to this headline">¶</a></h3>
 <p>If we need to replace values in a <strong>DataFrame</strong> based on certain criteria it is
 often more efficient to use <strong>indexing</strong> as opposed to loops. Let us first
 create a DataFrame with some random values:</p>
@@ -973,16 +1067,16 @@ create a DataFrame with some random values:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">31.963242</span>   <span class="mf">2.280922</span>   <span class="mf">4.275727</span>  <span class="mf">48.882190</span>  <span class="mf">98.141049</span>
-<span class="mi">1</span>  <span class="mf">69.936075</span>  <span class="mf">32.347039</span>  <span class="mf">82.296896</span>  <span class="mf">48.457865</span>  <span class="mf">20.170451</span>
-<span class="mi">2</span>  <span class="mf">35.009741</span>  <span class="mf">90.649004</span>  <span class="mf">92.761310</span>  <span class="mf">15.561336</span>  <span class="mf">48.837226</span>
-<span class="mi">3</span>  <span class="mf">56.156843</span>  <span class="mf">22.671351</span>  <span class="mf">97.869877</span>  <span class="mf">66.462977</span>  <span class="mf">55.940139</span>
-<span class="mi">4</span>  <span class="mf">38.732933</span>   <span class="mf">7.469887</span>  <span class="mf">13.205136</span>  <span class="mf">46.619277</span>  <span class="mf">31.771209</span>
-<span class="mi">5</span>  <span class="mf">37.124041</span>  <span class="mf">68.419341</span>  <span class="mf">64.805794</span>  <span class="mf">44.140403</span>  <span class="mf">34.731994</span>
-<span class="mi">6</span>  <span class="mf">43.997074</span>  <span class="mf">28.272249</span>  <span class="mf">75.166049</span>  <span class="mf">73.941778</span>  <span class="mf">67.685025</span>
-<span class="mi">7</span>   <span class="mf">3.993402</span>  <span class="mf">60.881941</span>  <span class="mf">93.571722</span>  <span class="mf">20.931992</span>  <span class="mf">75.967186</span>
-<span class="mi">8</span>  <span class="mf">10.040063</span>  <span class="mf">96.521715</span>  <span class="mf">60.784769</span>  <span class="mf">71.313920</span>  <span class="mf">24.202610</span>
-<span class="mi">9</span>  <span class="mf">17.149549</span>   <span class="mf">0.789782</span>  <span class="mf">45.494221</span>  <span class="mf">97.913982</span>  <span class="mf">29.608834</span>
+<span class="mi">0</span>  <span class="mf">76.231650</span>  <span class="mf">73.856596</span>  <span class="mf">98.223677</span>  <span class="mf">37.419310</span>  <span class="mf">56.534611</span>
+<span class="mi">1</span>  <span class="mf">93.020350</span>  <span class="mf">59.102390</span>  <span class="mf">87.029799</span>   <span class="mf">6.289979</span>  <span class="mf">81.704176</span>
+<span class="mi">2</span>  <span class="mf">67.060606</span>  <span class="mf">30.773903</span>  <span class="mf">27.633734</span>  <span class="mf">35.819372</span>  <span class="mf">52.103559</span>
+<span class="mi">3</span>  <span class="mf">80.603039</span>  <span class="mf">63.205036</span>  <span class="mf">16.050168</span>  <span class="mf">67.673033</span>  <span class="mf">19.890453</span>
+<span class="mi">4</span>  <span class="mf">53.266469</span>   <span class="mf">8.721019</span>  <span class="mf">42.579826</span>  <span class="mf">36.000875</span>  <span class="mf">15.518005</span>
+<span class="mi">5</span>  <span class="mf">20.139680</span>  <span class="mf">49.216850</span>   <span class="mf">9.924973</span>  <span class="mf">31.078271</span>  <span class="mf">77.523813</span>
+<span class="mi">6</span>  <span class="mf">37.838850</span>  <span class="mf">65.905862</span>  <span class="mf">96.325081</span>  <span class="mf">99.530884</span>  <span class="mf">48.992624</span>
+<span class="mi">7</span>  <span class="mf">52.408115</span>  <span class="mf">40.192827</span>  <span class="mf">60.132690</span>  <span class="mf">21.112231</span>  <span class="mf">52.065246</span>
+<span class="mi">8</span>  <span class="mf">93.561547</span>  <span class="mf">36.599218</span>  <span class="mf">38.663248</span>  <span class="mf">56.510712</span>  <span class="mf">26.487473</span>
+<span class="mi">9</span>   <span class="mf">8.446148</span>  <span class="mf">78.818387</span>  <span class="mf">74.815600</span>  <span class="mf">40.085175</span>  <span class="mf">90.895161</span>
 </pre></div>
 </div>
 <p>We next replace all the values in column <code class="docutils literal notranslate"><span class="pre">2</span></code> that are smaller than 30 with
@@ -992,16 +1086,16 @@ the string <cite>low</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>          <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">31.963242</span>        <span class="n">Low</span>   <span class="mf">4.275727</span>  <span class="mf">48.882190</span>  <span class="mf">98.141049</span>
-<span class="mi">1</span>  <span class="mf">69.936075</span>  <span class="mf">32.347039</span>  <span class="mf">82.296896</span>  <span class="mf">48.457865</span>  <span class="mf">20.170451</span>
-<span class="mi">2</span>  <span class="mf">35.009741</span>  <span class="mf">90.649004</span>  <span class="mf">92.761310</span>  <span class="mf">15.561336</span>  <span class="mf">48.837226</span>
-<span class="mi">3</span>  <span class="mf">56.156843</span>        <span class="n">Low</span>  <span class="mf">97.869877</span>  <span class="mf">66.462977</span>  <span class="mf">55.940139</span>
-<span class="mi">4</span>  <span class="mf">38.732933</span>        <span class="n">Low</span>  <span class="mf">13.205136</span>  <span class="mf">46.619277</span>  <span class="mf">31.771209</span>
-<span class="mi">5</span>  <span class="mf">37.124041</span>  <span class="mf">68.419341</span>  <span class="mf">64.805794</span>  <span class="mf">44.140403</span>  <span class="mf">34.731994</span>
-<span class="mi">6</span>  <span class="mf">43.997074</span>        <span class="n">Low</span>  <span class="mf">75.166049</span>  <span class="mf">73.941778</span>  <span class="mf">67.685025</span>
-<span class="mi">7</span>   <span class="mf">3.993402</span>  <span class="mf">60.881941</span>  <span class="mf">93.571722</span>  <span class="mf">20.931992</span>  <span class="mf">75.967186</span>
-<span class="mi">8</span>  <span class="mf">10.040063</span>  <span class="mf">96.521715</span>  <span class="mf">60.784769</span>  <span class="mf">71.313920</span>  <span class="mf">24.202610</span>
-<span class="mi">9</span>  <span class="mf">17.149549</span>        <span class="n">Low</span>  <span class="mf">45.494221</span>  <span class="mf">97.913982</span>  <span class="mf">29.608834</span>
+<span class="mi">0</span>  <span class="mf">76.231650</span>  <span class="mf">73.856596</span>  <span class="mf">98.223677</span>  <span class="mf">37.419310</span>  <span class="mf">56.534611</span>
+<span class="mi">1</span>  <span class="mf">93.020350</span>   <span class="mf">59.10239</span>  <span class="mf">87.029799</span>   <span class="mf">6.289979</span>  <span class="mf">81.704176</span>
+<span class="mi">2</span>  <span class="mf">67.060606</span>  <span class="mf">30.773903</span>  <span class="mf">27.633734</span>  <span class="mf">35.819372</span>  <span class="mf">52.103559</span>
+<span class="mi">3</span>  <span class="mf">80.603039</span>  <span class="mf">63.205036</span>  <span class="mf">16.050168</span>  <span class="mf">67.673033</span>  <span class="mf">19.890453</span>
+<span class="mi">4</span>  <span class="mf">53.266469</span>        <span class="n">Low</span>  <span class="mf">42.579826</span>  <span class="mf">36.000875</span>  <span class="mf">15.518005</span>
+<span class="mi">5</span>  <span class="mf">20.139680</span>   <span class="mf">49.21685</span>   <span class="mf">9.924973</span>  <span class="mf">31.078271</span>  <span class="mf">77.523813</span>
+<span class="mi">6</span>  <span class="mf">37.838850</span>  <span class="mf">65.905862</span>  <span class="mf">96.325081</span>  <span class="mf">99.530884</span>  <span class="mf">48.992624</span>
+<span class="mi">7</span>  <span class="mf">52.408115</span>  <span class="mf">40.192827</span>  <span class="mf">60.132690</span>  <span class="mf">21.112231</span>  <span class="mf">52.065246</span>
+<span class="mi">8</span>  <span class="mf">93.561547</span>  <span class="mf">36.599218</span>  <span class="mf">38.663248</span>  <span class="mf">56.510712</span>  <span class="mf">26.487473</span>
+<span class="mi">9</span>   <span class="mf">8.446148</span>  <span class="mf">78.818387</span>  <span class="mf">74.815600</span>  <span class="mf">40.085175</span>  <span class="mf">90.895161</span>
 </pre></div>
 </div>
 <p>We next replace all the values of column <code class="docutils literal notranslate"><span class="pre">4</span></code> that are larger than 70 with the
@@ -1011,16 +1105,16 @@ value 1000.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">31.963242</span>        <span class="n">Low</span>   <span class="mf">4.275727</span>    <span class="mf">48.882190</span>  <span class="mf">98.141049</span>
-<span class="mi">1</span>  <span class="mf">69.936075</span>  <span class="mf">32.347039</span>  <span class="mf">82.296896</span>    <span class="mf">48.457865</span>  <span class="mf">20.170451</span>
-<span class="mi">2</span>  <span class="mf">35.009741</span>  <span class="mf">90.649004</span>  <span class="mf">92.761310</span>    <span class="mf">15.561336</span>  <span class="mf">48.837226</span>
-<span class="mi">3</span>  <span class="mf">56.156843</span>        <span class="n">Low</span>  <span class="mf">97.869877</span>    <span class="mf">66.462977</span>  <span class="mf">55.940139</span>
-<span class="mi">4</span>  <span class="mf">38.732933</span>        <span class="n">Low</span>  <span class="mf">13.205136</span>    <span class="mf">46.619277</span>  <span class="mf">31.771209</span>
-<span class="mi">5</span>  <span class="mf">37.124041</span>  <span class="mf">68.419341</span>  <span class="mf">64.805794</span>    <span class="mf">44.140403</span>  <span class="mf">34.731994</span>
-<span class="mi">6</span>  <span class="mf">43.997074</span>        <span class="n">Low</span>  <span class="mf">75.166049</span>  <span class="mf">1000.000000</span>  <span class="mf">67.685025</span>
-<span class="mi">7</span>   <span class="mf">3.993402</span>  <span class="mf">60.881941</span>  <span class="mf">93.571722</span>    <span class="mf">20.931992</span>  <span class="mf">75.967186</span>
-<span class="mi">8</span>  <span class="mf">10.040063</span>  <span class="mf">96.521715</span>  <span class="mf">60.784769</span>  <span class="mf">1000.000000</span>  <span class="mf">24.202610</span>
-<span class="mi">9</span>  <span class="mf">17.149549</span>        <span class="n">Low</span>  <span class="mf">45.494221</span>  <span class="mf">1000.000000</span>  <span class="mf">29.608834</span>
+<span class="mi">0</span>  <span class="mf">76.231650</span>  <span class="mf">73.856596</span>  <span class="mf">98.223677</span>    <span class="mf">37.419310</span>  <span class="mf">56.534611</span>
+<span class="mi">1</span>  <span class="mf">93.020350</span>   <span class="mf">59.10239</span>  <span class="mf">87.029799</span>     <span class="mf">6.289979</span>  <span class="mf">81.704176</span>
+<span class="mi">2</span>  <span class="mf">67.060606</span>  <span class="mf">30.773903</span>  <span class="mf">27.633734</span>    <span class="mf">35.819372</span>  <span class="mf">52.103559</span>
+<span class="mi">3</span>  <span class="mf">80.603039</span>  <span class="mf">63.205036</span>  <span class="mf">16.050168</span>    <span class="mf">67.673033</span>  <span class="mf">19.890453</span>
+<span class="mi">4</span>  <span class="mf">53.266469</span>        <span class="n">Low</span>  <span class="mf">42.579826</span>    <span class="mf">36.000875</span>  <span class="mf">15.518005</span>
+<span class="mi">5</span>  <span class="mf">20.139680</span>   <span class="mf">49.21685</span>   <span class="mf">9.924973</span>    <span class="mf">31.078271</span>  <span class="mf">77.523813</span>
+<span class="mi">6</span>  <span class="mf">37.838850</span>  <span class="mf">65.905862</span>  <span class="mf">96.325081</span>  <span class="mf">1000.000000</span>  <span class="mf">48.992624</span>
+<span class="mi">7</span>  <span class="mf">52.408115</span>  <span class="mf">40.192827</span>  <span class="mf">60.132690</span>    <span class="mf">21.112231</span>  <span class="mf">52.065246</span>
+<span class="mi">8</span>  <span class="mf">93.561547</span>  <span class="mf">36.599218</span>  <span class="mf">38.663248</span>    <span class="mf">56.510712</span>  <span class="mf">26.487473</span>
+<span class="mi">9</span>   <span class="mf">8.446148</span>  <span class="mf">78.818387</span>  <span class="mf">74.815600</span>    <span class="mf">40.085175</span>  <span class="mf">90.895161</span>
 </pre></div>
 </div>
 <p>And finally we can combine logical statements and replace values on a
@@ -1031,16 +1125,16 @@ are between 20 and 80 with the string <cite>middle</cite>.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">0</span>          <span class="mi">1</span>          <span class="mi">2</span>            <span class="mi">3</span>          <span class="mi">4</span>
-<span class="mi">0</span>  <span class="mf">31.963242</span>        <span class="n">Low</span>   <span class="mf">4.275727</span>    <span class="mf">48.882190</span>  <span class="mf">98.141049</span>
-<span class="mi">1</span>  <span class="mf">69.936075</span>  <span class="mf">32.347039</span>  <span class="mf">82.296896</span>    <span class="mf">48.457865</span>     <span class="n">Middle</span>
-<span class="mi">2</span>  <span class="mf">35.009741</span>  <span class="mf">90.649004</span>  <span class="mf">92.761310</span>    <span class="mf">15.561336</span>     <span class="n">Middle</span>
-<span class="mi">3</span>  <span class="mf">56.156843</span>        <span class="n">Low</span>  <span class="mf">97.869877</span>    <span class="mf">66.462977</span>     <span class="n">Middle</span>
-<span class="mi">4</span>  <span class="mf">38.732933</span>        <span class="n">Low</span>  <span class="mf">13.205136</span>    <span class="mf">46.619277</span>     <span class="n">Middle</span>
-<span class="mi">5</span>  <span class="mf">37.124041</span>  <span class="mf">68.419341</span>  <span class="mf">64.805794</span>    <span class="mf">44.140403</span>     <span class="n">Middle</span>
-<span class="mi">6</span>  <span class="mf">43.997074</span>        <span class="n">Low</span>  <span class="mf">75.166049</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
-<span class="mi">7</span>   <span class="mf">3.993402</span>  <span class="mf">60.881941</span>  <span class="mf">93.571722</span>    <span class="mf">20.931992</span>     <span class="n">Middle</span>
-<span class="mi">8</span>  <span class="mf">10.040063</span>  <span class="mf">96.521715</span>  <span class="mf">60.784769</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
-<span class="mi">9</span>  <span class="mf">17.149549</span>        <span class="n">Low</span>  <span class="mf">45.494221</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
+<span class="mi">0</span>  <span class="mf">76.231650</span>  <span class="mf">73.856596</span>  <span class="mf">98.223677</span>    <span class="mf">37.419310</span>     <span class="n">Middle</span>
+<span class="mi">1</span>  <span class="mf">93.020350</span>   <span class="mf">59.10239</span>  <span class="mf">87.029799</span>     <span class="mf">6.289979</span>  <span class="mf">81.704176</span>
+<span class="mi">2</span>  <span class="mf">67.060606</span>  <span class="mf">30.773903</span>  <span class="mf">27.633734</span>    <span class="mf">35.819372</span>     <span class="n">Middle</span>
+<span class="mi">3</span>  <span class="mf">80.603039</span>  <span class="mf">63.205036</span>  <span class="mf">16.050168</span>    <span class="mf">67.673033</span>  <span class="mf">19.890453</span>
+<span class="mi">4</span>  <span class="mf">53.266469</span>        <span class="n">Low</span>  <span class="mf">42.579826</span>    <span class="mf">36.000875</span>  <span class="mf">15.518005</span>
+<span class="mi">5</span>  <span class="mf">20.139680</span>   <span class="mf">49.21685</span>   <span class="mf">9.924973</span>    <span class="mf">31.078271</span>     <span class="n">Middle</span>
+<span class="mi">6</span>  <span class="mf">37.838850</span>  <span class="mf">65.905862</span>  <span class="mf">96.325081</span>  <span class="mf">1000.000000</span>     <span class="n">Middle</span>
+<span class="mi">7</span>  <span class="mf">52.408115</span>  <span class="mf">40.192827</span>  <span class="mf">60.132690</span>    <span class="mf">21.112231</span>     <span class="n">Middle</span>
+<span class="mi">8</span>  <span class="mf">93.561547</span>  <span class="mf">36.599218</span>  <span class="mf">38.663248</span>    <span class="mf">56.510712</span>     <span class="n">Middle</span>
+<span class="mi">9</span>   <span class="mf">8.446148</span>  <span class="mf">78.818387</span>  <span class="mf">74.815600</span>    <span class="mf">40.085175</span>  <span class="mf">90.895161</span>
 </pre></div>
 </div>
 </div>

@@ -106,12 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#drawing-a-random-number">16.1. Drawing a Random Number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#uniformly-distributed-random-numbers">16.2. Uniformly Distributed Random Numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#normally-distributed-random-numbers">16.3. Normally distributed random numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bivariate-normally-distributed-random-variables">16.4. Bivariate Normally Distributed Random Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">16.5. T-Distributed Random Variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">16.6. Drawing Random Integer Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">16.7. Drawing Objects with Random Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">16.8. Key Concepts and Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">16.9. Self-Check Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">16.4. T-Distributed Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">16.5. Drawing Random Integer Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">16.6. Drawing Objects with Random Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">16.7. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">16.8. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random2.html">17. Random Numbers II: An Infectious Disease Simulation</a></li>
@@ -226,7 +225,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My first random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.4293609525545492</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.21221900764206258</span>
 </pre></div>
 </div>
 <p>If you run this again you will get a different random number.</p>
@@ -234,7 +233,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My second random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.6990183287291831</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.9846972385932969</span>
 </pre></div>
 </div>
 <p>Sometimes it is useful to make sure that the random number sequence that you
@@ -307,7 +306,7 @@ distribution.</p>
 deviation of one so that the density function simplifies to</p>
 <div class="math notranslate nohighlight">
 \[f(x) = \frac{1}{\sqrt{2 \times \pi}} \times e^{-\frac{x^2}{2}}\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_phi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># density function of standard normal</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -318,21 +317,46 @@ deviation of one so that the density function simplifies to</p>
 </div>
 <p>Then plot it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Observations&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of normal random variable&#39;</span><span class="p">)</span>
-<span class="c1"># Plot the N(0,1) density function into the histogram</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span><span class="s1">&#39;Normal Density&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_Random_1.png"><img alt="_images/Slides_Random_Normal_Random_1.png" src="_images/Slides_Random_Normal_Random_1.png" style="width: 12cm;" /></a>
+<p>If you want to see the density function used the keyword <code class="docutils literal notranslate"><span class="pre">density</span></code>. You can
+then also compare your simulation density with the theoretical density of the
+Standard Normal distribution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of normal random variable&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the N(0,1) density function into the histogram</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_phi</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span><span class="s1">&#39;Normal Density&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="bivariate-normally-distributed-random-variables">
-<h2><span class="section-number">16.4. </span>Bivariate Normally Distributed Random Variables<a class="headerlink" href="#bivariate-normally-distributed-random-variables" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/Slides_Random_Normal_Random_Density_1.png"><img alt="_images/Slides_Random_Normal_Random_Density_1.png" src="_images/Slides_Random_Normal_Random_Density_1.png" style="width: 12cm;" /></a>
+<p>Now back to the regular normal distribution with mean <code class="docutils literal notranslate"><span class="pre">mu</span></code> and standard
+deviation <code class="docutils literal notranslate"><span class="pre">sigma</span></code>. Here is the density function in Python with the mean and
+standard deviation as additional inputs. I also programmed default values for
+these, so if the user does not specify mean and variance, the function is going
+to be the standard normal distribution by default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_normalDensity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># density function of standard normal</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>Here is another example of two normally distributed random variables. The first
+random variable has a smaller standard deviation than the second. Let us see
+how the distribution of these two compare.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 <span class="n">z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">10000</span><span class="p">,))</span>
 </pre></div>
@@ -350,14 +374,42 @@ deviation of one so that the density function simplifies to</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of N(0,2) random variable&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="c1">#</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Normal_2_1.png"><img alt="_images/Slides_Random_Normal_2_1.png" src="_images/Slides_Random_Normal_2_1.png" style="width: 12cm;" /></a>
+<p>If you want to compare the distribution to the density function again, you can
+accomplish this by specifying the <code class="docutils literal notranslate"><span class="pre">density</span></code> option in the <code class="docutils literal notranslate"><span class="pre">hist()</span></code> method.
+This makes sure that the area under the curve sums up to one.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of N(0,1) random variable&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Plot the N(0,1) density function into the histogram</span>
+<span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">f_normalDensity</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span><span class="s1">&#39;Normal Density&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of N(0,2) random variable&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">f_normalDensity</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span><span class="s1">&#39;Normal Density&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random_Normal_3_1.png"><img alt="_images/Slides_Random_Normal_3_1.png" src="_images/Slides_Random_Normal_3_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="t-distributed-random-variable">
-<h2><span class="section-number">16.5. </span>T-Distributed Random Variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.4. </span>T-Distributed Random Variable<a class="headerlink" href="#t-distributed-random-variable" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dof</span> <span class="o">=</span> <span class="mi">29</span>
 <span class="n">xv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_t</span><span class="p">(</span><span class="n">dof</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
@@ -402,7 +454,7 @@ itself can be expressed as a gamma distribution</p>
 <a class="reference internal image-reference" href="_images/Slides_Random_T_dist_1.png"><img alt="_images/Slides_Random_T_dist_1.png" src="_images/Slides_Random_T_dist_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="drawing-random-integer-values">
-<h2><span class="section-number">16.6. </span>Drawing Random Integer Values<a class="headerlink" href="#drawing-random-integer-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.5. </span>Drawing Random Integer Values<a class="headerlink" href="#drawing-random-integer-values" title="Permalink to this headline">¶</a></h2>
 <p>If you want to draw integer numbers at random you can use the
 <code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> method. If we would like to draw random integer numbers
 between {1,2,3,4} we need to specify:</p>
@@ -447,7 +499,7 @@ numbers from 7 to 10.</p>
 <a class="reference internal image-reference" href="_images/Slides_Random_Bar-Chart_1.png"><img alt="_images/Slides_Random_Bar-Chart_1.png" src="_images/Slides_Random_Bar-Chart_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="drawing-objects-with-random-values">
-<h2><span class="section-number">16.7. </span>Drawing Objects with Random Values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.6. </span>Drawing Objects with Random Values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
 <p>In this section we demonstrate how we can combine the concepts from the prior
 chapter on object oriented programing with generating random numbers. We will
 generate a number of objects whose attributes (or <code class="docutils literal notranslate"><span class="pre">self.</span></code> variables) will be
@@ -470,11 +522,11 @@ call <code class="docutils literal notranslate"><span class="pre">RandomMan</spa
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize the man-object with a</span>
 <span class="sd">        random nr. of children between 0 and 10 and</span>
-<span class="sd">        with random income drawn from a normal distribution</span>
+<span class="sd">        with random income drawn from a log-normal distribution</span>
 <span class="sd">        and an insurance state of 0.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">16000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">50000</span><span class="p">),</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insurance</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 0 no insurance, 1 has insurance</span>
 
     <span class="k">def</span> <span class="nf">showMan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -538,6 +590,7 @@ call <code class="docutils literal notranslate"><span class="pre">RandomMan</spa
     <span class="c1"># the list</span>
     <span class="n">randomManList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RandomMan</span><span class="p">())</span>
     <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">showMan</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; --- Done --- &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> --- Create men ---
@@ -547,7 +600,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 8 children
-My income is $ 39252
+My income is $ 43714
 I have NO insurance
 
 
@@ -555,7 +608,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 4 children
-My income is $ 56594
+My income is $ 54296
 I have NO insurance
 
 
@@ -563,7 +616,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 3 children
-My income is $ 68516
+My income is $ 63022
 I have NO insurance
 
 
@@ -571,7 +624,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 2 children
-My income is $ 72015
+My income is $ 65839
 I have NO insurance
 
 
@@ -579,7 +632,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 4 children
-My income is $ 61636
+My income is $ 57828
 I have NO insurance
 
 
@@ -587,7 +640,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 1 child
-My income is $ 59085
+My income is $ 56013
 I have NO insurance
 
 
@@ -595,7 +648,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 3 children
-My income is $ 32336
+My income is $ 40094
 I have NO insurance
 
 
@@ -603,7 +656,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 5 children
-My income is $ 41497
+My income is $ 44958
 I have NO insurance
 
 
@@ -611,7 +664,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 9 children
-My income is $ 57822
+My income is $ 55136
 I have NO insurance
 
 
@@ -619,8 +672,9 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 0 children
-My income is $ 70415
+My income is $ 64535
 I have NO insurance
+ --- Done ---
 </pre></div>
 </div>
 <p>Finally we let them live for one <cite>round</cite>.</p>
@@ -648,7 +702,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 8 children
-My income is $ 39157
+My income is $ 43619
 I have NO insurance
 
 
@@ -656,7 +710,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 4 children
-My income is $ 56499
+My income is $ 54201
 I have insurance
 
 
@@ -664,7 +718,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 3 children
-My income is $ 64186
+My income is $ 58692
 I have NO insurance
 
 
@@ -672,7 +726,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 2 children
-My income is $ 68437
+My income is $ 62261
 I have NO insurance
 
 
@@ -680,7 +734,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 4 children
-My income is $ 61542
+My income is $ 57734
 I have NO insurance
 
 
@@ -688,7 +742,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 1 child
-My income is $ 58991
+My income is $ 55919
 I have insurance
 
 
@@ -696,7 +750,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 3 children
-My income is $ 31077
+My income is $ 38834
 I have NO insurance
 
 
@@ -704,7 +758,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 5 children
-My income is $ 41403
+My income is $ 44865
 I have insurance
 
 
@@ -712,7 +766,7 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 9 children
-My income is $ 53006
+My income is $ 50320
 I have NO insurance
 
 
@@ -720,13 +774,52 @@ Hello, let me introduce myself.
 -------------------------------
 My name is John Doe
 I have 0 children
-My income is $ 70320
+My income is $ 64440
 I have insurance
 </pre></div>
 </div>
+<p>Now let’s blow it up and generate 1,000 random people.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39; --- Create men --- &#39;</span><span class="p">)</span>
+<span class="n">randomManList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="c1"># Here we create the randomMan objects and store them in</span>
+    <span class="c1"># the list</span>
+    <span class="n">randomManList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RandomMan</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; --- Done --- &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">Create</span> <span class="n">men</span> <span class="o">---</span>
+<span class="o">---</span> <span class="n">Done</span> <span class="o">---</span>
+</pre></div>
+</div>
+<p>Let’s check the distribution of their income. We know it should look like a
+normal distribution. Let us first extract the income information and store it
+into a numpy array (or vector).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">incomev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">incomev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">randomManList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">income</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean income = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">incomev</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mean</span> <span class="n">income</span> <span class="o">=</span> <span class="mf">50745.14039661928</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">incomev</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of Income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random_IncomeDistribution_1.png"><img alt="_images/Slides_Random_IncomeDistribution_1.png" src="_images/Slides_Random_IncomeDistribution_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="key-concepts-and-summary">
-<h2><span class="section-number">16.8. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.7. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -737,7 +830,7 @@ I have insurance
 </div>
 </div>
 <div class="section" id="self-check-questions">
-<h2><span class="section-number">16.9. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.8. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <ol class="arabic simple">
