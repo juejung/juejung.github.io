@@ -108,9 +108,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#normally-distributed-random-numbers">16.3. Normally distributed random numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#t-distributed-random-variable">16.4. T-Distributed Random Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#drawing-random-integer-values">16.5. Drawing Random Integer Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">16.6. Drawing Objects with Random Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">16.7. Key Concepts and Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">16.8. Self-Check Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-actions-based-on-probabilities">16.6. Generating actions based on probabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-objects-with-random-values">16.7. Drawing Objects with Random Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">16.8. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">16.9. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Random2.html">17. Random Numbers II: An Infectious Disease Simulation</a></li>
@@ -225,7 +226,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My first random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.21221900764206258</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.23587583593057804</span>
 </pre></div>
 </div>
 <p>If you run this again you will get a different random number.</p>
@@ -233,7 +234,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My second random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.9846972385932969</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.8263451732664415</span>
 </pre></div>
 </div>
 <p>Sometimes it is useful to make sure that the random number sequence that you
@@ -498,8 +499,110 @@ numbers from 7 to 10.</p>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Random_Bar-Chart_1.png"><img alt="_images/Slides_Random_Bar-Chart_1.png" src="_images/Slides_Random_Bar-Chart_1.png" style="width: 12cm;" /></a>
 </div>
+<div class="section" id="generating-actions-based-on-probabilities">
+<h2><span class="section-number">16.6. </span>Generating actions based on probabilities<a class="headerlink" href="#generating-actions-based-on-probabilities" title="Permalink to this headline">¶</a></h2>
+<p>In simulations, statistical applications, or computer games it is often
+necessary to generate actions based on a certain probability.</p>
+<p>For instance, a person wake up in the morning and has a 20 percent chance of
+having a headache. Simulate 10 people based on this given probability and check
+how many of them have a headache. We know that theoretically we would expect
+out of the 10 people, 2 (on average) should wake up with headaches. But of
+course, waking up with a headache is a probabilistic event, so that it could be
+that out of the 10 people nobody has a headache, one person has a headache and
+so on. All of these outcomes are possible but some are more likely than other
+given the 20 percent probability that we have been given.</p>
+<p>In any case, let’s simulate the 10 people. Since we only track whether they
+have headaches or not (and nothing else), I will not use OOP for this. OOP with
+a more complete simulation follows in the next section. I will simply collect
+the information about headaches in a list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">headacheList</span>  <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># We now generate 10 &quot;people&quot;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;=</span><span class="mf">0.2</span><span class="p">:</span>
+        <span class="c1"># Person has headache</span>
+        <span class="n">headacheList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Person does not have headache</span>
+        <span class="n">headacheList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We next plot a bar chart with the absolute frequencies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Frequency table</span>
+<span class="n">absFreqv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">headacheList</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">),</span> <span class="n">headacheList</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)])</span>
+<span class="n">labelList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;headache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-headache&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labelList</span><span class="p">,</span> <span class="n">absFreqv</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of people&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Number of people with and without headaches&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random_Bar-Chart-Headache_1.png"><img alt="_images/Slides_Random_Bar-Chart-Headache_1.png" src="_images/Slides_Random_Bar-Chart-Headache_1.png" style="width: 12cm;" /></a>
+<p>And finally a pie chart with the relative frequencies:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate relative frequencies</span>
+<span class="n">relFeqv</span> <span class="o">=</span> <span class="n">absFreqv</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">absFreqv</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">relFeqv</span> <span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labelList</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fraction of people with and without headaches&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Random_Pie-Chart-Headache_1.png"><img alt="_images/Slides_Random_Pie-Chart-Headache_1.png" src="_images/Slides_Random_Pie-Chart-Headache_1.png" style="width: 12cm;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have essentially used draws from the uniform distribution as
+<code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code> draws numbers between [0,1] with equal probability
+i.e., from a uniform distribution. You could also have used
+<code class="docutils literal notranslate"><span class="pre">np.random.uniform(0,1)</span></code> to accomplish the same type of random draw.</p>
+</div>
+<p>The same method words for more complicated probability events. Let us say that
+you have a change of 10 percent of having a headache, a 30 percent chance of
+having a backache, and a residual 60 percent chance of having no pain at all.
+You can simulate this easily using the uniform distribution again.
+Draw the random number using <code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code> and</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>if it is less than 0.1 (happens with a 10 percent chance) you have the headache,</p></li>
+<li><p>if it is between 0.1 and 0.4 (happens with a 30 percent chance) you have a backache, and</p></li>
+<li><p>if it is larger than 0.4 (happens with a 60 percent chance) you have no pain.</p></li>
+</ul>
+</div></blockquote>
+<p>Here is the implementation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">painList</span>  <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># We now generate 10 &quot;people&quot;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">randNr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">randNr</span> <span class="o">&lt;=</span><span class="mf">0.1</span><span class="p">:</span>
+        <span class="c1"># Person has headache with 10% chance</span>
+        <span class="n">painList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;headache&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">randNr</span> <span class="o">&gt;</span><span class="mf">0.1</span> <span class="ow">and</span> <span class="n">randNr</span> <span class="o">&lt;=</span> <span class="mf">0.4</span><span class="p">:</span>
+        <span class="c1"># Person has backache with 30% chance</span>
+        <span class="n">painList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;backache&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Person does not have pain with 60%</span>
+        <span class="n">painList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;no-ache&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">painList</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;backache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;headache&#39;</span><span class="p">,</span>
+<span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;no-ache&#39;</span><span class="p">,</span> <span class="s1">&#39;headache&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can do the frequency count and graphs as an exercise.</p>
+</div>
 <div class="section" id="drawing-objects-with-random-values">
-<h2><span class="section-number">16.6. </span>Drawing Objects with Random Values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.7. </span>Drawing Objects with Random Values<a class="headerlink" href="#drawing-objects-with-random-values" title="Permalink to this headline">¶</a></h2>
 <p>In this section we demonstrate how we can combine the concepts from the prior
 chapter on object oriented programing with generating random numbers. We will
 generate a number of objects whose attributes (or <code class="docutils literal notranslate"><span class="pre">self.</span></code> variables) will be
@@ -819,7 +922,7 @@ into a numpy array (or vector).</p>
 <a class="reference internal image-reference" href="_images/Slides_Random_IncomeDistribution_1.png"><img alt="_images/Slides_Random_IncomeDistribution_1.png" src="_images/Slides_Random_IncomeDistribution_1.png" style="width: 12cm;" /></a>
 </div>
 <div class="section" id="key-concepts-and-summary">
-<h2><span class="section-number">16.7. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.8. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -830,7 +933,7 @@ into a numpy array (or vector).</p>
 </div>
 </div>
 <div class="section" id="self-check-questions">
-<h2><span class="section-number">16.8. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.9. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <ol class="arabic simple">
