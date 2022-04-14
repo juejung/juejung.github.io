@@ -286,6 +286,14 @@ this tangent line crosses the x-axis at point <span class="math notranslate nohi
 <p>In order for this function to work well we need to be able to calculate the
 derivative of the function around the root point and preferably over the
 entire domain of the function.</p>
+<p>In the following code we “hand in” a function <code class="docutils literal notranslate"><span class="pre">ftn</span></code> which is a user specified
+function. This function needs to return 2! values:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>the functional value <span class="math notranslate nohighlight">\(f(x)\)</span>, and</p></li>
+<li><p>the value of the first derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>.</p></li>
+</ol>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newtonraphson</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Newton_Raphson algorithm for solving ftn(x)[1] == 0</span>
     <span class="c1"># we assume that ftn is a function of a single</span>
@@ -298,23 +306,35 @@ entire domain of the function.</p>
     <span class="c1"># number of iterations exceeds maxiter</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="n">fx</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Evaluate user supplied function at starting value</span>
+    <span class="n">fxv</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">fx</span> <span class="o">=</span> <span class="n">fxv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># function value f(x)</span>
+    <span class="n">d_fx</span> <span class="o">=</span> <span class="n">fxv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># derivative value f&#39;(x)</span>
+
     <span class="n">jiter</span> <span class="o">=</span>  <span class="mi">0</span>
 
-    <span class="c1"># continue iterating until stopping conditions are met</span>
-    <span class="k">while</span> <span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">jiter</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">)):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">fx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">fx</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1"># Continue iterating until stopping conditions are met</span>
+    <span class="k">while</span> <span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">jiter</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">)):</span>
+
+        <span class="c1"># Newton-Raphson iterative formula</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span><span class="o">/</span><span class="n">d_fx</span>
+
+        <span class="c1"># Update function and derivative value</span>
+        <span class="n">fxv</span> <span class="o">=</span> <span class="n">ftn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">fx</span> <span class="o">=</span> <span class="n">fxv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># new function value f(x)</span>
+        <span class="n">d_fx</span> <span class="o">=</span> <span class="n">fxv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># new derivative value f&#39;(x)</span>
+
         <span class="n">jiter</span> <span class="o">=</span>  <span class="n">jiter</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;At iteration: </span><span class="si">{}</span><span class="s2"> the value of x is </span><span class="si">{}</span><span class="s2">:&quot;</span> \
           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jiter</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 
     <span class="c1"># Output depends on success of algorithm</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Algorithm failed to converge&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fx = &quot;</span><span class="p">,</span> <span class="n">fx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fx = &quot;</span><span class="p">,</span> <span class="n">fx</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Algorithm converged&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 </pre></div>
@@ -346,7 +366,7 @@ value of the first derivate (i.e., the gradient).</p>
 </div>
 <p>We next calculate the root of the function <code class="docutils literal notranslate"><span class="pre">func1</span></code> calling the
 <code class="docutils literal notranslate"><span class="pre">newtonraphson</span></code> algorithm.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myRoot</span> <span class="o">=</span> <span class="n">newtonraphson</span><span class="p">(</span><span class="n">f_func1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myRoot</span> <span class="o">=</span> <span class="n">newtonraphson</span><span class="p">(</span><span class="n">f_func1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My Root is at </span><span class="si">{:8.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myRoot</span><span class="p">))</span>
@@ -376,16 +396,17 @@ the function in the graph.</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Root_FigAutos_1.png"><img alt="_images/Slides_Root_FigAutos_1.png" src="_images/Slides_Root_FigAutos_1.png" style="width: 12cm;" /></a>
-<dl class="simple">
-<dt>The Newton-Raphson algorithm has two shortcomings.</dt><dd><ol class="arabic simple">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Newton-Raphson algorithm has two shortcomings:</p>
+<ol class="arabic simple">
 <li><p>It requires that the function is differentiable. For non-differential
 functions (i.e., functions with “kinks” or steps) this algorithm will
 not work.</p></li>
 <li><p>It is sensitive to starting values. If a bad starting value is chosen and
 if the function exhibits “flat” spots, the algorithm will not converge.</p></li>
 </ol>
-</dd>
-</dl>
+</div>
 <p><a class="reference internal" href="#fig-newton1"><span class="std std-numref">Fig. 18.2</span></a> presents an illustration of the Newton-Raphson algorithm
 when the starting value is chosen far from the root point in the “flat” area of
 the function. In this case the tangent line crosses the z-axis at a very
@@ -444,6 +465,10 @@ using the rise-over-run method. We can first express the slope as:</p>
 <p>So that the Secant method is really an approximation of the Newton-Raphson
 method, where we substitute <span class="math notranslate nohighlight">\(\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}\)</span> for
 <span class="math notranslate nohighlight">\(f'(x)\)</span>.</p>
+<p>In this sense we can also write the iterative procedure of the Secant method
+as:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{x_{n+1} = x_n - \frac{f(x_n)}{\frac{f(x_{n-1})-f(x_n)}{x_{n-1}-x_n}}}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">secant</span><span class="p">(</span><span class="n">ftn</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Secant algorithm for solving ftn(x) == 0</span>
     <span class="c1"># we assume that ftn is a function of a</span>
