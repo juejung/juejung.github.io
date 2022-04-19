@@ -226,7 +226,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My first random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.23587583593057804</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">first</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.8602692305307852</span>
 </pre></div>
 </div>
 <p>If you run this again you will get a different random number.</p>
@@ -234,7 +234,7 @@ and one.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My second random number in [0,1] is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myNumber</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.8263451732664415</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">second</span> <span class="n">random</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="mf">0.42116143252571125</span>
 </pre></div>
 </div>
 <p>Sometimes it is useful to make sure that the random number sequence that you
@@ -458,8 +458,21 @@ itself can be expressed as a gamma distribution</p>
 <h2><span class="section-number">16.5. </span>Drawing Random Integer Values<a class="headerlink" href="#drawing-random-integer-values" title="Permalink to this headline">¶</a></h2>
 <p>If you want to draw integer numbers at random you can use the
 <code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> method. If we would like to draw random integer numbers
-between {1,2,3,4} we need to specify:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+that are either {1,2,3,4} we need to specify <code class="docutils literal notranslate"><span class="pre">np.random.randint(1,5)</span></code>. Note
+the half open interval definition again that is consistently used across the
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code> library.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternatively you can use the <code class="docutils literal notranslate"><span class="pre">random</span></code> library. But be careful, the
+<code class="docutils literal notranslate"><span class="pre">random</span></code> library defines <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code> as closed intervals. The
+example above using the <code class="docutils literal notranslate"><span class="pre">random</span></code> library would use
+<code class="docutils literal notranslate"><span class="pre">random.randint(1,4)</span></code>.</p>
+</div>
+<p>In the following I will always use the random number generator from the
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code> library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">integerList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">integerList</span><span class="p">)</span>
 </pre></div>
 </div>
