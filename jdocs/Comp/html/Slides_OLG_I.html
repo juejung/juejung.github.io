@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>23. A Simple OLG Model &mdash; Computational Economics 1.0 documentation</title>
+  <title>21. A Simple OLG Model &mdash; Computational Economics 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="24. An OLG Model with Labor-Leisure Choice" href="Slides_OLG_II.html" />
-    <link rel="prev" title="22. Machine Learning II: Categorization Algorithm" href="Slides_MachineLearning_2.html" /> 
+    <link rel="next" title="22. An OLG Model with Labor-Leisure Choice" href="Slides_OLG_II.html" />
+    <link rel="prev" title="20. Constrained Optimization" href="Slides_Optimization_2_Cake.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,20 +107,20 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_1.html">19. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_2_Cake.html">20. Constrained Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">23. A Simple OLG Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#formal-definition-of-the-model">23.1. Formal Definition of the Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#equilibrium-definition">23.2. Equilibrium Definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#functional-forms-and-solutions">23.3. Functional Forms and Solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#method-1-substituting-everything">23.4. Method 1: Substituting Everything</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#method-2-gauss-seidl-algorithm">23.5. Method 2: Gauss-Seidl Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">23.6. Key Concepts and Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">23.7. Self-Check Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">21. A Simple OLG Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#formal-definition-of-the-model">21.1. Formal Definition of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#equilibrium-definition">21.2. Equilibrium Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functional-forms-and-solutions">21.3. Functional Forms and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-1-substituting-everything">21.4. Method 1: Substituting Everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-2-gauss-seidl-algorithm">21.5. Method 2: Gauss-Seidl Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">21.6. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">21.7. Self-Check Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">22. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">23. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">24. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">25. Machine Learning II: Categorization Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
 </ul>
 
@@ -167,7 +167,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">23. </span>A Simple OLG Model</li>
+      <li><span class="section-number">21. </span>A Simple OLG Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,7 +187,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="a-simple-olg-model">
-<h1><span class="section-number">23. </span>A Simple OLG Model<a class="headerlink" href="#a-simple-olg-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">21. </span>A Simple OLG Model<a class="headerlink" href="#a-simple-olg-model" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar" id="olg">
 <p class="sidebar-title">Section Learning Objectives</p>
 <blockquote>
@@ -214,7 +214,7 @@
 </li>
 </ul>
 <div class="section" id="formal-definition-of-the-model">
-<h2><span class="section-number">23.1. </span>Formal Definition of the Model<a class="headerlink" href="#formal-definition-of-the-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.1. </span>Formal Definition of the Model<a class="headerlink" href="#formal-definition-of-the-model" title="Permalink to this headline">¶</a></h2>
 <p><strong>Preferences</strong></p>
 <ul class="simple">
 <li><p>Agents live for 2 periods: young and old</p></li>
@@ -257,7 +257,7 @@
 <p>where <span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K)r)\)</span> is the after tax gross interest rate.</p>
 </div>
 <div class="section" id="equilibrium-definition">
-<h2><span class="section-number">23.2. </span>Equilibrium Definition<a class="headerlink" href="#equilibrium-definition" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.2. </span>Equilibrium Definition<a class="headerlink" href="#equilibrium-definition" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>Given sequences of</p>
 <blockquote>
@@ -296,7 +296,7 @@
 </ul>
 </div>
 <div class="section" id="functional-forms-and-solutions">
-<h2><span class="section-number">23.3. </span>Functional Forms and Solutions<a class="headerlink" href="#functional-forms-and-solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.3. </span>Functional Forms and Solutions<a class="headerlink" href="#functional-forms-and-solutions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Preferences are given as: <span class="math notranslate nohighlight">\(u(c_y) = \ln(c_y)\)</span> and <span class="math notranslate nohighlight">\(u(c_o)=\ln(c_o)\)</span></p></li>
 <li><p>We can either set up a Lagrangian with two constraints or simply substitute consumption out of the utilities using the BC.</p></li>
@@ -355,7 +355,7 @@ ideally into one non-linear equation that we can then solve with a <code class="
 </div></blockquote>
 </div>
 <div class="section" id="method-1-substituting-everything">
-<h2><span class="section-number">23.4. </span>Method 1: Substituting Everything<a class="headerlink" href="#method-1-substituting-everything" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.4. </span>Method 1: Substituting Everything<a class="headerlink" href="#method-1-substituting-everything" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note that <span class="math notranslate nohighlight">\(L=1\)</span> because household time endowments are <span class="math notranslate nohighlight">\(l=1\)</span> and we
@@ -550,7 +550,7 @@ with your solution!</p></li>
 </div>
 </div>
 <div class="section" id="method-2-gauss-seidl-algorithm">
-<h2><span class="section-number">23.5. </span>Method 2: Gauss-Seidl Algorithm<a class="headerlink" href="#method-2-gauss-seidl-algorithm" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.5. </span>Method 2: Gauss-Seidl Algorithm<a class="headerlink" href="#method-2-gauss-seidl-algorithm" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">Instead of substituting and solving for one equation in one unknown we can use
 the so called <strong>Gauss-Seidl</strong> method</p>
 <div class="admonition note">
@@ -658,7 +658,7 @@ parameter.</p>
 </div>
 </div>
 <div class="section" id="key-concepts-and-summary">
-<h2><span class="section-number">23.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -670,7 +670,7 @@ parameter.</p>
 </div>
 </div>
 <div class="section" id="self-check-questions">
-<h2><span class="section-number">23.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <ol class="arabic simple">
@@ -693,10 +693,10 @@ and resolve the model for <span class="math notranslate nohighlight">\(\tau_L = 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Slides_OLG_II.html" class="btn btn-neutral float-right" title="24. An OLG Model with Labor-Leisure Choice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Slides_OLG_II.html" class="btn btn-neutral float-right" title="22. An OLG Model with Labor-Leisure Choice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Slides_MachineLearning_2.html" class="btn btn-neutral float-left" title="22. Machine Learning II: Categorization Algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Slides_Optimization_2_Cake.html" class="btn btn-neutral float-left" title="20. Constrained Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

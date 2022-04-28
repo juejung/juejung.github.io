@@ -187,12 +187,14 @@ posted on Blackboard.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <p>Use the golden-section search algorithm to find all of the local maxima of the
-function.</p>
+function. Do not use a built-in algorithm but the one we developed last time in
+class. I need to see whether you are able to process functions that are “handed
+into” other functions (or algorithms).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}f(n) = \left\{
         \begin{array}{l l}
             0 &amp; \quad \text{if $x=0$} \\
-            |x|log(|x|/2)e^{-|x|} &amp; \quad \text{otherwise} \\
+            |x| \times log(|x|/2)e^{-|x|} &amp; \quad \text{otherwise} \\
         \end{array}
      \right.\end{split}\]</div>
 <p>within the interval [-10, 10].  Hint: plotting the function first will give you a good idea where to look.</p>
@@ -202,23 +204,28 @@ function.</p>
 <p>Find the allocation of capital <span class="math notranslate nohighlight">\(K\)</span>  and labor <span class="math notranslate nohighlight">\(L\)</span> that maximizes the following
 profit function of a representative firm:</p>
 <div class="math notranslate nohighlight">
-\[max_{\{K,L\}} A(K^{0.33} \times L^{0.67}) - w \times L - r \times K,\]</div>
+\[max_{\{K,L\}} A \times (K^{0.33} \times L^{0.67}) - w \times L - r \times K,\]</div>
 <p>where  the wage rate is <span class="math notranslate nohighlight">\(w = 1.84\)</span> and the cost of capital is
 <span class="math notranslate nohighlight">\(r=0.75\)</span> and the total factor productivity (TFP) is <span class="math notranslate nohighlight">\(A=4\)</span>.</p>
 <p>In order to NOT have to maximize over two dimensions, I would like you to
-maximize this function w.r.t. capital <span class="math notranslate nohighlight">\(K\)</span> and various values for labor
-<span class="math notranslate nohighlight">\(L\)</span>. So within a loop you need to maximize the function for
-<span class="math notranslate nohighlight">\(L=\{1,1.5,2,2.5,3,3.5,4,4.5,5\}\)</span>.</p>
-<p>The result should be nine optimal <span class="math notranslate nohighlight">\(K^*\)</span> values.
-Hint: I would define <span class="math notranslate nohighlight">\(L\)</span> as a global variable so you can change its value
+maximize this function w.r.t. capital <span class="math notranslate nohighlight">\(K\)</span> only. You would simply set
+labor <span class="math notranslate nohighlight">\(L\)</span> equal to specific values such as
+<span class="math notranslate nohighlight">\(L=\{1,1.5,2,2.5,3,3.5,4,4.5,5\}\)</span>.
+An then for each one of these labor values you would search for the optimal
+level of capital <span class="math notranslate nohighlight">\(K\)</span> that maximizes profits.
+This results in nine separate optimizations. I suggest to do this from within a
+loop. The result should be nine optimal <span class="math notranslate nohighlight">\(K^*\)</span> values.</p>
+<p><strong>Hint:</strong> I would define <span class="math notranslate nohighlight">\(L\)</span> as a global variable so you can change its value
 outside of the function.</p>
 </div>
 <div class="section" id="harder-exercise-3">
 <h2>Harder: Exercise 3<a class="headerlink" href="#harder-exercise-3" title="Permalink to this headline">¶</a></h2>
 <p>Write a version of function <code class="docutils literal notranslate"><span class="pre">golden</span> <span class="pre">section</span></code> from class that plots
-intermediate results. That is, plot the function being optimised, then at each
-step draw a vertical line at the positions xl , xr , xm, and y (with the line
-at y in a different colour). Apply this new golden section algorithm to the
+intermediate results so the user can track visually how the algorithm gets
+closer to the optimization point in each iteration.</p>
+<p>More specifically, plot the function being optimized, then at each
+step draw a vertical line at the positions <code class="docutils literal notranslate"><span class="pre">xl</span></code> , <code class="docutils literal notranslate"><span class="pre">xr</span></code> , <code class="docutils literal notranslate"><span class="pre">xm</span></code>, and <code class="docutils literal notranslate"><span class="pre">y</span></code> (with the line
+at <code class="docutils literal notranslate"><span class="pre">y</span></code> in a different colour). Apply this new golden section algorithm to the
 function in exercise 1.</p>
 <p>As you run this code you should visually see how the brackets move in at each
 iteration and get closer and closer to the maximum.</p>
