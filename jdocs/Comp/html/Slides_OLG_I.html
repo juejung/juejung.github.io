@@ -113,8 +113,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#functional-forms-and-solutions">21.3. Functional Forms and Solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#method-1-substituting-everything">21.4. Method 1: Substituting Everything</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#method-2-gauss-seidl-algorithm">21.5. Method 2: Gauss-Seidl Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">21.6. Key Concepts and Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">21.7. Self-Check Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tax-policy-simulation">21.6. Tax Policy Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts-and-summary">21.7. Key Concepts and Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-check-questions">21.8. Self-Check Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">22. An OLG Model with Labor-Leisure Choice</a></li>
@@ -199,20 +200,18 @@
 </ul>
 </div></blockquote>
 </div>
-<ul id="index-0">
-<li><p>OLG stands for overlapping generations</p></li>
-<li><p>This model allows for young and old agents</p></li>
-<li><p>We start with</p>
+<p id="index-0">OLG stands for overlapping generations. This model allows for the interactions
+of young and old individuals within the setting of a dynamic general
+equilibrium model where prices adjust so that demand equal supply equations.</p>
+<p>The model has the following components:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Preferences</p></li>
-<li><p>Technology</p></li>
+<li><p>Household Preferences</p></li>
+<li><p>Firm (Production) Technology</p></li>
 <li><p>Government</p></li>
 <li><p>Equilibrium</p></li>
 </ol>
 </div></blockquote>
-</li>
-</ul>
 <div class="section" id="formal-definition-of-the-model">
 <h2><span class="section-number">21.1. </span>Formal Definition of the Model<a class="headerlink" href="#formal-definition-of-the-model" title="Permalink to this headline">¶</a></h2>
 <p><strong>Preferences</strong></p>
@@ -221,7 +220,7 @@
 <li><p>There are <span class="math notranslate nohighlight">\(N_y\)</span> young households and <span class="math notranslate nohighlight">\(N_o\)</span> old households</p></li>
 <li><p>They value consumption when young <span class="math notranslate nohighlight">\(c_y\)</span> and consumption when old <span class="math notranslate nohighlight">\(c_o\)</span></p></li>
 <li><p>Their preferences are given via utility functions: <span class="math notranslate nohighlight">\(u_t(c_t)\)</span></p></li>
-<li><p>Agents discount time with factor <span class="math notranslate nohighlight">\(\beta\)</span></p></li>
+<li><p>Individuals have a time preference parameter (often referred to as time discount factor) <span class="math notranslate nohighlight">\(\beta\)</span></p></li>
 <li><p>Their life-time utility is:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -231,39 +230,49 @@
 <li><p>Firms produce output <span class="math notranslate nohighlight">\(Y\)</span> using input capital <span class="math notranslate nohighlight">\(K\)</span> and labor <span class="math notranslate nohighlight">\(L\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[Y = F(K,L) = A K^{\alpha} L^{(1-\alpha)}\]</div>
+\[Y = F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)}\]</div>
 <ul>
 <li><p>Firms maximize profits:</p>
 <div class="math notranslate nohighlight">
-\[\max_{K,L} \{F(K,L) - wL - qK \}\]</div>
+\[\max_{K,L} \{F(K,L) - w \times L - q \times K \}\]</div>
 </li>
-<li><p><span class="math notranslate nohighlight">\(w\)</span> are wages and <span class="math notranslate nohighlight">\(q\)</span> is the factor price of capital</p></li>
 </ul>
+<p>This equation represents revenue minus the cost of production.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Revenue in dollars is <span class="math notranslate nohighlight">\(\$1 \times F(K,L)\)</span> where the <span class="math notranslate nohighlight">\(\$1\)</span>
+is the normalized price of the consumption good.</p></li>
+<li><p>The cost of production is the wage cost and the capital rental cost where
+<span class="math notranslate nohighlight">\(w\)</span> are wages and <span class="math notranslate nohighlight">\(q\)</span> is the factor price (or rental rate) of capital</p></li>
+</ul>
+</div></blockquote>
 <p><strong>Government</strong></p>
 <ul>
-<li><p>The government collects taxes on labor <span class="math notranslate nohighlight">\(\tau_L\)</span> and capital <span class="math notranslate nohighlight">\(\tau_K\)</span></p></li>
+<li><p>The government collects taxes on labor <span class="math notranslate nohighlight">\(\tau_L\)</span> and capital interest <span class="math notranslate nohighlight">\(\tau_K\)</span></p></li>
 <li><p>The government pays for gov’t consumption <span class="math notranslate nohighlight">\(G\)</span> and transfers to households <span class="math notranslate nohighlight">\(T_y\)</span> and <span class="math notranslate nohighlight">\(T_o\)</span></p>
 <div class="math notranslate nohighlight">
-\[G + T_y + T_o =  \tau_L \times wL + \tau_K \times rK\]</div>
+\[G + T_y + T_o =  \tau_L \times w \times L + \tau_K \times r \times K\]</div>
 </li>
 </ul>
 <p><strong>Household problem</strong></p>
 <ul>
 <li><p>HHs maximize <span class="math notranslate nohighlight">\(V(c_y,c_o)\)</span> subject to their budget constraint in each period</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\max_{c_y, c_o}  \{ u(c_y) + \beta \times u(c_o) \}\\s.t.\\c_y + s = (1-\tau_L) w + t_y\\c_o = Rs + t_o\end{aligned}\end{align} \]</div>
+\[ \begin{align}\begin{aligned}\max_{c_y, c_o, s}  \{ u(c_y) + \beta \times u(c_o) \}\\s.t.\\c_y + s = (1-\tau_L) w + t_y\\c_o = R \times s + t_o\end{aligned}\end{align} \]</div>
 </li>
 </ul>
-<p>where <span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K)r)\)</span> is the after tax gross interest rate.</p>
+<p>where <span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K) \times r)\)</span> is the after tax gross interest rate.</p>
 </div>
 <div class="section" id="equilibrium-definition">
 <h2><span class="section-number">21.2. </span>Equilibrium Definition<a class="headerlink" href="#equilibrium-definition" title="Permalink to this headline">¶</a></h2>
+<p>The definition of the competitive equilibrium is:</p>
 <ul>
 <li><p>Given sequences of</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>prices <span class="math notranslate nohighlight">\(\left\{w_t, R_t \right\}\)</span></p></li>
-<li><p>government policies <span class="math notranslate nohighlight">\(\left\{\tau_K, \tau_{L} \right\}\)</span> and equilibrium is defined as an allocation of:</p></li>
+<li><p>government policies <span class="math notranslate nohighlight">\(\left\{\tau_K, \tau_{L} \right\}\)</span> a
+* competitive equilibrium is defined as an allocation of:</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -271,16 +280,7 @@
 <blockquote>
 <div><ul>
 <li><p>the HH max problem is solved</p></li>
-<li><p>the firm maximization problem is solved, so that</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(q = F_K\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(w = F_L\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(r = q - \delta\)</span> is the interest rate</p></li>
-<li><p><span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K)(q - \delta))\)</span> is the after tax gross interest rate</p></li>
-</ul>
-</div></blockquote>
-</li>
+<li><p>the firm maximization problem is solved, so that</p></li>
 <li><p>the gov’t budget constraint clears</p></li>
 <li><p>Markets clear:</p>
 <blockquote>
@@ -301,9 +301,9 @@
 <li><p>Preferences are given as: <span class="math notranslate nohighlight">\(u(c_y) = \ln(c_y)\)</span> and <span class="math notranslate nohighlight">\(u(c_o)=\ln(c_o)\)</span></p></li>
 <li><p>We can either set up a Lagrangian with two constraints or simply substitute consumption out of the utilities using the BC.</p></li>
 <li><p>We follow the second approach, since the form of the utility functions guarantees interior solutions</p></li>
-<li><p>Therefor we don’t have to worry about corner solutions a la Kuhn-Tucker</p></li>
+<li><p>Therefore we don’t have to worry about corner solutions a la Kuhn-Tucker</p></li>
 </ul>
-<p><strong>Step 1: Substitute the budget set into preferences.</strong></p>
+<p><strong>Step 1: Substitute the budget set into preferences</strong></p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[max_s \ln( (1-\tau_L)w + t_y - s)  + \beta  \ln(R s + t_o)\]</div>
@@ -315,7 +315,7 @@
 \[\frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
     \frac{\beta R}{R  s + t_o}\]</div>
 </div></blockquote>
-<p><strong>Step 2: Solve for optimal household savings</strong> <span class="math notranslate nohighlight">\(s^*\)</span> <strong>.</strong></p>
+<p><strong>Step 2: Solve for optimal household savings</strong> :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>s^*`**</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[s^* = \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</div>
@@ -328,7 +328,47 @@ state equilibrium</p></li>
 <li><p>The solution is represented by the following equation system</p></li>
 </ul>
 </div></blockquote>
-<p><strong>Step 3: Equation system</strong></p>
+<p><strong>Step 3: Solve the firm problem for demands of labor and capital</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\max_{K,L} \{F(K,L) - w \times L - q \times K \}\]</div>
+<ul>
+<li><p>Derive w.r.t. <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(K\)</span> and get:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q = F_K\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(w = F_L\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>which given the Cobb-Douglas form of the production function (<span class="math notranslate nohighlight">\(Y = F(K,L) =
+A \times K^{\alpha} \times L^{1-\alpha}\)</span>) is:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q = \alpha \times A \times K^{\alpha-1} \times L^{(1-\alpha)} = \alpha \times Y/K\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(w =  (1-\alpha) \times A \times K^{\alpha} \times * L^{(1-\alpha-1)} = (1-\alpha) \times Y/L\)</span></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>From the equilibrium conditions we also know that households receive an
+effective return on lending their capital to the firms of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r = q - \delta\)</span> is the interest rate</p></li>
+</ul>
+</div></blockquote>
+<p>as capital also depreciates when it is lent to firms for production. From
+this return (or interest) the government wants its share as well, so that
+the after tax interest rate for the household in the household problem
+above is</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R = (1 +(1-\tau_K)(q - \delta))\)</span> is the after tax gross interest rate</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>Step 4: Equation system</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Assume <span class="math notranslate nohighlight">\(L=1\)</span> we have the following unknowns: <span class="math notranslate nohighlight">\(K,Y,R,w,q\)</span> and the following
@@ -343,7 +383,7 @@ equations!</p></li>
 <div class="math notranslate nohighlight">
 \[(1-\alpha) \times Y/L = w\]</div>
 <div class="math notranslate nohighlight">
-\[Y = F(K,L) = A \times K^{\alpha} L^{(1-\alpha)}\]</div>
+\[Y = A \times K^{\alpha} L^{(1-\alpha)}\]</div>
 <div class="math notranslate nohighlight">
 \[R = (1 + (1-\tau_K)(q - \delta))\]</div>
 <ul class="simple">
@@ -372,19 +412,31 @@ have <span class="math notranslate nohighlight">\(L = N_y \times l\)</span> and 
 some simplifications we get two expressions for prices <span class="math notranslate nohighlight">\(w\)</span> and
 <span class="math notranslate nohighlight">\(R\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}w = (1-\alpha)*A K^{\alpha}\\R = 1 + (1-\tau_K)(\alpha* A K^{\alpha-1} - \delta)\end{aligned}\end{align} \]</div>
+\[ \begin{align}\begin{aligned}w = (1-\alpha) \times A \times K^{\alpha}\\R = 1 + (1-\tau_K)(\alpha \times A \times K^{\alpha-1} - \delta)\end{aligned}\end{align} \]</div>
 </li>
-<li><p>Plug <span class="math notranslate nohighlight">\(w(K)\)</span> and <span class="math notranslate nohighlight">\(R(K)\)</span> into <span class="math notranslate nohighlight">\(K\)</span>-equation of the 5 equation
-system above.</p></li>
+<li><p>We have now effectively reduced the equation system of 5 equations in 5
+unknown variables into a 3 equations system with only 3 unknown variables
+<span class="math notranslate nohighlight">\(K,w,q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}K = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\\w = (1-\alpha) \times A \times K^{\alpha}\\R = 1 + (1-\tau_K)(\alpha \times A \times K^{\alpha-1} - \delta)\end{aligned}\end{align} \]</div>
+</li>
+<li><p>We further substitute <span class="math notranslate nohighlight">\(w(K)\)</span> and <span class="math notranslate nohighlight">\(R(K)\)</span> into <span class="math notranslate nohighlight">\(K\)</span>-equation
+and now have one equation in one unknown <span class="math notranslate nohighlight">\(K\)</span></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We now have one equation in <span class="math notranslate nohighlight">\(K\)</span> only that can be solved with a
+<p>This is a non-linear equation in <span class="math notranslate nohighlight">\(K\)</span> that can be solved with a
 root-finding algorithm!</p>
 <div class="math notranslate nohighlight">
-\[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha \times A K^{\alpha-1} - \delta))
-((1-\tau_L)((1-\alpha) \times A K^{\alpha}) + t_y) - t_o}
+\[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))
+((1-\tau_L)((1-\alpha) A K^{\alpha}) + t_y) - t_o}
 {(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</div>
+<p>Define the following function <span class="math notranslate nohighlight">\(F(K)\)</span></p>
+<div class="math notranslate nohighlight">
+\[F(K) = -K + N_y \frac{\beta (1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))
+((1-\tau_L)((1-\alpha) A K^{\alpha}) + t_y) - t_o}
+{(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</div>
+<p>and search for the <span class="math notranslate nohighlight">\(K\)</span> so that this function is <span class="math notranslate nohighlight">\(F(K) = 0\)</span>.</p>
 </div>
 <p><strong>Model Parameters</strong></p>
 <ul class="simple">
@@ -423,7 +475,6 @@ with your solution!</p></li>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
 <span class="kn">import</span> <span class="nn">time</span>            <span class="c1"># Imports system time module to time your script</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># close all open figures</span>
@@ -478,6 +529,8 @@ with your solution!</p></li>
 <span class="c1">#print(&quot;fK=&quot;, fK)</span>
 </pre></div>
 </div>
+<p>Let us plot this function now for different values of capital <span class="math notranslate nohighlight">\(K\)</span> to see
+where the root of this function is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Kv</span><span class="p">,</span> <span class="n">fKv</span><span class="p">)</span>
 <span class="c1"># Plot horizontal line at zero in red</span>
@@ -487,10 +540,19 @@ with your solution!</p></li>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_OLG_I_Capital_1.png"><img alt="_images/Slides_OLG_I_Capital_1.png" src="_images/Slides_OLG_I_Capital_1.png" style="width: 12cm;" /></a>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use built in &#39;fsolve&#39;</span>
+<p>From the graph we see that optimal capital is roughly around 0.15. We next use
+the <cite>fsolve</cite> root finding algorithm from the  <cite>scipy.optimize</cite> library. Go back
+to the chapter on root finding and review the various root finding algorithms
+such as Newton-Raphson, Secant Method, Bracketing as well as the built in
+<cite>root</cite> and <cite>fsolve</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="c1"># Use built in &#39;fsolve&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------- Fsolve ------------&quot;</span><span class="p">)</span>
-<span class="n">solutionK</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># starting from K = 2</span>
+
+<span class="n">k_guess</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># our starting guess</span>
+<span class="n">solutionK</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">k_guess</span><span class="p">)</span> <span class="c1"># starting from K = 2</span>
 
 <span class="c1"># Kstar is a numpy array which does not print well</span>
 <span class="c1"># We therefore change it into a &#39;pure&#39; number</span>
@@ -552,7 +614,19 @@ with your solution!</p></li>
 <div class="section" id="method-2-gauss-seidl-algorithm">
 <h2><span class="section-number">21.5. </span>Method 2: Gauss-Seidl Algorithm<a class="headerlink" href="#method-2-gauss-seidl-algorithm" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">Instead of substituting and solving for one equation in one unknown we can use
-the so called <strong>Gauss-Seidl</strong> method</p>
+the so called <strong>Gauss-Seidl</strong> method.</p>
+<p>It is an iterative method where we guess
+a starting value for capital. We then use this starting guess as if it was a
+solution to the model and back out all the other endogenous variables.</p>
+<p>We then use these “solutions” of endogenous variables and calculate the new
+capital that would be the result of household savings and consumption
+decisions.</p>
+<p>We then update our first guess of capital K, with this new and better guess and
+do it all over again.</p>
+<p>We repeat this until the guess of capital at the beginning of the algorithm is
+roughly the same as the calculated capital at the end of the algorithm. This is
+a referred to as a fixed point (once Knew = Kold).</p>
+<p>Here is the algorithm in more detail:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Gauss-Seidl Algorithm</p>
@@ -657,8 +731,151 @@ parameter.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="tax-policy-simulation">
+<h2><span class="section-number">21.6. </span>Tax Policy Simulation<a class="headerlink" href="#tax-policy-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have solved the model for an equilibrium we can use this model to
+conduct policy simulations such as a tax policy reform. When we first solved
+this model the tax on labor was <span class="math notranslate nohighlight">\(\tau_L = 20\%\)</span>. What would happen if the
+government were to raise the labor tax to <span class="math notranslate nohighlight">\(\tau_L = 25\%\)</span>?</p>
+<p>Well, just plug it in and resolve the model. Then compare the prior GDP (i.e.
+variable Y) to the new GDP.</p>
+<ul class="simple">
+<li><p>What has happened?</p></li>
+<li><p>Make before and after graphs (maybe a bar chart that shows Y, C, K before and
+after the tax increase) and discuss your results.</p></li>
+</ul>
+<p><strong>Python Program 3: Gauss-Seidl after tax increase from 20 to 25%</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set new parameter values</span>
+<span class="n">N_y</span>     <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">N_o</span>     <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">alpha</span>   <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">A</span>       <span class="o">=</span> <span class="mi">1</span>
+<span class="n">beta</span>    <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">delta</span>   <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">tau_L</span>   <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1">#Old value: tau_L   = 0.2</span>
+<span class="n">tau_K</span>   <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">t_y</span>     <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">t_o</span>     <span class="o">=</span> <span class="mf">0.0</span>
+<span class="c1">#</span>
+<span class="n">L</span>       <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Guess capital stock</span>
+<span class="n">glamda</span>  <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># updating parameter</span>
+<span class="n">Kold</span>    <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">jerror</span>  <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">iter</span>    <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">iter</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">jerror</span><span class="o">&gt;</span><span class="mf">0.001</span><span class="p">):</span>
+    <span class="c1"># Solve for prices using expressions for w(K) and q(K)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">Kold</span><span class="o">**</span><span class="p">(</span><span class="n">alpha</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">Kold</span><span class="o">**</span><span class="n">alpha</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tau_K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span> <span class="o">-</span> <span class="n">delta</span><span class="p">)</span>
+    <span class="n">Knew</span> <span class="o">=</span> <span class="n">N_y</span><span class="o">*</span> <span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">tau_L</span><span class="p">)</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="n">t_y</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_o</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+    <span class="c1"># Calculate discrepancy between old and new capital stock</span>
+    <span class="n">jerror</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Kold</span><span class="o">-</span><span class="n">Knew</span><span class="p">)</span><span class="o">/</span><span class="n">Kold</span>
+    <span class="c1"># Update capital stock</span>
+    <span class="n">Kold</span>    <span class="o">=</span> <span class="n">glamda</span><span class="o">*</span><span class="n">Knew</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">glamda</span><span class="p">)</span><span class="o">*</span><span class="n">Kold</span>
+    <span class="nb">iter</span> <span class="o">=</span> <span class="nb">iter</span> <span class="o">+</span><span class="mi">1</span>
+
+<span class="c1"># Print results</span>
+<span class="n">Kstar_new</span> <span class="o">=</span> <span class="n">Knew</span>
+<span class="n">Ystar_new</span>  <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">Kstar_new</span><span class="o">**</span><span class="n">alpha</span><span class="o">*</span><span class="n">L</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">wstar_new</span>  <span class="o">=</span> <span class="n">w</span>
+<span class="n">qstar_new</span>  <span class="o">=</span> <span class="n">q</span>
+<span class="n">Rstar_new</span>  <span class="o">=</span> <span class="n">R</span>
+<span class="n">rstar_new</span>  <span class="o">=</span> <span class="n">q</span> <span class="o">-</span> <span class="n">delta</span>
+
+<span class="c1"># ------------------------------------</span>
+<span class="c1"># Back out solutions for the rest of the Economy</span>
+
+<span class="c1"># Household values</span>
+<span class="n">sstar_new</span> <span class="o">=</span> <span class="n">Kstar_new</span><span class="o">/</span><span class="n">N_y</span>
+<span class="n">cystar_new</span><span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tau_L</span><span class="p">)</span><span class="o">*</span><span class="n">wstar_new</span> <span class="o">+</span> <span class="n">t_y</span> <span class="o">-</span> <span class="n">sstar_new</span>
+<span class="n">costar_new</span><span class="o">=</span> <span class="n">Rstar_new</span><span class="o">*</span><span class="n">sstar_new</span> <span class="o">+</span> <span class="n">t_o</span>
+
+<span class="c1"># Residual gov&#39;t consumption, thrown in the ocean</span>
+<span class="n">Gstar_new</span> <span class="o">=</span> <span class="n">N_y</span><span class="o">*</span><span class="n">tau_L</span><span class="o">*</span><span class="n">wstar_new</span> <span class="o">+</span> <span class="n">N_o</span><span class="o">*</span><span class="n">tau_K</span><span class="o">*</span><span class="n">rstar_new</span><span class="o">*</span><span class="n">sstar_new</span>
+
+<span class="c1"># Aggregate consumption</span>
+<span class="n">Cstar_new</span> <span class="o">=</span> <span class="n">N_y</span><span class="o">*</span><span class="n">cystar_new</span> <span class="o">+</span> <span class="n">N_o</span><span class="o">*</span><span class="n">costar_new</span>
+
+<span class="c1"># Check the goods market condition or Aggregate resource constraint</span>
+<span class="n">ARC_new</span> <span class="o">=</span> <span class="n">Ystar_new</span> <span class="o">-</span> <span class="n">delta</span><span class="o">*</span><span class="n">Kstar_new</span> <span class="o">-</span> <span class="n">Cstar_new</span> <span class="o">-</span> <span class="n">Gstar_new</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Gauss-Seidl: tau_L = 25% &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nr. of iterations = &quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">iter</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;K* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Kstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ystar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Rstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ARC = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ARC_new</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-------------------------------------</span>
+ <span class="n">Gauss</span><span class="o">-</span><span class="n">Seidl</span><span class="p">:</span> <span class="n">tau_L</span> <span class="o">=</span> <span class="mi">25</span><span class="o">%</span>
+ <span class="o">-------------------------------------</span>
+<span class="n">Nr</span><span class="o">.</span> <span class="n">of</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">K</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.1370</span>
+<span class="n">Y</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.5508</span>
+<span class="n">q</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.2063</span>
+<span class="n">r</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.2063</span>
+<span class="n">R</span><span class="o">*</span> <span class="o">=</span> <span class="mf">2.0254</span>
+<span class="n">w</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.3856</span>
+ <span class="o">-------------------------------------</span>
+<span class="n">ARC</span> <span class="o">=</span> <span class="mf">0.0000</span>
+</pre></div>
+</div>
+<p>Discuss results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Gauss-Seidl: tau_L = 20% &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;K* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Kstar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ystar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qstar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rstar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Rstar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wstar</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Gauss-Seidl: tau_L = 25% &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;K* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Kstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ystar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Rstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w* = </span><span class="si">{:6.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wstar_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------------------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-------------------------------------</span>
+ <span class="n">Gauss</span><span class="o">-</span><span class="n">Seidl</span><span class="p">:</span> <span class="n">tau_L</span> <span class="o">=</span> <span class="mi">20</span><span class="o">%</span>
+ <span class="o">-------------------------------------</span>
+<span class="n">K</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.1502</span>
+<span class="n">Y</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.5662</span>
+<span class="n">q</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.1310</span>
+<span class="n">r</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.1310</span>
+<span class="n">R</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.9613</span>
+<span class="n">w</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.3964</span>
+ <span class="o">-------------------------------------</span>
+ <span class="n">Gauss</span><span class="o">-</span><span class="n">Seidl</span><span class="p">:</span> <span class="n">tau_L</span> <span class="o">=</span> <span class="mi">25</span><span class="o">%</span>
+ <span class="o">-------------------------------------</span>
+<span class="n">K</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.1370</span>
+<span class="n">Y</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.5508</span>
+<span class="n">q</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.2063</span>
+<span class="n">r</span><span class="o">*</span> <span class="o">=</span> <span class="mf">1.2063</span>
+<span class="n">R</span><span class="o">*</span> <span class="o">=</span> <span class="mf">2.0254</span>
+<span class="n">w</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.3856</span>
+ <span class="o">-------------------------------------</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="key-concepts-and-summary">
-<h2><span class="section-number">21.6. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.7. </span>Key Concepts and Summary<a class="headerlink" href="#key-concepts-and-summary" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -670,8 +887,8 @@ parameter.</p>
 </div>
 </div>
 <div class="section" id="self-check-questions">
-<h2><span class="section-number">21.7. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="id1">
+<h2><span class="section-number">21.8. </span>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <ol class="arabic simple">
 <li><p>Use either one of the models above and resolve the model
