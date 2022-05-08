@@ -37,7 +37,7 @@ Blackboard) for the relevant due dates.
 3. **Stage 3: Submit Final Paper + Codes** 
 
    * Submit the final paper. 20 pages, double spaced. The 20 pages include
-     everyting (e.g., references, graphs, tables). That usually means about 11-12
+     everything (e.g., references, graphs, tables). That usually means about 11-12
      pages of written text. **Follow instructions on paper outline below.**
 
    * This submission happens via Dropbox. Under the projects folder put the
@@ -45,17 +45,18 @@ Blackboard) for the relevant due dates.
 
 4. **Stage 4: Presentation + Slides** 
 
-
-   * Give a 10-15 minutes presentation of you project. Submit the slides (in pdf
-     format) the day before the presentation so I can upload them. **Follow
-     instructions on good slides** posted on Blackboard.
+   * Give a 10-15 minutes presentation of your project. Submit the slides (in pdf
+     format) on the due date on the schedule. I will upload the presentations on 
+     Blackboard so you can easily access your slides for the presentation.
+   * **Follow instructions on good slides** posted on Blackboard and make about
+     10! slides.
 
    * This submission happens via Dropbox. Under the projects folder add
-     put the relevant files into the subfolder called **stage-4-presentation**. 
+     the relevant files (pdf or PowerPoint) into the subfolder called **stage-4-presentation**. 
 
-   * I reserve 3 lectures
-     for project presentations. You have 15 minutes for your final presentation.
-     Your presentation will be graded using the following 
+   * I reserve 3 lectures for project presentations. You have 15 minutes for
+     your final presentation.  Your presentation will be graded using the
+     following 
      `rubic <https://juejung.github.io/jdocs/Comp/Projects/GradingRubric.pptx>`_
 
 
