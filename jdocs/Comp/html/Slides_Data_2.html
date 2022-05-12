@@ -24,6 +24,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -136,11 +137,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Slides_Root.html">18. Root Finding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_1.html">19. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Optimization_2_Cake.html">20. Constrained Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">21. Machine Learning I: Introduction to Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">22. Machine Learning II: Categorization Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">23. A Simple OLG Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">24. An OLG Model with Labor-Leisure Choice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">25. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_I.html">21. A Simple OLG Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_OLG_II.html">22. An OLG Model with Labor-Leisure Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_Growth.html">23. Growth Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_1.html">24. Machine Learning I: Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Slides_MachineLearning_2.html">25. Machine Learning II: Categorization Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Slides_Assignments.html">26. Assignments</a></li>
 </ul>
 
@@ -811,9 +812,9 @@ newer versions of <code class="docutils literal notranslate"><span class="pre">P
 <span class="mf">0.544</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">9.358</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">08</span> <span class="n">Mar</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">May</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">0.0222</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">11</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">22</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">20.791</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                   <span class="mi">8</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">45.58</span>
@@ -876,33 +877,110 @@ the trendline through it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Linear Regression with Fitted Values&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;OLS&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/Slides_Data_2_Scatter2_1.png"><img alt="_images/Slides_Data_2_Scatter2_1.png" src="_images/Slides_Data_2_Scatter2_1.png" style="width: 12cm;" /></a>
-<p>Finally, we use the model to make a prediction of <code class="docutils literal notranslate"><span class="pre">y</span></code> when <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">8.5</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make prediction for x = 8.5</span>
-<span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction of y for x = 8.5 is: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span>\
-  <span class="nb">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">]))))</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Prediction</span> <span class="n">of</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">8.5</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">16.970</span>
-</pre></div>
-</div>
-<p>We can also use the results from the <code class="docutils literal notranslate"><span class="pre">OLS</span></code> command to make a scatterplot with
-the trendline through it.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Linear Regression with Fitted Values&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;OLS&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<p>As you have seen above, you can use the estimates from this model to make
+predictions of Y (called Y-hat) for specific values of variable X.
+We next use all the X values
+from our original data and predict for each one of those what the
+corresponding predicted Y-value would be (<span class="math notranslate nohighlight">\(\hat{y}\)</span>) and then calculate the
+difference between the actual Y value in the data and the predicted Y-value
+Y-hat. In the graph above, it is essentially the distance of the blue dots (the
+data) to the black line (the prediction from  the model).
+These differences, <span class="math notranslate nohighlight">\(y-\hat{y}\)</span>, are also called the residual errors of your
+model. The OLS procedure tries to find beta estimates to minimize these
+residual errors
+(OLS actually tried to minimize the sum of all the squared errors, or
+<span class="math notranslate nohighlight">\(\sum_i{(y_i-\hat{y}_i)^2}\)</span>.</p>
+<p>Here is the code to accomplish this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_hatv</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Predicts y-hat based on all X values in data</span>
+<span class="n">residualsv</span> <span class="o">=</span> <span class="n">yv</span> <span class="o">-</span> <span class="n">y_hatv</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Residual Plot&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">residualsv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yv</span><span class="p">)),</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Y - Dependent Variable&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/Slides_Data_2_Scatter2_1.png"><img alt="_images/Slides_Data_2_Scatter2_1.png" src="_images/Slides_Data_2_Scatter2_1.png" style="width: 12cm;" /></a>
+<a class="reference internal image-reference" href="_images/Slides_Data_2_ResidualScatter_1.png"><img alt="_images/Slides_Data_2_ResidualScatter_1.png" src="_images/Slides_Data_2_ResidualScatter_1.png" style="width: 12cm;" /></a>
+<p>If the errors are systematically different over the range of X-values we call
+this heteroskedasticity. If you dedect heteroskedasticity you would have to
+adjust for that using a more “robust” estimator. These more robust procedures
+basically adjust the standard errors (make them larger) to account for the
+effect that heteroskedasticity has on your estimate.</p>
+<p>Here is how you estimate the “robust” version of your regression.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span>
+
+<span class="c1"># Run OLS regression</span>
+<span class="c1"># This line adds a constant number column to the X-matrix and extracts</span>
+<span class="c1"># the relevant columns from the dataframe</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;y ~ x&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+<span class="n">res_rob</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cov_type</span> <span class="o">=</span> <span class="s1">&#39;HC3&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show coefficient estimates</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_rob</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="n">OLS</span> <span class="n">Regression</span> <span class="n">Results</span>
+<span class="o">==============================================================================</span>
+<span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                      <span class="n">y</span>   <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>
+<span class="mf">0.609</span>
+<span class="n">Model</span><span class="p">:</span>                            <span class="n">OLS</span>   <span class="n">Adj</span><span class="o">.</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>
+<span class="mf">0.544</span>
+<span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
+<span class="mf">11.04</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">May</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="mf">0.0160</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">23</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="o">-</span><span class="mf">20.791</span>
+<span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                   <span class="mi">8</span>   <span class="n">AIC</span><span class="p">:</span>
+<span class="mf">45.58</span>
+<span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>                       <span class="mi">6</span>   <span class="n">BIC</span><span class="p">:</span>
+<span class="mf">45.74</span>
+<span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                           <span class="mi">1</span>
+<span class="n">Covariance</span> <span class="n">Type</span><span class="p">:</span>                  <span class="n">HC3</span>
+<span class="o">==============================================================================</span>
+                 <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">z</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
+<span class="mf">0.975</span><span class="p">]</span>
+<span class="o">------------------------------------------------------------------------------</span>
+<span class="n">Intercept</span>      <span class="mf">1.8929</span>      <span class="mf">3.363</span>      <span class="mf">0.563</span>      <span class="mf">0.574</span>      <span class="o">-</span><span class="mf">4.699</span>
+<span class="mf">8.484</span>
+<span class="n">x</span>              <span class="mf">1.7738</span>      <span class="mf">0.534</span>      <span class="mf">3.322</span>      <span class="mf">0.001</span>       <span class="mf">0.727</span>
+<span class="mf">2.820</span>
+<span class="o">==============================================================================</span>
+<span class="n">Omnibus</span><span class="p">:</span>                        <span class="mf">0.555</span>   <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>
+<span class="mf">3.176</span>
+<span class="n">Prob</span><span class="p">(</span><span class="n">Omnibus</span><span class="p">):</span>                  <span class="mf">0.758</span>   <span class="n">Jarque</span><span class="o">-</span><span class="n">Bera</span> <span class="p">(</span><span class="n">JB</span><span class="p">):</span>
+<span class="mf">0.309</span>
+<span class="n">Skew</span><span class="p">:</span>                           <span class="mf">0.394</span>   <span class="n">Prob</span><span class="p">(</span><span class="n">JB</span><span class="p">):</span>
+<span class="mf">0.857</span>
+<span class="n">Kurtosis</span><span class="p">:</span>                       <span class="mf">2.449</span>   <span class="n">Cond</span><span class="o">.</span> <span class="n">No</span><span class="o">.</span>
+<span class="mf">11.5</span>
+<span class="o">==============================================================================</span>
+
+<span class="n">Notes</span><span class="p">:</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">are</span> <span class="n">heteroscedasticity</span> <span class="n">robust</span> <span class="p">(</span><span class="n">HC3</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jjung</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pweaveEnv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">stats</span><span class="o">/</span><span class="n">stats</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1541</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">:</span> <span class="n">kurtosistest</span> <span class="n">only</span>
+<span class="n">valid</span> <span class="k">for</span> <span class="n">n</span><span class="o">&gt;=</span><span class="mi">20</span> <span class="o">...</span> <span class="n">continuing</span> <span class="n">anyway</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span>
+  <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stata uses HC1 as it’s default when you run <code class="docutils literal notranslate"><span class="pre">reg</span> <span class="pre">y</span> <span class="pre">x,</span> <span class="pre">r</span></code>, while most R
+methods default to HC3. Always be sure to check the documentation.</p>
+</div>
+<p>If you compare the previous results to the robust results you will find that
+the coefficient estimates are the same but the standard errors in the robust
+version are larger.</p>
 </div>
 <div class="section" id="regression-line-example-2">
 <h3><span class="section-number">11.4.4. </span>Regression Line: Example 2<a class="headerlink" href="#regression-line-example-2" title="Permalink to this headline">¶</a></h3>
@@ -1129,15 +1207,19 @@ the original (raw) data.</p>
 <p>We next use <code class="docutils literal notranslate"><span class="pre">OLS</span></code> again to run the regression. At the end we make a
 prediction based on some values for the independent variables <code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">x2</span></code>,
 etc.</p>
+<p>When you specify your regression with the race-dummy variable you need to make
+sure that you drop one of the dummy variables. Here I drop the <code class="docutils literal notranslate"><span class="pre">d_wht</span></code>
+category, which is referred to as <strong>base category</strong> because we dropped it. This
+is arbitrary but you need to drop one of the categories as you otherwise have
+the probelm of <strong>perfect multicollinearity</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span>
 
-<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;Height ~ Age + Education + Female + d_Blk + d_Hisp + d_Mex + d_Wht&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s1">&#39;Height ~ Age + Education + Female + d_Blk + d_Hisp + d_Mex + d_Oth&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="c1"># Show coefficient estimates</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parameters:&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
@@ -1151,9 +1233,9 @@ etc.</p>
 <span class="mf">0.936</span>
 <span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>
 <span class="mf">124.4</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">08</span> <span class="n">Mar</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">May</span> <span class="mi">2022</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>
 <span class="mf">3.52e-30</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">12</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">23</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">74.722</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                  <span class="mi">60</span>   <span class="n">AIC</span><span class="p">:</span>
 <span class="mf">165.4</span>
@@ -1165,22 +1247,22 @@ etc.</p>
                  <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">t</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span>      <span class="p">[</span><span class="mf">0.025</span>
 <span class="mf">0.975</span><span class="p">]</span>
 <span class="o">------------------------------------------------------------------------------</span>
-<span class="n">Intercept</span>    <span class="o">-</span><span class="mf">35.2714</span>      <span class="mf">2.751</span>    <span class="o">-</span><span class="mf">12.821</span>      <span class="mf">0.000</span>     <span class="o">-</span><span class="mf">40.792</span>
-<span class="o">-</span><span class="mf">29.751</span>
+<span class="n">Intercept</span>    <span class="o">-</span><span class="mf">35.1898</span>      <span class="mf">2.662</span>    <span class="o">-</span><span class="mf">13.220</span>      <span class="mf">0.000</span>     <span class="o">-</span><span class="mf">40.531</span>
+<span class="o">-</span><span class="mf">29.849</span>
 <span class="n">Age</span>            <span class="mf">1.8944</span>      <span class="mf">0.124</span>     <span class="mf">15.269</span>      <span class="mf">0.000</span>       <span class="mf">1.645</span>
 <span class="mf">2.143</span>
 <span class="n">Education</span>     <span class="o">-</span><span class="mf">0.0514</span>      <span class="mf">0.127</span>     <span class="o">-</span><span class="mf">0.406</span>      <span class="mf">0.686</span>      <span class="o">-</span><span class="mf">0.305</span>
 <span class="mf">0.203</span>
 <span class="n">Female</span>         <span class="mf">8.7359</span>      <span class="mf">0.308</span>     <span class="mf">28.387</span>      <span class="mf">0.000</span>       <span class="mf">8.118</span>
 <span class="mf">9.353</span>
-<span class="n">d_Blk</span>         <span class="o">-</span><span class="mf">0.3784</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.552</span>      <span class="mf">0.583</span>      <span class="o">-</span><span class="mf">1.754</span>
-<span class="mf">0.997</span>
-<span class="n">d_Hisp</span>        <span class="o">-</span><span class="mf">1.0267</span>      <span class="mf">0.790</span>     <span class="o">-</span><span class="mf">1.300</span>      <span class="mf">0.199</span>      <span class="o">-</span><span class="mf">2.612</span>
-<span class="mf">0.559</span>
-<span class="n">d_Mex</span>         <span class="o">-</span><span class="mf">0.5749</span>      <span class="mf">0.686</span>     <span class="o">-</span><span class="mf">0.838</span>      <span class="mf">0.406</span>      <span class="o">-</span><span class="mf">1.952</span>
-<span class="mf">0.802</span>
-<span class="n">d_Wht</span>          <span class="mf">0.0816</span>      <span class="mf">0.681</span>      <span class="mf">0.120</span>      <span class="mf">0.905</span>      <span class="o">-</span><span class="mf">1.285</span>
-<span class="mf">1.448</span>
+<span class="n">d_Blk</span>         <span class="o">-</span><span class="mf">0.4600</span>      <span class="mf">0.299</span>     <span class="o">-</span><span class="mf">1.540</span>      <span class="mf">0.130</span>      <span class="o">-</span><span class="mf">1.059</span>
+<span class="mf">0.139</span>
+<span class="n">d_Hisp</span>        <span class="o">-</span><span class="mf">1.1084</span>      <span class="mf">0.534</span>     <span class="o">-</span><span class="mf">2.074</span>      <span class="mf">0.043</span>      <span class="o">-</span><span class="mf">2.181</span>
+<span class="o">-</span><span class="mf">0.036</span>
+<span class="n">d_Mex</span>         <span class="o">-</span><span class="mf">0.6566</span>      <span class="mf">0.338</span>     <span class="o">-</span><span class="mf">1.941</span>      <span class="mf">0.058</span>      <span class="o">-</span><span class="mf">1.335</span>
+<span class="mf">0.022</span>
+<span class="n">d_Oth</span>         <span class="o">-</span><span class="mf">0.0816</span>      <span class="mf">0.681</span>     <span class="o">-</span><span class="mf">0.120</span>      <span class="mf">0.905</span>      <span class="o">-</span><span class="mf">1.448</span>
+<span class="mf">1.285</span>
 <span class="o">==============================================================================</span>
 <span class="n">Omnibus</span><span class="p">:</span>                        <span class="mf">0.297</span>   <span class="n">Durbin</span><span class="o">-</span><span class="n">Watson</span><span class="p">:</span>
 <span class="mf">0.581</span>
@@ -1189,7 +1271,7 @@ etc.</p>
 <span class="n">Skew</span><span class="p">:</span>                          <span class="o">-</span><span class="mf">0.097</span>   <span class="n">Prob</span><span class="p">(</span><span class="n">JB</span><span class="p">):</span>
 <span class="mf">0.787</span>
 <span class="n">Kurtosis</span><span class="p">:</span>                       <span class="mf">2.607</span>   <span class="n">Cond</span><span class="o">.</span> <span class="n">No</span><span class="o">.</span>
-<span class="mf">507.</span>
+<span class="mf">486.</span>
 <span class="o">==============================================================================</span>
 
 <span class="n">Notes</span><span class="p">:</span>
@@ -1197,27 +1279,53 @@ etc.</p>
 <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
 
 <span class="n">Parameters</span><span class="p">:</span>
-<span class="n">Intercept</span>   <span class="o">-</span><span class="mf">35.271435</span>
+<span class="n">Intercept</span>   <span class="o">-</span><span class="mf">35.189807</span>
 <span class="n">Age</span>           <span class="mf">1.894377</span>
 <span class="n">Education</span>    <span class="o">-</span><span class="mf">0.051375</span>
 <span class="n">Female</span>        <span class="mf">8.735906</span>
-<span class="n">d_Blk</span>        <span class="o">-</span><span class="mf">0.378358</span>
-<span class="n">d_Hisp</span>       <span class="o">-</span><span class="mf">1.026743</span>
-<span class="n">d_Mex</span>        <span class="o">-</span><span class="mf">0.574949</span>
-<span class="n">d_Wht</span>         <span class="mf">0.081628</span>
+<span class="n">d_Blk</span>        <span class="o">-</span><span class="mf">0.459986</span>
+<span class="n">d_Hisp</span>       <span class="o">-</span><span class="mf">1.108371</span>
+<span class="n">d_Mex</span>        <span class="o">-</span><span class="mf">0.656576</span>
+<span class="n">d_Oth</span>        <span class="o">-</span><span class="mf">0.081628</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </pre></div>
 </div>
-<p>Prediction: size of 8.5 will produce a math score of …</p>
+<p>When you interpret the coefficient estimates of the race dummy variables, you
+interpret them in relation to the dropped category, which is “white” in my
+case.
+Here this would mean that on average, African Americans are <span class="math notranslate nohighlight">\(-0.46\)</span>
+units of height shorter than individuals in the base category that we have
+omitted.
+Similarly , on average Hispanics are <span class="math notranslate nohighlight">\(-1.1084\)</span> height units shorter than
+individuals in the base category.
+Keep in mind that these estimates are not really statistically significant
+(large p-values) and the sample is extremely small. So be careful with your
+statements!</p>
+<p>Prediction: If age = 20, education = 12 years, gender = female and you are
+Mexican then the predicted height is …</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take out results and define it as numpy-vector</span>
 <span class="n">betas</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span>\
-  <span class="nb">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))))</span>
+  <span class="nb">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">betas</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Prediction</span><span class="p">:</span> <span class="o">-</span><span class="mf">23.50477885878137</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Prediction</span><span class="p">:</span> <span class="mf">10.16056748631931</span>
 </pre></div>
 </div>
+<p>And here is the residual plot again to check for heteroskedasticity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">yv</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_hatv</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Predicts y-hat based on all X values in data</span>
+<span class="n">residualsv</span> <span class="o">=</span> <span class="n">yv</span> <span class="o">-</span> <span class="n">y_hatv</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Residual Plot&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">residualsv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yv</span><span class="p">)),</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height (Y dependent variable)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_2_ResidualScatter2_1.png"><img alt="_images/Slides_Data_2_ResidualScatter2_1.png" src="_images/Slides_Data_2_ResidualScatter2_1.png" style="width: 12cm;" /></a>
 </div>
 </div>
 <div class="section" id="measures-of-non-linear-relationship">
@@ -1324,9 +1432,9 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">08</span> <span class="n">Mar</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">May</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08292</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">12</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">24</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1359,7 +1467,7 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Logit</span>            <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.5175</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span> <span class="mi">11</span><span class="p">:</span><span class="mi">33</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">51</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.4663</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.26</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.5782e-08</span>
@@ -1377,6 +1485,22 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="o">=================================================================</span>
 </pre></div>
 </div>
+<p>And here is the residual plot again to check for heteroskedasticity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">yv</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;admit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_hatv</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Predicts y-hat based on all X values in data</span>
+<span class="n">residualsv</span> <span class="o">=</span> <span class="n">yv</span> <span class="o">-</span> <span class="n">y_hatv</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Residual Plot&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">residualsv</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yv</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yv</span><span class="p">)),</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;admit (Y dependent variable)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/Slides_Data_2_ResidualScatter3_1.png"><img alt="_images/Slides_Data_2_ResidualScatter3_1.png" src="_images/Slides_Data_2_ResidualScatter3_1.png" style="width: 12cm;" /></a>
+<p>Not surprisingly we see that since the dependent variable can only take on the
+values 0 or 1, the residual plot shows only residuals at these two locations.</p>
 </div>
 <div class="section" id="probit">
 <h3><span class="section-number">11.5.2. </span>Probit<a class="headerlink" href="#probit" title="Permalink to this headline">¶</a></h3>
@@ -1406,9 +1530,9 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="mi">394</span>
 <span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>
 <span class="mi">5</span>
-<span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">08</span> <span class="n">Mar</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">12</span> <span class="n">May</span> <span class="mi">2022</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>
 <span class="mf">0.08313</span>
-<span class="n">Time</span><span class="p">:</span>                        <span class="mi">11</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">12</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">15</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">25</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>
 <span class="o">-</span><span class="mf">249.99</span>
@@ -1441,7 +1565,7 @@ specify this in the <code class="docutils literal notranslate"><span class="pre"
 <span class="o">=================================================================</span>
 <span class="n">Model</span><span class="p">:</span>              <span class="n">Probit</span>           <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span> <span class="mf">0.083</span>
 <span class="n">Dependent</span> <span class="n">Variable</span><span class="p">:</span> <span class="n">admit</span>            <span class="n">AIC</span><span class="p">:</span>              <span class="mf">470.4132</span>
-<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span> <span class="mi">11</span><span class="p">:</span><span class="mi">33</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
+<span class="n">Date</span><span class="p">:</span>               <span class="mi">2022</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">51</span> <span class="n">BIC</span><span class="p">:</span>              <span class="mf">494.3620</span>
 <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>   <span class="mi">400</span>              <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>   <span class="o">-</span><span class="mf">229.21</span>
 <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>           <span class="mi">5</span>                <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>          <span class="o">-</span><span class="mf">249.99</span>
 <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>       <span class="mi">394</span>              <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>      <span class="mf">7.2189e-08</span>
