@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Economics",
+    "section": "",
+    "text": "A 400 level undergraduate economics course offered at the Department of Economics at Towson University in Maryland, USA.\nCourse Instructor: Prof. Juergen Jung\nemail: jjung@towson.edu\nweb: https://juejung.github.io/\nThis book was typese with Quarto. Visit https://quarto.org/docs/books."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Also this here. And that here.\nThis. And that.\nThis is a book created from markdown and executable code.\nSee Jung and Tran (2012) for additional discussion of literate programming."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "intro.html#air-quality-with-r-code",
+    "href": "intro.html#air-quality-with-r-code",
+    "title": "1  Introduction",
+    "section": "1.1 Air Quality with R code",
+    "text": "1.1 Air Quality with R code\nFigure 1.1 further explores the impact of temperature on ozone level.\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\"\n)\n\n\n\n\nFigure 1.1: Temperature and ozone level."
+  },
+  {
+    "objectID": "intro.html#python-code",
+    "href": "intro.html#python-code",
+    "title": "1  Introduction",
+    "section": "1.2 Python Code",
+    "text": "1.2 Python Code\n\n1 + 1\n\n2\n\n\nMarkdown allows you to write using an easy-to-read, easy-to-write plain text format.\nAnd then we add some more.\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, tip, warning, caution, and important.\n\n\n\n\n\n\n\n\nTip With Caption\n\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "intro.html#math-stuff-code",
+    "href": "intro.html#math-stuff-code",
+    "title": "1  Introduction",
+    "section": "1.3 Math Stuff Code",
+    "text": "1.3 Math Stuff Code\n\n\nWe know from the first fundamental theorem of calculus that for \\(x\\) in \\([a, b]\\):\n\\[\\frac{d}{dx}\\left( \\int_{a}^{x} f(u)\\,du\\right)=f(x).\\]\nFor a demonstration of a line plot on a polar axis, see Figure 1.4.\n\nPython CodeR-CodeJulia Code\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\n\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1.2: A line plot on a polar axis\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\"\n)\n\n\n\n\nFigure 1.3: Temperature and ozone level.\n\n\n\n\n\n\n#| label: fig-parametric\n#| fig-cap: \"Parametric Plots\"\nusing Plots\nplot(sin,\n     x->sin(2x),\n     0,\n     2π,\n     leg=false,\n     fill=(0,:lavender))\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\n\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1.4: A line plot on a polar axis\n\n\n\n\nIf this is really a new file then just do it."
+  },
+  {
+    "objectID": "Slides_CourseAdministration.html",
+    "href": "Slides_CourseAdministration.html",
+    "title": "2  Course Administration",
+    "section": "",
+    "text": "We use Python for a number of reasons:"
+  },
+  {
+    "objectID": "Slides_Basics.html",
+    "href": "Slides_Basics.html",
+    "title": "3  First Steps in Python",
+    "section": "",
+    "text": "There are many online resource available that provide good introduction material to programming in Python. Here is a very good website to start with: www.learnpython.org This is an interactive site where you can directly type Python code into your web browser to try out code snippets without installing anything.\nYou should also check out some of the documentation of Python’s main scientific libraries such as:"
+  },
+  {
+    "objectID": "Slides_Basics.html#simple-calculations",
+    "href": "Slides_Basics.html#simple-calculations",
+    "title": "3  First Steps in Python",
+    "section": "3.1 Simple Calculations",
+    "text": "3.1 Simple Calculations\nAfter installation, open Spyder and try some of the following in the command line:\n\nPython CodeR Code\n\n\n\nx = 2.5\ny = 3.0\nx + y\n\n5.5\n\n\n\n\n\nx = 2.5\ny = 3.0\nx + y\n\n[1] 5.5\n\n\n\n\n\nOr try it in a script file, save it and run it.\n\nPython CodeR Code\n\n\n\nprint(\"x= \", x)\n\nx=  2.5\n\nprint(\"y= \", y)\n\ny=  3.0\n\nprint(\"x + y = \", x + y)\n\nx + y =  5.5\n\n\n\n\n\nprint(paste(\"x= \", x))\n\n[1] \"x=  2.5\"\n\nprint(paste(\"y= \", y))\n\n[1] \"y=  3\"\n\nprint(paste(\"x + y = \", x + y))\n\n[1] \"x + y =  5.5\"\n\n\n\n\n\nThen try the following:\n\n\n\nOperation\nExpression\n\n\n\n\nSubtraction:\nx - y\n\n\nDivision:\nx / y\n\n\nMultiplication:\nx * y\n\n\nPower:\nx ** y\n\n\nSquare root:\nm.sqrt(x)\n\n\n\nNote that the power function is not ^ but **. Also in Python we need to import the math-module in order to use certain math functions like sqrt() etc. When importing a module, we actually import a library of functions that all start with the module name. By typing import math at the beginning of your script you can then call all the functions of the math-module (or library) by typing math.functionName(). So if you want to take the square root of number 9, you would then simply call math.sqrt(9). You can also abbreviate the name of the module by typing import math as m in which case you can now take the square root with m.sqrt(9) as in the following script.\n\nimport math as m\nx = 2.455555\ny = 3.12344\n\nprint(\" --- OUTPUT: --- \")\n\n --- OUTPUT: --- \n\nprint(x + y)\n\n5.578995\n\nprint(x * y)\n\n7.6697787092\n\nprint(x / y)\n\n0.7861700560920011\n\nprint(x ** y)\n\n16.542802038492464\n\nprint(m.sqrt(x))\n\n1.5670210592075653\n\n\nIf you want to see a list of all the functions in the math module you can type: dir(math) or dir(m) and you will get a list of all methods/functions embedded in the module."
+  },
+  {
+    "objectID": "Slides_Basics.html#the-print-function",
+    "href": "Slides_Basics.html#the-print-function",
+    "title": "3  First Steps in Python",
+    "section": "3.2 The Print Function",
+    "text": "3.2 The Print Function\nIf you want to format your print output and combine text with numbers you need to use the .format method of the print function. You will learn more about objects and methods in a later chapter. Just hang in there fore now.\nIf you want to format the numbers (e.g., round etc.) that print will output you need to type the double brackets {} in your text string as a placeholder for where the number will be inserted.\n\nimport math as m\nx = 2.455555\ny = 3.12344\n\nprint(\" --- OUTPUT: --- \")\n# Unformatted\n\n --- OUTPUT: --- \n\nprint(\"x+y\", x+y)\n# Still unformatted but using the .format() method\n\nx+y 5.578995\n\nprint(\"Unformatted: x + y  = {}\".format(x+y))\n\n# Formatted, finally ...\n\nUnformatted: x + y  = 5.578995\n\nprint(\"Formatted: x + y  = {:5.2f}\".format(x+y))\n\nFormatted: x + y  =  5.58\n\n\nThe format instruction :5.2f means that the output of the number is formatted as a five digit number with two fixed decimal places. If you want to see more details about how you can format numbered output have a look at this link: https://www.python-course.eu/python3_formatted_output.php\nHere are some more examples:\n\nprint(\"x * y  = {:5.2f}\".format(x*y))\n\nx * y  =  7.67\n\nprint(\"x / y  = {:5.2f}\".format(x/y))\n\nx / y  =  0.79\n\nprint(\"x ** y = {:5.2f}\".format(x**y))\n\nx ** y = 16.54\n\nprint(\"sqrt(x)= {:5.2f}\".format(m.sqrt(x)))\n\nsqrt(x)=  1.57\n\n\nYou can write more complex output with more than one number embedded in a line of text as follows:\n\nprint(\" --- OUTPUT: --- \")\n\n --- OUTPUT: --- \n\nprint(\"\"\"We want to use variable x = {0:4.2f} \\n and divide by\nvariable y = {1:4.2f},\\n so that we end up with expression\nx/y = {2:4.2f}\"\"\".format(x, y, x/y))\n\nWe want to use variable x = 2.46 \n and divide by\nvariable y = 3.12,\n so that we end up with expression\nx/y = 0.79\n\n\n\n\nWe want to use variable x = 2.46\n\nand divide by\n\nvariable y = 3.12,\n\nso that we end up with expression\n\n\nx/y = 0.79\n\nThe symbol \\n that you see above is not printed but indicates a line break."
+  },
+  {
+    "objectID": "Slides_Basics.html#script-files",
+    "href": "Slides_Basics.html#script-files",
+    "title": "3  First Steps in Python",
+    "section": "3.3 Script Files",
+    "text": "3.3 Script Files\nBefore we go on, let’s save all our commands in a so called Script file. These are basically text files that contain all commands in one big “laundry list” that we can then execute all at once. In order to open such a script file in Spyder simply click on File \\(\\rightarrow\\) New. Copy/paste the above commands into this script file and save it under a name of your choosing. Note that the file has the extension .py which indicates that it is a Python script file. You can then edit this file at will and add commands etc.\nIf you want to run or execute the script file simply click the Source button on top of your editor window. You can also execute the script file line by line. Simply mark the line, right click, and choose to execute selection or click on the Run icon on top of your editor window. This is the green button with the “running man symbol” on top of your editor window. If you’d like to execute just one line, mark the line and click on the “running man symbol” to the right of the first green button.\nFor the remainder of the class I highly recommend that you always use script files. This will help you to quickly run your code and evaluate your results."
+  },
+  {
+    "objectID": "Slides_Basics.html#ipython-notebook",
+    "href": "Slides_Basics.html#ipython-notebook",
+    "title": "3  First Steps in Python",
+    "section": "3.4 iPython Notebook",
+    "text": "3.4 iPython Notebook\nA different way to write your codes is via the iPython Notebook. Read the instructions carefully, it should be pretty self explanatory. All you need to do is you open a terminal window.\n\n\nWindows: Go to the start button and type cmd in the search box. This will open a black terminal window.\nMac: Open a terminal by clicking on the terminal symbol in the dashboard at the bottom.\n\n\nIn this window, after the dollar prompt, you simply type ipython-notebook. This will start your browser and get you to the iPython-Notebook dashboard. You can start a new notebook from there and start typing code into the input boxes. You can immediately evaluate python code pressing: shift-enter. There are many tutorials about the iPython Notebook on the internet."
+  },
+  {
+    "objectID": "Slides_Basics.html#key-concepts-and-summary",
+    "href": "Slides_Basics.html#key-concepts-and-summary",
+    "title": "3  First Steps in Python",
+    "section": "3.5 Key Concepts and Summary",
+    "text": "3.5 Key Concepts and Summary\n\nThe print() function allows you to show output in the command line.\nThe .format() option allows you to format how numbers are printed.\nA script file is a text file with python commands."
+  },
+  {
+    "objectID": "Slides_Basics.html#self-check-questions",
+    "href": "Slides_Basics.html#self-check-questions",
+    "title": "3  First Steps in Python",
+    "section": "3.6 Self-Check Questions",
+    "text": "3.6 Self-Check Questions"
+  },
+  {
+    "objectID": "Slides_CourseAdministration.html#installing-python",
+    "href": "Slides_CourseAdministration.html#installing-python",
+    "title": "2  Course Administration",
+    "section": "2.1 Installing Python",
+    "text": "2.1 Installing Python\nNext you have to download Python. If you are running Linux or Apple, some version of Python is already installed. However, these basic Python versions miss some of the important scientific packages that you will still have to install. The most important ones are numpy, scipy, and matplotlib. If you “google” these packages you should be able to find them on the internet. They need to be installed.\nI also recommend that you install an IDE for Python. One that is very amenable for scientific computation is called Spyder. Spyder is part of most Linux repositories and can easily be installed from there.\nThe easiest way to install Python and Spyder and all sorts of other useful packages for scientific computing is to install Python via the Anaconda distribution from: https://www.anaconda.com/distribution/#download-section This is a simple one click installation process which works for Linux/Windows/Mac and it installs everything! When prompted which version you want to install go with the latest one for your system which at the time of writing this is Python 3.9. On relatively new computers you want the 64 bit version, not the 32 bit version."
+  },
+  {
+    "objectID": "Slides_CourseAdministration.html#submitting-homework-the-midterm-and-the-final-via-dropbox",
+    "href": "Slides_CourseAdministration.html#submitting-homework-the-midterm-and-the-final-via-dropbox",
+    "title": "2  Course Administration",
+    "section": "2.2 Submitting homework, the midterm and the final via Dropbox",
+    "text": "2.2 Submitting homework, the midterm and the final via Dropbox\nA homework will be due every week. You need to submit the homework and all other assignments via Dropbox. There is a little bit of setup involved but it is not very complicated.\n\n\nGo to Dropbox and sign up for a free account. This is a free account which gives you 2GB cloud disk space. It’s not immediately obvious from the Dropbox starting page how to sign up for the free account. On the left, below the two boxes you see a link that says get Dropbox Basic. Follow that link.\nDownload the Dropbox client on your computer and install it. This may take a couple minutes. You should now see a new Dropbox folder with a green marking on it in your folder structure. Usually under user but it depends on whether you are under windows, mac or linux.\n\n\nIf you are under Windows you may have to start the Dropbox client by\n\nhand each time you reboot the computer. You simply go to the Start menue button, start typing Dropbox in the search field and once the Dropbox link appears in the Start-Menue, right-click on it and click on Run as Administrator. This will start the client. You should see a small Dropbox symbol in your status line at the bottom that should say something like Dropbox Up to Date when you hover over it with the mouse pointer.\n\n\n\nAccept the share-a-folder invitation that I sent out via Dropbox. I will email this invitation after our first class session.\nYou will find a folder structure in this shared folder that should be self explanatory, i.e., a homework folder for homework, a midterm folder for the midterm, etc. All the homework script file with extensions .py are already inside of this folder.\nWhen you work on a homework, simply open Spyder first. Then, from within Spyder navigate to this shared folder and open the homework script file that you want to work on. For the first homework this would be the file: homework1.py. So open homework1.py from within Spyder and start editing it. Once you hit save the file will automatically be mirrored via Dropbox and I will see the updated homework1.py file on my computer.\nNo further action is required - the homework is already submitted.\nPS: Please do not change the names of the scriptfiles.\nA day or two later you will find a file called: homework1_graded.py with my comments and the point score for this assignment."
+  },
+  {
+    "objectID": "Slides_DataStructures.html",
+    "href": "Slides_DataStructures.html",
+    "title": "4  Python Data Structures",
+    "section": "",
+    "text": "A list is a simple container object that can hold an arbitrary number of Python objects. A list can be a list of numbers, words, or a combination. Here is an example:\nalist = [1, \"me\", 3.456, \"you\", 50]\nprint(\"The list is alist = {}\".format(alist))\nAlternatively we could translate the list into a string and then print it. You can tag together strings with the plus sign. which combines a string \"The list is alist = \" together with another string str(alist). The Python funciton str() translates a number into a string, i.e., a word and then prints the combined “word”.\nprint(\"The list is alist = \" + str(alist))\nWe can access the elements of a list bit by bit using list indexation. Note that the first element in the list is at position 0.\nprint(alist[0])\nprint(alist[1])\nprint(alist[2])\nprint(alist[3])\nprint(alist[4])\nOr prettier\nprint(\"alist[0] = {}\".format(alist[0]))\nprint(\"alist[1] = {}\".format(alist[1]))\nprint(\"alist[2] = {}\".format(alist[2]))\nprint(\"alist[3] = {}\".format(alist[3]))\nprint(\"alist[4] = {}\".format(alist[4]))\nIf you want to extract more than one element of a list you can use a slice operator. This basically involves the colon symbol : at the appropriate position. If you want to extract the first three elements you can simply index the list as alist[:3]. If you want to get everything from element 2 onwards you can alist[2:]\nprint(alist)\nprint(\"alist[0:4] = {}\".format(alist[0:4]))\nprint(\"alist[:3] = {}\".format(alist[:3]))\nprint(\"alist[2:] = {}\".format(alist[2:]))\nIf you want to grab the last element of the list you can start indexing with negative numbers.\nprint(alist)\nprint(\"alist[-1] = {}\".format(alist[-1]))\nprint(\"alist[-2] = {}\".format(alist[-2]))\nprint(\"alist[-3] = {}\".format(alist[-3]))\nYou can change elements of a list by reassigning them using their index. So if you want to replace the third element of the list with the word “Mom” you simply assign it as\nalist[2] = \"Mom\"\nprint(alist)\nWhat about more complicated lists, where the elements inside the list are lists themselves. In this case we are dealing with nested lists. Here is an example:\nmyNestedList = [['Mom', 42], ['Dad', 41], ['Kids', 10, 12]]\nprint(myNestedList)\nNow let’s see what happens if we index this list. Try the following:\nprint(myNestedList[0])\nprint('---------------')\nprint(myNestedList[1])\nprint('---------------')\nThen try\nprint(myNestedList[0][0])\nprint('---------------')\nprint(myNestedList[1][0])\nprint('---------------')\nprint(myNestedList[1][1])\nprint('---------------')\nNow let’s go one step deeper into the list:\nprint(myNestedList[1][0][0])\nprint('---------------')\nprint(myNestedList[1][0][1])\nprint('---------------')\nprint(myNestedList[1][0][2])\nprint('---------------')\nThis example shows how you can extract content from a list inside of a list by simply adding brackets with indexing positions to the list name. If you go outside the range of the inside list, the interpreter will throw an error:\nprint(myNestedList[1][0][3])"
+  },
+  {
+    "objectID": "Slides_DataStructures.html#tuples",
+    "href": "Slides_DataStructures.html#tuples",
+    "title": "4  Python Data Structures",
+    "section": "4.2 Tuples",
+    "text": "4.2 Tuples\nAre immutable lists, that once defined, cannot be changed anymore. It is a read-only list.\na_tuple = (1, \"me\", 3.456, \"you\", 50)\nprint(a_tuple)\nNow try to change an element of the tuple and see what happens.\na_tuple[2] = \"Mom\"\nprint(a_tuple)\nSlice operators work exactly the same way as they work on lists."
+  },
+  {
+    "objectID": "Slides_DataStructures.html#dictionaries",
+    "href": "Slides_DataStructures.html#dictionaries",
+    "title": "4  Python Data Structures",
+    "section": "4.3 Dictionaries",
+    "text": "4.3 Dictionaries\nDictionaries or short “dicts” are more general mappings and word list associative arrays or so called hashes. They are basically key-value pairs where a key can be almost any Python type. So instead of indexing a list with indexes (which are numbers starting from 0, 1, etc.) the indices of a dictionary can be words or other data types.\nHere is a brief example where we use names of people as keys and store various information together with those keys. We can then retrieve the information of each person with the persons name.\n# Defining a dictionary as adict = {'name': income}\nadict = {'James': 20000}\nadict['Jim'] = 50000\nadict['Tom'] = 80000\nWe can now retrive this info using the key.\nprint(adict)\nprint(adict['James'])\nprint(adict['Jim'])\nprint(adict['Tom'])\nYou can delete an element with\ndel adict['James']\nprint(adict)"
+  },
+  {
+    "objectID": "Slides_DataStructures.html#pitfalls",
+    "href": "Slides_DataStructures.html#pitfalls",
+    "title": "4  Python Data Structures",
+    "section": "4.4 Pitfalls",
+    "text": "4.4 Pitfalls\nWe next give a couple examples of potential pitfalls that can cause programming mistakes.\n\nBe careful how you copy a list:\n\nlist1 = [ 1,2,3,4 ]\nlist2 = list1\nlist1.append(5)\nprint(list1)\nprint(list2)\nWhat happens here is that the list [1,2,3,4] is assigned to two separate names list1 and list2. These two names now point to the same, identical list. As soon as you change the list using list1.append(5) this change will be reflected in both names of the list. If you really just want to copy the list and give that separate copy the name list2, do the following:\nfrom copy import deepcopy\n\nlist1 = [ 1,2,3,4 ]\nlist2 = deepcopy(list1)\nlist1.append(5)\nprint(list1)\nprint(list2)\n\nThe list methods sort() and reverse() do not return a list object\n\nlist1 = [4, 3, 2, 1]\nlist1.sort()\nprint(list1)  # You cannot do: print(list1.sort())\nBut if you now try:\nlist2 = [-1, 0] + list1.sort()\nyou get an error. So here the sort() method is not returning a list object. Since we then try to add a list [-1, 0] to something that is NOT a list, the interpreter throws an error. Here is one way to fix this, use the sorted command:\nlist1 = [4, 3, 2, 1]\nlist2 = [-1, 0] + sorted(list1)\nprint(list1)\nprint(list2)"
+  },
+  {
+    "objectID": "Slides_DataStructures.html#json-data-format",
+    "href": "Slides_DataStructures.html#json-data-format",
+    "title": "4  Python Data Structures",
+    "section": "4.5 JSON Data Format",
+    "text": "4.5 JSON Data Format\nJSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write and can be used to store and communicate information to other products.\nIt is based on key:value pairs. Many programming languages support the JSON data format. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others. These properties make JSON an ideal data-interchange language.\nIn brief, JSON is a way by which we store and exchange data, which is accomplished through its syntax, and is used in many web applications. The nice thing about JSON is that it has a human readable format, and this may be one of the reasons for using it in data transmission, in addition to its effectiveness when working with APIs (Application Programming Interface).\nAn example of JSON-formatted data is as follows:\n{\"name\": \"Frank\", \"age\": 39, \"isEmployed\": true}\nPython has a built in JSON library called json that needs to be imported if you want to convert a JSON string into a Python value object like a dictionary or a list.\nimport json\n\njsonData = '{\"name\": \"Frank\", \"age\": 39}'\njsonToPython = json.loads(jsonData)\nprint(jsonToPython)\nThe JSON string has been converted to a dictionary. You can now use it as such.\nprint(jsonToPython['name'])\nIf you want to convert a Python dictionary into a JSON string that can then be written to a file and read by other programs you can use the json.dumps() function.\nimport json\n\npythonDictionary = {'name':'Bob', 'age':44, 'isEmployed':True}\ndictionaryToJson = json.dumps(pythonDictionary)\n\nprint(dictionaryToJson)"
+  },
+  {
+    "objectID": "Slides_DataStructures.html#in-class-exercises",
+    "href": "Slides_DataStructures.html#in-class-exercises",
+    "title": "4  Python Data Structures",
+    "section": "4.6 In Class Exercises",
+    "text": "4.6 In Class Exercises\n\nGenerate a list with numbers from 1 to 10\nPrint the first 5 elements of this list\nReplace the last entry of the list with 100 and print the list again\nSort the list from largest to smallest element"
+  },
+  {
+    "objectID": "Slides_Plot.html",
+    "href": "Slides_Plot.html",
+    "title": "4  Plotting using matplotlib",
+    "section": "",
+    "text": "In this chapter we explore some of the graphical functionality of Python. We first import the required libraries for plotting."
+  },
+  {
+    "objectID": "Slides_Plot.html#plotting-vectors-and-arrays",
+    "href": "Slides_Plot.html#plotting-vectors-and-arrays",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.1 Plotting Vectors and Arrays",
+    "text": "4.1 Plotting Vectors and Arrays\n\n4.1.1 Plotting Simple Vectors\nWe first define a grid vector xv. We then plot the first vector using the plot() command in the following figure:\n\nxv = np.array([1, 2, 3, 4, 5])\ncarsv = np.array([1, 3, 6, 4, 9])\n\nplt.plot(xv, carsv, 'b-', linewidth=2)\nplt.title('Cars', fontsize=14)\n# Save graphs in subfolder Graphs under name: fig1.pdf\n#plt.savefig('./Graphs/fig0.pdf')\nplt.show()\n\n\n\n\n\nprint(\"Time passed in seconds is = {:4.4f}\".format(time.perf_counter() - tic))\n\nTime passed in seconds is = 0.1770\n\n\n\n\n4.1.2 Plotting Two Vectors\nWe first define a couple of vectors.\n\n# Define vectors with 5 values each\nxv     = np.array([1, 2, 3, 4, 5])\ncarsv   = np.array([1, 3, 6, 4, 9])\ntrucksv = np.array([2, 5, 4, 5, 12])\nsuvsv   = np.array([4, 4, 6, 6, 16])\n\nWe then plot the carsv and the trucksv vector into one graph. Compare the next figure.\n\nfig, ax = plt.subplots()\nax.plot(xv,carsv, 'k-o', xv,trucksv,'b-.')\n# Create a title with a red, bold/italic font\nax.set_title('Autos')\nax.legend(['cars', 'trucks'],loc='best')\nplt.show()\n\n\n\n\n\n\n4.1.3 Graph 3 Car Types\nFinally, we graph all three car types into one figure. This time we save the graph as fig1.pdf into subfolder Graphs.\n\nfig, ax = plt.subplots()\nax.plot(xv, carsv, 'b-o', xv, trucksv,'r-^', xv, suvsv, 'g:s')\nax.set_title('Autos')\nax.set_xlabel('Days')\nax.set_ylabel('Total')\nax.set_xlim([0.5,5.5])\n#ylim(min(cars,trucks),max(cars,trucks))\n# Create a legend\nax.legend(['cars', 'trucks', 'suvs'], loc = 'best')\n# Save graphs in subfolder Graphs under name: fig1.pdf\n#plt.savefig('./Graphs/fig1.pdf')\nplt.show()"
+  },
+  {
+    "objectID": "Slides_Plot.html#plotting-functions",
+    "href": "Slides_Plot.html#plotting-functions",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.2 Plotting Functions",
+    "text": "4.2 Plotting Functions\n\n4.2.1 First Example\nIf we want to plot a more general function like the \\(y = \\sqrt{x}\\) we first need to define a grid of x values and then calculate the corresponding y-values for each grid point. This results in x and y coordinates for a number of points that we can then add to a coordinate system. After connecting these points in the graph, we get our function plot of the square root function.\nEach row represents the x and y coordinates of points that we now plot into the coordinate system. Let’s define the vectors first.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nxv = np.array([0, 1, 2, 3, 4])\nyv = np.zeros(len(xv))\n\n\nprint('--------------')\nprint('x      |    y  ')\nprint('--------------')\nfor i in range(len(xv)):\n    yv[i] = np.sqrt(xv[i])\n    print('{:5.2f}  | {:5.2f}'.format(xv[i],yv[i]))\n\nprint('--------------')\n\n--------------\nx      |    y  \n--------------\n 0.00  |  0.00\n 1.00  |  1.00\n 2.00  |  1.41\n 3.00  |  1.73\n 4.00  |  2.00\n--------------\n\n\nWe next plot these points into a coordinate system using the plot() function from the matplotlib.pyplot sub-library.\n\nplt.plot(xv, yv, 'o')\nplt.show()\n\n\n\n\nIf you would like to connect the dots, you can change the code to:\n\nplt.plot(xv, yv, '-o')\nplt.show()\n\n\n\n\nThis graph looks still a bit choppy. If you would like a smoother graph you need to evaluate the function using more points. We can also generate the x-grid automatically using the linspace function from the numpy library. We then calculate the corresponding y values with :math:` y = sqrt(x)` for each one of the x grid-points and record them in a yv vector.\n\nxv = np.linspace(0, 4, 30) # Generates 30 points between 0 and 4\nyv = np.zeros(len(xv))\n\nfor i in range(len(xv)):\n    yv[i] = np.sqrt(xv[i])\n\n\nplt.plot(xv, yv, '-o')\nplt.show()\n\n\n\n\nFinally we use a very powerful feature that all functions of the numpy library have in common. It is called vector evaluation. This means that any function in the numpy library can be applied on a vector without a loop which results in a new vector containing the results of the function evaluations on each point in the original vector. Sounds complicated but is really easy. And just to make the function even smoother we add some more points and plot it in the color red, look:\n\nxv = np.linspace(0, 4, 50) # Generates 30 points between 0 and 4\nyv = np.sqrt(xv)  # Vector evaluation, sqrt() is applied to each point in xv\n\nplt.plot(xv, yv, 'r-o')\nplt.show()\n\n\n\n\n\n\n4.2.2 Second Example Using subplots()\nHere is another example of a simple function, the \\(y = sin(x)\\) function. When we plot this function we use a more powerful plotting function called subplots(). This will allow us to plot multiple graphs into a single figure. I now also add labels to the graph and a legend. We also use the sin() function from the numpy library which allows us to use vector evaluation again so that we do not have to write a loop to evaluate the x-grid values.\n\n\n\n\n\n\nNote\n\n\n\nYou should always have a title and labels in your figures!\n\n\n\nxv = np.linspace(0, 10, 200)\nyv = np.sin(xv)\n\nfig, ax = plt.subplots()\nax.plot(xv, yv, 'r-', linewidth=2, label='sine function', alpha=0.6)\nax.set_title('Plotting the sin() function')\nax.set_xlabel('x')\nax.set_ylabel('y')\nax.legend(loc='best')\nplt.show()\n\n\n\n\n\n\n4.2.3 Plotting Multiple Functions into a Graph\nHere is another example with some more functions. We again first define the input vector xv with the values we want to evaluate the function at and then specify the “output” vector yv as \\(y = f(x)\\). We use the following examples:\n\n\n\\(f(x) = 50 \\times sin(x)\\),\n\\(f(x) = x^2\\),\n\\(f(x) = 3 \\times (x^2)/2 - 5\\), and finally\n\\(f(x) = 5 \\times (x^2)/2 - \\sqrt{x}\\).\n\n\n\nxv = np.arange(1, 10, 0.1)\ny1v = 50*np.sin(xv)\ny2v = xv**2\ny3v = 3.0*(xv**2)/2 - 5\ny4v = 5.0*(xv**2)/2 - np.sqrt(xv)\n\nWe have now two columns of values: x and y that we can plot against each other into a coordinate system.\n\nfig, ax = plt.subplots()\nax.plot(xv, y1v, \\\n        xv, y2v, \\\n        xv, y3v, \\\n        xv, y4v)\nax.legend(['sin(x)', r'$x^2$', 'y3', 'y4'], loc = 'best')\nax.set_title('Many Functions')\nax.set_xlabel('x')\nax.set_ylabel('y')\nplt.show()"
+  },
+  {
+    "objectID": "Slides_Plot.html#subplots",
+    "href": "Slides_Plot.html#subplots",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.3 Subplots",
+    "text": "4.3 Subplots\nIf we have more than one figure it might be good to put them all into one graph. In the following example we plot 6 figures into one picture. We plot into 3 rows and 2 columns. You can obviously rearrange all this.\n\n# Creates  a 3 x 2 grid of subplots\nnum_rows = 3\nnum_cols = 2\ntitle_size = 26\n\nfig = plt.figure(figsize=(8, 10))\nfig.suptitle(\"Figure with multiple subplots\", \\\n    fontsize=title_size, fontweight='bold')\nplt.subplots_adjust(wspace=0.2, hspace=0.3)\n\n# [1]\nax = plt.subplot2grid((num_rows, num_cols), (0,0))\nax.plot([1,2,3])\nax.set_title('figure 1')\nax.set_xlabel('x')\nax.set_ylabel('y')\n# [2]\nax = plt.subplot2grid((num_rows, num_cols), (0,1))\nax.plot(np.random.rand(12), np.random.rand(12), 'bo')\nax.set_title('figure 2')\nax.set_xlabel('x')\nax.set_ylabel('y')\n# [3]\nax = plt.subplot2grid((num_rows, num_cols), (1,0))\nax.plot(np.array([1,2,3]), np.array([1,1,1]))\nax.set_title('figure 3')\nax.set_xlabel('x')\nax.set_ylabel('y')\n# [4]\nax = plt.subplot2grid((num_rows, num_cols), (1,1))\nax.plot(np.linspace(1,12,12), np.random.rand(12), 'r^')\nax.set_title('figure 4')\nax.set_xlabel('x')\nax.set_ylabel('y')\n# [5]\nax = plt.subplot2grid((num_rows, num_cols), (2,0))\nax.plot([1,2,1],':')\nax.set_title('figure 5')\nax.set_xlabel('x')\nax.set_ylabel('y')\n# [6]\nax = plt.subplot2grid((num_rows, num_cols), (2,1))\nax.plot(np.linspace(1,12,12), np.random.rand(12), 'k-x')\nax.set_title('figure 6')\nax.set_xlabel('x')\nax.set_ylabel('y')\n\nplt.show()"
+  },
+  {
+    "objectID": "Slides_Plot.html#d-graphs",
+    "href": "Slides_Plot.html#d-graphs",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.4 3D-Graphs",
+    "text": "4.4 3D-Graphs\nFinally, we can also plot 3-D graphs in Python. The function we would like to plot is\n\\[f(x,y) = 3.0 \\frac{y^2}{2.0} + x - \\frac{\\sqrt{x \\times y}}{5.0}.\\]\nWe start by defining an x-grid and a y-grid vector. We then evaluate the function at these values.\n\nfrom mpl_toolkits.mplot3d import Axes3D\n\n# Define x and y grid vectors\nxv = np.arange(1, 10, 1)\nyv = np.arange(1, 10, 1)\nn = len(xv)\n\n# Evaluation function at grid values\nzv = 3 * yv**2 /2 + xv - np.sqrt(xv*yv) /5\n\n# Use x,y,z as coordinates for points in 3D space\nfig = plt.figure(figsize=(8, 10))\nax = Axes3D(fig)\nax.plot(xv, yv, zv, zdir='z', label='parametric curve')\nax.set_title('Function in 2 variables')\nax.set_xlabel('x')\nax.set_ylabel('y')\nax.set_zlabel('f(x,y)')\nplt.show()\n\n/tmp/ipykernel_11734/1944529585.py:13: MatplotlibDeprecationWarning:\n\nAxes3D(fig) adding itself to the figure is deprecated since 3.4. Pass the keyword argument auto_add_to_figure=False and use fig.add_axes(ax) to suppress this warning. The default value of auto_add_to_figure will change to False in mpl3.5 and True values will no longer work in 3.6.  This is consistent with other Axes classes.\n\n\n\n\n\n\nThe problem with this approach is that the function gets only evaluated at the 45-degree line, that is at points (x=1, y=1), (x=2, y=2), …, (x=10, y=10). This is not really what we had in mind.\nIn order to plot the entire “surface” of the function \\(f(x,y)\\) we need to specify value pairs of x and y over the entire gridspace of the x/y plane. We use the command meshgrid in order to accomplish this. We then evaluate the function \\(f(x,y)\\) for each point on this “meshgrid” which results in a surface plot of the function.\n\nfrom mpl_toolkits.mplot3d import Axes3D\n\nfig = plt.figure(figsize=(8, 10))\nax = plt.gca(projection='3d')\n\n# Define grids in x and y dimension\nxv = np.arange(1, 10, 1)\nyv = np.arange(1, 10, 1)\n\n# Span meshgrid over entire x/y plane\nX, Y = np.meshgrid(xv, yv)\n\n# Evaluate function at each point in the x/y plane\nZ = 3.0 * Y**2.0 /2.0 + X - np.sqrt(X*Y) /5.0\n\n# Plot the result\nsurf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap = plt.cm.jet, \\\nlinewidth=0, antialiased=False)\nax.set_title('Function in 2 variables')\nax.set_xlabel('x')\nax.set_ylabel('y')\nax.set_zlabel('f(x,y)')\nplt.show()\n\n/tmp/ipykernel_11734/4058265909.py:4: MatplotlibDeprecationWarning:\n\nCalling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot()."
+  },
+  {
+    "objectID": "Slides_Plot.html#d-utility-function-graphs",
+    "href": "Slides_Plot.html#d-utility-function-graphs",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.5 3D-Utility Function Graphs",
+    "text": "4.5 3D-Utility Function Graphs\nWe first start with some definitions of the consumption and leisure grid. We then evaluate the utility at all the consumption-leisure combination points.\n\ntitleSize = 26\nlegendSize = 16\nlabelSize = 18\ntickSize = 16\n\n# Define grids in x and y dimension\nlv = np.linspace(0.0, 1.05, 20)\ncv = np.linspace(0.0, 1.05, 20)\n\n# Span meshgrid over entire x/y plane\nL,C = np.meshgrid(lv, cv)\n\n# Evaluate function at each point in the x/y plane\nU = np.sqrt(L) + np.sqrt(C)\n\nWe can now plot the utility function. We plot it first as Wire-Frame graph.\n\n# Plot the result\nfig = plt.figure(figsize=(7, 7))\nax = Axes3D(fig)\nax.plot_wireframe(L,C, U, rstride=1, cstride=1)\nax.set_title(r'Utility Function: $U(c,l)=\\sqrt{c}+\\sqrt{l}$', fontsize=titleSize)\nax.set_xlabel('l', fontsize=labelSize)\nax.set_ylabel('c', fontsize=labelSize)\nax.set_zlabel('U(c,l)', fontsize=labelSize)\nax.set_xlim([0,1])\nax.set_ylim([0,1])\nax.view_init(elev=25., azim=225)\nplt.show()\n\n/tmp/ipykernel_11734/1432048687.py:3: MatplotlibDeprecationWarning:\n\nAxes3D(fig) adding itself to the figure is deprecated since 3.4. Pass the keyword argument auto_add_to_figure=False and use fig.add_axes(ax) to suppress this warning. The default value of auto_add_to_figure will change to False in mpl3.5 and True values will no longer work in 3.6.  This is consistent with other Axes classes.\n\n\n\n\n\n\nWe can also fill in the graph a bit more using the plot_surface command.\n\n# Plot the result\nfig = plt.figure(figsize=(7, 7))\nax = Axes3D(fig)\nax.plot_surface(L,C, U, rstride=1, cstride=1, cmap = plt.cm.jet, \\\n                linewidth=0, antialiased=False)\nax.set_title(r'Utility Function: $U(c,l)=\\sqrt{c}+\\sqrt{l}$', fontsize=titleSize)\nax.set_xlabel('l', fontsize=labelSize)\nax.set_ylabel('c', fontsize=labelSize)\nax.set_zlabel('U(c,l)', fontsize=labelSize)\nax.set_xlim([0,1])\nax.set_ylim([0,1])\nax.view_init(elev=25., azim=225)\nplt.show()\n\n/tmp/ipykernel_11734/3673948533.py:3: MatplotlibDeprecationWarning:\n\nAxes3D(fig) adding itself to the figure is deprecated since 3.4. Pass the keyword argument auto_add_to_figure=False and use fig.add_axes(ax) to suppress this warning. The default value of auto_add_to_figure will change to False in mpl3.5 and True values will no longer work in 3.6.  This is consistent with other Axes classes.\n\n\n\n\n\n\nWe next plot some of the indifference curves into the utility “mountain”.\n\nfig = plt.figure(figsize=(7, 7))\nax = Axes3D(fig)\nax.contour(L,C, U, linewidths=3)\nax.view_init(elev=25., azim=225)\nax.set_title(r'Indifference Curves: $U(c,l)=\\sqrt{c}+\\sqrt{l}$', fontsize=titleSize)\nax.set_xlabel('l', fontsize=labelSize)\nax.set_xlim([0,1])\nax.set_ylim([0,1])\nax.set_ylabel('c', fontsize=labelSize)\nax.set_zlabel('U(c,l)', fontsize=labelSize)\nplt.show()\n\n/tmp/ipykernel_11734/2602835627.py:2: MatplotlibDeprecationWarning:\n\nAxes3D(fig) adding itself to the figure is deprecated since 3.4. Pass the keyword argument auto_add_to_figure=False and use fig.add_axes(ax) to suppress this warning. The default value of auto_add_to_figure will change to False in mpl3.5 and True values will no longer work in 3.6.  This is consistent with other Axes classes.\n\n\n\n\n\n\nWe next show the 2-dimensional representation of the indifference curves.\n\nfig, ax = plt.subplots(figsize=(7, 7))\nCS=ax.contour(L,C, U, linewidths=3)\nax.set_title(r'Indifference Curves: $U(c,l)=\\sqrt{c}+\\sqrt{l}$', fontsize=titleSize)\nax.set_xlabel('l', fontsize=labelSize)\nax.set_ylabel('c', fontsize=labelSize)\nax.set_xlim([0,1])\nax.set_ylim([0,1])\nax.clabel(CS, inline=1, fontsize=14)\nplt.show()"
+  },
+  {
+    "objectID": "Slides_Plot.html#key-concepts-and-summary",
+    "href": "Slides_Plot.html#key-concepts-and-summary",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.6 Key Concepts and Summary",
+    "text": "4.6 Key Concepts and Summary\n\n\n\n\n\n\nNote\n\n\n\n\nA vector is a list of numbers.\nThe plot command needs two vectors that hold the coordinates of points you would like to plot\nUse titles and label the axes in your plots."
+  },
+  {
+    "objectID": "Slides_Plot.html#self-check-questions",
+    "href": "Slides_Plot.html#self-check-questions",
+    "title": "4  Plotting using matplotlib",
+    "section": "4.7 Self-Check Questions",
+    "text": "4.7 Self-Check Questions"
+  }
+]
