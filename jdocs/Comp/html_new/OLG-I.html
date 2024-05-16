@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Computational Economics - 22&nbsp; A Simple OLG Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./OLG-II.html" rel="next">
+<link href="./Optimization-2-Cake.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Root.html"><strong>OPTIMIZATION TECHNIQUES</strong></a></li><li class="breadcrumb-item"><a href="./OLG-I.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">A Simple OLG Model</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computational Economics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>INTRODUCTION</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./CourseAdministration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Administration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./FirstSteps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First Steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DataStructures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Programming Techniques</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Debugging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Vectors and Matrices</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting using <code>matplotlib</code></span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>ADVANCED TECHNIQUES</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Object Oriented Programming</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text"><strong>DATA ANALYSIS</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Working with Data I: Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Working with Data II: Statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Working with Data III: Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./WebData.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Working with Data from the Web I</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./WebData-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Working with Data from the Web II</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RegularExpressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Regular Expressions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Random.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Random Numbers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Random2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Random Numbers II: An Infectious Disease Simulation</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text"><strong>OPTIMIZATION TECHNIQUES</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Root Finding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Optimization-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Optimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Optimization-2-Cake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Constrained Optimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OLG-I.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">A Simple OLG Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OLG-II.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">An OLG Model with Labor-Leisure Choice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Growth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Growth Models</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text"><strong>ASSIGNMENTS</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Homework Assignments</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text"><strong>HOMEWORK ASSIGNMENTS</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Basics/Homework/Homework_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Homework: First Steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Loop/Homework/Homework_Loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Homework: Branching and Looping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Arrays/Homework/Homework_Arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Homework: Vectors and matrices</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Plot/Homework/Homework_Plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Homework: Plotting vectors and functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Functions/Homework/Homework_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Homework: Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Data/Homework/Homework_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Homework: Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_OOP/Homework/Homework_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Homework: Object Oriented Programming (OOP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Random/Homework/Homework_Random.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Homework: Random Numbers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Root/Homework/Homework_Root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Homework: Root finding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lecture_Optimization/Homework/Homework_Optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Homework: Optimization</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#formal-definition-of-the-model" id="toc-formal-definition-of-the-model" class="nav-link active" data-scroll-target="#formal-definition-of-the-model"><span class="header-section-number">22.1</span> Formal Definition of the Model</a></li>
+  <li><a href="#equilibrium-definition" id="toc-equilibrium-definition" class="nav-link" data-scroll-target="#equilibrium-definition"><span class="header-section-number">22.2</span> Equilibrium Definition</a></li>
+  <li><a href="#functional-forms-and-solutions" id="toc-functional-forms-and-solutions" class="nav-link" data-scroll-target="#functional-forms-and-solutions"><span class="header-section-number">22.3</span> Functional Forms and Solutions</a></li>
+  <li><a href="#method-1-substituting-everything" id="toc-method-1-substituting-everything" class="nav-link" data-scroll-target="#method-1-substituting-everything"><span class="header-section-number">22.4</span> Method 1: Substituting Everything</a></li>
+  <li><a href="#method-2-gauss-seidl-algorithm" id="toc-method-2-gauss-seidl-algorithm" class="nav-link" data-scroll-target="#method-2-gauss-seidl-algorithm"><span class="header-section-number">22.5</span> Method 2: Gauss-Seidl Algorithm</a></li>
+  <li><a href="#tax-policy-simulation" id="toc-tax-policy-simulation" class="nav-link" data-scroll-target="#tax-policy-simulation"><span class="header-section-number">22.6</span> Tax Policy Simulation</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Root.html"><strong>OPTIMIZATION TECHNIQUES</strong></a></li><li class="breadcrumb-item"><a href="./OLG-I.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">A Simple OLG Model</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">22</span>&nbsp; <span class="chapter-title">A Simple OLG Model</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!--# A Simple OLG Model {{{1--><div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Intro to Overlapping Generations Models</li>
+<li>Equilibrium Definition</li>
+<li>Method 1: Substitution</li>
+<li>Method 2: Gauss-Seidl Algorithm</li>
+</ul>
+</div>
+</div>
+<p>OLG stands for overlapping generations. This model allows for the interactions of young and old individuals within the setting of a dynamic general equilibrium model where prices adjust so that demand equal supply equations.</p>
+<p>The model has the following components:</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Household Preferences</li>
+<li>Firm (Production) Technology</li>
+<li>Government</li>
+<li>Equilibrium</li>
+</ol>
+</blockquote>
+<!--## Formal Definition of the Model {{{2-->
+<section id="formal-definition-of-the-model" class="level2" data-number="22.1"><h2 data-number="22.1" class="anchored" data-anchor-id="formal-definition-of-the-model">
+<span class="header-section-number">22.1</span> Formal Definition of the Model</h2>
+<p><strong>Preferences</strong></p>
+<ul>
+<li>Agents live for 2 periods: young and old</li>
+<li>There are <span class="math inline">\(N_y\)</span> young households and <span class="math inline">\(N_o\)</span> old households</li>
+<li>They value consumption when young <span class="math inline">\(c_y\)</span> and consumption when old <span class="math inline">\(c_o\)</span>
+</li>
+<li>Their preferences are given via utility functions: <span class="math inline">\(u_t(c_t)\)</span>
+</li>
+<li>Individuals have a time preference parameter (often referred to as time discount factor) <span class="math inline">\(\beta\)</span>
+</li>
+<li>Their life-time utility is:</li>
+</ul>
+<p><span class="math display">\[V(c_y, c_o) = u(c_y) + \beta \times u(c_o)\]</span></p>
+<p><strong>Technology</strong></p>
+<ul>
+<li>Firms produce output <span class="math inline">\(Y\)</span> using input capital <span class="math inline">\(K\)</span> and labor <span class="math inline">\(L\)</span>:</li>
+</ul>
+<p><span class="math display">\[Y = F(K,L) = A \times K^{\alpha} \times L^{(1-\alpha)}\]</span></p>
+<ul>
+<li>
+<p>Firms maximize profits:</p>
+<p><span class="math display">\[\max_{K,L} \{F(K,L) - w \times L - q \times K \}\]</span></p>
+</li>
+</ul>
+<p>This equation represents revenue minus the cost of production.</p>
+<blockquote class="blockquote">
+<ul>
+<li>Revenue in dollars is <span class="math inline">\(\$1 \times F(K,L)\)</span> where the <span class="math inline">\(\$1\)</span> is the normalized price of the consumption good.</li>
+<li>The cost of production is the wage cost and the capital rental cost where <span class="math inline">\(w\)</span> are wages and <span class="math inline">\(q\)</span> is the factor price (or rental rate) of capital</li>
+</ul>
+</blockquote>
+<p><strong>Government</strong></p>
+<ul>
+<li><p>The government collects taxes on labor <span class="math inline">\(\tau_L\)</span> and capital interest <span class="math inline">\(\tau_K\)</span></p></li>
+<li>
+<p>The government pays for gov't consumption <span class="math inline">\(G\)</span> and transfers to households <span class="math inline">\(T_y\)</span> and <span class="math inline">\(T_o\)</span></p>
+<p><span class="math display">\[G + T_y + T_o =  \tau_L \times w \times L + \tau_K \times r \times K\]</span></p>
+</li>
+</ul>
+<p><strong>Household problem</strong></p>
+<ul>
+<li>
+<p>HHs maximize <span class="math inline">\(V(c_y,c_o)\)</span> subject to their budget constraint in each period</p>
+<p><span class="math display">\[\max_{c_y, c_o, s}  \{ u(c_y) + \beta \times u(c_o) \}\]</span><span class="math display">\[s.t.\]</span><span class="math display">\[c_y + s = (1-\tau_L) w + t_y\]</span><span class="math display">\[c_o = R \times s + t_o\]</span></p>
+</li>
+</ul>
+<p>where <span class="math inline">\(R = (1 +(1-\tau_K) \times r)\)</span> is the after tax gross interest rate.</p>
+<!--## Equilibrium Definition {{{2-->
+</section><section id="equilibrium-definition" class="level2" data-number="22.2"><h2 data-number="22.2" class="anchored" data-anchor-id="equilibrium-definition">
+<span class="header-section-number">22.2</span> Equilibrium Definition</h2>
+<p>The definition of the competitive equilibrium is:</p>
+<ul>
+<li>
+<p>Given sequences of</p>
+<blockquote class="blockquote">
+<ul>
+<li>prices <span class="math inline">\(\left\{w_t, R_t \right\}\)</span>
+</li>
+<li>government policies <span class="math inline">\(\left\{\tau_K, \tau_{L} \right\}\)</span> a
+<ul>
+<li>competitive equilibrium is defined as an allocation of:</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>sequences of <span class="math inline">\(\left\{c_{y,t},c_{o,t},s_t\right\}\)</span> so that</p>
+<blockquote class="blockquote">
+<ul>
+<li><p>the HH max problem is solved</p></li>
+<li><p>the firm maximization problem is solved, so that</p></li>
+<li><p>the gov't budget constraint clears</p></li>
+<li>
+<p>Markets clear:</p>
+<blockquote class="blockquote">
+<ul>
+<li><span class="math inline">\(K=S = N_y * s^*\)</span></li>
+<li><span class="math inline">\(ARC: C + S +G = Y + (1-\delta) K\)</span></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<!--## Functional Forms and Solutions {{{2--></section><section id="functional-forms-and-solutions" class="level2" data-number="22.3"><h2 data-number="22.3" class="anchored" data-anchor-id="functional-forms-and-solutions">
+<span class="header-section-number">22.3</span> Functional Forms and Solutions</h2>
+<ul>
+<li>Preferences are given as: <span class="math inline">\(u(c_y) = \ln(c_y)\)</span> and <span class="math inline">\(u(c_o)=\ln(c_o)\)</span>
+</li>
+<li>We can either set up a Lagrangian with two constraints or simply substitute consumption out of the utilities using the BC.</li>
+<li>We follow the second approach, since the form of the utility functions guarantees interior solutions</li>
+<li>Therefore we don't have to worry about corner solutions a la Kuhn-Tucker</li>
+</ul>
+<p><strong>Step 1: Substitute the budget set into preferences</strong></p>
+<blockquote class="blockquote">
+<p><span class="math display">\[max_s \ln( (1-\tau_L)w + t_y - s)  + \beta  \ln(R s + t_o)\]</span></p>
+<ul>
+<li>This is now a function in 1 choice variable <span class="math inline">\(s\)</span>
+</li>
+<li>Derive this function w.r.t. <span class="math inline">\(s\)</span>
+</li>
+</ul>
+<p><span class="math display">\[\frac{\partial V}{\partial s}: \frac{1}{ (1-\tau_L)w + t_y - s} =
+\frac{\beta R}{R  s + t_o}\]</span></p>
+</blockquote>
+<p><strong>Step 2: Solve for optimal household savings</strong> <span class="math inline">\(s^*\)</span>**</p>
+<blockquote class="blockquote">
+<p><span class="math display">\[s^* = \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</span></p>
+<ul>
+<li>In equilibrium household savings equals the capital stock: <span class="math inline">\(S = K\)</span>
+</li>
+<li>Aggregate capital stock is therefore: <span class="math inline">\(K = S = N_y \times s^*\)</span>
+</li>
+<li>Given parameter <span class="math inline">\(\beta\)</span>, gov't policies <span class="math inline">\(\tau_K, \tau_L, t_y, t_o\)</span>
+</li>
+<li>Measures of young and old agents <span class="math inline">\(N_y, N_o\)</span> we can now solve for a steady state equilibrium</li>
+<li>The solution is represented by the following equation system</li>
+</ul>
+</blockquote>
+<p><strong>Step 3: Solve the firm problem for demands of labor and capital</strong></p>
+<blockquote class="blockquote">
+<p><span class="math display">\[\max_{K,L} \{F(K,L) - w \times L - q \times K \}\]</span></p>
+<ul>
+<li>
+<p>Derive w.r.t. <span class="math inline">\(L\)</span> and <span class="math inline">\(K\)</span> and get:</p>
+<blockquote class="blockquote">
+<ul>
+<li><span class="math inline">\(q = F_K\)</span></li>
+<li><span class="math inline">\(w = F_L\)</span></li>
+</ul>
+</blockquote>
+<p>which given the Cobb-Douglas form of the production function (<span class="math inline">\(Y = F(K,L) =
+A \times K^{\alpha} \times L^{1-\alpha}\)</span>) is:</p>
+<blockquote class="blockquote">
+<ul>
+<li><span class="math inline">\(q = \alpha \times A \times K^{\alpha-1} \times L^{(1-\alpha)} = \alpha \times Y/K\)</span></li>
+<li><span class="math inline">\(w =  (1-\alpha) \times A \times K^{\alpha} \times * L^{(1-\alpha-1)} = (1-\alpha) \times Y/L\)</span></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>From the equilibrium conditions we also know that households receive an effective return on lending their capital to the firms of</p>
+<blockquote class="blockquote">
+<ul>
+<li>
+<span class="math inline">\(r = q - \delta\)</span> is the interest rate</li>
+</ul>
+</blockquote>
+<p>as capital also depreciates when it is lent to firms for production. From this return (or interest) the government wants its share as well, so that the after tax interest rate for the household in the household problem above is</p>
+<blockquote class="blockquote">
+<ul>
+<li>
+<span class="math inline">\(R = (1 +(1-\tau_K)(q - \delta))\)</span> is the after tax gross interest rate</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>Step 4: Equation system</strong></p>
+<blockquote class="blockquote">
+<ul>
+<li>Assume <span class="math inline">\(L=1\)</span> we have the following unknowns: <span class="math inline">\(K,Y,R,w,q\)</span> and the following equation.</li>
+<li>A solution exists if the number of unknowns is equal to the number of equations!</li>
+</ul>
+<p><span class="math display">\[K=N_y s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</span></p>
+<p><span class="math display">\[\alpha \times Y/K = q\]</span></p>
+<p><span class="math display">\[(1-\alpha) \times Y/L = w\]</span></p>
+<p><span class="math display">\[Y = A \times K^{\alpha} L^{(1-\alpha)}\]</span></p>
+<p><span class="math display">\[R = (1 + (1-\tau_K)(q - \delta))\]</span></p>
+<ul>
+<li>We will try to reduce the equation system into as few equations as possible, ideally into one non-linear equation that we can then solve with a <code>Newton Algorithm</code>
+</li>
+<li>For starters we assume that government is completely exogenous.</li>
+</ul>
+</blockquote>
+<!--## Method 1: Substituting Everything {{{2-->
+</section><section id="method-1-substituting-everything" class="level2" data-number="22.4"><h2 data-number="22.4" class="anchored" data-anchor-id="method-1-substituting-everything">
+<span class="header-section-number">22.4</span> Method 1: Substituting Everything</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that <span class="math inline">\(L=1\)</span> because household time endowments are <span class="math inline">\(l=1\)</span> and we have <span class="math inline">\(L = N_y \times l\)</span> and <span class="math inline">\(N_y\)</span> is also normalized to be one.</p>
+</div>
+</div>
+<ul>
+<li>
+<p>Substitute <span class="math inline">\(Y\)</span> out of the system of equations and get</p>
+<p><span class="math display">\[q(K) = \alpha \times \frac{A \times  K^{\alpha} L^{(1-\alpha)}}{K}\]</span></p>
+<p><span class="math display">\[w(K) = (1-\alpha) \times \frac{A \times  K^{\alpha} L^{(1-\alpha)}}{L}\]</span></p>
+</li>
+<li>
+<p>After using <span class="math inline">\(q(K)\)</span> in the expression for <span class="math inline">\(R\)</span> above and some simplifications we get two expressions for prices <span class="math inline">\(w\)</span> and <span class="math inline">\(R\)</span>:</p>
+<p><span class="math display">\[w = (1-\alpha) \times A \times K^{\alpha}\]</span><span class="math display">\[R = 1 + (1-\tau_K)(\alpha \times A \times K^{\alpha-1} - \delta)\]</span></p>
+</li>
+<li>
+<p>We have now effectively reduced the equation system of 5 equations in 5 unknown variables into a 3 equations system with only 3 unknown variables <span class="math inline">\(K,w,q\)</span>:</p>
+<p><span class="math display">\[K = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</span><span class="math display">\[w = (1-\alpha) \times A \times K^{\alpha}\]</span><span class="math display">\[R = 1 + (1-\tau_K)(\alpha \times A \times K^{\alpha-1} - \delta)\]</span></p>
+</li>
+<li><p>We further substitute <span class="math inline">\(w(K)\)</span> and <span class="math inline">\(R(K)\)</span> into <span class="math inline">\(K\)</span>-equation and now have one equation in one unknown <span class="math inline">\(K\)</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a non-linear equation in <span class="math inline">\(K\)</span> that can be solved with a root-finding algorithm!</p>
+<p><span class="math display">\[K= N_y \frac{\beta (1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))
+((1-\tau_L)((1-\alpha) A K^{\alpha}) + t_y) - t_o}
+{(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</span></p>
+<p>Define the following function <span class="math inline">\(F(K)\)</span></p>
+<p><span class="math display">\[F(K) = -K + N_y \frac{\beta (1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))
+((1-\tau_L)((1-\alpha) A K^{\alpha}) + t_y) - t_o}
+{(1+\beta)(1 + (1-\tau_K)(\alpha A K^{\alpha-1} - \delta))}\]</span></p>
+<p>and search for the <span class="math inline">\(K\)</span> so that this function is <span class="math inline">\(F(K) = 0\)</span>.</p>
+</div>
+</div>
+<p><strong>Model Parameters</strong></p>
+<ul>
+<li>In order to find the root of this function we first have to set the parameters of the model.</li>
+<li>Model parameters: <span class="math inline">\(N_y=N_o=1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(A=1\)</span>, <span class="math inline">\(\beta = 0.9\)</span>, <span class="math inline">\(\delta=0.1\)</span>
+</li>
+<li>We assumed that government was exogenous, so here are some government parameters: <span class="math inline">\(\tau_L=0.2\)</span>, <span class="math inline">\(\tau_K=0.15\)</span>, <span class="math inline">\(T_y=T_o=t_y=t_o=0\)</span>
+</li>
+<li>Solve for <span class="math inline">\(K^*\)</span> and then back out <span class="math inline">\(q^*(K^*),w^*(K^*),R^*(K^*), Y^*(K^*)\)</span> which are all functions of <span class="math inline">\(K^*\)</span>
+</li>
+</ul>
+<p><strong>Aggregate resource constraint (ARC)</strong></p>
+<ul>
+<li>
+<p>Aggregate consumption is:</p>
+<p><span class="math display">\[C = N_y \times c_y + N_o \times c_o\]</span></p>
+</li>
+<li>
+<p>Aggregate government consumption is:</p>
+<p><span class="math display">\[G = \tau_L \times w \times L + \tau_K \times r \times K - N_y \times t_y - N_o \times t_o\]</span></p>
+</li>
+<li><p>The aggregate resource constraint (ARC) or goods market clearing condition is: <span class="math display">\[C + N_y \times s + G = Y + (1-\delta)K\]</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>While the ARC is not part of the solution algorithm directly, it is good practice to always check whether the ARC holds!</li>
+<li>If it doesn't, there's something wrong with your solution!</li>
+</ul>
+</div>
+</div>
+<p><strong>Python Program 1</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time            <span class="co"># Imports system time module to time your script</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.close(<span class="st">'all'</span>)  <span class="co"># close all open figures</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Root finding</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set parameter values</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>N_y     <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>N_o     <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>alpha   <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>A       <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>beta    <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>delta   <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>tau_L   <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>tau_K   <span class="op">=</span> <span class="fl">0.15</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>t_y     <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>t_o     <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>L       <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Root finding</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Find x so that f(x) = 0</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function of capital K so that f_func(K) = 0</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_func(K):</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="op">-</span> K <span class="op">+</span> N_y<span class="op">\</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>((beta<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>(<span class="dv">1</span><span class="op">-</span>tau_K)<span class="op">*</span>(alpha<span class="op">*</span>A<span class="op">*</span>K<span class="op">**</span>(alpha<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span> delta))<span class="op">*</span> <span class="op">\</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">1</span><span class="op">-</span>tau_L)<span class="op">*</span>((<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span>A<span class="op">*</span>K<span class="op">**</span>alpha) <span class="op">+</span> t_y) <span class="op">-</span> t_o) <span class="op">\</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">/</span>((<span class="dv">1</span><span class="op">+</span>beta)<span class="op">*</span>(<span class="fl">1.</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>tau_K)<span class="op">*</span>(alpha<span class="op">*</span>A<span class="op">*</span>K<span class="op">**</span>(alpha<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span> delta))))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the function to see whether it has a root-point</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>Kmin <span class="op">=</span> <span class="fl">0.0001</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>Kmax <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Span grid with gridpoints between Kmin and Kmax</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Kv <span class="op">=</span> np.linspace(Kmin, Kmax, <span class="dv">200</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Output vector prefilled with zeros</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>fKv <span class="op">=</span> np.zeros(<span class="bu">len</span>(Kv),<span class="bu">float</span>) <span class="co"># define column vector</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,K <span class="kw">in</span> <span class="bu">enumerate</span>(Kv):</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    fKv[i] <span class="op">=</span> f_func(K)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#print("fK=", fK)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load required libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># -----------------------------------------------</span></span>
+<span><span class="co"># Root finding</span></span>
+<span><span class="co"># -----------------------------------------------</span></span>
+<span></span>
+<span><span class="co"># Set parameter values</span></span>
+<span><span class="va">N_y</span> <span class="op">&lt;-</span> <span class="fl">1.0</span></span>
+<span><span class="va">N_o</span> <span class="op">&lt;-</span> <span class="fl">1.0</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">0.9</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">tau_L</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span>
+<span><span class="va">tau_K</span> <span class="op">&lt;-</span> <span class="fl">0.15</span></span>
+<span><span class="va">t_y</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">t_o</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">L</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="co"># -------------------------------------------------------------</span></span>
+<span><span class="co"># Method 1: Root finding</span></span>
+<span><span class="co"># -------------------------------------------------------------</span></span>
+<span><span class="co"># Find x so that f(x) = 0</span></span>
+<span></span>
+<span><span class="co"># Define function of capital K so that f_func(K) = 0</span></span>
+<span><span class="va">f_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">K</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">s</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="va">K</span> <span class="op">+</span> <span class="va">N_y</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="va">beta</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_K</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">K</span><span class="op">^</span><span class="op">(</span><span class="va">alpha</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="va">delta</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span></span>
+<span>        <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">K</span><span class="op">^</span><span class="va">alpha</span><span class="op">)</span> <span class="op">+</span> <span class="va">t_y</span><span class="op">)</span> <span class="op">-</span> <span class="va">t_o</span><span class="op">)</span> <span class="op">/</span></span>
+<span>        <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_K</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">K</span><span class="op">^</span><span class="op">(</span><span class="va">alpha</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="va">delta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Plot the function to see whether it has a root-point</span></span>
+<span><span class="va">Kmin</span> <span class="op">&lt;-</span> <span class="fl">0.0001</span></span>
+<span><span class="va">Kmax</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
+<span></span>
+<span><span class="co"># Create a grid of gridpoints between Kmin and Kmax</span></span>
+<span><span class="va">Kv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">Kmin</span>, <span class="va">Kmax</span>, length <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Initialize a vector with zeros</span></span>
+<span><span class="va">fKv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">Kv</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">Kv</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">fKv</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">f_func</span><span class="op">(</span><span class="va">Kv</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Let us plot this function now for different values of capital <span class="math inline">\(K\)</span> to see where the root of this function is:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax.plot(Kv, fKv)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot horizontal line at zero in red</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ax.plot(Kv, np.zeros(<span class="bu">len</span>(Kv)), <span class="st">'r'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Capital'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><a href="OLG-I_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="OLG-I_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a data frame for plotting</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>K <span class="op">=</span> <span class="va">Kv</span>, fK <span class="op">=</span> <span class="va">fKv</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the function</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">K</span>, y <span class="op">=</span> <span class="va">fK</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Function for Root Finding"</span>, x <span class="op">=</span> <span class="st">"K"</span>, y <span class="op">=</span> <span class="st">"f(K)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><a href="OLG-I_files/figure-html/unnamed-chunk-5-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="OLG-I_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>From the graph we see that optimal capital is roughly around 0.15. We next use the <span class="title-ref"><code>fsolve</code></span> root finding algorithm from the <span class="title-ref"><code>scipy.optimize</code></span> library.</p>
+<p>Go back to the chapter on root finding and review the various root finding algorithms such as <strong>Newton-Raphson</strong>, <strong>Secant Method</strong>, <strong>Bracketing</strong> as well as the built in <span class="title-ref"><code>root</code></span> and <span class="title-ref"><code>fsolve</code></span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> fsolve</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use built in 'fsolve'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" "</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------- Fsolve ------------"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>k_guess <span class="op">=</span> <span class="dv">2</span>  <span class="co"># our starting guess</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>solutionK <span class="op">=</span> fsolve(f_func, k_guess) <span class="co"># starting from K = 2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Kstar is a numpy array which does not print well</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We therefore change it into a 'pure' number</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can use the print format to create a nice</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># looking output</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Kstar <span class="op">=</span> solutionK[<span class="dv">0</span>]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>Ystar <span class="op">=</span> A<span class="op">*</span>Kstar<span class="op">**</span>alpha<span class="op">*</span>L<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>alpha)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>qstar <span class="op">=</span> alpha<span class="op">*</span>A<span class="op">*</span>Kstar<span class="op">**</span>(alpha<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>rstar <span class="op">=</span> qstar <span class="op">-</span> delta</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>Rstar <span class="op">=</span> <span class="fl">1.</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>tau_K)<span class="op">*</span>(qstar <span class="op">-</span> delta)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>wstar <span class="op">=</span> (<span class="fl">1.</span><span class="op">-</span>alpha)<span class="op">*</span>A<span class="op">*</span>Kstar<span class="op">**</span>alpha</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Household values</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>sstar <span class="op">=</span> Kstar<span class="op">/</span>N_y</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>cystar<span class="op">=</span> (<span class="fl">1.</span><span class="op">-</span>tau_L)<span class="op">*</span>wstar <span class="op">+</span> t_y <span class="op">-</span> sstar</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>costar<span class="op">=</span> Rstar<span class="op">*</span>sstar <span class="op">+</span> t_o</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>Gstar <span class="op">=</span> N_y<span class="op">*</span>tau_L<span class="op">*</span>wstar <span class="op">+</span> N_o<span class="op">*</span>tau_K<span class="op">*</span>rstar<span class="op">*</span>sstar</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate consumption</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>Cstar <span class="op">=</span> N_y<span class="op">*</span>cystar <span class="op">+</span> N_o<span class="op">*</span>costar</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>ARC <span class="op">=</span> Ystar <span class="op">-</span> delta<span class="op">*</span>Kstar <span class="op">-</span> Cstar <span class="op">-</span> Gstar</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Root finding "</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"K* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Kstar))</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Y* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Ystar))</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"q* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(qstar))</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"r* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(rstar))</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Rstar))</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"w* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(wstar))</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ARC = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(ARC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 
+ -------------- Fsolve ------------
+ -------------------------------------
+ Root finding 
+ -------------------------------------
+K* = 0.1502
+Y* = 0.5662
+q* = 1.1310
+r* = 1.1310
+R* = 1.9613
+w* = 0.3964
+ -------------------------------------
+ARC = 0.0000</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rootSolve</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Initial guess</span></span>
+<span><span class="va">init_low</span> <span class="op">=</span> <span class="fl">0.1</span></span>
+<span><span class="va">init_high</span> <span class="op">=</span> <span class="fl">0.6</span></span>
+<span></span>
+<span><span class="co"># Find the root</span></span>
+<span><span class="va">solutionK</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/uniroot.html">uniroot</a></span><span class="op">(</span><span class="va">f_func</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">init_low</span>, <span class="va">init_high</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract the roots</span></span>
+<span><span class="va">Kstar</span> <span class="op">&lt;-</span> <span class="va">solutionK</span><span class="op">$</span><span class="va">root</span></span>
+<span></span>
+<span><span class="va">Ystar</span> <span class="op">&lt;-</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kstar</span><span class="op">^</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">L</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span><span class="va">qstar</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kstar</span><span class="op">^</span><span class="op">(</span><span class="va">alpha</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">rstar</span> <span class="op">&lt;-</span> <span class="va">qstar</span> <span class="op">-</span> <span class="va">delta</span></span>
+<span><span class="va">Rstar</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_K</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">qstar</span> <span class="op">-</span> <span class="va">delta</span><span class="op">)</span></span>
+<span><span class="va">wstar</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kstar</span><span class="op">^</span><span class="va">alpha</span></span>
+<span></span>
+<span><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span><span class="co"># ----------------------------------------------</span></span>
+<span><span class="co"># Household values</span></span>
+<span><span class="va">sstar</span> <span class="op">&lt;-</span> <span class="va">Kstar</span> <span class="op">/</span> <span class="va">N_y</span></span>
+<span><span class="va">cystar</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="va">wstar</span> <span class="op">+</span> <span class="va">t_y</span> <span class="op">-</span> <span class="va">sstar</span></span>
+<span><span class="va">costar</span> <span class="op">&lt;-</span> <span class="va">Rstar</span> <span class="op">*</span> <span class="va">sstar</span> <span class="op">+</span> <span class="va">t_o</span></span>
+<span></span>
+<span><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span><span class="va">Gstar</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">tau_L</span> <span class="op">*</span> <span class="va">wstar</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">tau_K</span> <span class="op">*</span> <span class="va">rstar</span> <span class="op">*</span> <span class="va">sstar</span></span>
+<span></span>
+<span><span class="co"># Aggregate consumption</span></span>
+<span><span class="va">Cstar</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">cystar</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">costar</span></span>
+<span></span>
+<span><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span><span class="va">ARC</span> <span class="op">&lt;-</span> <span class="va">Ystar</span> <span class="op">-</span> <span class="va">delta</span> <span class="op">*</span> <span class="va">Kstar</span> <span class="op">-</span> <span class="va">Cstar</span> <span class="op">-</span> <span class="va">Gstar</span></span>
+<span></span>
+<span><span class="co"># Print results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" Root finding\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"K* = %6.4f\n"</span>, <span class="va">Kstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Y* = %6.4f\n"</span>, <span class="va">Ystar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"q* = %6.4f\n"</span>, <span class="va">qstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"r* = %6.4f\n"</span>, <span class="va">rstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"R* = %6.4f\n"</span>, <span class="va">Rstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"w* = %6.4f\n"</span>, <span class="va">wstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ARC = %6.4f\n"</span>, <span class="va">ARC</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Root finding
+ -------------------------------------
+K* = 0.1502
+Y* = 0.5662
+q* = 1.1310
+r* = 1.1310
+R* = 1.9613
+w* = 0.3964
+ -------------------------------------
+ARC = 0.0000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--## Method 2: Gauss-Seidl Algorithm {{{2-->
+</section><section id="method-2-gauss-seidl-algorithm" class="level2" data-number="22.5"><h2 data-number="22.5" class="anchored" data-anchor-id="method-2-gauss-seidl-algorithm">
+<span class="header-section-number">22.5</span> Method 2: Gauss-Seidl Algorithm</h2>
+<p>Instead of substituting and solving for one equation in one unknown we can use the so called <strong>Gauss-Seidl</strong> method.</p>
+<p>It is an iterative method where we guess a starting value for capital. We then use this starting guess as if it was a solution to the model and back out all the other endogenous variables.</p>
+<p>We then use these "solutions" of endogenous variables and calculate the new capital that would be the result of household savings and consumption decisions.</p>
+<p>We then update our first guess of capital K, with this new and better guess and do it all over again.</p>
+<p>We repeat this until the guess of capital at the beginning of the algorithm is roughly the same as the calculated capital at the end of the algorithm. This is a referred to as a fixed point (once Knew = Kold).</p>
+<p>Here is the algorithm in more detail:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gauss-Seidl Algorithm
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<dl>
+<dt>Step 1.</dt>
+<dd>
+<p>For this method we start with a guess for capital <span class="math inline">\(K_{old}\)</span></p>
+</dd>
+<dt>Step 2.</dt>
+<dd>
+<p>We then solve for prices <span class="math inline">\(w,R,q\)</span></p>
+<p><span class="math display">\[w = (1-\alpha)*K_{old}^{\alpha} \times L^{-\alpha}\]</span></p>
+<p><span class="math display">\[q = \alpha \times A \times K_{old}^{(\alpha-1)} \times L^{1-\alpha}\]</span></p>
+<p><span class="math display">\[R = 1 + (1-\tau_K)(q - \delta)\]</span></p>
+</dd>
+<dt>Step 3.</dt>
+<dd>
+<p>We then solve for optimal household savings <span class="math inline">\(s^*\)</span></p>
+<p><span class="math display">\[s^* = N_y \frac{\beta R ((1-\tau_L)w + t_y) - t_o}{(1+\beta)R}\]</span></p>
+</dd>
+<dt>Step 4.</dt>
+<dd>
+<p>We then aggregate over all households and get the new capital stock <span class="math inline">\(K_{new}\)</span></p>
+<p><span class="math display">\[K_{new}=N_y \times s^*\]</span></p>
+</dd>
+<dt>Step 5.</dt>
+<dd>
+<p>Calculate error and check whether algorithm has converged</p>
+<p><span class="math display">\[\text{error} = (K_{old} - K_{new})/K_{old}\]</span></p>
+</dd>
+<dt>Step 6.</dt>
+<dd>
+<p>We then update capital <span class="math inline">\(K_{old} = \lambda * K_{new} + (1-\lambda) *
+K_{old}\)</span> and repeat from Step 2 above. Note that <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span> is an updating parameter.</p>
+</dd>
+</dl>
+</div>
+</div>
+<p><strong>Python Program 2</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guess capital stock</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>glamda  <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># updating parameter</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Kold    <span class="op">=</span> <span class="fl">0.4</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>jerror  <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">iter</span>    <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="bu">iter</span><span class="op">&lt;</span><span class="dv">200</span>) <span class="kw">or</span> (jerror<span class="op">&gt;</span><span class="fl">0.001</span>):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Solve for prices using expressions for w(K) and q(K)</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> alpha<span class="op">*</span>A<span class="op">*</span>Kold<span class="op">**</span>(alpha<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span>A<span class="op">*</span>Kold<span class="op">**</span>alpha</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>tau_K)<span class="op">*</span>(q <span class="op">-</span> delta)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    Knew <span class="op">=</span> N_y<span class="op">*</span> (beta<span class="op">*</span>R<span class="op">*</span>((<span class="dv">1</span><span class="op">-</span>tau_L)<span class="op">*</span>w <span class="op">+</span> t_y) <span class="op">-</span> t_o)<span class="op">/</span>((<span class="dv">1</span><span class="op">+</span>beta)<span class="op">*</span>R)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate discrepancy between old and new capital stock</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    jerror <span class="op">=</span> <span class="bu">abs</span>(Kold<span class="op">-</span>Knew)<span class="op">/</span>Kold</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update capital stock</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    Kold    <span class="op">=</span> glamda<span class="op">*</span>Knew <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>glamda)<span class="op">*</span>Kold</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">iter</span> <span class="op">=</span> <span class="bu">iter</span> <span class="op">+</span><span class="dv">1</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>Kstar <span class="op">=</span> Knew</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>Ystar <span class="op">=</span> A<span class="op">*</span>Kstar<span class="op">**</span>alpha<span class="op">*</span>L<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>alpha)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>wstar <span class="op">=</span> w</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>qstar <span class="op">=</span> q</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>Rstar <span class="op">=</span> R</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>rstar <span class="op">=</span> qstar <span class="op">-</span> delta</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Household values</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>sstar <span class="op">=</span> Kstar<span class="op">/</span>N_y</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>cystar<span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>tau_L)<span class="op">*</span>wstar <span class="op">+</span> t_y <span class="op">-</span> sstar</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>costar<span class="op">=</span> Rstar<span class="op">*</span>sstar <span class="op">+</span> t_o</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>Gstar <span class="op">=</span> N_y<span class="op">*</span>tau_L<span class="op">*</span>wstar <span class="op">+</span> N_o<span class="op">*</span>tau_K<span class="op">*</span>rstar<span class="op">*</span>sstar</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate consumption</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>Cstar <span class="op">=</span> N_y<span class="op">*</span>cystar <span class="op">+</span> N_o<span class="op">*</span>costar</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>ARC <span class="op">=</span> Ystar <span class="op">-</span> delta<span class="op">*</span>Kstar <span class="op">-</span> Cstar <span class="op">-</span> Gstar</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Gauss-Seidl "</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nr. of iterations = "</span> <span class="op">+</span><span class="bu">str</span>(<span class="bu">iter</span>))</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"K* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Kstar))</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Y* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Ystar))</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"q* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(qstar))</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"r* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(rstar))</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Rstar))</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"w* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(wstar))</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ARC = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(ARC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl 
+ -------------------------------------
+Nr. of iterations = 200
+K* = 0.1502
+Y* = 0.5662
+q* = 1.1310
+r* = 1.1310
+R* = 1.9613
+w* = 0.3964
+ -------------------------------------
+ARC = 0.0000</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Guess capital stock</span></span>
+<span><span class="va">glamda</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>   <span class="co"># updating parameter</span></span>
+<span><span class="va">Kold</span> <span class="op">&lt;-</span> <span class="fl">0.4</span></span>
+<span><span class="va">jerror</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">iter</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="va">iter</span> <span class="op">&lt;</span> <span class="fl">200</span> <span class="op">||</span> <span class="va">jerror</span> <span class="op">&gt;</span> <span class="fl">0.001</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Solve for prices using expressions for w(K) and q(K)</span></span>
+<span>    <span class="va">q</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kold</span><span class="op">^</span><span class="op">(</span><span class="va">alpha</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">w</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kold</span><span class="op">^</span><span class="va">alpha</span></span>
+<span>    <span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_K</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">q</span> <span class="op">-</span> <span class="va">delta</span><span class="op">)</span></span>
+<span>    <span class="va">Knew</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="op">(</span><span class="va">beta</span> <span class="op">*</span> <span class="va">R</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="va">w</span> <span class="op">+</span> <span class="va">t_y</span><span class="op">)</span> <span class="op">-</span> <span class="va">t_o</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">)</span> <span class="op">*</span> <span class="va">R</span><span class="op">)</span></span>
+<span>    <span class="co"># Calculate the discrepancy between old and new capital stock</span></span>
+<span>    <span class="va">jerror</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">Kold</span> <span class="op">-</span> <span class="va">Knew</span><span class="op">)</span> <span class="op">/</span> <span class="va">Kold</span></span>
+<span>    <span class="co"># Update capital stock</span></span>
+<span>    <span class="va">Kold</span> <span class="op">&lt;-</span> <span class="va">glamda</span> <span class="op">*</span> <span class="va">Knew</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">glamda</span><span class="op">)</span> <span class="op">*</span> <span class="va">Kold</span></span>
+<span>    <span class="va">iter</span> <span class="op">&lt;-</span> <span class="va">iter</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Print results</span></span>
+<span><span class="va">Kstar</span> <span class="op">&lt;-</span> <span class="va">Knew</span></span>
+<span><span class="va">Ystar</span> <span class="op">&lt;-</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kstar</span><span class="op">^</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">L</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span><span class="va">wstar</span> <span class="op">&lt;-</span> <span class="va">w</span></span>
+<span><span class="va">qstar</span> <span class="op">&lt;-</span> <span class="va">q</span></span>
+<span><span class="va">Rstar</span> <span class="op">&lt;-</span> <span class="va">R</span></span>
+<span><span class="va">rstar</span> <span class="op">&lt;-</span> <span class="va">qstar</span> <span class="op">-</span> <span class="va">delta</span></span>
+<span></span>
+<span><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span><span class="co"># Household values</span></span>
+<span><span class="va">sstar</span> <span class="op">&lt;-</span> <span class="va">Kstar</span> <span class="op">/</span> <span class="va">N_y</span></span>
+<span><span class="va">cystar</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="va">wstar</span> <span class="op">+</span> <span class="va">t_y</span> <span class="op">-</span> <span class="va">sstar</span></span>
+<span><span class="va">costar</span> <span class="op">&lt;-</span> <span class="va">Rstar</span> <span class="op">*</span> <span class="va">sstar</span> <span class="op">+</span> <span class="va">t_o</span></span>
+<span></span>
+<span><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span><span class="va">Gstar</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">tau_L</span> <span class="op">*</span> <span class="va">wstar</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">tau_K</span> <span class="op">*</span> <span class="va">rstar</span> <span class="op">*</span> <span class="va">sstar</span></span>
+<span></span>
+<span><span class="co"># Aggregate consumption</span></span>
+<span><span class="va">Cstar</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">cystar</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">costar</span></span>
+<span></span>
+<span><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span><span class="va">ARC</span> <span class="op">&lt;-</span> <span class="va">Ystar</span> <span class="op">-</span> <span class="va">delta</span> <span class="op">*</span> <span class="va">Kstar</span> <span class="op">-</span> <span class="va">Cstar</span> <span class="op">-</span> <span class="va">Gstar</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" Gauss-Seidl \n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Nr. of iterations = "</span>, <span class="va">iter</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"K* = "</span>, <span class="va">Kstar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Y* = "</span>, <span class="va">Ystar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"q* = "</span>, <span class="va">qstar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"r* = "</span>, <span class="va">rstar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"R* = "</span>, <span class="va">Rstar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"w* = "</span>, <span class="va">wstar</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"ARC = "</span>, <span class="va">ARC</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl 
+ -------------------------------------
+Nr. of iterations =  200 
+K* =  0.1502039 
+Y* =  0.566245 
+q* =  1.130952 
+r* =  1.130952 
+R* =  1.96131 
+w* =  0.3963715 
+ -------------------------------------
+ARC =  6.938894e-17 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--## Tax Policy Simulation {{{2-->
+</section><section id="tax-policy-simulation" class="level2" data-number="22.6"><h2 data-number="22.6" class="anchored" data-anchor-id="tax-policy-simulation">
+<span class="header-section-number">22.6</span> Tax Policy Simulation</h2>
+<p>Now that we have solved the model for an equilibrium we can use this model to conduct policy simulations such as a tax policy reform. When we first solved this model the tax on labor was <span class="math inline">\(\tau_L = 20\%\)</span>. What would happen if the government were to raise the labor tax to <span class="math inline">\(\tau_L = 25\%\)</span>?</p>
+<p>Well, just plug it in and resolve the model. Then compare the prior GDP (i.e.&nbsp;variable Y) to the new GDP.</p>
+<ul>
+<li>What has happened?</li>
+<li>Make before and after graphs (maybe a bar chart that shows Y, C, K before and after the tax increase) and discuss your results.</li>
+</ul>
+<p><strong>Python Program 3: Gauss-Seidl after tax increase from 20 to 25%</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set new parameter values</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>N_y     <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>N_o     <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>alpha   <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>A       <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>beta    <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>delta   <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>tau_L   <span class="op">=</span> <span class="fl">0.25</span>  <span class="co">#Old value: tau_L   = 0.2</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>tau_K   <span class="op">=</span> <span class="fl">0.15</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>t_y     <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>t_o     <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>L       <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Guess capital stock</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>glamda  <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># updating parameter</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>Kold    <span class="op">=</span> <span class="fl">0.4</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>jerror  <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="bu">iter</span>    <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="bu">iter</span><span class="op">&lt;</span><span class="dv">200</span>) <span class="kw">or</span> (jerror<span class="op">&gt;</span><span class="fl">0.001</span>):</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Solve for prices using expressions for w(K) and q(K)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> alpha<span class="op">*</span>A<span class="op">*</span>Kold<span class="op">**</span>(alpha<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span>A<span class="op">*</span>Kold<span class="op">**</span>alpha</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>tau_K)<span class="op">*</span>(q <span class="op">-</span> delta)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    Knew <span class="op">=</span> N_y<span class="op">*</span> (beta<span class="op">*</span>R<span class="op">*</span>((<span class="dv">1</span><span class="op">-</span>tau_L)<span class="op">*</span>w <span class="op">+</span> t_y) <span class="op">-</span> t_o)<span class="op">/</span>((<span class="dv">1</span><span class="op">+</span>beta)<span class="op">*</span>R)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate discrepancy between old and new capital stock</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    jerror <span class="op">=</span> <span class="bu">abs</span>(Kold<span class="op">-</span>Knew)<span class="op">/</span>Kold</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update capital stock</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    Kold    <span class="op">=</span> glamda<span class="op">*</span>Knew <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>glamda)<span class="op">*</span>Kold</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">iter</span> <span class="op">=</span> <span class="bu">iter</span> <span class="op">+</span><span class="dv">1</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>Kstar_new <span class="op">=</span> Knew</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>Ystar_new  <span class="op">=</span> A<span class="op">*</span>Kstar_new<span class="op">**</span>alpha<span class="op">*</span>L<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>alpha)</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>wstar_new  <span class="op">=</span> w</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>qstar_new  <span class="op">=</span> q</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>Rstar_new  <span class="op">=</span> R</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>rstar_new  <span class="op">=</span> q <span class="op">-</span> delta</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Household values</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>sstar_new <span class="op">=</span> Kstar_new<span class="op">/</span>N_y</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>cystar_new<span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>tau_L)<span class="op">*</span>wstar_new <span class="op">+</span> t_y <span class="op">-</span> sstar_new</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>costar_new<span class="op">=</span> Rstar_new<span class="op">*</span>sstar_new <span class="op">+</span> t_o</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>Gstar_new <span class="op">=</span> N_y<span class="op">*</span>tau_L<span class="op">*</span>wstar_new <span class="op">+</span> N_o<span class="op">*</span>tau_K<span class="op">*</span>rstar_new<span class="op">*</span>sstar_new</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate consumption</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>Cstar_new <span class="op">=</span> N_y<span class="op">*</span>cystar_new <span class="op">+</span> N_o<span class="op">*</span>costar_new</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>ARC_new <span class="op">=</span> Ystar_new <span class="op">-</span> delta<span class="op">*</span>Kstar_new <span class="op">-</span> Cstar_new <span class="op">-</span> Gstar_new</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Gauss-Seidl: tau_L = 25% "</span>)</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nr. of iterations = "</span> <span class="op">+</span><span class="bu">str</span>(<span class="bu">iter</span>))</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"K* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Kstar_new))</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Y* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Ystar_new))</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"q* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(qstar_new))</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"r* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(rstar_new))</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Rstar_new))</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"w* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(wstar_new))</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ARC = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(ARC_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl: tau_L = 25% 
+ -------------------------------------
+Nr. of iterations = 200
+K* = 0.1370
+Y* = 0.5508
+q* = 1.2063
+r* = 1.2063
+R* = 2.0254
+w* = 0.3856
+ -------------------------------------
+ARC = 0.0000</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set new parameter values</span></span>
+<span><span class="va">N_y</span> <span class="op">&lt;-</span> <span class="fl">1.0</span></span>
+<span><span class="va">N_o</span> <span class="op">&lt;-</span> <span class="fl">1.0</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">0.9</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">tau_L</span> <span class="op">&lt;-</span> <span class="fl">0.25</span>  <span class="co"># Old value: tau_L &lt;- 0.2</span></span>
+<span><span class="va">tau_K</span> <span class="op">&lt;-</span> <span class="fl">0.15</span></span>
+<span><span class="va">t_y</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">t_o</span> <span class="op">&lt;-</span> <span class="fl">0.0</span></span>
+<span><span class="va">L</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="co"># Guess capital stock</span></span>
+<span><span class="va">glamda</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>   <span class="co"># updating parameter</span></span>
+<span><span class="va">Kold</span> <span class="op">&lt;-</span> <span class="fl">0.4</span></span>
+<span><span class="va">jerror</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">iter</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="va">iter</span> <span class="op">&lt;</span> <span class="fl">200</span> <span class="op">||</span> <span class="va">jerror</span> <span class="op">&gt;</span> <span class="fl">0.001</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Solve for prices using expressions for w(K) and q(K)</span></span>
+<span>    <span class="va">q</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kold</span><span class="op">^</span><span class="op">(</span><span class="va">alpha</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">w</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">*</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kold</span><span class="op">^</span><span class="va">alpha</span></span>
+<span>    <span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_K</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">q</span> <span class="op">-</span> <span class="va">delta</span><span class="op">)</span></span>
+<span>    <span class="va">Knew</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="op">(</span><span class="va">beta</span> <span class="op">*</span> <span class="va">R</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="va">w</span> <span class="op">+</span> <span class="va">t_y</span><span class="op">)</span> <span class="op">-</span> <span class="va">t_o</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">)</span> <span class="op">*</span> <span class="va">R</span><span class="op">)</span></span>
+<span>    <span class="co"># Calculate the discrepancy between old and new capital stock</span></span>
+<span>    <span class="va">jerror</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">Kold</span> <span class="op">-</span> <span class="va">Knew</span><span class="op">)</span> <span class="op">/</span> <span class="va">Kold</span></span>
+<span>    <span class="co"># Update capital stock</span></span>
+<span>    <span class="va">Kold</span> <span class="op">&lt;-</span> <span class="va">glamda</span> <span class="op">*</span> <span class="va">Knew</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">glamda</span><span class="op">)</span> <span class="op">*</span> <span class="va">Kold</span></span>
+<span>    <span class="va">iter</span> <span class="op">&lt;-</span> <span class="va">iter</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Print results</span></span>
+<span><span class="va">Kstar_new</span> <span class="op">&lt;-</span> <span class="va">Knew</span></span>
+<span><span class="va">Ystar_new</span> <span class="op">&lt;-</span> <span class="va">A</span> <span class="op">*</span> <span class="va">Kstar_new</span><span class="op">^</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">L</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span><span class="va">wstar_new</span> <span class="op">&lt;-</span> <span class="va">w</span></span>
+<span><span class="va">qstar_new</span> <span class="op">&lt;-</span> <span class="va">q</span></span>
+<span><span class="va">Rstar_new</span> <span class="op">&lt;-</span> <span class="va">R</span></span>
+<span><span class="va">rstar_new</span> <span class="op">&lt;-</span> <span class="va">q</span> <span class="op">-</span> <span class="va">delta</span></span>
+<span></span>
+<span><span class="co"># Back out solutions for the rest of the Economy</span></span>
+<span><span class="co"># Household values</span></span>
+<span><span class="va">sstar_new</span> <span class="op">&lt;-</span> <span class="va">Kstar_new</span> <span class="op">/</span> <span class="va">N_y</span></span>
+<span><span class="va">cystar_new</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">tau_L</span><span class="op">)</span> <span class="op">*</span> <span class="va">wstar_new</span> <span class="op">+</span> <span class="va">t_y</span> <span class="op">-</span> <span class="va">sstar_new</span></span>
+<span><span class="va">costar_new</span> <span class="op">&lt;-</span> <span class="va">Rstar_new</span> <span class="op">*</span> <span class="va">sstar_new</span> <span class="op">+</span> <span class="va">t_o</span></span>
+<span></span>
+<span><span class="co"># Residual gov't consumption, thrown in the ocean</span></span>
+<span><span class="va">Gstar_new</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">tau_L</span> <span class="op">*</span> <span class="va">wstar_new</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">tau_K</span> <span class="op">*</span> <span class="va">rstar_new</span> <span class="op">*</span> <span class="va">sstar_new</span></span>
+<span></span>
+<span><span class="co"># Aggregate consumption</span></span>
+<span><span class="va">Cstar_new</span> <span class="op">&lt;-</span> <span class="va">N_y</span> <span class="op">*</span> <span class="va">cystar_new</span> <span class="op">+</span> <span class="va">N_o</span> <span class="op">*</span> <span class="va">costar_new</span></span>
+<span></span>
+<span><span class="co"># Check the goods market condition or Aggregate resource constraint</span></span>
+<span><span class="va">ARC_new</span> <span class="op">&lt;-</span> <span class="va">Ystar_new</span> <span class="op">-</span> <span class="va">delta</span> <span class="op">*</span> <span class="va">Kstar_new</span> <span class="op">-</span> <span class="va">Cstar_new</span> <span class="op">-</span> <span class="va">Gstar_new</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" Gauss-Seidl: tau_L = 25% \n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Nr. of iterations = "</span>, <span class="va">iter</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"K* = "</span>, <span class="va">Kstar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Y* = "</span>, <span class="va">Ystar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"q* = "</span>, <span class="va">qstar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"r* = "</span>, <span class="va">rstar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"R* = "</span>, <span class="va">Rstar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"w* = "</span>, <span class="va">wstar_new</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"ARC = "</span>, <span class="va">ARC_new</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl: tau_L = 25% 
+ -------------------------------------
+Nr. of iterations =  200 
+K* =  0.1369747 
+Y* =  0.5507977 
+q* =  1.206349 
+r* =  1.206349 
+R* =  2.025397 
+w* =  0.3855584 
+ -------------------------------------
+ARC =  8.326673e-17 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Discuss results.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Python Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">R Code</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Gauss-Seidl: tau_L = 20% "</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"K* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Kstar))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Y* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Ystar))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"q* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(qstar))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"r* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(rstar))</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Rstar))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"w* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(wstar))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Gauss-Seidl: tau_L = 25% "</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"K* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Kstar_new))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Y* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Ystar_new))</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"q* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(qstar_new))</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"r* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(rstar_new))</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(Rstar_new))</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"w* = </span><span class="sc">{:6.4f}</span><span class="st">"</span>.<span class="bu">format</span>(wstar_new))</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" -------------------------------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl: tau_L = 20% 
+ -------------------------------------
+K* = 0.1502
+Y* = 0.5662
+q* = 1.1310
+r* = 1.1310
+R* = 1.9613
+w* = 0.3964
+ -------------------------------------
+ Gauss-Seidl: tau_L = 25% 
+ -------------------------------------
+K* = 0.1370
+Y* = 0.5508
+q* = 1.2063
+r* = 1.2063
+R* = 2.0254
+w* = 0.3856
+ -------------------------------------</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" Gauss-Seidl: tau_L = 20%\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"K* = %6.4f\n"</span>, <span class="va">Kstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Y* = %6.4f\n"</span>, <span class="va">Ystar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"q* = %6.4f\n"</span>, <span class="va">qstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"r* = %6.4f\n"</span>, <span class="va">rstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"R* = %6.4f\n"</span>, <span class="va">Rstar</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"w* = %6.4f\n"</span>, <span class="va">wstar</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" Gauss-Seidl: tau_L = 25%\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"K* = %6.4f\n"</span>, <span class="va">Kstar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Y* = %6.4f\n"</span>, <span class="va">Ystar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"q* = %6.4f\n"</span>, <span class="va">qstar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"r* = %6.4f\n"</span>, <span class="va">rstar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"R* = %6.4f\n"</span>, <span class="va">Rstar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"w* = %6.4f\n"</span>, <span class="va">wstar_new</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" -------------------------------------\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> -------------------------------------
+ Gauss-Seidl: tau_L = 20%
+ -------------------------------------
+K* = 0.1502
+Y* = 0.5662
+q* = 1.1310
+r* = 1.1310
+R* = 1.9613
+w* = 0.3964
+ -------------------------------------
+ Gauss-Seidl: tau_L = 25%
+ -------------------------------------
+K* = 0.1370
+Y* = 0.5508
+q* = 1.2063
+r* = 1.2063
+R* = 2.0254
+w* = 0.3856
+ -------------------------------------</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Introduction of OLG model</li>
+<li>Deriving optimality conditions in OLG model</li>
+<li>Introduction of non-linear function solution</li>
+<li>Gauss-Seidl Algorithm</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-check questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use either one of the models above and resolve the model for <span class="math inline">\(\tau_K = [0.01, 0.02, 0.03,...,0.1]\)</span> and track output, agggregate capital and tax revenue from capital as well as labor taxes.</li>
+<li>Repeat the exercise above but this time change the labor tax parameter and resolve the model for <span class="math inline">\(\tau_L = [0.11, 0.12, 0.13,...,0.2]\)</span>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./Optimization-2-Cake.html" class="pagination-link" aria-label="Constrained Optimization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Constrained Optimization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./OLG-II.html" class="pagination-link" aria-label="An OLG Model with Labor-Leisure Choice">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">An OLG Model with Labor-Leisure Choice</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Juergen Jung</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://juejung.github.io/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+</body></html>
