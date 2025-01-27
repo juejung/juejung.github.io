@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Macroeconomic Principles - 2&nbsp; The Use of Mathematics in Principles of Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch3-ChoiceScarcity.html" rel="next">
+<link href="./ch1-Introduction.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch1-Introduction.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./ch2-MathIntro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Use of Mathematics in Principles of Economics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Macroeconomic Principles</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Introduction</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch1-Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch2-MathIntro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Use of Mathematics in Principles of Economics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch3-ChoiceScarcity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Choice in a World of Scarcity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch4-DemandSupply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Demand and Supply</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Macroeconomics Part I</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch5-MacroPerspective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Intro Macro Perspective</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch6-InternationalTrade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">International Trade</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch7-Unemployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unemployment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch8-Inflation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inflation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch9-ProductionFullEmployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Production Technology and Full Employment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10-Growth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Economic Growth</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11-AggregateDemandAggregateSupply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Aggregate Demand and Aggregate Supply</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text"><strong>Macroeconomics Part II</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12-FiscalPolicy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Government Budgets and Fiscal Policy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13-IncomeExpenditureModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Income Expenditure Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14-InvestmentsFinancialMarkets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Investments and Financial Markets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15-MoneyAndBanking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Money and Banking</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16-MonetaryPolicy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Monetary Policy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17-ShortToLong.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">From Short-Run to Long-Run</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-PythonBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">First Steps in Python</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#algebraic-models" id="toc-algebraic-models" class="nav-link active" data-scroll-target="#algebraic-models"><span class="header-section-number">2.1</span> Algebraic Models</a>
+  <ul class="collapse">
+  <li><a href="#expressing-equations-graphically" id="toc-expressing-equations-graphically" class="nav-link" data-scroll-target="#expressing-equations-graphically"><span class="header-section-number">2.1.1</span> Expressing Equations Graphically</a></li>
+  <li><a href="#interpreting-the-slope" id="toc-interpreting-the-slope" class="nav-link" data-scroll-target="#interpreting-the-slope"><span class="header-section-number">2.1.2</span> Interpreting the Slope</a></li>
+  <li><a href="#solving-models-with-algebra" id="toc-solving-models-with-algebra" class="nav-link" data-scroll-target="#solving-models-with-algebra"><span class="header-section-number">2.1.3</span> Solving Models with Algebra</a></li>
+  <li><a href="#solving-models-with-graphs" id="toc-solving-models-with-graphs" class="nav-link" data-scroll-target="#solving-models-with-graphs"><span class="header-section-number">2.1.4</span> Solving Models with Graphs</a></li>
+  </ul></li>
+  <li><a href="#growth-rates" id="toc-growth-rates" class="nav-link" data-scroll-target="#growth-rates"><span class="header-section-number">2.2</span> Growth Rates</a></li>
+  <li><a href="#displaying-data-graphically-and-interpreting-the-graph" id="toc-displaying-data-graphically-and-interpreting-the-graph" class="nav-link" data-scroll-target="#displaying-data-graphically-and-interpreting-the-graph"><span class="header-section-number">2.3</span> Displaying Data Graphically and Interpreting the Graph</a>
+  <ul class="collapse">
+  <li><a href="#line-graphs" id="toc-line-graphs" class="nav-link" data-scroll-target="#line-graphs"><span class="header-section-number">2.3.1</span> Line Graphs</a></li>
+  <li><a href="#pie-graphs" id="toc-pie-graphs" class="nav-link" data-scroll-target="#pie-graphs"><span class="header-section-number">2.3.2</span> Pie Graphs</a></li>
+  <li><a href="#bar-graphs" id="toc-bar-graphs" class="nav-link" data-scroll-target="#bar-graphs"><span class="header-section-number">2.3.3</span> Bar Graphs</a></li>
+  <li><a href="#how-graphs-can-be-misleading" id="toc-how-graphs-can-be-misleading" class="nav-link" data-scroll-target="#how-graphs-can-be-misleading"><span class="header-section-number">2.3.4</span> How Graphs Can Be Misleading</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch1-Introduction.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./ch2-MathIntro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Use of Mathematics in Principles of Economics</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Use of Mathematics in Principles of Economics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--The Use of Mathematics in Principles of Economics {{{1-->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What is a function</li>
+<li>How to interpret the equation of a line</li>
+<li>How to manipulate a line</li>
+<li>How to compute and interpret a growth rate</li>
+<li>How to read and manipulate a graph</li>
+</ul>
+</div>
+</div>
+<p>Economics is not math. There is no important concept in this course that cannot be explained without mathematics. That said, math is a tool that can be used to illustrate economic concepts. Remember the saying a picture is worth a thousand words? Instead of a picture, think of a graph. It is the same thing. Economists use models as the primary tool to derive insights about economic issues and problems. Math is one way of working with (or manipulating) economic models.</p>
+<p>There are other ways of representing models, such as text or narrative. But why would you use your fist to bang a nail, if you had a hammer? Math has certain advantages over text. It disciplines your thinking by making you specify exactly what you mean. You can get away with fuzzy thinking in your head, but you cannot when you reduce a model to algebraic equations. At the same time, math also has disadvantages. Mathematical models are necessarily based on simplifying assumptions, so they are not likely to be perfectly realistic. Mathematical models also lack the nuances which can be found in narrative models. The point is that math is one tool, but it is not the only tool or even always the best tool economists can use. So what math will you need for this book? The answer is: little more than high school algebra and graphs. You will need to know:</p>
+<blockquote class="blockquote">
+<ul>
+<li>What a function is</li>
+<li>How to interpret the equation of a line (i.e., slope and intercept)</li>
+<li>How to manipulate a line (i.e., changing the slope or the intercept)</li>
+<li>How to compute and interpret a growth rate (i.e., percentage change)</li>
+<li>How to read and manipulate a graph</li>
+</ul>
+</blockquote>
+<p>In this text, we will use the easiest math possible, and we will introduce it in this appendix. So if you find some math in the book that you cannot follow, come back to this appendix to review. Like most things, math has diminishing returns. A little math ability goes a long way; the more advanced math you bring in, the less additional knowledge that will get you. That said, if you are going to major in economics, you should consider learning a little calculus. It will be worth your while in terms of helping you learn advanced economics more quickly.</p>
+<!--Algebraic Models {{{2-->
+<section id="algebraic-models" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="algebraic-models"><span class="header-section-number">2.1</span> Algebraic Models</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Mathematical function</li>
+</ul>
+</div>
+</div>
+<p>Often economic models (or parts of models) are expressed in terms of mathematical functions. What is a function? A function describes a relationship. Sometimes the relationship is a definition. For example (using words), your professor is Adam Smith. This could be expressed as Professor = Adam Smith. Or Friends = Bob + Shawn + Margaret.</p>
+<p>Often in economics, functions describe cause and effect. The variable on the left-hand side is what is being explained (“the effect”). On the right-hand side is what is doing the explaining (“the causes”). For example, suppose your GPA was determined as follows:</p>
+<p><span class="math display">\[\text{GPA} = 0.25\times\text{combined-SAT}+0.25\times\text{class-attendance}+0.50\times\text{hours-spent-studying}\]</span></p>
+<p>This equation states that your GPA depends on three things: your combined SAT score, your class attendance, and the number of hours you spend studying.</p>
+<p>It also says that study time is twice as important (0.50) as either combined_SAT score (0.25) or class_attendance (0.25). If this relationship is true, how could you raise your GPA? By not skipping class and studying more. Note that you cannot do anything about your SAT score, since if you are in college, you have (presumably) already taken the SATs.</p>
+<p>Of course, economic models express relationships using economic variables, like Budget = money_spent_on_econ_books + money_spent_on_music, assuming that the only things you buy are economics books and music.</p>
+<p>Most of the relationships we use in this course are expressed as linear equations of the form:</p>
+<p><span class="math display">\[y = b + m \times x\]</span></p>
+<section id="expressing-equations-graphically" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="expressing-equations-graphically"><span class="header-section-number">2.1.1</span> Expressing Equations Graphically</h3>
+<p>Graphs are useful for two purposes. The first is to express equations visually, and the second is to display statistics or data. This section will discuss expressing equations visually.</p>
+<p>To a mathematician or an economist, a variable is the name given to a quantity that may assume a range of values. In the equation of a line presented above, x and y are the variables, with x on the horizontal axis and y on the vertical axis, and b and m representing factors that determine the shape of the line. To see how this equation works, consider a numerical example:</p>
+<p><span class="math display">\[y = 9 + 3 \times x\]</span></p>
+<p>In this equation for a specific line, the b term has been set equal to 9 and the m term has been set equal to 3. <a href="#tbl-M1" class="quarto-xref">Table&nbsp;<span>2.1</span></a> shows the values of x and y for this given equation. <a href="#fig-M1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows this equation, and these values, in a graph. To construct the table, just plug in a series of different values for x, and then calculate what value of y results. In <a href="#fig-M1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, these points are plotted and a line is drawn through them.</p>
+<div id="tbl-M1" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-M1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Values for the Slope Intercept Equation
+</figcaption>
+<div aria-describedby="tbl-M1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">x</th>
+<th style="text-align: left;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">27</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-M1" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_010.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="Graphs/MathIntro/CNX_Econ_A01_010.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Slope and the Algebra of Straight Lines. This line graph has x on the horizontal axis and y on the vertical axis. The y-intercept—that is, the point where the line intersects the y-axis—is 9. The slope of the line is 3; that is, there is a rise of 3 on the vertical axis for every increase of 1 on the horizontal axis. The slope is the same all along a straight line.
+</figcaption>
+</figure>
+</div>
+<p>The line graph shows the following approximate points: (0, 9); (1, 12); (2, 15); (3, 18); (4, 21); (5, 24); (6, 27).</p>
+<p>This example illustrates how the b and m terms in an equation for a straight line determine the shape of the line. The b term is called the y-intercept. The reason for this name is that, if x = 0, then the b term will reveal where the line intercepts, or crosses, the y-axis. In this example, the line hits the vertical axis at 9. The m term in the equation for the line is the slope.</p>
+<p>Remember that slope is defined as rise over run; more specifically, the slope of a line from one point to another is the change in the vertical axis divided by the change in the horizontal axis. In this example, each time the x term increases by one (the run), the y term rises by three. Thus, the slope of this line is three. Specifying a y-intercept and a slope—that is, specifying b and m in the equation for a line—will identify a specific line. Although it is rare for real-world data points to arrange themselves as an exact straight line, it often turns out that a straight line can offer a reasonable approximation of actual data.</p>
+</section>
+<section id="interpreting-the-slope" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="interpreting-the-slope"><span class="header-section-number">2.1.2</span> Interpreting the Slope</h3>
+<p>The concept of slope is very useful in economics, because it measures the relationship between two variables. A positive slope means that two variables are positively related; that is, when x increases, so does y, or when x decreases, y decreases also. Graphically, a positive slope means that as a line on the line graph moves from left to right, the line rises. The length-weight relationship, shown in <a href="#fig-M3" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> later in this Appendix, has a positive slope. We will learn in other chapters that price and quantity supplied have a positive relationship; that is, firms will supply more when the price is higher.</p>
+<p>A negative slope means that two variables are negatively related; that is, when x increases, y decreases, or when x decreases, y increases. Graphically, a negative slope means that, as the line on the line graph moves from left to right, the line falls. The altitude-air density relationship, shown in <a href="#fig-M4" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> later in this appendix, has a negative slope. We will learn that price and quantity demanded have a negative relationship; that is, consumers will purchase less when the price is higher.</p>
+<p>A slope of zero means that there is no relationship between x and y. Graphically, the line is flat; that is, zero rise over the run. <a href="#fig-M5" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> of the unemployment rate, shown later in this appendix, illustrates a common pattern of many line graphs: some segments where the slope is positive, other segments where the slope is negative, and still other segments where the slope is close to zero.</p>
+<p>The slope of a straight line between two points can be calculated in numerical terms. To calculate slope, begin by designating one point as the “starting point” and the other point as the “end point” and then calculating the rise over run between these two points. As an example, consider the slope of the air density graph between the points representing an altitude of 4,000 meters and an altitude of 6,000 meters:</p>
+<dl>
+<dt>Rise:</dt>
+<dd>
+<p>Change in variable on vertical axis (end point minus original point)</p>
+<p><span class="math display">\[= 0.100 – 0.307 = –0.207\]</span></p>
+</dd>
+<dt>Run:</dt>
+<dd>
+<p>Change in variable on horizontal axis (end point minus original point)</p>
+<p><span class="math display">\[= 6,000 – 4,000= 2,000\]</span></p>
+</dd>
+</dl>
+<p>Thus, the slope of a straight line between these two points would be that from the altitude of 4,000 meters up to 6,000 meters, the density of the air decreases by approximately 0.1 kilograms/cubic meter for each of the next 1,000 meters.</p>
+<p>Suppose the slope of a line were to increase. Graphically, that means it would get steeper. Suppose the slope of a line were to decrease. Then it would get flatter. These conditions are true whether or not the slope was positive or negative to begin with. A higher positive slope means a steeper upward tilt to the line, while a smaller positive slope means a flatter upward tilt to the line. A negative slope that is larger in absolute value (that is, more negative) means a steeper downward tilt to the line. A slope of zero is a horizontal flat line. A vertical line has an infinite slope.</p>
+<p>Suppose a line has a larger intercept. Graphically, that means it would shift out (or up) from the old origin, parallel to the old line. If a line has a smaller intercept, it would shift in (or down), parallel to the old line.</p>
+</section>
+<section id="solving-models-with-algebra" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="solving-models-with-algebra"><span class="header-section-number">2.1.3</span> Solving Models with Algebra</h3>
+<p>Economists often use models to answer a specific question, like: What will the unemployment rate be if the economy grows at 3% per year? Answering specific questions requires solving the “system” of equations that represent the model.</p>
+<p>Suppose the demand for personal pizzas is given by the following equation:</p>
+<p><span class="math display">\[Q_d = 16 – 2 \times P\]</span></p>
+<p>where <span class="math inline">\(Q_d\)</span> is the amount of personal pizzas consumers want to buy (i.e., quantity demanded), and P is the price of pizzas. Suppose the supply of personal pizzas is:</p>
+<p><span class="math display">\[Q_s = 2 + 5 \times P\]</span></p>
+<p>where <span class="math inline">\(Q_s\)</span> is the amount of pizza producers will supply (i.e., quantity supplied).</p>
+<p>Finally, suppose that the personal pizza market operates where supply equals demand, or</p>
+<p><span class="math display">\[Q_d = Q_s\]</span></p>
+<p>We now have a system of three equations and three unknowns (<span class="math inline">\(Q_d\)</span>, <span class="math inline">\(Q_s\)</span>, and P), which we can solve with algebra:</p>
+<p>Since <span class="math inline">\(Q_d = Q_s\)</span>, we can set the demand and supply equation equal to each other:</p>
+<p><span class="math display">\[Q_d = Q_s\]</span></p>
+<p><span class="math display">\[16 – 2 \times P = 2 + 5 \times P\]</span></p>
+<p>Subtracting 2 from both sides and adding 2P to both sides yields:</p>
+<p><span class="math display">\[16 – 2 \times P – 2 = 2 + 5 \times P – 2\]</span></p>
+<p><span class="math display">\[14 – 2 \times P = 5 \times P\]</span></p>
+<p><span class="math display">\[14 – 2 \times P + 2 \times P = 5 \times P + 2 \times P\]</span></p>
+<p><span class="math display">\[14 = 7 \times P\]</span></p>
+<p><span class="math display">\[P = 2\]</span></p>
+<p>In other words, the price of each personal pizza will be $2. How much will consumers buy?</p>
+<p>Taking the price of $2, and plugging it into the demand equation, we get:</p>
+<p><span class="math display">\[Q_d = 16 – 2 \times P\]</span></p>
+<p><span class="math display">\[Q_d = 16 – 2 \times 2 = 16 – 4 = 12\]</span></p>
+<p>So if the price is $2 each, consumers will purchase 12. How much will producers supply? Taking the price of $2, and plugging it into the supply equation, we get:</p>
+<p><span class="math display">\[Q_s = 2 + 5 \times P\]</span></p>
+<p><span class="math display">\[Q_s = 2 + 5 \times 2 = 2 + 10 = 12\]</span></p>
+<p>So if the price is $2 each, producers will supply 12 personal pizzas. This means we did our math correctly, since <span class="math inline">\(Q_d = Q_s\)</span>.</p>
+</section>
+<section id="solving-models-with-graphs" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="solving-models-with-graphs"><span class="header-section-number">2.1.4</span> Solving Models with Graphs</h3>
+<p>If algebra is not your forte, you can get the same answer by using graphs. Take the equations for <span class="math inline">\(Q_d\)</span> and <span class="math inline">\(Q_s\)</span> and graph them on the same set of axes as shown in <a href="#fig-M2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>.</p>
+<p>Since P is on the vertical axis, it is easiest if you solve each equation for P. The demand curve is then <span class="math inline">\(P = 8 – 0.5 \times Q_d\)</span> and the demand curve is <span class="math inline">\(P = –0.4 + 0.2 \times Q_s\)</span>. Note that the vertical intercepts are 8 and –0.4, and the slopes are –0.5 for demand and 0.2 for supply.</p>
+<p>If you draw the graphs carefully, you will see that where they cross (<span class="math inline">\(Q_s = Q_d\)</span>), the price is $2 and the quantity is 12, just like the algebra predicted.</p>
+<div id="fig-M2" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_024.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="Graphs/MathIntro/CNX_Econ_A01_024.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Supply and Demand Graph. The equations for <span class="math inline">\(Q_d\)</span> and <span class="math inline">\(Q_s\)</span> are displayed graphically by the sloped lines.
+</figcaption>
+</figure>
+</div>
+<p>The graph shows a downward sloping demand curve with endpoints (0, 8) and (16, 0), and an upward sloping supply curve. The demand curve and supply curve intersect at point (12, 2).</p>
+<p>We will use graphs more frequently in this book than algebra, but now you know the math behind the graphs.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Linear models, intercept and slope</li>
+<li>Drawing lines into a x/y coordinate system</li>
+<li>Equilibrium concept: Demand = Supply</li>
+<li>Calculating where 2 lines cross</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Draw this demand <span class="math inline">\(P = 10 - 2.5 \times Q\)</span></li>
+<li>Draw this supply <span class="math inline">\(P = 1 + 0.5 \times Q\)</span></li>
+<li>Calculate the equilibrium point and draw it into a graph</li>
+</ul>
+</div>
+</div>
+</div>
+<!--Growth Rates {{{2-->
+</section>
+</section>
+<section id="growth-rates" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="growth-rates"><span class="header-section-number">2.2</span> Growth Rates</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Growth rates</li>
+<li>Percentage change</li>
+</ul>
+</div>
+</div>
+<p>Growth rates are frequently encountered in real world economics. A growth rate is simply the percentage change in some quantity. It could be your income. It could be a business’s sales. It could be a nation’s GDP. The formula for computing a growth rate is straightforward:</p>
+<p><span class="math display">\[\text{Percentage change} = \frac{\text{Change in quantity}}{\text{Quantity}}\]</span></p>
+<p>Suppose your job pays $10 per hour. Your boss, however, is so impressed with your work that he gives you a $2 per hour raise. The percentage change (or growth rate) in your pay is $2/$10 = 0.20 or 20%.</p>
+<p>To compute the growth rate for data over an extended period of time, for example, the average annual growth in GDP over a decade or more, the denominator is commonly defined a little differently. In the previous example, we defined the quantity as the initial quantity—or the quantity when we started. This is fine for a one-time calculation, but when we compute the growth over and over, it makes more sense to define the quantity as the average quantity over the period in question, which is defined as the quantity halfway between the initial quantity and the next quantity. This is harder to explain in words than to show with an example. Suppose a nation’s GDP was $1 trillion in 2005 and $1.03 trillion in 2006. The growth rate between 2005 and 2006 would be the change in GDP ($1.03 trillion – $1.00 trillion) divided by the average GDP between 2005 and 2006 ($1.03 trillion + $1.00 trillion)/2. In other words:</p>
+<p><span class="math display">\[= \frac{$1.03 \text{ trillion} – $1.00 \text{ trillion}}{($1.03 \text{ trillion} + $1.00 \text{ trillion}) / 2}\]</span></p>
+<p><span class="math display">\[= \frac{0.03}{1.015} = 0.0296 = 2.96\% \text{growth}\]</span></p>
+<p>Note that if we used the first method, the calculation would be ($1.03 trillion – $1.00 trillion) / $1.00 trillion = 3% growth, which is approximately the same as the second, more complicated method. If you need a rough approximation, use the first method. If you need accuracy, use the second method.</p>
+<p>A few things to remember:</p>
+<blockquote class="blockquote">
+<ul>
+<li>A positive growth rate means the quantity is growing.</li>
+<li>A smaller growth rate means the quantity is growing more slowly.</li>
+<li>A larger growth rate means the quantity is growing more quickly.</li>
+<li>A negative growth rate means the quantity is decreasing.</li>
+</ul>
+</blockquote>
+<p>The same change over times yields a smaller growth rate. If you got a $2 raise each year, in the first year the growth rate would be $2/$10 = 20%, as shown above. But in the second year, the growth rate would be $2/$12 = 0.167 or 16.7% growth. In the third year, the same $2 raise would correspond to a $2/$14 = 14.2%.</p>
+<p>The moral of the story is this:</p>
+<blockquote class="blockquote">
+<p>To keep the growth rate the same, the change must increase each period.</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>A growth rate is the percentage change of a variable from period 1 to period 2.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>GDP today is 20 trillion US$. GDP next year is 21 trillion US$. What is the growth rate of GDP in this economy?</li>
+</ul>
+</div>
+</div>
+</div>
+<!--Displaying Data Graphically and Interpreting the Graph {{{2-->
+</section>
+<section id="displaying-data-graphically-and-interpreting-the-graph" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="displaying-data-graphically-and-interpreting-the-graph"><span class="header-section-number">2.3</span> Displaying Data Graphically and Interpreting the Graph</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Line Graphs</li>
+<li>Pie Charts</li>
+<li>Bar Graphs</li>
+</ul>
+</div>
+</div>
+<p>Graphs are also used to display data or evidence. Graphs are a method of presenting numerical patterns. They condense detailed numerical information into a visual form in which relationships and numerical patterns can be seen more easily. For example, which countries have larger or smaller populations? A careful reader could examine a long list of numbers representing the populations of many countries, but with over 200 nations in the world, searching through such a list would take concentration and time. Putting these same numbers on a graph can quickly reveal population patterns. Economists use graphs both for a compact and readable presentation of groups of numbers and for building an intuitive grasp of relationships and connections.</p>
+<p>Three types of graphs are used in this book: line graphs, pie graphs, and bar graphs. Each is discussed below. We also provide warnings about how graphs can be manipulated to alter viewers’ perceptions of the relationships in the data.</p>
+<section id="line-graphs" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="line-graphs"><span class="header-section-number">2.3.1</span> Line Graphs</h3>
+<p>The graphs we have discussed so far are called line graphs, because they show a relationship between two variables: one measured on the horizontal axis and the other measured on the vertical axis.</p>
+<p>Sometimes it is useful to show more than one set of data on the same axes. The data in <a href="#tbl-M2" class="quarto-xref">Table&nbsp;<span>2.2</span></a> is displayed in <a href="#fig-M3" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> which shows the relationship between two variables: length and median weight for American baby boys and girls during the first three years of life. (The median means that half of all babies weigh more than this and half weigh less.)</p>
+<p>The line graph measures length in inches on the horizontal axis and weight in pounds on the vertical axis. For example, point A on <a href="#fig-M3" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> shows that a boy who is 28 inches long will have a median weight of about 19 pounds. One line on the graph shows the length-weight relationship for boys and the other line shows the relationship for girls. This kind of graph is widely used by healthcare providers to check whether a child’s physical development is roughly on track.</p>
+<div id="fig-M3" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_008.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="Graphs/MathIntro/CNX_Econ_A01_008.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: The Length-Weight Relationship for American Boys and Girls. The line graph shows the relationship between height and weight for boys and girls from birth to 3 years. Point A, for example, shows that a boy of 28 inches in height (measured on the horizontal axis) is typically 19 pounds in weight (measured on the vertical axis). These data apply only to children in the first three years of life.
+</figcaption>
+</figure>
+</div>
+<p>The graph shows length (inches) along the x-axis and weight (pounds) along the y-axis. The following points reflect the length-weight ratio of American boys: (20, 8.0), (22, 10.5), (24, 13.5), (26, 16.4), (28, 19), (30, 21.8), (32, 24.3), (34, 27), (36, 9.3), (38, 32). The following points reflect the length-weight ratio of American girls: (20, 7.9), (22, 10.5), (24, 13.2), (26, 16), (28, 18.8), (30, 21.2), (32, 24), (34, 26.2), (36, 28.9), (38, 31.3).</p>
+<div id="tbl-M2" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-M2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Length to Weight Relationship for American Boys and Girls
+</figcaption>
+<div aria-describedby="tbl-M2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<table class="table">
+<caption>Boys from Birth to 36 Months</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Length (inches)</th>
+<th style="text-align: left;">Weight (pounds)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">20.0</td>
+<td style="text-align: left;">8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22.0</td>
+<td style="text-align: left;">10.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">24.0</td>
+<td style="text-align: left;">13.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26.0</td>
+<td style="text-align: left;">16.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">28.0</td>
+<td style="text-align: left;">19.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30.0</td>
+<td style="text-align: left;">21.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32.0</td>
+<td style="text-align: left;">24.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34.0</td>
+<td style="text-align: left;">27.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">36.0</td>
+<td style="text-align: left;">29.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">38.0</td>
+<td style="text-align: left;">32.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<table class="table">
+<caption>Girls from Birth to 36 Months</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Length (inches)</th>
+<th style="text-align: left;">Weight (pounds)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">20.0</td>
+<td style="text-align: left;">7.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22.0</td>
+<td style="text-align: left;">10.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">24.0</td>
+<td style="text-align: left;">13.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26.0</td>
+<td style="text-align: left;">16.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">28.0</td>
+<td style="text-align: left;">18.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30.0</td>
+<td style="text-align: left;">21.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32.0</td>
+<td style="text-align: left;">24.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34.0</td>
+<td style="text-align: left;">26.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">36.0</td>
+<td style="text-align: left;">28.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">38.0</td>
+<td style="text-align: left;">31.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>Not all relationships in economics are linear. Sometimes they are curves. <a href="#fig-M4" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> presents another example of a line graph, representing the data from <a href="#tbl-M3" class="quarto-xref">Table&nbsp;<span>2.3</span></a>. In this case, the line graph shows how thin the air becomes when you climb a mountain. The horizontal axis of the figure shows altitude, measured in meters above sea level. The vertical axis measures the density of the air at each altitude.</p>
+<p>Air density is measured by the weight of the air in a cubic meter of space (that is, a box measuring one meter in height, width, and depth). As the graph shows, air pressure is heaviest at ground level and becomes lighter as you climb. <a href="#fig-M4" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> shows that a cubic meter of air at an altitude of 500 meters weighs approximately one kilogram (about 2.2 pounds). However, as the altitude increases, air density decreases. A cubic meter of air at the top of Mount Everest, at about 8,828 meters, would weigh only 0.023 kilograms. The thin air at high altitudes explains why many mountain climbers need to use oxygen tanks as they reach the top of a mountain.</p>
+<div id="fig-M4" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_009.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="Graphs/MathIntro/CNX_Econ_A01_009.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Altitude Air Density Relationship. This line graph shows the relationship between altitude, measured in meters above sea level, and air density, measured in kilograms of air per cubic meter. As altitude rises, air density declines. The point at the top of Mount Everest has an altitude of approximately 8,828 meters above sea level (the horizontal axis) and air density of 0.023 kilograms per cubic meter (the vertical axis).
+</figcaption>
+</figure>
+</div>
+<p>The graph shows altitude on the x-axis and air density on the y-axis. A downward sloping lines has the end points (0, 1.2) and (8.828, 0.023). End point (8,828, 0.023) represents the top of Mount Everest.</p>
+<div id="tbl-M3" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-M3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Altitude to Air Density Relationship
+</figcaption>
+<div aria-describedby="tbl-M3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Altitude (meters)</th>
+<th style="text-align: left;">Air Density (kg/cubic meters)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1.200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">500</td>
+<td style="text-align: left;">1.093</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,000</td>
+<td style="text-align: left;">0.831</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,500</td>
+<td style="text-align: left;">0.678</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2,000</td>
+<td style="text-align: left;">0.569</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2,500</td>
+<td style="text-align: left;">0.484</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3,000</td>
+<td style="text-align: left;">0.415</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3,500</td>
+<td style="text-align: left;">0.357</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4,000</td>
+<td style="text-align: left;">0.307</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4,500</td>
+<td style="text-align: left;">0.231</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5,000</td>
+<td style="text-align: left;">0.182</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5,500</td>
+<td style="text-align: left;">0.142</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6,000</td>
+<td style="text-align: left;">0.100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6,500</td>
+<td style="text-align: left;">0.085</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7,000</td>
+<td style="text-align: left;">0.066</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7,500</td>
+<td style="text-align: left;">0.051</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8,000</td>
+<td style="text-align: left;">0.041</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8,500</td>
+<td style="text-align: left;">0.025</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9,000</td>
+<td style="text-align: left;">0.022</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9,500</td>
+<td style="text-align: left;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10,000</td>
+<td style="text-align: left;">0.014</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The length-weight relationship and the altitude-air density relationships in these two figures represent averages. If you were to collect actual data on air pressure at different altitudes, the same altitude in different geographic locations will have slightly different air density, depending on factors like how far you are from the equator, local weather conditions, and the humidity in the air. Similarly, in measuring the height and weight of children for the previous line graph, children of a particular height would have a range of different weights, some above average and some below. In the real world, this sort of variation in data is common. The task of a researcher is to organize that data in a way that helps to understand typical patterns. The study of statistics, especially when combined with computer statistics and spreadsheet programs, is a great help in organizing this kind of data, plotting line graphs, and looking for typical underlying relationships. For most economics and social science majors, a statistics course will be required at some point.</p>
+<p>One common line graph is called a time series, in which the horizontal axis shows time and the vertical axis displays another variable. Thus, a time series graph shows how a variable changes over time. <a href="#fig-M5" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> shows the unemployment rate in the United States since 1975, where unemployment is defined as the percentage of adults who want jobs and are looking for a job, but cannot find one.</p>
+<p>The points for the unemployment rate in each year are plotted on the graph, and a line then connects the points, showing how the unemployment rate has moved up and down since 1975. The line graph makes it easy to see, for example, that the highest unemployment rate during this time period was slightly less than 10% in the early 1980s and 2010, while the unemployment rate declined from the early 1990s to the end of the 1990s, before rising and then falling back in the early 2000s, and then rising sharply during the recession from 2008–2009.</p>
+<div id="fig-M5" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econv1-2_AppA_A5.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="Graphs/MathIntro/CNX_Econv1-2_AppA_A5.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: U.S. Unemployment Rate, 1975–2014. This graph provides a quick visual summary of unemployment data. With a graph like this, it is easy to spot the times of high unemployment and of low unemployment.
+</figcaption>
+</figure>
+</div>
+<p>The graph shows unemployment rates since 1970. The highest rates occurred around 1983 and 2010.</p>
+</section>
+<section id="pie-graphs" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="pie-graphs"><span class="header-section-number">2.3.2</span> Pie Graphs</h3>
+<p>A pie graph (sometimes called a pie chart) is used to show how an overall total is divided into parts. A circle represents a group as a whole. The slices of this circular “pie” show the relative sizes of subgroups.</p>
+<p><a href="#fig-M6" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> shows how the U.S. population was divided among children, working age adults, and the elderly in 1970, 2000, and what is projected for 2030. The information is first conveyed with numbers in <a href="#tbl-M4" class="quarto-xref">Table&nbsp;<span>2.4</span></a>, and then in three pie charts.</p>
+<p>The first column of Table shows the total U.S. population for each of the three years. Columns 2–4 categorize the total in terms of age groups—from birth to 18 years, from 19 to 64 years, and 65 years and above. In columns 2–4, the first number shows the actual number of people in each age category, while the number in parentheses shows the percentage of the total population comprised by that age group.</p>
+<div id="tbl-M4" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-M4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: U.S. Age Distribution, 1970, 2000, and 2030 (projected)
+</figcaption>
+<div aria-describedby="tbl-M4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Total Population</th>
+<th>19 and Under</th>
+<th>20–64 years</th>
+<th>Over 65</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1970</td>
+<td>205.0 million</td>
+<td>77.2 (37.6%)</td>
+<td>107.7 (52.5%)</td>
+<td>20.1 (9.8%)</td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>275.4 million</td>
+<td>78.4 (28.5%)</td>
+<td>162.2 (58.9%)</td>
+<td>34.8 (12.6%)</td>
+</tr>
+<tr class="odd">
+<td>2030</td>
+<td>351.1 million</td>
+<td>92.6 (26.4%)</td>
+<td>188.2 (53.6%)</td>
+<td>70.3 (20.0%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-M6" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_020.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-6" data-gallery="quarto-lightbox-gallery-6"><img src="Graphs/MathIntro/CNX_Econ_A01_020.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Pie Graphs of the U.S. Age Distribution (numbers in millions). The three pie graphs illustrate the division of total population into three age groups for the three different years.
+</figcaption>
+</figure>
+</div>
+<p>The image shows three pie graphs representing age distribution in the U.S. Image (a) shows that in 1970, people 19 and under made up 77.2 million or 37.6% of the population; people between ages 20 and 64 made up 107.7 million or 52.5% of the population; and people 65 or older made up 20.1 million or 9.8% of the population. Image (b) shows that in 2000, people 19 and under made up 78.4 million or 28.5% of the population; people between ages 20 and 64 made up 162.2 million or 58.9% of the population; and people 65 or older made up 34.8 million or 12.6% of the population. Image (c) projects that in 2030, people 19 and under will make up 92.6 million or 26.4% of the population; people between ages 20 and 64 made up 188.2 million or 53.6% of the population; and people 65 or older made up 70.3 million or 20% of the population.</p>
+<p>In a pie graph, each slice of the pie represents a share of the total, or a percentage. For example, 50% would be half of the pie and 20% would be one-fifth of the pie. The three pie graphs in <a href="#fig-M6" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> show that the share of the U.S. population 65 and over is growing.</p>
+<p>The pie graphs allow you to get a feel for the relative size of the different age groups from 1970 to 2000 to 2030, without requiring you to slog through the specific numbers and percentages in the table.</p>
+<p>Some common examples of how pie graphs are used include dividing the population into groups by age, income level, ethnicity, religion, occupation; dividing different firms into categories by size, industry, number of employees; and dividing up government spending or taxes into its main categories.</p>
+</section>
+<section id="bar-graphs" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="bar-graphs"><span class="header-section-number">2.3.3</span> Bar Graphs</h3>
+<p>A bar graph uses the height of different bars to compare quantities. <a href="#tbl-M5" class="quarto-xref">Table&nbsp;<span>2.5</span></a> lists the 12 most populous countries in the world. <a href="#fig-M7" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> provides this same data in a bar graph. The height of the bars corresponds to the population of each country. Although you may know that China and India are the most populous countries in the world, seeing how the bars on the graph tower over the other countries helps illustrate the magnitude of the difference between the sizes of national populations.</p>
+<div id="fig-M7" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econv1-2_AppA_A7.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7"><img src="Graphs/MathIntro/CNX_Econv1-2_AppA_A7.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Leading Countries of the World by Population, 2015 (in millions). The graph shows the 12 countries of the world with the largest populations. The height of the bars in the bar graph shows the size of the population for each country.
+</figcaption>
+</figure>
+</div>
+<p>The bar graph shows population (millions) on the y-axis and lists various countries along the x-axis. The approximate population in 2015 for each of these countries is as follows: China = 1,369; India = 1,270; Unite States = 321, Indonesia = 255; Brazil = 204; Pakistan = 190; Bangladesh = 158; Russia = 146; Japan = 127; Mexico = 121; Philippines = 101.</p>
+<p>Leading 12 Countries of the World by Population</p>
+<div id="tbl-M5" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-M5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.5: Population Table
+</figcaption>
+<div aria-describedby="tbl-M5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country</th>
+<th style="text-align: left;">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">China</td>
+<td style="text-align: left;">1,369</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">1,270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U.S.</td>
+<td style="text-align: left;">321</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">255</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brazil</td>
+<td style="text-align: left;">204</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pakistan</td>
+<td style="text-align: left;">190</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nigeria</td>
+<td style="text-align: left;">184</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bangladesh</td>
+<td style="text-align: left;">158</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Russia</td>
+<td style="text-align: left;">146</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Japan</td>
+<td style="text-align: left;">127</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mexico</td>
+<td style="text-align: left;">121</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">101</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Bar graphs can be subdivided in a way that reveals information similar to that we can get from pie charts. <a href="#fig-M8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> offers three bar graphs based on the information from <a href="#fig-M6" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> about the U.S. age distribution in 1970, 2000, and 2030.</p>
+<p><a href="#fig-M8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> (a) shows three bars for each year, representing the total number of persons in each age bracket for each year. <a href="#fig-M8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> (b) shows just one bar for each year, but the different age groups are now shaded inside the bar. In <a href="#fig-M8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> (c), still based on the same data, the vertical axis measures percentages rather than the number of persons.</p>
+<p>In this case, all three bar graphs are the same height, representing 100% of the population, with each bar divided according to the percentage of population in each age group. It is sometimes easier for a reader to run his or her eyes across several bar graphs, comparing the shaded areas, rather than trying to compare several pie graphs.</p>
+<div id="fig-M8" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_021.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8"><img src="Graphs/MathIntro/CNX_Econ_A01_021.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: U.S. Population with Bar Graphs. Population data can be represented in different ways. (a) Shows three bars for each year, representing the total number of persons in each age bracket for each year. (b) Shows just one bar for each year, but the different age groups are now shaded inside the bar. (c) Sets the vertical axis as a measure of percentages rather than the number of persons. All three bar graphs are the same height and each bar is divided according to the percentage of population in each age group.
+</figcaption>
+</figure>
+</div>
+<p>The image shows three bar graphs that represent the U.S. population. All three images reveal the same information presented in different ways. In 1970, people 19 and under made up 77.2 million or 37.6% of the population; people between ages 20 and 64 made up 107.7 million or 52.5% of the population; and people 65 or older made up 20.1 million or 9.8% of the population. In 2000, people 19 and under made up 78.4 million or 28.5% of the population; people between ages 20 and 64 made up 162.2 million or 58.9% of the population; and people 65 or older made up 34.8 million or 12.6% of the population. In 2030, the projection is that people 19 and under will make up 92.6 million or 26.4% of the population; people between ages 20 and 64 made up 188.2 million or 53.6% of the population; and people 65 or older made up 70.3 million or 20% of the population. Image (a) shows separate bar graphs for each age group in each time period (so 9 bars total). Image (b) shows the total population divided into age groups (so 3 bars total, with different color coding to identify the portions pertaining to different ages). Image (c) shows the total population divided into percentages to reveal the prediction that in 2030 (so 3 bars total, with different color coding to identify the portions pertaining to different ages).</p>
+<p><a href="#fig-M7" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> and <a href="#fig-M8" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> show how the bars can represent countries or years, and how the vertical axis can represent a numerical or a percentage value. Bar graphs can also compare size, quantity, rates, distances, and other quantitative categories.</p>
+</section>
+<section id="how-graphs-can-be-misleading" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="how-graphs-can-be-misleading"><span class="header-section-number">2.3.4</span> How Graphs Can Be Misleading</h3>
+<p>Graphs not only reveal patterns; they can also alter how patterns are perceived. To see some of the ways this can be done, consider the line graphs of <a href="#fig-M9" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>, <a href="#fig-M10" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>, and <a href="#fig-M11" class="quarto-xref">Figure&nbsp;<span>2.11</span></a>. These graphs all illustrate the unemployment rate—but from different perspectives.</p>
+<p>All three graphs present the exact same data but in different ways that may alter how the data is interpreted. Image (a) shows the unemployment rate wide and short. Image (b) shows the unemployment rate narrow and tall. Image (c) shows the unemployment rate, with wider range of numbers on the vertical axis.</p>
+<div id="fig-M9" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econv1-2_AppA_A9ab.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9"><img src="Graphs/MathIntro/CNX_Econv1-2_AppA_A9ab.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.
+</figcaption>
+</figure>
+</div>
+<div id="fig-M10" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econv1-2_AppA_A9cde.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10"><img src="Graphs/MathIntro/CNX_Econv1-2_AppA_A9cde.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.
+</figcaption>
+</figure>
+</div>
+<div id="fig-M11" class="align-center quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-M11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/MathIntro/CNX_Econ_A01_016.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-11" data-gallery="quarto-lightbox-gallery-11"><img src="Graphs/MathIntro/CNX_Econ_A01_016.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-M11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.
+</figcaption>
+</figure>
+</div>
+<p>Suppose you wanted a graph which gives the impression that the rise in unemployment in 2009 was not all that large, or all that extraordinary by historical standards. You might choose to present your data as in <a href="#fig-M9" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> (a). <a href="#fig-M9" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> (a) includes much of the same data presented earlier in <a href="#fig-M5" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>, but stretches the horizontal axis out longer relative to the vertical axis. By spreading the graph wide and flat, the visual appearance is that the rise in unemployment is not so large, and is similar to some past rises in unemployment.</p>
+<p>Now imagine you wanted to emphasize how unemployment spiked substantially higher in 2009. In this case, using the same data, you can stretch the vertical axis out relative to the horizontal axis, as in <a href="#fig-M9" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> (b), which makes all rises and falls in unemployment appear larger.</p>
+<p>A similar effect can be accomplished without changing the length of the axes, but by changing the scale on the vertical axis. In <a href="#fig-M10" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> (c), the scale on the vertical axis runs from 0% to 30%, while in <a href="#fig-M10" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> (d), the vertical axis runs from 3% to 10%. Compared to <a href="#fig-M5" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>, where the vertical scale runs from 0% to 12%, <a href="#fig-M10" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> (c) makes the fluctuation in unemployment look smaller, while <a href="#fig-M10" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> (d) makes it look larger.</p>
+<p>Another way to alter the perception of the graph is to reduce the amount of variation by changing the number of points plotted on the graph. <a href="#fig-M11" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> (e) shows the unemployment rate according to five-year averages. By averaging out some of the year-to-year changes, the line appears smoother and with fewer highs and lows. In reality, the unemployment rate is reported monthly, and <a href="#fig-M11" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> (f) shows the monthly figures since 1960, which fluctuate more than the five-year average.</p>
+<p><a href="#fig-M11" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> (f) is also a vivid illustration of how graphs can compress lots of data. The graph includes monthly data since 1960, which over almost 50 years, works out to nearly 600 data points. Reading that list of 600 data points in numerical form would be hypnotic. You can, however, get a good intuitive sense of these 600 data points very quickly from the graph.</p>
+<p>A final trick in manipulating the perception of graphical information is that, by choosing the starting and ending points carefully, you can influence the perception of whether the variable is rising or falling. The original data show a general pattern with unemployment low in the 1960s, but spiking up in the mid-1970s, early 1980s, early 1990s, early 2000s, and late 2000s. <a href="#fig-M11" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> (g), however, shows a graph that goes back only to 1975, which gives an impression that unemployment was more-or-less gradually falling over time until the 2009 recession pushed it back up to its “original” level—which is a plausible interpretation if one starts at the high point around 1975.</p>
+<p>These kinds of tricks—or shall we just call them “presentation choices”— are not limited to line graphs. In a pie chart with many small slices and one large slice, someone must decided what categories should be used to produce these slices in the first place, thus making some slices appear bigger than others. If you are making a bar graph, you can make the vertical axis either taller or shorter, which will tend to make variations in the height of the bars appear more or less.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Being able to read graphs is an essential skill, both in economics and in life.</li>
+<li>A graph is just one perspective or point of view, shaped by choices such as those discussed in this section.</li>
+<li>Do not always believe the first quick impression from a graph.</li>
+<li>View with caution.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Math is a tool for understanding economics and economic relationships can be expressed mathematically using algebra or graphs.</p></li>
+<li><p>The algebraic equation for a line is <span class="math inline">\(y = b + m \times x\)</span>, where x is the variable on the horizontal axis and y is the variable on the vertical axis, the b term is the y-intercept and the m term is the slope.</p></li>
+<li><p>The slope of a line is the same at any point on the line and it indicates the relationship (positive, negative, or zero) between two economic variables.</p></li>
+<li><p>Economic models can be solved algebraically or graphically.</p></li>
+<li><p>Graphs allow you to illustrate data visually. They can illustrate patterns, comparisons, trends, and apportionment by condensing the numerical data and providing an intuitive sense of relationships in the data.</p>
+<blockquote class="blockquote">
+<ul>
+<li>A line graph shows the relationship between two variables: one is shown on the horizontal axis and one on the vertical axis.</li>
+<li>A pie graph shows how something is allotted, such as a sum of money or a group of people. The size of each slice of the pie is drawn to represent the corresponding percentage of the whole.</li>
+<li>A bar graph uses the height of bars to show a relationship, where each bar represents a certain entity, like a country or a group of people. The bars on a bar graph can also be divided into segments to show subgroups.</li>
+</ul>
+</blockquote></li>
+<li><p>Any graph is a single visual perspective on a subject. The impression it leaves will be based on many choices, such as what data or time frame is included, how data or groups are divided up, the relative size of vertical and horizontal axes, whether the scale used on a vertical starts at zero. Thus, any graph should be regarded somewhat skeptically, remembering that the underlying relationship can be open to different interpretations.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Name three kinds of graphs and briefly state when is most appropriate to use each type of graph.</li>
+<li>What is slope on a line graph?</li>
+<li>What do the slices of a pie chart represent?</li>
+<li>Why is a bar chart the best way to illustrate comparisons?</li>
+<li>How does the appearance of positive slope differ from negative slope and from zero slope?</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;2.1: Slope and the Algebra of Straight Lines. This line graph has x on the horizontal axis and y on the vertical axis. The y-intercept—that is, the point where the line intersects the y-axis—is 9. The slope of the line is 3; that is, there is a rise of 3 on the vertical axis for every increase of 1 on the horizontal axis. The slope is the same all along a straight line.</span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;2.2: Supply and Demand Graph. The equations for <span class="math inline">\(Q_d\)</span> and <span class="math inline">\(Q_s\)</span> are displayed graphically by the sloped lines.</span>
+<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;2.3: The Length-Weight Relationship for American Boys and Girls. The line graph shows the relationship between height and weight for boys and girls from birth to 3 years. Point A, for example, shows that a boy of 28 inches in height (measured on the horizontal axis) is typically 19 pounds in weight (measured on the vertical axis). These data apply only to children in the first three years of life.</span>
+<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;2.4: Altitude Air Density Relationship. This line graph shows the relationship between altitude, measured in meters above sea level, and air density, measured in kilograms of air per cubic meter. As altitude rises, air density declines. The point at the top of Mount Everest has an altitude of approximately 8,828 meters above sea level (the horizontal axis) and air density of 0.023 kilograms per cubic meter (the vertical axis).</span>
+<span class="glightbox-desc lightbox-desc-5">Figure&nbsp;2.5: U.S. Unemployment Rate, 1975–2014. This graph provides a quick visual summary of unemployment data. With a graph like this, it is easy to spot the times of high unemployment and of low unemployment.</span>
+<span class="glightbox-desc lightbox-desc-6">Figure&nbsp;2.6: Pie Graphs of the U.S. Age Distribution (numbers in millions). The three pie graphs illustrate the division of total population into three age groups for the three different years.</span>
+<span class="glightbox-desc lightbox-desc-7">Figure&nbsp;2.7: Leading Countries of the World by Population, 2015 (in millions). The graph shows the 12 countries of the world with the largest populations. The height of the bars in the bar graph shows the size of the population for each country.</span>
+<span class="glightbox-desc lightbox-desc-8">Figure&nbsp;2.8: U.S. Population with Bar Graphs. Population data can be represented in different ways. (a) Shows three bars for each year, representing the total number of persons in each age bracket for each year. (b) Shows just one bar for each year, but the different age groups are now shaded inside the bar. (c) Sets the vertical axis as a measure of percentages rather than the number of persons. All three bar graphs are the same height and each bar is divided according to the percentage of population in each age group.</span>
+<span class="glightbox-desc lightbox-desc-9">Figure&nbsp;2.9: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.</span>
+<span class="glightbox-desc lightbox-desc-10">Figure&nbsp;2.10: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.</span>
+<span class="glightbox-desc lightbox-desc-11">Figure&nbsp;2.11: Presenting Unemployment Rates in Different Ways, All of Them Accurate. Simply changing the width and height of the area in which data is displayed can alter the perception of the data.</span>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch1-Introduction.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch3-ChoiceScarcity.html" class="pagination-link" aria-label="Choice in a World of Scarcity">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Choice in a World of Scarcity</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Juergen Jung</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://juejung.github.io/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>

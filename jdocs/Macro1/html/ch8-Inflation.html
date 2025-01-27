@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Inflation – Macroeconomic Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch9-ProductionFullEmployment.html" rel="next">
+<link href="./ch7-Unemployment.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6372da394ddf598d961a885cb9b97567.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5-MacroPerspective.html"><strong>Macroeconomics Part I</strong></a></li><li class="breadcrumb-item"><a href="./ch8-Inflation.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inflation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Macroeconomic Principles</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Introduction</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch1-Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch2-MathIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Use of Mathematics in Principles of Economics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch3-ChoiceScarcity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Choice in a World of Scarcity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch4-DemandSupply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Demand and Supply</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Macroeconomics Part I</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch5-MacroPerspective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Intro Macro Perspective</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch6-InternationalTrade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">International Trade</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch7-Unemployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unemployment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch8-Inflation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inflation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch9-ProductionFullEmployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Production Technology and Full Employment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10-Growth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Economic Growth</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11-AggregateDemandAggregateSupply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Aggregate Demand and Aggregate Supply</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Macroeconomics Part II</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12-FiscalPolicy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Government Budgets and Fiscal Policy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13-IncomeExpenditureModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Income Expenditure Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14-InvestmentsFinancialMarkets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Investments and Financial Markets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15-MoneyAndBanking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Money and Banking</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16-MonetaryPolicy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Monetary Policy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17-ShortToLong.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">From Short-Run to Long-Run</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-PythonBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">First Steps in Python</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#tracking-inflation" id="toc-tracking-inflation" class="nav-link active" data-scroll-target="#tracking-inflation"><span class="header-section-number">8.1</span> Tracking Inflation</a>
+  <ul class="collapse">
+  <li><a href="#the-price-of-a-basket-of-goods" id="toc-the-price-of-a-basket-of-goods" class="nav-link" data-scroll-target="#the-price-of-a-basket-of-goods"><span class="header-section-number">8.1.1</span> The Price of a Basket of Goods</a></li>
+  <li><a href="#index-numbers" id="toc-index-numbers" class="nav-link" data-scroll-target="#index-numbers"><span class="header-section-number">8.1.2</span> Index Numbers</a></li>
+  </ul></li>
+  <li><a href="#how-to-measure-changes-in-the-cost-of-living" id="toc-how-to-measure-changes-in-the-cost-of-living" class="nav-link" data-scroll-target="#how-to-measure-changes-in-the-cost-of-living"><span class="header-section-number">8.2</span> How to Measure Changes in the Cost of Living</a>
+  <ul class="collapse">
+  <li><a href="#the-cpi-and-core-inflation-index" id="toc-the-cpi-and-core-inflation-index" class="nav-link" data-scroll-target="#the-cpi-and-core-inflation-index"><span class="header-section-number">8.2.1</span> The CPI and Core Inflation Index</a></li>
+  <li><a href="#practical-solutions-for-the-substitution-and-the-qualitynew-goods-biases" id="toc-practical-solutions-for-the-substitution-and-the-qualitynew-goods-biases" class="nav-link" data-scroll-target="#practical-solutions-for-the-substitution-and-the-qualitynew-goods-biases"><span class="header-section-number">8.2.2</span> Practical Solutions for the Substitution and the Quality/New Goods Biases</a></li>
+  <li><a href="#additional-price-indices-ppi-gdp-deflator-and-more" id="toc-additional-price-indices-ppi-gdp-deflator-and-more" class="nav-link" data-scroll-target="#additional-price-indices-ppi-gdp-deflator-and-more"><span class="header-section-number">8.2.3</span> Additional Price Indices: PPI, GDP Deflator, and More</a></li>
+  </ul></li>
+  <li><a href="#how-the-u.s.-and-other-countries-experience-inflation" id="toc-how-the-u.s.-and-other-countries-experience-inflation" class="nav-link" data-scroll-target="#how-the-u.s.-and-other-countries-experience-inflation"><span class="header-section-number">8.3</span> How the U.S. and Other Countries Experience Inflation</a>
+  <ul class="collapse">
+  <li><a href="#historical-inflation-in-the-u.s.-economy" id="toc-historical-inflation-in-the-u.s.-economy" class="nav-link" data-scroll-target="#historical-inflation-in-the-u.s.-economy"><span class="header-section-number">8.3.1</span> Historical Inflation in the U.S. Economy</a></li>
+  <li><a href="#inflation-around-the-world" id="toc-inflation-around-the-world" class="nav-link" data-scroll-target="#inflation-around-the-world"><span class="header-section-number">8.3.2</span> Inflation around the World</a></li>
+  </ul></li>
+  <li><a href="#the-confusion-over-inflation" id="toc-the-confusion-over-inflation" class="nav-link" data-scroll-target="#the-confusion-over-inflation"><span class="header-section-number">8.4</span> The Confusion Over Inflation</a>
+  <ul class="collapse">
+  <li><a href="#the-land-of-funny-money" id="toc-the-land-of-funny-money" class="nav-link" data-scroll-target="#the-land-of-funny-money"><span class="header-section-number">8.4.1</span> The Land of Funny Money</a></li>
+  <li><a href="#unintended-redistributions-of-purchasing-power" id="toc-unintended-redistributions-of-purchasing-power" class="nav-link" data-scroll-target="#unintended-redistributions-of-purchasing-power"><span class="header-section-number">8.4.2</span> Unintended Redistributions of Purchasing Power</a></li>
+  <li><a href="#blurred-price-signals" id="toc-blurred-price-signals" class="nav-link" data-scroll-target="#blurred-price-signals"><span class="header-section-number">8.4.3</span> Blurred Price Signals</a></li>
+  <li><a href="#problems-of-long-term-planning" id="toc-problems-of-long-term-planning" class="nav-link" data-scroll-target="#problems-of-long-term-planning"><span class="header-section-number">8.4.4</span> Problems of Long-Term Planning</a></li>
+  <li><a href="#any-benefits-of-inflation" id="toc-any-benefits-of-inflation" class="nav-link" data-scroll-target="#any-benefits-of-inflation"><span class="header-section-number">8.4.5</span> Any Benefits of Inflation?</a></li>
+  </ul></li>
+  <li><a href="#indexing-and-its-limitations" id="toc-indexing-and-its-limitations" class="nav-link" data-scroll-target="#indexing-and-its-limitations"><span class="header-section-number">8.5</span> Indexing and Its Limitations</a>
+  <ul class="collapse">
+  <li><a href="#indexing-in-private-markets" id="toc-indexing-in-private-markets" class="nav-link" data-scroll-target="#indexing-in-private-markets"><span class="header-section-number">8.5.1</span> Indexing in Private Markets</a></li>
+  <li><a href="#indexing-in-government-programs" id="toc-indexing-in-government-programs" class="nav-link" data-scroll-target="#indexing-in-government-programs"><span class="header-section-number">8.5.2</span> Indexing in Government Programs</a></li>
+  <li><a href="#might-indexing-reduce-concern-over-inflation" id="toc-might-indexing-reduce-concern-over-inflation" class="nav-link" data-scroll-target="#might-indexing-reduce-concern-over-inflation"><span class="header-section-number">8.5.3</span> Might Indexing Reduce Concern over Inflation?</a></li>
+  <li><a href="#a-preview-of-policy-discussions-of-inflation" id="toc-a-preview-of-policy-discussions-of-inflation" class="nav-link" data-scroll-target="#a-preview-of-policy-discussions-of-inflation"><span class="header-section-number">8.5.4</span> A Preview of Policy Discussions of Inflation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5-MacroPerspective.html"><strong>Macroeconomics Part I</strong></a></li><li class="breadcrumb-item"><a href="./ch8-Inflation.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inflation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inflation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--Inflation {{{1-->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chapter Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Tracking Inflation</li>
+<li>How to Measure Changes in the Cost of Living</li>
+<li>How the U.S. and Other Countries Experience Inflation</li>
+<li>The Confusion Over Inflation</li>
+<li>Indexing and Its Limitations</li>
+</ul>
+</div>
+</div>
+<p>Inflation is a general and ongoing rise in the level of prices in an entire economy. Inflation does not refer to a change in relative prices. A relative price change occurs when you see that the price of tuition has risen, but the price of laptops has fallen. Inflation, on the other hand, means that there is pressure for prices to rise in most markets in the economy. In addition, price increases in the supply-and-demand model were one-time events, representing a shift from a previous equilibrium to a new one. Inflation implies an ongoing rise in prices. If inflation happened for one year and then stopped, then it would not be inflation any more.</p>
+<p>This chapter begins by showing how to combine prices of individual goods and services to create a measure of overall inflation. It discusses the historical and recent experience of inflation, both in the United States and in other countries around the world. Other chapters have sometimes included a note under an exhibit or a parenthetical reminder in the text saying that the numbers have been adjusted for inflation. In this chapter, it is time to show how to use inflation statistics to adjust other economic variables, so that you can tell how much of, for example, we can attribute the rise in GDP over different periods of time to an actual increase in the production of goods and services and how much we should attribute to the fact that prices for most items have risen.</p>
+<p>Inflation has consequences for people and firms throughout the economy, in their roles as lenders and borrowers, wage-earners, taxpayers, and consumers. The chapter concludes with a discussion of some imperfections and biases in the inflation statistics, and a preview of policies for fighting inflation that we will discuss in other chapters.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>A $550 MILLION LOAF OF BREAD?</strong></p>
+<p>If you were born within the last three decades in the United States, Canada, or many other countries in the developed world, you probably have no real experience with a high rate of inflation. Inflation is when most prices in an entire economy are rising. However, there is an extreme form of inflation called hyperinflation. This occurred in Germany between 1921 and 1928, and more recently in Zimbabwe between 2008 and 2009. In November 2008, Zimbabwe had an inflation rate of 79.6 billion percent. See <a href="#fig-Ch8_000" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> for an example of how inflation changes a dollar bill. In contrast, in 2014, the United States had an average annual rate of inflation of 1.6%.</p>
+<div id="fig-Ch8_000" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Ch8_000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ_C022_000.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;8.1: This bill was worth 100 billion Zimbabwean dollars when issued in 2008. There were even bills issued with a face value of 100 trillion Zimbabwean dollars. The bills had $100,000,000,000,000 written on them. Unfortunately, they were almost worthless. At one point, 621,984,228 Zimbabwean dollars were equal to one U.S. dollar. Eventually, the country abandoned its own currency and allowed people to use foreign currency for purchases. (Credit: modification of work by Samantha Marx/Flickr Creative Commons)"><img src="Graphs/Inflation/CNX_Econ_C022_000.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Ch8_000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: This bill was worth 100 billion Zimbabwean dollars when issued in 2008. There were even bills issued with a face value of 100 trillion Zimbabwean dollars. The bills had $100,000,000,000,000 written on them. Unfortunately, they were almost worthless. At one point, 621,984,228 Zimbabwean dollars were equal to one U.S. dollar. Eventually, the country abandoned its own currency and allowed people to use foreign currency for purchases. (Credit: modification of work by Samantha Marx/Flickr Creative Commons)
+</figcaption>
+</figure>
+</div>
+<p>Zimbabwe’s inflation rate was so high it is difficult to comprehend, so let’s put it into context. It is equivalent to price increases of 98% per day. This means that, from one day to the next, prices essentially double. What is life like in an economy afflicted with hyperinflation? Most of you reading this will have never experienced this phenomenon. The government adjusted prices for commodities in Zimbabwean dollars several times each day. There was no desire to hold on to currency since it lost value by the minute. The people there spent a great deal of time getting rid of any cash they acquired by purchasing whatever food or other commodities they could find. At one point, a loaf of bread cost 550 million Zimbabwean dollars. Teachers' salaries were in the trillions a month; however, this was equivalent to only one U.S. dollar a day. At its height, it took 621,984,228 Zimbabwean dollars to purchase one U.S. dollar.</p>
+<p>Government agencies had no money to pay their workers so they started printing money to pay their bills rather than raising taxes. Rising prices caused the government to enact price controls on private businesses, which led to shortages and the emergence of black markets. In 2009, the country abandoned its currency and allowed people to use foreign currencies for purchases.</p>
+<p>How does this happen? How can both government and the economy fail to function at the most basic level? Before we consider these extreme cases of hyperinflation, let’s first look at inflation itself.</p>
+</div>
+</div>
+<!--Tracking Inflation {{{2-->
+<section id="tracking-inflation" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="tracking-inflation"><span class="header-section-number">8.1</span> Tracking Inflation</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Calculate the annual rate of inflation</li>
+<li>Explain and use index numbers and base years when simplifying the total quantity spent over a year for products</li>
+<li>Calculate inflation rates using index numbers</li>
+</ul>
+</div>
+</div>
+<p>Dinner table conversations where you might have heard about inflation usually entail reminiscing about when “everything seemed to cost so much less. You used to be able to buy three gallons of gasoline for a dollar and then go see an afternoon movie for another dollar.” <a href="#tbl-inf_001" class="quarto-xref">Table&nbsp;<span>8.1</span></a> compares some prices of common goods in 1970 and 2017. Of course, the average prices in this table may not reflect the prices where you live. The cost of living in New York City is much higher than in Houston, Texas, for example. In addition, certain products have evolved over recent decades.</p>
+<p>A new car in 2017, loaded with antipollution equipment, safety gear, computerized engine controls, and many other technological advances, is a more advanced machine (and more fuel efficient) than your typical 1970s car. However, put details like these to one side for the moment, and look at the overall pattern.</p>
+<p>The primary reason behind the price rises in <a href="#tbl-inf_001" class="quarto-xref">Table&nbsp;<span>8.1</span></a> —and all the price increases for the other products in the economy—is not specific to the market for housing or cars or gasoline or movie tickets. Instead, it is part of a general rise in the level of all prices. At the beginning of 2017, $1 had about the same purchasing power in overall terms of goods and services as 18 cents did in 1972, because of the amount of inflation that has occurred over that time period.</p>
+<div id="tbl-inf_001" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inf_001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.1: Price Comparisons, 1970 and 2017
+</figcaption>
+<div aria-describedby="tbl-inf_001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Items</th>
+<th style="text-align: left;">1970</th>
+<th style="text-align: left;">2017</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pound of ground beef</td>
+<td style="text-align: left;">$0.66</td>
+<td style="text-align: left;">$3.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pound of butter</td>
+<td style="text-align: left;">$0.87</td>
+<td style="text-align: left;">$2.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Movie ticket</td>
+<td style="text-align: left;">$1.55</td>
+<td style="text-align: left;">$8.65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sales price of new home (median)</td>
+<td style="text-align: left;">$22,000</td>
+<td style="text-align: left;">$312,900</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">New car</td>
+<td style="text-align: left;">$3,000</td>
+<td style="text-align: left;">$4,077</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gallon of gasoline</td>
+<td style="text-align: left;">$0.36</td>
+<td style="text-align: left;">$2.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Average hourly wage for a manufacturing worker</td>
+<td style="text-align: left;">$3.23</td>
+<td style="text-align: left;">$20.65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Per capita GDP</td>
+<td style="text-align: left;">$5,069</td>
+<td style="text-align: left;">$57,294</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Moreover, the power of inflation does not affect just goods and services, but wages and income levels, too. The second-to-last row of <a href="#tbl-inf_001" class="quarto-xref">Table&nbsp;<span>8.1</span></a> shows that the average hourly wage for a manufacturing worker increased nearly six-fold from 1970 to 2017. The average worker in 2017 is better educated and more productive than the average worker in 1970—but not six times more productive. Per capita GDP increased substantially from 1970 to 2017, but is the average person in the U.S. economy really more than eleven times better off in just 47 years? Not likely.</p>
+<p>A modern economy has millions of goods and services whose prices are continually quivering in the breezes of supply and demand. How can all of these shifts in price attribute to a single inflation rate? As with many problems in economic measurement, the conceptual answer is reasonably straightforward: Economists combine prices of a variety of goods and services into a single price level. The inflation rate is simply the percentage change in the price level. Applying the concept, however, involves some practical difficulties.</p>
+<section id="the-price-of-a-basket-of-goods" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="the-price-of-a-basket-of-goods"><span class="header-section-number">8.1.1</span> The Price of a Basket of Goods</h3>
+<p>To calculate the price level, economists begin with the concept of a basket of goods and services, consisting of the different items individuals, businesses, or organizations typically buy. The next step is to look at how the prices of those items change over time. In thinking about how to combine individual prices into an overall price level, many people find that their first impulse is to calculate the average of the prices. Such a calculation, however, could easily be misleading because some products matter more than others.</p>
+<p>Changes in the prices of goods for which people spend a larger share of their incomes will matter more than changes in the prices of goods for which people spend a smaller share of their incomes. For example, an increase of 10% in the rental rate on housing matters more to most people than whether the price of carrots rises by 10%. To construct an overall measure of the price level, economists compute a weighted average of the prices of the items in the basket, where the weights are based on the actual quantities of goods and services people buy. The following Work It Out feature walks you through the steps of calculating the annual rate of inflation based on a few products.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>CALCULATING AN ANNUAL RATE OF INFLATION</p>
+<p>Consider the simple basket of goods with only three items, represented in <a href="#tbl-inf_002" class="quarto-xref">Table&nbsp;<span>8.2</span></a> . Say that in any given month, a college student spends money on 20 hamburgers, one bottle of aspirin, and five movies. The table provides prices for these items over four years through each time period (Pd). Prices of some goods in the basket may rise while others fall.</p>
+<p>In this example, the price of aspirin does not change over the four years, while movies increase in price and hamburgers bounce up and down. The table shows the cost of buying the given basket of goods at the prices prevailing at that time.</p>
+<div id="tbl-inf_002" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inf_002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: A College Student's Basket of Goods
+</figcaption>
+<div aria-describedby="tbl-inf_002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Items</th>
+<th style="text-align: left;">Hamburger</th>
+<th style="text-align: left;">Aspirin</th>
+<th style="text-align: left;">Movies</th>
+<th style="text-align: left;">Total</th>
+<th style="text-align: left;">Inflation Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Qty</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">1 bottle</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 1 Price</td>
+<td style="text-align: left;">$3.00</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$6.00</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Period 1 Amount Spent</td>
+<td style="text-align: left;">$60.00</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$30.00</td>
+<td style="text-align: left;">$100.00</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 2 Price</td>
+<td style="text-align: left;">$3.20</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$6.50</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Period 2 Amount Spent</td>
+<td style="text-align: left;">$64.00</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$32.50</td>
+<td style="text-align: left;">$106.50</td>
+<td style="text-align: left;">6.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 3 Price</td>
+<td style="text-align: left;">$3.10</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$7.00</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Period 3 Amount Spent</td>
+<td style="text-align: left;">$62.00</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$35.00</td>
+<td style="text-align: left;">$107.00</td>
+<td style="text-align: left;">0.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 4 Price</td>
+<td style="text-align: left;">$3.50</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$7.50</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Period 4 Amount Spent</td>
+<td style="text-align: left;">$70.00</td>
+<td style="text-align: left;">$10.00</td>
+<td style="text-align: left;">$37.50</td>
+<td style="text-align: left;">$117.50</td>
+<td style="text-align: left;">9.8%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>To calculate the annual rate of inflation in this example:</p>
+<dl>
+<dt>Step 1.</dt>
+<dd>
+<p>Find the percentage change in the cost of purchasing the overall basket of goods between the time periods. The general equation for percentage changes between two years, whether in the context of inflation or in any other calculation, is:</p>
+<p><span class="math display">\[\frac{(\text{Level in new year} – \text{Level in previous year})}{\text{Level in
+previous year}} \times 100 = \text{Percentage change}\]</span></p>
+</dd>
+<dt>Step 2.</dt>
+<dd>
+<p>From period 1 to period 2, the total cost of purchasing the basket of goods in <a href="#tbl-inf_002" class="quarto-xref">Table&nbsp;<span>8.2</span></a> rises from $100 to $106.50. Therefore, the percentage change over this time—the inflation rate—is:</p>
+<p><span class="math display">\[\frac{(106.50 – 100)}{100.0} = 0.065 = 6.5\%\]</span></p>
+</dd>
+<dt>Step 3.</dt>
+<dd>
+<p>From period 2 to period 3, the overall change in the cost of purchasing the basket rises from $106.50 to $107. Thus, the inflation rate over this time, again calculated by the percentage change, is approximately:</p>
+<p><span class="math display">\[\frac{(107 – 106.50)}{106.50} = 0.0047 = 0.47\%\]</span></p>
+</dd>
+<dt>Step 4.</dt>
+<dd>
+<p>From period 3 to period 4, the overall cost rises from $107 to $117.50. The inflation rate is thus:</p>
+<p><span class="math display">\[\frac{(117.50 – 107)}{107} = 0.098 = 9.8\%\]</span></p>
+</dd>
+</dl>
+<p>This calculation of the change in the total cost of purchasing a basket of goods accounts for how much a student spends on each good. Hamburgers are the lowest-priced good in this example, and aspirin is the highest-priced. If an individual buys a greater quantity of a low-price good, then it makes sense that changes in the price of that good should have a larger impact on the buying power of that person’s money. The larger impact of hamburgers shows up in the “amount spent” row, where, in all time periods, hamburgers are the largest item within the amount spent row.</p>
+</div>
+</div>
+</section>
+<section id="index-numbers" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="index-numbers"><span class="header-section-number">8.1.2</span> Index Numbers</h3>
+<p>The numerical results of a calculation based on a basket of goods can get a little messy. The simplified example in <a href="#tbl-inf_002" class="quarto-xref">Table&nbsp;<span>8.2</span></a> has only three goods and the prices are in even dollars, not numbers like 79 cents or $124.99. If the list of products were much longer, and we used more realistic prices, the total quantity spent over a year might be some messy-looking number like $17,147.51 or $27,654.92.</p>
+<p>To simplify the task of interpreting the price levels for more realistic and complex baskets of goods, economists typically report the price level in each period as an index number, rather than as the dollar amount for buying the basket of goods. Economists create price indices to calculate an overall average change in relative prices over time. To convert the money spent on the basket to an index number, economists arbitrarily choose one year to be the base year, or starting point from which we measure changes in prices. The base year, by definition, has an index number equal to 100. This sounds complicated, but it is really a simple math trick. In the example above, say that we choose time period 3 as the base year. Since the total amount of spending in that year is $107, we divide that amount by itself ($107) and multiply by 100. Again, this is because the index number in the base year always has to have a value of 100. Then, to figure out the values of the index number for the other years, we divide the dollar amounts for the other years by 1.07 as well. Note also that the dollar signs cancel out so that index numbers have no units.</p>
+<p><a href="#tbl-inf_003" class="quarto-xref">Table&nbsp;<span>8.3</span></a> shows calculations for the other values of the index number, based on the example in Table. Because we calculate the index numbers so that they are in exactly the same proportion as the total dollar cost of purchasing the basket of goods, we can calculate the inflation rate based on the index numbers, using the percentage change formula. Thus, the inflation rate from period 1 to period 2 would be</p>
+<p><span class="math display">\[\frac{(99.5 – 93.4)}{93.4} = 0.065 = 6.5\%\]</span></p>
+<p>This is the same answer that we derived when measuring inflation based on the dollar cost of the basket of goods for the same time period.</p>
+<div id="tbl-inf_003" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inf_003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.3: Calculating Index Numbers When Period 3 is the Base Year
+</figcaption>
+<div aria-describedby="tbl-inf_003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Period</th>
+<th style="text-align: left;">Total Spending</th>
+<th style="text-align: left;">Index Number</th>
+<th style="text-align: left;">Inflation Rate Since Previous Period</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Period 1</td>
+<td style="text-align: left;">$100</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{100}{1.07} = 93.4\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 2</td>
+<td style="text-align: left;">$106.50</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{106.50}{1.07} = 99.5\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{99.5 – 93.4}{93.4} = 0.065 = 6.5\%\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Period 3</td>
+<td style="text-align: left;">$107</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{107}{1.07} = 100.0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{100 – 99.5}{99.5} = 0.005 = 0.5\%\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Period 4</td>
+<td style="text-align: left;">$117.50</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{117.50}{1.07} = 109.8\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{109.8 – 100}{100} = 0.098 = 9.8\%\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>If the inflation rate is the same whether it is based on dollar values or index numbers, then why bother with the index numbers? The advantage is that indexing allows easier eyeballing of the inflation numbers. If you glance at two index numbers like 107 and 110, you know automatically that the rate of inflation between the two years is about, but not quite exactly equal to, 3%.</p>
+<p>By contrast, imagine that we express the price levels in absolute dollars of a large basket of goods, so that when you looked at the data, the numbers were $19,493.62 and $20,040.17. Most people find it difficult to eyeball those kinds of numbers and say that it is a change of about 3%.</p>
+<p>However, the two numbers expressed in absolute dollars are exactly in the same proportion of 107 to 110 as the previous example. If you’re wondering why simple subtraction of the index numbers wouldn’t work, read the following Clear It Up feature.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>WHY DO YOU NOT JUST SUBTRACT INDEX NUMBERS?</p>
+<p>A word of warning: When a price index moves from, say, 107 to 110, the rate of inflation is not exactly 3%. Remember, the inflation rate is not derived by subtracting the index numbers, but rather through the percentage-change calculation. We calculate the precise inflation rate as the price index moves from 107 to 110 as</p>
+<p><span class="math display">\[100 \times \frac{(110 – 107)}{107} = 100 \times 0.028 = 2.8\%.\]</span></p>
+<p>When the base year is fairly close to 100, a quick subtraction is not a terrible shortcut to calculating the inflation rate—but when precision matters down to tenths of a percent, subtracting will not give the right answer.</p>
+</div>
+</div>
+<p>Two final points about index numbers are worth remembering. First, index numbers have no dollar signs or other units attached to them. Although we can use index numbers to calculate a percentage inflation rate, the index numbers themselves do not have percentage signs. Index numbers just mirror the proportions that we find in other data. They transform the other data so that it is easier to work with the data.</p>
+<p>Second, the choice of a base year for the index number—that is, the year that is automatically set equal to 100—is arbitrary. We choose it as a starting point from which we can track changes in prices. In the official inflation statistics, it is common to use one base year for a few years, and then to update it, so that the base year of 100 is relatively close to the present. However, any base year that we choose for the index numbers will result in exactly the same inflation rate. To see this in the previous example, imagine that period 1 is the base year when total spending was $100, and we assign it an index number of 100. At a glance, you can see that the index numbers would now exactly match the dollar figures, and the inflation rate in the first period would be 6.5%.</p>
+<p>Now that we see how indexes work to track inflation, the next module will show us how economists measure the cost of living.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Economists measure the price level by using a basket of goods and services and calculating how the total cost of buying that basket of goods will increase over time.</p></li>
+<li><p>Economists often express the price level in terms of index numbers, which transform the cost of buying the basket of goods and services into a series of numbers in the same proportion to each other, but with an arbitrary base year of 100.</p></li>
+<li><p>We measure the inflation rate as the percentage change between price levels or index numbers over time.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>How do economists use a basket of goods and services to measure the price level?</li>
+<li>Why do economists use index numbers to measure the price level rather than dollar value of goods?</li>
+<li>What is the difference between the price level and the rate of inflation?</li>
+</ul>
+</div>
+</div>
+</div>
+<!--How to Measure Changes in the Cost of Living {{{2-->
+</section>
+</section>
+<section id="how-to-measure-changes-in-the-cost-of-living" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="how-to-measure-changes-in-the-cost-of-living"><span class="header-section-number">8.2</span> How to Measure Changes in the Cost of Living</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use the Consumer Price Index (CPI) to calculate U.S. inflation rates</li>
+<li>Identify several ways the Bureau of Labor Statistics avoids biases in the Consumer Price Index (CPI)</li>
+<li>Differentiate among the Consumer Price Index (CPI), the Producer Price Index (PPI), the International Price Index, the Employment Cost Index, and the GDP deflator.</li>
+</ul>
+</div>
+</div>
+<p>The most commonly cited measure of inflation in the United States is the Consumer Price Index (CPI). Government statisticians at the U.S. Bureau of Labor Statistics calculate the CPI based on the prices in a fixed basket of goods and services that represents the purchases of the average family of four. In recent years, the statisticians have paid considerable attention to a subtle problem: that the change in the total cost of buying a fixed basket of goods and services over time is conceptually not quite the same as the change in the cost of living, because the cost of living represents how much it costs for a person to feel that his or her consumption provides an equal level of satisfaction or utility.</p>
+<p>To understand the distinction, imagine that over the past 10 years, the cost of purchasing a fixed basket of goods increased by 25% and your salary also increased by 25%. Has your personal standard of living held constant? If you do not necessarily purchase an identical fixed basket of goods every year, then an inflation calculation based on the cost of a fixed basket of goods may be a misleading measure of how your cost of living has changed. Two problems arise here: substitution bias and quality/new goods bias.</p>
+<p>When the price of a good rises, consumers tend to purchase less of it and to seek out substitutes instead. Conversely, as the price of a good falls, people will tend to purchase more of it. This pattern implies that goods with generally rising prices should tend over time to become less important in the overall basket of goods used to calculate inflation, while goods with falling prices should tend to become more important. Consider, as an example, a rise in the price of peaches by $100 per pound. If consumers were utterly inflexible in their demand for peaches, this would lead to a big rise in the price of food for consumers. Alternatively, imagine that people are utterly indifferent to whether they have peaches or other types of fruit. Now, if peach prices rise, people completely switch to other fruit choices and the average price of food does not change at all. A fixed and unchanging basket of goods assumes that consumers are locked into buying exactly the same goods, regardless of price changes—not a very likely assumption. Thus, substitution bias—the rise in the price of a fixed basket of goods over time—tends to overstate the rise in a consumer’s true cost of living, because it does not take into account that the person can substitute away from goods whose relative prices have risen.</p>
+<p>The other major problem in using a fixed basket of goods as the basis for calculating inflation is how to deal with the arrival of improved versions of older goods or altogether new goods. Consider the problem that arises if a cereal is improved by adding 12 essential vitamins and minerals—and also if a box of the cereal costs 5% more. It would clearly be misleading to count the entire resulting higher price as inflation, because the new price reflects a higher quality (or at least different) product. Ideally, one would like to know how much of the higher price is due to the quality change, and how much of it is just a higher price. The Bureau of Labor Statistics, which is responsible for computing the Consumer Price Index, must deal with these difficulties in adjusting for quality changes.</p>
+<p>We can think of a new product as an extreme improvement in quality—from something that did not exist to something that does. However, the basket of goods that was fixed in the past obviously does not include new goods created since then. The basket of goods and services in the Consumer Price Index (CPI) is revised and updated over time, and so new products are gradually included. However, the process takes some time. For example, room air conditioners were widely sold in the early 1950s, but were not introduced into the basket of goods behind the Consumer Price Index until 1964. The VCR and personal computer were available in the late 1970s and widely sold by the early 1980s, but did not enter the CPI basket of goods until 1987. By 1996, there were more than 40 million cellular phone subscribers in the United States—but cell phones were not yet part of the CPI basket of goods. The parade of inventions has continued, with the CPI inevitably lagging a few years behind.</p>
+<p>The arrival of new goods creates problems with respect to the accuracy of measuring inflation. The reason people buy new goods, presumably, is that the new goods offer better value for money than existing goods. Thus, if the price index leaves out new goods, it overlooks one of the ways in which the cost of living is improving. In addition, the price of a new good is often higher when it is first introduced and then declines over time. If the new good is not included in the CPI for some years, until its price is already lower, the CPI may miss counting this price decline altogether. Taking these arguments together, the quality/new goods bias means that the rise in the price of a fixed basket of goods over time tends to overstate the rise in a consumer’s true cost of living, because it does not account for how improvements in the quality of existing goods or the invention of new goods improves the standard of living. The following Clear It Up feature is a must-read on how statisticians comprise and calculate the CPI.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>HOW DO U.S. GOVERNMENT STATISTICIANS MEASURE THE CONSUMER PRICE INDEX?</p>
+<p>When the U.S. Bureau of Labor Statistics (BLS) calculates the Consumer Price Index, the first task is to decide on a basket of goods that is representative of the purchases of the average household. We do this by using the Consumer Expenditure Survey, a national survey of about 7,000 households, which provides detailed information on spending habits. Statisticians divide consumer expenditures into eight major groups (seen below), which in turn they divide into more than 200 individual item categories. The BLS currently uses 1982–1984 as the base period.</p>
+<p>For each of the 200 individual expenditure items, the BLS chooses several hundred very specific examples of that item and looks at the prices of those examples. In figuring out the “breakfast cereal” item under the overall category of “foods and beverages,” the BLS picks several hundred examples of breakfast cereal. One example might be the price of a 24-oz. box of a particular brand of cereal sold at a particular store. The BLS statistically selects specific products and sizes and stores to reflect what people buy and where they shop. The basket of goods in the Consumer Price Index thus consists of about 80,000 products; that is, several hundred specific products in over 200 broad-item categories. Statisticians rotate about one-quarter of these 80,000 specific products of the sample each year, and replace them with a different set of products.</p>
+<p>The next step is to collect data on prices. Data collectors visit or call about 23,000 stores in 87 urban areas all over the United States every month to collect prices on these 80,000 specific products. The BLS also conducts a survey of 50,000 landlords or tenants to collect information about rents.</p>
+<p>Statisticians then calculate the Consumer Price Index by taking the 80,000 prices of individual products and combining them, using weights (see <a href="#fig-CPI_001" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>) determined by the quantities of these products that people buy and allowing for factors like substitution between goods and quality improvements, into price indices for the 200 or so overall items. Then, the statisticians combine the price indices for the 200 items into an overall Consumer Price Index. According the Consumer Price Index website, there are eight categories that data collectors use:</p>
+<p>The Eight Major Categories in the Consumer Price Index</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Food and beverages (breakfast cereal, milk, coffee, chicken, wine, full-service meals, and snacks)</li>
+<li>Housing (renter’s cost of housing, homeowner’s cost of housing, fuel oil, bedroom furniture)</li>
+<li>Apparel (men’s shirts and sweaters, women’s dresses, jewelry)</li>
+<li>Transportation (new vehicles, airline fares, gasoline, motor vehicle insurance)</li>
+<li>Medical care (prescription drugs and medical supplies, physicians’ services, eyeglasses and eye care, hospital services)</li>
+<li>Recreation (televisions, cable television, pets and pet products, sports equipment, admissions)</li>
+<li>Education and communication (college tuition, postage, telephone services, computer software and accessories)</li>
+<li>Other goods and services (tobacco and smoking products, haircuts and other personal services, funeral expenses)</li>
+</ol>
+</blockquote>
+<div id="fig-CPI_001" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-CPI_001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ2e_C22_009.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;8.2: Of the eight categories used to generate the Consumer Price Index, housing is the highest at 42.7%. The next highest category, food and beverage at 15.3%, is less than half the size of housing. Other goods and services, and apparel, are the lowest at 3.4% and 3.3%, respectively. (Source: www.bls.gov/cpi)"><img src="Graphs/Inflation/CNX_Econ2e_C22_009.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPI_001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Of the eight categories used to generate the Consumer Price Index, housing is the highest at 42.7%. The next highest category, food and beverage at 15.3%, is less than half the size of housing. Other goods and services, and apparel, are the lowest at 3.4% and 3.3%, respectively. (Source: www.bls.gov/cpi)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="the-cpi-and-core-inflation-index" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="the-cpi-and-core-inflation-index"><span class="header-section-number">8.2.1</span> The CPI and Core Inflation Index</h3>
+<p>Imagine if you were driving a company truck across the country- you probably would care about things like the prices of available roadside food and motel rooms as well as the truck’s operating condition. However, the manager of the firm might have different priorities. He would care mostly about the truck’s on-time performance and much less so about the food you were eating and the places you were staying. In other words, the company manager would be paying attention to the firm's production, while ignoring transitory elements that impacted you, but did not affect the company’s bottom line.</p>
+<p>In a sense, a similar situation occurs with regard to measures of inflation. As we’ve learned, CPI measures prices as they affect everyday household spending. Economists typically calculate a <strong>core inflation</strong> index by taking the CPI and excluding volatile economic variables. In this way, economists have a better sense of the underlying trends in prices that affect the cost of living.</p>
+<p>Examples of excluded variables include energy and food prices, which can jump around from month to month because of the weather. According to an article by Kent Bernhard, during Hurricane Katrina in 2005, a key supply point for the nation’s gasoline was nearly knocked out. Gas prices quickly shot up across the nation, in some places by up to 40 cents a gallon in one day. This was not the cause of an economic policy but rather a short-lived event until the pumps were restored in the region. In this case, the CPI that month would register the change as a cost of living event to households, but the core inflation index would remain unchanged. As a result, the Federal Reserve’s decisions on interest rates would not be influenced. Similarly, droughts can cause world-wide spikes in food prices that, if temporary, do not affect the nation’s economic capability.</p>
+<p>As former Chairman of the Federal Reserve Ben Bernanke noted in 1999 about the core inflation index, “It provide(s) a better guide to monetary policy than the other indices, since it measures the more persistent underlying inflation rather than transitory influences on the price level.” Bernanke also noted that it helps communicate that the Federal Reserve does not need to respond to every inflationary shock since some price changes are transitory and not part of a structural change in the economy.</p>
+<p>In sum, both the CPI and the core inflation index are important, but serve different audiences. The CPI helps households understand their overall cost of living from month to month, while the core inflation index is a preferred gauge from which to make important government policy changes.</p>
+</section>
+<section id="practical-solutions-for-the-substitution-and-the-qualitynew-goods-biases" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="practical-solutions-for-the-substitution-and-the-qualitynew-goods-biases"><span class="header-section-number">8.2.2</span> Practical Solutions for the Substitution and the Quality/New Goods Biases</h3>
+<p>By the early 2000s, the Bureau of Labor Statistics was using alternative mathematical methods for calculating the Consumer Price Index, more complicated than just adding up the cost of a fixed basket of goods, to allow for some substitution between goods. It was also updating the basket of goods behind the CPI more frequently, so that it could include new and improved goods more rapidly. For certain products, the BLS was carrying out studies to try to measure the quality improvement. For example, with computers, an economic study can try to adjust for changes in speed, memory, screen size, and other product characteristics, and then calculate the change in price after accounting for these product changes. However, these adjustments are inevitably imperfect, and exactly how to make these adjustments is often a source of controversy among professional economists.</p>
+<p>By the early 2000s, the substitution bias and quality/new goods bias had been somewhat reduced, so that since then the rise in the CPI probably overstates the true rise in inflation by only about 0.5% per year. Over one or a few years, this is not much. Over a period of a decade or two, even half of a percent per year compounds to a more significant amount. In addition, the CPI tracks prices from physical locations, and not at online sites like Amazon, where prices can be lower.</p>
+<p>When measuring inflation (and other economic statistics, too), a tradeoff arises between simplicity and interpretation. If we calculate the inflation rate with a basket of goods that is fixed and unchanging, then the calculation of an inflation rate is straightforward, but the problems of substitution bias and quality/new goods bias will arise. However, when the basket of goods is allowed to shift and evolve to reflect substitution toward lower relative prices, quality improvements, and new goods, the technical details of calculating the inflation rate grow more complex.</p>
+</section>
+<section id="additional-price-indices-ppi-gdp-deflator-and-more" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="additional-price-indices-ppi-gdp-deflator-and-more"><span class="header-section-number">8.2.3</span> Additional Price Indices: PPI, GDP Deflator, and More</h3>
+<p>The basket of goods behind the Consumer Price Index represents an average hypothetical U.S. household's consumption, which is to say that it does not exactly capture anyone’s personal experience. When the task is to calculate an average level of inflation, this approach works fine. What if, however, you are concerned about inflation experienced by a certain group, like the elderly, or the poor, or single-parent families with children, or Hispanic-Americans? In specific situations, a price index based on the buying power of the average consumer may not feel quite right.</p>
+<p>This problem has a straightforward solution. If the Consumer Price Index does not serve the desired purpose, then invent another index, based on a basket of goods appropriate for the group of interest. The Bureau of Labor Statistics publishes a number of experimental price indices: some for particular groups like the elderly or the poor, some for different geographic areas, and some for certain broad categories of goods like food or housing.</p>
+<p>The BLS also calculates several price indices that are not based on baskets of consumer goods. For example, the Producer Price Index (PPI) is based on prices paid for supplies and inputs by producers of goods and services. We can break it down into price indices for different industries, commodities, and stages of processing (like finished goods, intermediate goods, or crude materials for further processing). There is an International Price Index based on the prices of merchandise that is exported or imported. An Employment Cost Index measures wage inflation in the labor market. The GDP deflator, which the Bureau of Economic Analysis measures, is a price index that includes all the GDP components (that is, consumption plus investment plus government plus exports minus imports). Unlike the CPI, its baskets are not fixed but re-calculate what that year’s GDP would have been worth using the base-year’s prices. MIT's Billion Prices Project is a more recent alternative attempt to measure prices: economists collect data online from retailers and then put them into an index that they compare to the CPI (Source: <a href="http://bpp.mit.edu/usa/" class="uri">http://bpp.mit.edu/usa/</a>).</p>
+<p>What’s the best measure of inflation? If one is concerned with the most accurate measure of inflation, one should use the GDP deflator as it picks up the prices of goods and services produced. However, it is not a good measure of the cost of living as it includes prices of many products not purchased by households (for example, aircraft, fire engines, factory buildings, office complexes, and bulldozers). If one wants the most accurate measure of inflation as it impacts households, one should use the CPI, as it only picks up prices of products purchased by households. That is why economists sometimes refer to the CPI as the cost-of-living index. As the Bureau of Labor Statistics states on its website: “The ‘best’ measure of inflation for a given application depends on the intended use of the data.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Measuring price levels with a fixed basket of goods will always have two problems: the substitution bias, by which a fixed basket of goods does not allow for buying more of what becomes relatively less expensive and less of what becomes relatively more expensive; and the quality/new goods bias, by which a fixed basket cannot account for improvements in quality and the advent of new goods.</p></li>
+<li><p>These problems can be reduced in degree—for example, by allowing the basket of goods to evolve over time—but we cannot totally eliminate them. The most commonly cited measure of inflation is the Consumer Price Index (CPI), which is based on a basket of goods representing what the typical consumer buys.</p></li>
+<li><p>The Core Inflation Index further breaks down the CPI by excluding volatile economic commodities. Several price indices are not based on baskets of consumer goods. The GDP deflator is based on all GDP components.</p></li>
+<li><p>The Producer Price Index is based on prices of supplies and inputs bought by producers of goods and services.</p></li>
+<li><p>An Employment Cost Index measures wage inflation in the labor market. An International Price Index is based on the prices of merchandise that is exported or imported.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>How to Measure Changes in the Cost of Living introduced a number of different price indices. Which price index would be best to use to adjust your paycheck for inflation?</li>
+<li>The Consumer Price Index is subject to the substitution bias and the quality/new goods bias. Are the Producer Price Index and the GDP Deflator also subject to these biases? Why or why not?</li>
+<li>Why does “substitution bias” arise if we calculate the inflation rate based on a fixed basket of goods?</li>
+<li>Why does the “quality/new goods bias” arise if we calculate the inflation rate based on a fixed basket of goods?</li>
+<li>Given the federal budget deficit in recent years, some economists have argued that by adjusting Social Security payments for inflation using the CPI, Social Security is overpaying recipients. What is their argument, and do you agree or disagree with it?</li>
+<li>Why is the GDP deflator not an accurate measure of inflation as it impacts a household?</li>
+<li>Imagine that the government statisticians who calculate the inflation rate have been updating the basic basket of goods once every 10 years, but now they decide to update it every five years. How will this change affect the amount of substitution bias and quality/new goods bias?</li>
+<li>Describe a situation, either a government policy situation, an economic problem, or a private sector situation, where using the CPI to convert from nominal to real would be more appropriate than using the GDP deflator.</li>
+<li>Describe a situation, either a government policy situation, an economic problem, or a private sector situation, where using the GDP deflator to convert from nominal to real would be more appropriate than using the CPI.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--How the U.S. and Other Countries Experience Inflation {{{2-->
+</section>
+</section>
+<section id="how-the-u.s.-and-other-countries-experience-inflation" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="how-the-u.s.-and-other-countries-experience-inflation"><span class="header-section-number">8.3</span> How the U.S. and Other Countries Experience Inflation</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Identify patterns of inflation for the United States using data from the Consumer Price Index</li>
+<li>Identify patterns of inflation on an international level</li>
+</ul>
+</div>
+</div>
+<p>In the last three decades, inflation has been relatively low in the U.S. economy, with the Consumer Price Index typically rising 2% to 4% per year. Looking back over the twentieth century, there have been several periods where inflation caused the price level to rise at double-digit rates, but nothing has come close to hyperinflation.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hyperinflation</p>
+<p>When the inflation rate exceeds 50% per month, economists usually refer to this as hyperinflation.</p>
+</div>
+</div>
+<section id="historical-inflation-in-the-u.s.-economy" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="historical-inflation-in-the-u.s.-economy"><span class="header-section-number">8.3.1</span> Historical Inflation in the U.S. Economy</h3>
+<div id="e5ca0879" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>titleSize <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>, {<span class="st">'grid.linestyle'</span>: <span class="st">':'</span>})</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Load data</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df_a <span class="op">=</span> pd.read_csv(<span class="st">'Graphs/Annual_FRED.csv'</span>, header<span class="op">=</span><span class="dv">0</span>, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df_q <span class="op">=</span> pd.read_csv(<span class="st">'Graphs/Quarterly_FRED.csv'</span>, header<span class="op">=</span><span class="dv">0</span>, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df_m <span class="op">=</span> pd.read_csv(<span class="st">'Graphs/Monthly_FRED.csv'</span>, header<span class="op">=</span><span class="dv">0</span>, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'ExportsTrill'</span>] <span class="op">=</span> df_q[<span class="st">'Exports'</span>]<span class="op">/</span><span class="dv">1000000</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'ImportsTrill'</span>] <span class="op">=</span> df_q[<span class="st">'Imports'</span>]<span class="op">/</span><span class="dv">1000000</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'GDPTrill'</span>] <span class="op">=</span> df_q[<span class="st">'GDP'</span>]<span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'GNPTrill'</span>] <span class="op">=</span> df_q[<span class="st">'GNP'</span>]<span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'realGDPTrill'</span>] <span class="op">=</span> df_q[<span class="st">'rGDP'</span>]<span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'ExportsGDP'</span>] <span class="op">=</span> df_q[<span class="st">'Exports'</span>]<span class="op">/</span>df_q[<span class="st">'GDP'</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'ImportsGDP'</span>] <span class="op">=</span> df_q[<span class="st">'Imports'</span>]<span class="op">/</span>df_q[<span class="st">'GDP'</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df_q[<span class="st">'TradeBalance'</span>] <span class="op">=</span> (df_q[<span class="st">'Exports'</span>]<span class="op">-</span>df_q[<span class="st">'Imports'</span>])<span class="op">/</span>df_q[<span class="st">'GDP'</span>]<span class="op">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-fig-cpi-urban" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_a[<span class="st">'CPI_Urban'</span>].plot()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'CPI Urban'</span>, fontsize<span class="op">=</span>titleSize)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'CPI'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-cpi-urban" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cpi-urban-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="ch8-Inflation_files/figure-html/fig-cpi-urban-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;8.3: Level of prices in the Consumer Price Index stretching back to 1949"><img src="ch8-Inflation_files/figure-html/fig-cpi-urban-output-1.png" width="589" height="451" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cpi-urban-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.3: Level of prices in the Consumer Price Index stretching back to 1949
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In <a href="#fig-cpi-urban" class="quarto-xref">Figure&nbsp;<span>8.3</span></a> the base years (when the CPI is defined as 100) are set for the average level of prices that existed from 1982 to 1984. In 1913, the CPI starts out close to 10, rises to around 20 in 1920, stays around 16 or 17 until 1931, then falls to 13 or 14 until 1940.</p>
+<p>The graph starts in year 1949. The CPI gradually increases until about 1973, then increases more rapidly through the remainder of the 1970s and beyond, with periodic dips, until 2016, when it reached around 240.</p>
+<div id="cell-fig-inflation-cpi" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df_a[<span class="st">'CPI_Urban'</span>].pct_change()<span class="op">*</span><span class="dv">100</span>).plot()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage Change in Urban CPI (Inflation)'</span>, fontsize<span class="op">=</span>titleSize)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'%'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-inflation-cpi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inflation-cpi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="ch8-Inflation_files/figure-html/fig-inflation-cpi-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;8.4: Annual percentage change in Consumer Price Index stretching back to 1949"><img src="ch8-Inflation_files/figure-html/fig-inflation-cpi-output-1.png" width="582" height="451" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inflation-cpi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.4: Annual percentage change in Consumer Price Index stretching back to 1949
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-inflation-cpi" class="quarto-xref">Figure&nbsp;<span>8.4</span></a> shows the annual percentage changes in the CPI over time. This is also called the rate of inflation.</p>
+<p>In 1916, the rate of inflation starts out with inflation at almost 8%, jumps to about 17% in 1917, drops drastically to close to –11% in 1921, goes up and down periodically, with peaks in the 1940s and the 1970s, until settling to around 1.3% in 2016.</p>
+<div id="fig-Inf_004" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inf_004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ2e_C22_03.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;8.5: These historic time series stretch even further back."><img src="Graphs/Inflation/CNX_Econ2e_C22_03.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inf_004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.5: These historic time series stretch even further back.
+</figcaption>
+</figure>
+</div>
+<p>The first two waves of inflation are easy to characterize in historical terms: they are right after World War I and World War II. However, there are also two periods of severe negative inflation—called deflation—in the early decades of the twentieth century: one following the deep 1920-21 recession of and the other during the 1930s Great Depression of the 1930s. (Since inflation is a time when the buying power of money in terms of goods and services is reduced, deflation will be a time when the buying power of money in terms of goods and services increases.)</p>
+<p>For the period from 1900 to about 1960, the major inflations and deflations nearly balanced each other out, so the average annual rate of inflation over these years was only about 1% per year. A third wave of more severe inflation arrived in the 1970s and departed in the early 1980s.</p>
+<p>Times of recession or depression often seem to be times when the inflation rate is lower, as in the recession of 1920–1921, the Great Depression, the recession of 1980–1982, and the Great Recession in 2008–2009. There were a few months in 2009 that were deflationary, but not at an annual rate. High levels of unemployment typically accompany recessions, and the total demand for goods falls, pulling the price level down. Conversely, the rate of inflation often, but not always, seems to start moving up when the economy is growing very strongly, like right after wartime or during the 1960s. The frameworks for macroeconomic analysis, that we developed in other chapters, will explain why recession often accompanies higher unemployment and lower inflation, while rapid economic growth often brings lower unemployment but higher inflation.</p>
+</section>
+<section id="inflation-around-the-world" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="inflation-around-the-world"><span class="header-section-number">8.3.2</span> Inflation around the World</h3>
+<p>Around the rest of the world, the pattern of inflation has been very mixed; <a href="#fig-Inf_005" class="quarto-xref">Figure&nbsp;<span>8.6</span></a> shows inflation rates over the last several decades. Many industrialized countries, not just the United States, had relatively high inflation rates in the 1970s.</p>
+<p>For example, in 1975, Japan’s inflation rate was over 8% and the inflation rate for the United Kingdom was almost 25%. In the 1980s, inflation rates came down in the United States and in Europe and have largely stayed down.</p>
+<div id="fig-Inf_005" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inf_005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ2e_C22_04.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;8.6: This chart shows the annual percentage change in consumer prices compared with the previous year’s consumer prices in the United States, the United Kingdom, Japan, and Germany."><img src="Graphs/Inflation/CNX_Econ2e_C22_04.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inf_005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.6: This chart shows the annual percentage change in consumer prices compared with the previous year’s consumer prices in the United States, the United Kingdom, Japan, and Germany.
+</figcaption>
+</figure>
+</div>
+<p>Countries with controlled economies in the 1970s, like the Soviet Union and China, historically had very low rates of measured inflation—because prices were forbidden to rise by law, except for the cases where the government deemed a price increase to be due to quality improvements. However, these countries also had perpetual shortages of goods, since forbidding prices to rise acts like a price ceiling and creates a situation where quantity demanded often exceeds quantity supplied.</p>
+<p>As Russia and China made a transition toward more market-oriented economies, they also experienced outbursts of inflation, although we should regard the statistics for these economies as somewhat shakier.</p>
+<p>Inflation in China averaged about 10% per year for much of the 1980s and early 1990s, although it has dropped off since then. Russia experienced hyperinflation—an outburst of high inflation—of 2,500% per year in the early 1990s, although by 2006 Russia’s consumer price inflation had dipped below 10% per year, as <a href="#fig-Inf_006" class="quarto-xref">Figure&nbsp;<span>8.7</span></a> shows. The closest the United States has ever reached hyperinflation was during the 1860–1865 Civil War, in the Confederate states.</p>
+<div id="fig-Inf_006" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inf_006-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ2e_C22_05.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;8.7: These charts show the percentage change in consumer prices compared with the previous year’s consumer prices in Brazil, China, and Russia. (a) Of these, Brazil and Russia experienced very high inflation at some point between the late-1980s and late-1990s. (b) Though not as high, China also had high inflation rates in the mid-1990s. Even though their inflation rates have come down over the last two decades, several of these countries continue to see significant inflation rates. (Sources: http://www.inflation.eu/inflation-rates; http://research.stlouisfed.org/fred2/series/FPCPITOTLZGBRA; http://research.stlouisfed.org/fred2/series/CHNCPIALLMINMEI; http://research.stlouisfed.org/fred2/series/FPCPITOTLZGRUS)"><img src="Graphs/Inflation/CNX_Econ2e_C22_05.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inf_006-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.7: These charts show the percentage change in consumer prices compared with the previous year’s consumer prices in Brazil, China, and Russia. (a) Of these, Brazil and Russia experienced very high inflation at some point between the late-1980s and late-1990s. (b) Though not as high, China also had high inflation rates in the mid-1990s. Even though their inflation rates have come down over the last two decades, several of these countries continue to see significant inflation rates. (Sources: <a href="http://www.inflation.eu/inflation-rates" class="uri">http://www.inflation.eu/inflation-rates</a>; <a href="http://research.stlouisfed.org/fred2/series/FPCPITOTLZGBRA" class="uri">http://research.stlouisfed.org/fred2/series/FPCPITOTLZGBRA</a>; <a href="http://research.stlouisfed.org/fred2/series/CHNCPIALLMINMEI" class="uri">http://research.stlouisfed.org/fred2/series/CHNCPIALLMINMEI</a>; <a href="http://research.stlouisfed.org/fred2/series/FPCPITOTLZGRUS" class="uri">http://research.stlouisfed.org/fred2/series/FPCPITOTLZGRUS</a>)
+</figcaption>
+</figure>
+</div>
+<p>Many countries in Latin America experienced raging inflation during the 1980s and early 1990s, with inflation rates often well above 100% per year. In 1990, for example, both Brazil and Argentina saw inflation climb above 2000%. Certain countries in Africa experienced extremely high rates of inflation, sometimes bordering on hyperinflation, in the 1990s. Nigeria, the most populous country in Africa, had an inflation rate of 75% in 1995.</p>
+<p>In the early 2000s, the problem of inflation appears to have diminished for most countries, at least in comparison to the worst times of recent decades. As we noted in this earlier Bring it Home feature, in recent years, the world’s worst example of hyperinflation was in Zimbabwe, where at one point the government was issuing bills with a face value of $100 trillion (in Zimbabwean dollars)—that is, the bills had $100,000,000,000,000 written on the front, but were almost worthless. In many countries, the memory of double-digit, triple-digit, and even quadruple-digit inflation is not very far in the past.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>In the U.S. economy, the annual inflation rate in the last two decades has typically been around 2% to 4%. The periods of highest inflation in the United States in the twentieth century occurred during the years after World Wars I and II, and in the 1970s. The period of lowest inflation—actually, with deflation—was the 1930s Great Depression.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Go to this website for the Purchasing Power Calculator at MeasuringWorth.com. How much money would it take today to purchase what one dollar would have bought in the year of your birth?</li>
+<li>What has been a typical range of inflation in the U.S. economy in the last decade or so?</li>
+<li>Over the last century, during what periods was the U.S. inflation rate highest and lowest?</li>
+<li>What is deflation?</li>
+<li>Why do you think the U.S. experience with inflation over the last 50 years has been so much milder than in many other countries?</li>
+</ul>
+</div>
+</div>
+</div>
+<!--The Confusion Over Inflation {{{2-->
+</section>
+</section>
+<section id="the-confusion-over-inflation" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="the-confusion-over-inflation"><span class="header-section-number">8.4</span> The Confusion Over Inflation</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Explain how inflation can cause redistributions of purchasing power</li>
+<li>Identify ways inflation can blur the perception of supply and demand</li>
+<li>Explain the economic benefits and challenges of inflation</li>
+</ul>
+</div>
+</div>
+<p>Economists usually oppose high inflation, but they oppose it in a milder way than many non-economists. Robert Shiller, one of 2013’s Nobel Prize winners in economics, carried out several surveys during the 1990s about attitudes toward inflation. One of his questions asked, “Do you agree that preventing high inflation is an important national priority, as important as preventing drug abuse or preventing deterioration in the quality of our schools?” Answers were on a scale of 1–5, where 1 meant “Fully agree” and 5 meant “Completely disagree.” For the U.S. population as a whole, 52% answered “Fully agree” that preventing high inflation was a highly important national priority and just 4% said “Completely disagree.” However, among professional economists, only 18% answered “Fully agree,” while the same percentage of 18% answered “Completely disagree.”</p>
+<section id="the-land-of-funny-money" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="the-land-of-funny-money"><span class="header-section-number">8.4.1</span> The Land of Funny Money</h3>
+<p>What are the economic problems caused by inflation, and why do economists often regard them with less concern than the general public? Consider a very short story: “The Land of Funny Money.”</p>
+<p>One morning, everyone in the Land of Funny Money awakened to find that everything denominated in money had increased by 20%. The change was completely unexpected. Every price in every store was 20% higher. Paychecks were 20% higher. Interest rates were 20 % higher. The amount of money, everywhere from wallets to savings accounts, was 20% larger. This overnight inflation of prices made newspaper headlines everywhere in the Land of Funny Money. However, the headlines quickly disappeared, as people realized that in terms of what they could actually buy with their incomes, this inflation had no economic impact. Everyone’s pay could still buy exactly the same set of goods as it did before. Everyone’s savings were still sufficient to buy exactly the same car, vacation, or retirement that they could have bought before. Equal levels of inflation in all wages and prices ended up not mattering much at all.</p>
+<p>When the people in Robert Shiller’s surveys explained their concern about inflation, one typical reason was that they feared that as prices rose, they would not be able to afford to buy as much. In other words, people were worried because they did not live in a place like the Land of Funny Money, where all prices and wages rose simultaneously. Instead, people live here on Planet Earth, where prices might rise while wages do not rise at all, or where wages rise more slowly than prices.</p>
+<p>Economists note that over most periods, the inflation level in prices is roughly similar to the inflation level in wages, and so they reason that, on average, over time, people’s economic status is not greatly changed by inflation. If all prices, wages, and interest rates adjusted automatically and immediately with inflation, as in the Land of Funny Money, then no one’s purchasing power, profits, or real loan payments would change. However, if other economic variables do not move exactly in sync with inflation, or if they adjust for inflation only after a time lag, then inflation can cause three types of problems: unintended redistributions of purchasing power, blurred price signals, and difficulties in long-term planning.</p>
+</section>
+<section id="unintended-redistributions-of-purchasing-power" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="unintended-redistributions-of-purchasing-power"><span class="header-section-number">8.4.2</span> Unintended Redistributions of Purchasing Power</h3>
+<p>Inflation can cause redistributions of purchasing power that hurt some and help others. People who are hurt by inflation include those who are holding considerable cash, whether it is in a safe deposit box or in a cardboard box under the bed. When inflation happens, the buying power of cash diminishes. However, cash is only an example of a more general problem: anyone who has financial assets invested in a way that the nominal return does not keep up with inflation will tend to suffer from inflation. For example, if a person has money in a bank account that pays 4% interest, but inflation rises to 5%, then the real rate of return for the money invested in that bank account is negative 1%.</p>
+<p>The problem of a good-looking nominal interest rate transforming into an ugly-looking real interest rate can be worsened by taxes. The U.S. income tax is charged on the nominal interest received in dollar terms, without an adjustment for inflation. Thus, the government taxes a person who invests $10,000 and receives a 5% nominal rate of interest on the $500 received—no matter whether the inflation rate is 0%, 5%, or 10%. If inflation is 0%, then the real interest rate is 5% and all $500 is a gain in buying power. However, if inflation is 5%, then the real interest rate is zero and the person had no real gain—but owes income tax on the nominal gain anyway. If inflation is 10%, then the real interest rate is negative 5% and the person is actually falling behind in buying power, but would still owe taxes on the $500 in nominal gains.</p>
+<p>Inflation can cause unintended redistributions for wage earners, too. Wages do typically creep up with inflation over time, eventually. The last row of [link] at the start of this chapter showed that the average hourly wage in manufacturing in the U.S. economy increased from $3.23 in 1970 to $20.65 in 2017, which is an increase by a factor of more than six. Over that time period, the Consumer Price Index increased by an almost identical amount.</p>
+<p>However, increases in wages may lag behind inflation for a year or two, since wage adjustments are often somewhat sticky and occur only once or twice a year. Moreover, the extent to which wages keep up with inflation creates insecurity for workers and may involve painful, prolonged conflicts between employers and employees. If the government adjusts minimum wage for inflation only infrequently, minimum wage workers are losing purchasing power from their nominal wages, as <a href="#fig-Inf_007" class="quarto-xref">Figure&nbsp;<span>8.8</span></a> shows.</p>
+<div id="fig-Inf_007" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inf_007-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econ2e_C22_013.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8.8: After adjusting for inflation, the federal minimum wage dropped more than 30 percent from 1967 to 2010, even though the nominal figure climbed from $1.40 to $7.25 per hour. Increases in the minimum wage in between 2008 and 2010 kept the decline from being worse—as it would have been if the wage had remained the same as it did from 1997 through 2007. Since 2010, the real minimum wage has continued to decline. (Sources: http://www.dol.gov/whd/minwage/chart.htm; http://data.bls.gov/cgi-bin/surveymost?cu)"><img src="Graphs/Inflation/CNX_Econ2e_C22_013.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inf_007-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.8: After adjusting for inflation, the federal minimum wage dropped more than 30 percent from 1967 to 2010, even though the nominal figure climbed from $1.40 to $7.25 per hour. Increases in the minimum wage in between 2008 and 2010 kept the decline from being worse—as it would have been if the wage had remained the same as it did from 1997 through 2007. Since 2010, the real minimum wage has continued to decline. (Sources: <a href="http://www.dol.gov/whd/minwage/chart.htm" class="uri">http://www.dol.gov/whd/minwage/chart.htm</a>; <a href="http://data.bls.gov/cgi-bin/surveymost?cu" class="uri">http://data.bls.gov/cgi-bin/surveymost?cu</a>)
+</figcaption>
+</figure>
+</div>
+<p>One sizable group of people has often received a large share of their income in a form that does not increase over time: retirees who receive a private company pension. Most pensions have traditionally been set as a fixed nominal dollar amount per year at retirement. For this reason, economists call pensions “defined benefits” plans. Even if inflation is low, the combination of inflation and a fixed income can create a substantial problem over time. A person who retires on a fixed income at age 65 will find that losing just 1% to 2% of buying power per year to inflation compounds to a considerable loss of buying power after a decade or two.</p>
+<p>Fortunately, pensions and other defined benefits retirement plans are increasingly rare, replaced instead by “defined contribution” plans, such as 401(k)s and 403(b)s. In these plans, the employer contributes a fixed amount to the worker’s retirement account on a regular basis (usually every pay check). The employee often contributes as well. The worker invests these funds in a wide range of investment vehicles. These plans are tax deferred, and they are portable so that if the individual takes a job with a different employer, their 401(k) comes with them. To the extent that the investments made generate real rates of return, retirees do not suffer from the inflation costs of traditional pensioners.</p>
+<p>However, ordinary people can sometimes benefit from the unintended redistributions of inflation. Consider someone who borrows $10,000 to buy a car at a fixed interest rate of 9%. If inflation is 3% at the time the loan is made, then he or she must repay the loan at a real interest rate of 6%. However, if inflation rises to 9%, then the real interest rate on the loan is zero. In this case, the borrower’s benefit from inflation is the lender’s loss. A borrower paying a fixed interest rate, who benefits from inflation, is just the flip side of an investor receiving a fixed interest rate, who suffers from inflation. The lesson is that when interest rates are fixed, rises in the rate of inflation tend to penalize suppliers of financial capital, who receive repayment in dollars that are worth less because of inflation, while demanders of financial capital end up better off, because they can repay their loans in dollars that are worth less than originally expected.</p>
+<p>The unintended redistributions of buying power that inflation causes may have a broader effect on society. America’s widespread acceptance of market forces rests on a perception that people’s actions have a reasonable connection to market outcomes. When inflation causes a retiree who built up a pension or invested at a fixed interest rate to suffer, however, while someone who borrowed at a fixed interest rate benefits from inflation, it is hard to believe that this outcome was deserved in any way. Similarly, when homeowners benefit from inflation because the price of their homes rises, while renters suffer because they are paying higher rent, it is hard to see any useful incentive effects. One of the reasons that the general public dislikes inflation is a sense that it makes economic rewards and penalties more arbitrary—and therefore likely to be perceived as unfair – even dangerous, as the next Clear It Up feature shows.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>IS THERE A CONNECTION BETWEEN GERMAN HYPERINFLATION AND HITLER’S RISE TO POWER?</p>
+<p>Germany suffered an intense hyperinflation of its currency, the Mark, in the years after World War I, when the Weimar Republic in Germany resorted to printing money to pay its bills and the onset of the Great Depression created the social turmoil that Adolf Hitler was able to take advantage of in his rise to power. Shiller described the connection this way in a National Bureau of Economic Research 1996 Working Paper:</p>
+<p>A fact that is probably little known to young people today, even in Germany, is that the final collapse of the Mark in 1923, the time when the Mark’s inflation reached astronomical levels (inflation of 35,974.9% in November 1923 alone, for an annual rate that month of 4.69 × 1028%), came in the same month as did Hitler’s Beer Hall Putsch, his Nazi Party’s armed attempt to overthrow the German government. This failed putsch resulted in Hitler’s imprisonment, at which time he wrote his book Mein Kampf, setting forth an inspirational plan for Germany’s future, suggesting plans for world domination. . . . . . Most people in Germany today probably do not clearly remember these events; this lack of attention to it may be because its memory is blurred by the more dramatic events that succeeded it (the Nazi seizure of power and World War II). However, to someone living through these historical events in sequence . . . [the putsch] may have been remembered as vivid evidence of the potential effects of inflation.</p>
+</div>
+</div>
+</section>
+<section id="blurred-price-signals" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="blurred-price-signals"><span class="header-section-number">8.4.3</span> Blurred Price Signals</h3>
+<p>Prices are the messengers in a market economy, conveying information about conditions of demand and supply. Inflation blurs those price messages. Inflation means that we perceive price signals more vaguely, like a radio program received with considerable static. If the static becomes severe, it is hard to tell what is happening.</p>
+<p>In Israel, when inflation accelerated to an annual rate of 500% in 1985, some stores stopped posting prices directly on items, since they would have had to put new labels on the items or shelves every few days to reflect inflation. Instead, a shopper just took items from a shelf and went up to the checkout register to find out the price for that day. Obviously, this situation makes comparing prices and shopping for the best deal rather difficult. When the levels and changes of prices become uncertain, businesses and individuals find it harder to react to economic signals. In a world where inflation is at a high rate, but bouncing up and down to some extent, does a higher price of a good mean that inflation has risen, or that supply of that good has decreased, or that demand for that good has increased? Should a buyer of the good take the higher prices as an economic hint to start substituting other products—or have the prices of the substitutes risen by an equal amount? Should a seller of the good take a higher price as a reason to increase production—or is the higher price only a sign of a general inflation in which the prices of all inputs to production are rising as well? The true story will presumably become clear over time, but at a given moment, who can say?</p>
+<p>High and variable inflation means that the incentives in the economy to adjust in response to changes in prices are weaker. Markets will adjust toward their equilibrium prices and quantities more erratically and slowly, and many individual markets will experience a greater chance of surpluses and shortages.</p>
+</section>
+<section id="problems-of-long-term-planning" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="problems-of-long-term-planning"><span class="header-section-number">8.4.4</span> Problems of Long-Term Planning</h3>
+<p>Inflation can make long-term planning difficult. In discussing unintended redistributions, we considered the case of someone trying to plan for retirement with a pension that is fixed in nominal terms and a high rate of inflation. Similar problems arise for all people trying to save for retirement, because they must consider what their money will really buy several decades in the future when we cannot know the rate of future inflation.</p>
+<p>Inflation, especially at moderate or high levels, will pose substantial planning problems for businesses, too. A firm can make money from inflation—for example, by paying bills and wages as late as possible so that it can pay in inflated dollars, while collecting revenues as soon as possible. A firm can also suffer losses from inflation, as in the case of a retail business that gets stuck holding too much cash, only to see inflation eroding the value of that cash. However, when a business spends its time focusing on how to profit by inflation, or at least how to avoid suffering from it, an inevitable tradeoff strikes: less time is spent on improving products and services or on figuring out how to make existing products and services more cheaply. An economy with high inflation rewards businesses that have found clever ways of profiting from inflation, which are not necessarily the businesses that excel at productivity, innovation, or quality of service.</p>
+<p>In the short term, low or moderate levels of inflation may not pose an overwhelming difficulty for business planning, because costs of doing business and sales revenues may rise at similar rates. If, however, inflation varies substantially over the short or medium term, then it may make sense for businesses to stick to shorter-term strategies. The evidence as to whether relatively low rates of inflation reduce productivity is controversial among economists. There is some evidence that if inflation can be held to moderate levels of less than 3% per year, it need not prevent a nation’s real economy from growing at a healthy pace.</p>
+<p>For some countries that have experienced hyperinflation of several thousand percent per year, an annual inflation rate of 20–30% may feel basically the same as zero. However, several economists have pointed to the suggestive fact that when U.S. inflation heated up in the early 1970s—to 10%—U.S. growth in productivity slowed down, and when inflation slowed down in the 1980s, productivity edged up again not long thereafter, as <a href="#fig-Inf_008" class="quarto-xref">Figure&nbsp;<span>8.9</span></a> shows.</p>
+<div id="fig-Inf_008" class="align-center quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inf_008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="Graphs/Inflation/CNX_Econv1-2_C22_07.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8.9: Over the last several decades in the United States, there have been times when rising inflation rates have been closely followed by lower productivity rates and lower inflation rates have corresponded to increasing productivity rates. As the graph shows, however, this correlation does not always exist."><img src="Graphs/Inflation/CNX_Econv1-2_C22_07.jpg" class="align-center img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inf_008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.9: Over the last several decades in the United States, there have been times when rising inflation rates have been closely followed by lower productivity rates and lower inflation rates have corresponded to increasing productivity rates. As the graph shows, however, this correlation does not always exist.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="any-benefits-of-inflation" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="any-benefits-of-inflation"><span class="header-section-number">8.4.5</span> Any Benefits of Inflation?</h3>
+<p>Although the economic effects of inflation are primarily negative, two countervailing points are worth noting. First, the impact of inflation will differ considerably according to whether it is creeping up slowly at 0% to 2% per year, galloping along at 10% to 20% per year, or racing to the point of hyperinflation at, say, 40% per month. Hyperinflation can rip an economy and a society apart. An annual inflation rate of 2%, 3%, or 4%, however, is a long way from a national crisis. Low inflation is also better than deflation which occurs with severe recessions.</p>
+<p>Second, economists sometimes argue that moderate inflation may help the economy by making wages in labor markets more flexible. The discussion in Unemployment pointed out that wages tend to be sticky in their downward movements and that unemployment can result. A little inflation could nibble away at real wages, and thus help real wages to decline if necessary. In this way, even if a moderate or high rate of inflation may act as sand in the gears of the economy, perhaps a low rate of inflation serves as oil for the gears of the labor market. This argument is controversial. A full analysis would have to account for all the effects of inflation. It does, however, offer another reason to believe that, all things considered, very low rates of inflation may not be especially harmful.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Unexpected inflation will tend to hurt those whose money received, in terms of wages and interest payments, does not rise with inflation. In contrast, inflation can help those who owe money that they can pay in less valuable, inflated dollars.</li>
+<li>Low rates of inflation have relatively little economic impact over the short term. Over the medium and the long term, even low rates of inflation can complicate future planning.</li>
+<li>High rates of inflation can muddle price signals in the short term and prevent market forces from operating efficiently, and can vastly complicate long-term savings and investment decisions.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>If inflation rises unexpectedly by 5%, would a state government that had recently borrowed money to pay for a new highway benefit or lose?</li>
+<li>Identify several parties likely to be helped and hurt by inflation.</li>
+<li>If, over time, wages and salaries on average rise at least as fast as inflation, why do people worry about how inflation affects incomes?</li>
+<li>Who in an economy is the big winner from inflation?</li>
+</ul>
+</div>
+</div>
+</div>
+<!--Indexing and Its Limitations {{{2-->
+</section>
+</section>
+<section id="indexing-and-its-limitations" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="indexing-and-its-limitations"><span class="header-section-number">8.5</span> Indexing and Its Limitations</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Section Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Explain the relationship between indexing and inflation</li>
+<li>Identify three ways the government can control inflation through macroeconomic policy</li>
+</ul>
+</div>
+</div>
+<p>When a price, wage, or interest rate is adjusted automatically with inflation, economists use the term indexed. An indexed payment increases according to the index number that measures inflation. Those in private markets and government programs observe a wide range of indexing arrangements. Since the negative effects of inflation depend in large part on having inflation unexpectedly affect one part of the economy but not another—say, increasing the prices that people pay but not the wages that workers receive—indexing will take some of the sting out of inflation.</p>
+<section id="indexing-in-private-markets" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="indexing-in-private-markets"><span class="header-section-number">8.5.1</span> Indexing in Private Markets</h3>
+<p>In the 1970s and 1980s, labor unions commonly negotiated wage contracts that had cost-of-living adjustments (COLAs) which guaranteed that their wages would keep up with inflation. These contracts were sometimes written as, for example, COLA plus 3%. Thus, if inflation was 5%, the wage increase would automatically be 8%, but if inflation rose to 9%, the wage increase would automatically be 12%. COLAs are a form of indexing applied to wages.</p>
+<p>Loans often have built-in inflation adjustments, too, so that if the inflation rate rises by two percentage points, then the interest rate that a financial institution charges on the loan rises by two percentage points as well. An adjustable-rate mortgage (ARM) is a type of loan that one can use to purchase a home in which the interest rate varies with the rate of inflation. Often, a borrower will be able receive a lower interest rate if borrowing with an ARM, compared to a fixed-rate loan. The reason is that with an ARM, the lender is protected against the risk that higher inflation will reduce the real loan payments, and so the risk premium part of the interest rate can be correspondingly lower.</p>
+<p>A number of ongoing or long-term business contracts also have provisions that prices will adjust automatically according to inflation. Sellers like such contracts because they are not locked into a low nominal selling price if inflation turns out higher than expected. Buyers like such contracts because they are not locked into a high buying price if inflation turns out to be lower than expected. A contract with automatic adjustments for inflation in effect agrees on a real price for the borrower to pay, rather than a nominal price.</p>
+</section>
+<section id="indexing-in-government-programs" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="indexing-in-government-programs"><span class="header-section-number">8.5.2</span> Indexing in Government Programs</h3>
+<p>Many government programs are indexed to inflation. The U.S. income tax code is designed so that as a person’s income rises above certain levels, the tax rate on the marginal income earned rises as well. That is what the expression “move into a higher tax bracket” means. For example, according to the basic tax tables from the Internal Revenue Service, in 2017 a single person owed 10% of all taxable income from $0 to $9,325; 15% of all income from $9,326 to $37,950; 25% of all taxable income from $37,951 to $91,900; 28% of all taxable income from $91,901 to $191,650; 33% of all taxable income from $191,651 to $416,700; 35% of all taxable income from $416,701 to $418,400; and 39.6% of all income from $418,401 and above.</p>
+<p>Because of the many complex provisions in the rest of the tax code, it is difficult to determine exactly the taxes an individual owes the government based on these numbers, but the numbers illustrate the basic theme that tax rates rise as the marginal dollar of income rises. Until the late 1970s, if nominal wages increased along with inflation, people were moved into higher tax brackets and owed a higher proportion of their income in taxes, even though their real income had not risen. In 1981, the government eliminated this “bracket creep”. Now, the income levels where higher tax rates kick in are indexed to rise automatically with inflation.</p>
+<p>The Social Security program offers two examples of indexing. Since the passage of the Social Security Indexing Act of 1972, the level of Social Security benefits increases each year along with the Consumer Price Index. Also, Social Security is funded by payroll taxes, which the government imposes on the income earned up to a certain amount—$117,000 in 2014. The government adjusts this level of income upward each year according to the rate of inflation, so that an indexed increase in the Social Security tax base accompanies the indexed rise in the benefit level.</p>
+<p>As yet another example of a government program affected by indexing, in 1996 the U.S., government began offering indexed bonds. Bonds are means by which the U.S. government (and many private-sector companies as well) borrows money; that is, investors buy the bonds, and then the government repays the money with interest. Traditionally, government bonds have paid a fixed rate of interest. This policy gave a government that had borrowed an incentive to encourage inflation, because it could then repay its past borrowing in inflated dollars at a lower real interest rate. However, indexed bonds promise to pay a certain real rate of interest above whatever inflation rate occurs. In the case of a retiree trying to plan for the long term and worried about the risk of inflation, for example, indexed bonds that guarantee a rate of return higher than inflation—no matter the level of inflation—can be a very comforting investment.</p>
+</section>
+<section id="might-indexing-reduce-concern-over-inflation" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="might-indexing-reduce-concern-over-inflation"><span class="header-section-number">8.5.3</span> Might Indexing Reduce Concern over Inflation?</h3>
+<p>Indexing may seem like an obviously useful step. After all, when individuals, firms, and government programs are indexed against inflation, then people can worry less about arbitrary redistributions and other effects of inflation.</p>
+<p>However, some of the fiercest opponents of inflation express grave concern about indexing. They point out that indexing is always partial. Not every employer will provide COLAs for workers. Not all companies can assume that costs and revenues will rise in lockstep with the general rates of inflation. Not all interest rates for borrowers and savers will change to match inflation exactly. However, as partial inflation indexing spreads, the political opposition to inflation may diminish. After all, older people whose Social Security benefits are protected against inflation, or banks that have loaned their money with adjustable-rate loans, no longer have as much reason to care whether inflation heats up. In a world where some people are indexed against inflation and some are not, financially savvy businesses and investors may seek out ways to be protected against inflation, while the financially unsophisticated and small businesses may suffer from it most.</p>
+</section>
+<section id="a-preview-of-policy-discussions-of-inflation" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="a-preview-of-policy-discussions-of-inflation"><span class="header-section-number">8.5.4</span> A Preview of Policy Discussions of Inflation</h3>
+<p>This chapter has focused on how economists measure inflation, historical experience with inflation, how to adjust nominal variables into real ones, how inflation affects the economy, and how indexing works. We have barely hinted at the causes of inflation, and we have not addressed government policies to deal with inflation. We will examine these issues in depth in other chapters. However, it is useful to offer a preview here.</p>
+<p>We can sum up the cause of inflation in one phrase: Too many dollars chasing too few goods. The great surges of inflation early in the twentieth century came after wars, which are a time when government spending is very high, but consumers have little to buy, because production is going to the war effort. Governments also commonly impose price controls during wartime. After the war, the price controls end and pent-up buying power surges forth, driving up inflation. Otherwise, if too few dollars are chasing too many goods, then inflation will decline or even turn into deflation. Therefore, we typically associate slowdowns in economic activity, as in major recessions and the Great Depression, with a reduction in inflation or even outright deflation.</p>
+<p>The policy implications are clear. If we are to avoid inflation, the amount of purchasing power in the economy must grow at roughly the same rate as the production of goods. Macroeconomic policies that the government can use to affect the amount of purchasing power—through taxes, spending, and regulation of interest rates and credit—can thus cause inflation to rise or reduce inflation to lower levels.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A $550 MILLION LOAF OF BREAD?</p>
+<p>As we will learn in Money and Banking, the existence of money provides enormous benefits to an economy. In a real sense, money is the lubrication that enhances the workings of markets. Money makes transactions easier. It allows people to find employment producing one product, then use the money earned to purchase the other products they need to live. However, too much money in circulation can lead to inflation. Extreme cases of governments recklessly printing money lead to hyperinflation.</p>
+<p>Inflation reduces the value of money. Hyperinflation, because money loses value so quickly, ultimately results in people no longer using money. The economy reverts to barter, or it adopts another country’s more stable currency, like U.S. dollars. In the meantime, the economy literally falls apart as people leave jobs and fend for themselves because it is not worth the time to work for money that will be worthless in a few days.</p>
+<p>Only national governments have the power to cause hyperinflation. Hyperinflation typically happens when government faces extraordinary demands for spending, which it cannot finance by taxes or borrowing. The only option is to print money—more and more of it. With more money in circulation chasing the same amount (or even fewer) goods and services, the only result is increasingly higher prices until the economy and/or the government collapses. This is why economists are generally wary of letting inflation spiral out of control.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts and Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>A payment is indexed if it is automatically adjusted for inflation. Examples of indexing in the private sector include wage contracts with cost-of-living adjustments (COLAs) and loan agreements like adjustable-rate mortgages (ARMs). Examples of indexing in the public sector include tax brackets and Social Security payments.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Self-Check Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>How should an increase in inflation affect the interest rate on an adjustable-rate mortgage?</li>
+<li>A fixed-rate mortgage has the same interest rate over the life of the loan, whether the mortgage is for 15 or 30 years. By contrast, an adjustable-rate mortgage changes with market interest rates over the life of the mortgage. If inflation falls unexpectedly by 3%, what would likely happen to a homeowner with an adjustable-rate mortgage?</li>
+<li>What is indexing?</li>
+<li>Name several forms of indexing in the private and public sector.</li>
+<li>If a government gains from unexpected inflation when it borrows, why would it choose to offer indexed bonds?</li>
+<li>Do you think perfect indexing is possible? Why or why not?</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch7-Unemployment.html" class="pagination-link" aria-label="Unemployment">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Unemployment</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch9-ProductionFullEmployment.html" class="pagination-link" aria-label="Production Technology and Full Employment">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Production Technology and Full Employment</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Juergen Jung</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://juejung.github.io/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
